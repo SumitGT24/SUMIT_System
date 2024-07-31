@@ -1,0 +1,37 @@
+# Translation of Themes - Shuttle Bright in Spanish (Spain)
+# This file is distributed under the same license as the Themes - Shuttle Bright package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-12-19 06:44:15+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
+"Language: es\n"
+"Project-Id-Version: Themes - Shuttle Bright\n"
+
+#. Description of the theme
+#, gp-priority: high
+msgid "Shuttle Bright is the awesome free version of Shuttle Pro. It is really good for professionals. If you want to make a business, for big or small this theme is good for you. So if it is a restaurant, sport, medical, startup, corporate, business, ecommerce, portfolio, freelancers or any type of online agency or firm you will want to use this cool design. It had a multi-purpose design with widget areas in footer, so now even easy to make blog / news website which looks really clean and professional. The theme is responsive, WPML, Polylang, Retina ready, SEO friendly, and is a super design. Shuttle is fast and lightweight and can be used for any type of website, fully compatible with eCommerce plugins like WooCommerce an JigoShop. Whether you are building a website for yourself, your business or are a freelancer building websites for your cliente, Shuttle is the perfect choice. Plus if works with all the major page builders such as Elementor, Beaver Builder, Visual Composer, Divi, SiteOrigin and so much more!"
+msgstr "Shuttle Bright es la impresionante versión gratuita de Shuttle Pro. Es realmente bueno para profesionales. Si quieres emprender un negocio, grande o pequeño, este tema es bueno para ti. Así que si es sobre un restaurante, deportes, medicina, startup, empresa, negocio, comercio electrónico, porfolio, autónomos o cualquier tipo de agencia o empresa online querrás usar este genial diseño. Tiene un diseño multipropósito con áreas para widgets en el pie de página, por lo que ahora incluso es fácil hacer un blog / web de noticias con un aspecto realmente limpio y profesional. El tema es adaptable, WPML, multilingüe, preparado para Retina, compatible con SEO, y es un súper diseño. Shuttle es rápido y ligero y se puede utilizar para cualquier tipo de web, totalmente compatible con plugins de comercio electrónico como WooCommerce y JigoShop. Tanto si estás construyendo una web para ti, para tu negocio o eres un autónomo que construye webs para sus clientes, Shuttle es la elección perfecta. Además, funciona con los principales maquetadores de páginas, como Elementor, Beaver Builder, Visual Composer, Divi, SiteOrigin ¡y mucho más!"
+
+#. Theme Name of the theme
+#, gp-priority: high
+msgid "Shuttle Bright"
+msgstr "Shuttle Bright"
+
+#. Author URI of the theme
+#, gp-priority: low
+msgid "https://www.shuttlethemes.com"
+msgstr "https://www.shuttlethemes.com"
+
+#. Author of the theme
+#, gp-priority: low
+msgid "Shuttle Themes"
+msgstr "Shuttle Themes"
+
+#. Theme URI of the theme
+#, gp-priority: low
+msgid "https://shuttlethemes.com/features-bright/"
+msgstr "https://shuttlethemes.com/features-bright/"

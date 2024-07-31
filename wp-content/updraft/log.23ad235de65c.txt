@@ -1,0 +1,1326 @@
+0000.000 (0) Opened log file at time: Thu, 13 Jun 2024 21:28:24 +0000 on https://sumit.gt
+0000.001 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 121M | 2M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.001 (0) Free space on disk containing Updraft's temporary directory: 1379046.3 MB
+0000.002 (0) Tasks: Backup files: 1 (schedule: manual) Backup DB: 1 (schedule: manual)
+0000.003 (0) Requesting semaphore lock (fd) (apparently not via scheduler)
+0000.004 (0) Set semaphore last lock (fd) time to 2024-06-13 21:28:24
+0000.004 (0) Semaphore lock (fd) complete
+0000.005 (0) Backup run: resumption=0, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (0s ago), job type=backup
+0000.006 (0) Scheduling a resumption (1) after 300 seconds (1718314404) in case this run gets aborted
+0000.007 (0) Checking if we have a zip executable available
+0000.008 (0) Testing: /usr/bin/zip
+0000.010 (0) Output: zip warning: binziptest/test.zip not found or empty
+0000.011 (0) Output: adding: binziptest/subdir1/	(in=0) (out=0) (stored 0%)
+0000.011 (0) Output: adding: binziptest/subdir1/subdir2/	(in=0) (out=0) (stored 0%)
+0000.012 (0) Output: adding: binziptest/subdir1/subdir2/test.html	(in=131) (out=107) (deflated 18%)
+0000.012 (0) Output: total bytes=131, compressed=107 -> 18% savings
+0000.040 (0) Output: adding: binziptest/subdir1/subdir2/test2.html	(in=138) (out=113) (deflated 18%)
+0000.041 (0) Output: total bytes=269, compressed=220 -> 18% savings
+0000.043 (0) Working binary zip found: /usr/bin/zip
+0000.043 (0) Zip engine: found/will use a binary zip: /usr/bin/zip
+0000.044 (0) Creation of backups of directories: beginning
+0000.045 (0) Beginning creation of dump of plugins (split every: 400 MB)
+0000.415 (0) Total entities for the zip file: 3670 directories, 15027 files (0 skipped as non-modified), 238.1 MB
+0000.420 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 100 files added (on-disk size: 0 KB)
+0000.422 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 200 files added (on-disk size: 0 KB)
+0000.424 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 300 files added (on-disk size: 0 KB)
+0000.425 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 25 MB added on this batch (25.6 MB, 15027 files batched, 325 (325) added so far); re-opening (prior size: 0 KB)
+0001.378 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: size is now: 8.00 MB
+0001.379 (0) A useful amount of data was added after this amount of zip processing: 1.5 s (normalised: 1.5 s, rate: 16936.5 KB/s)
+0001.380 (0) Performance is good - will increase the amount of data we attempt to batch (time=1.5489768981934, normalised_time=1.511527240155, max_time=1.3793768882751, data points known=1, old_max_bytes=26214400, new_max_bytes=104057932)
+0001.382 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 400 files added (on-disk size: 8228.2 KB)
+0001.384 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 500 files added (on-disk size: 8228.2 KB)
+0001.386 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 600 files added (on-disk size: 8228.2 KB)
+0001.388 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 700 files added (on-disk size: 8228.2 KB)
+0001.390 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 800 files added (on-disk size: 8228.2 KB)
+0001.392 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 900 files added (on-disk size: 8228.2 KB)
+0001.394 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1000 files added (on-disk size: 8228.2 KB)
+0001.396 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1100 files added (on-disk size: 8228.2 KB)
+0001.398 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1200 files added (on-disk size: 8228.2 KB)
+0001.400 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1300 files added (on-disk size: 8228.2 KB)
+0001.401 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (18.1 MB, 15027 files batched, 1001 (1326) added so far); re-opening (prior size: 8228.2 KB)
+0001.934 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: size is now: 12.50 MB
+0001.937 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1400 files added (on-disk size: 12780.1 KB)
+0001.941 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1500 files added (on-disk size: 12780.1 KB)
+0001.943 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1600 files added (on-disk size: 12780.1 KB)
+0001.946 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1700 files added (on-disk size: 12780.1 KB)
+0001.948 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1800 files added (on-disk size: 12780.1 KB)
+0001.950 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 1900 files added (on-disk size: 12780.1 KB)
+0001.953 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2000 files added (on-disk size: 12780.1 KB)
+0001.955 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2100 files added (on-disk size: 12780.1 KB)
+0001.957 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2200 files added (on-disk size: 12780.1 KB)
+0001.960 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2300 files added (on-disk size: 12780.1 KB)
+0001.961 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (20.2 MB, 15027 files batched, 1001 (2327) added so far); re-opening (prior size: 12780.1 KB)
+0002.348 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: size is now: 26.20 MB
+0002.352 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2400 files added (on-disk size: 26877.8 KB)
+0002.355 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2500 files added (on-disk size: 26877.8 KB)
+0002.357 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2600 files added (on-disk size: 26877.8 KB)
+0002.360 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2700 files added (on-disk size: 26877.8 KB)
+0002.362 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2800 files added (on-disk size: 26877.8 KB)
+0002.365 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 2900 files added (on-disk size: 26877.8 KB)
+0002.369 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3000 files added (on-disk size: 26877.8 KB)
+0002.374 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3100 files added (on-disk size: 26877.8 KB)
+0002.378 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3200 files added (on-disk size: 26877.8 KB)
+0002.382 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3300 files added (on-disk size: 26877.8 KB)
+0002.384 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (6 MB, 15027 files batched, 1001 (3328) added so far); re-opening (prior size: 26877.8 KB)
+0002.666 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3400 files added (on-disk size: 29261.8 KB)
+0002.668 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3500 files added (on-disk size: 29261.8 KB)
+0002.671 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3600 files added (on-disk size: 29261.8 KB)
+0002.673 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3700 files added (on-disk size: 29261.8 KB)
+0002.676 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3800 files added (on-disk size: 29261.8 KB)
+0002.678 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 3900 files added (on-disk size: 29261.8 KB)
+0002.681 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4000 files added (on-disk size: 29261.8 KB)
+0002.683 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4100 files added (on-disk size: 29261.8 KB)
+0002.685 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4200 files added (on-disk size: 29261.8 KB)
+0002.688 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4300 files added (on-disk size: 29261.8 KB)
+0002.689 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (14.3 MB, 15027 files batched, 1001 (4329) added so far); re-opening (prior size: 29261.8 KB)
+0003.200 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4400 files added (on-disk size: 33232 KB)
+0003.203 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4500 files added (on-disk size: 33232 KB)
+0003.206 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4600 files added (on-disk size: 33232 KB)
+0003.209 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4700 files added (on-disk size: 33232 KB)
+0003.211 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4800 files added (on-disk size: 33232 KB)
+0003.214 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 4900 files added (on-disk size: 33232 KB)
+0003.216 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5000 files added (on-disk size: 33232 KB)
+0003.218 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5100 files added (on-disk size: 33232 KB)
+0003.220 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5200 files added (on-disk size: 33232 KB)
+0003.223 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5300 files added (on-disk size: 33232 KB)
+0003.224 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (5.6 MB, 15027 files batched, 1001 (5330) added so far); re-opening (prior size: 33232 KB)
+0003.506 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5400 files added (on-disk size: 35005.2 KB)
+0003.510 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5500 files added (on-disk size: 35005.2 KB)
+0003.514 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5600 files added (on-disk size: 35005.2 KB)
+0003.517 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5700 files added (on-disk size: 35005.2 KB)
+0003.522 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5800 files added (on-disk size: 35005.2 KB)
+0003.526 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 5900 files added (on-disk size: 35005.2 KB)
+0003.531 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6000 files added (on-disk size: 35005.2 KB)
+0003.535 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6100 files added (on-disk size: 35005.2 KB)
+0003.540 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6200 files added (on-disk size: 35005.2 KB)
+0003.543 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6300 files added (on-disk size: 35005.2 KB)
+0003.545 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (15.3 MB, 15027 files batched, 1001 (6331) added so far); re-opening (prior size: 35005.2 KB)
+0004.194 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6400 files added (on-disk size: 39949.2 KB)
+0004.197 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6500 files added (on-disk size: 39949.2 KB)
+0004.200 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6600 files added (on-disk size: 39949.2 KB)
+0004.203 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6700 files added (on-disk size: 39949.2 KB)
+0004.206 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6800 files added (on-disk size: 39949.2 KB)
+0004.209 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 6900 files added (on-disk size: 39949.2 KB)
+0004.212 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7000 files added (on-disk size: 39949.2 KB)
+0004.216 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7100 files added (on-disk size: 39949.2 KB)
+0004.218 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7200 files added (on-disk size: 39949.2 KB)
+0004.221 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7300 files added (on-disk size: 39949.2 KB)
+0004.222 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (12.4 MB, 15027 files batched, 1001 (7332) added so far); re-opening (prior size: 39949.2 KB)
+0004.621 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7400 files added (on-disk size: 44078.5 KB)
+0004.624 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7500 files added (on-disk size: 44078.5 KB)
+0004.626 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7600 files added (on-disk size: 44078.5 KB)
+0004.629 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7700 files added (on-disk size: 44078.5 KB)
+0004.631 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7800 files added (on-disk size: 44078.5 KB)
+0004.633 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 7900 files added (on-disk size: 44078.5 KB)
+0004.636 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8000 files added (on-disk size: 44078.5 KB)
+0004.638 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8100 files added (on-disk size: 44078.5 KB)
+0004.641 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8200 files added (on-disk size: 44078.5 KB)
+0004.643 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8300 files added (on-disk size: 44078.5 KB)
+0004.644 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (12.8 MB, 15027 files batched, 1001 (8333) added so far); re-opening (prior size: 44078.5 KB)
+0005.111 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8400 files added (on-disk size: 47948.8 KB)
+0005.113 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8500 files added (on-disk size: 47948.8 KB)
+0005.116 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8600 files added (on-disk size: 47948.8 KB)
+0005.118 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8700 files added (on-disk size: 47948.8 KB)
+0005.120 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8800 files added (on-disk size: 47948.8 KB)
+0005.123 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 8900 files added (on-disk size: 47948.8 KB)
+0005.125 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9000 files added (on-disk size: 47948.8 KB)
+0005.127 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9100 files added (on-disk size: 47948.8 KB)
+0005.129 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9200 files added (on-disk size: 47948.8 KB)
+0005.132 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9300 files added (on-disk size: 47948.8 KB)
+0005.133 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (20.5 MB, 15027 files batched, 1001 (9334) added so far); re-opening (prior size: 47948.8 KB)
+0005.735 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9400 files added (on-disk size: 55080 KB)
+0005.739 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9500 files added (on-disk size: 55080 KB)
+0005.742 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9600 files added (on-disk size: 55080 KB)
+0005.747 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9700 files added (on-disk size: 55080 KB)
+0005.750 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9800 files added (on-disk size: 55080 KB)
+0005.752 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 9900 files added (on-disk size: 55080 KB)
+0005.755 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10000 files added (on-disk size: 55080 KB)
+0005.758 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10100 files added (on-disk size: 55080 KB)
+0005.760 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10200 files added (on-disk size: 55080 KB)
+0005.763 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10300 files added (on-disk size: 55080 KB)
+0005.764 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (10.6 MB, 15027 files batched, 1001 (10335) added so far); re-opening (prior size: 55080 KB)
+0006.211 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10400 files added (on-disk size: 58817.9 KB)
+0006.214 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10500 files added (on-disk size: 58817.9 KB)
+0006.216 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10600 files added (on-disk size: 58817.9 KB)
+0006.219 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10700 files added (on-disk size: 58817.9 KB)
+0006.221 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10800 files added (on-disk size: 58817.9 KB)
+0006.223 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 10900 files added (on-disk size: 58817.9 KB)
+0006.226 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11000 files added (on-disk size: 58817.9 KB)
+0006.228 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11100 files added (on-disk size: 58817.9 KB)
+0006.231 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11200 files added (on-disk size: 58817.9 KB)
+0006.234 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11300 files added (on-disk size: 58817.9 KB)
+0006.235 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (37 MB, 15027 files batched, 1001 (11336) added so far); re-opening (prior size: 58817.9 KB)
+0007.511 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11400 files added (on-disk size: 69013.7 KB)
+0007.513 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11500 files added (on-disk size: 69013.7 KB)
+0007.515 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11600 files added (on-disk size: 69013.7 KB)
+0007.518 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11700 files added (on-disk size: 69013.7 KB)
+0007.520 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11800 files added (on-disk size: 69013.7 KB)
+0007.522 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 11900 files added (on-disk size: 69013.7 KB)
+0007.525 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12000 files added (on-disk size: 69013.7 KB)
+0007.527 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12100 files added (on-disk size: 69013.7 KB)
+0007.530 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12200 files added (on-disk size: 69013.7 KB)
+0007.534 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12300 files added (on-disk size: 69013.7 KB)
+0007.535 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (10.8 MB, 15027 files batched, 1001 (12337) added so far); re-opening (prior size: 69013.7 KB)
+0007.913 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12400 files added (on-disk size: 71168.1 KB)
+0007.916 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12500 files added (on-disk size: 71168.1 KB)
+0007.918 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12600 files added (on-disk size: 71168.1 KB)
+0007.921 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12700 files added (on-disk size: 71168.1 KB)
+0007.923 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12800 files added (on-disk size: 71168.1 KB)
+0007.926 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 12900 files added (on-disk size: 71168.1 KB)
+0007.929 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13000 files added (on-disk size: 71168.1 KB)
+0007.931 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13100 files added (on-disk size: 71168.1 KB)
+0007.934 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13200 files added (on-disk size: 71168.1 KB)
+0007.937 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13300 files added (on-disk size: 71168.1 KB)
+0007.938 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (14.6 MB, 15027 files batched, 1001 (13338) added so far); re-opening (prior size: 71168.1 KB)
+0008.393 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13400 files added (on-disk size: 73500.9 KB)
+0008.397 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13500 files added (on-disk size: 73500.9 KB)
+0008.400 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13600 files added (on-disk size: 73500.9 KB)
+0008.402 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13700 files added (on-disk size: 73500.9 KB)
+0008.405 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13800 files added (on-disk size: 73500.9 KB)
+0008.407 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 13900 files added (on-disk size: 73500.9 KB)
+0008.410 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14000 files added (on-disk size: 73500.9 KB)
+0008.413 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14100 files added (on-disk size: 73500.9 KB)
+0008.416 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14200 files added (on-disk size: 73500.9 KB)
+0008.418 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14300 files added (on-disk size: 73500.9 KB)
+0008.419 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (10.1 MB, 15027 files batched, 1001 (14339) added so far); re-opening (prior size: 73500.9 KB)
+0008.791 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14400 files added (on-disk size: 75881.7 KB)
+0008.793 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14500 files added (on-disk size: 75881.7 KB)
+0008.795 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14600 files added (on-disk size: 75881.7 KB)
+0008.798 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14700 files added (on-disk size: 75881.7 KB)
+0008.800 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14800 files added (on-disk size: 75881.7 KB)
+0008.802 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 14900 files added (on-disk size: 75881.7 KB)
+0008.805 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.tmp: 15000 files added (on-disk size: 75881.7 KB)
+0009.196 (0) Creating zip file manifest (backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip.list-temp.tmp)
+0009.213 (0) Successfully created zip file manifest (size: 1293586)
+0009.766 (0) Created plugins zip (0) - 77473 KB in 9.7 s (7970.9 KB/s) (sha1: 6145c6ebdfa378e7de9929705b11bd103dd40230, sha256: 1e22dbed36b1599b4d3742f92c53ee0a63f3ba3c5defdc188cf119e1ef9205f6)
+0009.775 (0) Cloud backup selection (1/1): email with instance (1/1) (last)
+0009.776 (0) Beginning dispatch of backup to remote (email)
+0009.777 (0) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0009.777 (0) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+0012.906 (0) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+0012.907 (0) Email: Mails were not sent successfully
+0012.908 (0) An error condition has occurred for the first time during this job
+0012.911 (0) Beginning creation of dump of themes (split every: 400 MB)
+0012.942 (0) Total entities for the zip file: 268 directories, 1332 files (0 skipped as non-modified), 33.8 MB
+0012.944 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 100 files added (on-disk size: 0 KB)
+0012.947 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 200 files added (on-disk size: 0 KB)
+0012.949 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 300 files added (on-disk size: 0 KB)
+0012.951 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 400 files added (on-disk size: 0 KB)
+0012.953 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 500 files added (on-disk size: 0 KB)
+0012.955 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 600 files added (on-disk size: 0 KB)
+0012.957 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 700 files added (on-disk size: 0 KB)
+0012.959 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 800 files added (on-disk size: 0 KB)
+0012.962 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 900 files added (on-disk size: 0 KB)
+0012.964 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 1000 files added (on-disk size: 0 KB)
+0012.964 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (29.4 MB, 1332 files batched, 1001 (1001) added so far); re-opening (prior size: 0 KB)
+0013.702 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: size is now: 22.00 MB
+0013.707 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 1100 files added (on-disk size: 22534.3 KB)
+0013.709 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 1200 files added (on-disk size: 22534.3 KB)
+0013.711 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.tmp: 1300 files added (on-disk size: 22534.3 KB)
+0013.872 (0) Creating zip file manifest (backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip.list-temp.tmp)
+0013.874 (0) Successfully created zip file manifest (size: 92592)
+0014.049 (0) Created themes zip (0) - 25356.3 KB in 1.1 s (22304.2 KB/s) (sha1: 5d57d19c77ba48c7f46e8ace37b2e37e0c7623d8, sha256: 54d2c197da4a6d325ecd2b06ec02fb81dbe174336954dbcebf3efe2d59759130)
+0014.051 (0) Cloud backup selection (1/1): email with instance (1/1) (last)
+0014.052 (0) Beginning dispatch of backup to remote (email)
+0014.053 (0) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: Este archivo de copia de seguridad tiene un tamaño de 24.8 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0014.053 (0) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: email to: cucul...
+0015.356 (0) Recording as successfully uploaded: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip
+0015.362 (0) Deleting local file: backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: OK
+0015.364 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone,snapshots
+0015.365 (0) Looking for candidates to backup in: /home/customer/www/sumit.gt/public_html/wp-content/uploads
+0015.365 (0) finding files: elementor: adding to list (1)
+0015.365 (0) finding files: smush-webp-test.png: adding to list (2)
+0015.366 (0) finding files: woocommerce-placeholder.png: adding to list (3)
+0015.366 (0) finding files: woocommerce-placeholder-768x768.png: adding to list (4)
+0015.366 (0) finding files: woocommerce-placeholder-600x600.png: adding to list (5)
+0015.366 (0) finding files: wc-logs: adding to list (6)
+0015.367 (0) finding files: template-kits: adding to list (7)
+0015.367 (0) finding files: happyaddons: adding to list (8)
+0015.367 (0) finding files: 2024: adding to list (9)
+0015.367 (0) finding files: optimole-logs: adding to list (10)
+0015.368 (0) finding files: wpcf7_uploads: adding to list (11)
+0015.368 (0) finding files: 2020: adding to list (12)
+0015.368 (0) finding files: woocommerce-placeholder-300x300.png: adding to list (13)
+0015.368 (0) finding files: smush: adding to list (14)
+0015.368 (0) finding files: themeisle-gutenberg: adding to list (15)
+0015.369 (0) finding files: woocommerce-placeholder-100x100.png: adding to list (16)
+0015.369 (0) finding files: wpforms: adding to list (17)
+0015.369 (0) finding files: woocommerce-placeholder-150x150.png: adding to list (18)
+0015.369 (0) finding files: cf7-to-any-api-uploads: adding to list (19)
+0015.370 (0) finding files: woocommerce-placeholder-1024x1024.png: adding to list (20)
+0015.370 (0) finding files: siteground-optimizer-assets: adding to list (21)
+0015.370 (0) finding files: woocommerce_uploads: adding to list (22)
+0015.370 (0) finding files: eb-patterns: adding to list (23)
+0015.371 (0) finding files: essential-addons-elementor: adding to list (24)
+0015.371 (0) Beginning creation of dump of uploads (split every: 400 MB)
+0015.390 (0) Total entities for the zip file: 33 directories, 996 files (0 skipped as non-modified), 109.8 MB
+0015.393 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 100 files added (on-disk size: 0 KB)
+0015.395 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 200 files added (on-disk size: 0 KB)
+0015.398 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 300 files added (on-disk size: 0 KB)
+0015.400 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 400 files added (on-disk size: 0 KB)
+0015.402 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 500 files added (on-disk size: 0 KB)
+0015.405 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 600 files added (on-disk size: 0 KB)
+0015.407 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 700 files added (on-disk size: 0 KB)
+0015.409 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 800 files added (on-disk size: 0 KB)
+0015.411 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 99.2 MB added on this batch (99.3 MB, 996 files batched, 860 (860) added so far); re-opening (prior size: 0 KB)
+0015.864 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: size is now: 95.70 MB
+0015.866 (0) A useful amount of data was added after this amount of zip processing: 1 s (normalised: 1 s, rate: 98198.7 KB/s)
+0015.867 (0) Performance is good - will increase the amount of data we attempt to batch (time=1.0356841087341, normalised_time=1.0348308783925, max_time=15.866081953049, data points known=1, old_max_bytes=104057932, new_max_bytes=209715200)
+0015.868 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.tmp: 900 files added (on-disk size: 97971.6 KB)
+0016.202 (0) Creating zip file manifest (backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip.list-temp.tmp)
+0016.204 (0) Successfully created zip file manifest (size: 61528)
+0016.898 (0) Created uploads zip (0) - 101091.1 KB in 1.5 s (66252.5 KB/s) (sha1: 23aee568f28da0759ca0c0a10182aaa23b0bba97, sha256: 36170f748abb822dbc6304395b121bfd1fcdf9270714b2263bf4f2378c6457c7)
+0016.901 (0) Cloud backup selection (1/1): email with instance (1/1) (last)
+0016.901 (0) Beginning dispatch of backup to remote (email)
+0016.902 (0) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0016.902 (0) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+0021.051 (0) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+0021.052 (0) Email: Mails were not sent successfully
+0021.055 (0) Beginning creation of dump of mu-plugins (split every: 400 MB)
+0021.057 (0) Total entities for the zip file: 1 directories, 1 files (0 skipped as non-modified), 0 MB
+0021.093 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip.tmp: size is now: 0.00 MB
+0021.095 (0) Creating zip file manifest (backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip.list-temp.tmp)
+0021.096 (0) Successfully created zip file manifest (size: 71)
+0021.098 (0) Created mu-plugins zip (0) - 1.9 KB in 0 s (45.8 KB/s) (sha1: 649c755bbd2a1b16bdeb2dbda66bff8da4d9e78c, sha256: 4bc94be0cda635ce5935bda9a9b4abe363536bc87caad1854a30f99db608f83c)
+0021.099 (0) Cloud backup selection (1/1): email with instance (1/1) (last)
+0021.099 (0) Beginning dispatch of backup to remote (email)
+0021.100 (0) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: email to: cucul...
+0021.367 (0) Recording as successfully uploaded: backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip
+0021.368 (0) Deleting local file: backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: OK
+0021.370 (0) Beginning backup of other directories found in the content directory (index: 0)
+0021.371 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups,mysql.sql,debug.log
+0021.371 (0) Looking for candidates to backup in: /home/customer/www/sumit.gt/public_html/wp-content
+0021.371 (0) finding files: plugins: skipping: this is the plugins directory
+0021.372 (0) finding files: w3tc-config: adding to list (1)
+0021.372 (0) finding files: advanced-cache.php: adding to list (2)
+0021.372 (0) finding files: cache: skipping: excluded by options
+0021.372 (0) finding files: languages: adding to list (3)
+0021.373 (0) finding files: updraft: skipping: this is the updraft directory
+0021.373 (0) finding files: smush-webp: adding to list (4)
+0021.373 (0) finding files: upgrade: skipping: excluded by options
+0021.373 (0) finding files: index.php: adding to list (5)
+0021.374 (0) finding files: themes: skipping: this is the themes directory
+0021.374 (0) finding files: uploads: skipping: this is the uploads directory
+0021.374 (0) finding files: mu-plugins: skipping: this is the mu-plugins directory
+0021.375 (0) finding files: upgrade-temp-backup: adding to list (6)
+0021.384 (0) Total entities for the zip file: 6 directories, 470 files (0 skipped as non-modified), 13.9 MB
+0021.386 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip.tmp: 100 files added (on-disk size: 0 KB)
+0021.388 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip.tmp: 200 files added (on-disk size: 0 KB)
+0021.390 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip.tmp: 300 files added (on-disk size: 0 KB)
+0021.392 (0) Zip: backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip.tmp: 400 files added (on-disk size: 0 KB)
+0021.976 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip.tmp: size is now: 4.10 MB
+0021.980 (0) Creating zip file manifest (backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip.list-temp.tmp)
+0021.981 (0) Successfully created zip file manifest (size: 35680)
+0022.013 (0) Created others zip (0) - 4154.9 KB in 0.6 s (6528.1 KB/s) (sha1: ab7049736c78c39272361e3d30718030cd3c607f, sha256: b33ff5430eb9e6612224999bd055673a062e21b97abaadbc58df81f41f428237)
+0022.015 (0) Cloud backup selection (1/1): email with instance (1/1) (last)
+0022.015 (0) Beginning dispatch of backup to remote (email)
+0022.016 (0) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: email to: cucul...
+0022.409 (0) Recording as successfully uploaded: backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip
+0022.411 (0) Deleting local file: backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: OK
+0022.414 (0) Saving backup status to database (elements: 10)
+0022.416 (0) Beginning creation of database dump (WordPress DB)
+0022.417 (0) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+0022.418 (0) Testing potential mysqldump binary: /usr/bin/mysqldump
+0022.431 (0) Output: /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;\n/*!40103 SET TIME_ZONE='+00:00' */;\n/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;\n/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;\n/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;\n/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;\nDROP TABLE IF EXISTS `uka_options`;\n/*!40101 SET @saved_cs_client     = @@character_set_client */;\n/*!40101 SET character_set_client = utf8 */;\nCR (truncated - 1535 bytes total)
+0022.431 (0) Working binary mysqldump found: /usr/bin/mysqldump
+0022.440 (0) Table uka_options: Total expected rows (via COUNT): 861
+0022.487 (0) Table uka_options: Rows added in this batch (next record: 13854): 856 (uncompressed bytes in this segment=2214118) in 0.05 seconds
+0022.490 (0) Table uka_options: finishing file(s) (2, 258.2 KB)
+0022.493 (0) Table uka_users: Total expected rows (via COUNT): 2
+0022.493 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0022.494 (0) Table uka_users: Rows added in this batch (next record: 2): 2 (uncompressed bytes in this segment=1532) in 0.00 seconds
+0022.496 (0) Table uka_users: finishing file(s) (2, 0.7 KB)
+0022.500 (0) Table uka_usermeta: Total expected rows (via COUNT): 113
+0022.500 (0) Table is relatively small; fetch_rows will thus be: 200 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0022.503 (0) Table uka_usermeta: Rows added in this batch (next record: 123): 113 (uncompressed bytes in this segment=91162) in 0.01 seconds
+0022.505 (0) Table uka_usermeta: finishing file(s) (2, 10.1 KB)
+0022.509 (0) Table uka_actionscheduler_actions: Total expected rows (via COUNT): 457
+0022.509 (0) Table is relatively small; fetch_rows will thus be: 500 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0022.516 (0) Table uka_actionscheduler_actions: Rows added in this batch (next record: 765): 457 (uncompressed bytes in this segment=213899) in 0.01 seconds
+0022.519 (0) Table uka_actionscheduler_actions: finishing file(s) (2, 14.9 KB)
+0022.522 (0) Table uka_actionscheduler_claims: Total expected rows (via COUNT): 1
+0022.522 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0022.523 (0) Table uka_actionscheduler_claims: Rows added in this batch (next record: 33): 1 (uncompressed bytes in this segment=706) in 0.00 seconds
+0022.525 (0) Table uka_actionscheduler_claims: finishing file(s) (2, 0.4 KB)
+0022.528 (0) Table uka_actionscheduler_groups: Total expected rows (via COUNT): 9
+0022.528 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0022.529 (0) Table uka_actionscheduler_groups: Rows added in this batch (next record: 9): 9 (uncompressed bytes in this segment=888) in 0.00 seconds
+0022.530 (0) Table uka_actionscheduler_groups: finishing file(s) (2, 0.5 KB)
+0022.533 (0) Table uka_actionscheduler_logs: Total expected rows (approximate): 1351
+0022.541 (0) Table uka_actionscheduler_logs: Rows added in this batch (next record: 2272): 1369 (uncompressed bytes in this segment=159154) in 0.01 seconds
+0022.543 (0) Table uka_actionscheduler_logs: finishing file(s) (2, 13 KB)
+0022.547 (0) Table uka_commentmeta: Total expected rows (via COUNT): 0
+0022.548 (0) Table uka_commentmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=683) in 0.00 seconds
+0022.550 (0) Table uka_commentmeta: finishing file(s) (2, 0.4 KB)
+0022.553 (0) Table uka_comments: Total expected rows (via COUNT): 0
+0022.554 (0) Table uka_comments: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1738) in 0.00 seconds
+0022.556 (0) Table uka_comments: finishing file(s) (2, 0.5 KB)
+0022.560 (0) Table uka_e_notes: Total expected rows (via COUNT): 0
+0022.560 (0) Table uka_e_notes: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=2055) in 0.00 seconds
+0022.562 (0) Table uka_e_notes: finishing file(s) (2, 0.8 KB)
+0022.565 (0) Table uka_e_notes_users_relations: Total expected rows (via COUNT): 0
+0022.566 (0) Table uka_e_notes_users_relations: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=877) in 0.00 seconds
+0022.567 (0) Table uka_e_notes_users_relations: finishing file(s) (2, 0.4 KB)
+0022.570 (0) Table uka_links: Total expected rows (via COUNT): 0
+0022.571 (0) Table uka_links: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1304) in 0.00 seconds
+0022.572 (0) Table uka_links: finishing file(s) (2, 0.5 KB)
+0022.585 (0) Table uka_postmeta: Total expected rows (approximate): 5803
+0023.094 (0) Table uka_postmeta: Rows added in this batch (next record: 7501): 5640 (uncompressed bytes in this segment=30590191) in 0.52 seconds
+0023.097 (0) Table uka_postmeta: finishing file(s) (2, 3234.7 KB)
+0023.106 (0) Table uka_posts: Total expected rows (via COUNT): 799
+0023.302 (0) Table uka_posts: Rows added in this batch (next record: 1078): 799 (uncompressed bytes in this segment=15494253) in 0.20 seconds
+0023.304 (0) Table uka_posts: finishing file(s) (2, 1321.9 KB)
+0023.307 (0) Table uka_term_relationships: Total expected rows (approximate): 68
+0023.309 (0) Table uka_term_relationships: Rows added in this batch (next record: 100000): 68 (uncompressed bytes in this segment=1687) in 0.00 seconds
+0023.310 (0) Table uka_term_relationships: finishing file(s) (2, 0.6 KB)
+0023.314 (0) Table uka_term_taxonomy: Total expected rows (via COUNT): 30
+0023.314 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.315 (0) Table uka_term_taxonomy: Rows added in this batch (next record: 35): 30 (uncompressed bytes in this segment=2094) in 0.00 seconds
+0023.317 (0) Table uka_term_taxonomy: finishing file(s) (2, 0.7 KB)
+0023.321 (0) Table uka_termmeta: Total expected rows (via COUNT): 11
+0023.322 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.323 (0) Table uka_termmeta: Rows added in this batch (next record: 11): 11 (uncompressed bytes in this segment=1095) in 0.00 seconds
+0023.325 (0) Table uka_termmeta: finishing file(s) (2, 0.5 KB)
+0023.328 (0) Table uka_terms: Total expected rows (via COUNT): 30
+0023.328 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.330 (0) Table uka_terms: Rows added in this batch (next record: 35): 30 (uncompressed bytes in this segment=1869) in 0.00 seconds
+0023.331 (0) Table uka_terms: finishing file(s) (2, 0.8 KB)
+0023.334 (0) Table uka_wc_category_lookup: Total expected rows (approximate): 6
+0023.335 (0) Table uka_wc_category_lookup: Rows added in this batch (next record: 1000): 6 (uncompressed bytes in this segment=643) in 0.00 seconds
+0023.337 (0) Table uka_wc_category_lookup: finishing file(s) (2, 0.4 KB)
+0023.341 (0) Table uka_wc_product_meta_lookup: Total expected rows (via COUNT): 17
+0023.341 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.342 (0) Table uka_wc_product_meta_lookup: Rows added in this batch (next record: 1024): 17 (uncompressed bytes in this segment=2965) in 0.00 seconds
+0023.344 (0) Table uka_wc_product_meta_lookup: finishing file(s) (2, 0.7 KB)
+0023.347 (0) Table uka_wc_reserved_stock: Total expected rows (approximate): 0
+0023.348 (0) Table uka_wc_reserved_stock: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=663) in 0.00 seconds
+0023.349 (0) Table uka_wc_reserved_stock: finishing file(s) (2, 0.4 KB)
+0023.352 (0) Table uka_wc_tax_rate_classes: Total expected rows (via COUNT): 2
+0023.352 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.353 (0) Table uka_wc_tax_rate_classes: Rows added in this batch (next record: 2): 2 (uncompressed bytes in this segment=815) in 0.00 seconds
+0023.355 (0) Table uka_wc_tax_rate_classes: finishing file(s) (2, 0.4 KB)
+0023.358 (0) Table uka_woocommerce_order_itemmeta: Total expected rows (via COUNT): 0
+0023.359 (0) Table uka_woocommerce_order_itemmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=788) in 0.00 seconds
+0023.361 (0) Table uka_woocommerce_order_itemmeta: finishing file(s) (2, 0.4 KB)
+0023.365 (0) Table uka_woocommerce_payment_tokenmeta: Total expected rows (via COUNT): 0
+0023.365 (0) Table uka_woocommerce_payment_tokenmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=796) in 0.00 seconds
+0023.368 (0) Table uka_woocommerce_payment_tokenmeta: finishing file(s) (2, 0.4 KB)
+0023.371 (0) Table uka_automate_log: Total expected rows (approximate): 0
+0023.372 (0) Table uka_automate_log: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=861) in 0.00 seconds
+0023.373 (0) Table uka_automate_log: finishing file(s) (2, 0.4 KB)
+0023.377 (0) Table uka_awp_apps: Total expected rows (via COUNT): 0
+0023.377 (0) Table uka_awp_apps: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=401) in 0.00 seconds
+0023.379 (0) Table uka_awp_apps: finishing file(s) (2, 0.3 KB)
+0023.381 (0) Table uka_awp_integration: Total expected rows (approximate): 0
+0023.382 (0) Table uka_awp_integration: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1032) in 0.00 seconds
+0023.383 (0) Table uka_awp_integration: finishing file(s) (2, 0.4 KB)
+0023.387 (0) Table uka_awp_message_template: Total expected rows (approximate): 0
+0023.387 (0) Table uka_awp_message_template: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=1241) in 0.00 seconds
+0023.389 (0) Table uka_awp_message_template: finishing file(s) (2, 0.5 KB)
+0023.392 (0) Table uka_awp_platform_settings: Total expected rows (via COUNT): 1
+0023.392 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.393 (0) Table uka_awp_platform_settings: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=1189) in 0.00 seconds
+0023.395 (0) Table uka_awp_platform_settings: finishing file(s) (2, 0.6 KB)
+0023.398 (0) Table uka_cf7anyapi_entries: Total expected rows (via COUNT): 79
+0023.399 (0) Table is relatively small; fetch_rows will thus be: 100 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.400 (0) Table uka_cf7anyapi_entries: Rows added in this batch (next record: 79): 79 (uncompressed bytes in this segment=6121) in 0.00 seconds
+0023.402 (0) Table uka_cf7anyapi_entries: finishing file(s) (2, 1.3 KB)
+0023.405 (0) Table uka_cf7anyapi_entry_id: Total expected rows (via COUNT): 13
+0023.405 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.406 (0) Table uka_cf7anyapi_entry_id: Rows added in this batch (next record: 13): 13 (uncompressed bytes in this segment=954) in 0.00 seconds
+0023.408 (0) Table uka_cf7anyapi_entry_id: finishing file(s) (2, 0.5 KB)
+0023.411 (0) Table uka_cf7anyapi_logs: Total expected rows (via COUNT): 13
+0023.412 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.413 (0) Table uka_cf7anyapi_logs: Rows added in this batch (next record: 13): 13 (uncompressed bytes in this segment=3557) in 0.00 seconds
+0023.414 (0) Table uka_cf7anyapi_logs: finishing file(s) (2, 1 KB)
+0023.417 (0) Table uka_e_events: Total expected rows (via COUNT): 0
+0023.418 (0) Table uka_e_events: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=531) in 0.00 seconds
+0023.420 (0) Table uka_e_events: finishing file(s) (2, 0.4 KB)
+0023.423 (0) Table uka_e_submissions: Total expected rows (via COUNT): 5
+0023.424 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.425 (0) Table uka_e_submissions: Rows added in this batch (next record: 5): 5 (uncompressed bytes in this segment=4379) in 0.00 seconds
+0023.427 (0) Table uka_e_submissions: finishing file(s) (2, 1.2 KB)
+0023.430 (0) Table uka_e_submissions_actions_log: Total expected rows (via COUNT): 5
+0023.431 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.431 (0) Table uka_e_submissions_actions_log: Rows added in this batch (next record: 5): 5 (uncompressed bytes in this segment=1997) in 0.00 seconds
+0023.433 (0) Table uka_e_submissions_actions_log: finishing file(s) (2, 0.6 KB)
+0023.437 (0) Table uka_e_submissions_values: Total expected rows (via COUNT): 15
+0023.438 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.439 (0) Table uka_e_submissions_values: Rows added in this batch (next record: 15): 15 (uncompressed bytes in this segment=1357) in 0.00 seconds
+0023.441 (0) Table uka_e_submissions_values: finishing file(s) (2, 0.6 KB)
+0023.444 (0) Table uka_eb_form_settings: Total expected rows (via COUNT): 0
+0023.445 (0) Table uka_eb_form_settings: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=842) in 0.00 seconds
+0023.446 (0) Table uka_eb_form_settings: finishing file(s) (2, 0.4 KB)
+0023.450 (0) Table uka_gla_attribute_mapping_rules: Total expected rows (via COUNT): 0
+0023.450 (0) Table uka_gla_attribute_mapping_rules: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=775) in 0.00 seconds
+0023.452 (0) Table uka_gla_attribute_mapping_rules: finishing file(s) (2, 0.4 KB)
+0023.455 (0) Table uka_gla_budget_recommendations: Total expected rows (approximate): 4230
+0023.472 (0) Table uka_gla_budget_recommendations: Rows added in this batch (next record: 4230): 4230 (uncompressed bytes in this segment=113898) in 0.02 seconds
+0023.474 (0) Table uka_gla_budget_recommendations: finishing file(s) (2, 23.9 KB)
+0023.478 (0) Table uka_gla_merchant_issues: Total expected rows (via COUNT): 0
+0023.478 (0) Table uka_gla_merchant_issues: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1159) in 0.00 seconds
+0023.480 (0) Table uka_gla_merchant_issues: finishing file(s) (2, 0.4 KB)
+0023.483 (0) Table uka_gla_shipping_rates: Total expected rows (via COUNT): 0
+0023.484 (0) Table uka_gla_shipping_rates: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=731) in 0.00 seconds
+0023.485 (0) Table uka_gla_shipping_rates: finishing file(s) (2, 0.4 KB)
+0023.488 (0) Table uka_gla_shipping_times: Total expected rows (via COUNT): 0
+0023.489 (0) Table uka_gla_shipping_times: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=586) in 0.00 seconds
+0023.490 (0) Table uka_gla_shipping_times: finishing file(s) (2, 0.4 KB)
+0023.495 (0) Table uka_jetpack_sync_queue: Total expected rows (via COUNT): 18
+0023.495 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.496 (0) Table uka_jetpack_sync_queue: Rows added in this batch (next record: 1142): 18 (uncompressed bytes in this segment=18341) in 0.00 seconds
+0023.499 (0) Table uka_jetpack_sync_queue: finishing file(s) (2, 2.8 KB)
+0023.501 (0) Table uka_mailchimp_carts: Total expected rows (approximate): 0
+0023.503 (0) Table uka_mailchimp_carts: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=645) in 0.00 seconds
+0023.504 (0) Table uka_mailchimp_carts: finishing file(s) (2, 0.3 KB)
+0023.507 (0) Table uka_mailchimp_jobs: Total expected rows (via COUNT): 0
+0023.508 (0) Table uka_mailchimp_jobs: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=567) in 0.00 seconds
+0023.509 (0) Table uka_mailchimp_jobs: finishing file(s) (2, 0.3 KB)
+0023.512 (0) Table uka_smush_dir_images: Total expected rows (via COUNT): 0
+0023.513 (0) Table uka_smush_dir_images: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1085) in 0.00 seconds
+0023.514 (0) Table uka_smush_dir_images: finishing file(s) (2, 0.5 KB)
+0023.517 (0) Table uka_updraftcentral_events: Total expected rows (via COUNT): 0
+0023.518 (0) Table uka_updraftcentral_events: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=947) in 0.00 seconds
+0023.520 (0) Table uka_updraftcentral_events: finishing file(s) (2, 0.4 KB)
+0023.523 (0) Table uka_updraftcentral_site_temporary_keys: Total expected rows (via COUNT): 0
+0023.523 (0) Table uka_updraftcentral_site_temporary_keys: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=677) in 0.00 seconds
+0023.525 (0) Table uka_updraftcentral_site_temporary_keys: finishing file(s) (2, 0.4 KB)
+0023.529 (0) Table uka_updraftcentral_sitemeta: Total expected rows (via COUNT): 0
+0023.530 (0) Table uka_updraftcentral_sitemeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=760) in 0.00 seconds
+0023.532 (0) Table uka_updraftcentral_sitemeta: finishing file(s) (2, 0.4 KB)
+0023.535 (0) Table uka_updraftcentral_sites: Total expected rows (via COUNT): 0
+0023.536 (0) Table uka_updraftcentral_sites: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1170) in 0.00 seconds
+0023.538 (0) Table uka_updraftcentral_sites: finishing file(s) (2, 0.5 KB)
+0023.541 (0) Table uka_updraftcentral_user_cron: Total expected rows (via COUNT): 1
+0023.541 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.542 (0) Table uka_updraftcentral_user_cron: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=701) in 0.00 seconds
+0023.544 (0) Table uka_updraftcentral_user_cron: finishing file(s) (2, 0.4 KB)
+0023.547 (0) Table uka_userCreatedOrUpdated: Total expected rows (approximate): 0
+0023.548 (0) Table uka_userCreatedOrUpdated: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=790) in 0.00 seconds
+0023.550 (0) Table uka_userCreatedOrUpdated: finishing file(s) (2, 0.4 KB)
+0023.553 (0) Table uka_wc_admin_note_actions: Total expected rows (via COUNT): 105
+0023.554 (0) Table is relatively small; fetch_rows will thus be: 200 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.556 (0) Table uka_wc_admin_note_actions: Rows added in this batch (next record: 9148): 105 (uncompressed bytes in this segment=19938) in 0.00 seconds
+0023.558 (0) Table uka_wc_admin_note_actions: finishing file(s) (2, 3.3 KB)
+0023.562 (0) Table uka_wc_admin_notes: Total expected rows (via COUNT): 73
+0023.562 (0) Table is relatively small; fetch_rows will thus be: 100 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.565 (0) Table uka_wc_admin_notes: Rows added in this batch (next record: 74): 73 (uncompressed bytes in this segment=35283) in 0.01 seconds
+0023.567 (0) Table uka_wc_admin_notes: finishing file(s) (2, 7.6 KB)
+0023.570 (0) Table uka_wc_customer_lookup: Total expected rows (via COUNT): 0
+0023.571 (0) Table uka_wc_customer_lookup: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1281) in 0.00 seconds
+0023.573 (0) Table uka_wc_customer_lookup: finishing file(s) (2, 0.5 KB)
+0023.576 (0) Table uka_wc_download_log: Total expected rows (via COUNT): 0
+0023.576 (0) Table uka_wc_download_log: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=741) in 0.00 seconds
+0023.578 (0) Table uka_wc_download_log: finishing file(s) (2, 0.4 KB)
+0023.581 (0) Table uka_wc_order_addresses: Total expected rows (via COUNT): 0
+0023.581 (0) Table uka_wc_order_addresses: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1328) in 0.00 seconds
+0023.583 (0) Table uka_wc_order_addresses: finishing file(s) (2, 0.5 KB)
+0023.586 (0) Table uka_wc_order_coupon_lookup: Total expected rows (approximate): 0
+0023.587 (0) Table uka_wc_order_coupon_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=715) in 0.00 seconds
+0023.588 (0) Table uka_wc_order_coupon_lookup: finishing file(s) (2, 0.4 KB)
+0023.592 (0) Table uka_wc_order_operational_data: Total expected rows (via COUNT): 0
+0023.592 (0) Table uka_wc_order_operational_data: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1538) in 0.00 seconds
+0023.594 (0) Table uka_wc_order_operational_data: finishing file(s) (2, 0.6 KB)
+0023.597 (0) Table uka_wc_order_product_lookup: Total expected rows (via COUNT): 0
+0023.598 (0) Table uka_wc_order_product_lookup: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1209) in 0.00 seconds
+0023.599 (0) Table uka_wc_order_product_lookup: finishing file(s) (2, 0.5 KB)
+0023.602 (0) Table uka_wc_order_stats: Total expected rows (via COUNT): 0
+0023.603 (0) Table uka_wc_order_stats: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1225) in 0.00 seconds
+0023.604 (0) Table uka_wc_order_stats: finishing file(s) (2, 0.5 KB)
+0023.607 (0) Table uka_wc_order_tax_lookup: Total expected rows (approximate): 0
+0023.608 (0) Table uka_wc_order_tax_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=797) in 0.00 seconds
+0023.609 (0) Table uka_wc_order_tax_lookup: finishing file(s) (2, 0.4 KB)
+0023.612 (0) Table uka_wc_orders: Total expected rows (via COUNT): 0
+0023.613 (0) Table uka_wc_orders: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1682) in 0.00 seconds
+0023.615 (0) Table uka_wc_orders: finishing file(s) (2, 0.6 KB)
+0023.617 (0) Table uka_wc_orders_meta: Total expected rows (via COUNT): 0
+0023.619 (0) Table uka_wc_orders_meta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=767) in 0.00 seconds
+0023.621 (0) Table uka_wc_orders_meta: finishing file(s) (2, 0.4 KB)
+0023.623 (0) Table uka_wc_product_attributes_lookup: Total expected rows (approximate): 0
+0023.624 (0) Table uka_wc_product_attributes_lookup: Rows added in this batch (next record: 0): 0 (uncompressed bytes in this segment=856) in 0.00 seconds
+0023.626 (0) Table uka_wc_product_attributes_lookup: finishing file(s) (2, 0.4 KB)
+0023.629 (0) Table uka_wc_product_download_directories: Total expected rows (via COUNT): 2
+0023.629 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.631 (0) Table uka_wc_product_download_directories: Rows added in this batch (next record: 2): 2 (uncompressed bytes in this segment=924) in 0.00 seconds
+0023.632 (0) Table uka_wc_product_download_directories: finishing file(s) (2, 0.5 KB)
+0023.635 (0) Table uka_wc_rate_limits: Total expected rows (via COUNT): 0
+0023.636 (0) Table uka_wc_rate_limits: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=694) in 0.00 seconds
+0023.638 (0) Table uka_wc_rate_limits: finishing file(s) (2, 0.4 KB)
+0023.641 (0) Table uka_wc_webhooks: Total expected rows (via COUNT): 0
+0023.641 (0) Table uka_wc_webhooks: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1221) in 0.00 seconds
+0023.643 (0) Table uka_wc_webhooks: finishing file(s) (2, 0.5 KB)
+0023.647 (0) Table uka_woocommerce_api_keys: Total expected rows (via COUNT): 0
+0023.647 (0) Table uka_woocommerce_api_keys: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1044) in 0.00 seconds
+0023.649 (0) Table uka_woocommerce_api_keys: finishing file(s) (2, 0.5 KB)
+0023.652 (0) Table uka_woocommerce_attribute_taxonomies: Total expected rows (via COUNT): 0
+0023.653 (0) Table uka_woocommerce_attribute_taxonomies: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=960) in 0.00 seconds
+0023.654 (0) Table uka_woocommerce_attribute_taxonomies: finishing file(s) (2, 0.4 KB)
+0023.658 (0) Table uka_woocommerce_downloadable_product_permissions: Total expected rows (via COUNT): 0
+0023.658 (0) Table uka_woocommerce_downloadable_product_permissions: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1524) in 0.00 seconds
+0023.660 (0) Table uka_woocommerce_downloadable_product_permissions: finishing file(s) (2, 0.5 KB)
+0023.663 (0) Table uka_woocommerce_log: Total expected rows (via COUNT): 0
+0023.664 (0) Table uka_woocommerce_log: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=721) in 0.00 seconds
+0023.666 (0) Table uka_woocommerce_log: finishing file(s) (2, 0.4 KB)
+0023.669 (0) Table uka_woocommerce_order_items: Total expected rows (via COUNT): 0
+0023.669 (0) Table uka_woocommerce_order_items: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=755) in 0.00 seconds
+0023.671 (0) Table uka_woocommerce_order_items: finishing file(s) (2, 0.4 KB)
+0023.674 (0) Table uka_woocommerce_payment_tokens: Total expected rows (via COUNT): 0
+0023.674 (0) Table uka_woocommerce_payment_tokens: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=839) in 0.00 seconds
+0023.676 (0) Table uka_woocommerce_payment_tokens: finishing file(s) (2, 0.4 KB)
+0023.681 (0) Table uka_woocommerce_sessions: Total expected rows (via COUNT): 2
+0023.681 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.682 (0) Table uka_woocommerce_sessions: Rows added in this batch (next record: 46): 2 (uncompressed bytes in this segment=7554) in 0.00 seconds
+0023.685 (0) Table uka_woocommerce_sessions: finishing file(s) (2, 1.8 KB)
+0023.689 (0) Table uka_woocommerce_shipping_zone_locations: Total expected rows (via COUNT): 1
+0023.689 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.690 (0) Table uka_woocommerce_shipping_zone_locations: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=1005) in 0.00 seconds
+0023.691 (0) Table uka_woocommerce_shipping_zone_locations: finishing file(s) (2, 0.4 KB)
+0023.695 (0) Table uka_woocommerce_shipping_zone_methods: Total expected rows (via COUNT): 2
+0023.696 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.697 (0) Table uka_woocommerce_shipping_zone_methods: Rows added in this batch (next record: 2): 2 (uncompressed bytes in this segment=905) in 0.00 seconds
+0023.698 (0) Table uka_woocommerce_shipping_zone_methods: finishing file(s) (2, 0.4 KB)
+0023.702 (0) Table uka_woocommerce_shipping_zones: Total expected rows (via COUNT): 1
+0023.703 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.704 (0) Table uka_woocommerce_shipping_zones: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=722) in 0.00 seconds
+0023.706 (0) Table uka_woocommerce_shipping_zones: finishing file(s) (2, 0.4 KB)
+0023.710 (0) Table uka_woocommerce_tax_rate_locations: Total expected rows (via COUNT): 0
+0023.711 (0) Table uka_woocommerce_tax_rate_locations: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=846) in 0.00 seconds
+0023.713 (0) Table uka_woocommerce_tax_rate_locations: finishing file(s) (2, 0.4 KB)
+0023.717 (0) Table uka_woocommerce_tax_rates: Total expected rows (via COUNT): 0
+0023.718 (0) Table uka_woocommerce_tax_rates: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1289) in 0.00 seconds
+0023.720 (0) Table uka_woocommerce_tax_rates: finishing file(s) (2, 0.5 KB)
+0023.725 (0) Table uka_wpforms_logs: Total expected rows (via COUNT): 0
+0023.725 (0) Table uka_wpforms_logs: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=742) in 0.00 seconds
+0023.728 (0) Table uka_wpforms_logs: finishing file(s) (2, 0.4 KB)
+0023.733 (0) Table uka_wpforms_payment_meta: Total expected rows (via COUNT): 0
+0023.734 (0) Table uka_wpforms_payment_meta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=737) in 0.00 seconds
+0023.736 (0) Table uka_wpforms_payment_meta: finishing file(s) (2, 0.4 KB)
+0023.740 (0) Table uka_wpforms_payments: Total expected rows (via COUNT): 0
+0023.741 (0) Table uka_wpforms_payments: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1964) in 0.00 seconds
+0023.743 (0) Table uka_wpforms_payments: finishing file(s) (2, 0.6 KB)
+0023.748 (0) Table uka_wpforms_tasks_meta: Total expected rows (via COUNT): 4
+0023.748 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0023.749 (0) Table uka_wpforms_tasks_meta: Rows added in this batch (next record: 15): 4 (uncompressed bytes in this segment=980) in 0.00 seconds
+0023.751 (0) Table uka_wpforms_tasks_meta: finishing file(s) (2, 0.5 KB)
+0023.752 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_options.table.tmpr13855.gz (1/84/fopen): adding to final database dump
+0023.754 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_options.table.gz (2/84/fopen): adding to final database dump
+0023.754 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_users.table.tmpr3.gz (3/84/fopen): adding to final database dump
+0023.755 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_users.table.gz (4/84/fopen): adding to final database dump
+0023.755 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_usermeta.table.tmpr124.gz (5/84/fopen): adding to final database dump
+0023.755 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_usermeta.table.gz (6/84/fopen): adding to final database dump
+0023.756 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_actionscheduler_actions.table.tmpr766.gz (7/84/fopen): adding to final database dump
+0023.756 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_actionscheduler_actions.table.gz (8/84/fopen): adding to final database dump
+0023.756 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_actionscheduler_claims.table.tmpr34.gz (9/84/fopen): adding to final database dump
+0023.757 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_actionscheduler_claims.table.gz (10/84/fopen): adding to final database dump
+0023.757 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_actionscheduler_groups.table.tmpr10.gz (11/84/fopen): adding to final database dump
+0023.757 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_actionscheduler_groups.table.gz (12/84/fopen): adding to final database dump
+0023.758 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_actionscheduler_logs.table.tmpr2273.gz (13/84/fopen): adding to final database dump
+0023.758 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_actionscheduler_logs.table.gz (14/84/fopen): adding to final database dump
+0023.758 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_commentmeta.table.tmpr0.gz (15/84/fopen): adding to final database dump
+0023.759 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_commentmeta.table.gz (16/84/fopen): adding to final database dump
+0023.759 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_comments.table.tmpr0.gz (17/84/fopen): adding to final database dump
+0023.759 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_comments.table.gz (18/84/fopen): adding to final database dump
+0023.760 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_notes.table.tmpr0.gz (19/84/fopen): adding to final database dump
+0023.760 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_notes.table.gz (20/84/fopen): adding to final database dump
+0023.760 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_notes_users_relations.table.tmpr0.gz (21/84/fopen): adding to final database dump
+0023.760 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_notes_users_relations.table.gz (22/84/fopen): adding to final database dump
+0023.761 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_links.table.tmpr0.gz (23/84/fopen): adding to final database dump
+0023.761 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_links.table.gz (24/84/fopen): adding to final database dump
+0023.761 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_postmeta.table.tmpr7502.gz (25/84/fopen): adding to final database dump
+0023.776 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_postmeta.table.gz (26/84/fopen): adding to final database dump
+0023.777 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_posts.table.tmpr1079.gz (27/84/fopen): adding to final database dump
+0023.783 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_posts.table.gz (28/84/fopen): adding to final database dump
+0023.783 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_term_relationships.table.tmpr100001.gz (29/84/fopen): adding to final database dump
+0023.784 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_term_relationships.table.gz (30/84/fopen): adding to final database dump
+0023.784 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_term_taxonomy.table.tmpr36.gz (31/84/fopen): adding to final database dump
+0023.784 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_term_taxonomy.table.gz (32/84/fopen): adding to final database dump
+0023.784 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_termmeta.table.tmpr12.gz (33/84/fopen): adding to final database dump
+0023.785 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_termmeta.table.gz (34/84/fopen): adding to final database dump
+0023.785 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_terms.table.tmpr36.gz (35/84/fopen): adding to final database dump
+0023.785 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_terms.table.gz (36/84/fopen): adding to final database dump
+0023.786 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_category_lookup.table.tmpr1001.gz (37/84/fopen): adding to final database dump
+0023.786 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_category_lookup.table.gz (38/84/fopen): adding to final database dump
+0023.786 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_product_meta_lookup.table.tmpr1025.gz (39/84/fopen): adding to final database dump
+0023.787 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_product_meta_lookup.table.gz (40/84/fopen): adding to final database dump
+0023.787 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_reserved_stock.table.tmpr1.gz (41/84/fopen): adding to final database dump
+0023.787 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_reserved_stock.table.gz (42/84/fopen): adding to final database dump
+0023.787 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_tax_rate_classes.table.tmpr3.gz (43/84/fopen): adding to final database dump
+0023.788 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_tax_rate_classes.table.gz (44/84/fopen): adding to final database dump
+0023.788 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_order_itemmeta.table.tmpr0.gz (45/84/fopen): adding to final database dump
+0023.788 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_order_itemmeta.table.gz (46/84/fopen): adding to final database dump
+0023.789 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_payment_tokenmeta.table.tmpr0.gz (47/84/fopen): adding to final database dump
+0023.789 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_payment_tokenmeta.table.gz (48/84/fopen): adding to final database dump
+0023.789 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_automate_log.table.tmpr1.gz (49/84/fopen): adding to final database dump
+0023.789 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_automate_log.table.gz (50/84/fopen): adding to final database dump
+0023.790 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_awp_apps.table.tmpr0.gz (51/84/fopen): adding to final database dump
+0023.790 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_awp_apps.table.gz (52/84/fopen): adding to final database dump
+0023.790 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_awp_integration.table.tmpr1.gz (53/84/fopen): adding to final database dump
+0023.791 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_awp_integration.table.gz (54/84/fopen): adding to final database dump
+0023.791 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_awp_message_template.table.tmpr1.gz (55/84/fopen): adding to final database dump
+0023.791 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_awp_message_template.table.gz (56/84/fopen): adding to final database dump
+0023.791 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_awp_platform_settings.table.tmpr2.gz (57/84/fopen): adding to final database dump
+0023.792 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_awp_platform_settings.table.gz (58/84/fopen): adding to final database dump
+0023.792 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_cf7anyapi_entries.table.tmpr80.gz (59/84/fopen): adding to final database dump
+0023.792 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_cf7anyapi_entries.table.gz (60/84/fopen): adding to final database dump
+0023.793 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_cf7anyapi_entry_id.table.tmpr14.gz (61/84/fopen): adding to final database dump
+0023.793 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_cf7anyapi_entry_id.table.gz (62/84/fopen): adding to final database dump
+0023.793 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_cf7anyapi_logs.table.tmpr14.gz (63/84/fopen): adding to final database dump
+0023.794 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_cf7anyapi_logs.table.gz (64/84/fopen): adding to final database dump
+0023.794 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_events.table.tmpr0.gz (65/84/fopen): adding to final database dump
+0023.794 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_events.table.gz (66/84/fopen): adding to final database dump
+0023.795 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_submissions.table.tmpr6.gz (67/84/fopen): adding to final database dump
+0023.795 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_submissions.table.gz (68/84/fopen): adding to final database dump
+0023.795 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_submissions_actions_log.table.tmpr6.gz (69/84/fopen): adding to final database dump
+0023.795 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_submissions_actions_log.table.gz (70/84/fopen): adding to final database dump
+0023.796 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_submissions_values.table.tmpr16.gz (71/84/fopen): adding to final database dump
+0023.796 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_e_submissions_values.table.gz (72/84/fopen): adding to final database dump
+0023.796 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_eb_form_settings.table.tmpr0.gz (73/84/fopen): adding to final database dump
+0023.797 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_eb_form_settings.table.gz (74/84/fopen): adding to final database dump
+0023.797 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_attribute_mapping_rules.table.tmpr0.gz (75/84/fopen): adding to final database dump
+0023.797 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_attribute_mapping_rules.table.gz (76/84/fopen): adding to final database dump
+0023.797 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_budget_recommendations.table.tmpr4231.gz (77/84/fopen): adding to final database dump
+0023.798 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_budget_recommendations.table.gz (78/84/fopen): adding to final database dump
+0023.798 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_merchant_issues.table.tmpr0.gz (79/84/fopen): adding to final database dump
+0023.798 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_merchant_issues.table.gz (80/84/fopen): adding to final database dump
+0023.799 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_shipping_rates.table.tmpr0.gz (81/84/fopen): adding to final database dump
+0023.799 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_shipping_rates.table.gz (82/84/fopen): adding to final database dump
+0023.799 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_shipping_times.table.tmpr0.gz (83/84/fopen): adding to final database dump
+0023.799 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_gla_shipping_times.table.gz (84/84/fopen): adding to final database dump
+0023.800 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_jetpack_sync_queue.table.tmpr1143.gz (85/84/fopen): adding to final database dump
+0023.800 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_jetpack_sync_queue.table.gz (86/84/fopen): adding to final database dump
+0023.800 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_mailchimp_carts.table.tmpr1.gz (87/84/fopen): adding to final database dump
+0023.801 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_mailchimp_carts.table.gz (88/84/fopen): adding to final database dump
+0023.801 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_mailchimp_jobs.table.tmpr0.gz (89/84/fopen): adding to final database dump
+0023.801 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_mailchimp_jobs.table.gz (90/84/fopen): adding to final database dump
+0023.802 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_smush_dir_images.table.tmpr0.gz (91/84/fopen): adding to final database dump
+0023.802 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_smush_dir_images.table.gz (92/84/fopen): adding to final database dump
+0023.802 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_events.table.tmpr0.gz (93/84/fopen): adding to final database dump
+0023.803 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_events.table.gz (94/84/fopen): adding to final database dump
+0023.803 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_site_temporary_keys.table.tmpr0.gz (95/84/fopen): adding to final database dump
+0023.803 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_site_temporary_keys.table.gz (96/84/fopen): adding to final database dump
+0023.804 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_sitemeta.table.tmpr0.gz (97/84/fopen): adding to final database dump
+0023.804 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_sitemeta.table.gz (98/84/fopen): adding to final database dump
+0023.804 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_sites.table.tmpr0.gz (99/84/fopen): adding to final database dump
+0023.805 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_sites.table.gz (100/84/fopen): adding to final database dump
+0023.806 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_user_cron.table.tmpr2.gz (101/84/fopen): adding to final database dump
+0023.806 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_updraftcentral_user_cron.table.gz (102/84/fopen): adding to final database dump
+0023.806 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_userCreatedOrUpdated.table.tmpr1.gz (103/84/fopen): adding to final database dump
+0023.807 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_userCreatedOrUpdated.table.gz (104/84/fopen): adding to final database dump
+0023.807 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_admin_note_actions.table.tmpr9149.gz (105/84/fopen): adding to final database dump
+0023.807 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_admin_note_actions.table.gz (106/84/fopen): adding to final database dump
+0023.808 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_admin_notes.table.tmpr75.gz (107/84/fopen): adding to final database dump
+0023.808 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_admin_notes.table.gz (108/84/fopen): adding to final database dump
+0023.808 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_customer_lookup.table.tmpr0.gz (109/84/fopen): adding to final database dump
+0023.809 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_customer_lookup.table.gz (110/84/fopen): adding to final database dump
+0023.809 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_download_log.table.tmpr0.gz (111/84/fopen): adding to final database dump
+0023.809 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_download_log.table.gz (112/84/fopen): adding to final database dump
+0023.810 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_addresses.table.tmpr0.gz (113/84/fopen): adding to final database dump
+0023.810 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_addresses.table.gz (114/84/fopen): adding to final database dump
+0023.811 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_coupon_lookup.table.tmpr1.gz (115/84/fopen): adding to final database dump
+0023.811 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_coupon_lookup.table.gz (116/84/fopen): adding to final database dump
+0023.811 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_operational_data.table.tmpr0.gz (117/84/fopen): adding to final database dump
+0023.812 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_operational_data.table.gz (118/84/fopen): adding to final database dump
+0023.812 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_product_lookup.table.tmpr0.gz (119/84/fopen): adding to final database dump
+0023.812 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_product_lookup.table.gz (120/84/fopen): adding to final database dump
+0023.812 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_stats.table.tmpr0.gz (121/84/fopen): adding to final database dump
+0023.813 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_stats.table.gz (122/84/fopen): adding to final database dump
+0023.813 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_tax_lookup.table.tmpr1.gz (123/84/fopen): adding to final database dump
+0023.813 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_order_tax_lookup.table.gz (124/84/fopen): adding to final database dump
+0023.814 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_orders.table.tmpr0.gz (125/84/fopen): adding to final database dump
+0023.814 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_orders.table.gz (126/84/fopen): adding to final database dump
+0023.814 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_orders_meta.table.tmpr0.gz (127/84/fopen): adding to final database dump
+0023.814 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_orders_meta.table.gz (128/84/fopen): adding to final database dump
+0023.815 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_product_attributes_lookup.table.tmpr1.gz (129/84/fopen): adding to final database dump
+0023.815 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_product_attributes_lookup.table.gz (130/84/fopen): adding to final database dump
+0023.815 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_product_download_directories.table.tmpr3.gz (131/84/fopen): adding to final database dump
+0023.816 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_product_download_directories.table.gz (132/84/fopen): adding to final database dump
+0023.816 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_rate_limits.table.tmpr0.gz (133/84/fopen): adding to final database dump
+0023.816 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_rate_limits.table.gz (134/84/fopen): adding to final database dump
+0023.816 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_webhooks.table.tmpr0.gz (135/84/fopen): adding to final database dump
+0023.817 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wc_webhooks.table.gz (136/84/fopen): adding to final database dump
+0023.817 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_api_keys.table.tmpr0.gz (137/84/fopen): adding to final database dump
+0023.817 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_api_keys.table.gz (138/84/fopen): adding to final database dump
+0023.818 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_attribute_taxonomies.table.tmpr0.gz (139/84/fopen): adding to final database dump
+0023.818 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_attribute_taxonomies.table.gz (140/84/fopen): adding to final database dump
+0023.818 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_downloadable_product_permissions.table.tmpr0.gz (141/84/fopen): adding to final database dump
+0023.818 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_downloadable_product_permissions.table.gz (142/84/fopen): adding to final database dump
+0023.819 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_log.table.tmpr0.gz (143/84/fopen): adding to final database dump
+0023.819 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_log.table.gz (144/84/fopen): adding to final database dump
+0023.819 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_order_items.table.tmpr0.gz (145/84/fopen): adding to final database dump
+0023.820 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_order_items.table.gz (146/84/fopen): adding to final database dump
+0023.820 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_payment_tokens.table.tmpr0.gz (147/84/fopen): adding to final database dump
+0023.820 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_payment_tokens.table.gz (148/84/fopen): adding to final database dump
+0023.820 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_sessions.table.tmpr47.gz (149/84/fopen): adding to final database dump
+0023.821 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_sessions.table.gz (150/84/fopen): adding to final database dump
+0023.821 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_shipping_zone_locations.table.tmpr2.gz (151/84/fopen): adding to final database dump
+0023.821 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_shipping_zone_locations.table.gz (152/84/fopen): adding to final database dump
+0023.822 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_shipping_zone_methods.table.tmpr3.gz (153/84/fopen): adding to final database dump
+0023.822 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_shipping_zone_methods.table.gz (154/84/fopen): adding to final database dump
+0023.822 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_shipping_zones.table.tmpr2.gz (155/84/fopen): adding to final database dump
+0023.823 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_shipping_zones.table.gz (156/84/fopen): adding to final database dump
+0023.823 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_tax_rate_locations.table.tmpr0.gz (157/84/fopen): adding to final database dump
+0023.823 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_tax_rate_locations.table.gz (158/84/fopen): adding to final database dump
+0023.823 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_tax_rates.table.tmpr0.gz (159/84/fopen): adding to final database dump
+0023.824 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_woocommerce_tax_rates.table.gz (160/84/fopen): adding to final database dump
+0023.824 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wpforms_logs.table.tmpr0.gz (161/84/fopen): adding to final database dump
+0023.824 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wpforms_logs.table.gz (162/84/fopen): adding to final database dump
+0023.825 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wpforms_payment_meta.table.tmpr0.gz (163/84/fopen): adding to final database dump
+0023.825 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wpforms_payment_meta.table.gz (164/84/fopen): adding to final database dump
+0023.825 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wpforms_payments.table.tmpr0.gz (165/84/fopen): adding to final database dump
+0023.825 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wpforms_payments.table.gz (166/84/fopen): adding to final database dump
+0023.826 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wpforms_tasks_meta.table.tmpr16.gz (167/84/fopen): adding to final database dump
+0023.826 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db-table-uka_wpforms_tasks_meta.table.gz (168/84/fopen): adding to final database dump
+0023.829 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: finished writing out complete database file (4926.5 KB)
+0023.872 (0) Total database tables backed up: 84 (backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz, size: 5044896, sha1: e121a937caeb9127224a8638e7e901e7dd90a1ed, sha256: 2cc72f622beae81c78fbe37bba2e4826718cc0c9475907e8ae542f0eaeb44851)
+0023.875 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0023.876 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+0023.876 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0023.876 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+0023.877 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+0023.877 (0) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has not yet been successfully uploaded: will queue
+0023.877 (0) Saving backup history. Total backup size: 208 MB
+0023.878 (0) Requesting upload of the files that have not yet been successfully uploaded (3)
+0023.880 (0) Cloud backup selection (1/1): email with instance (1/1) (last)
+0023.880 (0) Beginning dispatch of backup to remote (email)
+0023.881 (0) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0023.881 (0) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+0027.000 (0) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+0027.001 (0) Email: Mails were not sent successfully
+0027.002 (0) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0027.002 (0) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+0030.978 (0) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+0030.979 (0) Email: Mails were not sent successfully
+0030.979 (0) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: email to: cucul...
+0031.421 (0) Recording as successfully uploaded: backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz
+0031.424 (0) Deleting local file: backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: OK
+0031.425 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0031.426 (0) Number of backup sets in history: 3; groups (db): 1
+0031.426 (0) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+0031.426 (0) This backup set is the backup set just made, so will not be deleted.
+0031.426 (0) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+0031.426 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0031.427 (0) Examining (for databases) backup set with group_id=0, nonce=1f061968b7d1, datestamp=1718313927 (Jun 13 2024 21:25:27)
+0031.427 (0) 1718313927: db: this set includes a database (backup_2024-06-13-2125_sumitgt_1f061968b7d1-db.gz); db count is now 2
+0031.427 (0) 1718313927: db: over retain limit (2); will delete this database
+0031.427 (0) Delete file: backup_2024-06-13-2125_sumitgt_1f061968b7d1-db.gz, service=email
+0031.427 (0) Deleting local copy (backup_2024-06-13-2125_sumitgt_1f061968b7d1-db.gz)
+0031.429 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0031.429 (0) Number of backup sets in history: 3; groups (files): 1
+0031.430 (0) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+0031.430 (0) This backup set is the backup set just made, so will not be deleted.
+0031.430 (0) This backup set is the backup set just made, so will not be deleted.
+0031.430 (0) This backup set is the backup set just made, so will not be deleted.
+0031.430 (0) This backup set is the backup set just made, so will not be deleted.
+0031.430 (0) This backup set is the backup set just made, so will not be deleted.
+0031.430 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0031.430 (0) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+0031.430 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0031.431 (0) Examining (for files) backup set with nonce=1f061968b7d1, datestamp=1718313927 (Jun 13 2024 21:25:27)
+0031.431 (0) plugins: over retain limit (2); will delete this file entity
+0031.431 (0) themes: over retain limit (2); will delete this file entity
+0031.431 (0) uploads: over retain limit (2); will delete this file entity
+0031.431 (0) mu-plugins: over retain limit (2); will delete this file entity
+0031.431 (0) others: over retain limit (2); will delete this file entity
+0031.431 (0) Delete file: backup_2024-06-13-2125_sumitgt_1f061968b7d1-plugins.zip, service=email
+0031.431 (0) Deleting local copy (backup_2024-06-13-2125_sumitgt_1f061968b7d1-plugins.zip)
+0031.446 (0) Delete file: backup_2024-06-13-2125_sumitgt_1f061968b7d1-themes.zip, service=email
+0031.447 (0) Deleting local copy (backup_2024-06-13-2125_sumitgt_1f061968b7d1-themes.zip)
+0031.453 (0) Delete file: backup_2024-06-13-2125_sumitgt_1f061968b7d1-uploads.zip, service=email
+0031.453 (0) Deleting local copy (backup_2024-06-13-2125_sumitgt_1f061968b7d1-uploads.zip)
+0031.483 (0) Delete file: backup_2024-06-13-2125_sumitgt_1f061968b7d1-mu-plugins.zip, service=email
+0031.484 (0) Deleting local copy (backup_2024-06-13-2125_sumitgt_1f061968b7d1-mu-plugins.zip)
+0031.484 (0) Delete file: backup_2024-06-13-2125_sumitgt_1f061968b7d1-others.zip, service=email
+0031.485 (0) Deleting local copy (backup_2024-06-13-2125_sumitgt_1f061968b7d1-others.zip)
+0031.487 (0) This backup set is now empty; will remove from history
+0031.487 (0) Deleting log file (log.1f061968b7d1.txt)
+0031.488 (0) Retain: saving new backup history (sets now: 2) and finishing retain operation
+0031.489 (0) Resume backup (23ad235de65c, 0): finish run
+0031.490 (0) Decremented the semaphore (fd) by 1
+0031.491 (0) Semaphore (fd) unlocked
+0031.491 (0) There were errors in the uploads, so the 'resume' event is remaining scheduled
+0031.492 (0) La copia de seguridad no ha terminado; se ha programado una reanudación
+0326.772 (1) Opened log file at time: Thu, 13 Jun 2024 21:33:50 +0000 on https://sumit.gt
+0326.772 (1) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107.1M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+0326.773 (1) Free space on disk containing Updraft's temporary directory: 1379058 MB
+0326.774 (1) Requesting backup semaphore lock (23ad235de65c)
+0326.775 (1) [Debug] Lock option (updraft_lock_23ad235de65c, uka_options) was created in the database
+0326.775 (1) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired after initialising the database
+0326.776 (1) Backup run: resumption=1, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (326s ago), job type=backup, previous check-in=31.49s
+0326.777 (1) Scheduling a resumption (2) after 300 seconds (1718314730) in case this run gets aborted
+0326.779 (1) Checking if we have a zip executable available
+0326.779 (1) Zip engine: found/will use a binary zip: /usr/bin/zip
+0326.780 (1) Creation of backups of directories: already finished
+0326.780 (1) Saving backup status to database (elements: 10)
+0326.782 (1) Database dump (WordPress DB): Creation was completed already
+0326.782 (1) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+0326.783 (1) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0326.784 (1) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+0326.784 (1) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0326.784 (1) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+0326.784 (1) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+0326.785 (1) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+0326.785 (1) Saving backup history. Total backup size: Unknown
+0326.786 (1) Requesting upload of the files that have not yet been successfully uploaded (2)
+0326.787 (1) Cloud backup selection (1/1): email with instance (1/1) (last)
+0326.787 (1) Beginning dispatch of backup to remote (email)
+0326.787 (1) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0326.788 (1) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+0329.927 (1) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+0329.928 (1) Email: Mails were not sent successfully
+0329.929 (1) An error condition has occurred for the first time during this job
+0329.930 (1) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0329.930 (1) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+0333.918 (1) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+0333.919 (1) Email: Mails were not sent successfully
+0333.920 (1) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0333.921 (1) Number of backup sets in history: 2; groups (db): 1
+0333.921 (1) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+0333.921 (1) This backup set is the backup set just made, so will not be deleted.
+0333.921 (1) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+0333.921 (1) This backup set remains non-empty (f=1/d=1); will retain in history
+0333.922 (1) Number of backup sets in history: 2; groups (files): 1
+0333.922 (1) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+0333.922 (1) This backup set is the backup set just made, so will not be deleted.
+0333.922 (1) This backup set is the backup set just made, so will not be deleted.
+0333.922 (1) This backup set is the backup set just made, so will not be deleted.
+0333.922 (1) This backup set is the backup set just made, so will not be deleted.
+0333.922 (1) This backup set is the backup set just made, so will not be deleted.
+0333.922 (1) This backup set remains non-empty (f=1/d=1); will retain in history
+0333.923 (1) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+0333.923 (1) This backup set remains non-empty (f=1/d=1); will retain in history
+0333.923 (1) Retain: saving new backup history (sets now: 2) and finishing retain operation
+0333.924 (1) Resume backup (23ad235de65c, 1): finish run
+0333.925 (1) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+0333.925 (1) There were errors in the uploads, so the 'resume' event is remaining scheduled
+0333.926 (1) La copia de seguridad no ha terminado; se ha programado una reanudación
+0801.122 (2) Opened log file at time: Thu, 13 Jun 2024 21:41:45 +0000 on https://sumit.gt
+0801.123 (2) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+0801.123 (2) Free space on disk containing Updraft's temporary directory: 1379031.2 MB
+0801.124 (2) Requesting backup semaphore lock (23ad235de65c)
+0801.124 (2) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired
+0801.126 (2) Backup run: resumption=2, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (801s ago), job type=backup
+0801.127 (2) Scheduling a resumption (3) after 300 seconds (1718315205) in case this run gets aborted
+0801.128 (2) Checking if we have a zip executable available
+0801.129 (2) Zip engine: found/will use a binary zip: /usr/bin/zip
+0801.129 (2) Creation of backups of directories: already finished
+0801.129 (2) Saving backup status to database (elements: 10)
+0801.131 (2) Database dump (WordPress DB): Creation was completed already
+0801.131 (2) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+0801.133 (2) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0801.133 (2) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+0801.134 (2) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0801.134 (2) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+0801.134 (2) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+0801.134 (2) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+0801.135 (2) Saving backup history. Total backup size: Unknown
+0801.136 (2) Requesting upload of the files that have not yet been successfully uploaded (2)
+0801.136 (2) Cloud backup selection (1/1): email with instance (1/1) (last)
+0801.137 (2) Beginning dispatch of backup to remote (email)
+0801.137 (2) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0801.138 (2) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+0804.306 (2) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+0804.307 (2) Email: Mails were not sent successfully
+0804.307 (2) An error condition has occurred for the first time during this job
+0804.308 (2) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+0804.308 (2) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+0808.341 (2) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+0808.342 (2) Email: Mails were not sent successfully
+0808.343 (2) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0808.344 (2) Number of backup sets in history: 2; groups (db): 1
+0808.344 (2) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+0808.344 (2) This backup set is the backup set just made, so will not be deleted.
+0808.345 (2) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+0808.345 (2) This backup set remains non-empty (f=1/d=1); will retain in history
+0808.345 (2) Number of backup sets in history: 2; groups (files): 1
+0808.345 (2) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+0808.345 (2) This backup set is the backup set just made, so will not be deleted.
+0808.345 (2) This backup set is the backup set just made, so will not be deleted.
+0808.345 (2) This backup set is the backup set just made, so will not be deleted.
+0808.345 (2) This backup set is the backup set just made, so will not be deleted.
+0808.345 (2) This backup set is the backup set just made, so will not be deleted.
+0808.345 (2) This backup set remains non-empty (f=1/d=1); will retain in history
+0808.346 (2) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+0808.346 (2) This backup set remains non-empty (f=1/d=1); will retain in history
+0808.346 (2) Retain: saving new backup history (sets now: 2) and finishing retain operation
+0808.347 (2) Resume backup (23ad235de65c, 2): finish run
+0808.348 (2) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+0808.348 (2) There were errors in the uploads, so the 'resume' event is remaining scheduled
+0808.349 (2) La copia de seguridad no ha terminado; se ha programado una reanudación
+1758.371 (3) Opened log file at time: Thu, 13 Jun 2024 21:57:42 +0000 on https://sumit.gt
+1758.372 (3) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+1758.372 (3) Free space on disk containing Updraft's temporary directory: 1378880.9 MB
+1758.374 (3) Requesting backup semaphore lock (23ad235de65c)
+1758.374 (3) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired
+1758.375 (3) Backup run: resumption=3, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (1758s ago), job type=backup
+1758.376 (3) Scheduling a resumption (4) after 300 seconds (1718316162) in case this run gets aborted
+1758.382 (3) Checking if we have a zip executable available
+1758.383 (3) Zip engine: found/will use a binary zip: /usr/bin/zip
+1758.383 (3) Creation of backups of directories: already finished
+1758.383 (3) Saving backup status to database (elements: 10)
+1758.385 (3) Database dump (WordPress DB): Creation was completed already
+1758.385 (3) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+1758.387 (3) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+1758.387 (3) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+1758.387 (3) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+1758.388 (3) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+1758.388 (3) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+1758.388 (3) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+1758.388 (3) Saving backup history. Total backup size: Unknown
+1758.389 (3) Requesting upload of the files that have not yet been successfully uploaded (2)
+1758.390 (3) Cloud backup selection (1/1): email with instance (1/1) (last)
+1758.391 (3) Beginning dispatch of backup to remote (email)
+1758.391 (3) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+1758.391 (3) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+1761.503 (3) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+1761.504 (3) Email: Mails were not sent successfully
+1761.504 (3) An error condition has occurred for the first time during this job
+1761.505 (3) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+1761.505 (3) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+1765.526 (3) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+1765.527 (3) Email: Mails were not sent successfully
+1765.528 (3) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+1765.529 (3) Number of backup sets in history: 2; groups (db): 1
+1765.529 (3) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+1765.530 (3) This backup set is the backup set just made, so will not be deleted.
+1765.530 (3) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+1765.530 (3) This backup set remains non-empty (f=1/d=1); will retain in history
+1765.530 (3) Number of backup sets in history: 2; groups (files): 1
+1765.530 (3) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+1765.530 (3) This backup set is the backup set just made, so will not be deleted.
+1765.531 (3) This backup set is the backup set just made, so will not be deleted.
+1765.531 (3) This backup set is the backup set just made, so will not be deleted.
+1765.531 (3) This backup set is the backup set just made, so will not be deleted.
+1765.531 (3) This backup set is the backup set just made, so will not be deleted.
+1765.531 (3) This backup set remains non-empty (f=1/d=1); will retain in history
+1765.531 (3) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+1765.531 (3) This backup set remains non-empty (f=1/d=1); will retain in history
+1765.531 (3) Retain: saving new backup history (sets now: 2) and finishing retain operation
+1765.532 (3) Resume backup (23ad235de65c, 3): finish run
+1765.532 (3) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+1765.533 (3) There were errors in the uploads, so the 'resume' event is remaining scheduled
+1765.534 (3) La copia de seguridad no ha terminado; se ha programado una reanudación
+2798.591 (4) Opened log file at time: Thu, 13 Jun 2024 22:15:02 +0000 on https://sumit.gt
+2798.591 (4) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+2798.592 (4) Free space on disk containing Updraft's temporary directory: 1378739 MB
+2798.592 (4) Requesting backup semaphore lock (23ad235de65c)
+2798.593 (4) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired
+2798.594 (4) Backup run: resumption=4, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (2798s ago), job type=backup
+2798.594 (4) Long time past since expected resumption time: approx expected=1718316162.5, now=1718316902.8, diff=740.2
+2798.595 (4) [Warning] Su sitio web es visitado con poca frecuencia y UpdraftPlus no está recibiendo los recursos que se espera, por favor lea esta página: https://updraftplus.com/faqs/why-am-i-getting-warnings-about-my-site-not-having-enough-visitors/
+2798.596 (4) Scheduling a resumption (5) after 300 seconds (1718317202) in case this run gets aborted
+2798.598 (4) Checking if we have a zip executable available
+2798.599 (4) Zip engine: found/will use a binary zip: /usr/bin/zip
+2798.599 (4) Creation of backups of directories: already finished
+2798.599 (4) Saving backup status to database (elements: 10)
+2798.601 (4) Database dump (WordPress DB): Creation was completed already
+2798.601 (4) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+2798.603 (4) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+2798.603 (4) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+2798.603 (4) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+2798.604 (4) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+2798.604 (4) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+2798.604 (4) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+2798.604 (4) Saving backup history. Total backup size: Unknown
+2798.605 (4) Requesting upload of the files that have not yet been successfully uploaded (2)
+2798.606 (4) Cloud backup selection (1/1): email with instance (1/1) (last)
+2798.607 (4) Beginning dispatch of backup to remote (email)
+2798.607 (4) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+2798.607 (4) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+2801.752 (4) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+2801.752 (4) Email: Mails were not sent successfully
+2801.753 (4) An error condition has occurred for the first time during this job
+2801.753 (4) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+2801.754 (4) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+2805.783 (4) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+2805.783 (4) Email: Mails were not sent successfully
+2805.784 (4) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+2805.785 (4) Number of backup sets in history: 2; groups (db): 1
+2805.786 (4) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+2805.786 (4) This backup set is the backup set just made, so will not be deleted.
+2805.786 (4) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+2805.786 (4) This backup set remains non-empty (f=1/d=1); will retain in history
+2805.786 (4) Number of backup sets in history: 2; groups (files): 1
+2805.786 (4) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+2805.786 (4) This backup set is the backup set just made, so will not be deleted.
+2805.787 (4) This backup set is the backup set just made, so will not be deleted.
+2805.787 (4) This backup set is the backup set just made, so will not be deleted.
+2805.787 (4) This backup set is the backup set just made, so will not be deleted.
+2805.787 (4) This backup set is the backup set just made, so will not be deleted.
+2805.787 (4) This backup set remains non-empty (f=1/d=1); will retain in history
+2805.787 (4) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+2805.787 (4) This backup set remains non-empty (f=1/d=1); will retain in history
+2805.787 (4) Retain: saving new backup history (sets now: 2) and finishing retain operation
+2805.789 (4) Resume backup (23ad235de65c, 4): finish run
+2805.789 (4) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+2805.790 (4) There were errors in the uploads, so the 'resume' event is remaining scheduled
+2805.791 (4) La copia de seguridad no ha terminado; se ha programado una reanudación
+6537.284 (5) Opened log file at time: Thu, 13 Jun 2024 23:17:21 +0000 on https://sumit.gt
+6537.285 (5) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107.1M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+6537.285 (5) Free space on disk containing Updraft's temporary directory: 1380008.5 MB
+6537.287 (5) Requesting backup semaphore lock (23ad235de65c)
+6537.287 (5) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired
+6537.289 (5) Backup run: resumption=5, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (6537s ago), job type=backup
+6537.289 (5) Long time past since expected resumption time: approx expected=1718317202.8, now=1718320641.5, diff=3438.7
+6537.289 (5) [Warning] Su sitio web es visitado con poca frecuencia y UpdraftPlus no está recibiendo los recursos que se espera, por favor lea esta página: https://updraftplus.com/faqs/why-am-i-getting-warnings-about-my-site-not-having-enough-visitors/
+6537.290 (5) Scheduling a resumption (6) after 300 seconds (1718320941) in case this run gets aborted
+6537.295 (5) Checking if we have a zip executable available
+6537.296 (5) Zip engine: found/will use a binary zip: /usr/bin/zip
+6537.296 (5) Creation of backups of directories: already finished
+6537.296 (5) Saving backup status to database (elements: 10)
+6537.298 (5) Database dump (WordPress DB): Creation was completed already
+6537.299 (5) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+6537.300 (5) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+6537.300 (5) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+6537.301 (5) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+6537.301 (5) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+6537.301 (5) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+6537.302 (5) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+6537.302 (5) Saving backup history. Total backup size: Unknown
+6537.303 (5) Requesting upload of the files that have not yet been successfully uploaded (2)
+6537.304 (5) Cloud backup selection (1/1): email with instance (1/1) (last)
+6537.305 (5) Beginning dispatch of backup to remote (email)
+6537.305 (5) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+6537.305 (5) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+6540.521 (5) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+6540.522 (5) Email: Mails were not sent successfully
+6540.522 (5) An error condition has occurred for the first time during this job
+6540.523 (5) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+6540.523 (5) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+6544.493 (5) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+6544.494 (5) Email: Mails were not sent successfully
+6544.495 (5) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+6544.496 (5) Number of backup sets in history: 2; groups (db): 1
+6544.496 (5) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+6544.496 (5) This backup set is the backup set just made, so will not be deleted.
+6544.496 (5) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+6544.496 (5) This backup set remains non-empty (f=1/d=1); will retain in history
+6544.497 (5) Number of backup sets in history: 2; groups (files): 1
+6544.497 (5) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+6544.497 (5) This backup set is the backup set just made, so will not be deleted.
+6544.497 (5) This backup set is the backup set just made, so will not be deleted.
+6544.497 (5) This backup set is the backup set just made, so will not be deleted.
+6544.497 (5) This backup set is the backup set just made, so will not be deleted.
+6544.497 (5) This backup set is the backup set just made, so will not be deleted.
+6544.497 (5) This backup set remains non-empty (f=1/d=1); will retain in history
+6544.498 (5) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+6544.498 (5) This backup set remains non-empty (f=1/d=1); will retain in history
+6544.498 (5) Retain: saving new backup history (sets now: 2) and finishing retain operation
+6544.499 (5) Resume backup (23ad235de65c, 5): finish run
+6544.500 (5) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+6544.500 (5) There were errors in the uploads, so the 'resume' event is remaining scheduled
+6544.502 (5) La copia de seguridad no ha terminado; se ha programado una reanudación
+6890.029 (6) Opened log file at time: Thu, 13 Jun 2024 23:23:14 +0000 on https://sumit.gt
+6890.030 (6) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+6890.030 (6) Free space on disk containing Updraft's temporary directory: 1379875.3 MB
+6890.031 (6) Requesting backup semaphore lock (23ad235de65c)
+6890.032 (6) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired
+6890.034 (6) Backup run: resumption=6, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (6890s ago), job type=backup
+6890.035 (6) Scheduling a resumption (7) after 300 seconds (1718321294) in case this run gets aborted
+6890.038 (6) Checking if we have a zip executable available
+6890.038 (6) Zip engine: found/will use a binary zip: /usr/bin/zip
+6890.038 (6) Creation of backups of directories: already finished
+6890.039 (6) Saving backup status to database (elements: 10)
+6890.041 (6) Database dump (WordPress DB): Creation was completed already
+6890.042 (6) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+6890.043 (6) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+6890.044 (6) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+6890.044 (6) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+6890.045 (6) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+6890.045 (6) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+6890.046 (6) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+6890.046 (6) Saving backup history. Total backup size: Unknown
+6890.048 (6) Requesting upload of the files that have not yet been successfully uploaded (2)
+6890.049 (6) Cloud backup selection (1/1): email with instance (1/1) (last)
+6890.050 (6) Beginning dispatch of backup to remote (email)
+6890.050 (6) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+6890.051 (6) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+6893.211 (6) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+6893.212 (6) Email: Mails were not sent successfully
+6893.213 (6) An error condition has occurred for the first time during this job
+6893.213 (6) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+6893.213 (6) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+6897.227 (6) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+6897.228 (6) Email: Mails were not sent successfully
+6897.230 (6) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+6897.230 (6) Number of backup sets in history: 2; groups (db): 1
+6897.231 (6) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+6897.231 (6) This backup set is the backup set just made, so will not be deleted.
+6897.231 (6) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+6897.231 (6) This backup set remains non-empty (f=1/d=1); will retain in history
+6897.231 (6) Number of backup sets in history: 2; groups (files): 1
+6897.232 (6) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+6897.232 (6) This backup set is the backup set just made, so will not be deleted.
+6897.232 (6) This backup set is the backup set just made, so will not be deleted.
+6897.232 (6) This backup set is the backup set just made, so will not be deleted.
+6897.232 (6) This backup set is the backup set just made, so will not be deleted.
+6897.232 (6) This backup set is the backup set just made, so will not be deleted.
+6897.232 (6) This backup set remains non-empty (f=1/d=1); will retain in history
+6897.232 (6) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+6897.232 (6) This backup set remains non-empty (f=1/d=1); will retain in history
+6897.232 (6) Retain: saving new backup history (sets now: 2) and finishing retain operation
+6897.234 (6) Resume backup (23ad235de65c, 6): finish run
+6897.234 (6) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+6897.235 (6) There were errors in the uploads, so the 'resume' event is remaining scheduled
+6897.236 (6) La copia de seguridad no ha terminado; se ha programado una reanudación
+7199.319 (7) Opened log file at time: Thu, 13 Jun 2024 23:28:23 +0000 on https://sumit.gt
+7199.320 (7) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+7199.320 (7) Free space on disk containing Updraft's temporary directory: 1379832.6 MB
+7199.321 (7) Requesting backup semaphore lock (23ad235de65c)
+7199.321 (7) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired
+7199.322 (7) Backup run: resumption=7, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (7199s ago), job type=backup
+7199.323 (7) Scheduling a resumption (8) after 300 seconds (1718321603) in case this run gets aborted
+7199.325 (7) Checking if we have a zip executable available
+7199.326 (7) Zip engine: found/will use a binary zip: /usr/bin/zip
+7199.326 (7) Creation of backups of directories: already finished
+7199.326 (7) Saving backup status to database (elements: 10)
+7199.328 (7) Database dump (WordPress DB): Creation was completed already
+7199.328 (7) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+7199.330 (7) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+7199.330 (7) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+7199.330 (7) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+7199.330 (7) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+7199.331 (7) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+7199.331 (7) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+7199.331 (7) Saving backup history. Total backup size: Unknown
+7199.332 (7) Requesting upload of the files that have not yet been successfully uploaded (2)
+7199.333 (7) Cloud backup selection (1/1): email with instance (1/1) (last)
+7199.334 (7) Beginning dispatch of backup to remote (email)
+7199.334 (7) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+7199.334 (7) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+7202.459 (7) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+7202.460 (7) Email: Mails were not sent successfully
+7202.460 (7) An error condition has occurred for the first time during this job
+7202.461 (7) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+7202.461 (7) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+7206.443 (7) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+7206.444 (7) Email: Mails were not sent successfully
+7206.445 (7) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+7206.446 (7) Number of backup sets in history: 2; groups (db): 1
+7206.446 (7) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+7206.446 (7) This backup set is the backup set just made, so will not be deleted.
+7206.446 (7) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+7206.446 (7) This backup set remains non-empty (f=1/d=1); will retain in history
+7206.447 (7) Number of backup sets in history: 2; groups (files): 1
+7206.447 (7) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+7206.447 (7) This backup set is the backup set just made, so will not be deleted.
+7206.447 (7) This backup set is the backup set just made, so will not be deleted.
+7206.447 (7) This backup set is the backup set just made, so will not be deleted.
+7206.447 (7) This backup set is the backup set just made, so will not be deleted.
+7206.447 (7) This backup set is the backup set just made, so will not be deleted.
+7206.447 (7) This backup set remains non-empty (f=1/d=1); will retain in history
+7206.448 (7) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+7206.448 (7) This backup set remains non-empty (f=1/d=1); will retain in history
+7206.448 (7) Retain: saving new backup history (sets now: 2) and finishing retain operation
+7206.449 (7) Resume backup (23ad235de65c, 7): finish run
+7206.449 (7) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+7206.450 (7) There were errors in the uploads, so the 'resume' event is remaining scheduled
+7206.451 (7) La copia de seguridad no ha terminado; se ha programado una reanudación
+7499.218 (8) Opened log file at time: Thu, 13 Jun 2024 23:33:23 +0000 on https://sumit.gt
+7499.219 (8) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+7499.219 (8) Free space on disk containing Updraft's temporary directory: 1379822.9 MB
+7499.220 (8) Requesting backup semaphore lock (23ad235de65c)
+7499.220 (8) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired
+7499.221 (8) Backup run: resumption=8, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (7499s ago), job type=backup
+7499.222 (8) Scheduling a resumption (9) after 300 seconds (1718321903) in case this run gets aborted
+7499.224 (8) Checking if we have a zip executable available
+7499.225 (8) Zip engine: found/will use a binary zip: /usr/bin/zip
+7499.225 (8) Creation of backups of directories: already finished
+7499.225 (8) Saving backup status to database (elements: 10)
+7499.227 (8) Database dump (WordPress DB): Creation was completed already
+7499.228 (8) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+7499.229 (8) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+7499.230 (8) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+7499.230 (8) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+7499.231 (8) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+7499.231 (8) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+7499.231 (8) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+7499.231 (8) Saving backup history. Total backup size: Unknown
+7499.233 (8) Requesting upload of the files that have not yet been successfully uploaded (2)
+7499.233 (8) Cloud backup selection (1/1): email with instance (1/1) (last)
+7499.234 (8) Beginning dispatch of backup to remote (email)
+7499.234 (8) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+7499.235 (8) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+7502.363 (8) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+7502.364 (8) Email: Mails were not sent successfully
+7502.364 (8) An error condition has occurred for the first time during this job
+7502.365 (8) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+7502.365 (8) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+7506.370 (8) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+7506.370 (8) Email: Mails were not sent successfully
+7506.372 (8) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+7506.372 (8) Number of backup sets in history: 2; groups (db): 1
+7506.373 (8) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+7506.373 (8) This backup set is the backup set just made, so will not be deleted.
+7506.373 (8) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+7506.373 (8) This backup set remains non-empty (f=1/d=1); will retain in history
+7506.373 (8) Number of backup sets in history: 2; groups (files): 1
+7506.373 (8) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+7506.373 (8) This backup set is the backup set just made, so will not be deleted.
+7506.374 (8) This backup set is the backup set just made, so will not be deleted.
+7506.374 (8) This backup set is the backup set just made, so will not be deleted.
+7506.374 (8) This backup set is the backup set just made, so will not be deleted.
+7506.374 (8) This backup set is the backup set just made, so will not be deleted.
+7506.374 (8) This backup set remains non-empty (f=1/d=1); will retain in history
+7506.374 (8) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+7506.374 (8) This backup set remains non-empty (f=1/d=1); will retain in history
+7506.374 (8) Retain: saving new backup history (sets now: 2) and finishing retain operation
+7506.375 (8) Resume backup (23ad235de65c, 8): finish run
+7506.376 (8) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+7506.376 (8) There were errors in the uploads, so the 'resume' event is remaining scheduled
+7506.377 (8) La copia de seguridad no ha terminado; se ha programado una reanudación
+8268.965 (9) Opened log file at time: Thu, 13 Jun 2024 23:46:13 +0000 on https://sumit.gt
+8268.966 (9) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.24.3 WP: 6.5.4 PHP: 7.4.33 (apache2handler, Linux gtxm1327.siteground.biz 6.6.21-MCIclouder470 #470 SMP PREEMPT_DYNAMIC Fri Mar  8 08:09:36 EET 2024 x86_64) MySQL: 8.0.36-28 (max packet size=33554432) WPLANG: es_ES Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 768M (used: 107M | 110M) multisite: N openssl: OpenSSL 3.1.1 30 May 2023 mcrypt: N LANG:  ZipArchive::addFile: Y
+8268.966 (9) Free space on disk containing Updraft's temporary directory: 1379800.7 MB
+8268.967 (9) Requesting backup semaphore lock (23ad235de65c)
+8268.967 (9) [Info] Lock (updraft_lock_23ad235de65c, uka_options) acquired
+8268.969 (9) Backup run: resumption=9, nonce=23ad235de65c, file_nonce=23ad235de65c begun at=1718314104 (8269s ago), job type=backup
+8268.969 (9) The current run is resumption number 9, and there was nothing useful done on the last run (last useful run: 0) - will not schedule a further attempt until we see something useful happening this time
+8268.970 (9) Scheduling a resumption (10) after 300 seconds (1718322673); but the job will then be aborted unless something happens this time
+8268.972 (9) Creation of backups of directories: already finished
+8268.973 (9) Saving backup status to database (elements: 10)
+8268.974 (9) Database dump (WordPress DB): Creation was completed already
+8268.975 (9) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+8268.976 (9) backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+8268.977 (9) backup_2024-06-13-2128_sumitgt_23ad235de65c-themes.zip: themes: This file has already been successfully uploaded
+8268.977 (9) backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+8268.977 (9) backup_2024-06-13-2128_sumitgt_23ad235de65c-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+8268.978 (9) backup_2024-06-13-2128_sumitgt_23ad235de65c-others.zip: others: This file has already been successfully uploaded
+8268.978 (9) backup_2024-06-13-2128_sumitgt_23ad235de65c-db.gz: db: This file has already been successfully uploaded
+8268.978 (9) Saving backup history. Total backup size: Unknown
+8268.979 (9) Requesting upload of the files that have not yet been successfully uploaded (2)
+8268.980 (9) Cloud backup selection (1/1): email with instance (1/1) (last)
+8268.981 (9) Beginning dispatch of backup to remote (email)
+8268.981 (9) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: Este archivo de copia de seguridad tiene un tamaño de 75.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+8268.982 (9) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-plugins.zip: email to: cucul...
+8272.131 (9) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+8272.132 (9) Email: Mails were not sent successfully
+8272.132 (9) An error condition has occurred for the first time during this job
+8272.132 (9) [Warning] Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: Este archivo de copia de seguridad tiene un tamaño de 98.7 MB - es probable que falle el intento de enviarlo por correo electrónico (pocos servidores de correo electrónico permiten archivos adjuntos de este tamaño). Si es así, debes cambiar a otro método de almacenamiento remoto.
+8272.133 (9) Email: backup_2024-06-13-2128_sumitgt_23ad235de65c-uploads.zip: email to: cucul...
+8276.154 (9) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Could not instantiate mail function.
+8276.155 (9) Email: Mails were not sent successfully
+8276.156 (9) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+8276.157 (9) Number of backup sets in history: 2; groups (db): 1
+8276.158 (9) Examining (for databases) backup set with group_id=0, nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+8276.158 (9) This backup set is the backup set just made, so will not be deleted.
+8276.158 (9) Examining (for databases) backup set with group_id=0, nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+8276.158 (9) This backup set remains non-empty (f=1/d=1); will retain in history
+8276.158 (9) Number of backup sets in history: 2; groups (files): 1
+8276.158 (9) Examining (for files) backup set with nonce=23ad235de65c, datestamp=1718314104 (Jun 13 2024 21:28:24)
+8276.159 (9) This backup set is the backup set just made, so will not be deleted.
+8276.159 (9) This backup set is the backup set just made, so will not be deleted.
+8276.159 (9) This backup set is the backup set just made, so will not be deleted.
+8276.159 (9) This backup set is the backup set just made, so will not be deleted.
+8276.159 (9) This backup set is the backup set just made, so will not be deleted.
+8276.159 (9) This backup set remains non-empty (f=1/d=1); will retain in history
+8276.159 (9) Examining (for files) backup set with nonce=ff326a3028c4, datestamp=1718313971 (Jun 13 2024 21:26:11)
+8276.159 (9) This backup set remains non-empty (f=1/d=1); will retain in history
+8276.159 (9) Retain: saving new backup history (sets now: 2) and finishing retain operation
+8276.161 (9) Resume backup (23ad235de65c, 9): finish run
+8276.161 (9) [Info] Lock option (updraft_lock_23ad235de65c, uka_options) released
+8276.162 (9) The resumption is being cancelled, as it was only scheduled to enable error reporting, which can be performed now
+8276.163 (9) Fetching RSS news feed
+8276.314 (9) Fetched RSS news feed; result is a: SimplePie
+8276.393 (9) Sending email ('Archivos y base de datos (Copia de seguridad completa)') report (attachments: 1, size: 149.1 KB) to: cucul...
+8276.637 (9) El intento de copia de seguridad ha terminado, al parecer sin éxito

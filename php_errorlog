@@ -1,0 +1,319 @@
+[16-Apr-2024 22:19:46 UTC] wp_auto_login: trying to login user_id==1 loginusername=Hugo Cucul to admin_url=http://sumit.gt/wp-admin/
+[16-Apr-2024 22:28:27 UTC] wp_auto_login: trying to login user_id==1 loginusername=Hugo Cucul to admin_url=http://sumit.gt/wp-admin/
+[16-Apr-2024 22:46:09 UTC] wp_auto_login: trying to login user_id==1 loginusername=Hugo Cucul to admin_url=https://sumit.gt/wp-admin/
+[16-Apr-2024 23:13:42 UTC] wp_auto_login: trying to login user_id==1 loginusername=Hugo Cucul to admin_url=https://sumit.gt/wp-admin/
+[27-Apr-2024 01:17:50 UTC] wp_auto_login: trying to login user_id==1 loginusername=Hugo Cucul to admin_url=https://sumit.gt/wp-admin/
+[27-Apr-2024 03:58:08 UTC] [Image Optimizer]: info in ImageOptimization\Modules\Oauth\Components\Connect::get_connect_status(): Status getting error. Reason: User is not connected
+[27-Apr-2024 04:57:44 UTC] [Image Optimizer]: info in ImageOptimization\Modules\Oauth\Components\Connect::get_connect_status(): Status getting error. Reason: User is not connected
+[30-Apr-2024 11:58:57 UTC] Error de evento de reprogramación de cron para el gancho: wc_admin_unsnooze_admin_notes. Código de error: could_not_set. Mensaje de error: No se ha podido guardar la lista de eventos del cron.. Datos: {"schedule":"hourly","args":[],"interval":3600}
+[30-Apr-2024 11:58:57 UTC] Error de evento de anulación de programación de cron para el gancho: wc_admin_unsnooze_admin_notes. Código de error: could_not_set. Mensaje de error: No se ha podido guardar la lista de eventos del cron.. Datos: {"schedule":"hourly","args":[],"interval":3600}
+[30-Apr-2024 11:58:57 UTC] Error de evento de reprogramación de cron para el gancho: wp_version_check. Código de error: could_not_set. Mensaje de error: No se ha podido guardar la lista de eventos del cron.. Datos: {"schedule":"twicedaily","args":[],"interval":43200}
+[30-Apr-2024 11:58:57 UTC] Error de evento de anulación de programación de cron para el gancho: wp_version_check. Código de error: could_not_set. Mensaje de error: No se ha podido guardar la lista de eventos del cron.. Datos: {"schedule":"twicedaily","args":[],"interval":43200}
+[03-May-2024 05:31:10 UTC] wp_auto_login: trying to login user_id==1 loginusername=Hugo Cucul to admin_url=https://sumit.gt/wp-admin/
+[05-May-2024 06:28:13 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `uka_options` WHERE `option_name` = '_transient_timeout_jetpack_woocommerce_analytics_additional_blocks_on_checkout_page' made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\Woocommerce_Analytics\Universal->init_hooks, Automattic\Woocommerce_Analytics\Universal->get_additional_blocks_on_page, get_transient, delete_option
+[08-May-2024 02:04:17 UTC] wp_auto_login: trying to login user_id==1 loginusername=Hugo Cucul to admin_url=https://sumit.gt/wp-admin/
+[08-May-2024 22:05:44 UTC] Error de evento de reprogramación de cron para el gancho: action_scheduler_run_queue. Código de error: invalid_schedule. Mensaje de error: El evento programado no existe.. Datos: {"schedule":"every_minute","args":["WP Cron"],"interval":60}
+[08-May-2024 22:06:58 UTC] Error de evento de reprogramación de cron para el gancho: jetpack_sync_cron. Código de error: invalid_schedule. Mensaje de error: El evento programado no existe.. Datos: {"schedule":"jetpack_sync_interval","args":[],"interval":300}
+[08-May-2024 22:06:58 UTC] Error de evento de reprogramación de cron para el gancho: jetpack_sync_full_cron. Código de error: invalid_schedule. Mensaje de error: El evento programado no existe.. Datos: {"schedule":"jetpack_sync_interval","args":[],"interval":300}
+[11-May-2024 22:22:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(563): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[17-May-2024 11:42:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[17-May-2024 16:44:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[18-May-2024 22:22:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(563): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[19-May-2024 18:09:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[22-May-2024 01:10:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[24-May-2024 15:36:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[25-May-2024 23:31:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(563): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[29-May-2024 00:40:23 UTC] wp_auto_login: trying to login user_id==1 loginusername=Andy to admin_url=https://sumit.gt/wp-admin/
+[29-May-2024 13:05:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[01-Jun-2024 01:07:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[01-Jun-2024 01:28:05 UTC] wp_auto_login: trying to login user_id==1 loginusername=Andy to admin_url=https://sumit.gt/wp-admin/
+[01-Jun-2024 11:13:04 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[02-Jun-2024 22:49:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(563): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[04-Jun-2024 03:11:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[07-Jun-2024 07:20:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[10-Jun-2024 03:52:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(563): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[10-Jun-2024 20:19:15 UTC] PHP Fatal error:  Uncaught Error: Class 'WC_Product_Simple' not found in /home/customer/www/sumit.gt/public_html/wp-content/plugins/woocommerce/includes/class-wc-product-factory.php:46
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-content/plugins/woocommerce/includes/wc-product-functions.php(73): WC_Product_Factory->get_product(1024, Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-content/plugins/woocommerce/includes/wc-template-functions.php(150): wc_get_product(Object(WP_Post))
+#2 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(326): wc_setup_product_data(Object(WP_Post))
+#3 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-query.php(4727): do_action_ref_array('the_post', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-query.php(3687): WP_Query- in /home/customer/www/sumit.gt/public_html/wp-content/plugins/woocommerce/includes/class-wc-product-factory.php on line 46
+[12-Jun-2024 06:59:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[15-Jun-2024 00:02:36 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[15-Jun-2024 23:04:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[16-Jun-2024 22:11:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[17-Jun-2024 21:17:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[17-Jun-2024 22:43:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(563): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[18-Jun-2024 17:02:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[19-Jun-2024 04:09:29 UTC] wp_auto_login: trying to login user_id==1 loginusername=Andy to admin_url=https://sumit.gt/wp-admin/
+[21-Jun-2024 00:31:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[22-Jun-2024 23:09:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[24-Jun-2024 10:00:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[25-Jun-2024 07:43:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(573): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[29-Jun-2024 07:27:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[01-Jul-2024 06:06:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[02-Jul-2024 01:31:25 UTC] Google Authenticator plugin: Man-in-the-middle attack detected (Could also be 2 legit login attempts within the same 30 second period)
+[02-Jul-2024 06:46:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[02-Jul-2024 23:55:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(573): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[04-Jul-2024 22:51:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[06-Jul-2024 07:43:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[11-Jul-2024 05:44:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(573): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[11-Jul-2024 13:22:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[13-Jul-2024 08:56:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[15-Jul-2024 06:46:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function ecs_html_e() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php:73
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/sumit.gt/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/sumit.gt/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/sumit.gt/public_html/wp-content/plugins/ht-team-member/template/archive-htteam_member.php on line 73
+[18-Jul-2024 23:32:38 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(573): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157
+[22-Jul-2024 20:40:16 UTC] Google Authenticator plugin: Man-in-the-middle attack detected (Could also be 2 legit login attempts within the same 30 second period)
+[26-Jul-2024 01:48:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method ElementorPro\License\Admin::get_installed_time() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php:157
+Stack trace:
+#0 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): ElementorPro\Modules\Usage\Module->add_tracking_data(Array)
+#1 /home/customer/www/sumit.gt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#2 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(573): apply_filters('elementor/track...', Array)
+#3 /home/customer/www/sumit.gt/public_html/wp-content/plugins/elementor/includes/tracker.php(141): Elementor\Tracker::get_tracking_data(false)
+#4 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(324): Elementor\Tracker::send_tracking_data()
+#5 /home/customer/www/sumit.gt/public_html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /home/customer/www/sumit.gt/public_html/wp-includ in /home/customer/www/sumit.gt/public_html/wp-content/plugins/pro-elements/modules/usage/module.php on line 157

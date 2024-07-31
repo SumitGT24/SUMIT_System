@@ -1,0 +1,932 @@
+{
+    "manifest_version": "1.0.9",
+    "title": "Medical Practice",
+    "page_builder": "elementor",
+    "kit_version": "2.0.1",
+    "templates": [
+        {
+            "name": "Home 1",
+            "screenshot": "screenshots\/home-1.jpg",
+            "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 2",
+            "screenshot": "screenshots\/home-2.jpg",
+            "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "About Us",
+            "screenshot": "screenshots\/about-us.jpg",
+            "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Doctors",
+            "screenshot": "screenshots\/doctors.jpg",
+            "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Doctor Details",
+            "screenshot": "screenshots\/doctor-details.jpg",
+            "source": "templates\/doctor-details-0ab692a4a50f70f067684bd19267aa3e.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Departments",
+            "screenshot": "screenshots\/departments.jpg",
+            "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Department Details",
+            "screenshot": "screenshots\/department-details.jpg",
+            "source": "templates\/department-details-8de1ca46122dd8827d021a4856119bdd.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Who We Are",
+            "screenshot": "screenshots\/who-we-are.jpg",
+            "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Pricing",
+            "screenshot": "screenshots\/pricing.jpg",
+            "source": "templates\/pricing-e6fc1413b8544419633816ba0ece26fc.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact Us",
+            "screenshot": "screenshots\/contact-us.jpg",
+            "source": "templates\/contact-us-c1f4ec3ee8f9a5c3456de0a15c4060de.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": false
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Popup",
+            "screenshot": "screenshots\/popup.jpg",
+            "source": "templates\/popup-cead66c4a8886a850ce845562d6d037b.json",
+            "preview_url": false,
+            "type": "section",
+            "metadata": {
+                "template_type": "section",
+                "elementor_pro_required": true
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor",
+            "version": "2.9.6",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor Pro",
+            "version": "2.9.6",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        }
+    ],
+    "required_css": [],
+    "images": [
+        {
+            "filename": "brain-3168269_1280.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/brain-3168269_1280.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/pricing-e6fc1413b8544419633816ba0ece26fc.json",
+                    "name": "Pricing"
+                }
+            ],
+            "filesize": 899946,
+            "dimensions": [
+                1280,
+                771
+            ]
+        },
+        {
+            "filename": "pexels-photo-1170979.jpeg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/pexels-photo-1170979.jpeg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 230659,
+            "dimensions": [
+                1920,
+                1279
+            ]
+        },
+        {
+            "filename": "antibiotics-1782433_1920.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/antibiotics-1782433_1920.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                },
+                {
+                    "source": "templates\/department-details-8de1ca46122dd8827d021a4856119bdd.json",
+                    "name": "Department Details"
+                }
+            ],
+            "filesize": 265593,
+            "dimensions": [
+                1920,
+                1120
+            ]
+        },
+        {
+            "filename": "pexels-photo-127873.jpeg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/pexels-photo-127873.jpeg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 319599,
+            "dimensions": [
+                1920,
+                1440
+            ]
+        },
+        {
+            "filename": "women-doctor-370x498.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/women-doctor-370x498.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/department-details-8de1ca46122dd8827d021a4856119bdd.json",
+                    "name": "Department Details"
+                },
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                }
+            ],
+            "filesize": 65625,
+            "dimensions": [
+                370,
+                498
+            ]
+        },
+        {
+            "filename": "bg1.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/bg1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                },
+                {
+                    "source": "templates\/doctor-details-0ab692a4a50f70f067684bd19267aa3e.json",
+                    "name": "Doctor Details"
+                },
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                },
+                {
+                    "source": "templates\/department-details-8de1ca46122dd8827d021a4856119bdd.json",
+                    "name": "Department Details"
+                },
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                }
+            ],
+            "filesize": 34760,
+            "dimensions": [
+                1905,
+                217
+            ]
+        },
+        {
+            "filename": "care-chair-clean-305567.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/care-chair-clean-305567.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                },
+                {
+                    "source": "templates\/doctor-details-0ab692a4a50f70f067684bd19267aa3e.json",
+                    "name": "Doctor Details"
+                },
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                },
+                {
+                    "source": "templates\/department-details-8de1ca46122dd8827d021a4856119bdd.json",
+                    "name": "Department Details"
+                },
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                },
+                {
+                    "source": "templates\/pricing-e6fc1413b8544419633816ba0ece26fc.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/contact-us-c1f4ec3ee8f9a5c3456de0a15c4060de.json",
+                    "name": "Contact Us"
+                },
+                {
+                    "source": "templates\/popup-cead66c4a8886a850ce845562d6d037b.json",
+                    "name": "Popup"
+                }
+            ],
+            "filesize": 75732,
+            "dimensions": [
+                3888,
+                1797
+            ]
+        },
+        {
+            "filename": "adult-ambulance-care-263210-1.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/adult-ambulance-care-263210-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                }
+            ],
+            "filesize": 67136,
+            "dimensions": [
+                360,
+                175
+            ]
+        },
+        {
+            "filename": "adult-blood-business-220723-1.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/adult-blood-business-220723-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                }
+            ],
+            "filesize": 70449,
+            "dimensions": [
+                360,
+                175
+            ]
+        },
+        {
+            "filename": "adult-biology-chemical-356040-1.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/adult-biology-chemical-356040-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                },
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                }
+            ],
+            "filesize": 51575,
+            "dimensions": [
+                360,
+                175
+            ]
+        },
+        {
+            "filename": "pexels-photo-325682.jpeg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/pexels-photo-325682.jpeg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 170272,
+            "dimensions": [
+                1920,
+                1279
+            ]
+        },
+        {
+            "filename": "dentist-1191671_1920.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/dentist-1191671_1920.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                }
+            ],
+            "filesize": 79140,
+            "dimensions": [
+                360,
+                360
+            ]
+        },
+        {
+            "filename": "adult-care-cure-433635-1.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/adult-care-cure-433635-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                }
+            ],
+            "filesize": 110147,
+            "dimensions": [
+                360,
+                360
+            ]
+        },
+        {
+            "filename": "nurse-2141808_1920.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/nurse-2141808_1920.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                }
+            ],
+            "filesize": 115473,
+            "dimensions": [
+                360,
+                360
+            ]
+        },
+        {
+            "filename": "patient-1.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/patient-1.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 3924,
+            "dimensions": [
+                40,
+                40
+            ]
+        },
+        {
+            "filename": "01.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/01.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1-145bda6525f50dbe8b7eeb6314281396.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 5208,
+            "dimensions": [
+                39,
+                39
+            ]
+        },
+        {
+            "filename": "about.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/about.png",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 396899,
+            "dimensions": [
+                539,
+                513
+            ]
+        },
+        {
+            "filename": "doctor-2346235_1920.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/doctor-2346235_1920.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                }
+            ],
+            "filesize": 64356,
+            "dimensions": [
+                360,
+                175
+            ]
+        },
+        {
+            "filename": "business-care-chair-305568.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/business-care-chair-305568.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                },
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                }
+            ],
+            "filesize": 50302,
+            "dimensions": [
+                360,
+                175
+            ]
+        },
+        {
+            "filename": "surgery-79584-1.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/surgery-79584-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 81621,
+            "dimensions": [
+                360,
+                175
+            ]
+        },
+        {
+            "filename": "biology-clinic-doctor-4154-2.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/biology-clinic-doctor-4154-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                }
+            ],
+            "filesize": 53369,
+            "dimensions": [
+                360,
+                175
+            ]
+        },
+        {
+            "filename": "adult-care-cure-433635.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/adult-care-cure-433635.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                },
+                {
+                    "source": "templates\/doctor-details-0ab692a4a50f70f067684bd19267aa3e.json",
+                    "name": "Doctor Details"
+                },
+                {
+                    "source": "templates\/department-details-8de1ca46122dd8827d021a4856119bdd.json",
+                    "name": "Department Details"
+                },
+                {
+                    "source": "templates\/contact-us-c1f4ec3ee8f9a5c3456de0a15c4060de.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 123869,
+            "dimensions": [
+                360,
+                469
+            ]
+        },
+        {
+            "filename": "adult-doctor-girl-355934.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/adult-doctor-girl-355934.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                },
+                {
+                    "source": "templates\/contact-us-c1f4ec3ee8f9a5c3456de0a15c4060de.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 164351,
+            "dimensions": [
+                360,
+                469
+            ]
+        },
+        {
+            "filename": "man-219928_1280.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/man-219928_1280.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                },
+                {
+                    "source": "templates\/contact-us-c1f4ec3ee8f9a5c3456de0a15c4060de.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 94276,
+            "dimensions": [
+                360,
+                469
+            ]
+        },
+        {
+            "filename": "close-up-instrument-laboratory-60022.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/close-up-instrument-laboratory-60022.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 78210,
+            "dimensions": [
+                360,
+                236
+            ]
+        },
+        {
+            "filename": "chair-clean-clinic-287237.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/chair-clean-clinic-287237.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2-8d735635a78968874b90b6f511767ddf.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 65078,
+            "dimensions": [
+                360,
+                236
+            ]
+        },
+        {
+            "filename": "sidebar-img.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/sidebar-img.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                }
+            ],
+            "filesize": 353583,
+            "dimensions": [
+                599,
+                509
+            ]
+        },
+        {
+            "filename": "care-chair-clean-305567-1.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/care-chair-clean-305567-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about-us-fa423761cc56a179d7b6f9a1c775715d.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/doctors-8e75d8c8a3e3e3e4c21113848b64a3f1.json",
+                    "name": "Doctors"
+                },
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                }
+            ],
+            "filesize": 1263529,
+            "dimensions": [
+                3888,
+                1797
+            ]
+        },
+        {
+            "filename": "05.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/05.png",
+            "templates": [
+                {
+                    "source": "templates\/doctor-details-0ab692a4a50f70f067684bd19267aa3e.json",
+                    "name": "Doctor Details"
+                },
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                }
+            ],
+            "filesize": 5382,
+            "dimensions": [
+                39,
+                39
+            ]
+        },
+        {
+            "filename": "07.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/07.png",
+            "templates": [
+                {
+                    "source": "templates\/doctor-details-0ab692a4a50f70f067684bd19267aa3e.json",
+                    "name": "Doctor Details"
+                }
+            ],
+            "filesize": 5521,
+            "dimensions": [
+                39,
+                39
+            ]
+        },
+        {
+            "filename": "progress-1807543_1920.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/progress-1807543_1920.jpg",
+            "templates": [
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                }
+            ],
+            "filesize": 250323,
+            "dimensions": [
+                640,
+                422
+            ]
+        },
+        {
+            "filename": "dentist-2530983_640.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/dentist-2530983_640.jpg",
+            "templates": [
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                }
+            ],
+            "filesize": 48617,
+            "dimensions": [
+                640,
+                425
+            ]
+        },
+        {
+            "filename": "arms-care-check-905874.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/arms-care-check-905874.jpg",
+            "templates": [
+                {
+                    "source": "templates\/departments-e523deb8219589e1c029460eeaa3a36f.json",
+                    "name": "Departments"
+                }
+            ],
+            "filesize": 61765,
+            "dimensions": [
+                360,
+                175
+            ]
+        },
+        {
+            "filename": "author.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/author.jpg",
+            "templates": [
+                {
+                    "source": "templates\/department-details-8de1ca46122dd8827d021a4856119bdd.json",
+                    "name": "Department Details"
+                }
+            ],
+            "filesize": 1304108,
+            "dimensions": [
+                1600,
+                1600
+            ]
+        },
+        {
+            "filename": "surgery-79584.jpg",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/surgery-79584.jpg",
+            "templates": [
+                {
+                    "source": "templates\/department-details-8de1ca46122dd8827d021a4856119bdd.json",
+                    "name": "Department Details"
+                }
+            ],
+            "filesize": 619552,
+            "dimensions": [
+                1923,
+                856
+            ]
+        },
+        {
+            "filename": "06.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/06.png",
+            "templates": [
+                {
+                    "source": "templates\/who-we-are-f772d6b2dbe6d322f491c19969aad754.json",
+                    "name": "Who We Are"
+                }
+            ],
+            "filesize": 4819,
+            "dimensions": [
+                39,
+                39
+            ]
+        },
+        {
+            "filename": "icon3.png",
+            "thumbnail_url": "https:\/\/wp.envatoextensions.com\/collection-20\/wp-content\/uploads\/sites\/23\/2018\/06\/icon3.png",
+            "templates": [
+                {
+                    "source": "templates\/popup-cead66c4a8886a850ce845562d6d037b.json",
+                    "name": "Popup"
+                }
+            ],
+            "filesize": 2407,
+            "dimensions": [
+                37,
+                37
+            ]
+        }
+    ]
+}

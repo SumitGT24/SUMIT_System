@@ -1,0 +1,19 @@
+[08-May-2024 22:04:34 UTC] Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes::delete_notes_with_name is deprecated since version 4.8.0! Use Automattic\WooCommerce\Admin\Notes\Notes::delete_notes_with_name instead.
+[18-May-2024 21:44:36 UTC] Exception caught in get_preset. Preajuste no válido.. Args: Array
+(
+    [0] => default-preset
+)
+..
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset 'active' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1234
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset 'active' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1238
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset 'icon_align' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1238
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset '_id' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1238
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1242
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset '_id' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1286
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset 'active' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1286
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset 'content_type' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1288
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset 'content_type' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1290
+[17-Jul-2024 01:19:17 UTC] PHP Warning:  Illegal string offset 'content_type' in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/widgets/content-switcher/widget.php on line 1293
+[24-Jul-2024 22:58:02 UTC] PHP Warning:  include(/home/customer/www/sumit.gt/public_html/wp-content/languages/plugins/header-footer-elementor-es_ES.l10n.php): failed to open stream: No such file or directory in /home/customer/www/sumit.gt/public_html/wp-includes/l10n.php on line 1601
+[24-Jul-2024 22:58:02 UTC] PHP Warning:  include(): Failed opening '/home/customer/www/sumit.gt/public_html/wp-content/languages/plugins/header-footer-elementor-es_ES.l10n.php' for inclusion (include_path='.:/usr/local/php74/pear') in /home/customer/www/sumit.gt/public_html/wp-includes/l10n.php on line 1601
+[24-Jul-2024 23:24:40 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/sumit.gt/public_html/wp-content/plugins/happy-elementor-addons/inc/functions.php on line 681

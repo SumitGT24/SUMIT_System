@@ -1,0 +1,1126 @@
+# Translation of Themes - Papanek in Spanish (Spain)
+# This file is distributed under the same license as the Themes - Papanek package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-01-21 11:32:03+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.11\n"
+"Language: es\n"
+"Project-Id-Version: Themes - Papanek\n"
+
+#. Theme Name of the theme
+#, gp-priority: high
+msgid "Papanek"
+msgstr "Papanek"
+
+#. Description of the theme
+#, gp-priority: high
+msgid "Papanek is a minimalistic block theme with Full Site Editing features, developed for agencies and freelancers to quickly launch a simple and clear website. Create effortless, simple, and clear landing pages with 54 ready-to-use patterns. Inspired by Victor Papanek."
+msgstr "Papanek es un tema minimalista de bloques, desarrollado para agencias y freelancers para ayudar a lanzar rápidamente webs simples y claras. Crea páginas de destino simples y claras sin esfuerzo con 54 patrones listos para usar. Inspirado en Victor Papanek."
+
+#: theme.json
+msgctxt "Font family name"
+msgid "DM Sans"
+msgstr "DM Sans"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Poppins"
+msgstr "Poppins"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Syne"
+msgstr "Syne"
+
+#: functions.php:114
+msgid "Just close this notice to hide it. All the best!"
+msgstr "Simplemente cierra este aviso para ocultarlo. ¡Todo lo mejor!"
+
+#: functions.php:113
+msgid "Follow me on X:"
+msgstr "Sígueme en X:"
+
+#: functions.php:110
+msgid "Buy me a coffee:"
+msgstr "Cómprame un café:"
+
+#: functions.php:112
+msgid "Visit my website:"
+msgstr "Visita mi web:"
+
+#: styles/blue-fantasy.json
+msgctxt "Style variation name"
+msgid "Blue Fantazy"
+msgstr "La fantasía azul"
+
+#: styles/tiffany.json
+msgctxt "Style variation name"
+msgid "Tiffany"
+msgstr "Tiffany"
+
+#: styles/san-francisco.json
+msgctxt "Style variation name"
+msgid "San Francisco"
+msgstr "San Francisco"
+
+#: styles/middle-east.json
+msgctxt "Style variation name"
+msgid "Middle East"
+msgstr "Oriente Medio"
+
+#: styles/dark-and-gold.json
+msgctxt "Style variation name"
+msgid "Dark and Gold"
+msgstr "Oscuridad y oro"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Pie de página"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Encabezado"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Blank page"
+msgstr "Página en blanco"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "8"
+msgstr "8"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "7"
+msgstr "7"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "6"
+msgstr "6"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
+msgstr "5"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr "4"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr "3"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr "2"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr "1"
+
+#: theme.json styles/blue-fantasy.json styles/dark-and-gold.json
+#: styles/light-in-dark.json styles/middle-east.json styles/san-francisco.json
+#: styles/tiffany.json
+msgctxt "Color name"
+msgid "Background"
+msgstr "Fondo"
+
+#: theme.json styles/blue-fantasy.json styles/dark-and-gold.json
+#: styles/light-in-dark.json styles/middle-east.json styles/san-francisco.json
+#: styles/tiffany.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr "Secundaria"
+
+#: theme.json styles/blue-fantasy.json styles/dark-and-gold.json
+#: styles/light-in-dark.json styles/middle-east.json styles/san-francisco.json
+#: styles/tiffany.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr "Primario"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Manrope"
+msgstr "Manrope"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Huge on mobile"
+msgstr "Enorme en móvil"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Huge"
+msgstr "Enorme"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra large"
+msgstr "Extra grande"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Grande"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Medio"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Normal"
+msgstr "Normal"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Pequeño"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Tiny"
+msgstr "Diminuto"
+
+#: patterns/text-big.php
+msgctxt "Pattern title"
+msgid "Big text"
+msgstr "Texto grande"
+
+#: patterns/testimonials-simple.php
+msgctxt "Pattern title"
+msgid "Testimonials default"
+msgstr "Testimonios predeterminados"
+
+#: patterns/testimonials-img.php
+msgctxt "Pattern title"
+msgid "Testimonials with photos"
+msgstr "Testimonios con fotos"
+
+#: patterns/testimonials-black.php
+msgctxt "Pattern title"
+msgid "Testimonials with background"
+msgstr "Testimonios con fondo"
+
+#: patterns/team-stairs.php
+msgctxt "Pattern title"
+msgid "Team, stairs style"
+msgstr "Equipo, estilo escalera"
+
+#: patterns/team-simple.php
+msgctxt "Pattern title"
+msgid "Team, default"
+msgstr "Equipo, predeterminado"
+
+#: patterns/team-simple-gray.php
+msgctxt "Pattern title"
+msgid "Team, gray background"
+msgstr "Equipo, fondo gris"
+
+#: patterns/team-black.php
+msgctxt "Pattern title"
+msgid "Team, dark background"
+msgstr "Equipo, fondo oscuro"
+
+#: patterns/services-header-1-col-black.php
+msgctxt "Pattern title"
+msgid "Services with header, 1 col, dark background"
+msgstr "Servicios con encabezado, 1 columna, fondo oscuro"
+
+#: patterns/services-2-col-gray.php
+msgctxt "Pattern title"
+msgid "Services, 2 col, light background"
+msgstr "Servicios, 2 columnas, fondo claro"
+
+#: patterns/howwework-2.php
+msgctxt "Pattern title"
+msgid "How we work, second"
+msgstr "Cómo trabajamos, segundo"
+
+#: patterns/howwework-1.php
+msgctxt "Pattern title"
+msgid "How we work"
+msgstr "Cómo trabajamos"
+
+#: patterns/gallery.php
+msgctxt "Pattern title"
+msgid "Gallery"
+msgstr "Galería"
+
+#: patterns/full-page-project.php
+msgctxt "Pattern title"
+msgid "Project, full page pattern"
+msgstr "Proyecto, patrón de página completa"
+
+#: patterns/full-page-freelancer.php
+msgctxt "Pattern title"
+msgid "Freelancer, full page pattern"
+msgstr "Freelancer, patrón de página completa"
+
+#: patterns/full-page-agency.php
+msgctxt "Pattern title"
+msgid "Agency, full page pattern"
+msgstr "Agencia, patrón de página completa"
+
+#: patterns/footer-big.php
+msgctxt "Pattern title"
+msgid "Footer extended"
+msgstr "Pie de página extendido"
+
+#: patterns/featured-text-3-col-black.php
+msgctxt "Pattern title"
+msgid "Numbers with text, 3 cols, black"
+msgstr "Números con texto, 3 columnas, negro"
+
+#: patterns/featured-num-3-col.php
+msgctxt "Pattern title"
+msgid "Numbers with text, 3 cols"
+msgstr "Números con texto, 3 columnas"
+
+#: patterns/featured-num-3-col-black.php
+msgctxt "Pattern title"
+msgid "Numbers with text, 3 cols, black background"
+msgstr "Números con texto, 3 columnas, fondo negro"
+
+#: patterns/featured-image-text-3-col.php
+msgctxt "Pattern title"
+msgid "Image with text, 3 cols"
+msgstr "Imagen con texto, 3 columnas"
+
+#: patterns/featured-image-text-2-col.php
+msgctxt "Pattern title"
+msgid "Image with text, 2 cols"
+msgstr "Imagen con texto, 2 columnas"
+
+#: patterns/featured-image-text-2-col-small.php
+msgctxt "Pattern title"
+msgid "Small image with text, 2 cols"
+msgstr "Imagen pequeña con texto, 2 columnas"
+
+#: patterns/featured-image-text-2-col-black.php
+msgctxt "Pattern title"
+msgid "Image with text, 2 cols, black"
+msgstr "Imagen con texto, 2 columnas, fondo negro"
+
+#: patterns/featured-icon-3-col.php
+msgctxt "Pattern title"
+msgid "Icon with text, 3 cols"
+msgstr "Ícono con texto, 3 columnas"
+
+#: patterns/featured-icon-3-col-black.php
+msgctxt "Pattern title"
+msgid "Icon with text, 3 cols, black"
+msgstr "Ícono con texto, 3 columnas, negro"
+
+#: patterns/contact-default.php
+msgctxt "Pattern title"
+msgid "Contacts block with CF7 form"
+msgstr "Bloque de contactos con formulario CF7 (Contact Form 7)."
+
+#: patterns/contact-3-col.php
+msgctxt "Pattern title"
+msgid "Contacts block"
+msgstr "Bloque de contactos"
+
+#: patterns/columns-text-img.php
+msgctxt "Pattern title"
+msgid "Right image, left text"
+msgstr "Imagen a la derecha, texto a la izquierda"
+
+#: patterns/columns-text-big-img-above.php
+msgctxt "Pattern title"
+msgid "Text and big image above"
+msgstr "Texto y una imagen grande arriba"
+
+#: patterns/columns-img-text.php
+msgctxt "Pattern title"
+msgid "Left image, right text"
+msgstr "Imagen a la izquierda, texto a la derecha"
+
+#: patterns/columns-img-text-dark-bg.php
+msgctxt "Pattern title"
+msgid "Left image, right text. dark background"
+msgstr "Imagen a la izquierda, texto a la derecha. Fondo oscuro"
+
+#: patterns/columns-3-col-img-text.php
+msgctxt "Pattern title"
+msgid "3 columns with images and text"
+msgstr "Tres columnas con imágenes y texto"
+
+#: patterns/blog-list.php
+msgctxt "Pattern title"
+msgid "Blog section in list style"
+msgstr "Sección de blog en estilo de lista."
+
+#: patterns/404.php
+msgctxt "Pattern title"
+msgid "404 text"
+msgstr "Texto de error 404"
+
+#: patterns/text-big.php:9
+msgid "Hello! We are Papanek.<br>We're an award-winning digital agency from Belgrade, Serbia, focused on UX/UI and website design. Our team is dedicated to delivering innovative solutions that meet and exceed our clients' expectations."
+msgstr "¡Hola! Somos Papanek.<br>Somos una agencia digital galardonada de Belgrado, Serbia, centrada en el diseño de experiencia de usuario (UX/UI) y sitios web. Nuestro equipo está dedicado a ofrecer soluciones innovadoras que cumplen y superan las expectativas de nuestros clientes."
+
+#: patterns/text-2-col-header.php:11
+msgid "Let's work<br>together"
+msgstr "Trabajemos<br>juntos."
+
+#: patterns/text-2-col-bg.php:12
+msgid "What are my superpowers?"
+msgstr "¿Cuáles son mis superpoderes?"
+
+#: patterns/testimonials-black.php:29 patterns/testimonials-simple.php:25
+msgid "Papanek's team created a stunning website that perfectly captured our brand image and enhanced our online presence. Highly recommended."
+msgstr "El equipo de Papanek creó un sitio web impresionante que capturó perfectamente nuestra imagen de marca y mejoró nuestra presencia en línea. Muy recomendado."
+
+#: patterns/testimonials-black.php:14 patterns/testimonials-simple.php:13
+msgid "See what clients say about our exceptional digital solutions in their reviews."
+msgstr "Vea lo que dicen los clientes sobre nuestras excepcionales soluciones digitales en sus reseñas."
+
+#: patterns/team-black.php:14
+msgid "Our skilled team specializes in creating outstanding digital products."
+msgstr "Nuestro experimentado equipo se especializa en la creación de productos digitales excepcionales."
+
+#: patterns/services-header-2-col-black.php:60
+msgid "Mobile Apps →"
+msgstr "Aplicaciones móviles →"
+
+#: patterns/services-header-2-col-black.php:44
+msgid "Development"
+msgstr "Desarrollo"
+
+#: patterns/services-header-2-col-black.php:32
+msgid "Mobile App Design →"
+msgstr "Diseño de aplicaciones móviles →"
+
+#: patterns/services-header-2-col-black.php:28
+msgid "UI\\UX design →"
+msgstr "Diseño de UI/UX →"
+
+#: patterns/services-header-2-col-black.php:20
+msgid "Design"
+msgstr "Diseño"
+
+#: patterns/portfolio-2-col-two.php:31 patterns/portfolio-2-col-two.php:69
+msgid "Papanek is a stunning WordPress theme featuring a clean and minimalist design.<br><a href=\"#\">Read more →</a>"
+msgstr "Papanek es un impresionante tema de WordPress con un diseño limpio y minimalista.<br><a href=\"#\">Leer más →</a>"
+
+#: patterns/howwework-2.php:14
+msgid "Let's get started in just a few simple steps!"
+msgstr "¡Comencemos en solo unos simples pasos!"
+
+#: patterns/howwework-1.php:109
+msgid "Analyze and report on campaign results to optimize future campaigns."
+msgstr "Analizar y reportar los resultados de la campaña para optimizar futuras campañas."
+
+#: patterns/howwework-1.php:83
+msgid "Implement the plan using various marketing tactics."
+msgstr "Implementar el plan utilizando diversas tácticas de marketing."
+
+#: patterns/howwework-1.php:57
+msgid "Develop a customized plan that aligns with the client's goals."
+msgstr "Desarrollar un plan personalizado que se alinee con los objetivos del cliente."
+
+#: patterns/howwework-1.php:31
+msgid "Conduct research to understand the client's goals and audience."
+msgstr "Realizar investigaciones para comprender los objetivos y la audiencia del cliente."
+
+#: patterns/howwework-1.php:15
+msgid "Let's get started in just a few simple steps! "
+msgstr "¡Comencemos en solo unos simples pasos! "
+
+#: patterns/howwework-1.php:11 patterns/howwework-2.php:10
+msgid "How we work"
+msgstr "Cómo trabajamos"
+
+#: patterns/hero-freelancer.php:15
+msgid "Hi, my name is Papanek. I'm a designer and WordPress developer. I can build your website from scratch. Check out <a href='#'>my portfolio</a> and <a href='#'>contact me</a>."
+msgstr "Hola, mi nombre es Papanek. Soy diseñador y desarrollador de WordPress. Puedo construir tu sitio web desde cero. Echa un vistazo a <a href='#'>mi portafolio</a> y <a href='#'>contáctame</a>."
+
+#: patterns/header-btn.php:22
+msgid "Send request"
+msgstr "Enviar solicitud"
+
+#: patterns/full-page-project.php:176
+msgid "Have an idea? Contact us!"
+msgstr "¿Tienes una idea? ¡Contáctanos!"
+
+#: patterns/full-page-project.php:144
+msgid "With big library of ready patterns you can build landing pages fast and easily."
+msgstr "Con una amplia biblioteca de patrones listos, puedes construir páginas de destino de manera rápida y sencilla."
+
+#: patterns/full-page-project.php:138
+msgid "54 block patterns"
+msgstr "54 patrones de bloques"
+
+#: patterns/full-page-project.php:117
+msgid "Use a suitable color scheme to create the perfect website for your business."
+msgstr "Utiliza una paleta de colores adecuada para crear el sitio web perfecto para tu negocio."
+
+#: patterns/full-page-project.php:113
+msgid "2 color styles: light and dark"
+msgstr "2 estilos de colores: claro y oscuro."
+
+#: functions.php:52
+msgid "Rounded Borders"
+msgstr "Borde redondeado"
+
+#: functions.php:71
+msgid "How We Work"
+msgstr "Cómo trabajamos"
+
+#: patterns/404.php:10
+msgid "┐(￣ヘ￣;)┌"
+msgstr "┐(￣ヘ￣;)┌"
+
+#: patterns/blog-deafult.php:10 patterns/blog-list.php:10
+#: patterns/full-page-agency.php:365 patterns/full-page-freelancer.php:313
+msgid "Blog"
+msgstr "Blog"
+
+#: patterns/404.php:18
+msgid "Go to the main page → "
+msgstr "Ir a la página principal → "
+
+#: patterns/404.php:18
+msgid "It looks like you've reached a URL that doesn’t exist.  Let's start from the beginning!  "
+msgstr "Parece que has llegado a una URL que no existe. ¡Empecemos desde el principio!  "
+
+#: patterns/404.php:14
+msgid "404. Page not found."
+msgstr "404 Página no encontrada"
+
+#: patterns/full-page-project.php:84 patterns/text-2-col-header-two.php:33
+msgid "Developed the design concept. Created patterns for the most used information blocks. Created ready-made templates for pages."
+msgstr "Desarrollamos el concepto de diseño. Creamos patrones para los bloques de información más utilizados. Creamos plantillas listas para las páginas."
+
+#: patterns/full-page-project.php:80 patterns/text-2-col-header-two.php:29
+msgid "What did we do?"
+msgstr "¿Qué tal lo hicimos?"
+
+#: patterns/full-page-project.php:68 patterns/text-2-col-header-two.php:17
+msgid "Target"
+msgstr "Objetivo"
+
+#: patterns/full-page-project.php:62 patterns/text-2-col-header-two.php:11
+msgid "Challenge"
+msgstr "Desafío"
+
+#: patterns/full-page-project.php:49 patterns/hero-project.php:48
+msgid "April, 2023"
+msgstr "Abril de 2023"
+
+#: patterns/full-page-project.php:45 patterns/hero-project.php:44
+msgid "Year"
+msgstr "Año"
+
+#: patterns/full-page-project.php:35 patterns/hero-project.php:34
+msgid "Client"
+msgstr "Cliente"
+
+#: patterns/full-page-project.php:15 patterns/hero-project.php:14
+msgid "Papanek is a stunning WordPress theme featuring a clean and minimalist design, complemented by an extensive pattern library inspired by the design philosophy of Victor Papanek."
+msgstr "Papanek es un impresionante tema de WordPress que presenta un diseño limpio y minimalista, complementado por una extensa biblioteca de patrones inspirada en la filosofía de diseño de Victor Papanek."
+
+#: patterns/full-page-project.php:11 patterns/hero-project.php:10
+msgid "Project: Papanek theme"
+msgstr "Proyecto: Tema Papanek"
+
+#: patterns/full-page-freelancer.php:390
+msgid "Contact me and provide details about your inquiry. I will get back to you soon."
+msgstr "Contáctame y proporciona detalles sobre tu consulta. Me pondré en contacto contigo pronto."
+
+#: patterns/full-page-freelancer.php:364
+msgid "Let's get in touch!"
+msgstr "Hablemos."
+
+#: patterns/full-page-freelancer.php:208 patterns/testimonials-img.php:13
+msgid "Check out my clients' reviews to see what they have to say about my work."
+msgstr "Echa un vistazo a las reseñas de mis clientes para ver lo que tienen que decir sobre mi trabajo."
+
+#: patterns/full-page-agency.php:342 patterns/full-page-freelancer.php:285
+#: patterns/testimonials-black.php:67 patterns/testimonials-img.php:90
+#: patterns/testimonials-simple.php:53
+msgid "We're extremely pleased with the results of our digital marketing campaign thanks to Papanek's expert knowledge in SEO, social media, and PPC advertising."
+msgstr "Estamos extremadamente satisfechos con los resultados de nuestra campaña de marketing digital gracias al conocimiento experto de Papanek en SEO, redes sociales y publicidad PPC."
+
+#: patterns/full-page-agency.php:337 patterns/full-page-freelancer.php:280
+#: patterns/testimonials-black.php:61 patterns/testimonials-img.php:85
+#: patterns/testimonials-simple.php:48
+msgid "Fusion Technologies"
+msgstr "Fusion Technologies"
+
+#: patterns/full-page-agency.php:319 patterns/full-page-freelancer.php:236
+#: patterns/testimonials-black.php:34 patterns/testimonials-img.php:41
+#: patterns/testimonials-simple.php:30
+msgid "David Kim<br>Creative Director"
+msgstr "David Kim<br>Director Creativo"
+
+#: patterns/full-page-agency.php:309 patterns/full-page-freelancer.php:226
+#: patterns/testimonials-black.php:23 patterns/testimonials-img.php:31
+#: patterns/testimonials-simple.php:20
+msgid "Stellar Cosmetics"
+msgstr "Stellar Cosmetics"
+
+#: patterns/full-page-agency.php:302
+msgid "Check out our clients' reviews to see what they have to say about our exceptional digital solutions."
+msgstr "Echa un vistazo a las reseñas de nuestros clientes para ver lo que tienen que decir sobre nuestras excepcionales soluciones digitales."
+
+#: patterns/full-page-agency.php:298 patterns/testimonials-black.php:10
+#: patterns/testimonials-simple.php:9
+msgid "What our clients say"
+msgstr "Lo que dicen nuestros clientes"
+
+#: patterns/full-page-agency.php:286 patterns/team-black.php:78
+#: patterns/team-simple-gray.php:72 patterns/team-simple.php:71
+#: patterns/team-stairs.php:91
+msgid "UI/UX Designer"
+msgstr "Diseñador UI/UX"
+
+#: patterns/full-page-agency.php:282 patterns/team-black.php:74
+#: patterns/team-simple-gray.php:68 patterns/team-simple.php:67
+#: patterns/team-stairs.php:87
+msgid "Michael Torres"
+msgstr "Michael Torres"
+
+#: patterns/full-page-agency.php:260 patterns/team-black.php:56
+#: patterns/team-simple-gray.php:54 patterns/team-simple.php:53
+#: patterns/team-stairs.php:65
+msgid "Aisha Khan"
+msgstr "Aisha Khan"
+
+#: patterns/full-page-agency.php:242 patterns/team-black.php:46
+#: patterns/team-simple-gray.php:40 patterns/team-simple.php:39
+#: patterns/team-stairs.php:47
+msgid "CTO"
+msgstr "CTO"
+
+#: patterns/full-page-agency.php:238 patterns/team-black.php:42
+#: patterns/team-simple-gray.php:36 patterns/team-simple.php:35
+#: patterns/team-stairs.php:43
+msgid "David Patel"
+msgstr "David Patel"
+
+#: patterns/full-page-agency.php:224 patterns/team-black.php:28
+#: patterns/team-simple-gray.php:26 patterns/team-simple.php:25
+#: patterns/team-stairs.php:29
+msgid "CEO"
+msgstr "CEO"
+
+#: patterns/full-page-agency.php:220 patterns/team-black.php:24
+#: patterns/team-simple-gray.php:22 patterns/team-simple.php:21
+#: patterns/team-stairs.php:25
+msgid "Sarah Johnson"
+msgstr "Sarah Johnson"
+
+#: patterns/full-page-agency.php:87 patterns/services-header-1-col-black.php:30
+#: patterns/services-header-1-col.php:29
+#: patterns/services-header-2-col-black.php:24
+#: patterns/services-header-2-col-gray.php:40
+msgid "We strengthen your brand identity through comprehensive strategies."
+msgstr "Fortalecemos la identidad de tu marca a través de estrategias integrales."
+
+#: patterns/full-page-agency.php:83 patterns/services-header-1-col-black.php:26
+#: patterns/services-header-1-col.php:25
+#: patterns/services-header-2-col-gray.php:36
+msgid "Design →"
+msgstr "Diseño →"
+
+#: patterns/full-page-agency.php:77 patterns/services-header-1-col-black.php:22
+#: patterns/services-header-1-col.php:21
+#: patterns/services-header-2-col-gray.php:30
+msgid "We create user-friendly interfaces that captivate your audience."
+msgstr "Creamos interfaces amigables para el usuario que cautivan a tu audiencia."
+
+#: patterns/full-page-agency.php:73 patterns/services-header-1-col-black.php:18
+#: patterns/services-header-1-col.php:17
+#: patterns/services-header-2-col-black.php:36
+#: patterns/services-header-2-col-gray.php:26
+msgid "Branding →"
+msgstr "Identidad →"
+
+#: patterns/full-page-agency.php:65 patterns/services-header-2-col-black.php:13
+#: patterns/services-header-2-col-gray.php:18
+msgid "We offer full digital solutions to help businesses thrive online."
+msgstr "Ofrecemos soluciones digitales completas para ayudar a las empresas a prosperar en línea."
+
+#: patterns/full-page-agency.php:59 patterns/full-page-project.php:25
+#: patterns/hero-project.php:24 patterns/services-header-1-col-black.php:12
+#: patterns/services-header-1-col.php:11
+#: patterns/services-header-2-col-black.php:9
+#: patterns/services-header-2-col-gray.php:12
+msgid "Services"
+msgstr "Servicios"
+
+#: patterns/full-page-agency.php:48
+msgid "Hello! We are <strong>Papanek</strong>.<br>We're an award-winning digital agency from <strong>Belgrade, Serbia</strong>, focused on <a href='#'>UX/UI</a> and <a href='#'>website design</a>. Our team is dedicated to delivering innovative solutions that meet and exceed <a href='#'>our clients'</a> expectations."
+msgstr "¡Hola! Somos <strong>Papanek</strong>.<br>Somos una galardonada agencia digital de <strong>Belgrado, Serbia</strong>, especializada en <a href='#'>diseño UX/UI</a> y <a href='#'>diseño de sitios web</a>. Nuestro equipo está dedicado a ofrecer soluciones innovadoras que cumplen y superan las expectativas de <a href='#'>nuestros clientes</a>."
+
+#: patterns/full-page-agency.php:31 patterns/hero-agency.php:31
+msgid "Our projects →"
+msgstr "Nuestros proyectos →"
+
+#: patterns/full-page-agency.php:22 patterns/hero-agency.php:22
+#: patterns/text-2-col-header.php:17
+msgid "We are full-service agency, busy designing and building digital products."
+msgstr "Somos una agencia de servicio completo ocupada diseñando y construyendo productos digitales."
+
+#: patterns/full-page-agency.php:16 patterns/hero-agency.php:16
+msgid "A creative design agency from <br>Belgrade, Serbia"
+msgstr "Una agencia de diseño creativa de <br>Belgrado, Serbia."
+
+#: patterns/footer-big.php:41 patterns/footer-default.php:15
+msgid "Powered by <a href=\"https://wordpress.org/\">WordPress</a>"
+msgstr "Impulsado por <a href=\"https://wordpress.org/\">WordPress</a>"
+
+#: patterns/footer-big.php:37 patterns/footer-default.php:11
+msgid "Papanek theme by <a href=\"https://romanfink.com\">Roman Fink</a>"
+msgstr "Tema Papanek por <a href=\"https://romanfink.com\">Roman Fink</a>"
+
+#: patterns/featured-num-3-col-black.php:41 patterns/featured-num-3-col.php:40
+#: patterns/full-page-freelancer.php:70
+msgid "Years<br>experience"
+msgstr "Años<br>de experiencia"
+
+#: patterns/featured-num-3-col-black.php:29 patterns/featured-num-3-col.php:28
+#: patterns/full-page-freelancer.php:58
+msgid "Happy<br>clients"
+msgstr "Clientes<br>satisfechos"
+
+#: patterns/contact-3-col.php:13
+msgid "We will happy to answer you anytime.<br>Let's get it touch the way you like."
+msgstr "Estaremos encantados de responder tus preguntas en cualquier momento.<br>Ponte en contacto con nosotros de la forma que prefieras."
+
+#: patterns/columns-hero-gray-bg.php:24
+msgid "My projects"
+msgstr "Mis proyectos"
+
+#: patterns/columns-hero-gray-bg.php:20 patterns/full-page-freelancer.php:21
+#: patterns/hero-freelancer.php:20
+msgid "Contact me"
+msgstr "Contáctame"
+
+#: patterns/columns-hero-gray-bg.php:11
+msgid "Create perfect <br>landing pages <br>with Papanek"
+msgstr "Crea páginas de <br>destino perfectas <br>con Papanek."
+
+#: patterns/columns-header-text-two-img-bg.php:10
+#: patterns/columns-text-big-img-above.php:11
+msgid "Create perfect landing pages"
+msgstr "Crea páginas de destino perfectas."
+
+#: patterns/columns-header-text-btn-light-bg.php:10
+msgid "Create perfect landing pages <br>with Papanek"
+msgstr "Crea páginas de destino perfectas <br>con Papanek"
+
+#: patterns/columns-cols-header-text-btns-dark-bg.php:26
+msgid "Sent a request"
+msgstr "Envió una solicitud."
+
+#: patterns/columns-cols-header-text-btns-dark-bg.php:17
+#: patterns/columns-header-text-btn-light-bg.php:14
+#: patterns/columns-header-text-two-img-bg.php:14
+#: patterns/columns-hero-gray-bg.php:15
+#: patterns/columns-img-text-dark-bg.php:21 patterns/columns-img-text.php:21
+#: patterns/columns-text-big-img-above.php:17 patterns/columns-text-img.php:15
+#: patterns/full-page-agency.php:160 patterns/full-page-agency.php:184
+#: patterns/full-page-freelancer.php:160 patterns/full-page-freelancer.php:184
+#: patterns/portfolio-2-col-one.php:29 patterns/portfolio-2-col-one.php:53
+msgid "Papanek is a stunning WordPress theme featuring a clean and minimalist design."
+msgstr "Papanek es un impresionante tema de WordPress que presenta un diseño limpio y minimalista."
+
+#: patterns/columns-cols-header-text-btns-dark-bg.php:11
+msgid "Create perfect<br>landing pages<br>with Papanek"
+msgstr "Crea páginas de<br>destino perfectas<br>con Papanek"
+
+#: patterns/columns-3-col-img-text.php:15
+#: patterns/columns-3-col-img-text.php:25
+#: patterns/columns-3-col-img-text.php:35
+msgid "Papanek is a stunning WordPress theme"
+msgstr "Papanek es un impresionante tema de WordPress"
+
+#: patterns/blog-deafult.php:47 patterns/blog-list.php:51
+msgid "No posts"
+msgstr "Sin entradas"
+
+#: patterns/blog-deafult.php:14 patterns/blog-list.php:14
+#: patterns/full-page-agency.php:369 patterns/full-page-freelancer.php:317
+msgid "Go to blog →"
+msgstr "Ir al blog →"
+
+#: patterns/full-page-freelancer.php:204 patterns/testimonials-img.php:9
+msgid "What my clients say"
+msgstr "Lo que dicen nuestros clientes"
+
+#: patterns/full-page-freelancer.php:140
+msgid "My recent projects"
+msgstr "Proyectos recientes"
+
+#: patterns/full-page-freelancer.php:129 patterns/services-2-col-gray.php:48
+msgid "I ensure your digital solutions are always running smoothly with ongoing maintenance, troubleshooting, and enhancements."
+msgstr "Me aseguro de que tus soluciones digitales siempre funcionen sin problemas con el mantenimiento continuo, la resolución de problemas y las mejoras."
+
+#: patterns/full-page-freelancer.php:125 patterns/services-2-col-gray.php:44
+msgid "Support"
+msgstr "Soporte"
+
+#: patterns/full-page-freelancer.php:119 patterns/services-2-col-gray.php:38
+#: patterns/text-2-col-bg.php:26
+msgid "I tailor Google Ads and Facebook Ads to reach your target audience and drive conversions."
+msgstr "Adapto anuncios de Google y Facebook para llegar a tu público objetivo y aumentar las conversiones."
+
+#: patterns/full-page-freelancer.php:115 patterns/services-2-col-gray.php:34
+msgid "Marketing"
+msgstr "Marketing"
+
+#: patterns/full-page-freelancer.php:103 patterns/services-2-col-gray.php:22
+msgid "Web development"
+msgstr "Desarrollo web"
+
+#: patterns/full-page-freelancer.php:97 patterns/services-2-col-gray.php:16
+#: patterns/text-2-col-bg.php:18
+msgid "I create visually stunning and user-friendly interfaces that captivate and engage your audience."
+msgstr "Creo interfaces visualmente impactantes y amigables para el usuario que cautivan y comprometen a tu audiencia."
+
+#: patterns/full-page-freelancer.php:93 patterns/services-2-col-gray.php:12
+msgid "UI\\UX design"
+msgstr "Diseñador UI/UX"
+
+#: patterns/full-page-freelancer.php:25 patterns/hero-freelancer.php:24
+msgid "My portfolio"
+msgstr "Mi porfolio"
+
+#: patterns/full-page-freelancer.php:12 patterns/hero-freelancer.php:11
+msgid "I'm a designer and WordPress developer"
+msgstr "Diseñador y desarrollador de WordPress"
+
+#: patterns/full-page-agency.php:347 patterns/full-page-freelancer.php:290
+#: patterns/testimonials-black.php:72 patterns/testimonials-img.php:95
+#: patterns/testimonials-simple.php:58
+msgid "Sarah Lee<br>Marketing Manager"
+msgstr "Sarah Lee<br>Gerente de Marketing"
+
+#: patterns/contact-3-col.php:23
+msgid "WhatsApp:"
+msgstr "WhatsApp:"
+
+#: patterns/contact-3-col.php:33
+msgid "Skype:"
+msgstr "Skype:"
+
+#: patterns/contact-3-col.php:43
+msgid "Email:"
+msgstr "Email:"
+
+#: patterns/full-page-agency.php:204 patterns/team-black.php:10
+#: patterns/team-simple-gray.php:10 patterns/team-simple.php:9
+#: patterns/team-stairs.php:9
+msgid "Our team"
+msgstr "Nuestro equipo"
+
+#: patterns/full-page-agency.php:180 patterns/full-page-freelancer.php:156
+#: patterns/full-page-freelancer.php:180 patterns/portfolio-2-col-one.php:25
+#: patterns/portfolio-2-col-one.php:49 patterns/portfolio-2-col-two.php:25
+#: patterns/portfolio-2-col-two.php:63
+msgid "Design / Development"
+msgstr "Diseño y desarrollo web"
+
+#: patterns/full-page-agency.php:164 patterns/full-page-agency.php:188
+#: patterns/full-page-freelancer.php:164 patterns/full-page-freelancer.php:188
+#: patterns/portfolio-2-col-one.php:33 patterns/portfolio-2-col-one.php:57
+msgid "Read more →"
+msgstr "Leer más →"
+
+#: patterns/full-page-agency.php:156
+msgid "Design / Development "
+msgstr "Diseño y desarrollo web "
+
+#: patterns/full-page-agency.php:140 patterns/portfolio-2-col-one.php:9
+#: patterns/portfolio-2-col-two.php:9
+msgid "Projects"
+msgstr "Proyectos"
+
+#: patterns/full-page-agency.php:129 patterns/services-header-2-col-gray.php:82
+msgid "We provide ongoing support to keep your online presence running smoothly."
+msgstr "Ofrecemos soporte continuo para mantener tu presencia en línea funcionando sin problemas."
+
+#: patterns/full-page-agency.php:125 patterns/services-header-2-col-gray.php:78
+msgid "Support →"
+msgstr "Soporte →"
+
+#: patterns/full-page-agency.php:119 patterns/services-header-2-col-gray.php:72
+msgid "We use data-driven insights to optimize strategies and achieve objectives."
+msgstr "Utilizamos información basada en datos para optimizar estrategias y lograr objetivos."
+
+#: patterns/full-page-agency.php:115 patterns/services-header-2-col-gray.php:68
+msgid "Analytics →"
+msgstr "Analítica →"
+
+#: patterns/full-page-agency.php:109 patterns/services-header-2-col-gray.php:62
+msgid "Our marketing experts reach your audience and drive conversions."
+msgstr "Nuestros expertos en marketing llegan a tu audiencia y generan conversiones."
+
+#: patterns/full-page-agency.php:105 patterns/services-header-2-col-gray.php:58
+msgid "Marketing →"
+msgstr "Marketing →"
+
+#: patterns/full-page-agency.php:97 patterns/services-header-1-col-black.php:38
+#: patterns/services-header-1-col.php:37
+#: patterns/services-header-2-col-black.php:48
+#: patterns/services-header-2-col-gray.php:50
+msgid "Our developers build scalable solutions that empower your business."
+msgstr "Nuestros desarrolladores construyen soluciones escalables que potencian tu negocio."
+
+#: patterns/full-page-agency.php:93 patterns/services-header-1-col-black.php:34
+#: patterns/services-header-1-col.php:33
+#: patterns/services-header-2-col-gray.php:46
+msgid "Development →"
+msgstr "Desarrollo →"
+
+#: patterns/featured-image-text-3-col.php:52
+msgid "Purchase risk-free with our money-back guarantee"
+msgstr "Compra sin riesgos con nuestra garantía de devolución de dinero"
+
+#: patterns/featured-image-text-3-col.php:36
+msgid "We will deliver your item within 2 hours or refund the fee."
+msgstr "Entregaremos su artículo en un plazo de 2 horas o reembolsaremos la tarifa."
+
+#: patterns/featured-image-text-2-col.php:40
+msgid "Fast delivery"
+msgstr "Entrega rápida"
+
+#: patterns/featured-image-text-2-col-black.php:24
+#: patterns/featured-image-text-2-col-black.php:44
+msgid "Some text here. Second text here. Two rows of text."
+msgstr "Texto aquí. Segundo texto aquí. Dos filas de texto."
+
+#: patterns/featured-icon-3-col-black.php:48
+#: patterns/featured-icon-3-col.php:47
+#: patterns/featured-text-3-col-black.php:36
+msgid "Purchase risk-free with our 30-days money-back guarantee"
+msgstr "Compra sin riesgos con nuestra garantía de devolución de dinero de 30 días"
+
+#: patterns/featured-icon-3-col-black.php:44
+#: patterns/featured-icon-3-col.php:43
+#: patterns/featured-text-3-col-black.php:32
+msgid "30-days money-back"
+msgstr "Devolución de dinero en 30 días"
+
+#: patterns/featured-icon-3-col-black.php:34
+#: patterns/featured-icon-3-col.php:33
+#: patterns/featured-image-text-2-col-small.php:24
+#: patterns/featured-image-text-2-col.php:24
+#: patterns/featured-image-text-3-col.php:20
+#: patterns/featured-text-3-col-black.php:26
+msgid "The average operator response time is 15 minutes."
+msgstr "El tiempo promedio de respuesta del operador es de 15 minutos."
+
+#: patterns/featured-icon-3-col-black.php:30
+#: patterns/featured-icon-3-col.php:29
+#: patterns/featured-image-text-2-col-black.php:20
+#: patterns/featured-image-text-2-col-black.php:40
+#: patterns/featured-image-text-2-col-small.php:20
+#: patterns/featured-image-text-2-col.php:20
+#: patterns/featured-text-3-col-black.php:22
+msgid "Support 24/7"
+msgstr "Soporte 24/7"
+
+#: patterns/featured-icon-3-col-black.php:20
+#: patterns/featured-icon-3-col.php:19
+#: patterns/featured-image-text-2-col-small.php:44
+#: patterns/featured-image-text-2-col.php:44
+#: patterns/featured-text-3-col-black.php:16
+msgid "We will deliver your item within 2 hours or refund the shipping fee."
+msgstr "Entregaremos su artículo en un plazo de 2 horas o reembolsaremos la tarifa."
+
+#: patterns/featured-icon-3-col-black.php:16
+#: patterns/featured-icon-3-col.php:15
+#: patterns/featured-image-text-2-col-small.php:40
+#: patterns/featured-text-3-col-black.php:12
+msgid "Delivery in 2 hours"
+msgstr "Entrega en 2 horas"
+
+#: patterns/contact-default.php:35 patterns/full-page-agency.php:438
+#: patterns/full-page-project.php:198
+msgid "Contact us and provide details about your inquiry. Our team will get back to you soon."
+msgstr "Contáctanos y proporciona detalles sobre tu consulta. Nuestro equipo se pondrá en contacto contigo pronto."
+
+#: patterns/contact-default.php:19 patterns/footer-big.php:16
+#: patterns/full-page-agency.php:422 patterns/full-page-project.php:182
+msgid "Office 3<br>Main Street 17<br>Belgrade, Serbia"
+msgstr "Office 3<br>Main Street 17<br>Belgrade, Serbia"
+
+#: functions.php:87
+msgid "Full page patterns"
+msgstr "Patrones de página completa"
+
+#: functions.php:85
+msgid "Full Page"
+msgstr "Página completa"
+
+#: functions.php:73
+msgid "Patterns about how we work"
+msgstr "Patrones sobre cómo trabajamos"
+
+#: patterns/full-page-agency.php:176 patterns/full-page-freelancer.php:176
+#: patterns/portfolio-2-col-one.php:45 patterns/portfolio-2-col-two.php:59
+msgid "Papanek Black"
+msgstr "Tema oscuro de Papanek"
+
+#: patterns/full-page-agency.php:264 patterns/team-black.php:60
+#: patterns/team-simple-gray.php:58 patterns/team-simple.php:57
+#: patterns/team-stairs.php:69
+msgid "Web Developer"
+msgstr "Desarrollador web"
+
+#: patterns/full-page-agency.php:152 patterns/full-page-freelancer.php:152
+#: patterns/portfolio-2-col-one.php:21 patterns/portfolio-2-col-two.php:21
+msgid "Papanek White"
+msgstr "Tema claro de Papanek"
+
+#: patterns/header-default.php
+msgctxt "Pattern title"
+msgid "Header default"
+msgstr "Cabecera por defecto"
+
+#: patterns/hero-agency.php
+msgctxt "Pattern title"
+msgid "Hero section for agency"
+msgstr "Sección de pantalla completa para agencia"
+
+#: patterns/hero-freelancer.php
+msgctxt "Pattern title"
+msgid "Hero section for freelancer"
+msgstr "Sección de pantalla completa para freelancer"
+
+#: patterns/hero-project.php
+msgctxt "Pattern title"
+msgid "Hero section for project"
+msgstr "Sección de pantalla completa para el proyecto"
+
+#: patterns/portfolio-2-col-two.php
+msgctxt "Pattern title"
+msgid "Portfolio, text under image"
+msgstr "Porfolio, texto debajo de la imagen"
+
+#: patterns/full-page-freelancer.php:16
+msgid "Hi, my name is Papanek. I'm a designer and WordPress developer. I can build your website from scratch. Check out <a href='#portfolio'>my portfolio</a> and <a href='#contact'>contact me</a>."
+msgstr "Hola, mi nombre es Papanek. Soy diseñador y desarrollador de WordPress. Puedo construir tu web desde cero. Echa un vistazo a <a href='#portfolio'>mi porfolio</a> y <a href='#contact'>contáctame</a>."
+
+#: patterns/header-btn.php
+msgctxt "Pattern title"
+msgid "Header with call to action button"
+msgstr "Cabecera con botón de llamada a la acción"
+
+#: patterns/services-header-2-col-gray.php
+msgctxt "Pattern title"
+msgid "Services with header, 2 col, light background"
+msgstr "Servicios con cabecera, 2 columnas, fondo claro"
+
+#: patterns/services-header-1-col.php
+msgctxt "Pattern title"
+msgid "Services with header, 1 col"
+msgstr "Servicios con cabecera, 1 columna"
+
+#: patterns/header-logo.php
+msgctxt "Pattern title"
+msgid "Header with logotype"
+msgstr "Cabecera con logotipo"
+
+#: patterns/services-header-2-col-black.php
+msgctxt "Pattern title"
+msgid "Services with header, 2 col, dark background"
+msgstr "Servicios con cabecera, 2 columnas, fondo oscuro"
+
+#: patterns/text-2-col-bg.php
+msgctxt "Pattern title"
+msgid "Text pattern, left header, 2 columns, background"
+msgstr "Patrón de texto, cabecera izquierdo, 2 columnas, fondo"
+
+#: patterns/columns-hero-gray-bg.php
+msgctxt "Pattern title"
+msgid "Big header, description and button with hero image"
+msgstr "Gran cabecera, descripción y botón con imagen de pantalla completa"
+
+#: patterns/columns-header-text-two-img-bg.php
+msgctxt "Pattern title"
+msgid "Header, description and 2 image gallery with background"
+msgstr "Cabecera, descripción y galería de 2 imágenes con fondo."
+
+#: patterns/columns-header-text-btn-light-bg.php
+msgctxt "Pattern title"
+msgid "Header, description and button with light background"
+msgstr "Cabecera, descripción y botón con fondo claro."
+
+#: patterns/columns-cols-header-text-btns-dark-bg.php
+msgctxt "Pattern title"
+msgid "Header, description and buttons with dark background"
+msgstr "Cabecera, descripción y botones con fondo oscuro."
+
+#: patterns/columns-header-text-btn-light-bg.php:19
+msgid "Get started →"
+msgstr "Primeros pasos →"
+
+#: patterns/columns-img-text-dark-bg.php:17 patterns/columns-img-text.php:17
+#: patterns/columns-text-img.php:11
+msgid "Some header here"
+msgstr "Algún cabecera aquí"
+
+#: theme.json styles/blue-fantasy.json styles/dark-and-gold.json
+#: styles/light-in-dark.json styles/middle-east.json styles/san-francisco.json
+#: styles/tiffany.json
+msgctxt "Color name"
+msgid "Background Gray"
+msgstr "Fondo gris"
+
+#: patterns/full-page-project.php:29 patterns/hero-project.php:28
+msgid "Development, Design"
+msgstr "Desarrollo, Diseño"
+
+#: patterns/howwework-2.php:54
+msgid "Execution and Implementation</strong><br>Implement the plan using various marketing tactics."
+msgstr "Ejecución e implementación</strong><br>Implementar el plan utilizando diversas tácticas de marketing."
+
+#: styles/light-in-dark.json
+msgctxt "Style variation name"
+msgid "Light in Darkness"
+msgstr "La luz en la oscuridad"
+
+#: patterns/columns-cols-header-text-btns-dark-bg.php:22
+#: patterns/contact-3-col.php:9 patterns/contact-default.php:13
+#: patterns/full-page-agency.php:27 patterns/full-page-agency.php:416
+#: patterns/hero-agency.php:27
+msgid "Contact us"
+msgstr "Contacta con nosotros"
+
+#. Theme URI of the theme
+#, gp-priority: low
+msgid "https://romanfink.com/papanek"
+msgstr "https://romanfink.com/papanek"
+
+#. Author of the theme
+#: patterns/full-page-project.php:39 patterns/hero-project.php:38
+#, gp-priority: low
+msgid "Roman Fink"
+msgstr "Roman Fink"
+
+#. Author URI of the theme
+#, gp-priority: low
+msgid "https://romanfink.com"
+msgstr "https://romanfink.com"
