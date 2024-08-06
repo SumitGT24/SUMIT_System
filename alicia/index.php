@@ -6,7 +6,8 @@ if (function_exists('newrelic_set_appname'))
 		newrelic_set_appname($_SERVER['HTTP_HOST'].';'.'PHP Point Of Sale Cloud');
 	}
 }
-
+//print a "oh, hello there" message
+echo 'Oh, hello there!';	
 // Set the current directory correctly for CLI requests
 if (defined('STDIN'))
 {
@@ -50,7 +51,7 @@ if (is_on_phppos_host() && is_on_api_url())
 }
 /**
  * CodeIgniter
- *
+ * HELLO WORLD!!!! :D
  * An open source application development framework for PHP
  *
  * This content is released under the MIT License (MIT)
