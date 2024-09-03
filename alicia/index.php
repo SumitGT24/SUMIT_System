@@ -7,7 +7,6 @@ if (function_exists('newrelic_set_appname'))
 	}
 }
 //print a "oh, hello there" message
-echo 'Oh, hello there!';	
 // Set the current directory correctly for CLI requests
 if (defined('STDIN'))
 {

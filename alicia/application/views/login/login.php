@@ -121,21 +121,14 @@
                             'size'=>'20')); 
                         ?>
                 
-                        
                         <div class="clearfix"></div>
                         <button type="submit" class="btn btn-primary btn-block"><?php echo lang('login_login'); ?></button>
                     <?php echo form_close() ?>  
                     <div class="version">
                         <p>
-                            <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">SOPORTE TECNICO ¡¡clic aca ¡¡</a> </span> 
-                        </p>
-							
-                     
-						
-							
-                 
-								
-               
+                            <a>Soporte técnico: </a>
+                            <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">>Click aquí<</a> </span> 
+                        </p>							                   											              						
                     </div>                
                 </div>
             </div>          
