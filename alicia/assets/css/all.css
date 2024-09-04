@@ -32,7 +32,9 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
+a{
+  color: white
+}
 .ti-wand:before {
 	content: "\e600";
 }
@@ -12733,6 +12735,7 @@ td .form-control.selectize-control {
   background: #001F49;
   display: table;
   width: 100%;
+  color: white;
 }
 .panel-piluku > .panel-heading h3 {
   font-size: 16px;
@@ -13082,6 +13085,7 @@ td .form-control.selectize-control {
   z-index: 9;
 }
 #footers {
+  color: white;
   margin-top: 50px;
 }
 .selectize-dropdown [data-selectable] .highlight {

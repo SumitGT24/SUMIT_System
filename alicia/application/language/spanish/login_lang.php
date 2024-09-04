@@ -1,5 +1,5 @@
-#Mensajes de inicio de sesión /login messages
 <?php
+#Mensajes de inicio de sesión /login messages
 $lang['login_login']='ENTRAR';
 $lang['login_username']='USUARIO';
 $lang['login_password']='CONTRASEÑA';
@@ -15,8 +15,6 @@ $lang['login_password_reset_has_been_sent'] = 'Se ha restablecido su contraseña
 $lang['login_password_has_been_reset'] = 'Su contraseña se ha restablecido. Por favor, de click en el siguiente enlace: ';
 $lang['login_passwords_must_match_and_be_at_least_8_characters'] = 'Las contraseñas deben coincidir y tener al menos ocho carácteres';
 
-
-
 $lang['login_press_login_to_continue'] = 'Presione iniciar sesión para continuar';
 $lang['login_username_or_email_does_not_exist'] = 'El nombre de usuario o el correo electrónico ingresado no existe. Por favor, vuelva a intentar';
 $lang['login_latest_updates_and_news'] = 'Haga click aquí para obtener las últimas actualizaciones y noticias';
@@ -26,7 +24,6 @@ $lang['login_unsupported_browser'] = 'Esta utilizando un navegador no compatible
 $lang['login_choose_action'] = 'Seleccione la acción';
 
 $lang['login_resign_text'] = 'Su suscripción a PHP Point Of Sale ha sido cancelada. Si cree que se trata de un error, regístrese de nuevo utilizando los siguientes enlaces:';
-
 
 $lang['login_force_password_change'] = 'El administrador responsable de su cuenta ha solicitado que cambie su contraseña';
 $lang['login_payment_failed_text'] = 'Su pago a PHP Point Of Sale ha fallado. Por favor, de click en el siguiente enlace para obtener instrucciones sobre cómo actualizar su tarjeta de crédito en PayPal';
