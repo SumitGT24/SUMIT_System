@@ -1,5 +1,5 @@
 <div id="footers" class="col-md-12 hidden-print text-center">
-	<h1>¿Necesitas ayuda?</h1>
+	<h5>¿Necesitas ayuda?</h5>
 	<a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">>Escribanos ahora<</a>
 	
 	</div>

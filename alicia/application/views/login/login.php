@@ -126,7 +126,7 @@
                     <?php echo form_close() ?>  
                     <div class="version">
                         <p>
-                            <a>Soporte técnico: </a>
+                            <h5>Soporte técnico: </h5>
                             <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">>Click aquí<</a> </span> 
                         </p>							                   											              						
                     </div>                
