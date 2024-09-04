@@ -127,7 +127,7 @@
                     <div class="version">
                         <p>
                             <h5>Soporte técnico: </h5>
-                            <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">>Click aquí<</a> </span> 
+                            <a class"BlackLink" href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">>Click aquí<</a> </span> 
                         </p>							                   											              						
                     </div>                
                 </div>

@@ -377,7 +377,7 @@ $lang['common_update_billing_info'] = 'Actualizar información de facturación';
 
 $lang['common_test_mode'] = 'Modo de prueba';
 
-$lang['common_start_new_sale'] = 'Iniciar una venta nueva';
+$lang['common_start_new_sale'] = 'INICIAR UNA NUEVA VENTA';
 
 $lang['common_sale_id'] = 'Serie y número';
 $lang['common_total_charge_to_account'] = 'Cargo total';

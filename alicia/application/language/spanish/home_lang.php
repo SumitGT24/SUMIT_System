@@ -1,7 +1,7 @@
 <?php
 $lang['home_todays_closeout_report'] = 'INFORME DEL CIERRE DE HOY';
 $lang['home_todays_detailed_sales_report'] = 'DETALLES DEL CIERRE DE HOY';
-$lang['home_todays_summary_items_report'] = 'REPORTE RESUMIDO DE ARTICULOS DEL CIERRE DE HOY';
+$lang['home_todays_summary_items_report'] = 'REPORTE RESUMIDO DE ARTÍCULOS DEL CIERRE DE HOY';
 
 $lang['home_receivings_start_new_receiving'] = 'REGISTRAR NUEVAS COMPRAS CON FACTURAS';
 $lang['home_mercury_activate_promo_text'] = 'El nuevo modulo de reparaciones permite llevar un mejor control de los servicios de reparacion y/o mantenimiento que se realicen, llevando un control especifico del seguimiento de cada uno de los casos.';

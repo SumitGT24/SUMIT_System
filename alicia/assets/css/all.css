@@ -12067,7 +12067,7 @@ ul.list-unstyled.menu-parent li span {
   width: 0;
   border-top: 11.55px solid #8476ba;
 }
-.hexagon.success {
+.hexagon.success {>Escribanos ahora<
   background-color: #6fd64b;
 }
 .hexagon.success:before {
@@ -13083,7 +13083,7 @@ td .form-control.selectize-control {
   z-index: 9;
 }
 #footers {
-  color: #ffffffs;
+  color: #ffffff;
   margin-top: 50px;
 }
 .selectize-dropdown [data-selectable] .highlight {
