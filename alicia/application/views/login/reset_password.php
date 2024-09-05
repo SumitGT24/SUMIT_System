@@ -53,7 +53,7 @@ if (is_on_demo_host()) { ?>
                             )); ?>
                     </h1> 
                     <?php echo form_open('login/do_reset_password_notify',array('class'=>'form login-form')); ?>
-                        <p><?php echo lang('login_reset_password'); ?></p>
+                        <h1><?php echo lang('login_reset_password'); ?></h1>
                         <?php if (isset($error)) {?>
 			                <div class="alert alert-danger">
 			                    <strong><?php echo lang('common_error'); ?></strong>
@@ -72,16 +72,15 @@ if (is_on_demo_host()) { ?>
                             'placeholder'=>lang('login_username'), 
                             'size'=>'20')); 
                         ?>
-                
-                        <div class="bottom_info">
-                            <a href="<?php echo site_url('login') ?>" class="flip-link to-recover"><?php echo lang('login_login'); ?></a>
-                        </div>      
+                    
                         <div class="clearfix"></div>
                         <button type="submit" class="btn btn-primary btn-block"><?php echo lang('login_reset_password'); ?></button>
+                         <!--   <a href="<@?php echo site_url('login') ?>" class="flip-link to-recover"><@?php echo lang('login_login'); ?></a> -->
+                            <a href="<@?php echo site_url('login') ?>" class="flip-link to-recover">Volver a la página de inicio de sesión></a>
                     <?php echo form_close() ?>  
                     <div class="version">
                         <p>
-                            <!------- <span class="badge bg-success"><?php #echo APPLICATION_VERSION; ?></span> <?php #echo lang('common_built_on'). ' '.BUILT_ON_DATE;?> -->
+                            <!------- <span class="badge bg-success"><@?php echo APPLICATION_VERSION; ?></span> <@?php echo lang('common_built_on'). ' '.BUILT_ON_DATE;?> -->
                         </p>
                     </div>
                 </div>

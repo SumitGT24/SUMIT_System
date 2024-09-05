@@ -65,7 +65,7 @@
 							'french'    => 'Fançais',
 							'italian'    => 'Italiano',
 							'german'    => 'Deutsch',
-							'dutch'    => 'Nederlands',
+							//'dutch'    => 'Nederlands',
 							'portugues'    => 'Portugues',
 							'arabic' => 'العَرَبِيةُ‎‎',
 							'khmer' => 'Khmer',
