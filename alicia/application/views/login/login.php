@@ -126,8 +126,8 @@
                     <?php echo form_close() ?>  
                     <div class="version">
                         <p>
-                            <h5>Soporte técnico: </h5>
-                            <a class"BlackLink" href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">>Click aquí<</a> </span> 
+                            <a href="<?php $this->load->view('login/reset_password')?>">¿Olvidaste tu contraseña?</a>
+                            <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><h5>Soporte técnico</h5></a> </span> 
                         </p>							                   											              						
                     </div>                
                 </div>
