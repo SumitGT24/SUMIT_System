@@ -246,9 +246,6 @@
 								'french'    => 'Fançais',
 								'german'    => 'Deutsch',
 								'portugues'    => 'Portugues',
-								'arabic' => 'العَرَبِيةُ‎‎',
-								'khmer' => 'Khmer',
-								'vietnamese' => 'Vietnamese',
 							),
 							$person_info->language ? $person_info->language : $this->Appconfig->get_raw_language_value(),
 							'class="form-control" id="language"'

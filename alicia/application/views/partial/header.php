@@ -408,10 +408,7 @@ if (is_on_demo_host()) { ?>
 							'french'    => 'Fançais',
 							'german'    => 'Deutsch',
 							'portugues'    => 'Portugues',
-							'arabic' => 'العَرَبِيةُ‎‎',
-							'khmer' => 'Khmer',
 							'vietnamese' => 'Vietnamese',
-							'tamil' => 'Tamil',
 						);
 
 						?>	

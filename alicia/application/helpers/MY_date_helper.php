@@ -143,9 +143,6 @@ function get_js_locale()
 				'french'    => 'fr',
 				'german'    => 'de',
 				'portugues'    => 'pt',
-				'arabic' => 'ar-ly',
-				'khmer' => 'km',
-				'vietnamese'   => 'vi', 
 				);
 
 	return isset($languages[$CI->config->item("language")]) ? $languages[$CI->config->item("language")] : 'en';
