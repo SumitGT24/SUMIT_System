@@ -10702,10 +10702,7 @@ body.open-modal {
   }
   html.indonesia #register.table *,
   html.german #register.table *,
-  /*
-  html.dutch #register.table * {
-    font-size: 11px !important;
-  }*/
+
   html.french #register.table *,
   html.portugues #register.table *,
   html.arabic #register.table *,
@@ -11051,18 +11048,13 @@ ul.ui-autocomplete {
 html.spanish #unpaid_sales,
 html.indonesia #unpaid_sales,
 html.german #unpaid_sales,
-/*html.dutch #unpaid_sales,*/
 html.spanish #unpaid_sales th,
 html.indonesia #unpaid_sales th,
 html.german #unpaid_sales th,
-/*html.dutch #unpaid_sales th,*/
 html.spanish #unpaid_sales td,
 html.indonesia #unpaid_sales td,
 html.german #unpaid_sales td,
-/*
-html.dutch #unpaid_sales td {
-  font-size: 11px;
-}*/
+
 @media (max-width: 768px) {
   #unpaid_sales .sp_comment {
     display: none;

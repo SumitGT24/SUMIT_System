@@ -94,7 +94,9 @@
                         <?php echo img(array('src' => $this->Appconfig->get_logo_image())); ?>
                     </div> 
                     <?php echo form_open('login?continue='.rawurlencode($this->input->get('continue')), array('class' => 'form login-form', 'id'=>'loginform', 'autocomplete'=> 'off')) ?>            
+                    <div class="version">
                         <h4>Iniciar sesión en SUMIT</h4>
+                    </div>    
                         <?php if (validation_errors()) {?>
                         <div class="alert alert-danger">
                             <strong><?php echo lang('common_error'); ?></strong>
@@ -118,7 +120,7 @@
                             'placeholder'=> lang('login_password'),
                             'size'=>'20')); 
                         ?>
-                
+
                         <div class="clearfix"></div>
                         <button type="submit" class="btn btn-primary btn-block"><?php echo lang('login_login'); ?></button>
                     <?php echo form_close() ?>  
