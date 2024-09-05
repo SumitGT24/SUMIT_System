@@ -77,9 +77,10 @@ if (is_on_demo_host()) { ?>
                     
                         <div class="clearfix"></div>
                         <button type="submit" class="btn btn-primary btn-block"><?php echo lang('login_reset_password'); ?></button>
-                         <!--   <a href="<@?php echo site_url('login') ?>" class="flip-link to-recover"><@?php echo lang('login_login'); ?></a> -->
                             <div class= "version">
-                                <a href="<?php echo site_url('login') ?>" class="flip-link to-recover">Iniciar sesión></a>
+                                <p>
+                                    <a href="<?php echo site_url('login') ?>" class="flip-link to-recover">Iniciar sesión</a>
+                                </p>
                             </div>
                     <?php echo form_close() ?>  
                     <div class="version">

@@ -146,8 +146,6 @@ function get_js_locale()
 				'arabic' => 'ar-ly',
 				'khmer' => 'km',
 				'vietnamese'   => 'vi', 
-				'chinese' => 'zh-cn',
-				'chinese_traditional' => 'zh-tw',
 				'tamil' => 'ta',
 				);
 

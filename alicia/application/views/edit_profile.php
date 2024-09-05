@@ -68,8 +68,6 @@
 							'arabic' => 'العَرَبِيةُ‎‎',
 							'khmer' => 'Khmer',
 							'vietnamese' => 'Vietnamese',
-							'chinese' => '中文',
-							'chinese_traditional' => '繁體中文',
 							'tamil' => 'Tamil',
 							),
 							$person_info->language ? $person_info->language : $this->Appconfig->get_raw_language_value(), 'class="form-control"');

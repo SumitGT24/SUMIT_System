@@ -411,8 +411,6 @@ if (is_on_demo_host()) { ?>
 							'arabic' => 'العَرَبِيةُ‎‎',
 							'khmer' => 'Khmer',
 							'vietnamese' => 'Vietnamese',
-							'chinese' => '中文',
-							'chinese_traditional' => '繁體中文',
 							'tamil' => 'Tamil',
 						);
 

@@ -2099,8 +2099,6 @@ $this->load->helper('update');
 							'arabic' => 'العَرَبِيةُ‎‎',
 							'khmer' => 'Khmer',
 							'vietnamese' => 'Vietnamese',
-							'chinese' => '中文',
-							'chinese_traditional' => '繁體中文',
 							'tamil' => 'Tamil',
 							),
 							$this->config->item('second_language'), 'class="form-control" id="second_language"');
@@ -3709,8 +3707,6 @@ $this->load->helper('update');
               			  	'arabic' => 'العَرَبِيةُ‎‎',
 							'khmer' => 'Khmer',
 							'vietnamese' => 'Vietnamese',
-							'chinese' => '中文',
-							'chinese_traditional' => '繁體中文',
 							'tamil' => 'Tamil',
 						),
 							$this->Appconfig->get_raw_language_value(), 'class="form-control" id="language"');
