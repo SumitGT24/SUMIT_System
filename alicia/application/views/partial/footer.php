@@ -1,5 +1,5 @@
 <div id="footers" class="col-md-12 hidden-print text-center">
-	<a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><h5 style="color: white;">>¿Necesitas ayuda?</h5></a>
+	<a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><h5 style="color: white;">¿Necesitas ayuda?</h5></a>
 	
 	</div>
 </div>
