@@ -3707,7 +3707,6 @@ $this->load->helper('update');
               			  	'arabic' => 'العَرَبِيةُ‎‎',
 							'khmer' => 'Khmer',
 							'vietnamese' => 'Vietnamese',
-							'tamil' => 'Tamil',
 						),
 							$this->Appconfig->get_raw_language_value(), 'class="form-control" id="language"');
 							?>

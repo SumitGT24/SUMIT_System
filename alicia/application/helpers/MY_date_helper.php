@@ -146,7 +146,6 @@ function get_js_locale()
 				'arabic' => 'ar-ly',
 				'khmer' => 'km',
 				'vietnamese'   => 'vi', 
-				'tamil' => 'ta',
 				);
 
 	return isset($languages[$CI->config->item("language")]) ? $languages[$CI->config->item("language")] : 'en';

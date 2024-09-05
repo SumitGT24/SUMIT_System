@@ -79,7 +79,7 @@ if (is_on_demo_host()) { ?>
                         <button type="submit" class="btn btn-primary btn-block"><?php echo lang('login_reset_password'); ?></button>
                             <div class= "version">
                                 <p>
-                                    <a href="<?php echo site_url('login') ?>" class="flip-link to-recover">Iniciar sesión</a>
+                                    <a href="<?php echo site_url('login') ?>" class="flip-link to-recover"><h5>Iniciar sesión</h5></a>
                                 </p>
                             </div>
                     <?php echo form_close() ?>  
