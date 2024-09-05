@@ -81,7 +81,7 @@ if (is_on_demo_host()) { ?>
                     <?php echo form_close() ?>  
                     <div class="version">
                         <p>
-                            <span class="badge bg-success"><?php echo APPLICATION_VERSION; ?></span> <?php echo lang('common_built_on'). ' '.BUILT_ON_DATE;?>
+                            <!------- <span class="badge bg-success"><?php #echo APPLICATION_VERSION; ?></span> <?php #echo lang('common_built_on'). ' '.BUILT_ON_DATE;?> -->
                         </p>
                     </div>
                 </div>

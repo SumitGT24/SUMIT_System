@@ -143,7 +143,7 @@ function get_js_locale()
 				'french'    => 'fr',
 				'italian'    => 'it',
 				'german'    => 'de',
-				'dutch'    => 'nl',
+				//'dutch'    => 'nl',
 				'portugues'    => 'pt',
 				'arabic' => 'ar-ly',
 				'khmer' => 'km',
