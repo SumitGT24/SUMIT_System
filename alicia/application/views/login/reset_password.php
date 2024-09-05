@@ -53,7 +53,9 @@ if (is_on_demo_host()) { ?>
                             )); ?>
                     </h1> 
                     <?php echo form_open('login/do_reset_password_notify',array('class'=>'form login-form')); ?>
-                        <h1><?php echo lang('login_reset_password'); ?></h1>
+                        <div class="version">
+                            <h4><?php echo lang('login_reset_password'); ?></h4>
+                        </div>
                         <?php if (isset($error)) {?>
 			                <div class="alert alert-danger">
 			                    <strong><?php echo lang('common_error'); ?></strong>
@@ -76,7 +78,9 @@ if (is_on_demo_host()) { ?>
                         <div class="clearfix"></div>
                         <button type="submit" class="btn btn-primary btn-block"><?php echo lang('login_reset_password'); ?></button>
                          <!--   <a href="<@?php echo site_url('login') ?>" class="flip-link to-recover"><@?php echo lang('login_login'); ?></a> -->
-                            <a href="<@?php echo site_url('login') ?>" class="flip-link to-recover">Volver a la página de inicio de sesión></a>
+                            <div class= "version">
+                                <a href="<?php echo site_url('login') ?>" class="flip-link to-recover">Iniciar sesión></a>
+                            </div>
                     <?php echo form_close() ?>  
                     <div class="version">
                         <p>

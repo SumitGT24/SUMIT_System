@@ -94,7 +94,7 @@
                         <?php echo img(array('src' => $this->Appconfig->get_logo_image())); ?>
                     </div> 
                     <?php echo form_open('login?continue='.rawurlencode($this->input->get('continue')), array('class' => 'form login-form', 'id'=>'loginform', 'autocomplete'=> 'off')) ?>            
-                        <h1>Iniciar sesión en SUMIT</h1>
+                        <h4>Iniciar sesión en SUMIT</h4>
                         <?php if (validation_errors()) {?>
                         <div class="alert alert-danger">
                             <strong><?php echo lang('common_error'); ?></strong>
