@@ -403,12 +403,7 @@ if (is_on_demo_host()) { ?>
 						<?php 
 						$languages = array(
 							'english'  => 'English',
-							'indonesia'    => 'Indonesia',
 							'spanish'   => 'Español', 
-							'french'    => 'Fançais',
-							'german'    => 'Deutsch',
-							'portugues'    => 'Portugues',
-							'vietnamese' => 'Vietnamese',
 						);
 
 						?>	

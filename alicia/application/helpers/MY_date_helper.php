@@ -138,11 +138,7 @@ function get_js_locale()
 	$CI =& get_instance();
 	$languages = array(
 				'english'  => 'en',
-				'indonesia'    => 'id',
 				'spanish'   => 'es', 
-				'french'    => 'fr',
-				'german'    => 'de',
-				'portugues'    => 'pt',
 				);
 
 	return isset($languages[$CI->config->item("language")]) ? $languages[$CI->config->item("language")] : 'en';

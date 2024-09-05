@@ -2091,15 +2091,7 @@ $this->load->helper('update');
 						<?php echo form_dropdown('second_language', array(
 							''  => lang('common_none'),
 							'english'  => 'English',
-							'indonesia'    => 'Indonesia',
 							'spanish'   => 'Español', 
-							'french'    => 'Fançais',
-							'german'    => 'Deutsch',
-							'portugues'    => 'Portugues',
-							'arabic' => 'العَرَبِيةُ‎‎',
-							'khmer' => 'Khmer',
-							'vietnamese' => 'Vietnamese',
-							'tamil' => 'Tamil',
 							),
 							$this->config->item('second_language'), 'class="form-control" id="second_language"');
 							?>
@@ -3699,12 +3691,7 @@ $this->load->helper('update');
 						<div class="col-sm-9 col-md-9 col-lg-10">
 						<?php echo form_dropdown('language', array(
 							'english'  => 'English',
-							'indonesia'    => 'Indonesia',
 							'spanish'   => 'Español', 
-							'french'    => 'Fançais',
-							'german'    => 'Deutsch',
-							'portugues'    => 'Portugues',
-              			  	'arabic' => 'العَرَبِيةُ‎‎',
 						),
 							$this->Appconfig->get_raw_language_value(), 'class="form-control" id="language"');
 							?>

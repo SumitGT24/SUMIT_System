@@ -10694,15 +10694,8 @@ body.open-modal {
   html.english #register.table * {
     font-size: inherit !important;
   }
-  html.indonesia #register.table *,
-  html.german #register.table *,
   
-  html.french #register.table *,
-  html.portugues #register.table *,
-  html.arabic #register.table *,
-  html.khmer #register.table * {
-    font-size: 12px !important;
-  }
+
   #register_container .amount-block .side-heading {
     font-size: 11px;
     line-height: 1.3em;
@@ -11040,14 +11033,9 @@ ul.ui-autocomplete {
   font-size: 12px;
 }
 html.spanish #unpaid_sales,
-html.indonesia #unpaid_sales,
-html.german #unpaid_sales,
 html.spanish #unpaid_sales th,
-html.indonesia #unpaid_sales th,
-html.german #unpaid_sales th,
 html.spanish #unpaid_sales td,
-html.indonesia #unpaid_sales td,
-html.german #unpaid_sales td,
+
 @media (max-width: 768px) {
   #unpaid_sales .sp_comment {
     display: none;
