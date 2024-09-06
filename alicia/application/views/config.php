@@ -4818,7 +4818,7 @@ $this->load->helper('update');
 				
 			</div>
 			-->
-	     <!-- Api Settings
+	     <!-- Api Settings-->
 	     <div class="col-md-12">
 				<div class="panel panel-piluku">
 					<div class="panel-heading">
@@ -4951,7 +4951,7 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
-		-->	
+		-	
 			<div class="form-actions">
 			<?php echo form_submit(array(
 				'name'=>'submitf',
@@ -4961,7 +4961,7 @@ $this->load->helper('update');
 			</div>
     
 		<?php echo form_close(); ?>	
-	<!--</div-->
+	</div>
 </div>
 <script type='text/javascript'>
 //validation and submit handling
