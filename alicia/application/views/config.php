@@ -4457,9 +4457,7 @@ $this->load->helper('update');
 						?>
 					</div>
 				</div>
-				  
-								
-								
+				  										
 						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
 						<#?php echo form_label(lang('config_do_not_upload_images_to_ecommerce').':', 'do_not_upload_images_to_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4963,7 +4961,7 @@ $this->load->helper('update');
 			</div>
     
 		<?php echo form_close(); ?>	
-	</div>
+	<!--</div-->
 </div>
 <script type='text/javascript'>
 //validation and submit handling
