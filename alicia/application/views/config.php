@@ -3803,7 +3803,7 @@ $this->load->helper('update');
 						</div>
 					</div>
 						
-		
+					
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('common_dark_mode').':', 'dark_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
