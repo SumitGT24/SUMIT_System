@@ -4953,7 +4953,7 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
-			
+		-->	
 			<div class="form-actions">
 			<?php echo form_submit(array(
 				'name'=>'submitf',
