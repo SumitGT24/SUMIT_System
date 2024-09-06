@@ -76,10 +76,10 @@ $this->load->helper('update');
 						<?php } else { ?>
 							<div class="row">
 								<div class="col-md-4 col-md-offset-2">
-									<a class="btn btn-block btn-update-billing btn-primary" href="https://web.whatsapp.com/send?phone=+50237376619" target="_blank"><?php echo lang('common_update_billing_info');?></a>				
+									<a class="btn btn-block btn-update-billing btn-primary" href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_update_billing_info');?></a>				
 								</div>
 								<div class="col-md-4">
-									<a class="btn btn-block btn-update-billing btn-default" href="https://web.whatsapp.com/send?phone=+50237376619" target="_blank"><?php echo lang('config_cancel_account');?></a>
+									<a class="btn btn-block btn-update-billing btn-default" href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('config_cancel_account');?></a>
 								</div>
 							</div>
 						<?php } ?>
@@ -154,10 +154,10 @@ $this->load->helper('update');
 				<div class="panel-body">
 					
 					<!-- Borrar taxjar
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
-						<#?php echo form_label(lang('config_taxjar_api_key').':', 'taxjar_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
+						<?php echo form_label(lang('config_taxjar_api_key').':', 'taxjar_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-						<#?php echo form_input(array(
+						<?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'taxjar_api_key',
 							'id'=>'taxjar_api_key',
@@ -3335,7 +3335,6 @@ $this->load->helper('update');
 					</div>				
 					
 					
-					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
 						<?php echo form_label(lang('config_default_reorder_level_when_creating_items').':', 'default_reorder_level_when_creating_items',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3359,9 +3358,7 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					
-					
-								
+												
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
 					<?php echo form_label(lang('config_default_new_items_to_service').':', 'default_new_items_to_service',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3458,9 +3455,7 @@ $this->load->helper('update');
 							'value'=>$this->config->item('default_age_to_verify')));?>
 						</div>
 					</div>
-					
-					
-					
+						
 					<div id="strict_age_format_check_container" class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
 					<?php echo form_label(lang('config_strict_age_format_check').':', 'strict_age_format_check',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3679,18 +3674,18 @@ $this->load->helper('update');
 					<?php echo create_section(lang('config_application_settings_info'))  ?>
 				</div>	
 				<div class="panel-body">
-					<!--Idioma
-					<#?php if(is_on_demo_host()) { ?>
+					<!--Idioma -->
+					<?php if(is_on_demo_host()) { ?>
 						<div class="form-group">	
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<span class="text-danger"><#?php echo lang('config_cannot_change_language'); ?></span>
+								<span class="text-danger"><?php echo lang('config_cannot_change_language'); ?></span>
 							</div>
 						</div>
-					<#?php } ?>
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
-						<#?php echo form_label(lang('common_language').':', 'language',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<?php } ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<?php echo form_label(lang('common_language').':', 'language',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_dropdown('language', array(
+							<?php echo form_dropdown('language', array(
 								'english'  => 'English',
 								'spanish'   => 'Español', 
 							),
@@ -3699,11 +3694,11 @@ $this->load->helper('update');
 						</div>						
 					</div>
 					--->
-					<!-- Formato de fecha
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
-						<#?php echo form_label(lang('config_date_format').':', 'date_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<!-- Formato de fecha -->
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<?php echo form_label(lang('config_date_format').':', 'date_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_dropdown('date_format', array(
+							<?php echo form_dropdown('date_format', array(
 								'middle_endian'    => '12/30/2000',
 								'little_endian'  => '30-12-2000',
 								'big_endian'   => '2000-12-30'), $this->config->item('date_format'), 'class="form-control" id="date_format"');
@@ -3712,11 +3707,11 @@ $this->load->helper('update');
 						</div>
 					-->
 						
-					<!-- Formato de hora
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
-						<#?php echo form_label(lang('config_time_format').':', 'time_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<!-- Formato de hora -->
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<?php echo form_label(lang('config_time_format').':', 'time_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_dropdown('time_format', array(
+							<?php echo form_dropdown('time_format', array(
 								'12_hour'    => '1:00 PM',
 								'24_hour'  => '13:00'
 								), $this->config->item('time_format'), 'class="form-control" id="time_format"');
@@ -4154,18 +4149,18 @@ $this->load->helper('update');
 		</div>
 		<?php if(!is_on_phppos_host()) { ?>
 		
-     <!-- Email Settings
+     <!-- Email Settings-->
      <div class="col-md-12">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<#?php echo create_section(lang('config_email_settings_info'))  ?>
+					<?php echo create_section(lang('config_email_settings_info'))  ?>
 				</div>	
 				<div class="panel-body">
 					
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
-						<#?php echo form_label('Select A Provider'.':', 'email_provider',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
+						<?php echo form_label('Select A Provider'.':', 'email_provider',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php
+							<?php
 								$provider_options = array('Use System Default'=>'Use System Default', 'Gmail'=>'Gmail', 'Office 365'=>'Office 365', 'Windows Live Hotmail'=>'Windows Live Hotmail', 'Other'=>'Other');
 								echo form_dropdown('email_provider', $provider_options, $this->config->item('email_provider'), 'id="email_provider" class="form-control"');
 							?>
@@ -4173,10 +4168,10 @@ $this->load->helper('update');
 					</div>
 					
 				<div class="email_basic">
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
-						<#?php echo form_label(lang('config_smtp_user').':', 'smtp_user',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_user').':', 'smtp_user',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_input(array(
+							<?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_user',
 							'id'=>'smtp_user',
@@ -4185,10 +4180,10 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
-						<#?php echo form_label(lang('config_smtp_pass').':', 'smtp_pass',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_pass').':', 'smtp_pass',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_password(array(
+							<?php echo form_password(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_pass',
 							'id'=>'smtp_pass',
@@ -4198,28 +4193,28 @@ $this->load->helper('update');
 					</div>
 				</div>
 				<div class="email_advanced">	
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
-						<#?php echo form_label(lang('config_smtp_crypto').':', 'smtp_crypto',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_crypto').':', 'smtp_crypto',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php
+							<?php
 								$smtp_crypto_options = array(''=>'','ssl'=>'ssl','tls'=>'tls');
 								echo form_dropdown('smtp_crypto', $smtp_crypto_options, $this->config->item('smtp_crypto'), 'id="smtp_crypto" class="form-control"');
 							?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
-						<#?php echo form_label(lang('config_email_protocol').':', 'protocol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
+						<?php echo form_label(lang('config_email_protocol').':', 'protocol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php
+							<?php
 								$protocol_options = array(''=>'','smtp'=>'smtp','mail'=>'mail','sendmail'=>'sendmail');
 								echo form_dropdown('protocol', $protocol_options, $this->config->item('protocol'), 'id="protocol" class="form-control"');
 							?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
-						<#?php echo form_label(lang('config_smtp_host').':', 'smtp_host',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_host').':', 'smtp_host',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_input(array(
+							<?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_host',
 							'id'=>'smtp_host',
@@ -4228,10 +4223,10 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
-						<#?php echo form_label(lang('config_smtp_port').':', 'smtp_port',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_port').':', 'smtp_port',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_input(array(
+							<?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_port',
 							'id'=>'smtp_port',
@@ -4239,10 +4234,10 @@ $this->load->helper('update');
 							'value'=>$this->config->item('smtp_port')));?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
-						<#?php echo form_label(lang('config_email_charset').':', 'email_charset',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_email_charset').':', 'email_charset',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_input(array(
+							<?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'email_charset',
 							'id'=>'email_charset',
@@ -4250,10 +4245,10 @@ $this->load->helper('update');
 							'value'=>$this->config->item('email_charset')));?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
-						<#?php echo form_label(lang('config_email_newline').':', 'newline',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_email_newline').':', 'newline',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php
+							<?php
 								$newline_options = array('rn'=>'\r\n','n'=>'\n','r'=>'\r');
 								$selected_option = 'rn';
 								
@@ -4277,10 +4272,10 @@ $this->load->helper('update');
 							?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
-						<#?php echo form_label(lang('config_email_crlf').':', 'crlf',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_email_crlf').':', 'crlf',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php
+							<?php
 								$crlf_options = array('rn'=>'\r\n','n'=>'\n','r'=>'\r');
 								$selected_option = 'rn';
 								
@@ -4304,10 +4299,10 @@ $this->load->helper('update');
 							?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
-						<#?php echo form_label(lang('config_smtp_timeout').':', 'smtp_timeout',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
+						<?php echo form_label(lang('config_smtp_timeout').':', 'smtp_timeout',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_input(array(
+							<?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_timeout',
 							'id'=>'smtp_timeout',
@@ -4316,60 +4311,60 @@ $this->load->helper('update');
 						</div>
 					</div>
 				</div> <!-- end advanced email 
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
 						<div class="col-sm-12 col-md-12 col-lg-12">
 							<span class="pull-right">
-	            	<button id="test_email" type="button" class="btn btn-lg btn-primary"><span id="test_email_icon" class="glyphicon glyphicon-envelope"></span> <#?php echo lang('config_send_test_email');?></button>
+	            	<button id="test_email" type="button" class="btn btn-lg btn-primary"><span id="test_email_icon" class="glyphicon glyphicon-envelope"></span> <?php echo lang('config_send_test_email');?></button>
 							</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<#?php } ?>
-		-->
-	<!-- QB Settings
+		<?php } ?>
+
+	<!-- QB Settings -->
          <div class="col-md-12">
                 <div class="panel panel-piluku">
                     <div class="panel-heading">
-                        <#?php echo create_section(lang('config_quickbooks_settings'), 'store-configuration-options', 'section-api-settings')  ?>
+                        <?php echo create_section(lang('config_quickbooks_settings'), 'store-configuration-options', 'section-api-settings')  ?>
                     </div>  
                     <div class="panel-body">
                         
                         <div class="text-center">
-                            <#?php if ($this->config->item('quickbooks_access_token') && $this->config->item('quickbooks_access_token')){ ?>
-                                <a href="<#?php echo site_url('quickbooks/refresh_tokens/1');?>" class="btn btn-primary"><#?php echo lang('config_refresh_tokens'); ?></a>
+                            <?php if ($this->config->item('quickbooks_access_token') && $this->config->item('quickbooks_access_token')){ ?>
+                                <a href="<?php echo site_url('quickbooks/refresh_tokens/1');?>" class="btn btn-primary"><?php echo lang('config_refresh_tokens'); ?></a>
                                 <br />
                                 <br />
-                                <a href="<#?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><#?php echo lang('config_reconnect_quickbooks'); ?></a>
+                                <a href="<?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><?php echo lang('config_reconnect_quickbooks'); ?></a>
                                 <br />
                                 <br />
-                  <button id="reset_quickbooks" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('config_reset_quickbooks');?></button>
+                  <button id="reset_quickbooks" type="button" class="btn btn-lg btn-danger"> <?php echo lang('config_reset_quickbooks');?></button>
                                 <br />
                                 <br />
                                 
-                                <#?php } else { ?>
-                                <a href="<#?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><#?php echo lang('config_connect_to_qb_online'); ?></a>
-                            <#?php } ?>
+                                <?php } else { ?>
+                                <a href="<?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><?php echo lang('config_connect_to_qb_online'); ?></a>
+                            <?php } ?>
                             <br />
                             <br />
                 </div>
                         
-                <div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">  
-                            <#?php echo form_label(lang('config_qb_sync_operations').':', 'qb_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+                <div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">  
+                            <?php echo form_label(lang('config_qb_sync_operations').':', 'qb_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
                                 <div class="col-sm-9 col-md-9 col-lg-10 qb_sync_operations">
                                     <ul id="check-list-box" data-name="qb_sync_operations[]" class="list-group checked-list-box">
-																						<li class="list-group-item" data-value="export_journalentry_to_quickbooks" data-color="success"><#?php echo lang('config_export_journalentry_to_quickbooks'); ?></li>
+																						<li class="list-group-item" data-value="export_journalentry_to_quickbooks" data-color="success"><?php echo lang('config_export_journalentry_to_quickbooks'); ?></li>
                                     </ul>
                                 </div>
                 </div>
                             
-                <div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">  
-                    <#?php
+                <div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">  
+                    <?php
 												echo form_label(lang('config_qb_sync_logs').':', 'qb_sync_logs',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 												<div class="col-sm-9 col-md-9 col-lg-10">
 														<ul>
-														<#?php
+														<?php
 														foreach($this->Appfile->get_files_with_name('quickbooks_log.txt') as $file) 
 														{
 																echo '<li>'.anchor($this->Appfile->get_url_for_file($file['file_id']),date(get_date_format().' '.get_time_format(), strtotime($file['timestamp'])),array('target' => '_blank')).'</li>';
@@ -4379,8 +4374,8 @@ $this->load->helper('update');
 												</div>
 								</div>
                         
-								<div id="quickbooks_sync_progress" class="form-group hidden" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>"> 
-									<#?php echo form_label(lang('config_quickbooks_progress').':', 'quickbooks_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div id="quickbooks_sync_progress" class="form-group hidden" data-keyword="<?php echo H(lang('common_quickbooks')) ?>"> 
+									<?php echo form_label(lang('config_quickbooks_progress').':', 'quickbooks_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 											<div class="col-sm-9 col-md-9 col-lg-10">
 													<div class="well well-sm">
 															<div class="progress">
@@ -4392,11 +4387,11 @@ $this->load->helper('update');
 													</div>
 											</div>
 							</div>
-							<div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">
-								<#?php echo form_label(lang('qb_export_start_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">
+								<?php echo form_label(lang('qb_export_start_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 											<div class="input-group">
-												<#?php echo form_input(array(
+												<?php echo form_input(array(
 													'name'=>'export_start_date',
 													'id'=>'export_start_date',
 													'class'=>'form-control datepicker',
@@ -4406,17 +4401,17 @@ $this->load->helper('update');
 											</div>
 								</div>
 							</div>
-							<div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">
-								<#?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">
+								<?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 									<div class="col-sm-9 col-md-9 col-lg-10">
 										<div class="input-group">
-										<input readonly type="text" class="form-control form-inps" placeholder="<#?php echo lang('config_last_qb_sync_date'); ?>" name="qb_sync_date" id="qb_sync_date" value="<#?php echo $this->config->item('last_qb_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_qb_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
+										<input readonly type="text" class="form-control form-inps" placeholder="<?php echo lang('config_last_qb_sync_date'); ?>" name="qb_sync_date" id="qb_sync_date" value="<?php echo $this->config->item('last_qb_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_qb_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
 												<span class = "input-group-btn">
-														<button id="sync_qb" type="button" class="btn btn-lg  btn-warning"><span id="sync_qb_button_icon" class="glyphicon glyphicon-refresh"></span> <#?php echo lang('config_sync');?></button>
+														<button id="sync_qb" type="button" class="btn btn-lg  btn-warning"><span id="sync_qb_button_icon" class="glyphicon glyphicon-refresh"></span> <?php echo lang('config_sync');?></button>
 																					</span>
 																			
 																					<span class = "input-group-btn hidden" id="qb-cancel-button">
-														<button id="cancel_qb" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('common_cancel');?></button>
+														<button id="cancel_qb" type="button" class="btn btn-lg btn-danger"> <?php echo lang('common_cancel');?></button>
 												</span>
 										
 										</div>              
@@ -4425,30 +4420,30 @@ $this->load->helper('update');
             </div>
           </div>
     	</div>	
-		-->
-    <!-- Ecommerce Store
+	
+    <!-- Ecommerce Store-->
      <div class="col-md-12">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<#?php echo create_section(lang('config_ecommerce_settings_info'))  ?>
+					<?php echo create_section(lang('config_ecommerce_settings_info'))  ?>
 				</div>	
 				<div class="panel-body">
                 
-            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<#?php
+            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<?php
 							echo form_label(lang('config_ecommerce_platform').':', 'ecommerce_platform',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<#?php
+									<?php
 										echo form_dropdown('ecommerce_platform', $ecommerce_platforms, $this->config->item('ecommerce_platform'),'id="ecommerce_platform" class="ecommerce_platform form-control"');
 									?>          
 								</div>
 						</div>
                   
 				  
-				<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
-					<#?php echo form_label(lang('config_sku_sync_field').':', 'sku_sync_field',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_sku_sync_field').':', 'sku_sync_field',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<#?php echo form_dropdown('sku_sync_field', array(
+					<?php echo form_dropdown('sku_sync_field', array(
 						'item_number'  => lang('common_item_number_expanded'),
 						'product_id'    => lang('common_product_id'),
 						'item_id'   => lang('common_item_id')
@@ -4458,10 +4453,10 @@ $this->load->helper('update');
 					</div>
 				</div>
 				  										
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
-						<#?php echo form_label(lang('config_do_not_upload_images_to_ecommerce').':', 'do_not_upload_images_to_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<?php echo form_label(lang('config_do_not_upload_images_to_ecommerce').':', 'do_not_upload_images_to_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_checkbox(array(
+							<?php echo form_checkbox(array(
 								'name'=>'do_not_upload_images_to_ecommerce',
 								'id'=>'do_not_upload_images_to_ecommerce',
 								'value'=>'1',
@@ -4470,10 +4465,10 @@ $this->load->helper('update');
 							</div>
 						</div>
 						
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
-						<#?php echo form_label(lang('config_ecommerce_only_sync_completed_orders').':', 'ecommerce_only_sync_completed_orders',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<?php echo form_label(lang('config_ecommerce_only_sync_completed_orders').':', 'ecommerce_only_sync_completed_orders',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_checkbox(array(
+							<?php echo form_checkbox(array(
 								'name'=>'ecommerce_only_sync_completed_orders',
 								'id'=>'ecommerce_only_sync_completed_orders',
 								'value'=>'1',
@@ -4484,10 +4479,10 @@ $this->load->helper('update');
 						
 
 									
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
-						<#?php echo form_label(lang('config_new_items_are_ecommerce_by_default').':', 'new_items_are_ecommerce_by_default',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<?php echo form_label(lang('config_new_items_are_ecommerce_by_default').':', 'new_items_are_ecommerce_by_default',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_checkbox(array(
+							<?php echo form_checkbox(array(
 								'name'=>'new_items_are_ecommerce_by_default',
 								'id'=>'new_items_are_ecommerce_by_default',
 								'value'=>'1',
@@ -4496,77 +4491,77 @@ $this->load->helper('update');
 							</div>
 						</div>
 
-            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<#?php
+            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<?php
 								echo form_label(lang('config_store_location').':', 'ecom_store_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<#?php
+									<?php
 										echo form_dropdown('ecom_store_location', $store_locations, $this->config->item('ecom_store_location'), 'class="form-control"');
 									?>           
 								</div>
 						</div>
 						
 						
-						<#?php						
+						<?php						
 						foreach($store_locations as $r_location_id=>$r_location_name)
 						{
 						?>
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
-						<#?php echo form_label(lang('config_sync_inventory_from_location').' '.$r_location_name, "location_".$r_location_id,array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+						<?php echo form_label(lang('config_sync_inventory_from_location').' '.$r_location_name, "location_".$r_location_id,array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_checkbox(array(
+							<?php echo form_checkbox(array(
 								'name'=>'ecommerce_locations[]',
 								'id'=>"location_".$r_location_id,
 								'value'=>$r_location_id,
 								'checked'=>isset($ecommerce_locations[$r_location_id])))?>
-								<label for="location_<#?php echo $r_location_id;?>"><span></span></label>
+								<label for="location_<?php echo $r_location_id;?>"><span></span></label>
 							</div>
 						</div>
 						
-						<#?php	
+						<?php	
 						}
 						?>
 						
-						<#?php if(count($online_price_tiers) > 1) { ?>
-            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<#?php
+						<?php if(count($online_price_tiers) > 1) { ?>
+            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<?php
 								echo form_label(lang('config_online_price_tier').':', 'online_price_tier',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<#?php 
+									<?php 
 										echo form_dropdown('online_price_tier', $online_price_tiers, $this->config->item('online_price_tier'), 'class="form-control"');
 									?>           
 								</div>
 						</div>
-						<#?php } ?>
+						<?php } ?>
 												
 						
-            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
-							<#?php echo form_label(lang('config_ecommerce_cron_sync_operations').':', 'ecommerce_cron_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
+							<?php echo form_label(lang('config_ecommerce_cron_sync_operations').':', 'ecommerce_cron_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10 ecommerce_cron_sync_operations">
 								  	<ul id="check-list-box" data-name="ecommerce_cron_sync_operations[]" class="list-group checked-list-box">
-											 <li class="list-group-item" data-value="sync_inventory_changes" data-color="success"><#?php echo lang('config_sync_inventory_changes'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_ecommerce_tags_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_tags_into_phppos'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_ecommerce_categories_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_categories_into_phppos'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_ecommerce_attributes_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_attributes_into_phppos'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_tax_classes_into_phppos" data-color="success"><#?php echo lang('config_import_tax_classes_into_phppos'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_shipping_classes_into_phppos" data-color="success"><#?php echo lang('config_import_shipping_classes_into_phppos'); ?></li>
-											 <li class="list-group-item" data-value="import_ecommerce_items_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_items_into_phppos'); ?></li>
-											 <li class="list-group-item" data-value="import_ecommerce_orders_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_orders_into_phppos'); ?></li>
-											 <li class="list-group-item woo-only" data-value="export_phppos_tags_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_tags_to_ecommerce'); ?></li>
-		                   <li class="list-group-item" data-value="export_phppos_categories_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_categories_to_ecommerce'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="export_phppos_attributes_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_attributes_to_ecommerce'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="export_tax_classes_into_phppos" data-color="success"><#?php echo lang('config_export_tax_classes_into_phppos'); ?></li>
-											 <li class="list-group-item" data-value="export_phppos_items_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_items_to_ecommerce'); ?></li>
+											 <li class="list-group-item" data-value="sync_inventory_changes" data-color="success"><?php echo lang('config_sync_inventory_changes'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_tags_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_tags_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_categories_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_categories_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_attributes_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_attributes_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_tax_classes_into_phppos" data-color="success"><?php echo lang('config_import_tax_classes_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_shipping_classes_into_phppos" data-color="success"><?php echo lang('config_import_shipping_classes_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="import_ecommerce_items_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_items_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="import_ecommerce_orders_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_orders_into_phppos'); ?></li>
+											 <li class="list-group-item woo-only" data-value="export_phppos_tags_to_ecommerce" data-color="success"><?php echo lang('config_export_phppos_tags_to_ecommerce'); ?></li>
+		                   <li class="list-group-item" data-value="export_phppos_categories_to_ecommerce" data-color="success"><?php echo lang('config_export_phppos_categories_to_ecommerce'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="export_phppos_attributes_to_ecommerce" data-color="success"><?php echo lang('config_export_phppos_attributes_to_ecommerce'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="export_tax_classes_into_phppos" data-color="success"><?php echo lang('config_export_tax_classes_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="export_phppos_items_to_ecommerce" data-color="success"><?php echo lang('config_export_phppos_items_to_ecommerce'); ?></li>
 								    </ul>
 								</div>
 						</div>
 						
-            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<#?php
+            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<?php
 								echo form_label(lang('config_ecom_sync_logs').':', 'ecom_sync_logs',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 									<ul>
-									<#?php
+									<?php
 									foreach($this->Appfile->get_files_with_name('ecom_log.txt') as $file) 
 									{
 										echo '<li>'.anchor($this->Appfile->get_url_for_file($file['file_id']),date(get_date_format().' '.get_time_format(), strtotime($file['timestamp'])),array('target' => '_blank')).'</li>';
@@ -4576,8 +4571,8 @@ $this->load->helper('update');
 								</div>
 						</div>
 						
-            <div id="ecommerce_sync_progress" class="form-group hidden" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
-							<#?php echo form_label(lang('config_ecommerce_progress').':', 'ecommerce_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+            <div id="ecommerce_sync_progress" class="form-group hidden" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
+							<?php echo form_label(lang('config_ecommerce_progress').':', 'ecommerce_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 									<div class="well well-sm">
 										<div class="progress">
@@ -4590,28 +4585,28 @@ $this->load->helper('update');
 								</div>
 						</div>
 						
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">
-							<#?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">
+							<?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 								<div class="input-group">
-								  <input readonly type="text" class="form-control form-inps" placeholder="<#?php echo lang('config_last_sync_date'); ?>" name="ecommerce_sync_date" id="ecommerce_sync_date" value="<#?php echo $this->config->item('last_ecommerce_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_ecommerce_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
+								  <input readonly type="text" class="form-control form-inps" placeholder="<?php echo lang('config_last_sync_date'); ?>" name="ecommerce_sync_date" id="ecommerce_sync_date" value="<?php echo $this->config->item('last_ecommerce_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_ecommerce_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
 									<span class = "input-group-btn">
-	                  <button id="sync_woo" type="button" class="btn btn-lg  btn-warning"><span id="sync_woo_button_icon" class="glyphicon glyphicon-refresh"></span> <#?php echo lang('config_sync');?></button>
+	                  <button id="sync_woo" type="button" class="btn btn-lg  btn-warning"><span id="sync_woo_button_icon" class="glyphicon glyphicon-refresh"></span> <?php echo lang('config_sync');?></button>
 									</span>
 									
 									<span class = "input-group-btn hidden" id="ecommerce-cancel-button">
-	                  <button id="cancel_woo" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('common_cancel');?></button>
+	                  <button id="cancel_woo" type="button" class="btn btn-lg btn-danger"> <?php echo lang('common_cancel');?></button>
 									</span>
 									
 								</div>				
 							</div>
 						</div>
 						
-            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<#?php
+            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<?php
 								echo form_label(lang('config_reset_ecommerce').':', 'reset_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-	                  <button id="reset_ecommerce" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('config_reset_ecommerce');?></button>
+	                  <button id="reset_ecommerce" type="button" class="btn btn-lg btn-danger"> <?php echo lang('config_reset_ecommerce');?></button>
 								</div>
 						</div>
 					
@@ -4619,9 +4614,8 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
-		-->
-    <!-- Woocommerce Settings
-    <#?php
+    <!-- Woocommerce Settings-->
+    <?php
 		
 		if($this->config->item('ecommerce_platform') == "woocommerce" )
 			$woo_hidden_class ="";
@@ -4635,36 +4629,36 @@ $this->load->helper('update');
 		
 		?>
 		
-        <div class="col-md-12 shopify_settings ecom_settings <#?php echo $shopify_hidden_class; ?>">
+        <div class="col-md-12 shopify_settings ecom_settings <?php echo $shopify_hidden_class; ?>">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<#?php echo create_section(lang('config_shopify_settings_info'))  ?>
+					<?php echo create_section(lang('config_shopify_settings_info'))  ?>
 				</div>
 			
 				<div class="panel-body">
-			<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+			<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
 				
-				<#?php
+				<?php
 				echo form_hidden('shopify_shop',$this->config->item('shopify_shop'));
 				
 				if ($this->config->item('shopify_shop'))
 				{
 				?>
 					<div class='text-center'>
-						<p><#?php echo lang('config_connected_to_shopify')?> [<strong><#?php echo $this->config->item('shopify_shop').'.myshopify.com' ?></strong>]</p>
+						<p><?php echo lang('config_connected_to_shopify')?> [<strong><?php echo $this->config->item('shopify_shop').'.myshopify.com' ?></strong>]</p>
 						<br />
 						<br />
-						<#?php
+						<?php
 						if ($this->config->item('shopify_charge_id'))
 						{
 						?>
-	                    	<a href="<#?php echo site_url('ecommerce/cancel_shopify_billing');?>" class="btn btn-danger" id="shopify_cancel_billing"><#?php echo lang('config_cancel_shopify'); ?></a>
+	                    	<a href="<?php echo site_url('ecommerce/cancel_shopify_billing');?>" class="btn btn-danger" id="shopify_cancel_billing"><?php echo lang('config_cancel_shopify'); ?></a>
 							<script>
 							$("#shopify_cancel_billing").click(function(e)
 							{
 								e.preventDefault();
 								
-								bootbox.confirm(<#?php echo json_encode(lang('config_confirm_cancel_shopify')); ?>, function(response)
+								bootbox.confirm(<?php echo json_encode(lang('config_confirm_cancel_shopify')); ?>, function(response)
 								{
 									if (response)
 									{
@@ -4674,33 +4668,33 @@ $this->load->helper('update');
 								
 							})
 							</script>
-						<#?php	
+						<?php	
 						}
 						else
 						{
 						?>
-                    	<a href="<#?php echo site_url('ecommerce/activate_shopify_billing');?>" class="btn btn-success" id="shopify_activate_billing"><#?php echo str_replace('{SHOPIFY_PRICE}',SHOPIFY_PRICE,lang('config_shopify_billing_terms')); ?></a>
+                    	<a href="<?php echo site_url('ecommerce/activate_shopify_billing');?>" class="btn btn-success" id="shopify_activate_billing"><?php echo str_replace('{SHOPIFY_PRICE}',SHOPIFY_PRICE,lang('config_shopify_billing_terms')); ?></a>
 						<br /><br />
-						<a href="<#?php echo site_url('ecommerce/oauth_shopify_disconnect');?>" class="btn btn-danger" id="shopify_oauth_disconnect"><#?php echo lang('config_disconnect_to_shopify'); ?></a>
+						<a href="<?php echo site_url('ecommerce/oauth_shopify_disconnect');?>" class="btn btn-danger" id="shopify_oauth_disconnect"><?php echo lang('config_disconnect_to_shopify'); ?></a>
 						
-						<#?php
+						<?php
 						}
 						?>
 						
 						</div>
 						
-					<#?php
+					<?php
 					}
 					else
 					{
 					?>
 					<div class='text-center'>
-						<p><a href="https://apps.shopify.com/php-point-of-sale" target="_blank"><#?php echo lang('config_connect_shopify_in_app_store')?></a></p>
+						<p><a href="https://apps.shopify.com/php-point-of-sale" target="_blank"><?php echo lang('config_connect_shopify_in_app_store')?></a></p>
 						<br />
 						<br />
 					</div>
 						
-					<#?php
+					<?php
 					}
 					?>	
 					</div>
@@ -4722,27 +4716,27 @@ $this->load->helper('update');
 			</div>
 		</div>			
 			
-      <div class="col-md-12 woo_settings ecom_settings <#?php echo $woo_hidden_class; ?>">
+      <div class="col-md-12 woo_settings ecom_settings <?php echo $woo_hidden_class; ?>">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<#?php echo create_section(lang('config_woocommerce_settings_info'))  ?>
+					<?php echo create_section(lang('config_woocommerce_settings_info'))  ?>
 				</div>
 				
 				<div class="panel-body">
 					
-        	<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
-						<#?php echo form_label(lang('config_woo_version').':', 'woo_version',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+        	<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
+						<?php echo form_label(lang('config_woo_version').':', 'woo_version',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php
+							<?php
 								echo form_dropdown('woo_version', $woo_versions, $this->config->item('woo_version'),'id="woo_version" class="woo_version form-control"');
 							?>
 					</div>
 				</div>
 					
-      	<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
-						<#?php echo form_label(lang('config_woo_api_url').':', 'woo_api_url',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+      	<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
+						<?php echo form_label(lang('config_woo_api_url').':', 'woo_api_url',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_input(array(
+							<?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'woo_api_url',
 							'id'=>'woo_api_url',
@@ -4750,10 +4744,10 @@ $this->load->helper('update');
 						</div>
 				</div>
                         
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
-							<#?php echo form_label(lang('config_woo_api_key').':', 'woo_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
+							<?php echo form_label(lang('config_woo_api_key').':', 'woo_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<#?php echo form_input(array(
+									<?php echo form_input(array(
 										'class'=>'form-control form-inps',
 									'name'=>'woo_api_key',
 									'id'=>'woo_api_key',
@@ -4761,10 +4755,10 @@ $this->load->helper('update');
 								</div>
 						</div>
                         
-            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
-							<#?php echo form_label(lang('config_woo_api_secret').':', 'woo_api_secret',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
+							<?php echo form_label(lang('config_woo_api_secret').':', 'woo_api_secret',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<#?php echo form_input(array(
+									<?php echo form_input(array(
 										'class'=>'form-control form-inps',
 									'name'=>'woo_api_secret',
 									'id'=>'woo_api_secret',
@@ -4773,10 +4767,10 @@ $this->load->helper('update');
 						</div>
 												
 						
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
-						<#?php echo form_label(lang('config_import_all_past_orders_for_woo_commerce').':', 'import_all_past_orders_for_woo_commerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+						<?php echo form_label(lang('config_import_all_past_orders_for_woo_commerce').':', 'import_all_past_orders_for_woo_commerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_checkbox(array(
+							<?php echo form_checkbox(array(
 								'name'=>'import_all_past_orders_for_woo_commerce',
 								'id'=>'import_all_past_orders_for_woo_commerce',
 								'value'=>'1',
@@ -4787,10 +4781,10 @@ $this->load->helper('update');
 						
 						
 						
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
-						<#?php echo form_label(lang('config_woo_enable_html_desc').':', 'woo_enable_html_desc',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+						<?php echo form_label(lang('config_woo_enable_html_desc').':', 'woo_enable_html_desc',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_checkbox(array(
+							<?php echo form_checkbox(array(
 								'name'=>'woo_enable_html_desc',
 								'id'=>'woo_enable_html_desc',
 								'value'=>'1',
@@ -4800,10 +4794,10 @@ $this->load->helper('update');
 						</div>
 						
 						
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
-						<#?php echo form_label(lang('config_do_not_treat_service_items_as_virtual').':', 'do_not_treat_service_items_as_virtual',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+						<?php echo form_label(lang('config_do_not_treat_service_items_as_virtual').':', 'do_not_treat_service_items_as_virtual',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_checkbox(array(
+							<?php echo form_checkbox(array(
 								'name'=>'do_not_treat_service_items_as_virtual',
 								'id'=>'do_not_treat_service_items_as_virtual',
 								'value'=>'1',
@@ -4817,46 +4811,45 @@ $this->load->helper('update');
 				</div>
 				
 			</div>
-			-->
-	     <!-- Api Settings-->
+	     <!--Api Settings-->
 	     <div class="col-md-12">
 				<div class="panel panel-piluku">
 					<div class="panel-heading">
-						<#?php echo create_section(lang('config_api_settings_info'), 'store-configuration-options', 'section-api-settings')  ?>
+						<?php echo create_section(lang('config_api_settings_info'), 'store-configuration-options', 'section-api-settings')  ?>
 						<a href="https://phppointofsale.com/api.php" onclick="window.open('https://phppointofsale.com/api.php', '_blank', 'width=800,height=600,scrollbars=yes,menubar=no,status=yes,resizable=yes,screenx=0,screeny=0'); return false;"> <span class="glyphicon glyphicon-info-sign"></span></a>
 					</div>	
 					<div class="panel-body">
 						
 							
-							<div class="form-group no-padding-right" data-keyword="<#?php echo H(lang('config_keyword_api')) ?>">	
-							<#?php echo form_label(lang('config_api_keys').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group no-padding-right" data-keyword="<?php echo H(lang('config_keyword_api')) ?>">	
+							<?php echo form_label(lang('config_api_keys').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 								<div class="col-md-9 col-sm-9 col-lg-10">
 									<div class="table-responsive">
 										<table id="api_keys" class="table">
 											<thead>
 												<tr>
-												<th><#?php echo lang('common_description'); ?></th>
-												<th><#?php echo lang('config_api_key_ending_in'); ?></th>
-												<th><#?php echo lang('config_permissions'); ?></th>
-												<th><#?php echo lang('common_delete'); ?></th>
+												<th><?php echo lang('common_description'); ?></th>
+												<th><?php echo lang('config_api_key_ending_in'); ?></th>
+												<th><?php echo lang('config_permissions'); ?></th>
+												<th><?php echo lang('common_delete'); ?></th>
 												</tr>
 											</thead>
 									
 											<tbody id="api_keys_body">
-											<#?php foreach($api_keys as $key) { ?>
+											<?php foreach($api_keys as $key) { ?>
 												<tr>
-													<td><#?php echo $key->description;?></td>
-													<td>...<#?php echo $key->key_ending; ?></td>
+													<td><?php echo $key->description;?></td>
+													<td>...<?php echo $key->key_ending; ?></td>
 													<td>
-														<#?php	echo  $key->level == 1 ? lang('config_read') : lang('config_read_write'); ?>
+														<?php	echo  $key->level == 1 ? lang('config_read') : lang('config_read_write'); ?>
 													</td>
-												  <td><a class="delete_api_key" href="javascript:void(0);" data-key-id='<#?php echo $key->id; ?>'><#?php echo lang('common_delete'); ?></a></td>
+												  <td><a class="delete_api_key" href="javascript:void(0);" data-key-id='<?php echo $key->id; ?>'><?php echo lang('common_delete'); ?></a></td>
 											</tr>
-											<#?php } ?>
+											<?php } ?>
 											</tbody>
 										</table>
 								
-											<a tabindex="-1" href="<#?php echo site_url('config/add_api_key');?>" data-toggle="modal" data-target="#myModal" data-toggle="model"><#?php echo lang('config_add_key'); ?></a>
+											<a tabindex="-1" href="<?php echo site_url('config/add_api_key');?>" data-toggle="modal" data-target="#myModal" data-toggle="model"><?php echo lang('config_add_key'); ?></a>
 										</div>
 									</div>
 								</div>
@@ -4869,13 +4862,13 @@ $this->load->helper('update');
 	     <div class="col-md-12">
 				<div class="panel panel-piluku">
 					<div class="panel-heading">
-						<#?php echo create_section(lang('config_webhooks'), 'store-configuration-options', 'section-webhooks-settings')  ?>
+						<?php echo create_section(lang('config_webhooks'), 'store-configuration-options', 'section-webhooks-settings')  ?>
 					</div>	
 					<div class="panel-body">
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<#?php echo form_label(lang('config_new_customer_web_hook').':', 'new_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<?php echo form_label(lang('config_new_customer_web_hook').':', 'new_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<#?php echo form_input(array(
+								<?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'new_customer_web_hook',
 								'id'=>'new_customer_web_hook',
@@ -4884,10 +4877,10 @@ $this->load->helper('update');
 							</div>
 						</div>
 
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<#?php echo form_label(lang('config_new_sale_web_hook').':', 'new_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<?php echo form_label(lang('config_new_sale_web_hook').':', 'new_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<#?php echo form_input(array(
+								<?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'new_sale_web_hook',
 								'id'=>'new_sale_web_hook',
@@ -4896,10 +4889,10 @@ $this->load->helper('update');
 							</div>
 						</div>
 						
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<#?php echo form_label(lang('config_new_receiving_web_hook').':', 'new_receiving_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<?php echo form_label(lang('config_new_receiving_web_hook').':', 'new_receiving_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<#?php echo form_input(array(
+								<?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'new_receiving_web_hook',
 								'id'=>'new_receiving_web_hook',
@@ -4909,10 +4902,10 @@ $this->load->helper('update');
 						</div>
 						
 						
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<#?php echo form_label(lang('config_edit_customer_web_hook').':', 'edit_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<?php echo form_label(lang('config_edit_customer_web_hook').':', 'edit_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<#?php echo form_input(array(
+								<?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'edit_customer_web_hook',
 								'id'=>'edit_customer_web_hook',
@@ -4922,10 +4915,10 @@ $this->load->helper('update');
 						</div>
 						
 						
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<#?php echo form_label(lang('config_edit_sale_web_hook').':', 'edit_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<?php echo form_label(lang('config_edit_sale_web_hook').':', 'edit_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<#?php echo form_input(array(
+								<?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'edit_sale_web_hook',
 								'id'=>'edit_sale_web_hook',
@@ -4935,10 +4928,10 @@ $this->load->helper('update');
 						</div>
 
 
-						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<#?php echo form_label(lang('config_edit_recv_web_hook').':', 'edit_recv_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<?php echo form_label(lang('config_edit_recv_web_hook').':', 'edit_recv_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<#?php echo form_input(array(
+								<?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'edit_recv_web_hook',
 								'id'=>'edit_recv_web_hook',
