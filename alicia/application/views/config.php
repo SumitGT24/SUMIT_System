@@ -120,18 +120,18 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-							<!--Eliminar identificador de impuesto-->
-						<!--<#?php echo form_label(lang('common_tax_id').':', 'tax_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?-->
+					<!--Eliminar identificador de impuesto
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_company')) ?>">	
+						<#?php echo form_label(lang('common_tax_id').':', 'tax_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 								'class'=>'validate form-control form-inps',
 							'name'=>'tax_id',
 							'id'=>'tax_id',
 							'value'=>$this->config->item('tax_id')));?>
 						</div>
 					</div>
-					
+					--fin elimar impuesto empresa-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 						<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
@@ -4310,7 +4310,7 @@ $this->load->helper('update');
 							'value'=>$this->config->item('smtp_timeout')));?>
 						</div>
 					</div>
-				</div> <!-- end advanced email 
+				</div> <!-- end advanced email -->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
 						<div class="col-sm-12 col-md-12 col-lg-12">
 							<span class="pull-right">
@@ -4323,48 +4323,48 @@ $this->load->helper('update');
 		</div>
 		<?php } ?>
 
-	<!-- QB Settings -->
+	<!-- Inicio QuickBook/QB Settings 4326 a 4424
          <div class="col-md-12">
                 <div class="panel panel-piluku">
                     <div class="panel-heading">
-                        <?php echo create_section(lang('config_quickbooks_settings'), 'store-configuration-options', 'section-api-settings')  ?>
+                        <#?php echo create_section(lang('config_quickbooks_settings'), 'store-configuration-options', 'section-api-settings')  ?>
                     </div>  
                     <div class="panel-body">
                         
                         <div class="text-center">
-                            <?php if ($this->config->item('quickbooks_access_token') && $this->config->item('quickbooks_access_token')){ ?>
-                                <a href="<?php echo site_url('quickbooks/refresh_tokens/1');?>" class="btn btn-primary"><?php echo lang('config_refresh_tokens'); ?></a>
+                            <#?php if ($this->config->item('quickbooks_access_token') && $this->config->item('quickbooks_access_token')){ ?>
+                                <a href="<#?php echo site_url('quickbooks/refresh_tokens/1');?>" class="btn btn-primary"><#?php echo lang('config_refresh_tokens'); ?></a>
                                 <br />
                                 <br />
-                                <a href="<?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><?php echo lang('config_reconnect_quickbooks'); ?></a>
+                                <a href="<#?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><#?php echo lang('config_reconnect_quickbooks'); ?></a>
                                 <br />
                                 <br />
-                  <button id="reset_quickbooks" type="button" class="btn btn-lg btn-danger"> <?php echo lang('config_reset_quickbooks');?></button>
+                  <button id="reset_quickbooks" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('config_reset_quickbooks');?></button>
                                 <br />
                                 <br />
                                 
-                                <?php } else { ?>
-                                <a href="<?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><?php echo lang('config_connect_to_qb_online'); ?></a>
-                            <?php } ?>
+                                <#?php } else { ?>
+                                <a href="<#?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><#?php echo lang('config_connect_to_qb_online'); ?></a>
+                            <#?php } ?>
                             <br />
                             <br />
                 </div>
                         
-                <div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">  
-                            <?php echo form_label(lang('config_qb_sync_operations').':', 'qb_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+                <div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">  
+                            <#?php echo form_label(lang('config_qb_sync_operations').':', 'qb_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
                                 <div class="col-sm-9 col-md-9 col-lg-10 qb_sync_operations">
                                     <ul id="check-list-box" data-name="qb_sync_operations[]" class="list-group checked-list-box">
-																						<li class="list-group-item" data-value="export_journalentry_to_quickbooks" data-color="success"><?php echo lang('config_export_journalentry_to_quickbooks'); ?></li>
+																						<li class="list-group-item" data-value="export_journalentry_to_quickbooks" data-color="success"><#?php echo lang('config_export_journalentry_to_quickbooks'); ?></li>
                                     </ul>
                                 </div>
                 </div>
                             
-                <div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">  
-                    <?php
+                <div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">  
+                    <#?php
 												echo form_label(lang('config_qb_sync_logs').':', 'qb_sync_logs',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 												<div class="col-sm-9 col-md-9 col-lg-10">
 														<ul>
-														<?php
+														<#?php
 														foreach($this->Appfile->get_files_with_name('quickbooks_log.txt') as $file) 
 														{
 																echo '<li>'.anchor($this->Appfile->get_url_for_file($file['file_id']),date(get_date_format().' '.get_time_format(), strtotime($file['timestamp'])),array('target' => '_blank')).'</li>';
@@ -4374,8 +4374,8 @@ $this->load->helper('update');
 												</div>
 								</div>
                         
-								<div id="quickbooks_sync_progress" class="form-group hidden" data-keyword="<?php echo H(lang('common_quickbooks')) ?>"> 
-									<?php echo form_label(lang('config_quickbooks_progress').':', 'quickbooks_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div id="quickbooks_sync_progress" class="form-group hidden" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>"> 
+									<#?php echo form_label(lang('config_quickbooks_progress').':', 'quickbooks_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 											<div class="col-sm-9 col-md-9 col-lg-10">
 													<div class="well well-sm">
 															<div class="progress">
@@ -4387,11 +4387,11 @@ $this->load->helper('update');
 													</div>
 											</div>
 							</div>
-							<div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">
-								<?php echo form_label(lang('qb_export_start_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">
+								<#?php echo form_label(lang('qb_export_start_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 											<div class="input-group">
-												<?php echo form_input(array(
+												<#?php echo form_input(array(
 													'name'=>'export_start_date',
 													'id'=>'export_start_date',
 													'class'=>'form-control datepicker',
@@ -4401,17 +4401,17 @@ $this->load->helper('update');
 											</div>
 								</div>
 							</div>
-							<div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">
-								<?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">
+								<#?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 									<div class="col-sm-9 col-md-9 col-lg-10">
 										<div class="input-group">
-										<input readonly type="text" class="form-control form-inps" placeholder="<?php echo lang('config_last_qb_sync_date'); ?>" name="qb_sync_date" id="qb_sync_date" value="<?php echo $this->config->item('last_qb_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_qb_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
+										<input readonly type="text" class="form-control form-inps" placeholder="<#?php echo lang('config_last_qb_sync_date'); ?>" name="qb_sync_date" id="qb_sync_date" value="<#?php echo $this->config->item('last_qb_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_qb_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
 												<span class = "input-group-btn">
-														<button id="sync_qb" type="button" class="btn btn-lg  btn-warning"><span id="sync_qb_button_icon" class="glyphicon glyphicon-refresh"></span> <?php echo lang('config_sync');?></button>
+														<button id="sync_qb" type="button" class="btn btn-lg  btn-warning"><span id="sync_qb_button_icon" class="glyphicon glyphicon-refresh"></span> <#?php echo lang('config_sync');?></button>
 																					</span>
 																			
 																					<span class = "input-group-btn hidden" id="qb-cancel-button">
-														<button id="cancel_qb" type="button" class="btn btn-lg btn-danger"> <?php echo lang('common_cancel');?></button>
+														<button id="cancel_qb" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('common_cancel');?></button>
 												</span>
 										
 										</div>              
@@ -4420,7 +4420,7 @@ $this->load->helper('update');
             </div>
           </div>
     	</div>	
-	
+	--fin QuickBook-->
     <!-- Inicio Comercio electronico/Ecommerce Store 4424 4617
      <div class="col-md-12">
 			<div class="panel panel-piluku">
