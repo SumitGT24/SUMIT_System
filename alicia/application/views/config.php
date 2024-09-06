@@ -488,7 +488,7 @@ $this->load->helper('update');
 				</div>
 			</div><end panel
 		Fin impuestos-->		
-		
+
 		<!-- Currency -->
 		<div class="col-md-12">
 			<div class="panel panel-piluku">
@@ -4421,29 +4421,29 @@ $this->load->helper('update');
           </div>
     	</div>	
 	
-    <!-- Ecommerce Store-->
+    <!-- Inicio Comercio electronico/Ecommerce Store 4424 4617
      <div class="col-md-12">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<?php echo create_section(lang('config_ecommerce_settings_info'))  ?>
+					<#?php echo create_section(lang('config_ecommerce_settings_info'))  ?>
 				</div>	
 				<div class="panel-body">
                 
-            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<?php
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
 							echo form_label(lang('config_ecommerce_platform').':', 'ecommerce_platform',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<?php
+									<#?php
 										echo form_dropdown('ecommerce_platform', $ecommerce_platforms, $this->config->item('ecommerce_platform'),'id="ecommerce_platform" class="ecommerce_platform form-control"');
 									?>          
 								</div>
 						</div>
                   
 				  
-				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-					<?php echo form_label(lang('config_sku_sync_field').':', 'sku_sync_field',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+				<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+					<#?php echo form_label(lang('config_sku_sync_field').':', 'sku_sync_field',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_dropdown('sku_sync_field', array(
+					<#?php echo form_dropdown('sku_sync_field', array(
 						'item_number'  => lang('common_item_number_expanded'),
 						'product_id'    => lang('common_product_id'),
 						'item_id'   => lang('common_item_id')
@@ -4453,10 +4453,10 @@ $this->load->helper('update');
 					</div>
 				</div>
 				  										
-						<div class="form-group" data-keyword="<?php echo H(lang('config_ecommerce_settings_info')) ?>">	
-						<?php echo form_label(lang('config_do_not_upload_images_to_ecommerce').':', 'do_not_upload_images_to_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<#?php echo form_label(lang('config_do_not_upload_images_to_ecommerce').':', 'do_not_upload_images_to_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
+							<#?php echo form_checkbox(array(
 								'name'=>'do_not_upload_images_to_ecommerce',
 								'id'=>'do_not_upload_images_to_ecommerce',
 								'value'=>'1',
@@ -4465,10 +4465,10 @@ $this->load->helper('update');
 							</div>
 						</div>
 						
-						<div class="form-group" data-keyword="<?php echo H(lang('config_ecommerce_settings_info')) ?>">	
-						<?php echo form_label(lang('config_ecommerce_only_sync_completed_orders').':', 'ecommerce_only_sync_completed_orders',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<#?php echo form_label(lang('config_ecommerce_only_sync_completed_orders').':', 'ecommerce_only_sync_completed_orders',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
+							<#?php echo form_checkbox(array(
 								'name'=>'ecommerce_only_sync_completed_orders',
 								'id'=>'ecommerce_only_sync_completed_orders',
 								'value'=>'1',
@@ -4479,10 +4479,10 @@ $this->load->helper('update');
 						
 
 									
-						<div class="form-group" data-keyword="<?php echo H(lang('config_ecommerce_settings_info')) ?>">	
-						<?php echo form_label(lang('config_new_items_are_ecommerce_by_default').':', 'new_items_are_ecommerce_by_default',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<#?php echo form_label(lang('config_new_items_are_ecommerce_by_default').':', 'new_items_are_ecommerce_by_default',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
+							<#?php echo form_checkbox(array(
 								'name'=>'new_items_are_ecommerce_by_default',
 								'id'=>'new_items_are_ecommerce_by_default',
 								'value'=>'1',
@@ -4491,77 +4491,77 @@ $this->load->helper('update');
 							</div>
 						</div>
 
-            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<?php
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
 								echo form_label(lang('config_store_location').':', 'ecom_store_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<?php
+									<#?php
 										echo form_dropdown('ecom_store_location', $store_locations, $this->config->item('ecom_store_location'), 'class="form-control"');
 									?>           
 								</div>
 						</div>
 						
 						
-						<?php						
+						<#?php						
 						foreach($store_locations as $r_location_id=>$r_location_name)
 						{
 						?>
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-						<?php echo form_label(lang('config_sync_inventory_from_location').' '.$r_location_name, "location_".$r_location_id,array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_sync_inventory_from_location').' '.$r_location_name, "location_".$r_location_id,array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
+							<#?php echo form_checkbox(array(
 								'name'=>'ecommerce_locations[]',
 								'id'=>"location_".$r_location_id,
 								'value'=>$r_location_id,
 								'checked'=>isset($ecommerce_locations[$r_location_id])))?>
-								<label for="location_<?php echo $r_location_id;?>"><span></span></label>
+								<label for="location_<#?php echo $r_location_id;?>"><span></span></label>
 							</div>
 						</div>
 						
-						<?php	
+						<#?php	
 						}
 						?>
 						
-						<?php if(count($online_price_tiers) > 1) { ?>
-            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<?php
+						<#?php if(count($online_price_tiers) > 1) { ?>
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
 								echo form_label(lang('config_online_price_tier').':', 'online_price_tier',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<?php 
+									<#?php 
 										echo form_dropdown('online_price_tier', $online_price_tiers, $this->config->item('online_price_tier'), 'class="form-control"');
 									?>           
 								</div>
 						</div>
-						<?php } ?>
+						<#?php } ?>
 												
 						
-            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
-							<?php echo form_label(lang('config_ecommerce_cron_sync_operations').':', 'ecommerce_cron_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+							<#?php echo form_label(lang('config_ecommerce_cron_sync_operations').':', 'ecommerce_cron_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10 ecommerce_cron_sync_operations">
 								  	<ul id="check-list-box" data-name="ecommerce_cron_sync_operations[]" class="list-group checked-list-box">
-											 <li class="list-group-item" data-value="sync_inventory_changes" data-color="success"><?php echo lang('config_sync_inventory_changes'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_ecommerce_tags_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_tags_into_phppos'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_ecommerce_categories_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_categories_into_phppos'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_ecommerce_attributes_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_attributes_into_phppos'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_tax_classes_into_phppos" data-color="success"><?php echo lang('config_import_tax_classes_into_phppos'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="import_shipping_classes_into_phppos" data-color="success"><?php echo lang('config_import_shipping_classes_into_phppos'); ?></li>
-											 <li class="list-group-item" data-value="import_ecommerce_items_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_items_into_phppos'); ?></li>
-											 <li class="list-group-item" data-value="import_ecommerce_orders_into_phppos" data-color="success"><?php echo lang('config_import_ecommerce_orders_into_phppos'); ?></li>
-											 <li class="list-group-item woo-only" data-value="export_phppos_tags_to_ecommerce" data-color="success"><?php echo lang('config_export_phppos_tags_to_ecommerce'); ?></li>
-		                   <li class="list-group-item" data-value="export_phppos_categories_to_ecommerce" data-color="success"><?php echo lang('config_export_phppos_categories_to_ecommerce'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="export_phppos_attributes_to_ecommerce" data-color="success"><?php echo lang('config_export_phppos_attributes_to_ecommerce'); ?></li>
-		                   <li class="list-group-item woo-only" data-value="export_tax_classes_into_phppos" data-color="success"><?php echo lang('config_export_tax_classes_into_phppos'); ?></li>
-											 <li class="list-group-item" data-value="export_phppos_items_to_ecommerce" data-color="success"><?php echo lang('config_export_phppos_items_to_ecommerce'); ?></li>
+											 <li class="list-group-item" data-value="sync_inventory_changes" data-color="success"><#?php echo lang('config_sync_inventory_changes'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_tags_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_tags_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_categories_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_categories_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_attributes_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_attributes_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_tax_classes_into_phppos" data-color="success"><#?php echo lang('config_import_tax_classes_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_shipping_classes_into_phppos" data-color="success"><#?php echo lang('config_import_shipping_classes_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="import_ecommerce_items_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_items_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="import_ecommerce_orders_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_orders_into_phppos'); ?></li>
+											 <li class="list-group-item woo-only" data-value="export_phppos_tags_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_tags_to_ecommerce'); ?></li>
+		                   <li class="list-group-item" data-value="export_phppos_categories_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_categories_to_ecommerce'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="export_phppos_attributes_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_attributes_to_ecommerce'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="export_tax_classes_into_phppos" data-color="success"><#?php echo lang('config_export_tax_classes_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="export_phppos_items_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_items_to_ecommerce'); ?></li>
 								    </ul>
 								</div>
 						</div>
 						
-            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<?php
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
 								echo form_label(lang('config_ecom_sync_logs').':', 'ecom_sync_logs',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 									<ul>
-									<?php
+									<#?php
 									foreach($this->Appfile->get_files_with_name('ecom_log.txt') as $file) 
 									{
 										echo '<li>'.anchor($this->Appfile->get_url_for_file($file['file_id']),date(get_date_format().' '.get_time_format(), strtotime($file['timestamp'])),array('target' => '_blank')).'</li>';
@@ -4571,8 +4571,8 @@ $this->load->helper('update');
 								</div>
 						</div>
 						
-            <div id="ecommerce_sync_progress" class="form-group hidden" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
-							<?php echo form_label(lang('config_ecommerce_progress').':', 'ecommerce_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+            <div id="ecommerce_sync_progress" class="form-group hidden" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+							<#?php echo form_label(lang('config_ecommerce_progress').':', 'ecommerce_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 									<div class="well well-sm">
 										<div class="progress">
@@ -4585,36 +4585,36 @@ $this->load->helper('update');
 								</div>
 						</div>
 						
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">
-							<?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">
+							<#?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 								<div class="input-group">
-								  <input readonly type="text" class="form-control form-inps" placeholder="<?php echo lang('config_last_sync_date'); ?>" name="ecommerce_sync_date" id="ecommerce_sync_date" value="<?php echo $this->config->item('last_ecommerce_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_ecommerce_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
+								  <input readonly type="text" class="form-control form-inps" placeholder="<#?php echo lang('config_last_sync_date'); ?>" name="ecommerce_sync_date" id="ecommerce_sync_date" value="<#?php echo $this->config->item('last_ecommerce_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_ecommerce_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
 									<span class = "input-group-btn">
-	                  <button id="sync_woo" type="button" class="btn btn-lg  btn-warning"><span id="sync_woo_button_icon" class="glyphicon glyphicon-refresh"></span> <?php echo lang('config_sync');?></button>
+	                  <button id="sync_woo" type="button" class="btn btn-lg  btn-warning"><span id="sync_woo_button_icon" class="glyphicon glyphicon-refresh"></span> <#?php echo lang('config_sync');?></button>
 									</span>
 									
 									<span class = "input-group-btn hidden" id="ecommerce-cancel-button">
-	                  <button id="cancel_woo" type="button" class="btn btn-lg btn-danger"> <?php echo lang('common_cancel');?></button>
+	                  <button id="cancel_woo" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('common_cancel');?></button>
 									</span>
 									
 								</div>				
 							</div>
 						</div>
 						
-            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_ecommerce')) ?>">	
-            	<?php
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
 								echo form_label(lang('config_reset_ecommerce').':', 'reset_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-	                  <button id="reset_ecommerce" type="button" class="btn btn-lg btn-danger"> <?php echo lang('config_reset_ecommerce');?></button>
+	                  <button id="reset_ecommerce" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('config_reset_ecommerce');?></button>
 								</div>
-						</div>
-					
-							
+						</div>	
 				</div>
 			</div>
 		</div>
-    <!-- Woocommerce Settings-->
+    Fin Comercio electronico/Ecommerce Store 4424 4617-->
+	
+	<!-- Woocommerce Settings-->
     <?php
 		
 		if($this->config->item('ecommerce_platform') == "woocommerce" )
