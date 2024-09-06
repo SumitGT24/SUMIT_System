@@ -80,14 +80,10 @@ if (is_on_demo_host()) { ?>
                             <div class= "version">
                                 <p>
                                     <a href="<?php echo site_url('login') ?>" class="flip-link to-recover"><h5>Iniciar sesión</h5></a>
+                                    <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><h5>Soporte técnico</h5></a> </span> 
                                 </p>
                             </div>
                     <?php echo form_close() ?>  
-                    <div class="version">
-                        <p>
-                            <!------- <span class="badge bg-success"><@?php echo APPLICATION_VERSION; ?></span> <@?php echo lang('common_built_on'). ' '.BUILT_ON_DATE;?> -->
-                        </p>
-                    </div>
                 </div>
             </div>          
         </div>      

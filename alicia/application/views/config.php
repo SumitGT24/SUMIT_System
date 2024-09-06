@@ -153,18 +153,18 @@ $this->load->helper('update');
 				</div>
 				<div class="panel-body">
 					
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-						<?php echo form_label(lang('config_taxjar_api_key').':', 'taxjar_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<!-- Borrar taxjar
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_taxjar_api_key').':', 'taxjar_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-						<?php echo form_input(array(
+						<#?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'taxjar_api_key',
 							'id'=>'taxjar_api_key',
 							'value'=>$this->config->item('taxjar_api_key')));?>
 						</div>
 					</div>
-					
+					-->
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
 						<?php echo form_label(lang('config_tax_jar_location').':', 'tax_jar_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -3679,48 +3679,51 @@ $this->load->helper('update');
 					<?php echo create_section(lang('config_application_settings_info'))  ?>
 				</div>	
 				<div class="panel-body">
-					<?php if(is_on_demo_host()) { ?>
+					<!--Idioma
+					<#?php if(is_on_demo_host()) { ?>
 						<div class="form-group">	
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<span class="text-danger"><?php echo lang('config_cannot_change_language'); ?></span>
+								<span class="text-danger"><#?php echo lang('config_cannot_change_language'); ?></span>
 							</div>
 						</div>
-					<?php } ?>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
-					<?php echo form_label(lang('common_language').':', 'language',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<#?php } ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('common_language').':', 'language',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_dropdown('language', array(
-							'english'  => 'English',
-							'spanish'   => 'Español', 
-						),
-							$this->Appconfig->get_raw_language_value(), 'class="form-control" id="language"');
-							?>
+							<#?php echo form_dropdown('language', array(
+								'english'  => 'English',
+								'spanish'   => 'Español', 
+							),
+								$this->Appconfig->get_raw_language_value(), 'class="form-control" id="language"');
+								?>
 						</div>						
 					</div>
-					
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
-						<?php echo form_label(lang('config_date_format').':', 'date_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					--->
+					<!-- Formato de fecha
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('config_date_format').':', 'date_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_dropdown('date_format', array(
+							<#?php echo form_dropdown('date_format', array(
 								'middle_endian'    => '12/30/2000',
 								'little_endian'  => '30-12-2000',
 								'big_endian'   => '2000-12-30'), $this->config->item('date_format'), 'class="form-control" id="date_format"');
 								?>
 							</div>
 						</div>
+					-->
 						
-						
-
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
-						<?php echo form_label(lang('config_time_format').':', 'time_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<!-- Formato de hora
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('config_time_format').':', 'time_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_dropdown('time_format', array(
+							<#?php echo form_dropdown('time_format', array(
 								'12_hour'    => '1:00 PM',
 								'24_hour'  => '13:00'
 								), $this->config->item('time_format'), 'class="form-control" id="time_format"');
 								?>
 							</div>
 						</div>
+					-->
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_week_start_day').':', 'week_start_day',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
@@ -4324,35 +4327,35 @@ $this->load->helper('update');
 			</div>
 		</div>
 		<?php } ?>
-	<!-- QB Settings -->
+	<!-- QB Settings
          <div class="col-md-12">
                 <div class="panel panel-piluku">
                     <div class="panel-heading">
-                        <?php echo create_section(lang('config_quickbooks_settings'), 'store-configuration-options', 'section-api-settings')  ?>
+                        <#?php echo create_section(lang('config_quickbooks_settings'), 'store-configuration-options', 'section-api-settings')  ?>
                     </div>  
                     <div class="panel-body">
                         
                         <div class="text-center">
-                            <?php if ($this->config->item('quickbooks_access_token') && $this->config->item('quickbooks_access_token')){ ?>
-                                <a href="<?php echo site_url('quickbooks/refresh_tokens/1');?>" class="btn btn-primary"><?php echo lang('config_refresh_tokens'); ?></a>
+                            <#?php if ($this->config->item('quickbooks_access_token') && $this->config->item('quickbooks_access_token')){ ?>
+                                <a href="<#?php echo site_url('quickbooks/refresh_tokens/1');?>" class="btn btn-primary"><#?php echo lang('config_refresh_tokens'); ?></a>
                                 <br />
                                 <br />
-                                <a href="<?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><?php echo lang('config_reconnect_quickbooks'); ?></a>
+                                <a href="<#?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><#?php echo lang('config_reconnect_quickbooks'); ?></a>
                                 <br />
                                 <br />
-                  <button id="reset_quickbooks" type="button" class="btn btn-lg btn-danger"> <?php echo lang('config_reset_quickbooks');?></button>
+                  <button id="reset_quickbooks" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('config_reset_quickbooks');?></button>
                                 <br />
                                 <br />
                                 
-                                <?php } else { ?>
-                                <a href="<?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><?php echo lang('config_connect_to_qb_online'); ?></a>
-                            <?php } ?>
+                                <#?php } else { ?>
+                                <a href="<#?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><#?php echo lang('config_connect_to_qb_online'); ?></a>
+                            <#?php } ?>
                             <br />
                             <br />
                 </div>
                         
-                <div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">  
-                            <?php echo form_label(lang('config_qb_sync_operations').':', 'qb_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+                <div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">  
+                            <#?php echo form_label(lang('config_qb_sync_operations').':', 'qb_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
                                 <div class="col-sm-9 col-md-9 col-lg-10 qb_sync_operations">
                                     <ul id="check-list-box" data-name="qb_sync_operations[]" class="list-group checked-list-box">
 																						<li class="list-group-item" data-value="export_journalentry_to_quickbooks" data-color="success"><?php echo lang('config_export_journalentry_to_quickbooks'); ?></li>
@@ -4360,12 +4363,12 @@ $this->load->helper('update');
                                 </div>
                 </div>
                             
-                <div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">  
-                    <?php
+                <div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">  
+                    <#?php
 												echo form_label(lang('config_qb_sync_logs').':', 'qb_sync_logs',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 												<div class="col-sm-9 col-md-9 col-lg-10">
 														<ul>
-														<?php
+														<#?php
 														foreach($this->Appfile->get_files_with_name('quickbooks_log.txt') as $file) 
 														{
 																echo '<li>'.anchor($this->Appfile->get_url_for_file($file['file_id']),date(get_date_format().' '.get_time_format(), strtotime($file['timestamp'])),array('target' => '_blank')).'</li>';
@@ -4375,8 +4378,8 @@ $this->load->helper('update');
 												</div>
 								</div>
                         
-								<div id="quickbooks_sync_progress" class="form-group hidden" data-keyword="<?php echo H(lang('common_quickbooks')) ?>"> 
-									<?php echo form_label(lang('config_quickbooks_progress').':', 'quickbooks_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div id="quickbooks_sync_progress" class="form-group hidden" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>"> 
+									<#?php echo form_label(lang('config_quickbooks_progress').':', 'quickbooks_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 											<div class="col-sm-9 col-md-9 col-lg-10">
 													<div class="well well-sm">
 															<div class="progress">
@@ -4388,11 +4391,11 @@ $this->load->helper('update');
 													</div>
 											</div>
 							</div>
-							<div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">
-								<?php echo form_label(lang('qb_export_start_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">
+								<#?php echo form_label(lang('qb_export_start_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
 											<div class="input-group">
-												<?php echo form_input(array(
+												<#?php echo form_input(array(
 													'name'=>'export_start_date',
 													'id'=>'export_start_date',
 													'class'=>'form-control datepicker',
@@ -4402,17 +4405,17 @@ $this->load->helper('update');
 											</div>
 								</div>
 							</div>
-							<div class="form-group" data-keyword="<?php echo H(lang('common_quickbooks')) ?>">
-								<?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">
+								<#?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 									<div class="col-sm-9 col-md-9 col-lg-10">
 										<div class="input-group">
-										<input readonly type="text" class="form-control form-inps" placeholder="<?php echo lang('config_last_qb_sync_date'); ?>" name="qb_sync_date" id="qb_sync_date" value="<?php echo $this->config->item('last_qb_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_qb_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
+										<input readonly type="text" class="form-control form-inps" placeholder="<#?php echo lang('config_last_qb_sync_date'); ?>" name="qb_sync_date" id="qb_sync_date" value="<?php echo $this->config->item('last_qb_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_qb_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
 												<span class = "input-group-btn">
 														<button id="sync_qb" type="button" class="btn btn-lg  btn-warning"><span id="sync_qb_button_icon" class="glyphicon glyphicon-refresh"></span> <?php echo lang('config_sync');?></button>
 																					</span>
 																			
 																					<span class = "input-group-btn hidden" id="qb-cancel-button">
-														<button id="cancel_qb" type="button" class="btn btn-lg btn-danger"> <?php echo lang('common_cancel');?></button>
+														<button id="cancel_qb" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('common_cancel');?></button>
 												</span>
 										
 										</div>              
@@ -4421,6 +4424,7 @@ $this->load->helper('update');
             </div>
           </div>
     	</div>	
+		-->
     <!-- Ecommerce Store -->
      <div class="col-md-12">
 			<div class="panel panel-piluku">
