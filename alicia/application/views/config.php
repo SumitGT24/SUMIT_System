@@ -4613,7 +4613,7 @@ $this->load->helper('update');
 			</div>
 		</div>
     Fin Comercio electronico/Ecommerce Store 4424 4617-->
-	
+
 	<!-- Woocommerce Settings-->
     <?php
 		
@@ -4811,64 +4811,62 @@ $this->load->helper('update');
 				</div>
 				
 			</div>
-	     <!--Api Settings-->
+	     <!--Api Settings 4814 a 4945
 	     <div class="col-md-12">
 				<div class="panel panel-piluku">
 					<div class="panel-heading">
-						<?php echo create_section(lang('config_api_settings_info'), 'store-configuration-options', 'section-api-settings')  ?>
+						<#?php echo create_section(lang('config_api_settings_info'), 'store-configuration-options', 'section-api-settings')  ?>
 						<a href="https://phppointofsale.com/api.php" onclick="window.open('https://phppointofsale.com/api.php', '_blank', 'width=800,height=600,scrollbars=yes,menubar=no,status=yes,resizable=yes,screenx=0,screeny=0'); return false;"> <span class="glyphicon glyphicon-info-sign"></span></a>
 					</div>	
 					<div class="panel-body">
 						
 							
-							<div class="form-group no-padding-right" data-keyword="<?php echo H(lang('config_keyword_api')) ?>">	
-							<?php echo form_label(lang('config_api_keys').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group no-padding-right" data-keyword="<#?php echo H(lang('config_keyword_api')) ?>">	
+							<#?php echo form_label(lang('config_api_keys').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 								<div class="col-md-9 col-sm-9 col-lg-10">
 									<div class="table-responsive">
 										<table id="api_keys" class="table">
 											<thead>
 												<tr>
-												<th><?php echo lang('common_description'); ?></th>
-												<th><?php echo lang('config_api_key_ending_in'); ?></th>
-												<th><?php echo lang('config_permissions'); ?></th>
-												<th><?php echo lang('common_delete'); ?></th>
+												<th><#?php echo lang('common_description'); ?></th>
+												<th><#?php echo lang('config_api_key_ending_in'); ?></th>
+												<th><#?php echo lang('config_permissions'); ?></th>
+												<th><#?php echo lang('common_delete'); ?></th>
 												</tr>
 											</thead>
 									
 											<tbody id="api_keys_body">
-											<?php foreach($api_keys as $key) { ?>
+											<#?php foreach($api_keys as $key) { ?>
 												<tr>
-													<td><?php echo $key->description;?></td>
-													<td>...<?php echo $key->key_ending; ?></td>
+													<td><#?php echo $key->description;?></td>
+													<td>...<#?php echo $key->key_ending; ?></td>
 													<td>
-														<?php	echo  $key->level == 1 ? lang('config_read') : lang('config_read_write'); ?>
+														<#?php	echo  $key->level == 1 ? lang('config_read') : lang('config_read_write'); ?>
 													</td>
-												  <td><a class="delete_api_key" href="javascript:void(0);" data-key-id='<?php echo $key->id; ?>'><?php echo lang('common_delete'); ?></a></td>
+												  <td><a class="delete_api_key" href="javascript:void(0);" data-key-id='<#?php echo $key->id; ?>'><#?php echo lang('common_delete'); ?></a></td>
 											</tr>
-											<?php } ?>
+											<#?php } ?>
 											</tbody>
 										</table>
 								
-											<a tabindex="-1" href="<?php echo site_url('config/add_api_key');?>" data-toggle="modal" data-target="#myModal" data-toggle="model"><?php echo lang('config_add_key'); ?></a>
+											<a tabindex="-1" href="<#?php echo site_url('config/add_api_key');?>" data-toggle="modal" data-target="#myModal" data-toggle="model"><#?php echo lang('config_add_key'); ?></a>
 										</div>
 									</div>
 								</div>
 					</div>
 				</div>
 			</div>
-			
-			
-			
-	     <div class="col-md-12">
+			 
+			<div class="col-md-12">
 				<div class="panel panel-piluku">
 					<div class="panel-heading">
-						<?php echo create_section(lang('config_webhooks'), 'store-configuration-options', 'section-webhooks-settings')  ?>
+						<#?php echo create_section(lang('config_webhooks'), 'store-configuration-options', 'section-webhooks-settings')  ?>
 					</div>	
 					<div class="panel-body">
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<?php echo form_label(lang('config_new_customer_web_hook').':', 'new_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_new_customer_web_hook').':', 'new_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<?php echo form_input(array(
+								<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'new_customer_web_hook',
 								'id'=>'new_customer_web_hook',
@@ -4877,10 +4875,10 @@ $this->load->helper('update');
 							</div>
 						</div>
 
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<?php echo form_label(lang('config_new_sale_web_hook').':', 'new_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_new_sale_web_hook').':', 'new_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<?php echo form_input(array(
+								<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'new_sale_web_hook',
 								'id'=>'new_sale_web_hook',
@@ -4889,10 +4887,10 @@ $this->load->helper('update');
 							</div>
 						</div>
 						
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<?php echo form_label(lang('config_new_receiving_web_hook').':', 'new_receiving_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_new_receiving_web_hook').':', 'new_receiving_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<?php echo form_input(array(
+								<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'new_receiving_web_hook',
 								'id'=>'new_receiving_web_hook',
@@ -4902,10 +4900,10 @@ $this->load->helper('update');
 						</div>
 						
 						
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<?php echo form_label(lang('config_edit_customer_web_hook').':', 'edit_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_edit_customer_web_hook').':', 'edit_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<?php echo form_input(array(
+								<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'edit_customer_web_hook',
 								'id'=>'edit_customer_web_hook',
@@ -4915,10 +4913,10 @@ $this->load->helper('update');
 						</div>
 						
 						
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<?php echo form_label(lang('config_edit_sale_web_hook').':', 'edit_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_edit_sale_web_hook').':', 'edit_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<?php echo form_input(array(
+								<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'edit_sale_web_hook',
 								'id'=>'edit_sale_web_hook',
@@ -4928,10 +4926,10 @@ $this->load->helper('update');
 						</div>
 
 
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_store_accounts')) ?>">	
-							<?php echo form_label(lang('config_edit_recv_web_hook').':', 'edit_recv_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_edit_recv_web_hook').':', 'edit_recv_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<?php echo form_input(array(
+								<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'edit_recv_web_hook',
 								'id'=>'edit_recv_web_hook',
@@ -4944,7 +4942,7 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
-		-	
+		-->	
 			<div class="form-actions">
 			<?php echo form_submit(array(
 				'name'=>'submitf',
