@@ -581,7 +581,7 @@ class Customers extends Person_controller
 	{		
 		$return = array(lang('common_first_name'),lang('common_last_name'),lang('common_email'),lang('common_phone_number'),lang('common_address_1'),lang('common_address_2'),lang('common_city'),	lang('common_state'),lang('common_zip'),lang('common_country'),lang('common_comments'),lang('customers_account_number'),lang('common_taxable'),lang('customers_tax_certificate'), lang('customers_company_name'),lang('common_tier_name'));
 		
-		#$return[] = lang('common_internal_notes');
+		$return[] = lang('common_internal_notes');
 
 		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 		{
@@ -687,11 +687,11 @@ class Customers extends Person_controller
 				$r->email,
 				$r->phone_number,
 				$r->address_1,
-				$r->address_2,
+				//$r->address_2,
 				$r->city,
 				$r->state,
 				$r->zip,
-				$r->country,
+				//$r->country,
 				$r->comments,
 				$r->account_number,
 				$r->taxable ? 'y' : 'n',
