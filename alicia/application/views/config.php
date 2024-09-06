@@ -121,7 +121,8 @@ $this->load->helper('update');
 					</div>
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_tax_id').':', 'tax_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+							<!--Eliminar identificador de impuesto-->
+						<!--<#?php echo form_label(lang('common_tax_id').':', 'tax_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?-->
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
 							<?php echo form_input(array(
 								'class'=>'validate form-control form-inps',
@@ -145,31 +146,30 @@ $this->load->helper('update');
 			</div>	
 		</div>
 		
-		<!-- Taxes -->
+		<!-- Inicio impuestos/Taxes 150 a 490 
 		<div class="col-md-12">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<?php echo create_section(lang('config_taxes_info'))  ?>
+					<#?php echo create_section(lang('config_taxes_info'))  ?>
 				</div>
 				<div class="panel-body">
-					
-					<!-- Borrar taxjar
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-						<?php echo form_label(lang('config_taxjar_api_key').':', 'taxjar_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+				
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_taxjar_api_key').':', 'taxjar_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-						<?php echo form_input(array(
+						<#?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'taxjar_api_key',
 							'id'=>'taxjar_api_key',
 							'value'=>$this->config->item('taxjar_api_key')));?>
 						</div>
 					</div>
-					-->
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-						<?php echo form_label(lang('config_tax_jar_location').':', 'tax_jar_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_tax_jar_location').':', 'tax_jar_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'tax_jar_location',
 							'id'=>'tax_jar_location',
 							'value'=>'tax_jar_location',
@@ -179,10 +179,10 @@ $this->load->helper('update');
 					</div>
 					
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-						<?php echo form_label(lang('config_flat_discounts_discount_tax').':', 'flat_discounts_discount_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_flat_discounts_discount_tax').':', 'flat_discounts_discount_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'flat_discounts_discount_tax',
 							'id'=>'flat_discounts_discount_tax',
 							'value'=>'flat_discounts_discount_tax',
@@ -192,10 +192,10 @@ $this->load->helper('update');
 					</div>
 					
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-						<?php echo form_label(lang('common_prices_include_tax').':', 'prices_include_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('common_prices_include_tax').':', 'prices_include_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'prices_include_tax',
 							'id'=>'prices_include_tax',
 							'value'=>'prices_include_tax',
@@ -204,10 +204,10 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-						<?php echo form_label(lang('config_charge_tax_on_recv').':', 'charge_tax_on_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_charge_tax_on_recv').':', 'charge_tax_on_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'charge_tax_on_recv',
 							'id'=>'charge_tax_on_recv',
 							'value'=>'charge_tax_on_recv',
@@ -216,10 +216,10 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-						<?php echo form_label(lang('config_use_tax_value_at_all_locations').':', 'use_tax_value_at_all_locations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_use_tax_value_at_all_locations').':', 'use_tax_value_at_all_locations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'use_tax_value_at_all_locations',
 							'id'=>'use_tax_value_at_all_locations',
 							'value'=>'use_tax_value_at_all_locations',
@@ -228,54 +228,53 @@ $this->load->helper('update');
 						</div>
 					</div>					
 									
-					<!-- Tax Classes -->
-					<div class="form-group no-padding-right" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-						<?php echo form_label(lang('config_tax_classes').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group no-padding-right" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_tax_classes').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-md-9 col-sm-9 col-lg-10">
 							<div class="table-responsive">
 								<table id="tax_classes" class="table">
 										<thead>
 											<tr>
-												<th><?php echo lang('common_name'); ?></th>
-												<th><?php echo lang('common_tax_name'); ?></th>
-												<th><?php echo lang('common_tax_percent'); ?></th>			
-												<th><?php echo lang('common_cumulative'); ?></th>	
-												<th><?php echo lang('common_default'); ?></th>
-												<th><?php echo lang('common_delete'); ?></th>		
-												<th><?php echo lang('common_add'); ?></th>
-												<th><?php echo lang('common_id'); ?></th>
-												<th><?php echo lang('config_sort'); ?></th>
+												<th><#?php echo lang('common_name'); ?></th>
+												<th><#?php echo lang('common_tax_name'); ?></th>
+												<th><#?php echo lang('common_tax_percent'); ?></th>			
+												<th><#?php echo lang('common_cumulative'); ?></th>	
+												<th><#?php echo lang('common_default'); ?></th>
+												<th><#?php echo lang('common_delete'); ?></th>		
+												<th><#?php echo lang('common_add'); ?></th>
+												<th><#?php echo lang('common_id'); ?></th>
+												<th><#?php echo lang('config_sort'); ?></th>
 											</tr>
 										</thead>
 							
 										<tbody>
 								
-										<?php
+										<#?php
 										 foreach($tax_classes as $tax_class_id => $tax_class) { 
 											 ?>
-											<tr data-index="<?php echo H($tax_class_id); ?>">
+											<tr data-index="<#?php echo H($tax_class_id); ?>">
 												<td class="tax_class_name top">
-													<input type="text" class="rates form-control" name="tax_classes[<?php echo H($tax_class_id); ?>][name]" value="<?php echo H($tax_class['name']);?>" />
-													<?php foreach($tax_class['taxes'] as $tax_class_tax) { ?>
-														<input type="hidden" name="taxes[<?php echo H($tax_class_id); ?>][tax_class_tax_id][]" value="<?php echo H($tax_class_tax['id']); ?>">
-													<?php } ?>
+													<input type="text" class="rates form-control" name="tax_classes[<#?php echo H($tax_class_id); ?>][name]" value="<#?php echo H($tax_class['name']);?>" />
+													<#?php foreach($tax_class['taxes'] as $tax_class_tax) { ?>
+														<input type="hidden" name="taxes[<#?php echo H($tax_class_id); ?>][tax_class_tax_id][]" value="<#?php echo H($tax_class_tax['id']); ?>">
+													<#?php } ?>
 												</td>
 												<td class="tax_class_rate_name top">
 										
-													<?php foreach($tax_class['taxes'] as $tax_class_taxes_data) { 
+													<#?php foreach($tax_class['taxes'] as $tax_class_taxes_data) { 
 														?>
-														<input data-tax-class-tax-id="<?php echo H($tax_class_taxes_data['id']); ?>" type="text" class="rates form-control" name="taxes[<?php echo H($tax_class_id); ?>][name][]" value="<?php echo H($tax_class_taxes_data['name']);?>" />
-													<?php } ?>
+														<input data-tax-class-tax-id="<#?php echo H($tax_class_taxes_data['id']); ?>" type="text" class="rates form-control" name="taxes[<#?php echo H($tax_class_id); ?>][name][]" value="<#?php echo H($tax_class_taxes_data['name']);?>" />
+													<#?php } ?>
 												</td>
 									
 												<td class="tax_class_rate_percent top">
-													<?php foreach($tax_class['taxes'] as $tax_class_taxes_data) { ?>
-														<input type="text" class="rates form-control" name="taxes[<?php echo H($tax_class_id); ?>][percent][]" value="<?php echo H($tax_class_taxes_data['percent']);?>" />
-													<?php } ?>
+													<#?php foreach($tax_class['taxes'] as $tax_class_taxes_data) { ?>
+														<input type="text" class="rates form-control" name="taxes[<#?php echo H($tax_class_id); ?>][percent][]" value="<#?php echo H($tax_class_taxes_data['percent']);?>" />
+													<#?php } ?>
 												</td>
 												
 												<td class="tax_class_rate_cumulative top">
-													<?php 
+													<#?php 
 													$tax_class_cum_counter = 0;
 													foreach($tax_class['taxes'] as $tax_class_data) { 
 														$cum_id = 'tax_class_'.$tax_class_id.'_cumulative_'.$tax_class_cum_counter;
@@ -283,25 +282,25 @@ $this->load->helper('update');
 														if ($tax_class_cum_counter == 1)
 														{
 													?>
-															<?php echo form_checkbox('taxes['.H($tax_class_id).'][cumulative][]', '1', $tax_class_data['cumulative'],'id="'.$cum_id.'" class="form-control rates cumulative_checkbox"');  ?>
-															<label class="tax_class_cumulative_element" for="<?php echo $cum_id; ?>"><span></span></label>			
-													<?php
+															<#?php echo form_checkbox('taxes['.H($tax_class_id).'][cumulative][]', '1', $tax_class_data['cumulative'],'id="'.$cum_id.'" class="form-control rates cumulative_checkbox"');  ?>
+															<label class="tax_class_cumulative_element" for="<#?php echo $cum_id; ?>"><span></span></label>			
+													<#?php
 												}
 												else
 												{
 													?>
-															<?php 
+															<#?php 
 															echo form_hidden('taxes['.H($tax_class_id).'][cumulative][]', '0');
 															echo form_checkbox('taxes['.H($tax_class_id).'][cumulative][]', '1', $tax_class_data['cumulative'],'disabled id="'.$cum_id.'" class="form-control rates cumulative_checkbox invisible"');  ?>
-															<label class="tax_class_cumulative_element invisible" for="<?php echo $cum_id; ?>"><span></span></label>
-													<?php
+															<label class="tax_class_cumulative_element invisible" for="<#?php echo $cum_id; ?>"><span></span></label>
+													<#?php
 												}
 													$tax_class_cum_counter++;
 												 } ?>
 												</td>
 
 												<td class="tax_class_rate_default">
-													<?php 
+													<#?php 
 													$tax_class_default_counter = 0;
 														$default_id = 'tax_class_'.$tax_class_id.'_default_'.$tax_class_default_counter;
 													
@@ -312,9 +311,9 @@ $this->load->helper('update');
 															'checked' => $this->config->item('tax_class_id') == $tax_class_id ? 'checked' : '',
 														)); 
 													?>
-													<label class="tax_class_default_element" for="<?php echo $default_id; ?>"><span></span></label>
+													<label class="tax_class_default_element" for="<#?php echo $default_id; ?>"><span></span></label>
 																												
-													<?php
+													<#?php
 													$tax_class_default_counter++;
 													?>
 												</td>
@@ -322,28 +321,28 @@ $this->load->helper('update');
 												
 									
 												<td>
-													<a class="delete_tax_rate tax_table_rate_text_element"><?php echo lang('common_delete'); ?></a>
+													<a class="delete_tax_rate tax_table_rate_text_element"><#?php echo lang('common_delete'); ?></a>
 												</td>
-												<td><a href="javascript:void(0);" class="add_tax_rate"><?php echo lang('config_add_rate'); ?></a></td>
-												<td><?php echo $tax_class_id; ?></td>
+												<td><a href="javascript:void(0);" class="add_tax_rate"><#?php echo lang('config_add_rate'); ?></a></td>
+												<td><#?php echo $tax_class_id; ?></td>
 												<td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td>
 										</tr>
 							
-										<?php } ?>
+										<#?php } ?>
 										</tbody>
 									</table>
 								
-									<a href="javascript:void(0);" class="add_tax_class"><?php echo lang('config_add_tax_class'); ?></a>
+									<a href="javascript:void(0);" class="add_tax_class"><#?php echo lang('config_add_tax_class'); ?></a>
 								</div>								
-						</div><!-- end col -->
-				</div><!-- end form-group -->
+						</div>
+				</div>
 					
-					<?php if (!$this->config->item('tax_class_id')) {?>
+					<#?php if (!$this->config->item('tax_class_id')) {?>
 					
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-							<?php echo form_label(lang('common_default_tax_rate_1').':', 'default_tax_1_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+							<#?php echo form_label(lang('common_default_tax_rate_1').':', 'default_tax_1_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-4 col-md-4 col-lg-5">
-								<?php echo form_input(array(
+								<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 								'name'=>'default_tax_1_name',
 								'placeholder' => lang('common_tax_name'),
@@ -353,7 +352,7 @@ $this->load->helper('update');
 							</div>
 								<div class="col-sm-4 col-md-4 col-lg-5">
 									<div class="input-group">
-										<?php echo form_input(array(
+										<#?php echo form_input(array(
 										'class'=>'form-control form-inps-tax',
 										'placeholder' => lang('common_tax_percent'),
 										'name'=>'default_tax_1_rate',
@@ -366,10 +365,10 @@ $this->load->helper('update');
 								</div>
 							</div>
 						
-							<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-								<?php echo form_label(lang('common_default_tax_rate_2').':', 'default_tax_1_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+								<#?php echo form_label(lang('common_default_tax_rate_2').':', 'default_tax_1_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 								<div class="col-sm-4 col-md-4 col-lg-5">
-									<?php echo form_input(array(
+									<#?php echo form_input(array(
 									'class'=>'form-control form-inps',
 									'name'=>'default_tax_2_name',
 									'placeholder' => lang('common_tax_name'),
@@ -380,7 +379,7 @@ $this->load->helper('update');
 
 								<div class="col-sm-4 col-md-4 col-lg-5">
 									<div class="input-group">
-										<?php echo form_input(array(
+										<#?php echo form_input(array(
 										'class'=>'form-control form-inps-tax',	
 										'name'=>'default_tax_2_rate',
 										'placeholder' => lang('common_tax_percent'),
@@ -390,21 +389,21 @@ $this->load->helper('update');
 									  <span class="input-group-addon">%</span>
 									</div>
 									<div class="clear"></div>
-									<?php echo form_checkbox('default_tax_2_cumulative', '1', $this->config->item('default_tax_2_cumulative') ? true : false, 'id="default_tax_2_cumulative" class="cumulative_checkbox"');  ?>
+									<#?php echo form_checkbox('default_tax_2_cumulative', '1', $this->config->item('default_tax_2_cumulative') ? true : false, 'id="default_tax_2_cumulative" class="cumulative_checkbox"');  ?>
 									<label for="default_tax_2_cumulative"><span></span></label>
 									<span class="cumulative_label">
-										<?php echo lang('common_cumulative'); ?>
+										<#?php echo lang('common_cumulative'); ?>
 									</span>
 								</div>
-									<div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 col-lg-9 col-lg-offset-3" style="display: <?php echo $this->config->item('default_tax_3_rate') ? 'none' : 'block';?>">
-										<a href="javascript:void(0);" class="show_more_taxes btn btn-orange btn-round"><?php echo lang('common_show_more');?> &raquo;</a>
+									<div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 col-lg-9 col-lg-offset-3" style="display: <#?php echo $this->config->item('default_tax_3_rate') ? 'none' : 'block';?>">
+										<a href="javascript:void(0);" class="show_more_taxes btn btn-orange btn-round"><#?php echo lang('common_show_more');?> &raquo;</a>
 									</div>
 						
-									<div class="col-md-12 more_taxes_container" style="display: <?php echo $this->config->item('default_tax_3_rate') ? 'block' : 'none';?>">
-										<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-											<?php echo form_label(lang('common_default_tax_rate_3').':', 'default_tax_3_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+									<div class="col-md-12 more_taxes_container" style="display: <#?php echo $this->config->item('default_tax_3_rate') ? 'block' : 'none';?>">
+										<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+											<#?php echo form_label(lang('common_default_tax_rate_3').':', 'default_tax_3_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 											<div class="col-sm-4 col-md-4 col-lg-5">
-												<?php echo form_input(array(
+												<#?php echo form_input(array(
 												'class'=>'form-control form-inps',
 												'name'=>'default_tax_3_name',
 												'placeholder' => lang('common_tax_name'),
@@ -415,7 +414,7 @@ $this->load->helper('update');
 						
 											<div class="col-sm-4 col-md-4 col-lg-5">
 												<div class="input-group">
-													<?php echo form_input(array(
+													<#?php echo form_input(array(
 													'class'=>'form-control form-inps-tax',
 													'placeholder' => lang('common_tax_percent'),
 													'name'=>'default_tax_3_rate',
@@ -428,10 +427,10 @@ $this->load->helper('update');
 											</div>
 										</div>
 							
-										<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-											<?php echo form_label(lang('common_default_tax_rate_4').':', 'default_tax_4_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+										<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+											<#?php echo form_label(lang('common_default_tax_rate_4').':', 'default_tax_4_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 											<div class="col-sm-4 col-md-4 col-lg-5">
-												<?php echo form_input(array(
+												<#?php echo form_input(array(
 												'class'=>'form-control form-inps',
 												'placeholder' => lang('common_tax_name'),
 												'name'=>'default_tax_4_name',
@@ -442,7 +441,7 @@ $this->load->helper('update');
 						
 											<div class="col-sm-4 col-md-4 col-lg-5">
 												<div class="input-group">
-													<?php echo form_input(array(
+													<#?php echo form_input(array(
 													'class'=>'form-control form-inps-tax',
 													'placeholder' => lang('common_tax_percent'),
 													'name'=>'default_tax_4_rate',
@@ -455,10 +454,10 @@ $this->load->helper('update');
 											</div>
 										</div>
 							
-										<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
-											<?php echo form_label(lang('common_default_tax_rate_5').':', 'default_tax_5_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+										<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+											<#?php echo form_label(lang('common_default_tax_rate_5').':', 'default_tax_5_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 											<div class="col-sm-4 col-md-4 col-lg-5">
-												<?php echo form_input(array(
+												<#?php echo form_input(array(
 												'class'=>'form-control form-inps',
 												'placeholder' => lang('common_tax_name'),
 												'name'=>'default_tax_5_name',
@@ -469,7 +468,7 @@ $this->load->helper('update');
 						
 											<div class="col-sm-4 col-md-4 col-lg-5">
 												<div class="input-group">
-													<?php echo form_input(array(
+													<#?php echo form_input(array(
 													'class'=>'form-control form-inps-tax',
 													'placeholder' => lang('common_tax_percent'),
 													'name'=>'default_tax_5_rate',
@@ -483,12 +482,13 @@ $this->load->helper('update');
 										</div>
 									</div>
 							</div>
-							<?php } ?>
+							<#?php } ?>
 							
-					</div><!-- end -->
-				</div><!-- end -->
-			</div><!-- end panel-->
-					
+					</div>
+				</div>
+			</div><end panel
+		Fin impuestos-->		
+		
 		<!-- Currency -->
 		<div class="col-md-12">
 			<div class="panel panel-piluku">
