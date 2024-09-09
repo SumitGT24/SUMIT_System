@@ -4144,9 +4144,9 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
-		<?php if(!is_on_phppos_host()) { ?>
 		
-    <!-- Configuración correo eléctronico / Email Settings 4152 a 4326
+	<!-- Configuración correo eléctronico / Email Settings 4152 a 4326
+	<#?php if(!is_on_phppos_host()) { ?>
     <div class="col-md-12">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
@@ -4311,16 +4311,15 @@ $this->load->helper('update');
 					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
 						<div class="col-sm-12 col-md-12 col-lg-12">
 							<span class="pull-right">
-	            	<button id="test_email" type="button" class="btn btn-lg btn-primary"><span id="test_email_icon" class="glyphicon glyphicon-envelope"></span> <#?php echo lang('config_send_test_email');?></button>
+	            			<button id="test_email" type="button" class="btn btn-lg btn-primary"><span id="test_email_icon" class="glyphicon glyphicon-envelope"></span> <#?php echo lang('config_send_test_email');?></button>
 							</span>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+	</div>
 	<#?php } ?>
 			Fin correo electronico-->
-	</div>
 	<!-- Inicio QuickBook/QB Settings 4326 a 4424
          <div class="col-md-12">
                 <div class="panel panel-piluku">
