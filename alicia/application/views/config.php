@@ -4149,18 +4149,18 @@ $this->load->helper('update');
 		</div>
 		<?php if(!is_on_phppos_host()) { ?>
 		
-     <!-- Email Settings-->
+     <!-- Configuración correo eléctronico / Email Settings 4152 a 4326
      <div class="col-md-12">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<?php echo create_section(lang('config_email_settings_info'))  ?>
+					<#?php echo create_section(lang('config_email_settings_info'))  ?>
 				</div>	
 				<div class="panel-body">
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
-						<?php echo form_label('Select A Provider'.':', 'email_provider',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
+						<#?php echo form_label('Select A Provider'.':', 'email_provider',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php
+							<#?php
 								$provider_options = array('Use System Default'=>'Use System Default', 'Gmail'=>'Gmail', 'Office 365'=>'Office 365', 'Windows Live Hotmail'=>'Windows Live Hotmail', 'Other'=>'Other');
 								echo form_dropdown('email_provider', $provider_options, $this->config->item('email_provider'), 'id="email_provider" class="form-control"');
 							?>
@@ -4168,10 +4168,10 @@ $this->load->helper('update');
 					</div>
 					
 				<div class="email_basic">
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-						<?php echo form_label(lang('config_smtp_user').':', 'smtp_user',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_user').':', 'smtp_user',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_user',
 							'id'=>'smtp_user',
@@ -4180,10 +4180,10 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-						<?php echo form_label(lang('config_smtp_pass').':', 'smtp_pass',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_pass').':', 'smtp_pass',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_password(array(
+							<#?php echo form_password(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_pass',
 							'id'=>'smtp_pass',
@@ -4193,28 +4193,28 @@ $this->load->helper('update');
 					</div>
 				</div>
 				<div class="email_advanced">	
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-						<?php echo form_label(lang('config_smtp_crypto').':', 'smtp_crypto',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_crypto').':', 'smtp_crypto',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php
+							<#?php
 								$smtp_crypto_options = array(''=>'','ssl'=>'ssl','tls'=>'tls');
 								echo form_dropdown('smtp_crypto', $smtp_crypto_options, $this->config->item('smtp_crypto'), 'id="smtp_crypto" class="form-control"');
 							?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
-						<?php echo form_label(lang('config_email_protocol').':', 'protocol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
+						<#?php echo form_label(lang('config_email_protocol').':', 'protocol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php
+							<#?php
 								$protocol_options = array(''=>'','smtp'=>'smtp','mail'=>'mail','sendmail'=>'sendmail');
 								echo form_dropdown('protocol', $protocol_options, $this->config->item('protocol'), 'id="protocol" class="form-control"');
 							?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-						<?php echo form_label(lang('config_smtp_host').':', 'smtp_host',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_host').':', 'smtp_host',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_host',
 							'id'=>'smtp_host',
@@ -4223,10 +4223,10 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-						<?php echo form_label(lang('config_smtp_port').':', 'smtp_port',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_port').':', 'smtp_port',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_port',
 							'id'=>'smtp_port',
@@ -4234,10 +4234,10 @@ $this->load->helper('update');
 							'value'=>$this->config->item('smtp_port')));?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-						<?php echo form_label(lang('config_email_charset').':', 'email_charset',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_email_charset').':', 'email_charset',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'email_charset',
 							'id'=>'email_charset',
@@ -4245,10 +4245,10 @@ $this->load->helper('update');
 							'value'=>$this->config->item('email_charset')));?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-						<?php echo form_label(lang('config_email_newline').':', 'newline',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_email_newline').':', 'newline',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php
+							<#?php
 								$newline_options = array('rn'=>'\r\n','n'=>'\n','r'=>'\r');
 								$selected_option = 'rn';
 								
@@ -4272,10 +4272,10 @@ $this->load->helper('update');
 							?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-						<?php echo form_label(lang('config_email_crlf').':', 'crlf',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_email_crlf').':', 'crlf',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php
+							<#?php
 								$crlf_options = array('rn'=>'\r\n','n'=>'\n','r'=>'\r');
 								$selected_option = 'rn';
 								
@@ -4299,10 +4299,10 @@ $this->load->helper('update');
 							?>
 						</div>
 					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
-						<?php echo form_label(lang('config_smtp_timeout').':', 'smtp_timeout',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
+						<#?php echo form_label(lang('config_smtp_timeout').':', 'smtp_timeout',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'smtp_timeout',
 							'id'=>'smtp_timeout',
@@ -4310,19 +4310,19 @@ $this->load->helper('update');
 							'value'=>$this->config->item('smtp_timeout')));?>
 						</div>
 					</div>
-				</div> <!-- end advanced email -->
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
+				</div> //end advanced email 
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
 						<div class="col-sm-12 col-md-12 col-lg-12">
 							<span class="pull-right">
-	            	<button id="test_email" type="button" class="btn btn-lg btn-primary"><span id="test_email_icon" class="glyphicon glyphicon-envelope"></span> <?php echo lang('config_send_test_email');?></button>
+	            	<button id="test_email" type="button" class="btn btn-lg btn-primary"><span id="test_email_icon" class="glyphicon glyphicon-envelope"></span> <#?php echo lang('config_send_test_email');?></button>
 							</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<?php } ?>
-
+		<#?php } ?>
+	Fin correo electronico-->
 	<!-- Inicio QuickBook/QB Settings 4326 a 4424
          <div class="col-md-12">
                 <div class="panel panel-piluku">
