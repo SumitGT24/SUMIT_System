@@ -2,8 +2,6 @@
 $this->load->view("partial/header"); 
 $this->load->helper('demo');
 $this->load->helper('update');
-
-
 ?>
 
 <div class="manage_buttons">
@@ -12,13 +10,12 @@ $this->load->helper('update');
 			<div class="row">
 				<div class="col-md-4 col-sm-4 col-xs-2">
 					<div class="search-tpl">
-					<div class="input-group">
-					  <span class="input-group-addon" id="search-addon"><span class="glyphicon glyphicon-search"></span></span>
-						<input aria-describedby="search-addon" type="text" class="form-control" name ="search" id="search"  placeholder="<?php echo lang('common_search') ?>" value="<?php echo H($search); ?>" />
-					</div>
+						<div class="input-group">
+						  <span class="input-group-addon" id="search-addon"><span class="glyphicon glyphicon-search"></span></span>
+						  <input aria-describedby="search-addon" type="text" class="form-control" name ="search" id="search"  placeholder="<?php echo lang('common_search') ?>" value="<?php echo H($search); ?>" />
+						</div>
 					</div>
 				</div>
-			
 			</div>
 		</div><!-- end email_buttons -->
 	</div><!-- manage-row-options -->
@@ -4149,8 +4146,8 @@ $this->load->helper('update');
 		</div>
 		<?php if(!is_on_phppos_host()) { ?>
 		
-     <!-- Configuración correo eléctronico / Email Settings 4152 a 4326
-     <div class="col-md-12">
+    <!-- Configuración correo eléctronico / Email Settings 4152 a 4326
+    <div class="col-md-12">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
 					<#?php echo create_section(lang('config_email_settings_info'))  ?>
@@ -4320,9 +4317,10 @@ $this->load->helper('update');
 					</div>
 				</div>
 			</div>
-			<#?php } ?>
-			Fin correo electronico-->
 		</div>
+	<#?php } ?>
+			Fin correo electronico-->
+	</div>
 	<!-- Inicio QuickBook/QB Settings 4326 a 4424
          <div class="col-md-12">
                 <div class="panel panel-piluku">
@@ -5263,7 +5261,6 @@ $(document).ready(function()
 	    }
 	})
 	
-	
 	$(".delete_currency_denom").click(function()
 	{
 		var id = $(this).data('id');
@@ -5334,7 +5331,6 @@ $(document).ready(function()
 		
 	});
 	
-	
 	$("#reset_ecommerce").click(function(event)
 	{
 		bootbox.confirm(<#?php echo json_encode(lang('config_confirm_reset_ecom')); ?>, function(response)
@@ -5359,8 +5355,7 @@ $(document).ready(function()
 			submitting = true;
 			$(form).ajaxSubmit({
 			success:function(response)
-			{
-				
+			{				
 				
 				//Don't let the tiers, taxes, providers, methods double submitted, so we change the name
 				$('.zones,.tiers_to_edit,.providers,.methods,.taxes,.tax_classes,.sale_types_to_edit').filter(function() {
@@ -5519,8 +5514,6 @@ $(".config-panel").sieve({
 });
 
 $("#search").focus().trigger('keyup');
-
-
 
 <#?php
 $deleted_payment_types = $this->config->item('deleted_payment_types');
@@ -6234,8 +6227,6 @@ $(function () {
 	
 			});
 
-
-
 			$("#reset_quickbooks").click(function(event)
 			{
 				bootbox.confirm(<#?php echo json_encode(lang('config_confirm_reset_qb')); ?>, function(response)
@@ -6255,7 +6246,6 @@ $(function () {
 					}
 				});
 			});
-			
 			
 			var checklist_qb = <#?php echo json_encode(unserialize($this->config->item('qb_sync_operations'))); ?>;
 
