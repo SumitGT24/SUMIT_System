@@ -486,18 +486,18 @@ $this->load->helper('update');
 			</div><end panel
 		Fin impuestos-->		
 
-		<!-- Currency -->
+		<!-- Inicio moneda / Currency 
 		<div class="col-md-12">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<?php echo create_section(lang('config_currency_info'))  ?>
+					<#?php echo create_section(lang('config_currency_info'))  ?>
 				</div>
 				<div class="panel-body">
 
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
-						<?php echo form_label(lang('config_currency_symbol').':', 'currency_symbol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+						<#?php echo form_label(lang('config_currency_symbol').':', 'currency_symbol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 							'name'=>'currency_symbol',
 							'id'=>'currency_symbol',
@@ -505,10 +505,10 @@ $this->load->helper('update');
 						</div>
 					</div>	
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
-						<?php echo form_label(lang('config_currency_code').':', 'currency_code',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+						<#?php echo form_label(lang('config_currency_code').':', 'currency_code',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 								'class'=>'form-control form-inps',
 							'name'=>'currency_code',
 							'id'=>'currency_code',
@@ -517,33 +517,33 @@ $this->load->helper('update');
 					</div>	
 					
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
-					<?php echo form_label(lang('config_currency_exchange_rates').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+					<#?php echo form_label(lang('config_currency_exchange_rates').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="table-responsive col-sm-9 col-md-9 col-lg-10">
 						<table id="currency_exchange_rates" class="table">
 							<thead>
 								<tr>
-								<th><?php echo lang('common_exchange_to'); ?></th>
-								<th><?php echo lang('config_currency_symbol'); ?></th>
-								<th><?php echo lang('config_currency_symbol_location'); ?></th>
-								<th><?php echo lang('config_number_of_decimals'); ?></th>
-								<th><?php echo lang('config_thousands_separator'); ?></th>
-								<th><?php echo lang('config_decimal_point'); ?></th>
-								<th><?php echo lang('config_exchange_rate'); ?></th>
-								<th><?php echo lang('common_delete'); ?></th>
+								<th><#?php echo lang('common_exchange_to'); ?></th>
+								<th><#?php echo lang('config_currency_symbol'); ?></th>
+								<th><#?php echo lang('config_currency_symbol_location'); ?></th>
+								<th><#?php echo lang('config_number_of_decimals'); ?></th>
+								<th><#?php echo lang('config_thousands_separator'); ?></th>
+								<th><#?php echo lang('config_decimal_point'); ?></th>
+								<th><#?php echo lang('config_exchange_rate'); ?></th>
+								<th><#?php echo lang('common_delete'); ?></th>
 								</tr>
 							</thead>
 							
 							<tbody>
-							<?php foreach($currency_exchange_rates->result() as $currency_exchange_rate) { ?>
+							<#?php foreach($currency_exchange_rates->result() as $currency_exchange_rate) { ?>
 								<tr>
-									<td><input type="text" name="currency_exchange_rates_to[]" class="form-control" value="<?php echo H($currency_exchange_rate->currency_code_to); ?>" /></td>
-									<td><input type="text" name="currency_exchange_rates_symbol[]" class="form-control" value="<?php echo H($currency_exchange_rate->currency_symbol); ?>" /></td>
-									<td><?php echo form_dropdown('currency_exchange_rates_symbol_location[]', array(
+									<td><input type="text" name="currency_exchange_rates_to[]" class="form-control" value="<#?php echo H($currency_exchange_rate->currency_code_to); ?>" /></td>
+									<td><input type="text" name="currency_exchange_rates_symbol[]" class="form-control" value="<#?php echo H($currency_exchange_rate->currency_symbol); ?>" /></td>
+									<td><#?php echo form_dropdown('currency_exchange_rates_symbol_location[]', array(
 			 							'before'    => lang('config_before_number'),
 			 							'after'    => lang('config_after_number'),
 									),$currency_exchange_rate->currency_symbol_location,'class="form-control"');?></td>
-									<td><?php echo form_dropdown('currency_exchange_rates_number_of_decimals[]', array(
+									<td><#?php echo form_dropdown('currency_exchange_rates_number_of_decimals[]', array(
 				 							''  => lang('config_let_system_decide'),
 				 							'0'    => '0',
 				 							'1'    => '1',
@@ -554,24 +554,24 @@ $this->load->helper('update');
 										),$currency_exchange_rate->number_of_decimals
 				 							 , 'class="form-control" id="number_of_decimals"');
 										?></td>
-									<td><input type="text" name="currency_exchange_rates_thousands_separator[]" class="form-control" value="<?php echo H($currency_exchange_rate->thousands_separator); ?>" /></td>
-									<td><input type="text" name="currency_exchange_rates_decimal_point[]" class="form-control" value="<?php echo H($currency_exchange_rate->decimal_point); ?>" /></td>
-									<td><input type="text" name="currency_exchange_rates_rate[]" class="form-control" value="<?php echo H(to_currency_no_money($currency_exchange_rate->exchange_rate,10)); ?>" /></td>
-									<td><a class="delete_currency_exchange_rate text-primary" href="javascript:void(0);"><?php echo lang('common_delete'); ?></a></td>
+									<td><input type="text" name="currency_exchange_rates_thousands_separator[]" class="form-control" value="<#?php echo H($currency_exchange_rate->thousands_separator); ?>" /></td>
+									<td><input type="text" name="currency_exchange_rates_decimal_point[]" class="form-control" value="<#?php echo H($currency_exchange_rate->decimal_point); ?>" /></td>
+									<td><input type="text" name="currency_exchange_rates_rate[]" class="form-control" value="<#?php echo H(to_currency_no_money($currency_exchange_rate->exchange_rate,10)); ?>" /></td>
+									<td><a class="delete_currency_exchange_rate text-primary" href="javascript:void(0);"><#?php echo lang('common_delete'); ?></a></td>
 								</tr>
-							<?php } ?>
+							<#?php } ?>
 							</tbody>
 						</table>
 						
-						<a href="javascript:void(0);" id="add_exchange_rate"><?php echo lang('config_add_currency_exchange_rate'); ?></a>
+						<a href="javascript:void(0);" id="add_exchange_rate"><#?php echo lang('config_add_currency_exchange_rate'); ?></a>
 						</div>
 					</div>
 					
 					
- 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
- 					<?php echo form_label(lang('config_currency_symbol_location').':', 'currency_symbol_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+ 					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+ 					<#?php echo form_label(lang('config_currency_symbol_location').':', 'currency_symbol_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
  						<div class="col-sm-9 col-md-9 col-lg-10">
- 						<?php echo form_dropdown('currency_symbol_location', array(
+ 						<#?php echo form_dropdown('currency_symbol_location', array(
  							'before'    => lang('config_before_number'),
  							'after'    => lang('config_after_number'),
 						),
@@ -580,10 +580,10 @@ $this->load->helper('update');
  						</div>						
  					</div>				
 							
- 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
- 					<?php echo form_label(lang('config_number_of_decimals').':', 'number_of_decimals',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+ 					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+ 					<#?php echo form_label(lang('config_number_of_decimals').':', 'number_of_decimals',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
  						<div class="col-sm-9 col-md-9 col-lg-10">
- 						<?php echo form_dropdown('number_of_decimals', array(
+ 						<#?php echo form_dropdown('number_of_decimals', array(
  							''  => lang('config_let_system_decide'),
  							'0'    => '0',
  							'1'    => '1',
@@ -597,10 +597,10 @@ $this->load->helper('update');
  						</div>						
  					</div>				
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
-						<?php echo form_label(lang('config_thousands_separator').':', 'thousands_separator',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+						<#?php echo form_label(lang('config_thousands_separator').':', 'thousands_separator',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 								'class'=>'validate form-control form-inps',
 							'name'=>'thousands_separator',
 							'id'=>'thousands_separator',
@@ -608,10 +608,10 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
-						<?php echo form_label(lang('config_decimal_point').':', 'decimal_point',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+						<#?php echo form_label(lang('config_decimal_point').':', 'decimal_point',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 								'class'=>'validate form-control form-inps',
 							'name'=>'decimal_point',
 							'id'=>'decimal_point',
@@ -619,37 +619,37 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
-					<?php echo form_label(lang('config_currency_denoms').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+					<#?php echo form_label(lang('config_currency_denoms').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="table-responsive col-sm-9 col-md-4 col-lg-4">
 						<table id="currency_denoms" class="table">
 							<thead>
 								<tr>
-								<th><?php echo lang('common_denomination'); ?></th>
-								<th><?php echo lang('config_currency_value'); ?></th>
-								<th><?php echo lang('common_delete'); ?></th>
+								<th><#?php echo lang('common_denomination'); ?></th>
+								<th><#?php echo lang('config_currency_value'); ?></th>
+								<th><#?php echo lang('common_delete'); ?></th>
 								</tr>
 							</thead>
 							
 							<tbody>
-							<?php foreach($currency_denoms->result() as $currency_denom) { ?>
+							<#?php foreach($currency_denoms->result() as $currency_denom) { ?>
 								<tr>
-									<td><input type="text" name="currency_denoms_name[]" class="form-control" value="<?php echo H($currency_denom->name); ?>" /></td>
-									<td><input type="text" name="currency_denoms_value[]" class="form-control" value="<?php echo H(to_currency_no_money($currency_denom->value)); ?>" /></td>
-									<td><a class="delete_currency_denom text-primary" data-id="<?php echo H($currency_denom->id); ?>" href="javascript:void(0);"><?php echo lang('common_delete'); ?></a></td>
-									<input type="hidden" name="currency_denoms_ids[]" value="<?php echo H($currency_denom->id); ?>" />
+									<td><input type="text" name="currency_denoms_name[]" class="form-control" value="<#?php echo H($currency_denom->name); ?>" /></td>
+									<td><input type="text" name="currency_denoms_value[]" class="form-control" value="<#?php echo H(to_currency_no_money($currency_denom->value)); ?>" /></td>
+									<td><a class="delete_currency_denom text-primary" data-id="<#?php echo H($currency_denom->id); ?>" href="javascript:void(0);"><#?php echo lang('common_delete'); ?></a></td>
+									<input type="hidden" name="currency_denoms_ids[]" value="<#?php echo H($currency_denom->id); ?>" />
 								</tr>
-							<?php } ?>
+							<#?php } ?>
 							</tbody>
 						</table>
 						
-						<a href="javascript:void(0);" id="add_denom"><?php echo lang('config_add_currency_denom'); ?></a>
+						<a href="javascript:void(0);" id="add_denom"><#?php echo lang('config_add_currency_denom'); ?></a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+		Fin moneda / Currency -->
 		<!-- Payment Types -->
 		<div class="col-md-12">
 			<div class="panel panel-piluku">
@@ -735,11 +735,11 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">
-						<?php echo form_label(lang('config_enable_ebt_payments'). ':', 'enable_ebt_payments',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<!-- Pagos PBT
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_payment')) ?>">
+						<#?php echo form_label(lang('config_enable_ebt_payments'). ':', 'enable_ebt_payments',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
+							<#?php echo form_checkbox(array(
 							'name'=>'enable_ebt_payments',
 							'id'=>'enable_ebt_payments',
 							'value'=>'1',
@@ -747,11 +747,12 @@ $this->load->helper('update');
 							<label for="enable_ebt_payments"><span></span></label>
 						</div>
 					</div>
-
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">
-						<?php echo form_label(lang('config_enable_wic'). ':', 'enable_wic',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+				    fin pagos PBT-->
+					<!-- Pagos WIC 
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_payment')) ?>">
+						<#?php echo form_label(lang('config_enable_wic'). ':', 'enable_wic',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
+							<#?php echo form_checkbox(array(
 							'name'=>'enable_wic',
 							'id'=>'enable_wic',
 							'value'=>'1',
@@ -759,18 +760,20 @@ $this->load->helper('update');
 							<label for="enable_wic"><span></span></label>
 						</div>
 					</div>
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">	
-						<?php echo form_label(lang('config_prompt_for_ccv_swipe').':', 'prompt_for_ccv_swipe',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					Fin pagos WIC-->
+					<!-- Preguntar por el CCV
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_payment')) ?>">	
+						<#?php echo form_label(lang('config_prompt_for_ccv_swipe').':', 'prompt_for_ccv_swipe',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'prompt_for_ccv_swipe',
 							'id'=>'prompt_for_ccv_swipe',
 							'value'=>'1',
 							'checked'=>$this->config->item('prompt_for_ccv_swipe')));?>
 							<label for="prompt_for_ccv_swipe"><span></span></label>
 						</div>
-					</div>					
+					</div>		
+					Fin preguntar por el CCV-->			
 				</div>
 			</div>
 		</div>
@@ -806,7 +809,6 @@ $this->load->helper('update');
 					<?php echo create_section(lang('config_orders_and_deliveries_info'))  ?>
 				</div>
 				<div class="panel-body">
-					
 					
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_orders_deliveries')) ?>">	
 					<?php echo form_label(lang('config_do_not_tax_service_items_for_deliveries').':', 'do_not_tax_service_items_for_deliveries',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1049,11 +1051,11 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-					<?php echo form_label(lang('common_disable_sale_cloning').':', 'disable_sale_cloning',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<!-- Desactivar clonacion de ventas
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+					<#?php echo form_label(lang('common_disable_sale_cloning').':', 'disable_sale_cloning',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'disable_sale_cloning',
 							'id'=>'disable_sale_cloning',
 							'value'=>'1',
@@ -1061,12 +1063,12 @@ $this->load->helper('update');
 							<label for="disable_sale_cloning"><span></span></label>
 						</div>
 					</div>
-					
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-					<?php echo form_label(lang('common_disable_recv_cloning').':', 'disable_recv_cloning',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					Fin desactivar clonacion de ventas-->
+					<!-- Desactivar clonacion de recibos
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+					<#?php echo form_label(lang('common_disable_recv_cloning').':', 'disable_recv_cloning',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'disable_recv_cloning',
 							'id'=>'disable_recv_cloning',
 							'value'=>'1',
@@ -1074,7 +1076,7 @@ $this->load->helper('update');
 							<label for="disable_recv_cloning"><span></span></label>
 						</div>
 					</div>
-					
+					--Fin desactivar clonacion de recibos-->
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_scan_and_set_sales').':', 'scan_and_set_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1118,21 +1120,20 @@ $this->load->helper('update');
 						
 					</div>
 					
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-						<?php echo form_label(lang('config_enable_tips').':', 'enable_tips',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<!-- Desactivar propinas
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_enable_tips').':', 'enable_tips',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'enable_tips',
 							'id'=>'enable_tips',
 							'value'=>'enable_tips',
 							'checked'=>$this->config->item('enable_tips')));?>
 							<label for="enable_tips"><span></span></label>
-							<p><?php echo lang('config_not_all_processors_support_tips'); ?></p>
-						</div>
-						
+							<p><#?php echo lang('config_not_all_processors_support_tips'); ?></p>
+						</div>						
 					</div>
-					
+					--Fin desactivar propinas-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_tip_preset_zero').':', 'tip_preset_zero',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
