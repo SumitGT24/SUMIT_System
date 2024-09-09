@@ -4320,9 +4320,9 @@ $this->load->helper('update');
 					</div>
 				</div>
 			</div>
+			<#?php } ?>
+			Fin correo electronico-->
 		</div>
-		<#?php } ?>
-	Fin correo electronico-->
 	<!-- Inicio QuickBook/QB Settings 4326 a 4424
          <div class="col-md-12">
                 <div class="panel panel-piluku">
