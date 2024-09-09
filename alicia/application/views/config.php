@@ -720,9 +720,6 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					
-					
-					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">
 						<?php echo form_label(lang('config_show_selling_price_on_recv'). ':', 'show_selling_price_on_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1035,10 +1032,6 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-					
-					
-					
-					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_disabled_fixed_discounts').':', 'disabled_fixed_discounts',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1089,10 +1082,7 @@ $this->load->helper('update');
 							<label for="scan_and_set_sales"><span></span></label>
 						</div>
 					</div>
-					
-					
-
-					
+				
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_scan_and_set_recv').':', 'scan_and_set_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4952,9 +4942,9 @@ $this->load->helper('update');
 		<?php echo form_close(); ?>	
 	</div>
 </div>
-<!--Inicio validar y enviar correo/validation and submit handling 4957 a 6365
+<!--Inicio validar y enviar correo/validation and submit handling 4957 a 6365-->
 <script type='text/javascript'>
-/*
+
 $(document).ready(function()
 {	
 	date_time_picker_field($('.timepicker'), JS_TIME_FORMAT);
@@ -6351,6 +6341,4 @@ $(function () {
 			    });
 			});
 </script>
-*/
--->
 <?php $this->load->view("partial/footer"); ?>
