@@ -99,8 +99,7 @@ $this->load->helper('update');
 							<input type="file" name="company_logo" id="company_logo" class="filestyle" data-icon="false">  	
 						</div>	
 					</div>
-					<!--No gurdar identificador de impuesto, ya se encuentra comentado
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_company')) ?>">	-->
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 						<?php echo form_label(lang('common_delete_logo').':', 'delete_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
 							<?php echo form_checkbox('delete_logo', '1', null,'id="delete_logo"');?>
