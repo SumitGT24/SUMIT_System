@@ -4912,7 +4912,7 @@ $(document).ready(function()
 	date_time_picker_field($('.timepicker'), JS_TIME_FORMAT);
 	date_time_picker_field($('.datepicker'), 'YYYY-MM-DD');
 	
-
+	/*Correo electronico/Email
 	$("#test_email").click(function()
 	{
 		bootbox.prompt({
@@ -4981,7 +4981,7 @@ $(document).ready(function()
 		crlf : 0,
 		smtp_timeout : '10'
 	};
-	
+	/*
 	var other = {
 		smtp_crypto : '',
 		protocol : '', 
@@ -4994,7 +4994,7 @@ $(document).ready(function()
 		crlf : 0,
 		smtp_timeout : ''
 	};
-	
+
 	var system_default = {
 		smtp_crypto : '',
 		protocol : '', 
@@ -5073,7 +5073,7 @@ $(document).ready(function()
 			}
 		} 
 	});
-	
+	*/
 	$(".ecommerce_platform").change(function() 
 	{
 		if ($(".ecommerce_platform").val() == "woocommerce")
@@ -5282,23 +5282,24 @@ $(document).ready(function()
 		});
 		
 	});
-	
+	/*
 	$("#reset_ecommerce").click(function(event)
 	{
-		bootbox.confirm(<?php echo json_encode(lang('config_confirm_reset_ecom')); ?>, function(response)
+		bootbox.confirm(<#?php echo json_encode(lang('config_confirm_reset_ecom')); ?>, function(response)
 		{
 			if (response)
 			{
-				$.getJSON(<?php echo json_encode(site_url('config/reset_ecom')); ?>,function(response)
+				$.getJSON(<#?php echo json_encode(site_url('config/reset_ecom')); ?>,function(response)
 				{
 					if (response.success)
 					{
-						show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+						show_feedback('success',response.message,<#?php echo json_encode(lang('common_success')); ?>);
 					}
 				});
 			}
 		});
 	});
+	*/
 	var submitting = false;
 	$('#config_form').validate({
 		submitHandler:function(form)
@@ -5531,7 +5532,7 @@ $("#cancel_woo").click(function()
 	});
 });
 
-function check_ecommerce_status()
+//function check_ecommerce_status()
 {
 	$.getJSON(SITE_URL+'/home/get_ecommerce_sync_progress', function(response)
 	{
@@ -5564,7 +5565,7 @@ function set_ecommerce_progress(percent, message)
 	
 }
 
-check_ecommerce_status();
+//check_ecommerce_status();
 
 
 $('#sync_woo').click(function()
@@ -5644,19 +5645,19 @@ $('#sync_woo').click(function()
 	});
 });
 
-
+/* Quickbooks 
 $("#cancel_qb").click(function()
 {
 	
 	bootbox.confirm({
-		message: <?php echo json_encode(lang('config_confirmation_qb_cron_cancel')); ?>,
+		message: <#?php echo json_encode(lang('config_confirmation_qb_cron_cancel')); ?>,
 		buttons: {
       cancel: {
-          label: <?php echo json_encode(lang('common_no')); ?>,
+          label: <#?php echo json_encode(lang('common_no')); ?>,
           className: 'btn-default'
       	},
         confirm: {
-            label: <?php echo json_encode(lang('common_yes')); ?>,
+            label: <#?php echo json_encode(lang('common_yes')); ?>,
             className: 'btn-primary'
         }
     },
@@ -5664,7 +5665,7 @@ $("#cancel_qb").click(function()
 		{
 				if (response)
 				{	
-					$.get(<?php echo json_encode(site_url('quickbooks/cancel'));?>);
+					$.get(<#?php echo json_encode(site_url('quickbooks/cancel'));?>);
 				}
 		}
 	});
@@ -5686,7 +5687,6 @@ function check_quickbooks_status()
 		}
 	});
 }
-
 function set_quickbooks_progress(percent, message)
 {
 	$("#quickbooks_sync_progress").toggleClass('hidden', false);
@@ -5702,8 +5702,8 @@ function set_quickbooks_progress(percent, message)
 	}
 	
 }
-
 check_quickbooks_status();
+Fin quickbooks */
 
 
 $('#sync_qb').click(function()
