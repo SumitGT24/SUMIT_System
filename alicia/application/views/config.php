@@ -128,7 +128,7 @@ $this->load->helper('update');
 							'value'=>$this->config->item('tax_id')));?>
 						</div>
 					</div>
-					--fin elimar impuesto empresa-->
+					fin elimar impuesto empresa-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 						<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
@@ -313,9 +313,7 @@ $this->load->helper('update');
 													<#?php
 													$tax_class_default_counter++;
 													?>
-												</td>
-												
-												
+												</td>																						
 									
 												<td>
 													<a class="delete_tax_rate tax_table_rate_text_element"><#?php echo lang('common_delete'); ?></a>
@@ -1069,7 +1067,7 @@ $this->load->helper('update');
 							<label for="disable_recv_cloning"><span></span></label>
 						</div>
 					</div>
-					--Fin desactivar clonacion de recibos-->
+					Fin desactivar clonacion de recibos-->
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_scan_and_set_sales').':', 'scan_and_set_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1093,9 +1091,7 @@ $this->load->helper('update');
 							'checked'=>$this->config->item('scan_and_set_recv')));?>
 							<label for="scan_and_set_recv"><span></span></label>
 						</div>
-					</div>
-					
-					
+					</div>									
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_damaged_reasons').':', 'damaged_reasons',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1123,7 +1119,7 @@ $this->load->helper('update');
 							<p><#?php echo lang('config_not_all_processors_support_tips'); ?></p>
 						</div>						
 					</div>
-					--Fin desactivar propinas-->
+					Fin desactivar propinas-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_tip_preset_zero').':', 'tip_preset_zero',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1470,9 +1466,7 @@ $this->load->helper('update');
 							'checked'=>in_array('common_debit',$track_payment_types)));?>
 							<label for="track_debit_cards"><span></span></label>
 						</div>
-					</div>
-					
-					
+					</div>								
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('common_track_credit_cards_in_register').':', 'track_credit_cards',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1893,10 +1887,7 @@ $this->load->helper('update');
 							'checked'=>$this->config->item('dont_recalculate_cost_price_when_unsuspending_estimates')));?>
 							<label for="dont_recalculate_cost_price_when_unsuspending_estimates"><span></span></label>
 						</div>
-					</div>
-					
-					
-					
+					</div>									
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_suspended_layaways')) ?>">
 						<?php echo form_label(lang('config_user_configured_layaway_name').':', 'user_configured_layaway_name',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -2373,8 +2364,7 @@ $this->load->helper('update');
 						<label for="remove_customer_company_from_receipt"><span></span></label>
 						</div>
 					</div>
-					
-					
+								
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
 						<?php echo form_label(lang('config_remove_customer_contact_info_from_receipt').':', 'remove_customer_contact_info_from_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2397,9 +2387,7 @@ $this->load->helper('update');
 							'checked'=>$this->config->item('hide_email_on_receipts')));?>
 						<label for="hide_email_on_receipts"><span></span></label>
 						</div>
-					</div>
-					
-					
+					</div>							
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
 						<?php echo form_label(lang('config_sort_receipt_column').':', 'sort_receipt_column',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -2625,9 +2613,7 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
-		
-		
-		
+						
 		<!-- Profit -->
 		<div class="col-md-12">
 			<div class="panel panel-piluku">
@@ -2788,9 +2774,7 @@ $this->load->helper('update');
 							<label for="disable_recv_number_on_barcode"><span></span></label>
 						</div>
 					</div>
-					
-					
-					
+															
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 						<?php echo form_label(lang('config_show_barcode_company_name').':', 'show_barcode_company_name',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2802,8 +2786,7 @@ $this->load->helper('update');
 							<label for="show_barcode_company_name"><span></span></label>
 						</div>
 					</div>
-					
-					
+									
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 						<?php echo form_label(lang('config_use_rtl_barcode_library').':', 'use_rtl_barcode_library',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2814,9 +2797,7 @@ $this->load->helper('update');
 							'checked'=>$this->config->item('use_rtl_barcode_library')));?>
 							<label for="use_rtl_barcode_library"><span></span></label>
 						</div>
-					</div>
-					
-					
+					</div>									
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 						<?php echo form_label(lang('config_enable_scale').':', 'enable_scale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -2945,8 +2926,7 @@ $this->load->helper('update');
 								</div>
 								
 								
-						</div>
-				
+						</div>				
 						
 						<div id="loyalty_setup_advanced" style="display: none;">					
 							<?php
@@ -2998,9 +2978,7 @@ $this->load->helper('update');
 							'value'=>$this->config->item('minimum_points_to_redeem') ? $this->config->item('minimum_points_to_redeem') : ''));?>
 
 							</div>
-						</div>
-						
-						
+						</div>												
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_customer_loyalty')) ?>">	
 						<?php echo form_label(lang('config_loyalty_points_without_tax').':', 'loyalty_points_without_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -3168,8 +3146,7 @@ $this->load->helper('update');
 	 							?>
 	 						</div>						
 	 					</div>
-						
-						
+												
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_price_tiers')) ?>">	
 							<?php echo form_label(lang('config_round_tier_prices_to_2_decimals').':', 'round_tier_prices_to_2_decimals',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3303,8 +3280,7 @@ $this->load->helper('update');
 							?>
 						</div>
 					</div>		
-					
-					
+								
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
 						<?php echo form_label(lang('config_number_of_items_in_grid').':', 'number_of_items_in_grid',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3321,7 +3297,6 @@ $this->load->helper('update');
 							?>
 						</div>
 					</div>				
-					
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
 						<?php echo form_label(lang('config_default_reorder_level_when_creating_items').':', 'default_reorder_level_when_creating_items',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -3681,7 +3656,7 @@ $this->load->helper('update');
 								?>
 						</div>						
 					</div>
-					--->
+					
 					<!-- Formato de fecha -->
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_date_format').':', 'date_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
@@ -3693,7 +3668,7 @@ $this->load->helper('update');
 								?>
 							</div>
 						</div>
-					-->
+					
 						
 					<!-- Formato de hora -->
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
@@ -3706,7 +3681,7 @@ $this->load->helper('update');
 								?>
 							</div>
 						</div>
-					-->
+					
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_week_start_day').':', 'week_start_day',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
@@ -3824,8 +3799,7 @@ $this->load->helper('update');
 							<label for="force_https"><span></span></label>
 						</div>
 					</div>
-
-					
+				
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 					<?php echo form_label(lang('config_hide_expire_dashboard').':', 'hide_expire_dashboard',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3837,9 +3811,7 @@ $this->load->helper('update');
 							<label for="hide_expire_dashboard"><span></span></label>
 						</div>
 					</div>
-					
-					
-					
+														
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 					<?php echo form_label(lang('config_do_not_delete_saved_card_after_failure').':', 'do_not_delete_saved_card_after_failure',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3851,10 +3823,7 @@ $this->load->helper('update');
 							<label for="do_not_delete_saved_card_after_failure"><span></span></label>
 						</div>
 					</div>
-					
-					
-					
-					
+															
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>"> 
 					<?php echo form_label(lang('config_do_not_force_http').':', 'do_not_force_http',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					   <div class="col-sm-9 col-md-9 col-lg-10">
@@ -3880,8 +3849,7 @@ $this->load->helper('update');
 							</div>
 						</div>
 					<?php } ?>
-					
-					
+							
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 					<?php echo form_label(lang('common_disable_test_mode').':', 'disable_test_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4129,8 +4097,7 @@ $this->load->helper('update');
 								'checked'=>$this->config->item('hide_latest_updates_in_header')));?>
 								<label for="hide_latest_updates_in_header"><span></span></label>
 							</div>
-						</div>
-						
+						</div>						
 												
 				</div>
 			</div>
@@ -4752,8 +4719,7 @@ $this->load->helper('update');
 									'id'=>'woo_api_secret',
 									'value'=>$this->config->item('woo_api_secret')));?>
 								</div>
-						</div>
-												
+						</div>							
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_import_all_past_orders_for_woo_commerce').':', 'import_all_past_orders_for_woo_commerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -4766,9 +4732,7 @@ $this->load->helper('update');
 								<label for="import_all_past_orders_for_woo_commerce"><span></span></label>
 							</div>
 						</div>
-						
-						
-						
+										
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_woo_enable_html_desc').':', 'woo_enable_html_desc',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4779,8 +4743,7 @@ $this->load->helper('update');
 								'checked'=>$this->config->item('woo_enable_html_desc')));?>
 								<label for="woo_enable_html_desc"><span></span></label>
 							</div>
-						</div>
-						
+						</div>	
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_do_not_treat_service_items_as_virtual').':', 'do_not_treat_service_items_as_virtual',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -4797,7 +4760,6 @@ $this->load->helper('update');
 						
 					</div>
 				</div>
-				
 			</div>
 	     <!--Api Settings 4814 a 4945
 	     <div class="col-md-12">
@@ -5840,7 +5802,7 @@ $(function () {
     $group.find('.list-group-item').each(function () {
         // Settings
         var $widget = $(this),
-            $checkbox = $('<input type="checkbox" class="hidden" />'),
+            $checkbox = $('<`input type="checkbox" class="hidden" />'),
 						value = ($widget.data('value') ? $widget.data('value') : '1'),
             color = ($widget.data('color') ? $widget.data('color') : "primary"),
             style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
@@ -5929,7 +5891,7 @@ $(function () {
         init();
     });
 });
-
+	/* Impuestos
 	$("#tax_classes tbody").sortable();
 
 	var tax_class_index = -1;
@@ -5963,10 +5925,10 @@ $(function () {
 				radio_template + 
 			'</td>' +
 			'<td>' +
-				'<a class="delete_tax_rate tax_table_rate_text_element"><?php echo lang('common_delete'); ?></a>' +
+				'<a class="delete_tax_rate tax_table_rate_text_element"><#?php echo lang('common_delete'); ?></a>' +
 			'</td>' +
 			'<td>' +
-				'<a href="javascript:void(0);" class="add_tax_rate"><?php echo lang('config_add_rate'); ?></a>' +
+				'<a href="javascript:void(0);" class="add_tax_rate"><#?php echo lang('config_add_rate'); ?></a>' +
 			'</td>' +
 			'<td>' +
 				'&nbsp;' +
@@ -5978,7 +5940,7 @@ $(function () {
 
 		tax_class_index -= 1;
 	});
-
+	Impuestos*/
 	$(document).on('click', '.delete_tax_rate', function(e) {
 		var $tr = $(this).closest("tr");
 
