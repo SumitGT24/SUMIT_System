@@ -99,13 +99,15 @@ $this->load->helper('update');
 							<input type="file" name="company_logo" id="company_logo" class="filestyle" data-icon="false">  	
 						</div>	
 					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
+					<!--No gurdar identificador de impuesto, ya se encuentra comentado
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_company')) ?>">	-->
 						<?php echo form_label(lang('common_delete_logo').':', 'delete_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
 							<?php echo form_checkbox('delete_logo', '1', null,'id="delete_logo"');?>
 							<label for="delete_logo"><span></span></label>
 						</div>	
 					</div>
+			
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 						<?php echo form_label(lang('common_company').':', 'company',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
@@ -5122,11 +5124,11 @@ $(document).ready(function()
 	{
 		var api_key_id = $(this).data('key-id');
 		
-		bootbox.confirm(<?php echo json_encode(lang('config_api_key_confirm_delete')); ?>, function(response)
+		bootbox.confirm(<#?php echo json_encode(lang('config_api_key_confirm_delete')); ?>, function(response)
 		{
 			if (response)
 			{
-				 post_submit('<?php echo site_url("config/delete_key"); ?>', 'POST',[{name:'api_key_id', value:api_key_id}]);
+				 post_submit('<#?php echo site_url("config/delete_key"); ?>', 'POST',[{name:'api_key_id', value:api_key_id}]);
 			}
 		});
 	});
@@ -5287,12 +5289,12 @@ $(document).ready(function()
 			$(form).ajaxSubmit({
 			success:function(response)
 			{				
-				
+				/*
 				//Don't let the tiers, taxes, providers, methods double submitted, so we change the name
 				$('.zones,.tiers_to_edit,.providers,.methods,.taxes,.tax_classes,.sale_types_to_edit').filter(function() {
 				    return parseInt($(this).data('index')) < 0;
 				}).attr('name','items_added[]');
-				
+				*/
 				if(response.success)
 				{
 					show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
