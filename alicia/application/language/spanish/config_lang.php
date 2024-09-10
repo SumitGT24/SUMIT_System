@@ -514,8 +514,8 @@ $lang['config_create_payment_methods'] = 'Crear métodos de pago en QB';
 
 
 $lang['config_allow_scan_of_customer_into_item_field'] = 'Permitir el escaneo del cliente en el campo del artículo';
-$lang['config_cash_alert_high'] = 'Alerta cuando el efectivo está arriba';
-$lang['config_cash_alert_low'] = 'Alerta cuando el efectivo está debajo';
+$lang['config_cash_alert_high'] = 'Alerta cuando el efectivo en caja es alto';
+$lang['config_cash_alert_low'] = 'Alerta cuando el efectivo en caja es bajo';
 
 
 $lang['config_sync_inventory_changes_qb'] = 'Sincronizar cambios de inventario';

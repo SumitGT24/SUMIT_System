@@ -1106,7 +1106,7 @@ $this->load->helper('update');
 						
 					</div>
 					
-					<!-- Desactivar propinas
+					<!-- Desactivar consejos
 					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
 						<#?php echo form_label(lang('config_enable_tips').':', 'enable_tips',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1119,27 +1119,25 @@ $this->load->helper('update');
 							<p><#?php echo lang('config_not_all_processors_support_tips'); ?></p>
 						</div>						
 					</div>
-					Fin desactivar propinas-->
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-						<?php echo form_label(lang('config_tip_preset_zero').':', 'tip_preset_zero',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					Fin desactivar consejos-->
+					<!-- Desactivar propinas
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_tip_preset_zero').':', 'tip_preset_zero',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'tip_preset_zero',
 							'id'=>'tip_preset_zero',
 							'value'=>'tip_preset_zero',
 							'checked'=>$this->config->item('tip_preset_zero')));?>
 							<label for="tip_preset_zero"><span></span></label>
-						</div>
-						
+						</div>					
 					</div>
-					
-					
-					
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-						<?php echo form_label(lang('config_auto_focus_on_item_after_sale_and_receiving').':', 'auto_focus_on_item_after_sale_and_receiving',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					Fin desactivar propinas-->					
+					<!-- Posicionar cursor inicio
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_auto_focus_on_item_after_sale_and_receiving').':', 'auto_focus_on_item_after_sale_and_receiving',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'auto_focus_on_item_after_sale_and_receiving',
 							'id'=>'auto_focus_on_item_after_sale_and_receiving',
 							'value'=>'auto_focus_on_item_after_sale_and_receiving',
@@ -1147,7 +1145,7 @@ $this->load->helper('update');
 							<label for="auto_focus_on_item_after_sale_and_receiving"><span></span></label>
 						</div>
 					</div>
-					
+					-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_capture_internal_notes_during_sale').':', 'capture_internal_notes_during_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1159,7 +1157,6 @@ $this->load->helper('update');
 							<label for="capture_internal_notes_during_sale"><span></span></label>
 						</div>
 					</div>
-					
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_capture_sig_for_all_payments').':', 'capture_sig_for_all_payments',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1202,9 +1199,7 @@ $this->load->helper('update');
 							<label for="hide_customer_recent_sales"><span></span></label>
 						</div>
 					</div>
-					
-										
-					
+																				
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_enable_customer_quick_add').':', 'enable_customer_quick_add',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1241,7 +1236,6 @@ $this->load->helper('update');
 						</div>
 					</div>
 
-
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_collapse_recv_ui_by_default').':', 'collapse_recv_ui_by_default',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1252,10 +1246,8 @@ $this->load->helper('update');
 							'checked'=>$this->config->item('collapse_recv_ui_by_default')));?>
 							<label for="collapse_recv_ui_by_default"><span></span></label>
 						</div>
-					</div>
-					
-					
-					
+					</div>				
+							
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('disable_confirmation_sale').':', 'disable_confirmation_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1354,8 +1346,7 @@ $this->load->helper('update');
 							<label for="track_shipping_cost_recv"><span></span></label>
 						</div>
 					</div>
-					
-									
+													
 					<?php if ($this->config->item('always_use_average_cost_method')) { ?>
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_always_use_average_cost_method').':', 'always_use_average_cost_method',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1395,7 +1386,7 @@ $this->load->helper('update');
 							<label for="track_cash"><span></span></label>
 						</div>
 					</div>
-					
+					<!--Caja inicial-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_amount_of_cash_to_be_left_in_drawer_at_closing').':', 'amount_of_cash_to_be_left_in_drawer_at_closing',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1407,7 +1398,7 @@ $this->load->helper('update');
 						</div>
 					</div>	
 					
-					
+					<!--Alertas de caja-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_cash_alert_high').':', 'cash_alert_high',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1746,7 +1737,6 @@ $this->load->helper('update');
 							<label for="do_not_allow_items_to_go_out_of_stock_when_transfering"><span></span></label>
 						</div>
 					</div>
-					
 
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_do_not_allow_item_with_variations_to_be_sold_without_selecting_variation').':', 'do_not_allow_item_with_variations_to_be_sold_without_selecting_variation',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1807,7 +1797,6 @@ $this->load->helper('update');
 							<label for="prompt_amount_for_cash_sale"><span></span></label>
 						</div>
 					</div>
-
 
 				</div>
 			</div>
@@ -2290,7 +2279,6 @@ $this->load->helper('update');
 							<label for="wide_printer_receipt_format"><span></span></label>
 						</div>
 					</div>
-					
 
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
 						<?php echo form_label(lang('config_print_after_receiving').':', 'print_after_receiving',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -2888,8 +2876,7 @@ $this->load->helper('update');
 								?>
 							</div>
 						</div>		
-						
-						
+												
 						<div id="loyalty_setup_simple" style="display: none;">
 								<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_customer_loyalty')) ?>">	
 								<?php echo form_label(lang('config_number_of_sales_for_discount').':', 'number_of_sales_for_discount',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -2923,8 +2910,7 @@ $this->load->helper('update');
 										'checked'=>$this->config->item('hide_sales_to_discount_on_receipt')));?>
 										<label for="hide_sales_to_discount_on_receipt"><span></span></label>
 									</div>
-								</div>
-								
+								</div>							
 								
 						</div>				
 						
@@ -3466,8 +3452,7 @@ $this->load->helper('update');
 							'checked'=>$this->config->item('timeclock_pto')));?>
 							<label for="timeclock_pto"><span></span></label>
 						</div>
-					</div>
-					
+					</div>				
 					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_employees')) ?>">	
 					<?php echo form_label(lang('config_logout_on_clock_out').':', 'logout_on_clock_out',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -3637,18 +3622,18 @@ $this->load->helper('update');
 					<?php echo create_section(lang('config_application_settings_info'))  ?>
 				</div>	
 				<div class="panel-body">
-					<!--Idioma -->
-					<?php if(is_on_demo_host()) { ?>
+					<!--Idioma inicio
+					<#?php if(is_on_demo_host()) { ?>
 						<div class="form-group">	
 							<div class="col-sm-9 col-md-9 col-lg-10">
-								<span class="text-danger"><?php echo lang('config_cannot_change_language'); ?></span>
+								<span class="text-danger"><#?php echo lang('config_cannot_change_language'); ?></span>
 							</div>
 						</div>
-					<?php } ?>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
-						<?php echo form_label(lang('common_language').':', 'language',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<#?php } ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('common_language').':', 'language',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_dropdown('language', array(
+							<#?php echo form_dropdown('language', array(
 								'english'  => 'English',
 								'spanish'   => 'Español', 
 							),
@@ -3656,32 +3641,33 @@ $this->load->helper('update');
 								?>
 						</div>						
 					</div>
-					
-					<!-- Formato de fecha -->
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
-						<?php echo form_label(lang('config_date_format').':', 'date_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					Idioma fin -->
+
+					<!-- Formato de fecha inicio
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('config_date_format').':', 'date_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_dropdown('date_format', array(
+							<#?php echo form_dropdown('date_format', array(
 								'middle_endian'    => '12/30/2000',
 								'little_endian'  => '30-12-2000',
 								'big_endian'   => '2000-12-30'), $this->config->item('date_format'), 'class="form-control" id="date_format"');
 								?>
 							</div>
 						</div>
-					
+					Formato de fecha fin -->
 						
-					<!-- Formato de hora -->
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
-						<?php echo form_label(lang('config_time_format').':', 'time_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<!-- Formato de hora inicio
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('config_time_format').':', 'time_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_dropdown('time_format', array(
+							<#?php echo form_dropdown('time_format', array(
 								'12_hour'    => '1:00 PM',
 								'24_hour'  => '13:00'
 								), $this->config->item('time_format'), 'class="form-control" id="time_format"');
 								?>
 							</div>
 						</div>
-					
+					Formato de hora fin -->
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_week_start_day').':', 'week_start_day',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
@@ -4916,23 +4902,23 @@ $(document).ready(function()
 	$("#test_email").click(function()
 	{
 		bootbox.prompt({
-			title: <?php echo json_encode(lang('config_please_enter_email_to_send_test_to')); ?>,
-			value: <?php echo json_encode($this->Location->get_info_for_key('email')); ?>, 
+			title: <#?php echo json_encode(lang('config_please_enter_email_to_send_test_to')); ?>,
+			value: <#?php echo json_encode($this->Location->get_info_for_key('email')); ?>, 
 			callback: function(email) 
 			{
 				$("#config_form").ajaxSubmit(function()
 				{
-					$.post(<?php echo json_encode(site_url('config/send_smtp_test_email')); ?>,{email:email},function(response)
+					$.post(<#?php echo json_encode(site_url('config/send_smtp_test_email')); ?>,{email:email},function(response)
 					{
 						if (response.success)
 						{
-							show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+							show_feedback('success',response.message,<#?php echo json_encode(lang('common_success')); ?>);
 						}
 						else
 						{
-							show_feedback('error',<?php echo json_encode(lang('common_error')); ?>,<?php echo json_encode(lang('common_error')); ?>);
+							show_feedback('error',<#?php echo json_encode(lang('common_error')); ?>,<#?php echo json_encode(lang('common_error')); ?>);
 							bootbox.alert({
-								title: <?php echo json_encode(lang('common_error')); ?>,
+								title: <#?php echo json_encode(lang('common_error')); ?>,
 								message: response.message
 							});
 						}
@@ -5073,7 +5059,8 @@ $(document).ready(function()
 			}
 		} 
 	});
-	*/
+	Correo electronico */
+	/* Ecomerce
 	$(".ecommerce_platform").change(function() 
 	{
 		if ($(".ecommerce_platform").val() == "woocommerce")
@@ -5152,7 +5139,7 @@ $(document).ready(function()
 			}
 		});
 	});
-	
+	------Ecommerce*/
 	$("#price_tiers tbody").sortable();
 	
 	var add_index = -1;
@@ -5271,7 +5258,7 @@ $(document).ready(function()
 				{
 					if (response)
 					{
-						window.location="http://phppointofsale.com/downloads.php";
+						window.location="http://sumit.gt";
 					}
 				});
 			}
