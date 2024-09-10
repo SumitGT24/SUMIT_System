@@ -3678,8 +3678,7 @@ $this->load->helper('update');
 								), $this->config->item('week_start_day'), 'class="form-control" id="week_start_day"');
 								?>
 							</div>
-						</div>
-						
+						</div>						
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">
 								<?php echo form_label(lang('config_store_opening_time').' :', 'store_opening_time', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
@@ -3710,9 +3709,7 @@ $this->load->helper('update');
 			 					    </div>
 			 					</div>
 			 			</div>
-						
-											
-						
+																					
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_offline_mode').':', 'offline_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3723,8 +3720,7 @@ $this->load->helper('update');
 								'checked'=>$this->config->item('offline_mode')));?>
 								<label for="offline_mode"><span></span></label>
 							</div>
-						</div>
-						
+						</div>						
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_auto_sync_offline_sales').':', 'auto_sync_offline_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -3737,17 +3733,14 @@ $this->load->helper('update');
 								<label for="auto_sync_offline_sales"><span></span></label>
 							</div>
 						</div>
-						
-						
-						
+																	
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_reset_offline_data').':', 'offline_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
             				<button onclick='delete_all_client_side_dbs();bootbox.alert(<?php echo json_encode(lang('common_success')); ?>);' id="reset_offline_mode" type="button" class="btn btn-lg btn-primary"><?php echo lang('config_reset_offline_data');?></button>
 						</div>
 					</div>
-						
-					
+											
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('common_dark_mode').':', 'dark_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3759,8 +3752,7 @@ $this->load->helper('update');
 								<label for="dark_mode"><span></span></label>
 							</div>
 						</div>
-						
-						
+											
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_default_new_customer_to_current_location').':', 'default_new_customer_to_current_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3772,12 +3764,11 @@ $this->load->helper('update');
 								<label for="default_new_customer_to_current_location"><span></span></label>
 							</div>
 						</div>
-						
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
-					<?php echo form_label(lang('config_force_https').':', 'force_https',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<!--No forzar http inicio				
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+					<#?php echo form_label(lang('config_force_https').':', 'force_https',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
+						<#?php echo form_checkbox(array(
 							'name'=>'force_https',
 							'id'=>'force_https',
 							'value'=>'force_https',
@@ -3785,7 +3776,7 @@ $this->load->helper('update');
 							<label for="force_https"><span></span></label>
 						</div>
 					</div>
-				
+					No forzar http fin -->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 					<?php echo form_label(lang('config_hide_expire_dashboard').':', 'hide_expire_dashboard',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3809,11 +3800,11 @@ $this->load->helper('update');
 							<label for="do_not_delete_saved_card_after_failure"><span></span></label>
 						</div>
 					</div>
-															
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>"> 
-					<?php echo form_label(lang('config_do_not_force_http').':', 'do_not_force_http',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<!--No forzar http inicio										
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_payment')) ?>"> 
+					<#?php echo form_label(lang('config_do_not_force_http').':', 'do_not_force_http',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					   <div class="col-sm-9 col-md-9 col-lg-10">
-					   <?php echo form_checkbox(array(
+					   <#?php echo form_checkbox(array(
 					           'name'=>'do_not_force_http',
 					           'id'=>'do_not_force_http',
 					           'value'=>'do_not_force_http',
@@ -3821,7 +3812,7 @@ $this->load->helper('update');
 					           <label for="do_not_force_http"><span></span></label>
 					   </div>
 					</div>
-					
+					No forzar http fin -->
 					<?php if (!is_on_demo_host()) { ?>
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('common_test_mode').' ('.lang('config_test_mode_help').'):', 'test_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -6022,8 +6013,8 @@ $(function () {
 			      }
 				},
 			});
-			
-			var tax_groups = <?php echo json_encode($tax_groups); ?>
+			/* 
+			var tax_groups = <#?php echo json_encode($tax_groups); ?>
 						
 			var tax_group_select = $('<select>').addClass('zones form-control').attr('name', 'zones['+ zone_index +'][tax_class_id]').attr('data-index', zone_index);
 			$('<td class="shipping_zone_tax_group top" >').append(tax_group_select).appendTo($tr);
@@ -6034,7 +6025,7 @@ $(function () {
 			
 			$tr.append(
 				'<td>' +
-					'<a class="delete_rate"><?php echo lang('common_delete'); ?></a>' +
+					'<a class="delete_rate"><#?php echo lang('common_delete'); ?></a>' +
 				'</td>' +
 				'<td>' +
 					'<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' +
@@ -6043,6 +6034,7 @@ $(function () {
 				
 				zone_index --;
 			});
+			*/	
 		
 		$("#shipping_providers tbody").sortable();
 		
