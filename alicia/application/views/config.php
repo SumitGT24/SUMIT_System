@@ -4879,7 +4879,7 @@ $this->load->helper('update');
 				'class'=>'submit_button floating-button btn btn-primary btn-lg pull-right')); ?>
 			</div>
     
-		<!--#?php echo form_close(); ?-->	
+		<?php echo form_close(); ?>	
 	</div>
 </div>
 <!--Inicio validar y enviar correo/validation and submit handling 4957 a 6365-->
@@ -5706,7 +5706,7 @@ $('#sync_qb').click(function()
 					$('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", true);
 					
 					
-					$("#quickbooks_sync_progress").toggleClass("hidden", false);
+					//$("#quickbooks_sync_progress").toggleClass("hidden", false);
 					
 					
 					$("#config_form").ajaxSubmit(function()
