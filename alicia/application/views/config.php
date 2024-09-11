@@ -5728,8 +5728,6 @@ function set_quickbooks_progress(percent, message)
 }
 check_quickbooks_status();
 
-
-
 $('#sync_qb').click(function()
 {
 	bootbox.confirm({
