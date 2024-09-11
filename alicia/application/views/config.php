@@ -47,7 +47,7 @@ $this->load->helper('update');
 		return $title ;
 	}
 	?>
-	
+	<!--Lista de elementos de configuracion que se guardan-->
 	<div class="row">
 		<?php echo form_open_multipart('config/save/',array('id'=>'config_form','class'=>'form-horizontal', 'autocomplete'=> 'off'));  ?>
 	<?php 
@@ -1471,8 +1471,58 @@ $this->load->helper('update');
 							<label for="track_credit_cards"><span></span></label>
 						</div>
 					</div>
-					
-					
+															<script type='text/javascript'>
+										$(document).ready(function() {
+											var submitting = false;
+											$('#config_form').validate({
+												submitHandler: function(form) {
+													if (submitting) return;
+													submitting = true;
+													$(form).ajaxSubmit({
+														success: function(response) {
+															// Manejar la respuesta del servidor aquí
+															submitting = false;
+														},
+														dataType: 'json'
+													});
+												},
+												errorClass: "text-danger",
+												errorElement: "span",
+												highlight: function(element, errorClass, validClass) {
+													$(element).parents('.form-group').removeClass('has-success').addClass('has-error');
+												},
+												unhighlight: function(element, errorClass, validClass) {
+													$(element).parents('.form-group').removeClass('has-error').addClass('has-success');
+												},
+												rules: {
+													company: "required",
+													sale_prefix: "required",
+													return_policy: {
+														required: true
+													},
+													item_id_auto_increment: {
+														max: 999999999
+													},
+													item_kit_id_auto_increment: {
+														max: 999999999
+													},
+													sale_id_auto_increment: {
+														max: 999999999
+													},
+													receiving_id_auto_increment: {
+														max: 999999999
+													}
+												},
+												messages: {
+													company: "El nombre de la empresa es obligatorio.",
+													sale_prefix: "El prefijo de la venta es obligatorio.",
+													return_policy: {
+														required: "La política de devoluciones es obligatoria."
+													}
+												}
+											});
+										});
+										</script>					
 					<?php
 					foreach($this->Appconfig->get_additional_payment_types() as $additional_payment_type)
 					{
@@ -4547,9 +4597,9 @@ $this->load->helper('update');
 		</div>
     Fin Comercio electronico/Ecommerce Store 4424 4617-->
 
-	<!-- Woocommerce Settings-->
-    <?php
-		
+	<!-- Woocommerce Settings
+    <#?php
+
 		if($this->config->item('ecommerce_platform') == "woocommerce" )
 			$woo_hidden_class ="";
 		else
@@ -4560,38 +4610,38 @@ $this->load->helper('update');
 		else
 			$shopify_hidden_class="hidden";
 		
-		?>
+	?>
 		
-        <div class="col-md-12 shopify_settings ecom_settings <?php echo $shopify_hidden_class; ?>">
+        <div class="col-md-12 shopify_settings ecom_settings <#?php echo $shopify_hidden_class; ?>">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<?php echo create_section(lang('config_shopify_settings_info'))  ?>
+					<#?php echo create_section(lang('config_shopify_settings_info'))  ?>
 				</div>
 			
 				<div class="panel-body">
-			<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
+			<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
 				
-				<?php
+				<#?php
 				echo form_hidden('shopify_shop',$this->config->item('shopify_shop'));
 				
 				if ($this->config->item('shopify_shop'))
 				{
 				?>
 					<div class='text-center'>
-						<p><?php echo lang('config_connected_to_shopify')?> [<strong><?php echo $this->config->item('shopify_shop').'.myshopify.com' ?></strong>]</p>
+						<p><#?php echo lang('config_connected_to_shopify')?> [<strong><#?php echo $this->config->item('shopify_shop').'.myshopify.com' ?></strong>]</p>
 						<br />
 						<br />
-						<?php
+						<#?php
 						if ($this->config->item('shopify_charge_id'))
 						{
 						?>
-	                    	<a href="<?php echo site_url('ecommerce/cancel_shopify_billing');?>" class="btn btn-danger" id="shopify_cancel_billing"><?php echo lang('config_cancel_shopify'); ?></a>
+	                    	<a href="<#?php echo site_url('ecommerce/cancel_shopify_billing');?>" class="btn btn-danger" id="shopify_cancel_billing"><#?php echo lang('config_cancel_shopify'); ?></a>
 							<script>
 							$("#shopify_cancel_billing").click(function(e)
 							{
 								e.preventDefault();
 								
-								bootbox.confirm(<?php echo json_encode(lang('config_confirm_cancel_shopify')); ?>, function(response)
+								bootbox.confirm(<#?php echo json_encode(lang('config_confirm_cancel_shopify')); ?>, function(response)
 								{
 									if (response)
 									{
@@ -4601,33 +4651,33 @@ $this->load->helper('update');
 								
 							})
 							</script>
-						<?php	
+						<#?php	
 						}
 						else
 						{
 						?>
-                    	<a href="<?php echo site_url('ecommerce/activate_shopify_billing');?>" class="btn btn-success" id="shopify_activate_billing"><?php echo str_replace('{SHOPIFY_PRICE}',SHOPIFY_PRICE,lang('config_shopify_billing_terms')); ?></a>
+                    	<a href="<#?php echo site_url('ecommerce/activate_shopify_billing');?>" class="btn btn-success" id="shopify_activate_billing"><#?php echo str_replace('{SHOPIFY_PRICE}',SHOPIFY_PRICE,lang('config_shopify_billing_terms')); ?></a>
 						<br /><br />
-						<a href="<?php echo site_url('ecommerce/oauth_shopify_disconnect');?>" class="btn btn-danger" id="shopify_oauth_disconnect"><?php echo lang('config_disconnect_to_shopify'); ?></a>
+						<a href="<#?php echo site_url('ecommerce/oauth_shopify_disconnect');?>" class="btn btn-danger" id="shopify_oauth_disconnect"><#?php echo lang('config_disconnect_to_shopify'); ?></a>
 						
-						<?php
+						<#?php
 						}
 						?>
 						
 						</div>
 						
-					<?php
+					<#?php
 					}
 					else
 					{
 					?>
 					<div class='text-center'>
-						<p><a href="https://apps.shopify.com/php-point-of-sale" target="_blank"><?php echo lang('config_connect_shopify_in_app_store')?></a></p>
+						<p><a href="https://apps.shopify.com/php-point-of-sale" target="_blank"><#?php echo lang('config_connect_shopify_in_app_store')?></a></p>
 						<br />
 						<br />
 					</div>
 						
-					<?php
+					<#?php
 					}
 					?>	
 					</div>
@@ -4649,27 +4699,27 @@ $this->load->helper('update');
 			</div>
 		</div>			
 			
-      <div class="col-md-12 woo_settings ecom_settings <?php echo $woo_hidden_class; ?>">
+      <div class="col-md-12 woo_settings ecom_settings <#?php echo $woo_hidden_class; ?>">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-					<?php echo create_section(lang('config_woocommerce_settings_info'))  ?>
+					<#?php echo create_section(lang('config_woocommerce_settings_info'))  ?>
 				</div>
 				
 				<div class="panel-body">
 					
-        	<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
-						<?php echo form_label(lang('config_woo_version').':', 'woo_version',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+        	<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+						<#?php echo form_label(lang('config_woo_version').':', 'woo_version',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php
+							<#?php
 								echo form_dropdown('woo_version', $woo_versions, $this->config->item('woo_version'),'id="woo_version" class="woo_version form-control"');
 							?>
 					</div>
 				</div>
 					
-      	<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
-						<?php echo form_label(lang('config_woo_api_url').':', 'woo_api_url',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+      	<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+						<#?php echo form_label(lang('config_woo_api_url').':', 'woo_api_url',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
+							<#?php echo form_input(array(
 							'class'=>'form-control form-inps',
 							'name'=>'woo_api_url',
 							'id'=>'woo_api_url',
@@ -4677,10 +4727,10 @@ $this->load->helper('update');
 						</div>
 				</div>
                         
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
-							<?php echo form_label(lang('config_woo_api_key').':', 'woo_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+							<#?php echo form_label(lang('config_woo_api_key').':', 'woo_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<?php echo form_input(array(
+									<#?php echo form_input(array(
 										'class'=>'form-control form-inps',
 									'name'=>'woo_api_key',
 									'id'=>'woo_api_key',
@@ -4688,10 +4738,10 @@ $this->load->helper('update');
 								</div>
 						</div>
                         
-            <div class="form-group" data-keyword="<?php echo H(lang('config_keyword_woocommerce')) ?>">	
-							<?php echo form_label(lang('config_woo_api_secret').':', 'woo_api_secret',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+							<#?php echo form_label(lang('config_woo_api_secret').':', 'woo_api_secret',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-10">
-									<?php echo form_input(array(
+									<#?php echo form_input(array(
 										'class'=>'form-control form-inps',
 									'name'=>'woo_api_secret',
 									'id'=>'woo_api_secret',
@@ -4699,10 +4749,10 @@ $this->load->helper('update');
 								</div>
 						</div>							
 						
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-						<?php echo form_label(lang('config_import_all_past_orders_for_woo_commerce').':', 'import_all_past_orders_for_woo_commerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_import_all_past_orders_for_woo_commerce').':', 'import_all_past_orders_for_woo_commerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
+							<#?php echo form_checkbox(array(
 								'name'=>'import_all_past_orders_for_woo_commerce',
 								'id'=>'import_all_past_orders_for_woo_commerce',
 								'value'=>'1',
@@ -4711,10 +4761,10 @@ $this->load->helper('update');
 							</div>
 						</div>
 										
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-						<?php echo form_label(lang('config_woo_enable_html_desc').':', 'woo_enable_html_desc',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_woo_enable_html_desc').':', 'woo_enable_html_desc',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
+							<#?php echo form_checkbox(array(
 								'name'=>'woo_enable_html_desc',
 								'id'=>'woo_enable_html_desc',
 								'value'=>'1',
@@ -4722,7 +4772,7 @@ $this->load->helper('update');
 								<label for="woo_enable_html_desc"><span></span></label>
 							</div>
 						</div>	
-						
+						fin woocomerce-->
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_do_not_treat_service_items_as_virtual').':', 'do_not_treat_service_items_as_virtual',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4826,8 +4876,7 @@ $this->load->helper('update');
 								'value'=>$this->config->item('new_receiving_web_hook')));?>
 							</div>
 						</div>
-						
-						
+											
 						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
 							<#?php echo form_label(lang('config_edit_customer_web_hook').':', 'edit_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4839,8 +4888,7 @@ $this->load->helper('update');
 								'value'=>$this->config->item('edit_customer_web_hook')));?>
 							</div>
 						</div>
-						
-						
+												
 						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
 							<#?php echo form_label(lang('config_edit_sale_web_hook').':', 'edit_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4853,7 +4901,6 @@ $this->load->helper('update');
 							</div>
 						</div>
 
-
 						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
 							<#?php echo form_label(lang('config_edit_recv_web_hook').':', 'edit_recv_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4864,8 +4911,7 @@ $this->load->helper('update');
 								'placeholder' => 'http://URL',
 								'value'=>$this->config->item('edit_recv_web_hook')));?>
 							</div>
-						</div>
-									
+						</div>									
 					</div>
 				</div>
 			</div>
