@@ -49,7 +49,7 @@ $this->load->helper('update');
 	?>
 	<!--Lista de elementos de configuracion que se guardan-->
 	<div class="row">
-		<?php echo form_open_multipart('config/save/',array('id'=>'config_form','class'=>'form-horizontal', 'autocomplete'=> 'on'));  ?>
+		<?php echo form_open_multipart('config/save/',array('id'=>'config_form','class'=>'form-horizontal', 'autocomplete'=> 'off'));  ?>
 	<?php 
 		$this->load->helper('update');
 		if (is_on_phppos_host() && !is_on_demo_host() && !empty($cloud_customer_info)) {?>
@@ -117,7 +117,19 @@ $this->load->helper('update');
 							'value'=>$this->config->item('company')));?>
 						</div>
 					</div>
-
+					
+					<!--Eliminar identificador de impuesto
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_company')) ?>">	
+						<#?php echo form_label(lang('common_tax_id').':', 'tax_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?
+						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+							<#?php echo form_input(array(
+								'class'=>'validate form-control form-inps',
+							'name'=>'tax_id',
+							'id'=>'tax_id',
+							'value'=>$this->config->item('tax_id')));?>
+						</div>
+					</div>
+					fin elimar impuesto empresa-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 						<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
@@ -131,7 +143,512 @@ $this->load->helper('update');
 				</div>
 			</div>	
 		</div>
+		
+		<!-- Inicio impuestos/Taxes 150 a 490 
+		<div class="col-md-12">
+			<div class="panel panel-piluku">
+				<div class="panel-heading">
+					<#?php echo create_section(lang('config_taxes_info'))  ?>
+				</div>
+				<div class="panel-body">
+				
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_taxjar_api_key').':', 'taxjar_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+						<#?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'taxjar_api_key',
+							'id'=>'taxjar_api_key',
+							'value'=>$this->config->item('taxjar_api_key')));?>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_tax_jar_location').':', 'tax_jar_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'tax_jar_location',
+							'id'=>'tax_jar_location',
+							'value'=>'tax_jar_location',
+							'checked'=>$this->config->item('tax_jar_location')));?>
+							<label for="tax_jar_location"><span></span></label>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_flat_discounts_discount_tax').':', 'flat_discounts_discount_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'flat_discounts_discount_tax',
+							'id'=>'flat_discounts_discount_tax',
+							'value'=>'flat_discounts_discount_tax',
+							'checked'=>$this->config->item('flat_discounts_discount_tax')));?>
+							<label for="flat_discounts_discount_tax"><span></span></label>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('common_prices_include_tax').':', 'prices_include_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'prices_include_tax',
+							'id'=>'prices_include_tax',
+							'value'=>'prices_include_tax',
+							'checked'=>$this->config->item('prices_include_tax')));?>
+							<label for="prices_include_tax"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_charge_tax_on_recv').':', 'charge_tax_on_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'charge_tax_on_recv',
+							'id'=>'charge_tax_on_recv',
+							'value'=>'charge_tax_on_recv',
+							'checked'=>$this->config->item('charge_tax_on_recv')));?>
+							<label for="charge_tax_on_recv"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_use_tax_value_at_all_locations').':', 'use_tax_value_at_all_locations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'use_tax_value_at_all_locations',
+							'id'=>'use_tax_value_at_all_locations',
+							'value'=>'use_tax_value_at_all_locations',
+							'checked'=>$this->Appconfig->all_locations_use_global_tax()));?>
+							<label for="use_tax_value_at_all_locations"><span></span></label>
+						</div>
+					</div>					
+									
+					<div class="form-group no-padding-right" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+						<#?php echo form_label(lang('config_tax_classes').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-md-9 col-sm-9 col-lg-10">
+							<div class="table-responsive">
+								<table id="tax_classes" class="table">
+										<thead>
+											<tr>
+												<th><#?php echo lang('common_name'); ?></th>
+												<th><#?php echo lang('common_tax_name'); ?></th>
+												<th><#?php echo lang('common_tax_percent'); ?></th>			
+												<th><#?php echo lang('common_cumulative'); ?></th>	
+												<th><#?php echo lang('common_default'); ?></th>
+												<th><#?php echo lang('common_delete'); ?></th>		
+												<th><#?php echo lang('common_add'); ?></th>
+												<th><#?php echo lang('common_id'); ?></th>
+												<th><#?php echo lang('config_sort'); ?></th>
+											</tr>
+										</thead>
+							
+										<tbody>
+								
+										<#?php
+										 foreach($tax_classes as $tax_class_id => $tax_class) { 
+											 ?>
+											<tr data-index="<#?php echo H($tax_class_id); ?>">
+												<td class="tax_class_name top">
+													<input type="text" class="rates form-control" name="tax_classes[<#?php echo H($tax_class_id); ?>][name]" value="<#?php echo H($tax_class['name']);?>" />
+													<#?php foreach($tax_class['taxes'] as $tax_class_tax) { ?>
+														<input type="hidden" name="taxes[<#?php echo H($tax_class_id); ?>][tax_class_tax_id][]" value="<#?php echo H($tax_class_tax['id']); ?>">
+													<#?php } ?>
+												</td>
+												<td class="tax_class_rate_name top">
+										
+													<#?php foreach($tax_class['taxes'] as $tax_class_taxes_data) { 
+														?>
+														<input data-tax-class-tax-id="<#?php echo H($tax_class_taxes_data['id']); ?>" type="text" class="rates form-control" name="taxes[<#?php echo H($tax_class_id); ?>][name][]" value="<#?php echo H($tax_class_taxes_data['name']);?>" />
+													<#?php } ?>
+												</td>
+									
+												<td class="tax_class_rate_percent top">
+													<#?php foreach($tax_class['taxes'] as $tax_class_taxes_data) { ?>
+														<input type="text" class="rates form-control" name="taxes[<#?php echo H($tax_class_id); ?>][percent][]" value="<#?php echo H($tax_class_taxes_data['percent']);?>" />
+													<#?php } ?>
+												</td>
+												
+												<td class="tax_class_rate_cumulative top">
+													<#?php 
+													$tax_class_cum_counter = 0;
+													foreach($tax_class['taxes'] as $tax_class_data) { 
+														$cum_id = 'tax_class_'.$tax_class_id.'_cumulative_'.$tax_class_cum_counter;
+														
+														if ($tax_class_cum_counter == 1)
+														{
+													?>
+															<#?php echo form_checkbox('taxes['.H($tax_class_id).'][cumulative][]', '1', $tax_class_data['cumulative'],'id="'.$cum_id.'" class="form-control rates cumulative_checkbox"');  ?>
+															<label class="tax_class_cumulative_element" for="<#?php echo $cum_id; ?>"><span></span></label>			
+													<#?php
+												}
+												else
+												{
+													?>
+															<#?php 
+															echo form_hidden('taxes['.H($tax_class_id).'][cumulative][]', '0');
+															echo form_checkbox('taxes['.H($tax_class_id).'][cumulative][]', '1', $tax_class_data['cumulative'],'disabled id="'.$cum_id.'" class="form-control rates cumulative_checkbox invisible"');  ?>
+															<label class="tax_class_cumulative_element invisible" for="<#?php echo $cum_id; ?>"><span></span></label>
+													<#?php
+												}
+													$tax_class_cum_counter++;
+												 } ?>
+												</td>
 
+												<td class="tax_class_rate_default">
+													<#?php 
+													$tax_class_default_counter = 0;
+														$default_id = 'tax_class_'.$tax_class_id.'_default_'.$tax_class_default_counter;
+													
+														echo form_radio(array(
+															'id' => $default_id,
+															'name' =>'tax_class_id',
+															'value' => $tax_class_id,
+															'checked' => $this->config->item('tax_class_id') == $tax_class_id ? 'checked' : '',
+														)); 
+													?>
+													<label class="tax_class_default_element" for="<#?php echo $default_id; ?>"><span></span></label>
+																												
+													<#?php
+													$tax_class_default_counter++;
+													?>
+												</td>																						
+									
+												<td>
+													<a class="delete_tax_rate tax_table_rate_text_element"><#?php echo lang('common_delete'); ?></a>
+												</td>
+												<td><a href="javascript:void(0);" class="add_tax_rate"><#?php echo lang('config_add_rate'); ?></a></td>
+												<td><#?php echo $tax_class_id; ?></td>
+												<td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td>
+										</tr>
+							
+										<#?php } ?>
+										</tbody>
+									</table>
+								
+									<a href="javascript:void(0);" class="add_tax_class"><#?php echo lang('config_add_tax_class'); ?></a>
+								</div>								
+						</div>
+				</div>
+					
+					<#?php if (!$this->config->item('tax_class_id')) {?>
+					
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+							<#?php echo form_label(lang('common_default_tax_rate_1').':', 'default_tax_1_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-4 col-md-4 col-lg-5">
+								<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'default_tax_1_name',
+								'placeholder' => lang('common_tax_name'),
+								'id'=>'default_tax_1_name',
+								'size'=>'10',
+								'value'=>$this->config->item('default_tax_1_name')!==NULL ? $this->config->item('default_tax_1_name') : lang('common_sales_tax_1')));?>
+							</div>
+								<div class="col-sm-4 col-md-4 col-lg-5">
+									<div class="input-group">
+										<#?php echo form_input(array(
+										'class'=>'form-control form-inps-tax',
+										'placeholder' => lang('common_tax_percent'),
+										'name'=>'default_tax_1_rate',
+										'id'=>'default_tax_1_rate',
+										'size'=>'4',
+										'value'=>$this->config->item('default_tax_1_rate')));?>
+									  <span class="input-group-addon">%</span>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						
+							<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+								<#?php echo form_label(lang('common_default_tax_rate_2').':', 'default_tax_1_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+								<div class="col-sm-4 col-md-4 col-lg-5">
+									<#?php echo form_input(array(
+									'class'=>'form-control form-inps',
+									'name'=>'default_tax_2_name',
+									'placeholder' => lang('common_tax_name'),
+									'id'=>'default_tax_2_name',
+									'size'=>'10',
+									'value'=>$this->config->item('default_tax_2_name')!==NULL ? $this->config->item('default_tax_2_name') : lang('common_sales_tax_2')));?>
+								</div>
+
+								<div class="col-sm-4 col-md-4 col-lg-5">
+									<div class="input-group">
+										<#?php echo form_input(array(
+										'class'=>'form-control form-inps-tax',	
+										'name'=>'default_tax_2_rate',
+										'placeholder' => lang('common_tax_percent'),
+										'id'=>'default_tax_2_rate',
+										'size'=>'4',
+										'value'=>$this->config->item('default_tax_2_rate')));?>
+									  <span class="input-group-addon">%</span>
+									</div>
+									<div class="clear"></div>
+									<#?php echo form_checkbox('default_tax_2_cumulative', '1', $this->config->item('default_tax_2_cumulative') ? true : false, 'id="default_tax_2_cumulative" class="cumulative_checkbox"');  ?>
+									<label for="default_tax_2_cumulative"><span></span></label>
+									<span class="cumulative_label">
+										<#?php echo lang('common_cumulative'); ?>
+									</span>
+								</div>
+									<div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 col-lg-9 col-lg-offset-3" style="display: <#?php echo $this->config->item('default_tax_3_rate') ? 'none' : 'block';?>">
+										<a href="javascript:void(0);" class="show_more_taxes btn btn-orange btn-round"><#?php echo lang('common_show_more');?> &raquo;</a>
+									</div>
+						
+									<div class="col-md-12 more_taxes_container" style="display: <#?php echo $this->config->item('default_tax_3_rate') ? 'block' : 'none';?>">
+										<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+											<#?php echo form_label(lang('common_default_tax_rate_3').':', 'default_tax_3_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+											<div class="col-sm-4 col-md-4 col-lg-5">
+												<#?php echo form_input(array(
+												'class'=>'form-control form-inps',
+												'name'=>'default_tax_3_name',
+												'placeholder' => lang('common_tax_name'),
+												'id'=>'default_tax_3_name',
+												'size'=>'10',
+												'value'=>$this->config->item('default_tax_3_name')!==NULL ? $this->config->item('default_tax_3_name') : ''));?>
+											</div>
+						
+											<div class="col-sm-4 col-md-4 col-lg-5">
+												<div class="input-group">
+													<#?php echo form_input(array(
+													'class'=>'form-control form-inps-tax',
+													'placeholder' => lang('common_tax_percent'),
+													'name'=>'default_tax_3_rate',
+													'id'=>'default_tax_3_rate',
+													'size'=>'4',
+													'value'=>$this->config->item('default_tax_3_rate')));?>
+												  <span class="input-group-addon">%</span>
+												</div>
+												<div class="clear"></div>
+											</div>
+										</div>
+							
+										<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+											<#?php echo form_label(lang('common_default_tax_rate_4').':', 'default_tax_4_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+											<div class="col-sm-4 col-md-4 col-lg-5">
+												<#?php echo form_input(array(
+												'class'=>'form-control form-inps',
+												'placeholder' => lang('common_tax_name'),
+												'name'=>'default_tax_4_name',
+												'id'=>'default_tax_4_name',
+												'size'=>'10',
+												'value'=>$this->config->item('default_tax_4_name')!==NULL ? $this->config->item('default_tax_4_name') : ''));?>
+											</div>
+						
+											<div class="col-sm-4 col-md-4 col-lg-5">
+												<div class="input-group">
+													<#?php echo form_input(array(
+													'class'=>'form-control form-inps-tax',
+													'placeholder' => lang('common_tax_percent'),
+													'name'=>'default_tax_4_rate',
+													'id'=>'default_tax_4_rate',
+													'size'=>'4',
+													'value'=>$this->config->item('default_tax_4_rate')));?>
+												  <span class="input-group-addon">%</span>
+												</div>
+												<div class="clear"></div>
+											</div>
+										</div>
+							
+										<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_taxes')) ?>">	
+											<#?php echo form_label(lang('common_default_tax_rate_5').':', 'default_tax_5_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+											<div class="col-sm-4 col-md-4 col-lg-5">
+												<#?php echo form_input(array(
+												'class'=>'form-control form-inps',
+												'placeholder' => lang('common_tax_name'),
+												'name'=>'default_tax_5_name',
+												'id'=>'default_tax_5_name',
+												'size'=>'10',
+												'value'=>$this->config->item('default_tax_5_name')!==NULL ? $this->config->item('default_tax_5_name') : ''));?>
+											</div>
+						
+											<div class="col-sm-4 col-md-4 col-lg-5">
+												<div class="input-group">
+													<#?php echo form_input(array(
+													'class'=>'form-control form-inps-tax',
+													'placeholder' => lang('common_tax_percent'),
+													'name'=>'default_tax_5_rate',
+													'id'=>'default_tax_5_rate',
+													'size'=>'4',
+													'value'=>$this->config->item('default_tax_5_rate')));?>
+												  <span class="input-group-addon">%</span>
+												</div>
+												<div class="clear"></div>
+											</div>
+										</div>
+									</div>
+							</div>
+							<#?php } ?>
+							
+					</div>
+				</div>
+			</div><end panel
+		Fin impuestos-->		
+
+		<!-- Inicio moneda / Currency 
+		<div class="col-md-12">
+			<div class="panel panel-piluku">
+				<div class="panel-heading">
+					<#?php echo create_section(lang('config_currency_info'))  ?>
+				</div>
+				<div class="panel-body">
+
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+						<#?php echo form_label(lang('config_currency_symbol').':', 'currency_symbol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+							'name'=>'currency_symbol',
+							'id'=>'currency_symbol',
+							'value'=>$this->config->item('currency_symbol')));?>
+						</div>
+					</div>	
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+						<#?php echo form_label(lang('config_currency_code').':', 'currency_code',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+							'name'=>'currency_code',
+							'id'=>'currency_code',
+							'value'=>$this->config->item('currency_code')));?>
+						</div>
+					</div>	
+					
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+					<#?php echo form_label(lang('config_currency_exchange_rates').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="table-responsive col-sm-9 col-md-9 col-lg-10">
+						<table id="currency_exchange_rates" class="table">
+							<thead>
+								<tr>
+								<th><#?php echo lang('common_exchange_to'); ?></th>
+								<th><#?php echo lang('config_currency_symbol'); ?></th>
+								<th><#?php echo lang('config_currency_symbol_location'); ?></th>
+								<th><#?php echo lang('config_number_of_decimals'); ?></th>
+								<th><#?php echo lang('config_thousands_separator'); ?></th>
+								<th><#?php echo lang('config_decimal_point'); ?></th>
+								<th><#?php echo lang('config_exchange_rate'); ?></th>
+								<th><#?php echo lang('common_delete'); ?></th>
+								</tr>
+							</thead>
+							
+							<tbody>
+							<#?php foreach($currency_exchange_rates->result() as $currency_exchange_rate) { ?>
+								<tr>
+									<td><input type="text" name="currency_exchange_rates_to[]" class="form-control" value="<#?php echo H($currency_exchange_rate->currency_code_to); ?>" /></td>
+									<td><input type="text" name="currency_exchange_rates_symbol[]" class="form-control" value="<#?php echo H($currency_exchange_rate->currency_symbol); ?>" /></td>
+									<td><#?php echo form_dropdown('currency_exchange_rates_symbol_location[]', array(
+			 							'before'    => lang('config_before_number'),
+			 							'after'    => lang('config_after_number'),
+									),$currency_exchange_rate->currency_symbol_location,'class="form-control"');?></td>
+									<td><#?php echo form_dropdown('currency_exchange_rates_number_of_decimals[]', array(
+				 							''  => lang('config_let_system_decide'),
+				 							'0'    => '0',
+				 							'1'    => '1',
+				 							'2'    => '2',
+				 							'3'    => '3',
+				 							'4'    => '4',
+				 							'5'    => '5',
+										),$currency_exchange_rate->number_of_decimals
+				 							 , 'class="form-control" id="number_of_decimals"');
+										?></td>
+									<td><input type="text" name="currency_exchange_rates_thousands_separator[]" class="form-control" value="<#?php echo H($currency_exchange_rate->thousands_separator); ?>" /></td>
+									<td><input type="text" name="currency_exchange_rates_decimal_point[]" class="form-control" value="<#?php echo H($currency_exchange_rate->decimal_point); ?>" /></td>
+									<td><input type="text" name="currency_exchange_rates_rate[]" class="form-control" value="<#?php echo H(to_currency_no_money($currency_exchange_rate->exchange_rate,10)); ?>" /></td>
+									<td><a class="delete_currency_exchange_rate text-primary" href="javascript:void(0);"><#?php echo lang('common_delete'); ?></a></td>
+								</tr>
+							<#?php } ?>
+							</tbody>
+						</table>
+						
+						<a href="javascript:void(0);" id="add_exchange_rate"><#?php echo lang('config_add_currency_exchange_rate'); ?></a>
+						</div>
+					</div>
+					
+					
+ 					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+ 					<#?php echo form_label(lang('config_currency_symbol_location').':', 'currency_symbol_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+ 						<div class="col-sm-9 col-md-9 col-lg-10">
+ 						<#?php echo form_dropdown('currency_symbol_location', array(
+ 							'before'    => lang('config_before_number'),
+ 							'after'    => lang('config_after_number'),
+						),
+ 							$this->config->item('currency_symbol_location')===NULL ? 'before' : $this->config->item('currency_symbol_location') , 'class="form-control" id="currency_symbol_location"');
+ 							?>
+ 						</div>						
+ 					</div>				
+							
+ 					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+ 					<#?php echo form_label(lang('config_number_of_decimals').':', 'number_of_decimals',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+ 						<div class="col-sm-9 col-md-9 col-lg-10">
+ 						<#?php echo form_dropdown('number_of_decimals', array(
+ 							''  => lang('config_let_system_decide'),
+ 							'0'    => '0',
+ 							'1'    => '1',
+ 							'2'    => '2',
+ 							'3'    => '3',
+ 							'4'    => '4',
+ 							'5'    => '5',
+						),
+ 							$this->config->item('number_of_decimals')===NULL ? '' : $this->config->item('number_of_decimals') , 'class="form-control" id="number_of_decimals"');
+ 							?>
+ 						</div>						
+ 					</div>				
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+						<#?php echo form_label(lang('config_thousands_separator').':', 'thousands_separator',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+							<#?php echo form_input(array(
+								'class'=>'validate form-control form-inps',
+							'name'=>'thousands_separator',
+							'id'=>'thousands_separator',
+							'value'=>$this->config->item('thousands_separator') ? $this->config->item('thousands_separator') : ','));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+						<#?php echo form_label(lang('config_decimal_point').':', 'decimal_point',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+							<#?php echo form_input(array(
+								'class'=>'validate form-control form-inps',
+							'name'=>'decimal_point',
+							'id'=>'decimal_point',
+							'value'=>$this->config->item('decimal_point') ? $this->config->item('decimal_point') : '.'));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_currency')) ?>">	
+					<#?php echo form_label(lang('config_currency_denoms').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="table-responsive col-sm-9 col-md-4 col-lg-4">
+						<table id="currency_denoms" class="table">
+							<thead>
+								<tr>
+								<th><#?php echo lang('common_denomination'); ?></th>
+								<th><#?php echo lang('config_currency_value'); ?></th>
+								<th><#?php echo lang('common_delete'); ?></th>
+								</tr>
+							</thead>
+							
+							<tbody>
+							<#?php foreach($currency_denoms->result() as $currency_denom) { ?>
+								<tr>
+									<td><input type="text" name="currency_denoms_name[]" class="form-control" value="<#?php echo H($currency_denom->name); ?>" /></td>
+									<td><input type="text" name="currency_denoms_value[]" class="form-control" value="<#?php echo H(to_currency_no_money($currency_denom->value)); ?>" /></td>
+									<td><a class="delete_currency_denom text-primary" data-id="<#?php echo H($currency_denom->id); ?>" href="javascript:void(0);"><#?php echo lang('common_delete'); ?></a></td>
+									<input type="hidden" name="currency_denoms_ids[]" value="<#?php echo H($currency_denom->id); ?>" />
+								</tr>
+							<#?php } ?>
+							</tbody>
+						</table>
+						
+						<a href="javascript:void(0);" id="add_denom"><#?php echo lang('config_add_currency_denom'); ?></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		Fin moneda / Currency -->
 		<!-- Payment Types -->
 		<div class="col-md-12">
 			<div class="panel panel-piluku">
@@ -213,7 +730,46 @@ $this->load->helper('update');
 							<label for="show_selling_price_on_recv"><span></span></label>
 						</div>
 					</div>
-									
+					
+					<!-- Pagos PBT
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_payment')) ?>">
+						<#?php echo form_label(lang('config_enable_ebt_payments'). ':', 'enable_ebt_payments',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_checkbox(array(
+							'name'=>'enable_ebt_payments',
+							'id'=>'enable_ebt_payments',
+							'value'=>'1',
+							'checked'=>$this->config->item('enable_ebt_payments')));?>
+							<label for="enable_ebt_payments"><span></span></label>
+						</div>
+					</div>
+				    fin pagos PBT-->
+					<!-- Pagos WIC 
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_payment')) ?>">
+						<#?php echo form_label(lang('config_enable_wic'). ':', 'enable_wic',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_checkbox(array(
+							'name'=>'enable_wic',
+							'id'=>'enable_wic',
+							'value'=>'1',
+							'checked'=>$this->config->item('enable_wic')));?>
+							<label for="enable_wic"><span></span></label>
+						</div>
+					</div>
+					Fin pagos WIC-->
+					<!-- Preguntar por el CCV
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_payment')) ?>">	
+						<#?php echo form_label(lang('config_prompt_for_ccv_swipe').':', 'prompt_for_ccv_swipe',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'prompt_for_ccv_swipe',
+							'id'=>'prompt_for_ccv_swipe',
+							'value'=>'1',
+							'checked'=>$this->config->item('prompt_for_ccv_swipe')));?>
+							<label for="prompt_for_ccv_swipe"><span></span></label>
+						</div>
+					</div>		
+					Fin preguntar por el CCV-->			
 				</div>
 			</div>
 		</div>
@@ -550,7 +1106,47 @@ $this->load->helper('update');
 						</div>
 						
 					</div>
-
+					
+					<!-- Desactivar consejos
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_enable_tips').':', 'enable_tips',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'enable_tips',
+							'id'=>'enable_tips',
+							'value'=>'enable_tips',
+							'checked'=>$this->config->item('enable_tips')));?>
+							<label for="enable_tips"><span></span></label>
+							<p><#?php echo lang('config_not_all_processors_support_tips'); ?></p>
+						</div>						
+					</div>
+					Fin desactivar consejos-->
+					<!-- Desactivar propinas
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_tip_preset_zero').':', 'tip_preset_zero',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'tip_preset_zero',
+							'id'=>'tip_preset_zero',
+							'value'=>'tip_preset_zero',
+							'checked'=>$this->config->item('tip_preset_zero')));?>
+							<label for="tip_preset_zero"><span></span></label>
+						</div>					
+					</div>
+					Fin desactivar propinas-->					
+					<!-- Posicionar cursor inicio
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_auto_focus_on_item_after_sale_and_receiving').':', 'auto_focus_on_item_after_sale_and_receiving',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'auto_focus_on_item_after_sale_and_receiving',
+							'id'=>'auto_focus_on_item_after_sale_and_receiving',
+							'value'=>'auto_focus_on_item_after_sale_and_receiving',
+							'checked'=>$this->config->item('auto_focus_on_item_after_sale_and_receiving')));?>
+							<label for="auto_focus_on_item_after_sale_and_receiving"><span></span></label>
+						</div>
+					</div>
+					-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 						<?php echo form_label(lang('config_capture_internal_notes_during_sale').':', 'capture_internal_notes_during_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3077,6 +3673,52 @@ $this->load->helper('update');
 					<?php echo create_section(lang('config_application_settings_info'))  ?>
 				</div>	
 				<div class="panel-body">
+					<!--Idioma inicio
+					<#?php if(is_on_demo_host()) { ?>
+						<div class="form-group">	
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<span class="text-danger"><#?php echo lang('config_cannot_change_language'); ?></span>
+							</div>
+						</div>
+					<#?php } ?>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('common_language').':', 'language',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_dropdown('language', array(
+								'english'  => 'English',
+								'spanish'   => 'Español', 
+							),
+								$this->Appconfig->get_raw_language_value(), 'class="form-control" id="language"');
+								?>
+						</div>						
+					</div>
+					Idioma fin -->
+
+					<!-- Formato de fecha inicio
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('config_date_format').':', 'date_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_dropdown('date_format', array(
+								'middle_endian'    => '12/30/2000',
+								'little_endian'  => '30-12-2000',
+								'big_endian'   => '2000-12-30'), $this->config->item('date_format'), 'class="form-control" id="date_format"');
+								?>
+							</div>
+						</div>
+					Formato de fecha fin -->
+						
+					<!-- Formato de hora inicio
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+						<#?php echo form_label(lang('config_time_format').':', 'time_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_dropdown('time_format', array(
+								'12_hour'    => '1:00 PM',
+								'24_hour'  => '13:00'
+								), $this->config->item('time_format'), 'class="form-control" id="time_format"');
+								?>
+							</div>
+						</div>
+					Formato de hora fin -->
 						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_week_start_day').':', 'week_start_day',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
@@ -3173,7 +3815,19 @@ $this->load->helper('update');
 								<label for="default_new_customer_to_current_location"><span></span></label>
 							</div>
 						</div>
-
+					<!--No forzar http inicio				
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_application_settings')) ?>">	
+					<#?php echo form_label(lang('config_force_https').':', 'force_https',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<#?php echo form_checkbox(array(
+							'name'=>'force_https',
+							'id'=>'force_https',
+							'value'=>'force_https',
+							'checked'=>$this->config->item('force_https')));?>
+							<label for="force_https"><span></span></label>
+						</div>
+					</div>
+					No forzar http fin -->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 					<?php echo form_label(lang('config_hide_expire_dashboard').':', 'hide_expire_dashboard',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3197,7 +3851,19 @@ $this->load->helper('update');
 							<label for="do_not_delete_saved_card_after_failure"><span></span></label>
 						</div>
 					</div>
-
+					<!--No forzar http inicio										
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_payment')) ?>"> 
+					<#?php echo form_label(lang('config_do_not_force_http').':', 'do_not_force_http',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					   <div class="col-sm-9 col-md-9 col-lg-10">
+					   <#?php echo form_checkbox(array(
+					           'name'=>'do_not_force_http',
+					           'id'=>'do_not_force_http',
+					           'value'=>'do_not_force_http',
+					           'checked'=>$this->config->item('do_not_force_http')));?>
+					           <label for="do_not_force_http"><span></span></label>
+					   </div>
+					</div>
+					No forzar http fin -->
 					<?php if (!is_on_demo_host()) { ?>
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('common_test_mode').' ('.lang('config_test_mode_help').'):', 'test_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -3433,8 +4099,10 @@ $this->load->helper('update');
 								'checked'=>$this->config->item('allow_scan_of_customer_into_item_field')));?>
 								<label for="allow_scan_of_customer_into_item_field"><span></span></label>
 							</div>
-						</div>						
-												
+						</div>
+						
+						
+						
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_do_not_delete_serial_number_when_selling').':', 'do_not_delete_serial_number_when_selling',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3463,13 +4131,797 @@ $this->load->helper('update');
 			</div>
 		</div>
 		
-		<div class="form-actions">
-		<?php echo form_submit(array(
-			'name'=>'submitf',
-			'id'=>'submitf',
-			'value'=>lang('common_save'),
-			'class'=>'submit_button floating-button btn btn-primary btn-lg pull-right')); ?>
+	<!-- Configuración correo eléctronico / Email Settings 4152 a 4326
+	<#?php if(!is_on_phppos_host()) { ?>
+    <div class="col-md-12">
+			<div class="panel panel-piluku">
+				<div class="panel-heading">
+					<#?php echo create_section(lang('config_email_settings_info'))  ?>
+				</div>	
+				<div class="panel-body">
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
+						<#?php echo form_label('Select A Provider'.':', 'email_provider',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php
+								$provider_options = array('Use System Default'=>'Use System Default', 'Gmail'=>'Gmail', 'Office 365'=>'Office 365', 'Windows Live Hotmail'=>'Windows Live Hotmail', 'Other'=>'Other');
+								echo form_dropdown('email_provider', $provider_options, $this->config->item('email_provider'), 'id="email_provider" class="form-control"');
+							?>
+						</div>
+					</div>
+					
+				<div class="email_basic">
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_user').':', 'smtp_user',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'smtp_user',
+							'id'=>'smtp_user',
+							'placeholder' => 'username@domain.com',
+							'value'=>$this->config->item('smtp_user')));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_pass').':', 'smtp_pass',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_password(array(
+							'class'=>'form-control form-inps',
+							'name'=>'smtp_pass',
+							'id'=>'smtp_pass',
+							'placeholder'=> 'password',
+							'value'=>$this->config->item('smtp_pass')));?>
+						</div>
+					</div>
+				</div>
+				<div class="email_advanced">	
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_crypto').':', 'smtp_crypto',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php
+								$smtp_crypto_options = array(''=>'','ssl'=>'ssl','tls'=>'tls');
+								echo form_dropdown('smtp_crypto', $smtp_crypto_options, $this->config->item('smtp_crypto'), 'id="smtp_crypto" class="form-control"');
+							?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
+						<#?php echo form_label(lang('config_email_protocol').':', 'protocol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php
+								$protocol_options = array(''=>'','smtp'=>'smtp','mail'=>'mail','sendmail'=>'sendmail');
+								echo form_dropdown('protocol', $protocol_options, $this->config->item('protocol'), 'id="protocol" class="form-control"');
+							?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_host').':', 'smtp_host',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'smtp_host',
+							'id'=>'smtp_host',
+							'placeholder' => 'smtp.domain.com',
+							'value'=>$this->config->item('smtp_host')));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_smtp_port').':', 'smtp_port',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'smtp_port',
+							'id'=>'smtp_port',
+							'placeholder'=>'25',
+							'value'=>$this->config->item('smtp_port')));?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_email_charset').':', 'email_charset',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'email_charset',
+							'id'=>'email_charset',
+							'placeholder'=>'utf-8',
+							'value'=>$this->config->item('email_charset')));?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_email_newline').':', 'newline',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php
+								$newline_options = array('rn'=>'\r\n','n'=>'\n','r'=>'\r');
+								$selected_option = 'rn';
+								
+								if ($option = $this->config->item('newline'))
+								{
+									if ($option == "\r\n")
+									{
+										$selected_option = 'rn';
+									}
+									elseif($option == "\n")
+									{
+										$selected_option = 'n';										
+									}
+									elseif($option == "\r")
+									{
+										$selected_option='r';
+									}
+								}
+								
+								echo form_dropdown('newline', $newline_options,$selected_option, 'id="newline" class="form-control"');
+							?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">	
+						<#?php echo form_label(lang('config_email_crlf').':', 'crlf',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php
+								$crlf_options = array('rn'=>'\r\n','n'=>'\n','r'=>'\r');
+								$selected_option = 'rn';
+								
+								if ($option = $this->config->item('crlf'))
+								{
+									if ($option == "\r\n")
+									{
+										$selected_option = 'rn';
+									}
+									elseif($option == "\n")
+									{
+										$selected_option = 'n';										
+									}
+									elseif($option == "\r")
+									{
+										$selected_option='r';
+									}
+								}
+								
+								echo form_dropdown('crlf', $crlf_options,$selected_option, 'id="crlf" class="form-control"');
+							?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
+						<#?php echo form_label(lang('config_smtp_timeout').':', 'smtp_timeout',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'smtp_timeout',
+							'id'=>'smtp_timeout',
+							'placeholder'=>'5',
+							'value'=>$this->config->item('smtp_timeout')));?>
+						</div>
+					</div>
+				</div> //end advanced email 
+					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_email')) ?>">
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<span class="pull-right">
+	            			<button id="test_email" type="button" class="btn btn-lg btn-primary"><span id="test_email_icon" class="glyphicon glyphicon-envelope"></span> <#?php echo lang('config_send_test_email');?></button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<#?php } ?>
+			Fin correo electronico-->
+	<!-- Inicio QuickBook/QB Settings 4326 a 4424
+         <div class="col-md-12">
+                <div class="panel panel-piluku">
+                    <div class="panel-heading">
+                        <#?php echo create_section(lang('config_quickbooks_settings'), 'store-configuration-options', 'section-api-settings')  ?>
+                    </div>  
+                    <div class="panel-body">
+                        
+                        <div class="text-center">
+                            <#?php if ($this->config->item('quickbooks_access_token') && $this->config->item('quickbooks_access_token')){ ?>
+                                <a href="<#?php echo site_url('quickbooks/refresh_tokens/1');?>" class="btn btn-primary"><#?php echo lang('config_refresh_tokens'); ?></a>
+                                <br />
+                                <br />
+                                <a href="<#?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><#?php echo lang('config_reconnect_quickbooks'); ?></a>
+                                <br />
+                                <br />
+                  <button id="reset_quickbooks" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('config_reset_quickbooks');?></button>
+                                <br />
+                                <br />
+                                
+                                <#?php } else { ?>
+                                <a href="<#?php echo site_url('quickbooks/oauth');?>" class="btn btn-primary"><#?php echo lang('config_connect_to_qb_online'); ?></a>
+                            <#?php } ?>
+                            <br />
+                            <br />
+                </div>
+                        
+                <div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">  
+                            <#?php echo form_label(lang('config_qb_sync_operations').':', 'qb_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+                                <div class="col-sm-9 col-md-9 col-lg-10 qb_sync_operations">
+                                    <ul id="check-list-box" data-name="qb_sync_operations[]" class="list-group checked-list-box">
+																						<li class="list-group-item" data-value="export_journalentry_to_quickbooks" data-color="success"><#?php echo lang('config_export_journalentry_to_quickbooks'); ?></li>
+                                    </ul>
+                                </div>
+                </div>
+                            
+                <div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">  
+                    <#?php
+												echo form_label(lang('config_qb_sync_logs').':', 'qb_sync_logs',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+												<div class="col-sm-9 col-md-9 col-lg-10">
+														<ul>
+														<#?php
+														foreach($this->Appfile->get_files_with_name('quickbooks_log.txt') as $file) 
+														{
+																echo '<li>'.anchor($this->Appfile->get_url_for_file($file['file_id']),date(get_date_format().' '.get_time_format(), strtotime($file['timestamp'])),array('target' => '_blank')).'</li>';
+														} 
+														?>           
+												</ul>
+												</div>
+								</div>
+                        
+								<div id="quickbooks_sync_progress" class="form-group hidden" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>"> 
+									<#?php echo form_label(lang('config_quickbooks_progress').':', 'quickbooks_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+											<div class="col-sm-9 col-md-9 col-lg-10">
+													<div class="well well-sm">
+															<div class="progress">
+																<div class="progress-bar progress-bar-striped active" id="quickbooks_progessbar" role="progressbar"
+																aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+																	<span id="quickbooks_progress_percent">0</span>% <span id="quickbooks_progress_message"></span>
+																</div>
+															</div>
+													</div>
+											</div>
+							</div>
+							<div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">
+								<#?php echo form_label(lang('qb_export_start_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+											<div class="input-group">
+												<#?php echo form_input(array(
+													'name'=>'export_start_date',
+													'id'=>'export_start_date',
+													'class'=>'form-control datepicker',
+													'placeholder' => 'YYYY-MM-DD',
+													'value'=>$this->config->item('qb_export_start_date')
+											));?>
+											</div>
+								</div>
+							</div>
+							<div class="form-group" data-keyword="<#?php echo H(lang('common_quickbooks')) ?>">
+								<#?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<div class="input-group">
+										<input readonly type="text" class="form-control form-inps" placeholder="<#?php echo lang('config_last_qb_sync_date'); ?>" name="qb_sync_date" id="qb_sync_date" value="<#?php echo $this->config->item('last_qb_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_qb_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
+												<span class = "input-group-btn">
+														<button id="sync_qb" type="button" class="btn btn-lg  btn-warning"><span id="sync_qb_button_icon" class="glyphicon glyphicon-refresh"></span> <#?php echo lang('config_sync');?></button>
+																					</span>
+																			
+																					<span class = "input-group-btn hidden" id="qb-cancel-button">
+														<button id="cancel_qb" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('common_cancel');?></button>
+												</span>
+										
+										</div>              
+								</div>
+							</div>
+            </div>
+          </div>
+    	</div>	
+	--fin QuickBook-->
+    <!-- Inicio Comercio electronico/Ecommerce Store 4424 4617
+     <div class="col-md-12">
+			<div class="panel panel-piluku">
+				<div class="panel-heading">
+					<#?php echo create_section(lang('config_ecommerce_settings_info'))  ?>
+				</div>	
+				<div class="panel-body">
+                
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
+							echo form_label(lang('config_ecommerce_platform').':', 'ecommerce_platform',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+									<#?php
+										echo form_dropdown('ecommerce_platform', $ecommerce_platforms, $this->config->item('ecommerce_platform'),'id="ecommerce_platform" class="ecommerce_platform form-control"');
+									?>          
+								</div>
+						</div>
+                  
+				  
+				<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+					<#?php echo form_label(lang('config_sku_sync_field').':', 'sku_sync_field',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<#?php echo form_dropdown('sku_sync_field', array(
+						'item_number'  => lang('common_item_number_expanded'),
+						'product_id'    => lang('common_product_id'),
+						'item_id'   => lang('common_item_id')
+						),
+						$this->config->item('sku_sync_field') ? $this->config->item('sku_sync_field') : 'item_number', 'class="form-control" id="sku_sync_field"')
+						?>
+					</div>
+				</div>
+				  										
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<#?php echo form_label(lang('config_do_not_upload_images_to_ecommerce').':', 'do_not_upload_images_to_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_checkbox(array(
+								'name'=>'do_not_upload_images_to_ecommerce',
+								'id'=>'do_not_upload_images_to_ecommerce',
+								'value'=>'1',
+								'checked'=>$this->config->item('do_not_upload_images_to_ecommerce')));?>
+								<label for="do_not_upload_images_to_ecommerce"><span></span></label>
+							</div>
+						</div>
+						
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<#?php echo form_label(lang('config_ecommerce_only_sync_completed_orders').':', 'ecommerce_only_sync_completed_orders',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_checkbox(array(
+								'name'=>'ecommerce_only_sync_completed_orders',
+								'id'=>'ecommerce_only_sync_completed_orders',
+								'value'=>'1',
+								'checked'=>$this->config->item('ecommerce_only_sync_completed_orders')));?>
+								<label for="ecommerce_only_sync_completed_orders"><span></span></label>
+							</div>
+						</div>
+						
+
+									
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_ecommerce_settings_info')) ?>">	
+						<#?php echo form_label(lang('config_new_items_are_ecommerce_by_default').':', 'new_items_are_ecommerce_by_default',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_checkbox(array(
+								'name'=>'new_items_are_ecommerce_by_default',
+								'id'=>'new_items_are_ecommerce_by_default',
+								'value'=>'1',
+								'checked'=>$this->config->item('new_items_are_ecommerce_by_default')));?>
+								<label for="new_items_are_ecommerce_by_default"><span></span></label>
+							</div>
+						</div>
+
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
+								echo form_label(lang('config_store_location').':', 'ecom_store_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+									<#?php
+										echo form_dropdown('ecom_store_location', $store_locations, $this->config->item('ecom_store_location'), 'class="form-control"');
+									?>           
+								</div>
+						</div>
+						
+						
+						<#?php						
+						foreach($store_locations as $r_location_id=>$r_location_name)
+						{
+						?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_sync_inventory_from_location').' '.$r_location_name, "location_".$r_location_id,array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_checkbox(array(
+								'name'=>'ecommerce_locations[]',
+								'id'=>"location_".$r_location_id,
+								'value'=>$r_location_id,
+								'checked'=>isset($ecommerce_locations[$r_location_id])))?>
+								<label for="location_<#?php echo $r_location_id;?>"><span></span></label>
+							</div>
+						</div>
+						
+						<#?php	
+						}
+						?>
+						
+						<#?php if(count($online_price_tiers) > 1) { ?>
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
+								echo form_label(lang('config_online_price_tier').':', 'online_price_tier',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+									<#?php 
+										echo form_dropdown('online_price_tier', $online_price_tiers, $this->config->item('online_price_tier'), 'class="form-control"');
+									?>           
+								</div>
+						</div>
+						<#?php } ?>
+												
+						
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+							<#?php echo form_label(lang('config_ecommerce_cron_sync_operations').':', 'ecommerce_cron_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10 ecommerce_cron_sync_operations">
+								  	<ul id="check-list-box" data-name="ecommerce_cron_sync_operations[]" class="list-group checked-list-box">
+											 <li class="list-group-item" data-value="sync_inventory_changes" data-color="success"><#?php echo lang('config_sync_inventory_changes'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_tags_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_tags_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_categories_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_categories_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_ecommerce_attributes_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_attributes_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_tax_classes_into_phppos" data-color="success"><#?php echo lang('config_import_tax_classes_into_phppos'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="import_shipping_classes_into_phppos" data-color="success"><#?php echo lang('config_import_shipping_classes_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="import_ecommerce_items_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_items_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="import_ecommerce_orders_into_phppos" data-color="success"><#?php echo lang('config_import_ecommerce_orders_into_phppos'); ?></li>
+											 <li class="list-group-item woo-only" data-value="export_phppos_tags_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_tags_to_ecommerce'); ?></li>
+		                   <li class="list-group-item" data-value="export_phppos_categories_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_categories_to_ecommerce'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="export_phppos_attributes_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_attributes_to_ecommerce'); ?></li>
+		                   <li class="list-group-item woo-only" data-value="export_tax_classes_into_phppos" data-color="success"><#?php echo lang('config_export_tax_classes_into_phppos'); ?></li>
+											 <li class="list-group-item" data-value="export_phppos_items_to_ecommerce" data-color="success"><#?php echo lang('config_export_phppos_items_to_ecommerce'); ?></li>
+								    </ul>
+								</div>
+						</div>
+						
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
+								echo form_label(lang('config_ecom_sync_logs').':', 'ecom_sync_logs',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+									<ul>
+									<#?php
+									foreach($this->Appfile->get_files_with_name('ecom_log.txt') as $file) 
+									{
+										echo '<li>'.anchor($this->Appfile->get_url_for_file($file['file_id']),date(get_date_format().' '.get_time_format(), strtotime($file['timestamp'])),array('target' => '_blank')).'</li>';
+									} 
+									?>           
+								</ul>
+								</div>
+						</div>
+						
+            <div id="ecommerce_sync_progress" class="form-group hidden" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+							<#?php echo form_label(lang('config_ecommerce_progress').':', 'ecommerce_progress',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+									<div class="well well-sm">
+										<div class="progress">
+										  <div class="progress-bar progress-bar-striped active" id="ecommerce_progessbar" role="progressbar"
+										  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+										    <span id="ecommerce_progress_percent">0</span>% <span id="ecommerce_progress_message"></span>
+										  </div>
+										</div>
+									</div>
+								</div>
+						</div>
+						
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">
+							<#?php echo form_label(lang('config_last_sync_date').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+								<div class="input-group">
+								  <input readonly type="text" class="form-control form-inps" placeholder="<#?php echo lang('config_last_sync_date'); ?>" name="ecommerce_sync_date" id="ecommerce_sync_date" value="<#?php echo $this->config->item('last_ecommerce_sync_date') ?  date(get_date_format().' '.get_time_format(),strtotime($this->config->item('last_ecommerce_sync_date'))) : ''; ?>" aria-describedby="input-group-btn">
+									<span class = "input-group-btn">
+	                  <button id="sync_woo" type="button" class="btn btn-lg  btn-warning"><span id="sync_woo_button_icon" class="glyphicon glyphicon-refresh"></span> <#?php echo lang('config_sync');?></button>
+									</span>
+									
+									<span class = "input-group-btn hidden" id="ecommerce-cancel-button">
+	                  <button id="cancel_woo" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('common_cancel');?></button>
+									</span>
+									
+								</div>				
+							</div>
+						</div>
+						
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
+            	<#?php
+								echo form_label(lang('config_reset_ecommerce').':', 'reset_ecommerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+	                  <button id="reset_ecommerce" type="button" class="btn btn-lg btn-danger"> <#?php echo lang('config_reset_ecommerce');?></button>
+								</div>
+						</div>	
+				</div>
+			</div>
 		</div>
+    Fin Comercio electronico/Ecommerce Store 4424 4617-->
+
+	<!-- Woocommerce Settings
+    <#?php
+
+		if($this->config->item('ecommerce_platform') == "woocommerce" )
+			$woo_hidden_class ="";
+		else
+			$woo_hidden_class="hidden";
+
+		if($this->config->item('ecommerce_platform') == "shopify" )
+			$shopify_hidden_class ="";
+		else
+			$shopify_hidden_class="hidden";
+		
+	?>
+		
+        <div class="col-md-12 shopify_settings ecom_settings <#?php echo $shopify_hidden_class; ?>">
+			<div class="panel panel-piluku">
+				<div class="panel-heading">
+					<#?php echo create_section(lang('config_shopify_settings_info'))  ?>
+				</div>
+			
+				<div class="panel-body">
+			<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+				
+				<#?php
+				echo form_hidden('shopify_shop',$this->config->item('shopify_shop'));
+				
+				if ($this->config->item('shopify_shop'))
+				{
+				?>
+					<div class='text-center'>
+						<p><#?php echo lang('config_connected_to_shopify')?> [<strong><#?php echo $this->config->item('shopify_shop').'.myshopify.com' ?></strong>]</p>
+						<br />
+						<br />
+						<#?php
+						if ($this->config->item('shopify_charge_id'))
+						{
+						?>
+	                    	<a href="<#?php echo site_url('ecommerce/cancel_shopify_billing');?>" class="btn btn-danger" id="shopify_cancel_billing"><#?php echo lang('config_cancel_shopify'); ?></a>
+							<script>
+							$("#shopify_cancel_billing").click(function(e)
+							{
+								e.preventDefault();
+								
+								bootbox.confirm(<#?php echo json_encode(lang('config_confirm_cancel_shopify')); ?>, function(response)
+								{
+									if (response)
+									{
+										window.location = $("#shopify_cancel_billing").attr('href');
+									}
+								});
+								
+							})
+							</script>
+						<#?php	
+						}
+						else
+						{
+						?>
+                    	<a href="<#?php echo site_url('ecommerce/activate_shopify_billing');?>" class="btn btn-success" id="shopify_activate_billing"><#?php echo str_replace('{SHOPIFY_PRICE}',SHOPIFY_PRICE,lang('config_shopify_billing_terms')); ?></a>
+						<br /><br />
+						<a href="<#?php echo site_url('ecommerce/oauth_shopify_disconnect');?>" class="btn btn-danger" id="shopify_oauth_disconnect"><#?php echo lang('config_disconnect_to_shopify'); ?></a>
+						
+						<#?php
+						}
+						?>
+						
+						</div>
+						
+					<#?php
+					}
+					else
+					{
+					?>
+					<div class='text-center'>
+						<p><a href="https://apps.shopify.com/php-point-of-sale" target="_blank"><#?php echo lang('config_connect_shopify_in_app_store')?></a></p>
+						<br />
+						<br />
+					</div>
+						
+					<#?php
+					}
+					?>	
+					</div>
+					
+					<script>
+						$("#shopify_oauth").click(function(e)
+						{
+							e.preventDefault();
+							var url = $(this).attr('href');
+							$("#config_form").ajaxSubmit(function()
+							{
+								window.location = url;
+							});
+						});
+						
+					</script>
+					
+			</div>	
+			</div>
+		</div>			
+			
+      <div class="col-md-12 woo_settings ecom_settings <#?php echo $woo_hidden_class; ?>">
+			<div class="panel panel-piluku">
+				<div class="panel-heading">
+					<#?php echo create_section(lang('config_woocommerce_settings_info'))  ?>
+				</div>
+				
+				<div class="panel-body">
+					
+        	<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+						<#?php echo form_label(lang('config_woo_version').':', 'woo_version',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php
+								echo form_dropdown('woo_version', $woo_versions, $this->config->item('woo_version'),'id="woo_version" class="woo_version form-control"');
+							?>
+					</div>
+				</div>
+					
+      	<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+						<#?php echo form_label(lang('config_woo_api_url').':', 'woo_api_url',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'woo_api_url',
+							'id'=>'woo_api_url',
+							'value'=>$this->config->item('woo_api_url')));?>
+						</div>
+				</div>
+                        
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+							<#?php echo form_label(lang('config_woo_api_key').':', 'woo_api_key',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+									<#?php echo form_input(array(
+										'class'=>'form-control form-inps',
+									'name'=>'woo_api_key',
+									'id'=>'woo_api_key',
+									'value'=>$this->config->item('woo_api_key')));?>
+								</div>
+						</div>
+                        
+            <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_woocommerce')) ?>">	
+							<#?php echo form_label(lang('config_woo_api_secret').':', 'woo_api_secret',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+									<#?php echo form_input(array(
+										'class'=>'form-control form-inps',
+									'name'=>'woo_api_secret',
+									'id'=>'woo_api_secret',
+									'value'=>$this->config->item('woo_api_secret')));?>
+								</div>
+						</div>							
+						
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_import_all_past_orders_for_woo_commerce').':', 'import_all_past_orders_for_woo_commerce',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_checkbox(array(
+								'name'=>'import_all_past_orders_for_woo_commerce',
+								'id'=>'import_all_past_orders_for_woo_commerce',
+								'value'=>'1',
+								'checked'=>$this->config->item('import_all_past_orders_for_woo_commerce')));?>
+								<label for="import_all_past_orders_for_woo_commerce"><span></span></label>
+							</div>
+						</div>
+										
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+						<#?php echo form_label(lang('config_woo_enable_html_desc').':', 'woo_enable_html_desc',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+							<#?php echo form_checkbox(array(
+								'name'=>'woo_enable_html_desc',
+								'id'=>'woo_enable_html_desc',
+								'value'=>'1',
+								'checked'=>$this->config->item('woo_enable_html_desc')));?>
+								<label for="woo_enable_html_desc"><span></span></label>
+							</div>
+						</div>	
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+							<#?php echo form_label(lang('config_do_not_treat_service_items_as_virtual').':', 'do_not_treat_service_items_as_virtual',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<#?php echo form_checkbox(array(
+									'name'=>'do_not_treat_service_items_as_virtual',
+									'id'=>'do_not_treat_service_items_as_virtual',
+									'value'=>'1',
+									'checked'=>$this->config->item('do_not_treat_service_items_as_virtual')));?>
+								<label for="do_not_treat_service_items_as_virtual"><span></span></label>
+							</div>
+						</div>											
+					</div>
+				</div>
+			</div>
+		fin woocomerce-->
+	     <!--Api Settings 4814 a 4945
+	     <div class="col-md-12">
+				<div class="panel panel-piluku">
+					<div class="panel-heading">
+						<#?php echo create_section(lang('config_api_settings_info'), 'store-configuration-options', 'section-api-settings')  ?>
+						<a href="https://phppointofsale.com/api.php" onclick="window.open('https://phppointofsale.com/api.php', '_blank', 'width=800,height=600,scrollbars=yes,menubar=no,status=yes,resizable=yes,screenx=0,screeny=0'); return false;"> <span class="glyphicon glyphicon-info-sign"></span></a>
+					</div>	
+					<div class="panel-body">
+						
+							
+							<div class="form-group no-padding-right" data-keyword="<#?php echo H(lang('config_keyword_api')) ?>">	
+							<#?php echo form_label(lang('config_api_keys').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+								<div class="col-md-9 col-sm-9 col-lg-10">
+									<div class="table-responsive">
+										<table id="api_keys" class="table">
+											<thead>
+												<tr>
+												<th><#?php echo lang('common_description'); ?></th>
+												<th><#?php echo lang('config_api_key_ending_in'); ?></th>
+												<th><#?php echo lang('config_permissions'); ?></th>
+												<th><#?php echo lang('common_delete'); ?></th>
+												</tr>
+											</thead>
+									
+											<tbody id="api_keys_body">
+											<#?php foreach($api_keys as $key) { ?>
+												<tr>
+													<td><#?php echo $key->description;?></td>
+													<td>...<#?php echo $key->key_ending; ?></td>
+													<td>
+														<#?php	echo  $key->level == 1 ? lang('config_read') : lang('config_read_write'); ?>
+													</td>
+												  <td><a class="delete_api_key" href="javascript:void(0);" data-key-id='<#?php echo $key->id; ?>'><#?php echo lang('common_delete'); ?></a></td>
+											</tr>
+											<#?php } ?>
+											</tbody>
+										</table>
+								
+											<a tabindex="-1" href="<#?php echo site_url('config/add_api_key');?>" data-toggle="modal" data-target="#myModal" data-toggle="model"><#?php echo lang('config_add_key'); ?></a>
+										</div>
+									</div>
+								</div>
+					</div>
+				</div>
+			</div>
+			 
+			<div class="col-md-12">
+				<div class="panel panel-piluku">
+					<div class="panel-heading">
+						<#?php echo create_section(lang('config_webhooks'), 'store-configuration-options', 'section-webhooks-settings')  ?>
+					</div>	
+					<div class="panel-body">
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_new_customer_web_hook').':', 'new_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'new_customer_web_hook',
+								'id'=>'new_customer_web_hook',
+								'placeholder' => 'http://URL',
+								'value'=>$this->config->item('new_customer_web_hook')));?>
+							</div>
+						</div>
+
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_new_sale_web_hook').':', 'new_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'new_sale_web_hook',
+								'id'=>'new_sale_web_hook',
+								'placeholder' => 'http://URL',
+								'value'=>$this->config->item('new_sale_web_hook')));?>
+							</div>
+						</div>
+						
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_new_receiving_web_hook').':', 'new_receiving_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'new_receiving_web_hook',
+								'id'=>'new_receiving_web_hook',
+								'placeholder' => 'http://URL',
+								'value'=>$this->config->item('new_receiving_web_hook')));?>
+							</div>
+						</div>
+											
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_edit_customer_web_hook').':', 'edit_customer_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'edit_customer_web_hook',
+								'id'=>'edit_customer_web_hook',
+								'placeholder' => 'http://URL',
+								'value'=>$this->config->item('edit_customer_web_hook')));?>
+							</div>
+						</div>
+												
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_edit_sale_web_hook').':', 'edit_sale_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'edit_sale_web_hook',
+								'id'=>'edit_sale_web_hook',
+								'placeholder' => 'http://URL',
+								'value'=>$this->config->item('edit_sale_web_hook')));?>
+							</div>
+						</div>
+
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_store_accounts')) ?>">	
+							<#?php echo form_label(lang('config_edit_recv_web_hook').':', 'edit_recv_web_hook',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<#?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'edit_recv_web_hook',
+								'id'=>'edit_recv_web_hook',
+								'placeholder' => 'http://URL',
+								'value'=>$this->config->item('edit_recv_web_hook')));?>
+							</div>
+						</div>									
+					</div>
+				</div>
+			</div>
+		</div>
+		-->	
+			<div class="form-actions">
+			<?php echo form_submit(array(
+				'name'=>'submitf',
+				'id'=>'submitf',
+				'value'=>lang('common_save'),
+				'class'=>'submit_button floating-button btn btn-primary btn-lg pull-right')); ?>
+			</div>
     
 		<?php echo form_close(); ?>	
 	</div>
@@ -3482,6 +4934,308 @@ $(document).ready(function()
 	date_time_picker_field($('.timepicker'), JS_TIME_FORMAT);
 	date_time_picker_field($('.datepicker'), 'YYYY-MM-DD');
 	
+	/*Correo electronico/Email
+	$("#test_email").click(function()
+	{
+		bootbox.prompt({
+			title: <#?php echo json_encode(lang('config_please_enter_email_to_send_test_to')); ?>,
+			value: <#?php echo json_encode($this->Location->get_info_for_key('email')); ?>, 
+			callback: function(email) 
+			{
+				$("#config_form").ajaxSubmit(function()
+				{
+					$.post(<#?php echo json_encode(site_url('config/send_smtp_test_email')); ?>,{email:email},function(response)
+					{
+						if (response.success)
+						{
+							show_feedback('success',response.message,<#?php echo json_encode(lang('common_success')); ?>);
+						}
+						else
+						{
+							show_feedback('error',<#?php echo json_encode(lang('common_error')); ?>,<#?php echo json_encode(lang('common_error')); ?>);
+							bootbox.alert({
+								title: <#?php echo json_encode(lang('common_error')); ?>,
+								message: response.message
+							});
+						}
+					},'json');
+				})
+			
+			}
+		});
+	});
+	
+	var gmail = {
+		smtp_crypto : 'ssl',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.gmail.com',
+		smtp_user : 'username@gmail.com',
+		smtp_pass : '',
+		smtp_port : '465',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '10'
+	};
+	
+	var office_365 = {
+		smtp_crypto : 'tls',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.office365.com',
+		smtp_user : 'user@domain.com',
+		smtp_pass : '',
+		smtp_port : '587',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '10'
+	};
+	
+	var windows_live_hotmail = {
+		smtp_crypto : 'tls',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.live.com',
+		smtp_user : 'user@outlook.com',
+		smtp_pass : '',
+		smtp_port : '587',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '10'
+	};
+	/*
+	var other = {
+		smtp_crypto : '',
+		protocol : '', 
+		smtp_host : '',
+		smtp_user : 'user@domain.com',
+		smtp_pass : '',
+		smtp_port : '',
+		email_charset : '',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : ''
+	};
+
+	var system_default = {
+		smtp_crypto : '',
+		protocol : '', 
+		smtp_host : '',
+		smtp_user : '',
+		smtp_pass : '',
+		smtp_port : '',
+		email_charset : '',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : ''
+	};
+	
+	if($("#email_provider").val() !== "Other")
+	{
+		$(".email_advanced").hide();
+	}
+	
+	if($("#email_provider").val() == "Use System Default")
+	{
+		$(".email_basic").hide();
+	}
+	
+	
+	$("#email_provider").change(function(e){
+		switch ($("#email_provider").val()) {
+				case 'Use System Default':
+						$(".email_basic").hide();
+						$(".email_advanced").hide();
+						var settings = false;
+						break;
+		    case 'Gmail':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+						var settings = gmail;
+		        break;
+		    case 'Office 365':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+		        var settings = office_365;
+		        break;
+		    case 'Windows Live Hotmail':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+		        var settings = windows_live_hotmail;
+		        break;
+		    case 'Other':
+						var settings = other;
+						$(".email_basic").show();
+		        $(".email_advanced").show();
+		        break;
+		}
+		
+		if(settings)
+		{
+			for (var key in settings)
+			{
+				if(key == 'smtp_user')
+				{
+					$("#"+key).val('');
+					$("#"+key).attr('placeholder', settings[key]);
+				} else if (key == 'newline' || key == 'crlf'){
+					$("#"+key).prop('selectedIndex', settings[key]);
+				}	else {
+					$("#"+key).val(settings[key]);
+				}
+			}
+		} else {
+			for (var key in system_default)
+			{
+				if (key == 'newline' || key == 'crlf'){
+					$("#"+key).prop('selectedIndex', settings[key]);
+				}	else {
+					$("#"+key).val(settings[key]);
+				}
+			}
+		} 
+	});
+	Correo electronico */
+	/* Ecomerce
+	$(".ecommerce_platform").change(function() 
+	{
+		if ($(".ecommerce_platform").val() == "woocommerce")
+		{
+			$(".woo_settings").removeClass('hidden');
+			$(".shopify_settings").addClass('hidden');
+			$('.woo-only').show();
+		}
+		else
+		{
+			$(".woo_settings").addClass('hidden');
+		}
+		
+		if ($(".ecommerce_platform").val() == "shopify")
+		{
+			$(".shopify_settings").removeClass('hidden');
+			$(".woo_settings").addClass('hidden');
+			$('.woo-only').hide();
+		}
+		else{
+			$(".shopify_settings").addClass('hidden');
+		}
+		
+	});
+	
+	if ($(".ecommerce_platform").val() == "woocommerce")
+	{
+		$('.woo-only').show();
+	}
+	else if ($(".ecommerce_platform").val() == "shopify")
+	{
+		$('.woo-only').hide();
+	}
+	
+	$(document).on('keyup', ".default_percent_off",function(e){
+		
+		if ($(this).val())
+		{
+			$(this).parent().parent().find('.default_cost_plus_percent').val('');
+			$(this).parent().parent().find('.default_cost_plus_fixed_amount').val('');
+		}
+	});
+
+	$(document).on('keyup', ".default_cost_plus_percent",function(e){
+		if($(this).val())
+		{
+			$(this).parent().parent().find('.default_percent_off').val('');
+			$(this).parent().parent().find('.default_cost_plus_fixed_amount').val('');
+		}
+	});
+
+	$(document).on('keyup', ".default_cost_plus_fixed_amount",function(e){
+		if($(this).val())
+		{
+			$(this).parent().parent().find('.default_percent_off').val('');
+			$(this).parent().parent().find('.default_cost_plus_percent').val('');
+		}
+	});
+		
+	
+	$(".delete_tier").click(function()
+	{
+		$("#config_form").append('<input type="hidden" name="tiers_to_delete[]" value="'+$(this).data('tier-id')+'" />');
+		$(this).parent().parent().remove();
+	});
+	
+	$(".delete_api_key").click(function()
+	{
+		var api_key_id = $(this).data('key-id');
+		
+		bootbox.confirm(<#?php echo json_encode(lang('config_api_key_confirm_delete')); ?>, function(response)
+		{
+			if (response)
+			{
+				 post_submit('<#?php echo site_url("config/delete_key"); ?>', 'POST',[{name:'api_key_id', value:api_key_id}]);
+			}
+		});
+	});
+	/*---Inicio Ecommerce
+	$("#price_tiers tbody").sortable();
+	
+	var add_index = -1;
+	
+	$("#add_tier").click(function()
+	{
+		$("#price_tiers tbody").append('<tr><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td><td><input type="text" class="tiers_to_edit form-control" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][name]" value="" /></td><td><input type="text" class="tiers_to_edit form-control default_percent_off" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_percent_off]" value=""/></td><td><input type="text" class="tiers_to_edit form-control default_cost_plus_percent" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_cost_plus_percent]" value=""/></td><td><input type="text" class="tiers_to_edit form-control default_cost_plus_fixed_amount" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_cost_plus_fixed_amount]" value=""/></td><td>&nbsp;</td></tr>');
+		
+		add_index--;
+	});
+	
+	$('#additional_payment_types').selectize({
+	    delimiter: ',',
+	    persist: false,
+	    create: function(input) {
+	        return {
+	            value: input,
+	            text: input
+	        }
+	    }
+	});	
+	
+	$(".delete_sale_type").click(function()
+	{
+		$("#config_form").append('<input type="hidden" name="sale_types_to_delete[]" value="'+$(this).data('sale-type-id')+'" />');
+		$(this).parent().parent().remove();
+	});
+	
+	$("#sale_types tbody").sortable();
+	
+	var add_sale_type = -1;
+	
+	$("#add_sale_type").click(function()
+	{	
+		$("#sale_types tbody").append('<tr><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td><td></td><td><input type="text" class="sale_types_to_edit form-control" data-index="'+add_sale_type+'" name="sale_types_to_edit['+add_sale_type+'][name]" value="" /></td><td class="text-center"><input type="checkbox" name="sale_types_to_edit['+add_sale_type+'][remove_quantity]" value="1" id="remove_quantity_'+add_sale_type+'" data-index="'+add_sale_type+'"><label for="remove_quantity_'+add_sale_type+'"><span></span></label></td><td>&nbsp;</td></tr>');
+		add_sale_type--;
+	});
+	
+	$('#additional_payment_types').selectize({
+	    delimiter: ',',
+	    persist: false,
+	    create: function(input) {
+	        return {
+	            value: input,
+	            text: input
+	        }
+	    }
+	});
+	
+	$('#damaged_reasons').selectize({
+	    delimiter: ',',
+	    persist: false,
+	    create: function(input) {
+	        return {
+	            value: input,
+	            text: input
+	        }
+	    }
+	})
+	Fin woocomerce*/
 	$(".delete_currency_denom").click(function()
 	{
 		var id = $(this).data('id');
@@ -3525,7 +5279,51 @@ $(document).ready(function()
 		});
 		
 	});
-
+	/* Actualizaciones del sistema base
+	$(".checkForUpdate").click(function(event)
+	{
+		event.preventDefault();
+		$('#ajax-loader').removeClass('hidden');
+		
+		$.getJSON($(this).attr('href'), function(update_available) 
+		{
+			$('#ajax-loader').addClass('hidden');
+			if(update_available)
+			{
+				bootbox.confirm(<#?php echo json_encode(lang('common_update_available')); ?>, function(response)
+				{
+					if (response)
+					{
+						window.location="http://sumit.gt";
+					}
+				});
+			}
+			else
+			{
+				bootbox.alert(<#?php echo json_encode(lang('common_not_update_available')); ?>);
+			}
+		});
+		
+	});
+	Fin actualizaciones*/
+	/*
+	$("#reset_ecommerce").click(function(event)
+	{
+		bootbox.confirm(<#?php echo json_encode(lang('config_confirm_reset_ecom')); ?>, function(response)
+		{
+			if (response)
+			{
+				$.getJSON(<#?php echo json_encode(site_url('config/reset_ecom')); ?>,function(response)
+				{
+					if (response.success)
+					{
+						show_feedback('success',response.message,<#?php echo json_encode(lang('common_success')); ?>);
+					}
+				});
+			}
+		});
+	});
+	*/
 	var submitting = false;
 	$('#config_form').validate({
 		submitHandler:function(form)
@@ -3535,7 +5333,12 @@ $(document).ready(function()
 			$(form).ajaxSubmit({
 			success:function(response)
 			{				
-
+				/*
+				//Don't let the tiers, taxes, providers, methods double submitted, so we change the name
+				$('.zones,.tiers_to_edit,.providers,.methods,.taxes,.tax_classes,.sale_types_to_edit').filter(function() {
+				    return parseInt($(this).data('index')) < 0;
+				}).attr('name','items_added[]');
+				*/
 				if(response.success)
 				{
 					show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
@@ -3727,9 +5530,490 @@ function save_deleted_payments()
 	$("#config_form").append('<input class="deleted_payment_types" type="hidden" name="deleted_payment_types" value="'+deleted_payment_types.join()+'" />');
 	
 }
+/* Ecomerce
+$("#cancel_woo").click(function()
+{
+	
+	bootbox.confirm({
+		message: <#?php echo json_encode(lang('confirmation_woocommerce_cron_cancel')); ?>,
+		buttons: {
+      cancel: {
+          label: <#?php echo json_encode(lang('common_no')); ?>,
+          className: 'btn-default'
+      	},
+        confirm: {
+            label: <#?php echo json_encode(lang('common_yes')); ?>,
+            className: 'btn-primary'
+        }
+    },
+		callback: function(response)
+		{
+				if (response)
+				{	
+					$.get(<#?php echo json_encode(site_url('ecommerce/cancel'));?>);
+				}
+		}
+	});
+});
+
+function check_ecommerce_status()
+{
+	$.getJSON(SITE_URL+'/home/get_ecommerce_sync_progress', function(response)
+	{
+		if (response.running)
+		{
+			$("#ecommerce-cancel-button").removeClass('hidden');
+			set_ecommerce_progress(response.percent_complete,response.message);
+			setTimeout(check_ecommerce_status,5000);
+		}
+		else
+		{
+			$("#ecommerce-cancel-button").addClass('hidden');;
+		}
+	});
+}
+
+function set_ecommerce_progress(percent, message)
+{
+	$("#ecommerce_sync_progress").toggleClass('hidden', false);
+	$('#ecommerce_progessbar').attr('aria-valuenow', percent).css('width',percent+'%');
+	$('#ecommerce_progress_percent').html(percent);
+	if (message !='')
+	{
+		$("#ecommerce_progress_message").html('('+message+')');
+	}
+	else
+	{
+		$("#ecommerce_progress_message").html('');
+	}
+	
+}
+
+//check_ecommerce_status();
+
+
+$('#sync_woo').click(function()
+{
+	bootbox.confirm({
+		message: <#?php echo json_encode(lang('confirmation_woocommerce_cron')); ?>,
+		buttons: {
+      cancel: {
+          label: <#?php echo json_encode(lang('common_no')); ?>,
+          className: 'btn-default'
+      	},
+        confirm: {
+            label: <#?php echo json_encode(lang('common_yes')); ?>,
+            className: 'btn-primary'
+        }
+    },
+		callback: function(response)
+		{
+				if (response)
+				{	
+					$('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", true);
+					
+					
+					$("#ecommerce_sync_progress").toggleClass("hidden", false);
+					
+					
+					$("#config_form").ajaxSubmit(function()
+					{
+					 //Wait 3 seconds before checking status for first time
+					 setTimeout(function(){ check_ecommerce_status();}, 3000);
+						var href = '<#?php echo site_url("ecommerce/manual_sync");?>'
+						$.ajax(href, {
+	  					dataType: "json",
+						  success: function(data) {
+							  $('#ajax-loader').addClass('hidden');
+							  if(data.success){
+									
+									if (data.cancelled)
+									{
+										show_feedback('error',<#?php echo json_encode(lang('common_cron_cancelled')); ?>,<#?php echo json_encode(lang('common_error')); ?>);
+									}
+									else
+									{
+										show_feedback('success', <#?php echo json_encode(lang('common_cron_success')); ?>, <#?php echo json_encode(lang('common_success')); ?>);
+									}
+									
+									$('#sync_woo').parents('.form-group').addClass('has-success').removeClass('has-error');
+									
+								  $('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", false);
+									
+									setTimeout(function(){
+										$("#ecommerce_sync_progress").toggleClass("hidden", true);
+									}, 1000);
+									
+									$("#ecommerce_sync_date").val(<#?php echo json_encode(lang('common_just_now')); ?>);
+							  }
+							  else{
+								  show_feedback('error', data.message);
+									$('#sync_woo').parents('.form-group').removeClass('has-success').addClass('has-error');
+									
+									$('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", false);
+									$("#ecommerce_sync_progress").toggleClass("hidden", true);
+									
+							  }
+						  },
+						  error: function() {
+							  show_feedback('error', <#?php echo json_encode(lang('common_access_denied')); ?>);
+								$('#sync_woo').parents('.form-group').removeClass('has-success').addClass('has-error');
+							  $('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", false);
+								$("#ecommerce_sync_progress").toggleClass("hidden", true);
+						  }
+					   });
+						 						
+					});
+	   		}
+		}
+	});
+});
+
+Quickbooks 
+$("#cancel_qb").click(function()
+{
+	
+	bootbox.confirm({
+		message: <#?php echo json_encode(lang('config_confirmation_qb_cron_cancel')); ?>,
+		buttons: {
+      cancel: {
+          label: <#?php echo json_encode(lang('common_no')); ?>,
+          className: 'btn-default'
+      	},
+        confirm: {
+            label: <#?php echo json_encode(lang('common_yes')); ?>,
+            className: 'btn-primary'
+        }
+    },
+		callback: function(response)
+		{
+				if (response)
+				{	
+					$.get(<#?php echo json_encode(site_url('quickbooks/cancel'));?>);
+				}
+		}
+	});
+});
+
+function check_quickbooks_status()
+{
+	$.getJSON(SITE_URL+'/home/get_qb_sync_progress', function(response)
+	{
+		if (response.running)
+		{
+			$("#qb-cancel-button").removeClass('hidden');
+			set_quickbooks_progress(response.percent_complete,response.message);
+			setTimeout(check_quickbooks_status,5000);
+		}
+		else
+		{
+			$("#qb-cancel-button").addClass('hidden');;
+		}
+	});
+}
+function set_quickbooks_progress(percent, message)
+{
+	$("#quickbooks_sync_progress").toggleClass('hidden', false);
+	$('#quickbooks_progessbar').attr('aria-valuenow', percent).css('width',percent+'%');
+	$('#quickbooks_progress_percent').html(percent);
+	if (message !='')
+	{
+		$("#quickbooks_progress_message").html('('+message+')');
+	}
+	else
+	{
+		$("#quickbooks_progress_message").html('');
+	}
+	
+}
+check_quickbooks_status();
+
+$('#sync_qb').click(function()
+{
+	bootbox.confirm({
+		message: <#?php echo json_encode(lang('config_confirmation_qb_cron')); ?>,
+		buttons: {
+      cancel: {
+          label: <#?php echo json_encode(lang('common_no')); ?>,
+          className: 'btn-default'
+      	},
+        confirm: {
+            label: <#?php echo json_encode(lang('common_yes')); ?>,
+            className: 'btn-primary'
+        }
+    },
+		callback: function(response)
+		{
+				if (response)
+				{	
+					$('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", true);
+					
+					
+					//$("#quickbooks_sync_progress").toggleClass("hidden", false);
+					
+					
+					$("#config_form").ajaxSubmit(function()
+					{
+					 //Wait 3 seconds before checking status for first time
+					 var start_date = $('#export_start_date').val();
+					 if(start_date=="")
+					 {
+						 alert("Please fill start date");
+						 return false;
+					 }
+					//  return false;
+					 setTimeout(function(){ check_quickbooks_status();}, 3000);
+						var href = '<#?php echo site_url("quickbooks/manual_sync");?>'
+						$.ajax(href, {
+	  					dataType: "json",
+							// type: 'POST',
+							// data:  { export_start_date: start_date} ,
+						  success: function(data) {
+							  $('#ajax-loader').addClass('hidden');
+							  if(data.success){
+									
+									if (data.cancelled)
+									{
+										show_feedback('error',<#?php echo json_encode(lang('common_cron_cancelled')); ?>,<#?php echo json_encode(lang('common_error')); ?>);
+									}
+									else
+									{
+										show_feedback('success', <#?php echo json_encode(lang('common_cron_success_qb')); ?>, <#?php echo json_encode(lang('common_success')); ?>);
+									}
+									
+									$('#sync_qb').parents('.form-group').addClass('has-success').removeClass('has-error');
+									
+								  $('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
+								
+									setTimeout(function(){
+										$("#quickbooks_sync_progress").toggleClass("hidden", true);
+									}, 1000);
+									$("#quickbooks_sync_date").val(<#?php echo json_encode(lang('common_just_now')); ?>);
+									
+							  }
+							  else{
+								  show_feedback('error', data.message);
+									$('#sync_qb').parents('.form-group').removeClass('has-success').addClass('has-error');
+									
+									$('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
+									//$("#quickbooks_sync_progress").toggleClass("hidden", true);
+									
+							  }
+						  },
+						  error: function() {
+							  show_feedback('error', <#?php echo json_encode(lang('common_access_denied')); ?>);
+								$('#sync_qb').parents('.form-group').removeClass('has-success').addClass('has-error');
+							  $('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
+								//$("#quickbooks_sync_progress").toggleClass("hidden", true);
+						  }
+					   });
+						 						
+					});
+	   		}
+		}
+	});
+});
+Fin quickbooks*/
 
 $("#item_lookup_order_list").sortable();
+/* Intento desesperado :( php comentado
+var checklist_ecom = <#?php echo json_encode(unserialize($this->config->item('ecommerce_cron_sync_operations'))); ?>;
 
+$(function () {
+		$group = $('.ecommerce_cron_sync_operations .list-group.checked-list-box');
+    $group.find('.list-group-item').each(function () {
+        // Settings
+        var $widget = $(this),
+            $checkbox = $('<`input type="checkbox" class="hidden" />'),
+						value = ($widget.data('value') ? $widget.data('value') : '1'),
+            color = ($widget.data('color') ? $widget.data('color') : "primary"),
+            style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+           					 
+				$widget.css('cursor', 'pointer');
+				$checkbox.val(value).attr('name', $group.data('name'));
+        $widget.append($checkbox);
+
+        // Event Handlers
+        $widget.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+        });
+
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+            // Set the button's state
+            $widget.data('state', (isChecked) ? "on" : "off");
+            // Set the button's icon
+            $widget.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$widget.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $widget.addClass(style + color);
+            } else {
+                $widget.removeClass(style + color);
+			}
+
+			if (isChecked) {	
+				if(typeof $widget.data('requires') == 'object')
+				{
+					$.each($widget.data('requires'), function(key, value)
+					{
+						$(":checkbox[value="+value+"]").prop("checked",true).trigger('change');
+					});
+				}
+			} else {
+				$group.find('.list-group-item').each(function(){
+					if(typeof $(this).data('requires') == 'object')
+					{
+						var that = this;
+						$.each($(this).data('requires'), function(key, value) {
+							
+							if(value == $widget.data('value'))
+							{
+								$(that).find(":checkbox").prop("checked",false).trigger('change');
+							}
+						});
+					}
+				});
+			}
+        }
+
+        // Initialization
+        function init() {
+			if($.inArray($widget.data('value'), checklist_ecom) !== -1)
+			{
+				$widget.data('checked', true);
+			}
+					
+          	if ($widget.data('checked') == true) {
+              	$checkbox.prop('checked', !$checkbox.is(':checked'));
+          	}
+          	updateDisplay();
+
+          	// Inject the icon if applicable
+          	if ($widget.find('.state-icon').length == 0) {
+              	$widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
+          	}
+        }
+        init();
+    });
+});//Intento desesperado :(
+	Impuestos
+	$("#tax_classes tbody").sortable();
+
+	var tax_class_index = -1;
+
+	$(document).on('click', '.add_tax_class', function(e) {
+		var $tbody = $("#tax_classes").find("tbody");
+
+		var tax_rate_index = 0;
+											
+		var checkbox_template = '<input type="hidden" name="taxes['+ tax_class_index +'][cumulative][]" value="0" /><input disabled data-index="-1" type="checkbox" class="taxes invisible" id="tax_rate_'+ tax_class_index +'_0_cumulative" name="taxes['+ tax_class_index +'][cumulative][]">'
+		+ '<label class="tax_class_cumulative_element invisible" for="tax_rate_'+ tax_class_index +'_0_cumulative"><span></span></label>';
+
+		var radio_template = '<input data-index="-1" type="radio" id="tax_class_'+ tax_class_index +'_0_default" name="tax_class_id" value="'+tax_class_index+'">'
+		+ '<label class="tax_class_default_element" for="tax_class_'+ tax_class_index +'_0_default"><span></span></label>';
+
+
+		$("#tax_classes").find("tbody").append('<tr data-index="' + tax_class_index +'">' +
+			'<td class="tax_class_name top">' +
+				'<input type="text" data-index="-1" class="rates form-control tax_classes" name="tax_classes['+ tax_class_index +'][name]" value="" />' +
+			'</td>' +
+			'<td class="tax_class_rate_name top">' +
+				'<input data-index="-1" data-tax-class-id="-1" type="text" class="rates form-control tax_classes" name="taxes['+ tax_class_index +'][name][]" />' +
+			'</td>' +
+			'<td class="tax_class_rate_percent top">' +
+				'<input data-index="-1" data-tax-class-id="-1" type="text" class="rates form-control tax_classes" name="taxes['+ tax_class_index +'][percent][]" />' +
+			'</td>' +
+			'<td class="tax_class_rate_cumulative top">' + 
+				checkbox_template + 
+			'</td>' +
+			'<td class="tax_class_rate_default">' + 
+				radio_template + 
+			'</td>' +
+			'<td>' +
+				'<a class="delete_tax_rate tax_table_rate_text_element"><#?php echo lang('common_delete'); ?></a>' +
+			'</td>' +
+			'<td>' +
+				'<a href="javascript:void(0);" class="add_tax_rate"><#?php echo lang('config_add_rate'); ?></a>' +
+			'</td>' +
+			'<td>' +
+				'&nbsp;' +
+			'</td>' +
+			'<td>' +
+				'<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' +
+			'</td>' +
+		'</tr>');
+
+		tax_class_index -= 1;
+	});
+	Impuestos
+	$(document).on('click', '.delete_tax_rate', function(e) {
+		var $tr = $(this).closest("tr");
+
+		var tax_class_index = $tr.data('index');
+		var tax_rate_index = $tr.find('td.tax_class_rate_name > input').length;
+						
+		if(tax_rate_index > 1)
+		{
+			var tax_class_tax_id = parseInt($tr.find('.tax_class_rate_name input').last().data('tax-class-tax-id'));
+			$tr.find('.tax_class_rate_name input').last().remove();
+			$tr.find('.tax_class_rate_percent input').last().remove();
+			$tr.find('.tax_class_rate_cumulative input').last().remove();
+
+			if(tax_class_tax_id > 0)
+			{
+				$("#config_form").append('<input type="hidden" name="taxes_to_delete[]" value="'+ tax_class_tax_id +'" />');
+			}
+		}
+		else
+		{
+
+			$tr.remove();
+			
+			if(tax_class_index > 0)
+			{
+				$("#config_form").append('<input type="hidden" name="tax_classes_to_delete[]" value="'+ tax_class_index +'" />');
+			}
+		}
+	});
+
+	$(document).on('click', '.add_tax_rate', function(e) {
+			var $tr = $(this).closest("tr");
+			var tax_class_index = $tr.data('index');
+			var tax_rate_index = $tr.find('td.tax_class_rate_name > input').length;
+																
+			$tr.find('.tax_class_rate_name').append('<input data-index="-1" type="text" data-tax-class-tax-id="-1" class="rates form-control taxes" name="taxes['+ tax_class_index +'][name][]" >');
+			$tr.find('.tax_class_rate_percent').append('<input data-index="-1" type="text" class="rates form-control taxes" name="taxes['+ tax_class_index +'][percent][]" >');
+			
+			if(tax_rate_index == 1)
+			{
+				var checkbox_template = '<input data-index="-1" type="checkbox" class="taxes" id="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative" name="taxes['+ tax_class_index +'][cumulative][]">'
+				+ '<label class="tax_class_cumulative_element" for="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative"><span></span></label>';
+				$tr.find('.tax_class_rate_cumulative').append(checkbox_template);
+			} else {
+				var checkbox_template = '<input type="hidden" name="taxes['+ tax_class_index +'][cumulative][]" value="0" /><input disabled data-index="-1" type="checkbox" class="taxes invisible" id="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative" name="taxes['+ tax_class_index +'][cumulative][]">'
+				+ '<label class="tax_class_cumulative_element invisible" for="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative"><span></span></label>';
+				$tr.find('.tax_class_rate_cumulative').append(checkbox_template);
+			}
+								
+		});
+	*/	
 		//delivery stuff
 		$("#shipping_zones tbody").sortable();
 		
@@ -3773,9 +6057,30 @@ $("#item_lookup_order_list").sortable();
 			      }
 				},
 			});
-
+			/*Inicio comentario anterior
+			var tax_groups = <#?php echo json_encode($tax_groups); ?>
+						
+			var tax_group_select = $('<select>').addClass('zones form-control').attr('name', 'zones['+ zone_index +'][tax_class_id]').attr('data-index', zone_index);
+			$('<td class="shipping_zone_tax_group top" >').append(tax_group_select).appendTo($tr);
+			
+			$(tax_groups).each(function() {
+			 tax_group_select.append($("<option>").attr('value',this.val).text(this.text));
+			});
+			
+			$tr.append(
+				'<td>' +
+					'<a class="delete_rate"><#?php echo lang('common_delete'); ?></a>' +
+				'</td>' +
+				'<td>' +
+					'<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' +
+				'</td>'
+				);
+				
+				zone_index --;	
+			Fin comentario anterior*/
 		});
 		$("#shipping_providers tbody").sortable();
+		
 		
 		var provider_index = -1;
 		
@@ -3896,5 +6201,129 @@ $("#item_lookup_order_list").sortable();
 	
 			});
 
+			/*$("#reset_quickbooks").click(function(event)
+			{
+				bootbox.confirm(<#?php echo json_encode(lang('config_confirm_reset_qb')); ?>, function(response)
+				{
+					if (response)
+					{
+						$.getJSON(<#?php echo json_encode(site_url('config/reset_qb')); ?>,function(response)
+						{
+							if (response.success)
+							{
+								show_feedback('success',response.message,<#?php echo json_encode(lang('common_success')); ?>);
+								
+								setTimeout(function(){ window.location.reload(); },3000);
+								
+							}
+						});
+					}
+				});
+			};
+			
+			//var checklist_qb = <#s?php echo json_encode(unserialize($this->config->item('qb_sync_operations'))); ?>;
+
+			$(function () {
+					$group = $('.qb_sync_operations .list-group.checked-list-box');
+			    $group.find('.list-group-item').each(function () {
+			        // Settings
+			        var $widget = $(this),
+			            $checkbox = $('<input type="checkbox" class="hidden" />'),
+									value = ($widget.data('value') ? $widget.data('value') : '1'),
+			            color = ($widget.data('color') ? $widget.data('color') : "primary"),
+			            style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
+			            settings = {
+			                on: {
+			                    icon: 'glyphicon glyphicon-check'
+			                },
+			                off: {
+			                    icon: 'glyphicon glyphicon-unchecked'
+			                }
+			            };
+           					 
+							$widget.css('cursor', 'pointer');
+							$checkbox.val(value).attr('name', $group.data('name'));
+			        $widget.append($checkbox);
+
+			        // Event Handlers
+			        $widget.on('click', function () {
+			            $checkbox.prop('checked', !$checkbox.is(':checked'));
+			            $checkbox.triggerHandler('change');
+			        });
+					/*
+			        $checkbox.on('change', function () {
+			            updateDisplayQB();
+			        });
+					
+
+			         Actions
+			        function updateDisplayQB() {
+						
+			            var isChecked = $checkbox.is(':checked');
+
+			            // Set the button's state
+			            $widget.data('state', (isChecked) ? "on" : "off");
+
+			            // Set the button's icon
+			            $widget.find('.state-icon')
+			                .removeClass()
+			                .addClass('state-icon ' + settings[$widget.data('state')].icon);
+
+			            // Update the button's color
+			            if (isChecked) {
+			                $widget.addClass(style + color);
+			            } else {
+			                $widget.removeClass(style + color);
+			            }
+						
+									if (isChecked) {	
+										if(typeof $widget.data('requires') == 'object')
+										{
+											$.each($widget.data('requires'), function(key, value)
+											{
+												$(":checkbox[value="+value+"]").prop("checked",true).trigger('change');
+											});
+										}
+									} else {
+										$group.find('.list-group-item').each(function(){
+											if(typeof $(this).data('requires') == 'object')
+											{
+												var that = this;
+												$.each($(this).data('requires'), function(key, value) {
+										
+													if(value == $widget.data('value'))
+													{
+														$(that).find(":checkbox").prop("checked",false).trigger('change');
+													}
+												});
+											}
+										});
+									}
+
+			        }
+
+			        // Initialization
+			        function initQB() {
+						var checkboxValue = $widget.data('value');
+						if($.inArray(checkboxValue, checklist_qb) !== -1)
+						{
+							$widget.data('checked', true);
+						}
+					
+			          if ($widget.data('checked') == true) {
+			              $checkbox.prop('checked', !$checkbox.is(':checked'));
+			          }
+            
+			          updateDisplayQB();
+
+			          // Inject the icon if applicable
+			          if ($widget.find('.state-icon').length == 0) {
+			              $widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
+			          }
+			        }
+			        initQB();
+			    });
+			});
+			*/
 </script>
 <?php $this->load->view("partial/footer"); ?>
