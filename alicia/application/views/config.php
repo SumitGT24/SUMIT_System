@@ -6059,7 +6059,7 @@ $(function () {
 			      }
 				},
 			});
-			/* 
+			/*Inicio comentario anterior
 			var tax_groups = <#?php echo json_encode($tax_groups); ?>
 						
 			var tax_group_select = $('<select>').addClass('zones form-control').attr('name', 'zones['+ zone_index +'][tax_class_id]').attr('data-index', zone_index);
@@ -6078,10 +6078,9 @@ $(function () {
 				'</td>'
 				);
 				
-				zone_index --;
-			});
-			*/	
-		
+				zone_index --;	
+			Fin comentario anterior*/
+		});
 		$("#shipping_providers tbody").sortable();
 		
 		
