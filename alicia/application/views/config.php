@@ -5964,7 +5964,7 @@ $(function () {
 
 		tax_class_index -= 1;
 	});
-	Impuestos*/
+	Impuestos
 	$(document).on('click', '.delete_tax_rate', function(e) {
 		var $tr = $(this).closest("tr");
 
@@ -6015,7 +6015,7 @@ $(function () {
 			}
 								
 		});
-		
+	*/	
 		//delivery stuff
 		$("#shipping_zones tbody").sortable();
 		
