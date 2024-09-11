@@ -6223,7 +6223,7 @@ $(function () {
 				});
 			};
 			
-			//var checklist_qb = <#?php echo json_encode(unserialize($this->config->item('qb_sync_operations'))); ?>;
+			//var checklist_qb = <#s?php echo json_encode(unserialize($this->config->item('qb_sync_operations'))); ?>;
 
 			$(function () {
 					$group = $('.qb_sync_operations .list-group.checked-list-box');
@@ -6324,8 +6324,8 @@ $(function () {
 			          }
 			        }
 			        initQB();
-					*/
 			    });
 			});
+			*/
 </script>
 <?php $this->load->view("partial/footer"); ?>
