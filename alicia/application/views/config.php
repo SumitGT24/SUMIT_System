@@ -5394,7 +5394,7 @@ $(document).ready(function()
 				min: 1,
 				max: 999999999
 			}
-   	},
+   		},
 		messages: 
 		{
      		company: <?php echo json_encode(lang('config_company_required')); ?>,
@@ -5530,19 +5530,19 @@ function save_deleted_payments()
 	$("#config_form").append('<input class="deleted_payment_types" type="hidden" name="deleted_payment_types" value="'+deleted_payment_types.join()+'" />');
 	
 }
-
+/* Ecomerce
 $("#cancel_woo").click(function()
 {
 	
 	bootbox.confirm({
-		message: <?php echo json_encode(lang('confirmation_woocommerce_cron_cancel')); ?>,
+		message: <#?php echo json_encode(lang('confirmation_woocommerce_cron_cancel')); ?>,
 		buttons: {
       cancel: {
-          label: <?php echo json_encode(lang('common_no')); ?>,
+          label: <#?php echo json_encode(lang('common_no')); ?>,
           className: 'btn-default'
       	},
         confirm: {
-            label: <?php echo json_encode(lang('common_yes')); ?>,
+            label: <#?php echo json_encode(lang('common_yes')); ?>,
             className: 'btn-primary'
         }
     },
@@ -5550,13 +5550,13 @@ $("#cancel_woo").click(function()
 		{
 				if (response)
 				{	
-					$.get(<?php echo json_encode(site_url('ecommerce/cancel'));?>);
+					$.get(<#?php echo json_encode(site_url('ecommerce/cancel'));?>);
 				}
 		}
 	});
 });
 
-//function check_ecommerce_status()
+function check_ecommerce_status()
 {
 	$.getJSON(SITE_URL+'/home/get_ecommerce_sync_progress', function(response)
 	{
@@ -5595,14 +5595,14 @@ function set_ecommerce_progress(percent, message)
 $('#sync_woo').click(function()
 {
 	bootbox.confirm({
-		message: <?php echo json_encode(lang('confirmation_woocommerce_cron')); ?>,
+		message: <#?php echo json_encode(lang('confirmation_woocommerce_cron')); ?>,
 		buttons: {
       cancel: {
-          label: <?php echo json_encode(lang('common_no')); ?>,
+          label: <#?php echo json_encode(lang('common_no')); ?>,
           className: 'btn-default'
       	},
         confirm: {
-            label: <?php echo json_encode(lang('common_yes')); ?>,
+            label: <#?php echo json_encode(lang('common_yes')); ?>,
             className: 'btn-primary'
         }
     },
@@ -5620,7 +5620,7 @@ $('#sync_woo').click(function()
 					{
 					 //Wait 3 seconds before checking status for first time
 					 setTimeout(function(){ check_ecommerce_status();}, 3000);
-						var href = '<?php echo site_url("ecommerce/manual_sync");?>'
+						var href = '<#?php echo site_url("ecommerce/manual_sync");?>'
 						$.ajax(href, {
 	  					dataType: "json",
 						  success: function(data) {
@@ -5629,11 +5629,11 @@ $('#sync_woo').click(function()
 									
 									if (data.cancelled)
 									{
-										show_feedback('error',<?php echo json_encode(lang('common_cron_cancelled')); ?>,<?php echo json_encode(lang('common_error')); ?>);
+										show_feedback('error',<#?php echo json_encode(lang('common_cron_cancelled')); ?>,<#?php echo json_encode(lang('common_error')); ?>);
 									}
 									else
 									{
-										show_feedback('success', <?php echo json_encode(lang('common_cron_success')); ?>, <?php echo json_encode(lang('common_success')); ?>);
+										show_feedback('success', <#?php echo json_encode(lang('common_cron_success')); ?>, <#?php echo json_encode(lang('common_success')); ?>);
 									}
 									
 									$('#sync_woo').parents('.form-group').addClass('has-success').removeClass('has-error');
@@ -5644,7 +5644,7 @@ $('#sync_woo').click(function()
 										$("#ecommerce_sync_progress").toggleClass("hidden", true);
 									}, 1000);
 									
-									$("#ecommerce_sync_date").val(<?php echo json_encode(lang('common_just_now')); ?>);
+									$("#ecommerce_sync_date").val(<#?php echo json_encode(lang('common_just_now')); ?>);
 							  }
 							  else{
 								  show_feedback('error', data.message);
@@ -5656,7 +5656,7 @@ $('#sync_woo').click(function()
 							  }
 						  },
 						  error: function() {
-							  show_feedback('error', <?php echo json_encode(lang('common_access_denied')); ?>);
+							  show_feedback('error', <#?php echo json_encode(lang('common_access_denied')); ?>);
 								$('#sync_woo').parents('.form-group').removeClass('has-success').addClass('has-error');
 							  $('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", false);
 								$("#ecommerce_sync_progress").toggleClass("hidden", true);
@@ -5669,7 +5669,7 @@ $('#sync_woo').click(function()
 	});
 });
 
-/* Quickbooks 
+Quickbooks 
 $("#cancel_qb").click(function()
 {
 	
