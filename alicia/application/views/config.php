@@ -6015,7 +6015,7 @@ $(function () {
 			}
 								
 		});
-		F
+		
 		//delivery stuff
 		$("#shipping_zones tbody").sortable();
 		
