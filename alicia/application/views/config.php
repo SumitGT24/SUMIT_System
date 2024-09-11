@@ -6203,17 +6203,17 @@ $(function () {
 	
 			});
 
-			//$("#reset_quickbooks").click(function(event)
+			/*$("#reset_quickbooks").click(function(event)
 			{
-				bootbox.confirm(<?php echo json_encode(lang('config_confirm_reset_qb')); ?>, function(response)
+				bootbox.confirm(<#?php echo json_encode(lang('config_confirm_reset_qb')); ?>, function(response)
 				{
 					if (response)
 					{
-						$.getJSON(<?php echo json_encode(site_url('config/reset_qb')); ?>,function(response)
+						$.getJSON(<#?php echo json_encode(site_url('config/reset_qb')); ?>,function(response)
 						{
 							if (response.success)
 							{
-								show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+								show_feedback('success',response.message,<#?php echo json_encode(lang('common_success')); ?>);
 								
 								setTimeout(function(){ window.location.reload(); },3000);
 								
@@ -6223,7 +6223,7 @@ $(function () {
 				});
 			};
 			
-			//var checklist_qb = <?php echo json_encode(unserialize($this->config->item('qb_sync_operations'))); ?>;
+			//var checklist_qb = <#?php echo json_encode(unserialize($this->config->item('qb_sync_operations'))); ?>;
 
 			$(function () {
 					$group = $('.qb_sync_operations .list-group.checked-list-box');
@@ -6256,9 +6256,9 @@ $(function () {
 			        $checkbox.on('change', function () {
 			            updateDisplayQB();
 			        });
-					*/
+					
 
-			        /* Actions
+			         Actions
 			        function updateDisplayQB() {
 						
 			            var isChecked = $checkbox.is(':checked');
