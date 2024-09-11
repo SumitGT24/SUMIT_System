@@ -5175,7 +5175,7 @@ $(document).ready(function()
 			}
 		});
 	});
-	------Ecommerce*/
+	/*---Inicio Ecommerce
 	$("#price_tiers tbody").sortable();
 	
 	var add_index = -1;
@@ -5235,7 +5235,7 @@ $(document).ready(function()
 	        }
 	    }
 	})
-	
+	Fin woocomerce*/
 	$(".delete_currency_denom").click(function()
 	{
 		var id = $(this).data('id');
@@ -5279,7 +5279,7 @@ $(document).ready(function()
 		});
 		
 	});
-	
+	/* Actualizaciones del sistema base
 	$(".checkForUpdate").click(function(event)
 	{
 		event.preventDefault();
@@ -5290,7 +5290,7 @@ $(document).ready(function()
 			$('#ajax-loader').addClass('hidden');
 			if(update_available)
 			{
-				bootbox.confirm(<?php echo json_encode(lang('common_update_available')); ?>, function(response)
+				bootbox.confirm(<#?php echo json_encode(lang('common_update_available')); ?>, function(response)
 				{
 					if (response)
 					{
@@ -5300,11 +5300,12 @@ $(document).ready(function()
 			}
 			else
 			{
-				bootbox.alert(<?php echo json_encode(lang('common_not_update_available')); ?>);
+				bootbox.alert(<#?php echo json_encode(lang('common_not_update_available')); ?>);
 			}
 		});
 		
 	});
+	Fin actualizaciones*/
 	/*
 	$("#reset_ecommerce").click(function(event)
 	{
