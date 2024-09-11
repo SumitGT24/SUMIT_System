@@ -5727,20 +5727,20 @@ function set_quickbooks_progress(percent, message)
 	
 }
 check_quickbooks_status();
-Fin quickbooks */
+
 
 
 $('#sync_qb').click(function()
 {
 	bootbox.confirm({
-		message: <?php echo json_encode(lang('config_confirmation_qb_cron')); ?>,
+		message: <#?php echo json_encode(lang('config_confirmation_qb_cron')); ?>,
 		buttons: {
       cancel: {
-          label: <?php echo json_encode(lang('common_no')); ?>,
+          label: <#?php echo json_encode(lang('common_no')); ?>,
           className: 'btn-default'
       	},
         confirm: {
-            label: <?php echo json_encode(lang('common_yes')); ?>,
+            label: <#?php echo json_encode(lang('common_yes')); ?>,
             className: 'btn-primary'
         }
     },
@@ -5765,7 +5765,7 @@ $('#sync_qb').click(function()
 					 }
 					//  return false;
 					 setTimeout(function(){ check_quickbooks_status();}, 3000);
-						var href = '<?php echo site_url("quickbooks/manual_sync");?>'
+						var href = '<#?php echo site_url("quickbooks/manual_sync");?>'
 						$.ajax(href, {
 	  					dataType: "json",
 							// type: 'POST',
@@ -5776,22 +5776,22 @@ $('#sync_qb').click(function()
 									
 									if (data.cancelled)
 									{
-										show_feedback('error',<?php echo json_encode(lang('common_cron_cancelled')); ?>,<?php echo json_encode(lang('common_error')); ?>);
+										show_feedback('error',<#?php echo json_encode(lang('common_cron_cancelled')); ?>,<#?php echo json_encode(lang('common_error')); ?>);
 									}
 									else
 									{
-										show_feedback('success', <?php echo json_encode(lang('common_cron_success_qb')); ?>, <?php echo json_encode(lang('common_success')); ?>);
+										show_feedback('success', <#?php echo json_encode(lang('common_cron_success_qb')); ?>, <#?php echo json_encode(lang('common_success')); ?>);
 									}
 									
 									$('#sync_qb').parents('.form-group').addClass('has-success').removeClass('has-error');
 									
 								  $('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
-									/*
+								
 									setTimeout(function(){
 										$("#quickbooks_sync_progress").toggleClass("hidden", true);
 									}, 1000);
-									$("#quickbooks_sync_date").val(<?php echo json_encode(lang('common_just_now')); ?>);
-									*/
+									$("#quickbooks_sync_date").val(<#?php echo json_encode(lang('common_just_now')); ?>);
+									
 							  }
 							  else{
 								  show_feedback('error', data.message);
@@ -5803,7 +5803,7 @@ $('#sync_qb').click(function()
 							  }
 						  },
 						  error: function() {
-							  show_feedback('error', <?php echo json_encode(lang('common_access_denied')); ?>);
+							  show_feedback('error', <#?php echo json_encode(lang('common_access_denied')); ?>);
 								$('#sync_qb').parents('.form-group').removeClass('has-success').addClass('has-error');
 							  $('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
 								//$("#quickbooks_sync_progress").toggleClass("hidden", true);
@@ -5815,11 +5815,11 @@ $('#sync_qb').click(function()
 		}
 	});
 });
-
+Fin quickbooks*/
 
 $("#item_lookup_order_list").sortable();
-
-var checklist_ecom = <?php echo json_encode(unserialize($this->config->item('ecommerce_cron_sync_operations'))); ?>;
+/* Intento desesperado :( php comentado
+var checklist_ecom = <#?php echo json_encode(unserialize($this->config->item('ecommerce_cron_sync_operations'))); ?>;
 
 $(function () {
 		$group = $('.ecommerce_cron_sync_operations .list-group.checked-list-box');
@@ -5914,8 +5914,8 @@ $(function () {
         }
         init();
     });
-});
-	/* Impuestos
+});//Intento desesperado :(
+	Impuestos
 	$("#tax_classes tbody").sortable();
 
 	var tax_class_index = -1;
