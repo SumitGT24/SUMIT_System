@@ -4772,23 +4772,21 @@ $this->load->helper('update');
 								<label for="woo_enable_html_desc"><span></span></label>
 							</div>
 						</div>	
-						fin woocomerce-->
-						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-						<?php echo form_label(lang('config_do_not_treat_service_items_as_virtual').':', 'do_not_treat_service_items_as_virtual',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
+							<#?php echo form_label(lang('config_do_not_treat_service_items_as_virtual').':', 'do_not_treat_service_items_as_virtual',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
-								'name'=>'do_not_treat_service_items_as_virtual',
-								'id'=>'do_not_treat_service_items_as_virtual',
-								'value'=>'1',
-								'checked'=>$this->config->item('do_not_treat_service_items_as_virtual')));?>
+								<#?php echo form_checkbox(array(
+									'name'=>'do_not_treat_service_items_as_virtual',
+									'id'=>'do_not_treat_service_items_as_virtual',
+									'value'=>'1',
+									'checked'=>$this->config->item('do_not_treat_service_items_as_virtual')));?>
 								<label for="do_not_treat_service_items_as_virtual"><span></span></label>
 							</div>
-						</div>
-						
-						
+						</div>											
 					</div>
 				</div>
 			</div>
+		fin woocomerce-->
 	     <!--Api Settings 4814 a 4945
 	     <div class="col-md-12">
 				<div class="panel panel-piluku">
