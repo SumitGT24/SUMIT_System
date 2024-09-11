@@ -5786,19 +5786,19 @@ $('#sync_qb').click(function()
 									$('#sync_qb').parents('.form-group').addClass('has-success').removeClass('has-error');
 									
 								  $('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
-									
+									/*
 									setTimeout(function(){
 										$("#quickbooks_sync_progress").toggleClass("hidden", true);
 									}, 1000);
-									
 									$("#quickbooks_sync_date").val(<?php echo json_encode(lang('common_just_now')); ?>);
+									*/
 							  }
 							  else{
 								  show_feedback('error', data.message);
 									$('#sync_qb').parents('.form-group').removeClass('has-success').addClass('has-error');
 									
 									$('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
-									$("#quickbooks_sync_progress").toggleClass("hidden", true);
+									//$("#quickbooks_sync_progress").toggleClass("hidden", true);
 									
 							  }
 						  },
@@ -5806,7 +5806,7 @@ $('#sync_qb').click(function()
 							  show_feedback('error', <?php echo json_encode(lang('common_access_denied')); ?>);
 								$('#sync_qb').parents('.form-group').removeClass('has-success').addClass('has-error');
 							  $('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
-								$("#quickbooks_sync_progress").toggleClass("hidden", true);
+								//$("#quickbooks_sync_progress").toggleClass("hidden", true);
 						  }
 					   });
 						 						
@@ -6203,7 +6203,7 @@ $(function () {
 	
 			});
 
-			$("#reset_quickbooks").click(function(event)
+			//$("#reset_quickbooks").click(function(event)
 			{
 				bootbox.confirm(<?php echo json_encode(lang('config_confirm_reset_qb')); ?>, function(response)
 				{
@@ -6252,13 +6252,13 @@ $(function () {
 			            $checkbox.prop('checked', !$checkbox.is(':checked'));
 			            $checkbox.triggerHandler('change');
 			        });
-				
+					/*
 			        $checkbox.on('change', function () {
 			            updateDisplayQB();
 			        });
-          
+					*/
 
-			        // Actions
+			        /* Actions
 			        function updateDisplayQB() {
 						
 			            var isChecked = $checkbox.is(':checked');
@@ -6324,6 +6324,7 @@ $(function () {
 			          }
 			        }
 			        initQB();
+					*/
 			    });
 			});
 </script>
