@@ -131,6 +131,16 @@ $this->load->helper('update');
 				</div>
 			</div>	
 		</div>
-
+		<!--Boton de guardado-->
+	<div class="form-actions">
+		<?php echo form_submit(array(
+			'name'=>'submitf',
+			'id'=>'submitf',
+			'value'=>lang('common_save'),
+			'class'=>'submit_button floating-button btn btn-primary btn-lg pull-right')); ?>
+		</div>
+	<!--Fin de formulario-->
+	<?php echo form_close(); ?>	
+	</div>
 		
 <?php $this->load->view("partial/footer"); ?>
