@@ -3448,8 +3448,8 @@ $this->load->helper('update');
 	</div>
 </div>
 <!--Inicio validar y enviar correo/validation and submit handling 4957 a 6365-->
-<script type='text/javascript'>
-
+<!--script type='text/javascript'>
+/*
 $(document).ready(function()
 {	
 	date_time_picker_field($('.timepicker'), JS_TIME_FORMAT);
@@ -3868,6 +3868,6 @@ $("#item_lookup_order_list").sortable();
 				}
 	
 			});
-
+/*
 </script>
 <?php $this->load->view("partial/footer"); ?>
