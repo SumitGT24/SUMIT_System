@@ -6,7 +6,7 @@ $this->load->helper('update');
 <!--PANEL PRINCIPAL-->
 <div class="config-panel">
 		<!-- Barra de navegación -->
-		<nav class="navbar navbar-inverse navbar-expand-lg">
+		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 		    <ul class="nav navbar-nav">
 		        <li class="active"><a href="/configs/companyinfo.php" class="load-content">Información de la empresa</a></li>
@@ -22,7 +22,6 @@ $this->load->helper('update');
 		</div>
 		</nav>
 			<!-- Panel donde se cargará el contenido -->
-			<div class="manage_buttons buttons-list config-page container">
 			    <!-- El contenido cargado dinámicamente se mostrará aquí -->
 				<!-- Company Information -->
 				<!-- call configs/companyinfo.php file-->
@@ -41,7 +40,6 @@ $this->load->helper('update');
 
 				    <?php echo form_close(); ?>
 				</div>
-			</div>
 </div>
 			<?php $this->load->view("partial/footer"); ?>
 				
