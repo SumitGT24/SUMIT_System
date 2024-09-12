@@ -486,34 +486,7 @@ $this->load->helper('update');
 							<label for="disabled_fixed_discounts"><span></span></label>
 						</div>
 					</div>
-					
-					<!-- Desactivar clonacion de ventas
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
-					<#?php echo form_label(lang('common_disable_sale_cloning').':', 'disable_sale_cloning',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-						<#?php echo form_checkbox(array(
-							'name'=>'disable_sale_cloning',
-							'id'=>'disable_sale_cloning',
-							'value'=>'1',
-							'checked'=>$this->config->item('disable_sale_cloning')));?>
-							<label for="disable_sale_cloning"><span></span></label>
-						</div>
-					</div>
-					Fin desactivar clonacion de ventas-->
-					<!-- Desactivar clonacion de recibos
-					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_sales')) ?>">	
-					<#?php echo form_label(lang('common_disable_recv_cloning').':', 'disable_recv_cloning',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-						<#?php echo form_checkbox(array(
-							'name'=>'disable_recv_cloning',
-							'id'=>'disable_recv_cloning',
-							'value'=>'1',
-							'checked'=>$this->config->item('disable_recv_cloning')));?>
-							<label for="disable_recv_cloning"><span></span></label>
-						</div>
-					</div>
-					Fin desactivar clonacion de recibos-->
-					
+
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_scan_and_set_sales').':', 'scan_and_set_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">

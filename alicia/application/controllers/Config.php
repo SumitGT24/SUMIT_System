@@ -43,7 +43,7 @@ class Config extends Secure_area
 	{
 		$this->load->model('Tier');
 		$this->load->model('Zip');
-		#$this->load->model('Shipping_zone');
+		$this->load->model('Shipping_zone');
 		$this->load->model('Shipping_provider');
 		$this->load->model('Shipping_method');
 		$this->load->model('Location');
@@ -358,7 +358,7 @@ class Config extends Secure_area
 		$batch_save_data=array(
 		'company'=>$this->input->post('company'),
 		'qb_export_start_date'=>$this->input->post('export_start_date'),
-		'sale_prefix'=>$this->input->post('sale_prefix') ? $this->input->post('sale_prefix') : 'POS',
+		#'sale_prefix'=>$this->input->post('sale_prefix') ? $this->input->post('sale_prefix') : 'POS',
 		'website'=>$this->input->post('website'),
 		'prices_include_tax' => $this->input->post('prices_include_tax') ? 1 : 0,
 		'currency_symbol'=>$this->input->post('currency_symbol'),
