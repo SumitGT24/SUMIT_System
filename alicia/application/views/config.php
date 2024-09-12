@@ -27,6 +27,9 @@ $this->load->helper('update');
 <!-- Panel donde se cargará el contenido -->
 <div class="config-panel" id="config-panel" style="min-height: 400px; padding: 20px; background-color: #f7f7f7;">
     <!-- El contenido cargado dinámicamente se mostrará aquí -->
+	<!-- Company Information -->
+	<!-- call configs/companyinfo.php file-->
+	<?php $this->load->view("configs/companyinfo"); ?>
 </div>
 
 <div class="text-center location-settings">
