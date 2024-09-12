@@ -38,7 +38,11 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
+/*Style for navbar*/
+.navbar-default {
+    background-color: white;
+    box-shadow:rgba(0, 0, 0, .15);
+}
 .ti-wand:before {
 	content: "\e600";
 }
