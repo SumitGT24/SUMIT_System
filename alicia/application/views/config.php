@@ -8,7 +8,7 @@ $this->load->helper('update');
 	<div class="container-fluid">
 	    <ul class="nav navbar-nav">
 	        <li class="active"><a href="/configs/companyinfo.php" class="load-content">Información de la empresa</a></li>
-	        <li><a href="configs/page1.php" class="load-content">Page 1</a></li>
+	        <li><a href="configs/page1.php" class="load-content">Formas de pago</a></li>
 	        <li><a href="configs/page2.php" class="load-content">Page 2</a></li>
 	    </ul>
 	    <form class="navbar-form navbar-left" action="/action_page.php">
@@ -31,8 +31,8 @@ $this->load->helper('update');
 			        'value' => lang('common_save'),
 			        'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
 			    )); ?>
+				<?php echo form_close(); ?>
 			</div>
-		<?php echo form_close(); ?>
 	<?php $this->load->view("partial/footer"); ?>
 				
 				
