@@ -21,38 +21,27 @@ $this->load->helper('update');
         </form>
     </div>
 </nav>
-
+</div>
 <!-- Panel donde se cargará el contenido -->
-<div class="config-panel" id="config-panel" style="min-height: 400px; padding: 20px; background-color: #f7f7f7;">
+<div class="manage_buttons buttons-list config-page container">
     <!-- El contenido cargado dinámicamente se mostrará aquí -->
 	<!-- Company Information -->
 	<!-- call configs/companyinfo.php file-->
-	<?php $this->load->view("configs/companyinfo"); ?>
-</div>
+	<h1>Información de la empresa</h1>
 
-<div class="text-center location-settings">
-    <?php 
-    echo lang('config_looking_for_location_settings') . ' ' . anchor(
-        $this->Location->count_all() > 1 ? 'locations' : 'locations/view/1', 
-        lang('module_locations') . ' ' . lang('config_module'), 
-        'class="btn btn-info"'
-    );
-    ?>
-</div>
-
-<div class="form-actions">
-    <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
-    
-    <!-- Botón de guardado -->
-    <?php echo form_submit(array(
-        'name' => 'submitf',
-        'id' => 'submitf',
-        'value' => lang('common_save'),
-        'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
-    )); ?>
-    
-    <?php echo form_close(); ?>
-</div>
+	<div class="form-actions">
+	    <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
+	
+	    <!-- Botón de guardado -->
+	    <?php echo form_submit(array(
+	        'name' => 'submitf',
+	        'id' => 'submitf',
+	        'value' => lang('common_save'),
+	        'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
+	    )); ?>
+	
+	    <?php echo form_close(); ?>
+	</div>
 </div>
 
 <?php $this->load->view("partial/footer"); ?>
