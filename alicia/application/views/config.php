@@ -3478,8 +3478,8 @@ $(document).ready(function()
 		$("#currency_exchange_rates tbody").append('<tr>'+
 		'<td><input type="text" class="form-control" name="currency_exchange_rates_to[]" value="" /></td>'+
 		'<td><input type="text" class="form-control" name="currency_exchange_rates_symbol[]" value="$" /></td>'+
-		'<td><select name="currency_exchange_rates_symbol_location[]" class="form-control"><option value="before"><?php echo lang('config_before_number'); ?></option><option value="after"><?php echo lang('config_after_number'); ?></option></select></td>'+
-		'<td><select name="currency_exchange_rates_number_of_decimals[]" class="form-control"><option value=""><?php echo lang('config_let_system_decide'); ?></option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>'+
+		'<td><select name="currency_exchange_rates_symbol_location[]" class="form-control"><option value="before"><#?php echo lang('config_before_number'); ?></option><option value="after"><?php echo lang('config_after_number'); ?></option></select></td>'+
+		'<td><select name="currency_exchange_rates_number_of_decimals[]" class="form-control"><option value=""><#?php echo lang('config_let_system_decide'); ?></option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>'+
 		'<td><input type="text" class="form-control" name="currency_exchange_rates_thousands_separator[]" value="," /></td>'+
 		'<td><input type="text" class="form-control" name="currency_exchange_rates_decimal_point[]" value="." /></td>'+
 		'<td><input type="text" class="form-control" name="currency_exchange_rates_rate[]" value="" /></td>'+
@@ -3511,11 +3511,11 @@ $(document).ready(function()
 
 				if(response.success)
 				{
-					show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+					show_feedback('success',response.message,<#?php echo json_encode(lang('common_success')); ?>);
 				}
 				else
 				{
-					show_feedback('error',response.message,<?php echo json_encode(lang('common_error')); ?>);
+					show_feedback('error',response.message,<#?php echo json_encode(lang('common_error')); ?>);
 					
 				}
 				submitting = false;
@@ -3567,11 +3567,11 @@ $(document).ready(function()
    		},
 		messages: 
 		{
-     		company: <?php echo json_encode(lang('config_company_required')); ?>,
-     		sale_prefix: <?php echo json_encode(lang('config_sale_prefix_required')); ?>,
+     		company: <#?php echo json_encode(lang('config_company_required')); ?>,
+     		sale_prefix: <#?php echo json_encode(lang('config_sale_prefix_required')); ?>,
 			return_policy:
 			{
-				required:<?php echo json_encode(lang('config_return_policy_required')); ?>
+				required:<#?php echo json_encode(lang('config_return_policy_required')); ?>
 			},
 	
 		}
@@ -3631,10 +3631,10 @@ function check_loyalty_setup()
 	}
 }
 
-<?php
+<#?php
 if ($search = $this->input->get('search')) { ?>
-	$("#search").val(<?php echo json_encode($this->input->get('search')); ?>);	
-<?php } ?>
+	$("#search").val(<#?php echo json_encode($this->input->get('search')); ?>);	
+<#?php } ?>
 
 $(".config-panel").sieve({
 	itemSelector: "div.form-group",
@@ -3662,7 +3662,7 @@ $(".config-panel").sieve({
 
 $("#search").focus().trigger('keyup');
 
-<?php
+<#?php
 $deleted_payment_types = $this->config->item('deleted_payment_types');
 $deleted_payment_types = explode(',',$deleted_payment_types);
 
@@ -3670,13 +3670,13 @@ foreach($deleted_payment_types as $deleted_payment_type)
 {
 ?>
 	$( ".payment_types" ).each(function() {
-		if ($(this).text() == <?php echo json_encode($deleted_payment_type); ?>)
+		if ($(this).text() == <#?php echo json_encode($deleted_payment_type); ?>)
 		{
 			$(this).removeClass('btn-primary');			
 			$(this).addClass('deleted btn-danger');			
 		}
 	});
-<?php
+<#?php
 }
 ?>
 save_deleted_payments();
@@ -3711,7 +3711,7 @@ $("#item_lookup_order_list").sortable();
 			create: true,
 			render: {
 		      option_create: function(data, escape) {
-					var add_new = <?php echo json_encode(lang('common_add_value')) ?>;
+					var add_new = <#?php echo json_encode(lang('common_add_value')) ?>;
 		        return '<div class="create">'+escape(add_new)+' <strong>' + escape(data.input) + '</strong></div>';
 		      }
 			},
@@ -3741,7 +3741,7 @@ $("#item_lookup_order_list").sortable();
 				create: true,
 				render: {
 			      option_create: function(data, escape) {
-						var add_new = <?php echo json_encode(lang('common_add_value')) ?>;
+						var add_new = <#?php echo json_encode(lang('common_add_value')) ?>;
 			        return '<div class="create">'+escape(add_new)+' <strong>' + escape(data.input) + '</strong></div>';
 			      }
 				},
@@ -3776,10 +3776,10 @@ $("#item_lookup_order_list").sortable();
 					radio_template + 
 				'</td>' +
 				'<td>' +
-					'<a class="delete_rate shipping_table_rate_text_element"><?php echo lang('common_delete'); ?></a>' +
+					'<a class="delete_rate shipping_table_rate_text_element"><#?php echo lang('common_delete'); ?></a>' +
 				'</td>' +
 				'<td>' +
-					'<a href="javascript:void(0);" class="add_delivery_rate"><?php echo lang('config_add_rate'); ?></a>' +
+					'<a href="javascript:void(0);" class="add_delivery_rate"><#?php echo lang('config_add_rate'); ?></a>' +
 				'</td>' +
 				'<td>' +
 					'<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' +
