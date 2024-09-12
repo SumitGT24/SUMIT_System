@@ -15,15 +15,13 @@ $this->load->helper('update');
 	        <div class="form-group">
 	            <input type="text" class="form-control" placeholder="Search">
 	        </div>
-	        <button type="submit" class="btn btn-default">Buscar</button>
+	        <button type="submit" class="submit_button floating-button btn btn-primary btn-lg pull-right">Buscar</button>
 	    </form>
 	</div>
 	</nav>
 		<!-- Panel donde se cargará el contenido -->
-		    <!-- El contenido cargado dinámicamente se mostrará aquí -->
-			<!-- Company Information -->
 			<!-- call configs/companyinfo.php file-->
-			<h1>Información de la empresa</h1>
+			<?php $this->load->view("configs/companyinfo"); ?>
 			<div class="form-actions">
 			    <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 			    <!-- Botón de guardado -->
@@ -33,8 +31,8 @@ $this->load->helper('update');
 			        'value' => lang('common_save'),
 			        'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
 			    )); ?>
-			    <?php echo form_close(); ?>
 			</div>
-		<?php $this->load->view("partial/footer"); ?>
+		<?php echo form_close(); ?>
+	<?php $this->load->view("partial/footer"); ?>
 				
 				
