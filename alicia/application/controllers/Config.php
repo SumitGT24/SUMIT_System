@@ -358,11 +358,11 @@ class Config extends Secure_area
 		$batch_save_data=array(
 		'company'=>$this->input->post('company'),
 		'qb_export_start_date'=>$this->input->post('export_start_date'),
-		#'sale_prefix'=>$this->input->post('sale_prefix') ? $this->input->post('sale_prefix') : 'POS',
+		'sale_prefix'=>$this->input->post('sale_prefix') ? $this->input->post('sale_prefix') : 'POS',
 		'website'=>$this->input->post('website'),
 		'prices_include_tax' => $this->input->post('prices_include_tax') ? 1 : 0,
 		'currency_symbol'=>$this->input->post('currency_symbol'),
-		'language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english',
+		#'language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english',
 		'date_format'=>$this->input->post('date_format'),
 		'time_format'=>$this->input->post('time_format'),
 		'print_after_sale'=>$this->input->post('print_after_sale') ? 1 : 0,
