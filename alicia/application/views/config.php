@@ -4,25 +4,25 @@ $this->load->helper('demo');
 $this->load->helper('update');
 ?>
 
-<div class="manage_buttons">
-	<div class="manage-row-options">
-		<div class="email_buttons text-center">
-			<div class="row">
-				<div class="col-md-4 col-sm-4 col-xs-2">
-					<div class="search-tpl">
-						<div class="input-group">
-						  <span class="input-group-addon" id="search-addon"><span class="glyphicon glyphicon-search"></span></span>
-						  <input aria-describedby="search-addon" type="text" class="form-control" name ="search" id="search"  placeholder="<?php echo lang('common_search') ?>" value="<?php echo H($search); ?>" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!-- end email_buttons -->
-	</div><!-- manage-row-options -->
-</div><!-- manage_buttons -->
 
 <div class="manage_buttons buttons-list config-page container">
-	
+<!--Barra de navegacion-->
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="./configs/companyinfo.php">Información de la empresa</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <form class="navbar-form navbar-left" action="/action_page.php">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Buscar</button>
+    </form>
+  </div>
+</nav> 
 </div>
 <div class="text-center location-settings">
 	<?php echo lang('config_looking_for_location_settings').' '.anchor($this->Location->count_all() > 1 ? 'locations' : 'locations/view/1', lang('module_locations').' '.lang('config_module'), 'class="btn btn-info"');?>
@@ -84,53 +84,7 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
-	<?php } ?>
-		<!-- Company Information -->
-		<div class="col-md-12">
-			<div class="panel panel-piluku">
-				<div class="panel-heading">
-					<?php echo create_section(lang("config_company_info"))  ?>
-				</div>
-				<div class="panel-body">
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_company_logo').':', 'company_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							
-							<input type="file" name="company_logo" id="company_logo" class="filestyle" data-icon="false">  	
-						</div>	
-					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_delete_logo').':', 'delete_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox('delete_logo', '1', null,'id="delete_logo"');?>
-							<label for="delete_logo"><span></span></label>
-						</div>	
-					</div>
-			
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_company').':', 'company',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-							<?php echo form_input(array(
-								'class'=>'validate form-control form-inps',
-							'name'=>'company',
-							'id'=>'company',
-							'value'=>$this->config->item('company')));?>
-						</div>
-					</div>
-
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-						<?php echo form_input(array(
-							'class'=>'form-control form-inps',
-							'name'=>'website',
-							'id'=>'website',
-							'value'=>$this->config->item('website')));?>
-						</div>
-					</div>
-				</div>
-			</div>	
-		</div>
+	<?php } ?>		
 		<!--Boton de guardado-->
 	<div class="form-actions">
 		<?php echo form_submit(array(
