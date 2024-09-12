@@ -6,22 +6,22 @@ $this->load->helper('update');
 
 <div class="manage_buttons buttons-list config-page container">
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <!-- Actualización: Se añade la clase "load-content" para manejar el contenido dinámico -->
-                <li class="active"><a href="configs/companyinfo.php" class="load-content">Información de la empresa</a></li>
-                <li><a href="configs/page1.php" class="load-content">Page 1</a></li>
-                <li><a href="configs/page2.php" class="load-content">Page 2</a></li>
-            </ul>
-            <form class="navbar-form navbar-left" action="/action_page.php">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Buscar</button>
-            </form>
-        </div>
-    </nav>
+	<nav class="navbar navbar-inverse navbar-expand-lg">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/configs/companyinfo.php" class="load-content">Información de la empresa</a></li>
+            <li><a href="configs/page1.php" class="load-content">Page 1</a></li>
+            <li><a href="configs/page2.php" class="load-content">Page 2</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" action="/action_page.php">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Buscar</button>
+        </form>
+    </div>
+</nav>
+
 </div>
 
 <!-- Panel donde se cargará el contenido -->
