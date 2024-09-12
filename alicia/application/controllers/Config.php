@@ -43,7 +43,7 @@ class Config extends Secure_area
 	{
 		$this->load->model('Tier');
 		$this->load->model('Zip');
-		$this->load->model('Shipping_zone');
+		#$this->load->model('Shipping_zone');
 		$this->load->model('Shipping_provider');
 		$this->load->model('Shipping_method');
 		$this->load->model('Location');

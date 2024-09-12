@@ -4099,10 +4099,8 @@ $this->load->helper('update');
 								'checked'=>$this->config->item('allow_scan_of_customer_into_item_field')));?>
 								<label for="allow_scan_of_customer_into_item_field"><span></span></label>
 							</div>
-						</div>
-						
-						
-						
+						</div>						
+												
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 						<?php echo form_label(lang('config_do_not_delete_serial_number_when_selling').':', 'do_not_delete_serial_number_when_selling',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 							<div class="col-sm-9 col-md-9 col-lg-10">
@@ -4515,8 +4513,7 @@ $this->load->helper('update');
 									?>           
 								</div>
 						</div>
-						<#?php } ?>
-												
+						<#?php } ?>										
 						
             <div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_ecommerce')) ?>">	
 							<#?php echo form_label(lang('config_ecommerce_cron_sync_operations').':', 'ecommerce_cron_sync_operations',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
@@ -5532,8 +5529,7 @@ function save_deleted_payments()
 }
 /* Ecomerce
 $("#cancel_woo").click(function()
-{
-	
+{	
 	bootbox.confirm({
 		message: <#?php echo json_encode(lang('confirmation_woocommerce_cron_cancel')); ?>,
 		buttons: {
