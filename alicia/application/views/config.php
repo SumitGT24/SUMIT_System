@@ -22,8 +22,6 @@ $this->load->helper('update');
     </div>
 </nav>
 
-</div>
-
 <!-- Panel donde se cargará el contenido -->
 <div class="config-panel" id="config-panel" style="min-height: 400px; padding: 20px; background-color: #f7f7f7;">
     <!-- El contenido cargado dinámicamente se mostrará aquí -->
@@ -54,6 +52,7 @@ $this->load->helper('update');
     )); ?>
     
     <?php echo form_close(); ?>
+</div>
 </div>
 
 <?php $this->load->view("partial/footer"); ?>
