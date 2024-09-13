@@ -42,17 +42,18 @@
 /*/Tabs Style*/
 .tablink {
   background-color: #ffcc2c;
-  color: #ffffff;
+  color: black;
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
+  padding: 12px 14px;
+  font-size: 12px;
+  width: 15%;
 }
 
 .tablink:hover {
   background-color: #e88960;
+  color: white;
 }
 
 /* Estilos para el contenido de las pestañas */
@@ -6378,6 +6379,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .btn-primary {
   background-color: #ffcc2c;
   border: 0px;
+  color: black;
 }
 .btn-primary:hover,
 .btn-primary:active,
