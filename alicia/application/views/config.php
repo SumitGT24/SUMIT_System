@@ -3,7 +3,26 @@ $this->load->view("partial/header");
 $this->load->helper('demo');
 $this->load->helper('update');
 ?>
-
+<div class="config-panel">
+	
+	<?php
+	//for help window popups
+	$popupAtts = array(
+    'width'       => 800,
+    'height'      => 600,
+    'scrollbars'  => 'yes',
+    'status'      => 'yes',
+    'resizable'   => 'yes',
+    'screenx'     => 0,
+    'screeny'     => 0,
+    'window_name' => '_blank'
+	);
+	
+	function create_section($title)
+	{
+		return $title ;
+	}
+	?>
 <!-- Pestañas -->
 <button class="tablink" onclick="openPage('CompanyInfo', this, 'red')" id="defaultOpen">Información de la empresa</button>
 <button class="tablink" onclick="openPage('PaymentMethods', this, 'green')">Formas de pago</button>
@@ -76,5 +95,5 @@ $this->load->helper('update');
     )); ?>
     <?php echo form_close(); ?>
 </div>
-
+</div>
 <!--#?php $this->load->view("partial/footer"); ?>
