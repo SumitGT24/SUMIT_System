@@ -39,21 +39,3 @@ $this->load->helper('update');
 </div>
 
 <?php $this->load->view("partial/footer"); ?>
-<script>
-$(document).ready(function() {
-    // Manejar el clic en los enlaces del navbar
-    $('.load-content').click(function(e) {
-        e.preventDefault();  // Evitar la navegación normal del enlace
-        
-        // Obtener la URL del enlace
-        var url = $(this).attr('href');
-        
-        // Cargar el contenido en el panel
-        $('#config-panel').load(url);
-        
-        // Cambiar la clase activa en el navbar
-        $('.nav li').removeClass('active');
-        $(this).parent().addClass('active');
-    });
-});
-</script>
