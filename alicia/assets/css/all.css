@@ -41,8 +41,8 @@
 
 /*/Tabs Style*/
 .tablink {
-  background-color: #555;
-  color: white;
+  background-color: #ffcc2c;
+  color: #ffffff;
   border: none;
   outline: none;
   cursor: pointer;
@@ -52,7 +52,7 @@
 }
 
 .tablink:hover {
-  background-color: #777;
+  background-color: #e88960;
 }
 
 /* Estilos para el contenido de las pestañas */

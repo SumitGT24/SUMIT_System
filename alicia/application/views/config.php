@@ -13,9 +13,6 @@ $this->load->helper('update');
 <div id="CompanyInfo" class="tabcontent">
 <div class="col-md-12">
 	<div class="panel panel-piluku">
-		<div class="panel-heading">
-			<?php echo create_section(lang("config_company_info"))  ?>
-		</div>
 			<div class="panel-body">
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 					<?php echo form_label(lang('common_company_logo').':', 'company_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
