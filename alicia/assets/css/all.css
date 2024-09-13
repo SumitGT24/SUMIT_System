@@ -39,7 +39,7 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/*/Tabs Style*/
+/*/Tabs Style
 .tablink {
   background-color: #ffcc2c;
   color: black;
@@ -56,7 +56,7 @@
   color: white;
 }
 
-/* Estilos para el contenido de las pestañas */
+ Estilos para el contenido de las pestañas 
 .tabcontent {
   display: none;
   padding: 50px;

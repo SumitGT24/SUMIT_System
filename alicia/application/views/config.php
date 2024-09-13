@@ -5,7 +5,7 @@ $this->load->helper('update');
 ?>
 <div class="config-panel">
 <!-- Pestañas -->
- <div>
+ <div style="background-color: #ffcc2c;">
 	 <button class="tablink" onclick="openPage('CompanyInfo', this, 'red')" id="defaultOpen">Información de la empresa</button>
 	 <button class="tablink" onclick="openPage('PaymentMethods', this, 'green')">Formas de pago</button>
 	 <button class="tablink" onclick="openPage('Page2', this, 'blue')">Page 2</button>
@@ -79,4 +79,4 @@ $this->load->helper('update');
     <?php echo form_close(); ?>
 </div>
 </div>
-<!--#?php $this->load->view("partial/footer"); ?>
+<?php $this->load->view("partial/footer"); ?>
