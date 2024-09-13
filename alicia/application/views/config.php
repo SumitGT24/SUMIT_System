@@ -9,6 +9,7 @@ $this->load->helper('update');
 <button class="tablink" onclick="openPage('PaymentMethods', this)">Formas de pago</button>
 <button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
 <button class="tablink" onclick="openPage('Order&Delivery', this)">Ordenes y Entregas</button>
+<button class="tablink" onclick="openPage('Sales', this)">Ventas</button>
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
@@ -319,8 +320,783 @@ $this->load->helper('update');
 			</div><!-- end panel-body -->
 		</div><!-- end panel-->
 	</div>
+	
+	<!-- Ventas -->
+	<div id="Sales" class="tabcontent">
+		<div class="panel panel-piluku">
+			<div class="panel-body">
+			
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_prefix').':', 'sale_prefix',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+						'name'=>'sale_prefix',
+						'id'=>'sale_prefix',
+						'value'=>$this->config->item('sale_prefix')));?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_id_to_show_on_sale_interface').':', 'id_to_show_on_sale_interface',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('id_to_show_on_sale_interface', array(
+						'number'  => lang('common_item_number_expanded'),
+						'product_id'    => lang('common_product_id'),
+						'id'   => lang('common_item_id')
+						),
+						$this->config->item('id_to_show_on_sale_interface'), 'class="form-control" id="id_to_show_on_sale_interface"')
+						?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+				<?php echo form_label(lang('config_disabled_fixed_discounts').':', 'disabled_fixed_discounts',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disabled_fixed_discounts',
+						'id'=>'disabled_fixed_discounts',
+						'value'=>'1',
+						'checked'=>$this->config->item('disabled_fixed_discounts')));?>
+						<label for="disabled_fixed_discounts"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+				<?php echo form_label(lang('config_scan_and_set_sales').':', 'scan_and_set_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'scan_and_set_sales',
+						'id'=>'scan_and_set_sales',
+						'value'=>'1',
+						'checked'=>$this->config->item('scan_and_set_sales')));?>
+						<label for="scan_and_set_sales"><span></span></label>
+					</div>
+				</div>
+			
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+				<?php echo form_label(lang('config_scan_and_set_recv').':', 'scan_and_set_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'scan_and_set_recv',
+						'id'=>'scan_and_set_recv',
+						'value'=>'1',
+						'checked'=>$this->config->item('scan_and_set_recv')));?>
+						<label for="scan_and_set_recv"><span></span></label>
+					</div>
+				</div>									
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_damaged_reasons').':', 'damaged_reasons',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_input(array(
+						'class'=>'form-control form-inps',
+						'name'=>'damaged_reasons',
+						'id'=>'damaged_reasons',
+						'size'=> 40,
+						'value'=>$this->config->item('damaged_reasons')));?>
+					</div>
+					
+				</div>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_capture_internal_notes_during_sale').':', 'capture_internal_notes_during_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'capture_internal_notes_during_sale',
+						'id'=>'capture_internal_notes_during_sale',
+						'value'=>'capture_internal_notes_during_sale',
+						'checked'=>$this->config->item('capture_internal_notes_during_sale')));?>
+						<label for="capture_internal_notes_during_sale"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_capture_sig_for_all_payments').':', 'capture_sig_for_all_payments',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'capture_sig_for_all_payments',
+						'id'=>'capture_sig_for_all_payments',
+						'value'=>'capture_sig_for_all_payments',
+						'checked'=>$this->config->item('capture_sig_for_all_payments')));?>
+						<label for="capture_sig_for_all_payments"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_number_of_recent_sales').':', 'number_of_recent_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('number_of_recent_sales', 
+					 array(
+						'10'=>'10',
+						'20'=>'20',
+						'50'=>'50',
+						'100'=>'100',
+						'200'=>'200',
+						'500'=>'500'
+						), $this->config->item('number_of_recent_sales') ? $this->config->item('number_of_recent_sales') : '10', 'class="form-control" id="number_of_recent_sales"');
+						?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_hide_customer_recent_sales').':', 'hide_customer_recent_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_customer_recent_sales',
+						'id'=>'hide_customer_recent_sales',
+						'value'=>'hide_customer_recent_sales',
+						'checked'=>$this->config->item('hide_customer_recent_sales')));?>
+						<label for="hide_customer_recent_sales"><span></span></label>
+					</div>
+				</div>
+																			
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_enable_customer_quick_add').':', 'enable_customer_quick_add',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'enable_customer_quick_add',
+						'id'=>'enable_customer_quick_add',
+						'value'=>'enable_customer_quick_add',
+						'checked'=>$this->config->item('enable_customer_quick_add')));?>
+						<label for="enable_customer_quick_add"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_enable_supplier_quick_add').':', 'enable_supplier_quick_add',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'enable_supplier_quick_add',
+						'id'=>'enable_supplier_quick_add',
+						'value'=>'enable_supplier_quick_add',
+						'checked'=>$this->config->item('enable_supplier_quick_add')));?>
+						<label for="enable_supplier_quick_add"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_collapse_sales_ui_by_default').':', 'collapse_sales_ui_by_default',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'collapse_sales_ui_by_default',
+						'id'=>'collapse_sales_ui_by_default',
+						'value'=>'collapse_sales_ui_by_default',
+						'checked'=>$this->config->item('collapse_sales_ui_by_default')));?>
+						<label for="collapse_sales_ui_by_default"><span></span></label>
+					</div>
+				</div>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_collapse_recv_ui_by_default').':', 'collapse_recv_ui_by_default',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'collapse_recv_ui_by_default',
+						'id'=>'collapse_recv_ui_by_default',
+						'value'=>'collapse_recv_ui_by_default',
+						'checked'=>$this->config->item('collapse_recv_ui_by_default')));?>
+						<label for="collapse_recv_ui_by_default"><span></span></label>
+					</div>
+				</div>				
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('disable_confirmation_sale').':', 'disable_confirmation_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disable_confirmation_sale',
+						'id'=>'disable_confirmation_sale',
+						'value'=>'disable_confirmation_sale',
+						'checked'=>$this->config->item('disable_confirmation_sale')));?>
+						<label for="disable_confirmation_sale"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_disable_confirm_recv').':', 'disable_confirm_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disable_confirm_recv',
+						'id'=>'disable_confirm_recv',
+						'value'=>'disable_confirm_recv',
+						'checked'=>$this->config->item('disable_confirm_recv')));?>
+						<label for="disable_confirm_recv"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('disable_quick_complete_sale').':', 'disable_quick_complete_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disable_quick_complete_sale',
+						'id'=>'disable_quick_complete_sale',
+						'value'=>'disable_quick_complete_sale',
+						'checked'=>$this->config->item('disable_quick_complete_sale')));?>
+						<label for="disable_quick_complete_sale"><span></span></label>
+					</div>
+				</div>					
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_automatically_calculate_average_cost_price_from_receivings').':', 'calculate_average_cost_price_from_receivings',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'calculate_average_cost_price_from_receivings',
+						'id'=>'calculate_average_cost_price_from_receivings',
+						'value'=>'1',
+						'checked'=>$this->config->item('calculate_average_cost_price_from_receivings')));?>
+						<label for="calculate_average_cost_price_from_receivings"><span></span></label>
+					</div>
+				</div>
+				
+				<div id="average_cost_price_from_receivings_methods">
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_averaging_method').':', 'averaging_method',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_dropdown('averaging_method', array('moving_average' => lang('config_moving_average'), 'historical_average' => lang('config_historical_average'), 'dont_average' => lang('config_dont_average_use_current_recv_price')), $this->config->item('averaging_method'),'class="form-control" id="averaging_method"'); ?>
+						</div>
+					</div>
+				</div>
+				
+				<div id="update_cost_price_on_transfer_container">
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+						<?php echo form_label(lang('config_update_cost_price_on_transfer').':', 'update_cost_price_on_transfer',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'update_cost_price_on_transfer',
+							'id'=>'update_cost_price_on_transfer',
+							'value'=>'1',
+							'checked'=>$this->config->item('update_cost_price_on_transfer')));?>
+							<label for="update_cost_price_on_transfer"><span></span></label>
+						</div>
+					</div>
+					
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_require_supplier_recv').':', 'require_supplier_for_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'require_supplier_for_recv',
+						'id'=>'require_supplier_for_recv',
+						'value'=>'1',
+						'checked'=>$this->config->item('require_supplier_for_recv')));?>
+						<label for="require_supplier_for_recv"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_track_shipping_cost_for_receivings').':', 'track_shipping_cost_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'track_shipping_cost_recv',
+						'id'=>'track_shipping_cost_recv',
+						'value'=>'1',
+						'checked'=>$this->config->item('track_shipping_cost_recv')));?>
+						<label for="track_shipping_cost_recv"><span></span></label>
+					</div>
+				</div>
+												
+				<?php if ($this->config->item('always_use_average_cost_method')) { ?>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_always_use_average_cost_method').':', 'always_use_average_cost_method',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'always_use_average_cost_method',
+						'id'=>'always_use_average_cost_method',
+						'value'=>'1',
+						'checked'=>$this->config->item('always_use_average_cost_method')));?>
+						<label for="always_use_average_cost_method"><span></span></label>
+					</div>
+				</div>
+				<?php } ?>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_hide_suspended_recv_in_reports').':', 'hide_suspended_recv_in_reports',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_suspended_recv_in_reports',
+						'id'=>'hide_suspended_recv_in_reports',
+						'value'=>'1',
+						'checked'=>$this->config->item('hide_suspended_recv_in_reports')));?>
+						<label for="hide_suspended_recv_in_reports"><span></span></label>
+					</div>
+				</div>
+				<?php
+				$track_payment_types = $this->config->item('track_payment_types') ? unserialize($this->config->item('track_payment_types')) : array();
+				?>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('common_track_cash').':', 'track_cash',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'track_payment_types[]',
+						'id'=>'track_cash',
+						'value'=>'common_cash',
+						'checked'=>in_array('common_cash',$track_payment_types)));?>
+						<label for="track_cash"><span></span></label>
+					</div>
+				</div>
+				<!--Caja inicial-->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_amount_of_cash_to_be_left_in_drawer_at_closing').':', 'amount_of_cash_to_be_left_in_drawer_at_closing',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+						'name'=>'amount_of_cash_to_be_left_in_drawer_at_closing',
+						'id'=>'amount_of_cash_to_be_left_in_drawer_at_closing',
+						'value'=>$this->config->item('amount_of_cash_to_be_left_in_drawer_at_closing')));?>
+					</div>
+				</div>	
+				
+				<!--Alertas de caja-->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_cash_alert_high').':', 'cash_alert_high',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+						'name'=>'cash_alert_high',
+						'id'=>'cash_alert_high',
+						'value'=>$this->config->item('cash_alert_high')));?>
+					</div>
+				</div>	
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_cash_alert_low').':', 'cash_alert_low',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+						'name'=>'cash_alert_low',
+						'id'=>'cash_alert_low',
+						'value'=>$this->config->item('cash_alert_low')));?>
+					</div>
+				</div>	
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('common_track_checks_in_register').':', 'track_check',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'track_payment_types[]',
+						'id'=>'track_check',
+						'value'=>'common_check',
+						'checked'=>in_array('common_check',$track_payment_types)));?>
+						<label for="track_check"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('common_track_giftcards_in_register').':', 'track_giftcard',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'track_payment_types[]',
+						'id'=>'track_giftcard',
+						'value'=>'common_giftcard',
+						'checked'=>in_array('common_giftcard',$track_payment_types)));?>
+						<label for="track_giftcard"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('common_track_debit_cards_in_register').':', 'track_debit_cards',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'track_payment_types[]',
+						'id'=>'track_debit_cards',
+						'value'=>'common_debit',
+						'checked'=>in_array('common_debit',$track_payment_types)));?>
+						<label for="track_debit_cards"><span></span></label>
+					</div>
+				</div>								
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('common_track_credit_cards_in_register').':', 'track_credit_cards',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'track_payment_types[]',
+						'id'=>'track_credit_cards',
+						'value'=> 'common_credit',
+						'checked'=>in_array('common_credit',$track_payment_types)));?>
+						<label for="track_credit_cards"><span></span></label>
+					</div>
+				</div>
+														<script type='text/javascript'>
+									$(document).ready(function() {
+										var submitting = false;
+										$('#config_form').validate({
+											submitHandler: function(form) {
+												if (submitting) return;
+												submitting = true;
+												$(form).ajaxSubmit({
+													success: function(response) {
+														// Manejar la respuesta del servidor aquí
+														submitting = false;
+													},
+													dataType: 'json'
+												});
+											},
+											errorClass: "text-danger",
+											errorElement: "span",
+											highlight: function(element, errorClass, validClass) {
+												$(element).parents('.form-group').removeClass('has-success').addClass('has-error');
+											},
+											unhighlight: function(element, errorClass, validClass) {
+												$(element).parents('.form-group').removeClass('has-error').addClass('has-success');
+											},
+											rules: {
+												company: "required",
+												sale_prefix: "required",
+												return_policy: {
+													required: true
+												},
+												item_id_auto_increment: {
+													max: 999999999
+												},
+												item_kit_id_auto_increment: {
+													max: 999999999
+												},
+												sale_id_auto_increment: {
+													max: 999999999
+												},
+												receiving_id_auto_increment: {
+													max: 999999999
+												}
+											},
+											messages: {
+												company: "El nombre de la empresa es obligatorio.",
+												sale_prefix: "El prefijo de la venta es obligatorio.",
+												return_policy: {
+													required: "La política de devoluciones es obligatoria."
+												}
+											}
+										});
+									});
+									</script>					
+				<?php
+				foreach($this->Appconfig->get_additional_payment_types() as $additional_payment_type)
+				{
+				?>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('common_track').' '.$additional_payment_type.' '.lang('common_in_register').':', 'track_'.$additional_payment_type,array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'track_payment_types[]',
+						'id'=>'track_'.$additional_payment_type,
+						'value'=> $additional_payment_type,
+						'checked'=>in_array($additional_payment_type,$track_payment_types)));?>
+						<label for="track_<?php echo $additional_payment_type;?>"><span></span></label>
+					</div>
+				</div>
+				
+				<?php
+				}
+				?>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_do_not_show_closing').':', 'do_not_show_closing',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_show_closing',
+						'id'=>'do_not_show_closing',
+						'value'=>'1',
+						'checked'=>$this->config->item('do_not_show_closing')));?>
+						<label for="do_not_show_closing"><span></span></label>
+					</div>
+				</div>
+				
 
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_hide_available_giftcards').':', 'hide_available_giftcards',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_available_giftcards',
+						'id'=>'hide_available_giftcards',
+						'value'=>'1',
+						'checked'=>$this->config->item('hide_available_giftcards')));?>
+						<label for="hide_available_giftcards"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_disable_giftcard_detection').':', 'disable_giftcard_detection',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disable_giftcard_detection',
+						'id'=>'disable_giftcard_detection',
+						'value'=>'1',
+						'checked'=>$this->config->item('disable_giftcard_detection')));?>
+						<label for="disable_giftcard_detection"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_always_show_item_grid').':', 'always_show_item_grid',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'always_show_item_grid',
+						'id'=>'always_show_item_grid',
+						'value'=>'1',
+						'checked'=>$this->config->item('always_show_item_grid')));?>
+						<label for="always_show_item_grid"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_hide_images_in_grid').':', 'hide_images_in_grid',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_images_in_grid',
+						'id'=>'hide_images_in_grid',
+						'value'=>'1',
+						'checked'=>$this->config->item('hide_images_in_grid')));?>
+						<label for="hide_images_in_grid"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_quick_variation_grid').':', 'quick_variation_grid',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'quick_variation_grid',
+						'id'=>'quick_variation_grid',
+						'value'=>'1',
+						'checked'=>$this->config->item('quick_variation_grid')));?>
+						<label for="quick_variation_grid"><span></span></label>
+					</div>
+				</div>
+				
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_hide_out_of_stock_grid').':', 'hide_out_of_stock_grid',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_out_of_stock_grid',
+						'id'=>'hide_out_of_stock_grid',
+						'value'=>'1',
+						'checked'=>$this->config->item('hide_out_of_stock_grid')));?>
+						<label for="hide_out_of_stock_grid"><span></span></label>
+					</div>
+				</div>
+									
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_default_type_for_grid').':', 'default_type_for_grid',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_dropdown('default_type_for_grid', array(
+							'categories'  => lang('reports_categories'), 
+							'tags'  => lang('common_tags'),
+							'favorites'  => lang('common_favorite'),
+						),
+						$this->config->item('default_type_for_grid'), 'class="form-control" id="default_type_for_grid"');
+						?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_require_customer_for_sale').':', 'require_customer_for_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'require_customer_for_sale',
+						'id'=>'require_customer_for_sale',
+						'value'=>'1',
+						'checked'=>$this->config->item('require_customer_for_sale')));?>
+						<label for="require_customer_for_sale"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_select_sales_person_during_sale').':', 'select_sales_person_during_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'select_sales_person_during_sale',
+						'id'=>'select_sales_person_during_sale',
+						'value'=>'1',
+						'checked'=>$this->config->item('select_sales_person_during_sale')));?>
+						<label for="select_sales_person_during_sale"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_default_sales_person').':', 'default_sales_person',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10"> 
+					<?php echo form_dropdown('default_sales_person', array('logged_in_employee' => lang('common_logged_in_employee'), 'not_set' => lang('common_not_set')), $this->config->item('default_sales_person'),'class="form-control" id="default_sales_person"'); ?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('common_commission_default_rate'). ':', 'commission_default_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<div class="input-group">
+							<?php echo form_input(array(
+							'name'=>'commission_default_rate',
+							'id'=>'commission_default_rate',
+							'class'=>'form-control',
+							'value'=>$this->config->item('commission_default_rate')));?>
+						  <span class="input-group-addon">%</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('common_commission_percent_calculation').': ', 'commission_percent_type',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('commission_percent_type', array(
+						'selling_price'  => lang('common_unit_price'),
+						'profit'    => lang('common_profit'),
+						),
+						$this->config->item('commission_percent_type'),
+						array('id' => 'commission_percent_type', 'class' => 'form-control'))
+						?>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_disable_sale_notifications').':', 'disable_sale_notifications',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disable_sale_notifications',
+						'id'=>'disable_sale_notifications',
+						'value'=>'1',
+						'checked'=>$this->config->item('disable_sale_notifications')));?>
+						<label for="disable_sale_notifications"><span></span></label>
+					</div>
+				</div>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_confirm_error_messages_modal').':', 'confirm_error_adding_item',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'confirm_error_adding_item',
+						'id'=>'confirm_error_adding_item',
+						'value'=>'1',
+						'checked'=>$this->config->item('confirm_error_adding_item')));?>
+						<label for="confirm_error_adding_item"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_change_sale_date_for_new_sale').':', 'change_sale_date_for_new_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'change_sale_date_for_new_sale',
+						'id'=>'change_sale_date_for_new_sale',
+						'value'=>'1',
+						'checked'=>$this->config->item('change_sale_date_for_new_sale')));?>
+						<label for="change_sale_date_for_new_sale"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_do_not_group_same_items').':', 'do_not_group_same_items',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_group_same_items',
+						'id'=>'do_not_group_same_items',
+						'value'=>'1',
+						'checked'=>$this->config->item('do_not_group_same_items')));?>
+						<label for="do_not_group_same_items"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+					<?php echo form_label(lang('config_do_not_allow_below_cost').':', 'do_not_allow_below_cost',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_allow_below_cost',
+						'id'=>'do_not_allow_below_cost',
+						'value'=>'1',
+						'checked'=>$this->config->item('do_not_allow_below_cost')));?>
+						<label for="do_not_allow_below_cost"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+				<?php echo form_label(lang('config_do_not_allow_out_of_stock_items_to_be_sold').':', 'do_not_allow_out_of_stock_items_to_be_sold',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_allow_out_of_stock_items_to_be_sold',
+						'id'=>'do_not_allow_out_of_stock_items_to_be_sold',
+						'value'=>'do_not_allow_out_of_stock_items_to_be_sold',
+						'checked'=>$this->config->item('do_not_allow_out_of_stock_items_to_be_sold')));?>
+						<label for="do_not_allow_out_of_stock_items_to_be_sold"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+				<?php echo form_label(lang('config_do_not_allow_items_to_go_out_of_stock_when_transfering').':', 'do_not_allow_items_to_go_out_of_stock_when_transfering',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_allow_items_to_go_out_of_stock_when_transfering',
+						'id'=>'do_not_allow_items_to_go_out_of_stock_when_transfering',
+						'value'=>'do_not_allow_items_to_go_out_of_stock_when_transfering',
+						'checked'=>$this->config->item('do_not_allow_items_to_go_out_of_stock_when_transfering')));?>
+						<label for="do_not_allow_items_to_go_out_of_stock_when_transfering"><span></span></label>
+					</div>
+				</div>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+				<?php echo form_label(lang('config_do_not_allow_item_with_variations_to_be_sold_without_selecting_variation').':', 'do_not_allow_item_with_variations_to_be_sold_without_selecting_variation',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_allow_item_with_variations_to_be_sold_without_selecting_variation',
+						'id'=>'do_not_allow_item_with_variations_to_be_sold_without_selecting_variation',
+						'value'=>'do_not_allow_item_with_variations_to_be_sold_without_selecting_variation',
+						'checked'=>$this->config->item('do_not_allow_item_with_variations_to_be_sold_without_selecting_variation')));?>
+						<label for="do_not_allow_item_with_variations_to_be_sold_without_selecting_variation"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+				<?php echo form_label(lang('config_edit_item_price_if_zero_after_adding').':', 'edit_item_price_if_zero_after_adding',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'edit_item_price_if_zero_after_adding',
+						'id'=>'edit_item_price_if_zero_after_adding',
+						'value'=>'edit_item_price_if_zero_after_adding',
+						'checked'=>$this->config->item('edit_item_price_if_zero_after_adding')));?>
+						<label for="edit_item_price_if_zero_after_adding"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
+				<?php echo form_label(lang('config_remind_customer_facing_display').':', 'remind_customer_facing_display',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'remind_customer_facing_display',
+						'id'=>'remind_customer_facing_display',
+						'value'=>'remind_customer_facing_display',
+						'checked'=>$this->config->item('remind_customer_facing_display')));?>
+						<label for="remind_customer_facing_display"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" >	
+				<?php echo form_label(lang('config_do_not_allow_sales_with_zero_value').':', 'do_not_allow_sales_with_zero_value',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_allow_sales_with_zero_value',
+						'id'=>'do_not_allow_sales_with_zero_value',
+						'value'=>'do_not_allow_sales_with_zero_value',
+						'checked'=>$this->config->item('do_not_allow_sales_with_zero_value')));?>
+						<label for="do_not_allow_sales_with_zero_value"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" >	
+				<?php echo form_label(lang('config_prompt_amount_for_cash_sale').':', 'prompt_amount_for_cash_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'prompt_amount_for_cash_sale',
+						'id'=>'prompt_amount_for_cash_sale',
+						'value'=>'prompt_amount_for_cash_sale',
+						'checked'=>$this->config->item('prompt_amount_for_cash_sale')));?>
+						<label for="prompt_amount_for_cash_sale"><span></span></label>
+					</div>
+				</div>
+			</div>
+		</div>
 
+	</div>
 	<!--Controlar animaciones de pestañas-->
 	<script>
 	function openPage(pageName, elmnt, color) {
