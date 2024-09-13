@@ -17,12 +17,12 @@ $this->load->helper('update');
 
 	<!-- Formas de pago -->
 	<div id="PaymentMethods" class="tabcontent">
-	  <p>Loading1...</p>
+	  <p>Loading2...</p>
 	</div>
 
 	<!-- Reglas de precios -->
 	<div id="Page2" class="tabcontent">
-	  <p>Loading1...</p>
+	  <p>Loading3...</p>
 	</div>
 
 	<!--Controlar animaciones de pestañas-->
