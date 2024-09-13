@@ -157,5 +157,5 @@ $this->load->helper('update');
         'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
     )); ?>
 </div>
-<?php echo form_close(); ?>
+<!--?php echo form_close(); ?>
 <!--?php $this->load->view("partial/footer"); ?>
