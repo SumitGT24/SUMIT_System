@@ -24,9 +24,11 @@ $this->load->helper('update');
 	}
 	?>
 <!-- Pestañas -->
-<button class="tablink" onclick="openPage('CompanyInfo', this, 'red')" id="defaultOpen">Información de la empresa</button>
-<button class="tablink" onclick="openPage('PaymentMethods', this, 'green')">Formas de pago</button>
-<button class="tablink" onclick="openPage('Page2', this, 'blue')">Page 2</button>
+ <div>
+	 <button class="tablink" onclick="openPage('CompanyInfo', this, 'red')" id="defaultOpen">Información de la empresa</button>
+	 <button class="tablink" onclick="openPage('PaymentMethods', this, 'green')">Formas de pago</button>
+	 <button class="tablink" onclick="openPage('Page2', this, 'blue')">Page 2</button>
+</div>
 
 <!-- Contenido de pestañas -->
 <div id="CompanyInfo" class="tabcontent">
