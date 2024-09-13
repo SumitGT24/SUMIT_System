@@ -38,16 +38,32 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-/*Style for navbar*/
-.navbar-default {
-    background-color: white;
-    box-shadow:rgba(0, 0, 0, .15);
-    /*font color blue*/
+
+/*/Tabs Style*/
+.tablink {
+  background-color: #555;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
 }
-/*li in navbar*/
-.navbar-default .navbar-nav>li>a {
-    color: #337ab7;
+
+.tablink:hover {
+  background-color: #777;
 }
+
+/* Estilos para el contenido de las pestañas */
+.tabcontent {
+  display: none;
+  padding: 50px;
+  border-top: none;
+}
+/* Tabs Style */
+
+
 .ti-wand:before {
 	content: "\e600";
 }
