@@ -157,7 +157,7 @@ $this->load->helper('update');
         'value' => lang('common_save'),
         'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
     )); ?>
-    <?php echo form_close(); ?>
 </div>
 </div>
+<?php echo form_close(); ?>
 <?php $this->load->view("partial/footer"); ?>
