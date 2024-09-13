@@ -12,28 +12,145 @@ $this->load->helper('update');
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
-	  <p>Loading1...</p>
+		<div class="panel panel-piluku">
+			<!--Logo de la empresa-->
+			<div class="panel-body">
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
+					<?php echo form_label(lang('common_company_logo').':', 'company_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">						
+						<input type="file" name="company_logo" id="company_logo" class="filestyle" data-icon="false">  	
+					</div>	
+				</div>
+				<!-- Eliminar logo -->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
+					<?php echo form_label(lang('common_delete_logo').':', 'delete_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox('delete_logo', '1', null,'id="delete_logo"');?>
+						<label for="delete_logo"><span></span></label>
+					</div>	
+				</div>
+				<!-- Nombre de la empresa -->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
+					<?php echo form_label(lang('common_company').':', 'company',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+						<?php echo form_input(array(
+							'class'=>'validate form-control form-inps',
+						'name'=>'company',
+						'id'=>'company',
+						'value'=>$this->config->item('company')));?>
+					</div>
+				</div>
+				<!--website-->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
+					<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+					<?php echo form_input(array(
+						'class'=>'form-control form-inps',
+						'name'=>'website',
+						'id'=>'website',
+						'value'=>$this->config->item('website')));?>
+					</div>
+				</div>
+			</div>
+		</div>	
 	</div>
 
 	<!-- Formas de pago -->
 	<div id="PaymentMethods" class="tabcontent">
-	  <p>Loading2...</p>
+		<div class="panel panel-piluku">
+			<div class="panel-body">
+				<!-- Botones formas de pago -->	
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">	
+					<?php echo form_label(lang('config_payment_types').':', 'additional_payment_types',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<a href="#" class="btn btn-primary payment_types"><?php echo lang('common_cash'); ?></a> 
+						<a href="#" class="btn btn-primary payment_types"><?php echo lang('common_check'); ?></a> 
+						<a href="#" class="btn btn-primary payment_types"><?php echo lang('common_giftcard'); ?></a> 
+						<a href="#" class="btn btn-primary payment_types"><?php echo lang('common_debit'); ?></a> 
+						<a href="#" class="btn btn-primary payment_types"><?php echo lang('common_credit'); ?></a>
+						<br>
+						<br>
+						<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'additional_payment_types',
+							'id'=>'additional_payment_types',
+							'size'=> 40,
+							'value'=>$this->config->item('additional_payment_types')));
+						?>
+					</div>
+				</div>
+				<!-- MARKUP / MARKDOWN -->
+				<?php
+				$markup_markdown = array();
+				if ($this->config->item('markup_markdown'))
+				{
+					$markup_markdown = unserialize($this->config->item('markup_markdown'));
+				}
+				foreach(array_keys($this->Sale->get_payment_options_with_language_keys()) as $payment_type)
+				{
+				?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">
+						<?php echo form_label($payment_type.' '.lang('config_markup_markdown').' '.lang('common_percentage'), 'payment_type_markup_markdown',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">						
+							<?php 
+								$markup_down_value = isset($markup_markdown[$payment_type]) ? $markup_markdown[$payment_type] : '';
+								echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'markup_markdown['.hex_encode($payment_type).']',
+								'id'=>'sale_prefix',
+								'value'=>$markup_down_value));
+							?>
+						</div>
+					</div>
+				<?php
+				}
+				?>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">	
+					<?php echo form_label(lang('config_default_payment_type').':', 'default_payment_type',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('default_payment_type', $payment_options, $this->config->item('default_payment_type'),'class="form-control" id="default_payment_type"'); ?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">	
+					<?php echo form_label(lang('config_default_payment_type_recv').':', 'default_payment_type_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('default_payment_type_recv', $payment_options, $this->config->item('default_payment_type_recv'),'class="form-control" id="default_payment_type_recv"'); ?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_payment')) ?>">
+					<?php echo form_label(lang('config_show_selling_price_on_recv'). ':', 'show_selling_price_on_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+						'name'=>'show_selling_price_on_recv',
+						'id'=>'show_selling_price_on_recv',
+						'value'=>'1',
+						'checked'=>$this->config->item('show_selling_price_on_recv')));?>
+						<label for="show_selling_price_on_recv"><span></span></label>
+					</div>
+				</div>		
+			</div>
+		</div>
 	</div>
 
 	<!-- Reglas de precios -->
 	<div id="PriceRules" class="tabcontent">
-		<div class="panel-body">
-			<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_price_rules')) ?>">	
-				<?php echo form_label(lang('config_disable_price_rules_dialog').':', 'disable_price_rules_dialog',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-				<div class="col-sm-9 col-md-9 col-lg-10">
-				<?php echo form_checkbox(array(
-					'name'=>'disable_price_rules_dialog',
-					'id'=>'disable_price_rules_dialog',
-					'value'=>'disable_price_rules_dialog',
-					'checked'=>$this->config->item('disable_price_rules_dialog')));?>
-					<label for="disable_price_rules_dialog"><span></span></label>
-				</div>
-			</div>					
+		<div class="panel panel-piluku">
+			<div class="panel-body">
+				<!-- Deshabilitar dialogo de reglas de precios -->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_price_rules')) ?>">	
+					<?php echo form_label(lang('config_disable_price_rules_dialog').':', 'disable_price_rules_dialog',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disable_price_rules_dialog',
+						'id'=>'disable_price_rules_dialog',
+						'value'=>'disable_price_rules_dialog',
+						'checked'=>$this->config->item('disable_price_rules_dialog')));?>
+						<label for="disable_price_rules_dialog"><span></span></label>
+					</div>
+				</div>					
+			</div>
 		</div>
 	</div>
 
