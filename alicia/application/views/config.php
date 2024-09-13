@@ -11,13 +11,7 @@ $this->load->helper('update');
 
 <!-- Contenido de pestañas -->
 <div id="CompanyInfo" class="tabcontent">
-	<!-- Company Information -->
-<div class="col-md-12">
-	<div class="panel panel-piluku">
-		<div class="panel-heading">
-			<?php echo create_section(lang("config_company_info"))  ?>
-		</div>
-		<div class="panel-body">
+<div class="panel-body">
 			<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 				<?php echo form_label(lang('common_company_logo').':', 'company_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 				<div class="col-sm-9 col-md-9 col-lg-10">
@@ -54,8 +48,6 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
-	</div>	
-</div>v
 </div>
 
 <div id="PaymentMethods" class="tabcontent">
@@ -81,4 +73,4 @@ $this->load->helper('update');
     <?php echo form_close(); ?>
 </div>
 
-<?php $this->load->view("partial/footer"); ?>
+<!--#?php $this->load->view("partial/footer"); ?>
