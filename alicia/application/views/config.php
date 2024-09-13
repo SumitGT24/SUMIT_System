@@ -21,8 +21,20 @@ $this->load->helper('update');
 	</div>
 
 	<!-- Reglas de precios -->
-	<div id="Page2" class="tabcontent">
-	  <p>Loading3...</p>
+	<div id="PriceRules" class="tabcontent">
+		<div class="panel-body">
+			<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_price_rules')) ?>">	
+				<?php echo form_label(lang('config_disable_price_rules_dialog').':', 'disable_price_rules_dialog',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+				<div class="col-sm-9 col-md-9 col-lg-10">
+				<?php echo form_checkbox(array(
+					'name'=>'disable_price_rules_dialog',
+					'id'=>'disable_price_rules_dialog',
+					'value'=>'disable_price_rules_dialog',
+					'checked'=>$this->config->item('disable_price_rules_dialog')));?>
+					<label for="disable_price_rules_dialog"><span></span></label>
+				</div>
+			</div>					
+		</div>
 	</div>
 
 	<!--Controlar animaciones de pestañas-->
