@@ -7,7 +7,7 @@ $this->load->helper('update');
 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
 	    <ul class="nav navbar-nav">
-	        <li class="active"><a href="/configs/companyinfo.php" class="load-content">Información de la empresa</a></li>
+			<li class="active"><a href="<?php echo site_url('configs/companyinfo'); ?>" class="load-content">Información de la empresa</a></li>
 	        <li><a href="configs/page1.php" class="load-content">Formas de pago</a></li>
 	        <li><a href="configs/page2.php" class="load-content">Page 2</a></li>
 	    </ul>
