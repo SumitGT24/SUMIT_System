@@ -12,7 +12,6 @@ $this->load->helper('update');
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 <!-- Contenido de pestañas -->
 <div id="CompanyInfo" class="tabcontent">
-<div class="col-md-12">
 	<div class="panel panel-piluku">
 			<div class="panel-body">
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
@@ -52,12 +51,11 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>	
-	</div>
 </div>
 
 <div id="PaymentMethods" class="tabcontent">
   <!-- Aquí se cargará el contenido de formas de pago (page1.php) -->
-  <div class="col-md-12">
+
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
 					<?php echo create_section(lang('config_payment_types_info'))  ?>
