@@ -5,7 +5,7 @@ $this->load->helper('update');
 ?>
 
 <!-- Pestañas -->
-<button class="tablink" onclick="openPage('CompanyInfo', this,c)" id="defaultOpen">Información de la empresa</button>
+<button class="tablink" onclick="openPage('CompanyInfo', this,'blue')" id="defaultOpen">Información de la empresa</button>
 <button class="tablink" onclick="openPage('PaymentMethods', this)">Formas de pago</button>
 <button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
 <button class="tablink" onclick="openPage('Order&Delivery', this)">Ordenes y Entregas</button>
