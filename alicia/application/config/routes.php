@@ -43,7 +43,7 @@ $route['default_controller'] = "login";
 $route['404_override'] = '';
 $route['no_access/(:any)'] = "no_access/index/$1";
 $route['r/(:any)'] = "public_view/receipt/$1";
-$route['configs/companyinfo'] = 'controller_name/companyinfo';
+$route['configs/companyinfo'] = 'configs/companyinfo';
 
 
 /* End of file routes.php */
