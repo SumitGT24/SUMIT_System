@@ -160,4 +160,4 @@ $this->load->helper('update');
 </div>
 </div>
 <?php echo form_close(); ?>
-<?php $this->load->view("partial/footer"); ?>
+<!--?php $this->load->view("partial/footer"); ?>
