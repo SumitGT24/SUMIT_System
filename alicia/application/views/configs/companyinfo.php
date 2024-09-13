@@ -1,46 +1,59 @@
-<!-- Company Information -->
-<div class="col-md-12">
-			<div class="panel panel-piluku">
-				<div class="panel-heading">
-					<?php echo create_section(lang("config_company_info"))  ?>
-				</div>
-				<div class="panel-body">
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_company_logo').':', 'company_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							
-							<input type="file" name="company_logo" id="company_logo" class="filestyle" data-icon="false">  	
-						</div>	
-					</div>
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_delete_logo').':', 'delete_logo',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox('delete_logo', '1', null,'id="delete_logo"');?>
-							<label for="delete_logo"><span></span></label>
-						</div>	
-					</div>
-			
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_company').':', 'company',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-							<?php echo form_input(array(
-								'class'=>'validate form-control form-inps',
-							'name'=>'company',
-							'id'=>'company',
-							'value'=>$this->config->item('company')));?>
-						</div>
-					</div>
+<?php
+$this->load->view("partial/header"); 
+$this->load->helper('demo');
+$this->load->helper('update');
+?>
+<!-- Barra de navegación -->
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+	    <ul class="nav navbar-nav">
+			<li class="active"><a href="<?php echo site_url('configs/companyinfo'); ?>" class="load-content" data-target="companyinfo">Información de la empresa</a></li>
+	        <li><a href="<?php echo site_url('configs/page1'); ?>" class="load-content" data-target="page1">Formas de pago</a></li>
+	        <li><a href="<?php echo site_url('configs/page2'); ?>" class="load-content" data-target="page2">Page 2</a></li>
+	    </ul>
+	    <form class="navbar-form navbar-left" action="/action_page.php">
+	        <div class="form-group">
+	            <input type="text" class="form-control" placeholder="Search">
+	        </div>
+	        <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+	    </form>
+	</div>
+</nav>
 
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-						<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-						<?php echo form_input(array(
-							'class'=>'form-control form-inps',
-							'name'=>'website',
-							'id'=>'website',
-							'value'=>$this->config->item('website')));?>
-						</div>
-					</div>
-				</div>
-			</div>	
-		</div>
+<!-- Panel donde se cargará el contenido -->
+<div id="config-panel">
+	<?php $this->load->view("configs/companyinfo"); // Vista predeterminada ?>
+</div>
+
+<!-- Botón de guardado (si es necesario mantenerlo) -->
+<div class="form-actions">
+    <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
+    <!-- Botón de guardado -->
+    <?php echo form_submit(array(
+        'name' => 'submitf',
+        'id' => 'submitf',
+        'value' => lang('common_save'),
+        'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
+    )); ?>
+    <?php echo form_close(); ?>
+</div>
+
+<?php $this->load->view("partial/footer"); ?>
+<script>
+$(document).ready(function() {
+    // Manejar el clic en los enlaces del navbar
+    $('.load-content').click(function(e) {
+        e.preventDefault();  // Evitar la navegación normal del enlace
+        
+        // Obtener la URL del enlace
+        var url = $(this).attr('href');
+        
+        // Cargar el contenido en el panel
+        $('#config-panel').load(url);
+        
+        // Cambiar la clase activa en el navbar
+        $('.nav li').removeClass('active');
+        $(this).parent().addClass('active');
+    });
+});
+</script>

@@ -15,13 +15,13 @@ $this->load->helper('update');
 	        <div class="form-group">
 	            <input type="text" class="form-control" placeholder="Search">
 	        </div>
-	        <button type="submit" class="submit_button floating-button btn btn-primary btn-lg pull-right">Buscar</button>
+	        <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
 	    </form>
 	</div>
 	</nav>
 		<!-- Panel donde se cargará el contenido -->
 			<!-- call configs/companyinfo.php file-->
-			<?php $this->load->view("configs/companyinfo"); ?>
+			<?php $this->load->view("configs/companyinfo");?>
 			<div class="form-actions">
 			    <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 			    <!-- Botón de guardado -->
