@@ -5,11 +5,12 @@ $this->load->helper('update');
 ?>
 
 <!-- Pestañas -->
-<button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Información de la empresa</button>
+<button class="tablink" onclick="openPage('CompanyInfo', this,c)" id="defaultOpen">Información de la empresa</button>
 <button class="tablink" onclick="openPage('PaymentMethods', this)">Formas de pago</button>
 <button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
 <button class="tablink" onclick="openPage('Order&Delivery', this)">Ordenes y Entregas</button>
 <button class="tablink" onclick="openPage('Sales', this)">Ventas</button>
+<button class="tablink" onclick="openPage('Receipts', this,'white')">Recibos</button>
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
@@ -1095,7 +1096,668 @@ $this->load->helper('update');
 				</div>
 			</div>
 		</div>
+	</div>
 
+	<!--Recibos-->
+	<div id="Receipts" class="tabcontent">
+	<div class="panel panel-piluku">
+		<div class="panel-heading">
+					<?php echo create_section(lang('config_receipt_info'))  ?>
+				</div>
+				<div class="panel-body">
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_override_receipt_title').':', 'override_receipt_title',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+								'class'=>'form-control form-inps',
+							'name'=>'override_receipt_title',
+							'id'=>'override_receipt_title',
+							'value'=>$this->config->item('override_receipt_title')));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_emailed_receipt_subject').':', 'emailed_receipt_subject',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+								'class'=>'form-control form-inps',
+							'name'=>'emailed_receipt_subject',
+							'id'=>'emailed_receipt_subject',
+							'placeholder' => lang('sales_receipt'),
+							'value'=>$this->config->item('emailed_receipt_subject')));?>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_item_id_on_receipt').':', 'show_item_id_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_item_id_on_receipt',
+							'id'=>'show_item_id_on_receipt',
+							'value'=>'show_item_id_on_receipt',
+							'checked'=>$this->config->item('show_item_id_on_receipt')));?>
+							<label for="show_item_id_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_person_id_on_receipt').':', 'show_person_id_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_person_id_on_receipt',
+							'id'=>'show_person_id_on_receipt',
+							'value'=>'1',
+							'checked'=>$this->config->item('show_person_id_on_receipt')));?>
+							<label for="show_person_id_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_tags_on_fulfillment_sheet').':', 'show_tags_on_fulfillment_sheet',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_tags_on_fulfillment_sheet',
+							'id'=>'show_tags_on_fulfillment_sheet',
+							'value'=>'show_tags_on_fulfillment_sheet',
+							'checked'=>$this->config->item('show_tags_on_fulfillment_sheet')));?>
+							<label for="show_tags_on_fulfillment_sheet"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_total_on_fulfillment').':', 'show_total_on_fulfillment',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_total_on_fulfillment',
+							'id'=>'show_total_on_fulfillment',
+							'value'=>'show_total_on_fulfillment',
+							'checked'=>$this->config->item('show_total_on_fulfillment')));?>
+							<label for="show_total_on_fulfillment"><span></span></label>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_taxes_summary_on_receipt').':', 'taxes_summary_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'taxes_summary_on_receipt',
+							'id'=>'taxes_summary_on_receipt',
+							'value'=>'taxes_summary_on_receipt',
+							'checked'=>$this->config->item('taxes_summary_on_receipt')));?>
+							<label for="taxes_summary_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_taxes_summary_details_on_receipt').':', 'taxes_summary_details_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'taxes_summary_details_on_receipt',
+							'id'=>'taxes_summary_details_on_receipt',
+							'value'=>'taxes_summary_details_on_receipt',
+							'checked'=>$this->config->item('taxes_summary_details_on_receipt')));?>
+							<label for="taxes_summary_details_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					
+
+					
+					<div class="form-group">	
+					<?php echo form_label(lang('config_second_language').':', 'second_language',array('class'=>'col-sm-3 col-md-3 col-lg-2 col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_dropdown('second_language', array(
+							''  => lang('common_none'),
+							'english'  => 'English',
+							'spanish'   => 'Español', 
+							),
+							$this->config->item('second_language'), 'class="form-control" id="second_language"');
+							?>
+						</div>
+					</div>
+					
+										
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_uppercase_receipts').':', 'uppercase_receipts',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'uppercase_receipts',
+							'id'=>'uppercase_receipts',
+							'value'=>'uppercase_receipts',
+							'checked'=>$this->config->item('uppercase_receipts')));?>
+							<label for="uppercase_receipts"><span></span></label>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_item_kit_items_on_receipt').':', 'show_item_kit_items_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_item_kit_items_on_receipt',
+							'id'=>'show_item_kit_items_on_receipt',
+							'value'=>'show_item_kit_items_on_receipt',
+							'checked'=>$this->config->item('show_item_kit_items_on_receipt')));?>
+							<label for="show_item_kit_items_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_total_discount_on_receipt').':', 'show_total_discount_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_total_discount_on_receipt',
+							'id'=>'show_total_discount_on_receipt',
+							'value'=>'show_total_discount_on_receipt',
+							'checked'=>$this->config->item('show_total_discount_on_receipt')));?>
+							<label for="show_total_discount_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_prices_on_fill_sheet').':', 'hide_prices_on_fill_sheet',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_prices_on_fill_sheet',
+							'id'=>'hide_prices_on_fill_sheet',
+							'value'=>'hide_prices_on_fill_sheet',
+							'checked'=>$this->config->item('hide_prices_on_fill_sheet')));?>
+							<label for="hide_prices_on_fill_sheet"><span></span></label>
+						</div>
+					</div>
+					
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_item_id_on_recv_receipt').':', 'show_item_id_on_recv_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_item_id_on_recv_receipt',
+							'id'=>'show_item_id_on_recv_receipt',
+							'value'=>'show_item_id_on_recv_receipt',
+							'checked'=>$this->config->item('show_item_id_on_recv_receipt')));?>
+							<label for="show_item_id_on_recv_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_all_prices_on_recv').':', 'hide_all_prices_on_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_all_prices_on_recv',
+							'id'=>'hide_all_prices_on_recv',
+							'value'=>'hide_all_prices_on_recv',
+							'checked'=>$this->config->item('hide_all_prices_on_recv')));?>
+							<label for="hide_all_prices_on_recv"><span></span></label>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_number_of_decimals_for_quantity_on_receipt').':', 'number_of_decimals_for_quantity_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_dropdown('number_of_decimals_for_quantity_on_receipt', array(
+		 							''  => lang('config_let_system_decide'),
+		 							'0'    => '0',
+		 							'1'    => '1',
+		 							'2'    => '2',
+		 							'3'    => '3',
+		 							'4'    => '4',
+		 							'5'    => '5',
+		 							'6'    => '6',
+		 							'7'    => '7',
+		 							'8'    => '8',
+		 							'9'    => '9',
+		 							'10'    => '10',
+								),$this->config->item('number_of_decimals_for_quantity_on_receipt')
+		 							 , 'class="form-control" id="number_of_decimals_for_quantity_on_receipt"');
+								?>
+						</div>
+					</div>
+					
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('common_indicate_taxable_on_receipt').':', 'indicate_taxable_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'indicate_taxable_on_receipt',
+							'id'=>'indicate_taxable_on_receipt',
+							'value'=>'indicate_taxable_on_receipt',
+							'checked'=>$this->config->item('indicate_taxable_on_receipt')));?>
+							<label for="indicate_taxable_on_receipt"><span></span></label>
+						</div>
+					</div>
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_tax_per_item_on_receipt').':', 'show_tax_per_item_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_tax_per_item_on_receipt',
+							'id'=>'show_tax_per_item_on_receipt',
+							'value'=>'show_tax_per_item_on_receipt',
+							'checked'=>$this->config->item('show_tax_per_item_on_receipt')));?>
+							<label for="show_tax_per_item_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_desc_on_receipt').':', 'hide_desc_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_desc_on_receipt',
+							'id'=>'hide_desc_on_receipt',
+							'value'=>'hide_desc_on_receipt',
+							'checked'=>$this->config->item('hide_desc_on_receipt')));?>
+							<label for="hide_desc_on_receipt"><span></span></label>
+						</div>
+					</div>
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_merchant_id_from_receipt').':', 'hide_merchant_id_from_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_merchant_id_from_receipt',
+							'id'=>'hide_merchant_id_from_receipt',
+							'value'=>'hide_merchant_id_from_receipt',
+							'checked'=>$this->config->item('hide_merchant_id_from_receipt')));?>
+							<label for="hide_merchant_id_from_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_desc_emailed_receipts').':', 'hide_desc_emailed_receipts',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_desc_emailed_receipts',
+							'id'=>'hide_desc_emailed_receipts',
+							'value'=>'hide_desc_emailed_receipts',
+							'checked'=>$this->config->item('hide_desc_emailed_receipts')));?>
+							<label for="hide_desc_emailed_receipts"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_description_on_sales_and_recv').':', 'hide_description_on_sales_and_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_description_on_sales_and_recv',
+							'id'=>'hide_description_on_sales_and_recv',
+							'value'=>'hide_description_on_sales_and_recv',
+							'checked'=>$this->config->item('hide_description_on_sales_and_recv')));?>
+							<label for="hide_description_on_sales_and_recv"><span></span></label>
+						</div>
+					</div>
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_orig_price_if_marked_down_on_receipt').':', 'show_orig_price_if_marked_down_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_orig_price_if_marked_down_on_receipt',
+							'id'=>'show_orig_price_if_marked_down_on_receipt',
+							'value'=>'show_orig_price_if_marked_down_on_receipt',
+							'checked'=>$this->config->item('show_orig_price_if_marked_down_on_receipt')));?>
+							<label for="show_orig_price_if_marked_down_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_print_after_sale').':', 'print_after_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'print_after_sale',
+							'id'=>'print_after_sale',
+							'value'=>'print_after_sale',
+							'checked'=>$this->config->item('print_after_sale')));?>
+							<label for="print_after_sale"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_wide_printer_receipt_format').':', 'wide_printer_receipt_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'wide_printer_receipt_format',
+							'id'=>'wide_printer_receipt_format',
+							'value'=>'wide_printer_receipt_format',
+							'checked'=>$this->config->item('wide_printer_receipt_format')));?>
+							<label for="wide_printer_receipt_format"><span></span></label>
+						</div>
+					</div>
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_print_after_receiving').':', 'print_after_receiving',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'print_after_receiving',
+							'id'=>'print_after_receiving',
+							'value'=>'print_after_receiving',
+							'checked'=>$this->config->item('print_after_receiving')));?>
+							<label for="print_after_receiving"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_signature').':', 'hide_signature',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_signature',
+							'id'=>'hide_signature',
+							'value'=>'hide_signature',
+							'checked'=>$this->config->item('hide_signature')));?>
+							<label for="hide_signature"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_auto_capture_signature').':', 'auto_capture_signature',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'auto_capture_signature',
+							'id'=>'auto_capture_signature',
+							'value'=>'auto_capture_signature',
+							'checked'=>$this->config->item('auto_capture_signature')));?>
+							<label for="auto_capture_signature"><span></span></label>
+						</div>
+					</div>
+					
+												
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_remove_customer_name_from_receipt').':', 'remove_customer_name_from_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'remove_customer_name_from_receipt',
+							'id'=>'remove_customer_name_from_receipt',
+							'value'=>'remove_customer_name_from_receipt',
+							'checked'=>$this->config->item('remove_customer_name_from_receipt')));?>
+						<label for="remove_customer_name_from_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>"> 
+					  <?php echo form_label(lang('config_remove_employee_from_receipt').':', 'remove_employee_from_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					  <div class="col-sm-9 col-md-9 col-lg-10">
+					  <?php echo form_checkbox(array(
+					          'name'=>'remove_employee_from_receipt',
+					          'id'=>'remove_employee_from_receipt',
+					          'value'=>'remove_employee_from_receipt',
+					          'checked'=>$this->config->item('remove_employee_from_receipt')));?>
+					  <label for="remove_employee_from_receipt"><span></span></label>
+					  </div>
+					</div>		
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_remove_customer_company_from_receipt').':', 'remove_customer_company_from_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'remove_customer_company_from_receipt',
+							'id'=>'remove_customer_company_from_receipt',
+							'value'=>'remove_customer_company_from_receipt',
+							'checked'=>$this->config->item('remove_customer_company_from_receipt')));?>
+						<label for="remove_customer_company_from_receipt"><span></span></label>
+						</div>
+					</div>
+								
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_remove_customer_contact_info_from_receipt').':', 'remove_customer_contact_info_from_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'remove_customer_contact_info_from_receipt',
+							'id'=>'remove_customer_contact_info_from_receipt',
+							'value'=>'remove_customer_contact_info_from_receipt',
+							'checked'=>$this->config->item('remove_customer_contact_info_from_receipt')));?>
+						<label for="remove_customer_contact_info_from_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_email_on_receipts').':', 'hide_email_on_receipts',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_email_on_receipts',
+							'id'=>'hide_email_on_receipts',
+							'value'=>'hide_email_on_receipts',
+							'checked'=>$this->config->item('hide_email_on_receipts')));?>
+						<label for="hide_email_on_receipts"><span></span></label>
+						</div>
+					</div>							
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_sort_receipt_column').':', 'sort_receipt_column',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_dropdown('sort_receipt_column', array(
+								''   => lang('common_none'),
+								'name'   => lang('common_item_name'),
+								'item_number'  => lang('common_item_number_expanded'),
+								'product_id'    => lang('common_product_id'),
+								),
+								$this->config->item('sort_receipt_column'), 'class="form-control" id="sort_receipt_column"')
+								?>
+							
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_automatically_email_receipt').':', 'automatically_email_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'automatically_email_receipt',
+							'id'=>'automatically_email_receipt',
+							'value'=>'automatically_email_receipt',
+							'checked'=>$this->config->item('automatically_email_receipt')));?>
+							<label for="automatically_email_receipt"><span></span></label>
+						</div>
+					</div>
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_automatically_sms_receipt').':', 'automatically_sms_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'automatically_sms_receipt',
+							'id'=>'automatically_sms_receipt',
+							'value'=>'automatically_sms_receipt',
+							'checked'=>$this->config->item('automatically_sms_receipt')));?>
+							<label for="automatically_sms_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_automatically_print_duplicate_receipt_for_cc_transactions').':', 'automatically_print_duplicate_receipt_for_cc_transactions',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'automatically_print_duplicate_receipt_for_cc_transactions',
+							'id'=>'automatically_print_duplicate_receipt_for_cc_transactions',
+							'value'=>'automatically_print_duplicate_receipt_for_cc_transactions',
+							'checked'=>$this->config->item('automatically_print_duplicate_receipt_for_cc_transactions')));?>
+							<label for="automatically_print_duplicate_receipt_for_cc_transactions"><span></span></label>
+						</div>
+					</div>
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_always_print_duplicate_receipt_all').':', 'always_print_duplicate_receipt_all',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'always_print_duplicate_receipt_all',
+							'id'=>'always_print_duplicate_receipt_all',
+							'value'=>'always_print_duplicate_receipt_all',
+							'checked'=>$this->config->item('always_print_duplicate_receipt_all')));?>
+							<label for="always_print_duplicate_receipt_all"><span></span></label>
+						</div>
+					</div>
+					
+					
+					
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_automatically_show_comments_on_receipt').':', 'automatically_show_comments_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'automatically_show_comments_on_receipt',
+							'id'=>'automatically_show_comments_on_receipt',
+							'value'=>'automatically_show_comments_on_receipt',
+							'checked'=>$this->config->item('automatically_show_comments_on_receipt')));?>
+							<label for="automatically_show_comments_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_barcode_on_sales_and_recv_receipt').':', 'hide_barcode_on_sales_and_recv_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_barcode_on_sales_and_recv_receipt',
+							'id'=>'hide_barcode_on_sales_and_recv_receipt',
+							'value'=>'1',
+							'checked'=>$this->config->item('hide_barcode_on_sales_and_recv_receipt')));?>
+							<label for="hide_barcode_on_sales_and_recv_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_group_all_taxes_on_receipt').':', 'group_all_taxes_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'group_all_taxes_on_receipt',
+							'id'=>'group_all_taxes_on_receipt',
+							'value'=>'1',
+							'checked'=>$this->config->item('group_all_taxes_on_receipt')));?>
+							<label for="group_all_taxes_on_receipt"><span></span></label>
+						</div>
+					</div>						
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_redirect_to_sale_or_recv_screen_after_printing_receipt').':', 'redirect_to_sale_or_recv_screen_after_printing_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'redirect_to_sale_or_recv_screen_after_printing_receipt',
+							'id'=>'redirect_to_sale_or_recv_screen_after_printing_receipt',
+							'value'=>'1',
+							'checked'=>$this->config->item('redirect_to_sale_or_recv_screen_after_printing_receipt')));?>
+							<label for="redirect_to_sale_or_recv_screen_after_printing_receipt"><span></span></label>
+						</div>
+					</div>
+													
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_receipt_text_size').':', 'receipt_text_size',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_dropdown('receipt_text_size', $receipt_text_size_options, $this->config->item('receipt_text_size'),'class="form-control" id="receipt_text_size"'); ?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_hide_store_account_balance_on_receipt').':', 'hide_store_account_balance_on_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'hide_store_account_balance_on_receipt',
+							'id'=>'hide_store_account_balance_on_receipt',
+							'value'=>'1',
+							'checked'=>$this->config->item('hide_store_account_balance_on_receipt')));?>
+							<label for="hide_store_account_balance_on_receipt"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_round_cash_on_sales').':', 'round_cash_on_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'round_cash_on_sales',
+							'id'=>'round_cash_on_sales',
+							'value'=>'round_cash_on_sales',
+							'checked'=>$this->config->item('round_cash_on_sales')));?>
+							<label for="round_cash_on_sales"><span></span></label>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+					<?php echo form_label(lang('common_return_policy').':', 'return_policy',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label required')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_textarea(array(
+							'name'=>'return_policy',
+							'id'=>'return_policy',
+							'class'=>'form-control text-area',
+							'rows'=>'4',
+							'cols'=>'30',
+							'value'=>$this->config->item('return_policy')));?>
+						</div>
+					</div>
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+					<?php echo form_label(lang('common_announcement_special').':', 'announcement_special',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_textarea(array(
+							'name'=>'announcement_special',
+							'id'=>'announcement_special',
+							'class'=>'form-control text-area',
+							'rows'=>'4',
+							'cols'=>'30',
+							'value'=>$this->config->item('announcement_special')));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_enable_pdf_receipts').':', 'enable_pdf_receipts', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'enable_pdf_receipts',
+							'id'=>'enable_pdf_receipts',
+							'value'=>'enable_pdf_receipts',
+							'checked'=>$this->config->item('enable_pdf_receipts')));?>
+							<label for="enable_pdf_receipts"><span></span></label>
+						</div>
+					</div>
+										
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+					<?php echo form_label(lang('config_pdf_receipt_message').':', 'pdf_receipt_message',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_textarea(array(
+							'name'=>'pdf_receipt_message',
+							'id'=>'pdf_receipt_message',
+							'class'=>'form-control text-area',
+							'rows'=>'4',
+							'cols'=>'30',
+							'value'=>$this->config->item('pdf_receipt_message')));?>
+						</div>
+					</div>
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+						<?php echo form_label(lang('config_show_signature_on_receiving_receipt').':', 'show_signature_on_receiving_receipt', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'show_signature_on_receiving_receipt',
+							'id'=>'show_signature_on_receiving_receipt',
+							'value'=>'show_signature_on_receiving_receipt',
+							'checked'=>$this->config->item('show_signature_on_receiving_receipt')));?>
+							<label for="show_signature_on_receiving_receipt"><span></span></label>
+						</div>
+					</div>
+
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
+					<?php echo form_label(lang('config_override_signature_text').':', 'override_signature_text',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_textarea(array(
+							'name'=>'override_signature_text',
+							'id'=>'override_signature_text',
+							'class'=>'form-control text-area',
+							'rows'=>'4',
+							'cols'=>'30',
+							'value'=>$this->config->item('override_signature_text')));?>
+						</div>
+					</div>
+
+				</div>
+		</div>
 	</div>
 	<!--Controlar animaciones de pestañas-->
 	<script>
