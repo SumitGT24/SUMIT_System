@@ -3,13 +3,12 @@ $this->load->view("partial/header");
 $this->load->helper('demo');
 $this->load->helper('update');
 ?>
-<div class="config-panel">
+
 <!-- Pestañas -->
- <div style="background-color: #ffcc2c;">
 	 <button class="tablink" onclick="openPage('CompanyInfo', this, 'red')" id="defaultOpen">Información de la empresa</button>
 	 <button class="tablink" onclick="openPage('PaymentMethods', this, 'green')">Formas de pago</button>
 	 <button class="tablink" onclick="openPage('Page2', this, 'blue')">Page 2</button>
-</div>
+
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 <!-- Contenido de pestañas -->
 <div id="CompanyInfo" class="tabcontent">
@@ -157,7 +156,6 @@ $this->load->helper('update');
         'value' => lang('common_save'),
         'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
     )); ?>
-</div>
 </div>
 <?php echo form_close(); ?>
 <!--?php $this->load->view("partial/footer"); ?>
