@@ -55,7 +55,6 @@ $this->load->helper('update');
 
 <div id="PaymentMethods" class="tabcontent">
   <!-- Aquí se cargará el contenido de formas de pago (page1.php) -->
-
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
 					<?php echo create_section(lang('config_payment_types_info'))  ?>
@@ -137,9 +136,7 @@ $this->load->helper('update');
 					</div>
 				</div>
 			</div>
-		</div>
 </div>
-
 <div id="Page2" class="tabcontent">
   <!-- Aquí se cargará el contenido de page2.php -->
   <p>Loading...</p>
