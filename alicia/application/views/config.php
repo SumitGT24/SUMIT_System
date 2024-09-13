@@ -146,29 +146,29 @@ $this->load->helper('update');
 </div>
 <!--Controlar animaciones de pestañas-->
 <script>
-function openPage(pageName, element, color) {
-  // Esconder todo el contenido de las pestañas
+	function openPage(pageName, elmnt, color) {
+  // Hide all elements with class="tabcontent" by default */
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
 
-  // Remover la clase "active" de todos los botones
+  // Remove the background color of all tablinks/buttons
   tablinks = document.getElementsByClassName("tablink");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].style.backgroundColor = "";
   }
 
-  // Mostrar el contenido de la pestaña actual y cambiar el color del botón
+  // Show the specific tab content
   document.getElementById(pageName).style.display = "block";
-  element.style.backgroundColor = color;
 
+  // Add the specific color to the button used to open the tab content
+  elmnt.style.backgroundColor = color;
 }
 
-// Clic en el botón predeterminado al cargar la página
-document.getElementById("defaultOpen").click();
-
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click(); 
 </script>
 <!-- Botón de guardado (si es necesario mantenerlo) -->
 <div class="form-actions">
