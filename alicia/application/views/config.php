@@ -2459,6 +2459,1415 @@ $this->load->helper('update');
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click(); 
 	</script>
+
+	<!-- Script funciones varias formulario -->
+	<script type='text/javascript'>
+//validation and submit handling
+$(document).ready(function()
+{	
+	
+	date_time_picker_field($('.timepicker'), JS_TIME_FORMAT);
+	date_time_picker_field($('.datepicker'), 'YYYY-MM-DD');
+	
+
+	$("#test_email").click(function()
+	{
+		bootbox.prompt({
+			title: <?php echo json_encode(lang('config_please_enter_email_to_send_test_to')); ?>,
+			value: <?php echo json_encode($this->Location->get_info_for_key('email')); ?>, 
+			callback: function(email) 
+			{
+				$("#config_form").ajaxSubmit(function()
+				{
+					$.post(<?php echo json_encode(site_url('config/send_smtp_test_email')); ?>,{email:email},function(response)
+					{
+						if (response.success)
+						{
+							show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+						}
+						else
+						{
+							show_feedback('error',<?php echo json_encode(lang('common_error')); ?>,<?php echo json_encode(lang('common_error')); ?>);
+							bootbox.alert({
+								title: <?php echo json_encode(lang('common_error')); ?>,
+								message: response.message
+							});
+						}
+					},'json');
+				})
+			
+			}
+		});
+	});
+	
+	var gmail = {
+		smtp_crypto : 'ssl',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.gmail.com',
+		smtp_user : 'username@gmail.com',
+		smtp_pass : '',
+		smtp_port : '465',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '10'
+	};
+	
+	var office_365 = {
+		smtp_crypto : 'tls',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.office365.com',
+		smtp_user : 'user@domain.com',
+		smtp_pass : '',
+		smtp_port : '587',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '10'
+	};
+	
+	var windows_live_hotmail = {
+		smtp_crypto : 'tls',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.live.com',
+		smtp_user : 'user@outlook.com',
+		smtp_pass : '',
+		smtp_port : '587',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '10'
+	};
+	
+	var other = {
+		smtp_crypto : '',
+		protocol : '', 
+		smtp_host : '',
+		smtp_user : 'user@domain.com',
+		smtp_pass : '',
+		smtp_port : '',
+		email_charset : '',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : ''
+	};
+	
+	var system_default = {
+		smtp_crypto : '',
+		protocol : '', 
+		smtp_host : '',
+		smtp_user : '',
+		smtp_pass : '',
+		smtp_port : '',
+		email_charset : '',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : ''
+	};
+	
+	if($("#email_provider").val() !== "Other")
+	{
+		$(".email_advanced").hide();
+	}
+	
+	if($("#email_provider").val() == "Use System Default")
+	{
+		$(".email_basic").hide();
+	}
+	
+	
+	$("#email_provider").change(function(e){
+		switch ($("#email_provider").val()) {
+				case 'Use System Default':
+						$(".email_basic").hide();
+						$(".email_advanced").hide();
+						var settings = false;
+						break;
+		    case 'Gmail':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+						var settings = gmail;
+		        break;
+		    case 'Office 365':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+		        var settings = office_365;
+		        break;
+		    case 'Windows Live Hotmail':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+		        var settings = windows_live_hotmail;
+		        break;
+		    case 'Other':
+						var settings = other;
+						$(".email_basic").show();
+		        $(".email_advanced").show();
+		        break;
+		}
+		
+		if(settings)
+		{
+			for (var key in settings)
+			{
+				if(key == 'smtp_user')
+				{
+					$("#"+key).val('');
+					$("#"+key).attr('placeholder', settings[key]);
+				} else if (key == 'newline' || key == 'crlf'){
+					$("#"+key).prop('selectedIndex', settings[key]);
+				}	else {
+					$("#"+key).val(settings[key]);
+				}
+			}
+		} else {
+			for (var key in system_default)
+			{
+				if (key == 'newline' || key == 'crlf'){
+					$("#"+key).prop('selectedIndex', settings[key]);
+				}	else {
+					$("#"+key).val(settings[key]);
+				}
+			}
+		} 
+	});
+	
+	$(".ecommerce_platform").change(function() 
+	{
+		if ($(".ecommerce_platform").val() == "woocommerce")
+		{
+			$(".woo_settings").removeClass('hidden');
+			$(".shopify_settings").addClass('hidden');
+			$('.woo-only').show();
+		}
+		else
+		{
+			$(".woo_settings").addClass('hidden');
+		}
+		
+		if ($(".ecommerce_platform").val() == "shopify")
+		{
+			$(".shopify_settings").removeClass('hidden');
+			$(".woo_settings").addClass('hidden');
+			$('.woo-only').hide();
+		}
+		else{
+			$(".shopify_settings").addClass('hidden');
+		}
+		
+	});
+	
+	if ($(".ecommerce_platform").val() == "woocommerce")
+	{
+		$('.woo-only').show();
+	}
+	else if ($(".ecommerce_platform").val() == "shopify")
+	{
+		$('.woo-only').hide();
+	}
+	
+	$(document).on('keyup', ".default_percent_off",function(e){
+		
+		if ($(this).val())
+		{
+			$(this).parent().parent().find('.default_cost_plus_percent').val('');
+			$(this).parent().parent().find('.default_cost_plus_fixed_amount').val('');
+		}
+	});
+
+	$(document).on('keyup', ".default_cost_plus_percent",function(e){
+		if($(this).val())
+		{
+			$(this).parent().parent().find('.default_percent_off').val('');
+			$(this).parent().parent().find('.default_cost_plus_fixed_amount').val('');
+		}
+	});
+
+	$(document).on('keyup', ".default_cost_plus_fixed_amount",function(e){
+		if($(this).val())
+		{
+			$(this).parent().parent().find('.default_percent_off').val('');
+			$(this).parent().parent().find('.default_cost_plus_percent').val('');
+		}
+	});
+		
+	
+	$(".delete_tier").click(function()
+	{
+		$("#config_form").append('<input type="hidden" name="tiers_to_delete[]" value="'+$(this).data('tier-id')+'" />');
+		$(this).parent().parent().remove();
+	});
+	
+	$(".delete_api_key").click(function()
+	{
+		var api_key_id = $(this).data('key-id');
+		
+		bootbox.confirm(<?php echo json_encode(lang('config_api_key_confirm_delete')); ?>, function(response)
+		{
+			if (response)
+			{
+				 post_submit('<?php echo site_url("config/delete_key"); ?>', 'POST',[{name:'api_key_id', value:api_key_id}]);
+			}
+		});
+	});
+	
+	$("#price_tiers tbody").sortable();
+	
+	var add_index = -1;
+	
+	$("#add_tier").click(function()
+	{
+		$("#price_tiers tbody").append('<tr><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td><td><input type="text" class="tiers_to_edit form-control" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][name]" value="" /></td><td><input type="text" class="tiers_to_edit form-control default_percent_off" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_percent_off]" value=""/></td><td><input type="text" class="tiers_to_edit form-control default_cost_plus_percent" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_cost_plus_percent]" value=""/></td><td><input type="text" class="tiers_to_edit form-control default_cost_plus_fixed_amount" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_cost_plus_fixed_amount]" value=""/></td><td>&nbsp;</td></tr>');
+		
+		add_index--;
+	});
+	
+	$('#additional_payment_types').selectize({
+	    delimiter: ',',
+	    persist: false,
+	    create: function(input) {
+	        return {
+	            value: input,
+	            text: input
+	        }
+	    }
+	});	
+	
+	$(".delete_sale_type").click(function()
+	{
+		$("#config_form").append('<input type="hidden" name="sale_types_to_delete[]" value="'+$(this).data('sale-type-id')+'" />');
+		$(this).parent().parent().remove();
+	});
+	
+	$("#sale_types tbody").sortable();
+	
+	var add_sale_type = -1;
+	
+	$("#add_sale_type").click(function()
+	{	
+		$("#sale_types tbody").append('<tr><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td><td></td><td><input type="text" class="sale_types_to_edit form-control" data-index="'+add_sale_type+'" name="sale_types_to_edit['+add_sale_type+'][name]" value="" /></td><td class="text-center"><input type="checkbox" name="sale_types_to_edit['+add_sale_type+'][remove_quantity]" value="1" id="remove_quantity_'+add_sale_type+'" data-index="'+add_sale_type+'"><label for="remove_quantity_'+add_sale_type+'"><span></span></label></td><td>&nbsp;</td></tr>');
+		add_sale_type--;
+	});
+	
+	$('#additional_payment_types').selectize({
+	    delimiter: ',',
+	    persist: false,
+	    create: function(input) {
+	        return {
+	            value: input,
+	            text: input
+	        }
+	    }
+	});
+	
+	$('#damaged_reasons').selectize({
+	    delimiter: ',',
+	    persist: false,
+	    create: function(input) {
+	        return {
+	            value: input,
+	            text: input
+	        }
+	    }
+	})
+	
+	
+	$(".delete_currency_denom").click(function()
+	{
+		var id = $(this).data('id');
+		$("#currency_denoms").append('<input class="deleted_denmos" type="hidden" name="deleted_denmos[]" value="'+id+'" />');
+		
+		$(this).parent().parent().remove();
+	});
+	
+	$(".delete_currency_exchange_rate").click(function()
+	{
+		$(this).parent().parent().remove();	
+	});
+	
+	$("#add_denom").click(function()
+	{
+		$("#currency_denoms tbody").append('<tr><td><input type="text" class="form-control" name="currency_denoms_name[]" value="" /></td><td><input type="text" class="form-control" name="currency_denoms_value[]" value="" /></td><td>&nbsp;</td><input type="hidden" name="currency_denoms_ids[]" /></tr>');
+	});
+	
+	$("#add_exchange_rate").click(function()
+	{		
+		$("#currency_exchange_rates tbody").append('<tr>'+
+		'<td><input type="text" class="form-control" name="currency_exchange_rates_to[]" value="" /></td>'+
+		'<td><input type="text" class="form-control" name="currency_exchange_rates_symbol[]" value="$" /></td>'+
+		'<td><select name="currency_exchange_rates_symbol_location[]" class="form-control"><option value="before"><?php echo lang('config_before_number'); ?></option><option value="after"><?php echo lang('config_after_number'); ?></option></select></td>'+
+		'<td><select name="currency_exchange_rates_number_of_decimals[]" class="form-control"><option value=""><?php echo lang('config_let_system_decide'); ?></option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>'+
+		'<td><input type="text" class="form-control" name="currency_exchange_rates_thousands_separator[]" value="," /></td>'+
+		'<td><input type="text" class="form-control" name="currency_exchange_rates_decimal_point[]" value="." /></td>'+
+		'<td><input type="text" class="form-control" name="currency_exchange_rates_rate[]" value="" /></td>'+
+		'<td>&nbsp;</td></tr>');
+	});
+	
+	$(".dbOptimize").click(function(event)
+	{
+		event.preventDefault();
+		$('#ajax-loader').removeClass('hidden');
+		
+		$.getJSON($(this).attr('href'), function(response) 
+		{
+			$('#ajax-loader').addClass('hidden');
+			bootbox.alert(response.message);
+		});
+		
+	});
+	
+	$(".checkForUpdate").click(function(event)
+	{
+		event.preventDefault();
+		$('#ajax-loader').removeClass('hidden');
+		
+		$.getJSON($(this).attr('href'), function(update_available) 
+		{
+			$('#ajax-loader').addClass('hidden');
+			if(update_available)
+			{
+				bootbox.confirm(<?php echo json_encode(lang('common_update_available')); ?>, function(response)
+				{
+					if (response)
+					{
+						window.location="http://phppointofsale.com/downloads.php";
+					}
+				});
+			}
+			else
+			{
+				bootbox.alert(<?php echo json_encode(lang('common_not_update_available')); ?>);
+			}
+		});
+		
+	});
+	
+	
+	$("#reset_ecommerce").click(function(event)
+	{
+		bootbox.confirm(<?php echo json_encode(lang('config_confirm_reset_ecom')); ?>, function(response)
+		{
+			if (response)
+			{
+				$.getJSON(<?php echo json_encode(site_url('config/reset_ecom')); ?>,function(response)
+				{
+					if (response.success)
+					{
+						show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+					}
+				});
+			}
+		});
+	});
+	var submitting = false;
+	$('#config_form').validate({
+		submitHandler:function(form)
+		{
+			if (submitting) return;
+			submitting = true;
+			$(form).ajaxSubmit({
+			success:function(response)
+			{
+				
+				
+				//Don't let the tiers, taxes, providers, methods double submitted, so we change the name
+				$('.zones,.tiers_to_edit,.providers,.methods,.taxes,.tax_classes,.sale_types_to_edit').filter(function() {
+				    return parseInt($(this).data('index')) < 0;
+				}).attr('name','items_added[]');
+				
+				if(response.success)
+				{
+					show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+				}
+				else
+				{
+					show_feedback('error',response.message,<?php echo json_encode(lang('common_error')); ?>);
+					
+				}
+				submitting = false;
+			},
+			dataType:'json'
+		});
+
+		},
+		errorClass: "text-danger",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.form-group').removeClass('has-success').addClass('has-error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.form-group').removeClass('has-error').addClass('has-success');
+		},
+		rules: 
+		{
+    		company: "required",
+    		sale_prefix: "required",
+			return_policy:
+			{
+				required: true
+			},
+			item_id_auto_increment:
+			{
+				number: true,
+				min: 1,
+				max: 999999999
+			},
+			item_kit_id_auto_increment:
+			{
+				number: true,
+				min: 1,
+				max: 999999999
+			},
+			sale_id_auto_increment:
+			{
+				number: true,
+				min: 1,
+				max: 999999999
+			},
+			receiving_id_auto_increment:
+			{
+				number: true,
+				min: 1,
+				max: 999999999
+			}
+   	},
+		messages: 
+		{
+     		company: <?php echo json_encode(lang('config_company_required')); ?>,
+     		sale_prefix: <?php echo json_encode(lang('config_sale_prefix_required')); ?>,
+			return_policy:
+			{
+				required:<?php echo json_encode(lang('config_return_policy_required')); ?>
+			},
+	
+		}
+	});
+	
+});
+
+$("#offline_mode").change(offline_mode_change).ready(offline_mode_change);
+
+function offline_mode_change()
+{
+	if($("#offline_mode").prop('checked'))
+	{
+		$("#force_https").prop('checked', true);
+	}	
+}
+
+$("#calculate_average_cost_price_from_receivings").change(check_calculate_average_cost_price_from_receivings).ready(check_calculate_average_cost_price_from_receivings);
+
+function check_calculate_average_cost_price_from_receivings()
+{
+	if($("#calculate_average_cost_price_from_receivings").prop('checked'))
+	{
+		$("#average_cost_price_from_receivings_methods").show();
+		$("#update_cost_price_on_transfer_container").show();
+	}
+	else
+	{
+		$("#average_cost_price_from_receivings_methods").hide();
+		$("#update_cost_price_on_transfer_container").hide();
+		
+	}
+}
+
+$("#enable_customer_loyalty_system,#loyalty_option").change(check_loyalty_setup).ready(check_loyalty_setup);
+
+function check_loyalty_setup()
+{
+	if($("#enable_customer_loyalty_system").prop('checked'))
+	{
+		$("#loyalty_setup").show();
+	}
+	else
+	{
+		$("#loyalty_setup").hide();
+	}
+	
+	if ($("#loyalty_option").val() == 'simple')
+	{
+		$("#loyalty_setup_simple").show();
+		$("#loyalty_setup_advanced").hide();
+	}
+	else
+	{
+		$("#loyalty_setup_simple").hide();	
+		$("#loyalty_setup_advanced").show();	
+	}
+}
+
+<?php
+if ($search = $this->input->get('search')) { ?>
+	$("#search").val(<?php echo json_encode($this->input->get('search')); ?>);	
+<?php } ?>
+
+$(".config-panel").sieve({
+	itemSelector: "div.form-group",
+	searchInput: $('#search'),
+	complete: function() {
+
+		$(".panel-body").each(function(index) {
+			var $this = $(this);
+			var $visible_element = $this.find('.form-group').filter(function() 
+			{
+				return $(this).css('display') != 'none'
+			});
+			if($visible_element.length == 0)
+			{
+				$this.closest('.col-md-12').hide();
+			}
+			else
+			{
+				$this.closest('.col-md-12').show();
+			}
+
+		})
+	}
+});
+
+$("#search").focus().trigger('keyup');
+
+
+
+<?php
+$deleted_payment_types = $this->config->item('deleted_payment_types');
+$deleted_payment_types = explode(',',$deleted_payment_types);
+
+foreach($deleted_payment_types as $deleted_payment_type)
+{
+?>
+	$( ".payment_types" ).each(function() {
+		if ($(this).text() == <?php echo json_encode($deleted_payment_type); ?>)
+		{
+			$(this).removeClass('btn-primary');			
+			$(this).addClass('deleted btn-danger');			
+		}
+	});
+<?php
+}
+?>
+save_deleted_payments();
+
+$(".payment_types").click(function(e)
+{
+	e.preventDefault();
+	$(this).toggleClass('btn-primary');
+	$(this).toggleClass('deleted btn-danger');
+	save_deleted_payments();
+});
+
+function save_deleted_payments()
+{
+	$(".deleted_payment_types").remove();
+	
+	var deleted_payment_types = [];
+	$( ".payment_types.deleted" ).each(function() {
+		deleted_payment_types.push($(this).text());
+	});
+	$("#config_form").append('<input class="deleted_payment_types" type="hidden" name="deleted_payment_types" value="'+deleted_payment_types.join()+'" />');
+	
+}
+
+$("#cancel_woo").click(function()
+{
+	
+	bootbox.confirm({
+		message: <?php echo json_encode(lang('confirmation_woocommerce_cron_cancel')); ?>,
+		buttons: {
+      cancel: {
+          label: <?php echo json_encode(lang('common_no')); ?>,
+          className: 'btn-default'
+      	},
+        confirm: {
+            label: <?php echo json_encode(lang('common_yes')); ?>,
+            className: 'btn-primary'
+        }
+    },
+		callback: function(response)
+		{
+				if (response)
+				{	
+					$.get(<?php echo json_encode(site_url('ecommerce/cancel'));?>);
+				}
+		}
+	});
+});
+
+function check_ecommerce_status()
+{
+	$.getJSON(SITE_URL+'/home/get_ecommerce_sync_progress', function(response)
+	{
+		if (response.running)
+		{
+			$("#ecommerce-cancel-button").removeClass('hidden');
+			set_ecommerce_progress(response.percent_complete,response.message);
+			setTimeout(check_ecommerce_status,5000);
+		}
+		else
+		{
+			$("#ecommerce-cancel-button").addClass('hidden');;
+		}
+	});
+}
+
+function set_ecommerce_progress(percent, message)
+{
+	$("#ecommerce_sync_progress").toggleClass('hidden', false);
+	$('#ecommerce_progessbar').attr('aria-valuenow', percent).css('width',percent+'%');
+	$('#ecommerce_progress_percent').html(percent);
+	if (message !='')
+	{
+		$("#ecommerce_progress_message").html('('+message+')');
+	}
+	else
+	{
+		$("#ecommerce_progress_message").html('');
+	}
+	
+}
+
+check_ecommerce_status();
+
+
+$('#sync_woo').click(function()
+{
+	bootbox.confirm({
+		message: <?php echo json_encode(lang('confirmation_woocommerce_cron')); ?>,
+		buttons: {
+      cancel: {
+          label: <?php echo json_encode(lang('common_no')); ?>,
+          className: 'btn-default'
+      	},
+        confirm: {
+            label: <?php echo json_encode(lang('common_yes')); ?>,
+            className: 'btn-primary'
+        }
+    },
+		callback: function(response)
+		{
+				if (response)
+				{	
+					$('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", true);
+					
+					
+					$("#ecommerce_sync_progress").toggleClass("hidden", false);
+					
+					
+					$("#config_form").ajaxSubmit(function()
+					{
+					 //Wait 3 seconds before checking status for first time
+					 setTimeout(function(){ check_ecommerce_status();}, 3000);
+						var href = '<?php echo site_url("ecommerce/manual_sync");?>'
+						$.ajax(href, {
+	  					dataType: "json",
+						  success: function(data) {
+							  $('#ajax-loader').addClass('hidden');
+							  if(data.success){
+									
+									if (data.cancelled)
+									{
+										show_feedback('error',<?php echo json_encode(lang('common_cron_cancelled')); ?>,<?php echo json_encode(lang('common_error')); ?>);
+									}
+									else
+									{
+										show_feedback('success', <?php echo json_encode(lang('common_cron_success')); ?>, <?php echo json_encode(lang('common_success')); ?>);
+									}
+									
+									$('#sync_woo').parents('.form-group').addClass('has-success').removeClass('has-error');
+									
+								  $('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", false);
+									
+									setTimeout(function(){
+										$("#ecommerce_sync_progress").toggleClass("hidden", true);
+									}, 1000);
+									
+									$("#ecommerce_sync_date").val(<?php echo json_encode(lang('common_just_now')); ?>);
+							  }
+							  else{
+								  show_feedback('error', data.message);
+									$('#sync_woo').parents('.form-group').removeClass('has-success').addClass('has-error');
+									
+									$('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", false);
+									$("#ecommerce_sync_progress").toggleClass("hidden", true);
+									
+							  }
+						  },
+						  error: function() {
+							  show_feedback('error', <?php echo json_encode(lang('common_access_denied')); ?>);
+								$('#sync_woo').parents('.form-group').removeClass('has-success').addClass('has-error');
+							  $('#sync_woo_button_icon').toggleClass("glyphicon-refresh-animate", false);
+								$("#ecommerce_sync_progress").toggleClass("hidden", true);
+						  }
+					   });
+						 						
+					});
+	   		}
+		}
+	});
+});
+
+
+$("#cancel_qb").click(function()
+{
+	
+	bootbox.confirm({
+		message: <?php echo json_encode(lang('config_confirmation_qb_cron_cancel')); ?>,
+		buttons: {
+      cancel: {
+          label: <?php echo json_encode(lang('common_no')); ?>,
+          className: 'btn-default'
+      	},
+        confirm: {
+            label: <?php echo json_encode(lang('common_yes')); ?>,
+            className: 'btn-primary'
+        }
+    },
+		callback: function(response)
+		{
+				if (response)
+				{	
+					$.get(<?php echo json_encode(site_url('quickbooks/cancel'));?>);
+				}
+		}
+	});
+});
+
+function check_quickbooks_status()
+{
+	$.getJSON(SITE_URL+'/home/get_qb_sync_progress', function(response)
+	{
+		if (response.running)
+		{
+			$("#qb-cancel-button").removeClass('hidden');
+			set_quickbooks_progress(response.percent_complete,response.message);
+			setTimeout(check_quickbooks_status,5000);
+		}
+		else
+		{
+			$("#qb-cancel-button").addClass('hidden');;
+		}
+	});
+}
+
+function set_quickbooks_progress(percent, message)
+{
+	$("#quickbooks_sync_progress").toggleClass('hidden', false);
+	$('#quickbooks_progessbar').attr('aria-valuenow', percent).css('width',percent+'%');
+	$('#quickbooks_progress_percent').html(percent);
+	if (message !='')
+	{
+		$("#quickbooks_progress_message").html('('+message+')');
+	}
+	else
+	{
+		$("#quickbooks_progress_message").html('');
+	}
+	
+}
+
+check_quickbooks_status();
+
+
+$('#sync_qb').click(function()
+{
+	bootbox.confirm({
+		message: <?php echo json_encode(lang('config_confirmation_qb_cron')); ?>,
+		buttons: {
+      cancel: {
+          label: <?php echo json_encode(lang('common_no')); ?>,
+          className: 'btn-default'
+      	},
+        confirm: {
+            label: <?php echo json_encode(lang('common_yes')); ?>,
+            className: 'btn-primary'
+        }
+    },
+		callback: function(response)
+		{
+				if (response)
+				{	
+					$('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", true);
+					
+					
+					$("#quickbooks_sync_progress").toggleClass("hidden", false);
+					
+					
+					$("#config_form").ajaxSubmit(function()
+					{
+					 //Wait 3 seconds before checking status for first time
+					 var start_date = $('#export_start_date').val();
+					 if(start_date=="")
+					 {
+						 alert("Please fill start date");
+						 return false;
+					 }
+					//  return false;
+					 setTimeout(function(){ check_quickbooks_status();}, 3000);
+						var href = '<?php echo site_url("quickbooks/manual_sync");?>'
+						$.ajax(href, {
+	  					dataType: "json",
+							// type: 'POST',
+							// data:  { export_start_date: start_date} ,
+						  success: function(data) {
+							  $('#ajax-loader').addClass('hidden');
+							  if(data.success){
+									
+									if (data.cancelled)
+									{
+										show_feedback('error',<?php echo json_encode(lang('common_cron_cancelled')); ?>,<?php echo json_encode(lang('common_error')); ?>);
+									}
+									else
+									{
+										show_feedback('success', <?php echo json_encode(lang('common_cron_success_qb')); ?>, <?php echo json_encode(lang('common_success')); ?>);
+									}
+									
+									$('#sync_qb').parents('.form-group').addClass('has-success').removeClass('has-error');
+									
+								  $('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
+									
+									setTimeout(function(){
+										$("#quickbooks_sync_progress").toggleClass("hidden", true);
+									}, 1000);
+									
+									$("#quickbooks_sync_date").val(<?php echo json_encode(lang('common_just_now')); ?>);
+							  }
+							  else{
+								  show_feedback('error', data.message);
+									$('#sync_qb').parents('.form-group').removeClass('has-success').addClass('has-error');
+									
+									$('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
+									$("#quickbooks_sync_progress").toggleClass("hidden", true);
+									
+							  }
+						  },
+						  error: function() {
+							  show_feedback('error', <?php echo json_encode(lang('common_access_denied')); ?>);
+								$('#sync_qb').parents('.form-group').removeClass('has-success').addClass('has-error');
+							  $('#sync_qb_button_icon').toggleClass("glyphicon-refresh-animate", false);
+								$("#quickbooks_sync_progress").toggleClass("hidden", true);
+						  }
+					   });
+						 						
+					});
+	   		}
+		}
+	});
+});
+
+
+$("#item_lookup_order_list").sortable();
+
+var checklist_ecom = <?php echo json_encode(unserialize($this->config->item('ecommerce_cron_sync_operations'))); ?>;
+
+$(function () {
+		$group = $('.ecommerce_cron_sync_operations .list-group.checked-list-box');
+    $group.find('.list-group-item').each(function () {
+        // Settings
+        var $widget = $(this),
+            $checkbox = $('<input type="checkbox" class="hidden" />'),
+						value = ($widget.data('value') ? $widget.data('value') : '1'),
+            color = ($widget.data('color') ? $widget.data('color') : "primary"),
+            style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+           					 
+				$widget.css('cursor', 'pointer');
+				$checkbox.val(value).attr('name', $group.data('name'));
+        $widget.append($checkbox);
+
+        // Event Handlers
+        $widget.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+        });
+
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+            // Set the button's state
+            $widget.data('state', (isChecked) ? "on" : "off");
+            // Set the button's icon
+            $widget.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$widget.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $widget.addClass(style + color);
+            } else {
+                $widget.removeClass(style + color);
+			}
+
+			if (isChecked) {	
+				if(typeof $widget.data('requires') == 'object')
+				{
+					$.each($widget.data('requires'), function(key, value)
+					{
+						$(":checkbox[value="+value+"]").prop("checked",true).trigger('change');
+					});
+				}
+			} else {
+				$group.find('.list-group-item').each(function(){
+					if(typeof $(this).data('requires') == 'object')
+					{
+						var that = this;
+						$.each($(this).data('requires'), function(key, value) {
+							
+							if(value == $widget.data('value'))
+							{
+								$(that).find(":checkbox").prop("checked",false).trigger('change');
+							}
+						});
+					}
+				});
+			}
+        }
+
+        // Initialization
+        function init() {
+			if($.inArray($widget.data('value'), checklist_ecom) !== -1)
+			{
+				$widget.data('checked', true);
+			}
+					
+          	if ($widget.data('checked') == true) {
+              	$checkbox.prop('checked', !$checkbox.is(':checked'));
+          	}
+          	updateDisplay();
+
+          	// Inject the icon if applicable
+          	if ($widget.find('.state-icon').length == 0) {
+              	$widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
+          	}
+        }
+        init();
+    });
+});
+
+	$("#tax_classes tbody").sortable();
+
+	var tax_class_index = -1;
+
+	$(document).on('click', '.add_tax_class', function(e) {
+		var $tbody = $("#tax_classes").find("tbody");
+
+		var tax_rate_index = 0;
+											
+		var checkbox_template = '<input type="hidden" name="taxes['+ tax_class_index +'][cumulative][]" value="0" /><input disabled data-index="-1" type="checkbox" class="taxes invisible" id="tax_rate_'+ tax_class_index +'_0_cumulative" name="taxes['+ tax_class_index +'][cumulative][]">'
+		+ '<label class="tax_class_cumulative_element invisible" for="tax_rate_'+ tax_class_index +'_0_cumulative"><span></span></label>';
+
+		var radio_template = '<input data-index="-1" type="radio" id="tax_class_'+ tax_class_index +'_0_default" name="tax_class_id" value="'+tax_class_index+'">'
+		+ '<label class="tax_class_default_element" for="tax_class_'+ tax_class_index +'_0_default"><span></span></label>';
+
+
+		$("#tax_classes").find("tbody").append('<tr data-index="' + tax_class_index +'">' +
+			'<td class="tax_class_name top">' +
+				'<input type="text" data-index="-1" class="rates form-control tax_classes" name="tax_classes['+ tax_class_index +'][name]" value="" />' +
+			'</td>' +
+			'<td class="tax_class_rate_name top">' +
+				'<input data-index="-1" data-tax-class-id="-1" type="text" class="rates form-control tax_classes" name="taxes['+ tax_class_index +'][name][]" />' +
+			'</td>' +
+			'<td class="tax_class_rate_percent top">' +
+				'<input data-index="-1" data-tax-class-id="-1" type="text" class="rates form-control tax_classes" name="taxes['+ tax_class_index +'][percent][]" />' +
+			'</td>' +
+			'<td class="tax_class_rate_cumulative top">' + 
+				checkbox_template + 
+			'</td>' +
+			'<td class="tax_class_rate_default">' + 
+				radio_template + 
+			'</td>' +
+			'<td>' +
+				'<a class="delete_tax_rate tax_table_rate_text_element"><?php echo lang('common_delete'); ?></a>' +
+			'</td>' +
+			'<td>' +
+				'<a href="javascript:void(0);" class="add_tax_rate"><?php echo lang('config_add_rate'); ?></a>' +
+			'</td>' +
+			'<td>' +
+				'&nbsp;' +
+			'</td>' +
+			'<td>' +
+				'<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' +
+			'</td>' +
+		'</tr>');
+
+		tax_class_index -= 1;
+	});
+
+	$(document).on('click', '.delete_tax_rate', function(e) {
+		var $tr = $(this).closest("tr");
+
+		var tax_class_index = $tr.data('index');
+		var tax_rate_index = $tr.find('td.tax_class_rate_name > input').length;
+						
+		if(tax_rate_index > 1)
+		{
+			var tax_class_tax_id = parseInt($tr.find('.tax_class_rate_name input').last().data('tax-class-tax-id'));
+			$tr.find('.tax_class_rate_name input').last().remove();
+			$tr.find('.tax_class_rate_percent input').last().remove();
+			$tr.find('.tax_class_rate_cumulative input').last().remove();
+
+			if(tax_class_tax_id > 0)
+			{
+				$("#config_form").append('<input type="hidden" name="taxes_to_delete[]" value="'+ tax_class_tax_id +'" />');
+			}
+		}
+		else
+		{
+
+			$tr.remove();
+			
+			if(tax_class_index > 0)
+			{
+				$("#config_form").append('<input type="hidden" name="tax_classes_to_delete[]" value="'+ tax_class_index +'" />');
+			}
+		}
+	});
+
+	$(document).on('click', '.add_tax_rate', function(e) {
+			var $tr = $(this).closest("tr");
+			var tax_class_index = $tr.data('index');
+			var tax_rate_index = $tr.find('td.tax_class_rate_name > input').length;
+																
+			$tr.find('.tax_class_rate_name').append('<input data-index="-1" type="text" data-tax-class-tax-id="-1" class="rates form-control taxes" name="taxes['+ tax_class_index +'][name][]" >');
+			$tr.find('.tax_class_rate_percent').append('<input data-index="-1" type="text" class="rates form-control taxes" name="taxes['+ tax_class_index +'][percent][]" >');
+			
+			if(tax_rate_index == 1)
+			{
+				var checkbox_template = '<input data-index="-1" type="checkbox" class="taxes" id="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative" name="taxes['+ tax_class_index +'][cumulative][]">'
+				+ '<label class="tax_class_cumulative_element" for="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative"><span></span></label>';
+				$tr.find('.tax_class_rate_cumulative').append(checkbox_template);
+			} else {
+				var checkbox_template = '<input type="hidden" name="taxes['+ tax_class_index +'][cumulative][]" value="0" /><input disabled data-index="-1" type="checkbox" class="taxes invisible" id="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative" name="taxes['+ tax_class_index +'][cumulative][]">'
+				+ '<label class="tax_class_cumulative_element invisible" for="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative"><span></span></label>';
+				$tr.find('.tax_class_rate_cumulative').append(checkbox_template);
+			}
+								
+		});
+		
+		//delivery stuff
+		$("#shipping_zones tbody").sortable();
+		
+		$('.shipping_zone_zips input').selectize({
+			delimiter: '|',
+			create: true,
+			render: {
+		      option_create: function(data, escape) {
+					var add_new = <?php echo json_encode(lang('common_add_value')) ?>;
+		        return '<div class="create">'+escape(add_new)+' <strong>' + escape(data.input) + '</strong></div>';
+		      }
+			},
+		});
+
+		var zone_index = -1;
+		
+		$(document).on('click', '.add_shipping_zone', function(e) {
+			
+			var $tbody = $("#shipping_zones").find("tbody");
+			
+			$tbody.append('<tr data-index="' + zone_index +'">' +
+				'<td class="shipping_zone_name top">' +
+					'<input type="text" data-index="-1" class="zones form-control name" name="zones['+ zone_index +'][name]" value="" />' +
+				'</td>' +
+				'<td class="shipping_zone_zips top">' +
+					'<input type="text" data-index="-1" class="zones form-control name" name="zones['+ zone_index +'][zips]" value="" />' +
+				'</td>' +
+				'<td class="shipping_zone_fee top">' +
+					'<input data-index="-1" type="text" class="zones form-control fee" name="zones['+ zone_index +'][fee]" />' +
+			'</td>');
+			
+			$tr = $tbody.find('tr').last();
+			
+			$tr.find('.shipping_zone_zips input').selectize({
+				delimiter: '|',
+				create: true,
+				render: {
+			      option_create: function(data, escape) {
+						var add_new = <?php echo json_encode(lang('common_add_value')) ?>;
+			        return '<div class="create">'+escape(add_new)+' <strong>' + escape(data.input) + '</strong></div>';
+			      }
+				},
+			});
+			
+			var tax_groups = <?php echo json_encode($tax_groups); ?>
+						
+			var tax_group_select = $('<select>').addClass('zones form-control').attr('name', 'zones['+ zone_index +'][tax_class_id]').attr('data-index', zone_index);
+			$('<td class="shipping_zone_tax_group top" >').append(tax_group_select).appendTo($tr);
+			
+			$(tax_groups).each(function() {
+			 tax_group_select.append($("<option>").attr('value',this.val).text(this.text));
+			});
+			
+			$tr.append(
+				'<td>' +
+					'<a class="delete_rate"><?php echo lang('common_delete'); ?></a>' +
+				'</td>' +
+				'<td>' +
+					'<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' +
+				'</td>'
+				);
+				
+				zone_index --;
+			});
+		
+		$("#shipping_providers tbody").sortable();
+		
+		
+		var provider_index = -1;
+		
+		$(document).on('click', '.add_shipping_provider', function(e) {
+			var $tbody = $("#shipping_providers").find("tbody");
+			
+			var rate_index = 0;
+			var radio_template = '<input data-index="-1" type="radio" class="methods" id="default_shipping_rate_'+ provider_index +'_0" name="methods['+ provider_index +'][is_default][]" checked="checked">'
+			+ '<label class="shipping_table_rate_element" for="default_shipping_rate_'+ provider_index +'_0"><span></span></label>';
+			
+			$tbody.append('<tr data-index="' + provider_index +'">' +
+				'<td class="shipping_provider_name top">' +
+					'<input type="text" data-index="-1" class="rates form-control providers" name="providers['+ provider_index +'][name]" value="" />' +
+				'</td>' +
+				'<td class="delivery_rate_name top">' +
+					'<input data-index="-1" data-method-id="-1" type="text" class="rates form-control methods" name="methods['+ provider_index +'][name][]" />' +
+				'</td>' +
+				'<td class="delivery_fee top">' + 
+					'<input type="text" data-index="-1" class="rates form-control methods" name="methods['+ provider_index +'][fee][]" />' +
+				'</td>' +
+				'<td class="delivery_time top">' +
+					'<input type="text" data-index="-1" class="rates form-control methods" name="methods['+ provider_index +'][time_in_days][]" />' +
+				'</td>' +
+				'<td class="delivery_default top">' + 
+					radio_template + 
+				'</td>' +
+				'<td>' +
+					'<a class="delete_rate shipping_table_rate_text_element"><?php echo lang('common_delete'); ?></a>' +
+				'</td>' +
+				'<td>' +
+					'<a href="javascript:void(0);" class="add_delivery_rate"><?php echo lang('config_add_rate'); ?></a>' +
+				'</td>' +
+				'<td>' +
+					'<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' +
+				'</td>' +
+			'</tr>');
+			
+			provider_index -= 1;
+		});
+		
+		$(document).on('click', '.delete_zone', function(e) {
+			var $tr = $(this).closest("tr");
+			var index = $tr.data('index');
+						
+			$tr.remove();
+			
+			if(index > 0)
+			{
+				$("#config_form").append('<input type="hidden" class="delete_zone" name="zones_to_delete[]" value="'+ index +'" />');
+			}
+		});
+		
+		$(document).on('click', '.delete_rate', function(e) {
+			var $tr = $(this).closest("tr");
+			
+			var index = $tr.data('index');
+			var rate_index = $tr.find('td.delivery_rate_name > input').length;
+			var method_id = parseInt($tr.find('.delivery_rate_name input').last().data('method-id'));
+			
+			if(rate_index > 1)
+			{
+				$tr.find('.delivery_rate_name input').last().remove();
+				$tr.find('.delivery_fee input').last().remove();
+				$tr.find('.delivery_time input').last().remove();
+				$tr.find('.delivery_default input').last().remove();
+				$tr.find('.delivery_default label').last().remove();
+				
+				if(method_id > 0)
+				{
+					$("#config_form").append('<input type="hidden" class="delete_method" name="methods_to_delete[]" value="'+ method_id +'" />');
+				}
+			}
+			else
+			{
+				
+				$tr.remove();
+				
+				if(method_id > 0)
+				{
+					$("#config_form").append('<input type="hidden" class="delete_method" name="methods_to_delete[]" value="'+ method_id +'" />');
+				}
+										
+				if(index > 0)
+				{
+					$("#config_form").append('<input type="hidden" class="delete_provider" name="providers_to_delete[]" value="'+ index +'" />');
+				}
+			}
+		});
+		
+		$(document).on('click', '.add_delivery_rate', function(e) {
+				var $tr = $(this).closest("tr");
+				var index = $tr.data('index');
+				var rate_index = $tr.find('td.delivery_rate_name > input').length;
+																				
+				$tr.find('.delivery_rate_name').append('<input data-index="-1" type="text" data-method-id="-1" class="rates form-control methods" name="methods['+ index +'][name][]" >');
+				$tr.find('.delivery_fee').append('<input data-index="-1" type="text" class="rates form-control methods" name="methods['+ index +'][fee][]" >');
+				$tr.find('.delivery_time').append('<input data-index="-1" type="text" class="rates form-control methods" name="methods['+ index +'][time_in_days][]" >');
+				
+				var radio_template = '<input data-index="-1" type="radio" class="methods" id="default_shipping_rate_'+ index +"_"+ rate_index + '" name="methods['+ index +'][is_default][]">'
+				+ '<label class="shipping_table_rate_element" for="default_shipping_rate_'+ index +"_"+ rate_index + '"><span></span></label>';
+				
+				$tr.find('.delivery_default').append(radio_template);
+												
+			});
+
+			$("#verify_age_for_products").click(function()
+			{
+				if ($('#verify_age_for_products').prop('checked'))
+				{
+					$("#default_age_input_container").removeClass('hidden');	
+					$("#strict_age_format_check_container").removeClass('hidden');
+				}
+				else
+				{
+					$("#default_age_input_container").addClass('hidden');
+					$("#strict_age_format_check_container").addClass('hidden');
+				}
+	
+			});
+
+
+
+			$("#reset_quickbooks").click(function(event)
+			{
+				bootbox.confirm(<?php echo json_encode(lang('config_confirm_reset_qb')); ?>, function(response)
+				{
+					if (response)
+					{
+						$.getJSON(<?php echo json_encode(site_url('config/reset_qb')); ?>,function(response)
+						{
+							if (response.success)
+							{
+								show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+								
+								setTimeout(function(){ window.location.reload(); },3000);
+								
+							}
+						});
+					}
+				});
+			});
+			
+			
+			var checklist_qb = <?php echo json_encode(unserialize($this->config->item('qb_sync_operations'))); ?>;
+
+			$(function () {
+					$group = $('.qb_sync_operations .list-group.checked-list-box');
+			    $group.find('.list-group-item').each(function () {
+			        // Settings
+			        var $widget = $(this),
+			            $checkbox = $('<input type="checkbox" class="hidden" />'),
+									value = ($widget.data('value') ? $widget.data('value') : '1'),
+			            color = ($widget.data('color') ? $widget.data('color') : "primary"),
+			            style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
+			            settings = {
+			                on: {
+			                    icon: 'glyphicon glyphicon-check'
+			                },
+			                off: {
+			                    icon: 'glyphicon glyphicon-unchecked'
+			                }
+			            };
+           					 
+							$widget.css('cursor', 'pointer');
+							$checkbox.val(value).attr('name', $group.data('name'));
+			        $widget.append($checkbox);
+
+			        // Event Handlers
+			        $widget.on('click', function () {
+			            $checkbox.prop('checked', !$checkbox.is(':checked'));
+			            $checkbox.triggerHandler('change');
+			        });
+				
+			        $checkbox.on('change', function () {
+			            updateDisplayQB();
+			        });
+          
+
+			        // Actions
+			        function updateDisplayQB() {
+						
+			            var isChecked = $checkbox.is(':checked');
+
+			            // Set the button's state
+			            $widget.data('state', (isChecked) ? "on" : "off");
+
+			            // Set the button's icon
+			            $widget.find('.state-icon')
+			                .removeClass()
+			                .addClass('state-icon ' + settings[$widget.data('state')].icon);
+
+			            // Update the button's color
+			            if (isChecked) {
+			                $widget.addClass(style + color);
+			            } else {
+			                $widget.removeClass(style + color);
+			            }
+						
+									if (isChecked) {	
+										if(typeof $widget.data('requires') == 'object')
+										{
+											$.each($widget.data('requires'), function(key, value)
+											{
+												$(":checkbox[value="+value+"]").prop("checked",true).trigger('change');
+											});
+										}
+									} else {
+										$group.find('.list-group-item').each(function(){
+											if(typeof $(this).data('requires') == 'object')
+											{
+												var that = this;
+						ss						$.each($(this).data('requires'), function(key, value) {
+										
+													if(value == $widget.data('value'))
+													{
+														$(that).find(":checkbox").prop("checked",false).trigger('change');
+													}
+												});
+											}
+										});
+									}
+
+			        }
+
+			        // Initialization
+			        function initQB() {
+						var checkboxValue = $widget.data('value');
+						if($.inArray(checkboxValue, checklist_qb) !== -1)
+						{
+							$widget.data('checked', true);
+						}
+					
+			          if ($widget.data('checked') == true) {
+			              $checkbox.prop('checked', !$checkbox.is(':checked'));
+			          }
+            
+			          updateDisplayQB();
+
+			          // Inject the icon if applicable
+			          if ($widget.find('.state-icon').length == 0) {
+			              $widget.prepend('<span class="state-icon ' + settings[$widget.data('state')].icon + '"></span>');
+			          }
+			        }
+			        initQB();
+			    });
+			});
+	</script>
 	<!-- Botón de guardado (si es necesario mantenerlo) -->
 	<div class="form-actions">
 		<!-- Botón de guardado -->
@@ -2469,5 +3878,6 @@ $this->load->helper('update');
 	        'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
 	    )); ?>
 	</div>
-<?php $this->load->view("partial/footer"); ?>
+	<!-- Cierre de formulario -->
 <?php echo form_close(); ?>
+<?php $this->load->view("partial/footer"); ?>
