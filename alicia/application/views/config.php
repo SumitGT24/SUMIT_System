@@ -17,11 +17,9 @@ $this->load->helper('update');
 	<button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
 	<button class="tablink" onclick="openPage('System', this)">Sistema</button>	 
 </div>
-<div class="text-center location-settings">
-	<?php echo lang('config_looking_for_location_settings').' '.anchor($this->Location->count_all() > 1 ? 'locations' : 'locations/view/1', lang('module_locations').' '.lang('config_module'), 'class="btn btn-info"');?>
-</div>
+
 <!-- Formulario de configuraciones -->
-<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
+<?php echo form_open_multipart('config/save/1', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
 		<div class="panel panel-piluku">
@@ -3549,26 +3547,6 @@ $(function () {
 		}
 	});
 
-	$(document).on('click', '.add_tax_rate', function(e) {
-			var $tr = $(this).closest("tr");
-			var tax_class_index = $tr.data('index');
-			var tax_rate_index = $tr.find('td.tax_class_rate_name > input').length;
-																
-			$tr.find('.tax_class_rate_name').append('<input data-index="-1" type="text" data-tax-class-tax-id="-1" class="rates form-control taxes" name="taxes['+ tax_class_index +'][name][]" >');
-			$tr.find('.tax_class_rate_percent').append('<input data-index="-1" type="text" class="rates form-control taxes" name="taxes['+ tax_class_index +'][percent][]" >');
-			
-			if(tax_rate_index == 1)
-			{
-				var checkbox_template = '<input data-index="-1" type="checkbox" class="taxes" id="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative" name="taxes['+ tax_class_index +'][cumulative][]">'
-				+ '<label class="tax_class_cumulative_element" for="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative"><span></span></label>';
-				$tr.find('.tax_class_rate_cumulative').append(checkbox_template);
-			} else {
-				var checkbox_template = '<input type="hidden" name="taxes['+ tax_class_index +'][cumulative][]" value="0" /><input disabled data-index="-1" type="checkbox" class="taxes invisible" id="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative" name="taxes['+ tax_class_index +'][cumulative][]">'
-				+ '<label class="tax_class_cumulative_element invisible" for="tax_rate_'+ tax_class_index +'_'+tax_rate_index+'_cumulative"><span></span></label>';
-				$tr.find('.tax_class_rate_cumulative').append(checkbox_template);
-			}
-								
-		});
 		
 		//delivery stuff
 		$("#shipping_zones tbody").sortable();

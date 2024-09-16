@@ -68,7 +68,6 @@ class Config extends Secure_area
 			$tiers_dropdown[$tier['id']]=$tier['name'];
 		}
 
-
 		// Code to get chart of accounts ends
 		
 		$data['store_locations']=$locations_dropdown;
@@ -363,8 +362,8 @@ class Config extends Secure_area
 		'prices_include_tax' => $this->input->post('prices_include_tax') ? 1 : 0,
 		'currency_symbol'=>$this->input->post('currency_symbol'),
 		'language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english',
-		'date_format'=>$this->input->post('date_format'),
-		'time_format'=>$this->input->post('time_format'),
+		#'date_format'=>$this->input->post('date_format'),
+		#'time_format'=>$this->input->post('time_format'),
 		'print_after_sale'=>$this->input->post('print_after_sale') ? 1 : 0,
 		'print_after_receiving'=>$this->input->post('print_after_receiving') ? 1 : 0,
 		'round_cash_on_sales'=>$this->input->post('round_cash_on_sales') ? 1 : 0,
@@ -478,7 +477,7 @@ class Config extends Secure_area
 		'default_tier_percent_type_for_excel_import' => $this->input->post('default_tier_percent_type_for_excel_import'),
 		'default_tier_fixed_type_for_excel_import' => $this->input->post('default_tier_fixed_type_for_excel_import'),
 		'override_tier_name' => $this->input->post('override_tier_name'),
-		'loyalty_points_without_tax' => $this->input->post('loyalty_points_without_tax') ? 1 : 0,
+		#'loyalty_points_without_tax' => $this->input->post('loyalty_points_without_tax') ? 1 : 0,
 		'remove_customer_name_from_receipt' => $this->input->post('remove_customer_name_from_receipt') ? 1 : 0,
 		'enable_scale' => $this->input->post('enable_scale') ? 1 : 0,
 		'scale_format' => $this->input->post('scale_format'),
@@ -511,7 +510,7 @@ class Config extends Secure_area
 		'force_https' => $force_https,
 		'prompt_to_use_points' => $this->input->post('prompt_to_use_points') ? 1 : 0,
 		'always_print_duplicate_receipt_all' => $this->input->post('always_print_duplicate_receipt_all') ? 1 : 0,
-		'tax_class_id' => $this->input->post('tax_class_id') ? $this->input->post('tax_class_id') : 0,
+		#'tax_class_id' => $this->input->post('tax_class_id') ? $this->input->post('tax_class_id') : 0,
 		'wide_printer_receipt_format' => $this->input->post('wide_printer_receipt_format') ? 1 : 0,
 		'default_reorder_level_when_creating_items' => $this->input->post('default_reorder_level_when_creating_items'),
 		'remove_customer_company_from_receipt' => $this->input->post('remove_customer_company_from_receipt') ? 1 : 0,
@@ -634,7 +633,7 @@ class Config extends Secure_area
 		'disabled_fixed_discounts' => $this->input->post('disabled_fixed_discounts') ? 1 : 0,
 	);
 
-	//Old way of doing taxes; we handle this case
+	/*Old way of doing taxes; we handle this case
 		if($this->input->post('default_tax_1_rate') !== NULL)
 		{
 			$legacy_taxes = array(
@@ -653,7 +652,7 @@ class Config extends Secure_area
 			$batch_save_data = array_merge($batch_save_data,$legacy_taxes);
 			
 		}
-		
+	*/
 		if($this->input->post('item_id_auto_increment'))
 		{
 			$this->Appconfig->change_auto_increment('items',$this->input->post('item_id_auto_increment'));
