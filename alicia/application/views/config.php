@@ -5,12 +5,12 @@ $this->load->helper('update');
 ?>
 
 <!-- Pestañas -->
-<button class="tablink" onclick="openPage('CompanyInfo', this,'blue')" id="defaultOpen">Información de la empresa</button>
+<button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Información de la empresa</button>
 <button class="tablink" onclick="openPage('PaymentMethods', this)">Formas de pago</button>
 <button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
 <button class="tablink" onclick="openPage('Order&Delivery', this)">Ordenes y Entregas</button>
 <button class="tablink" onclick="openPage('Sales', this)">Ventas</button>
-<button class="tablink" onclick="openPage('Receipts', this,'white')">Recibos</button>
+<button class="tablink" onclick="openPage('Receipts', this)">Recibos</button>
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
@@ -1737,7 +1737,7 @@ $this->load->helper('update');
 	</div>
 	<!--Controlar animaciones de pestañas-->
 	<script>
-	function openPage(pageName, elmnt, color) {
+	function openPage(pageName, elmnt) {
 	  var i, tabcontent, tablinks;
 	  tabcontent = document.getElementsByClassName("tabcontent");
 	  for (i = 0; i < tabcontent.length; i++) {
@@ -1754,7 +1754,8 @@ $this->load->helper('update');
 	  document.getElementById(pageName).style.display = "block";
 
 	  // Add the specific color to the button used to open the tab content
-	  elmnt.style.backgroundColor = color;
+	  elmnt.style.backgroundColor = '#e88960';
+	  elmnt.style.color = 'white';
 	}
 
 	// Get the element with id="defaultOpen" and click on it
