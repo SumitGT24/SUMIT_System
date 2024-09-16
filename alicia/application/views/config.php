@@ -5,8 +5,8 @@ $this->load->helper('update');
 ?>
 
 <!-- Pestañas -->
-<button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Información de la empresa</button>
-<button class="tablink" onclick="openPage('PaymentMethods', this)">Formas de pago</button>
+<button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Empresa</button>
+<button class="tablink" onclick="openPage('PaymentMethods', this)">Pagos</button>
 <button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
 <button class="tablink" onclick="openPage('Order&Delivery', this)">Ordenes y Entregas</button>
 <button class="tablink" onclick="openPage('Sales', this)">Ventas</button>
@@ -14,6 +14,7 @@ $this->load->helper('update');
 <button class="tablink" onclick="openPage('Profit', this)">Cálculo de ganancias</button>
 <button class="tablink" onclick="openPage('Barcodes', this)">Códigos de barra</button>
 <button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
+<button class="tablink" onclick="openPage('System', this)">Sistema</button>
 
 <!-- Formulario de configuraciones -->
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
@@ -55,6 +56,7 @@ $this->load->helper('update');
 						'class'=>'form-control form-inps',
 						'name'=>'website',
 						'id'=>'website',
+						'website'=>$this->input->post('website'),
 						'value'=>$this->config->item('website')));?>
 					</div>
 				</div>
@@ -1962,7 +1964,7 @@ $this->load->helper('update');
 	</div>
 
 	<!-- Empleados -->
-	<div id="Employees" class="tabcontent">
+	<div id="Employee" class="tabcontent">
 		<div class="panel panel-piluku">
 			<div class="panel-body">
 					
@@ -2040,7 +2042,11 @@ $this->load->helper('update');
 			</div>
 		</div>
 	</div>
-	
+
+	<!-- Sistema -->
+	<div id="System" class="tabcontent">
+
+	</div>
 	<!--Controlar animaciones de pestañas-->
 	<script>
 	function openPage(pageName, elmnt) {

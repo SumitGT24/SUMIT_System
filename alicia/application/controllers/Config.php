@@ -691,15 +691,15 @@ class Config extends Secure_area
 		
 		if (is_on_demo_host())
 		{
-			$batch_save_data['language'] = 'english';
-			$batch_save_data['currency_symbol'] = '$';
-			$batch_save_data['currency_code'] = 'USD';
+			$batch_save_data['language'] = 'spanish';
+			$batch_save_data['currency_symbol'] = 'Q';
+			$batch_save_data['currency_code'] = 'GTQ';
 			$batch_save_data['currency_symbol_location'] = 'before';
 			$batch_save_data['number_of_decimals'] = '';
 			$batch_save_data['thousands_separator'] =',';
 			$batch_save_data['decimal_point'] ='.';
 			$batch_save_data['company_logo'] = 0;
-			$batch_save_data['company'] = 'PHP Point Of Sale, Inc';
+			$batch_save_data['company'] = 'SUMIT';
 			$batch_save_data['test_mode'] = 0;
 		}
 		
