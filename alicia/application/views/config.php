@@ -17,7 +17,9 @@ $this->load->helper('update');
 	<button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
 	<button class="tablink" onclick="openPage('System', this)">Sistema</button>	 
 </div>
-
+<div class="text-center location-settings">
+	<?php echo lang('config_looking_for_location_settings').' '.anchor($this->Location->count_all() > 1 ? 'locations' : 'locations/view/1', lang('module_locations').' '.lang('config_module'), 'class="btn btn-info"');?>
+</div>
 <!-- Formulario de configuraciones -->
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
@@ -2460,8 +2462,22 @@ $this->load->helper('update');
 	document.getElementById("defaultOpen").click(); 
 	</script>
 
-	<!-- Script funciones varias formulario -->
-	<script type='text/javascript'>
+	<!-- Botón de guardado (si es necesario mantenerlo) -->
+	<div class="form-actions">
+		<!-- Botón de guardado -->
+	    <?php echo form_submit(array(
+	        'name' => 'submitf',
+	        'id' => 'submitf',
+	        'value' => lang('common_save'),
+	        'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
+	    )); ?>
+	</div>
+	<!-- Cierre de formulario -->
+<?php echo form_close(); ?>
+
+<!--Script funciones formulario-->
+
+<script type='text/javascript'>
 //validation and submit handling
 $(document).ready(function()
 {	
@@ -3832,7 +3848,7 @@ $(function () {
 											if(typeof $(this).data('requires') == 'object')
 											{
 												var that = this;
-						ss						$.each($(this).data('requires'), function(key, value) {
+												$.each($(this).data('requires'), function(key, value) {
 										
 													if(value == $widget.data('value'))
 													{
@@ -3867,17 +3883,11 @@ $(function () {
 			        initQB();
 			    });
 			});
-	</script>
-	<!-- Botón de guardado (si es necesario mantenerlo) -->
-	<div class="form-actions">
-		<!-- Botón de guardado -->
-	    <?php echo form_submit(array(
-	        'name' => 'submitf',
-	        'id' => 'submitf',
-	        'value' => lang('common_save'),
-	        'class' => 'submit_button floating-button btn btn-primary btn-lg pull-right'
-	    )); ?>
-	</div>
-	<!-- Cierre de formulario -->
-<?php echo form_close(); ?>
+</script>
+
+
+<!-- Cierre de formulario -->
+
+
+
 <?php $this->load->view("partial/footer"); ?>

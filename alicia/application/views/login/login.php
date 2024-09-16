@@ -45,7 +45,7 @@
 						$('#spin').addClass('hidden');
 						if(update_available)
 						{
-							$(".checkForUpdate").parent().html(<?php echo json_encode(lang('common_update_available').' <a href="http://phppointofsale.com/downloads.php" target="_blank">'.lang('common_download_now').'</a>');?>);
+							$(".checkForUpdate").parent().html(<?php echo json_encode(lang('common_update_available').' <a href="http://sumit.gt" target="_blank">'.lang('common_download_now').'</a>');?>);
 						}
 						else
 						{
