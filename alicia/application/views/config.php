@@ -5,7 +5,6 @@ $this->load->helper('update');
 ?>
 
 <!-- Pestañas -->
- <div class="tab'container">
 	 <button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Empresa</button>
 	 <button class="tablink" onclick="openPage('PaymentMethods', this)">Pagos</button>
 	 <button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
@@ -16,7 +15,7 @@ $this->load->helper('update');
 	 <button class="tablink" onclick="openPage('Barcodes', this)">Códigos de barra</button>
 	 <button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
 	 <button class="tablink" onclick="openPage('System', this)">Sistema</button>	 
-</div>
+	 
 <!-- Formulario de configuraciones -->
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
@@ -2045,7 +2044,391 @@ $this->load->helper('update');
 
 	<!-- Sistema -->
 	<div id="System" class="tabcontent">
+		<div class="panel panel-piluku">
+			<div class="panel-body">
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_week_start_day').':', 'week_start_day',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('week_start_day', array(
+						'monday'    => lang('common_monday'),
+						'sunday'  => lang('common_sunday')
+						), $this->config->item('week_start_day'), 'class="form-control" id="week_start_day"');
+						?>
+					</div>
+				</div>						
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">
+					<?php echo form_label(lang('config_store_opening_time').' :', 'store_opening_time', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+			 		<div class="col-sm-9 col-md-9 col-lg-10">
+			 		    <div class="input-group">
+			 				<span class="input-group-addon bg"><i class="glyphicon glyphicon-time"></i></span>
+			 				<?php echo form_input(array(
+		 			        'name'=>'store_opening_time',
+		 			        'id'=>'store_opening_time',
+		 							'class'=>'form-control timepicker',
+		 			        'value'=> $this->config->item('store_opening_time') ? $this->config->item('store_opening_time') : ''
+							));?>
+			 		    </div>
+			 		</div>
+			 	</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">
+					<?php echo form_label(lang('config_store_closing_time').' :', 'store_closing_time', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+			 		<div class="col-sm-9 col-md-9 col-lg-10">
+			 		    <div class="input-group">
+			 				<span class="input-group-addon bg"><i class="glyphicon glyphicon-time"></i></span>
+			 				<?php echo form_input(array(
+		 			        'name'=>'store_closing_time',
+		 			        'id'=>'store_closing_time',
+		 							'class'=>'form-control timepicker',
+		 			        'value'=> $this->config->item('store_closing_time') ? $this->config->item('store_closing_time') : ''
+							));?>
+			 		    </div>
+			 		</div>
+			 	</div>
+																					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_offline_mode').':', 'offline_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'offline_mode',
+						'id'=>'offline_mode',
+						'value'=>'offline_mode',
+						'checked'=>$this->config->item('offline_mode')));?>
+						<label for="offline_mode"><span></span></label>
+					</div>
+				</div>						
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+					<?php echo form_label(lang('config_auto_sync_offline_sales').':', 'auto_sync_offline_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'auto_sync_offline_sales',
+							'id'=>'auto_sync_offline_sales',
+							'value'=>'auto_sync_offline_sales',
+							'checked'=>$this->config->item('auto_sync_offline_sales')));?>
+						<label for="auto_sync_offline_sales"><span></span></label>
+					</div>
+				</div>
+																
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+					<?php echo form_label(lang('config_reset_offline_data').':', 'offline_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+            			<button onclick='delete_all_client_side_dbs();bootbox.alert(<?php echo json_encode(lang('common_success')); ?>);' id="reset_offline_mode" type="button" class="btn btn-lg btn-primary"><?php echo lang('config_reset_offline_data');?></button>
+					</div>
+				</div>
+											
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('common_dark_mode').':', 'dark_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'dark_mode',
+						'id'=>'dark_mode',
+						'value'=>'dark_mode',
+						'checked'=>$this->config->item('dark_mode')));?>
+						<label for="dark_mode"><span></span></label>
+					</div>
+				</div>
+											
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_default_new_customer_to_current_location').':', 'default_new_customer_to_current_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'default_new_customer_to_current_location',
+						'id'=>'default_new_customer_to_current_location',
+						'value'=>'default_new_customer_to_current_location',
+						'checked'=>$this->config->item('default_new_customer_to_current_location')));?>
+						<label for="default_new_customer_to_current_location"><span></span></label>
+					</div>
+				</div>
 
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_hide_expire_dashboard').':', 'hide_expire_dashboard',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_expire_dashboard',
+						'id'=>'hide_expire_dashboard',
+						'value'=>'hide_expire_dashboard',
+						'checked'=>$this->config->item('hide_expire_dashboard')));?>
+						<label for="hide_expire_dashboard"><span></span></label>
+					</div>
+				</div>
+														
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_do_not_delete_saved_card_after_failure').':', 'do_not_delete_saved_card_after_failure',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_delete_saved_card_after_failure',
+						'id'=>'do_not_delete_saved_card_after_failure',
+						'value'=>'do_not_delete_saved_card_after_failure',
+						'checked'=>$this->config->item('do_not_delete_saved_card_after_failure')));?>
+						<label for="do_not_delete_saved_card_after_failure"><span></span></label>
+					</div>
+				</div>
+
+				<?php if (!is_on_demo_host()) { ?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+					<?php echo form_label(lang('common_test_mode').' ('.lang('config_test_mode_help').'):', 'test_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_checkbox(array(
+							'name'=>'test_mode',
+							'id'=>'test_mode',
+							'value'=>'test_mode',
+							'checked'=>$this->config->item('test_mode')));?>
+							<label for="test_mode"><span></span></label>
+						</div>
+					</div>
+				<?php } ?>
+							
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('common_disable_test_mode').':', 'disable_test_mode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disable_test_mode',
+						'id'=>'disable_test_mode',
+						'value'=>'disable_test_mode',
+						'checked'=>$this->config->item('disable_test_mode')));?>
+						<label for="disable_test_mode"><span></span></label>
+					</div>
+				</div>
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_hide_item_descriptions_in_reports').':', 'hide_item_descriptions_in_reports',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_item_descriptions_in_reports',
+						'id'=>'hide_item_descriptions_in_reports',
+						'value'=>'hide_item_descriptions_in_reports',
+						'checked'=>$this->config->item('hide_item_descriptions_in_reports')));?>
+						<label for="hide_item_descriptions_in_reports"><span></span></label>
+					</div>
+				</div>
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_enable_sounds').':', 'enable_sounds',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'enable_sounds',
+						'id'=>'enable_sounds',
+						'value'=>'enable_sounds',
+						'checked'=>$this->config->item('enable_sounds')));?>
+						<label for="enable_sounds"><span></span></label>
+					</div>
+				</div>
+													
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_show_language_switcher').':', 'show_language_switcher',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'show_language_switcher',
+						'id'=>'show_language_switcher',
+						'value'=>'1',
+						'checked'=>$this->config->item('show_language_switcher')));?>
+						<label for="show_language_switcher"><span></span></label>
+					</div>
+				</div>
+
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_show_clock_on_header').':', 'show_clock_on_header',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'show_clock_on_header',
+						'id'=>'show_clock_on_header',
+						'value'=>'1',
+						'checked'=>$this->config->item('show_clock_on_header')));?>
+						<label for="show_clock_on_header"><span></span></label>
+						    <p class="help-block"><?php echo lang('config_show_clock_on_header_help_text'); ?></p>
+					</div>
+				</div
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_legacy_detailed_report_export').':', 'legacy_detailed_report_export',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'legacy_detailed_report_export',
+						'id'=>'legacy_detailed_report_export',
+						'value'=>'1',
+						'checked'=>$this->config->item('legacy_detailed_report_export')));?>
+						<label for="legacy_detailed_report_export"><span></span></label>
+					</div>
+				</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">
+				<?php echo form_label(lang('config_overwrite_existing_items_on_excel_import').':', 'overwrite_existing_items_on_excel_import',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'overwrite_existing_items_on_excel_import',
+						'id'=>'overwrite_existing_items_on_excel_import',
+						'value'=>'1',
+						'checked'=>$this->config->item('overwrite_existing_items_on_excel_import')));?>
+						<label for="overwrite_existing_items_on_excel_import"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_report_sort_order').':', 'report_sort_order',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('report_sort_order', array('asc' => lang('config_asc'), 'desc' => lang('config_desc')), $this->config->item('report_sort_order'),'class="form-control" id="report_sort_order"'); ?>
+					</div>
+				</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_speed_up_search_queries').' ('.lang('config_speed_up_note').')'.':', 'speed_up_search_queries',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'speed_up_search_queries',
+						'id'=>'speed_up_search_queries',
+						'value'=>'1',
+						'checked'=>$this->config->item('speed_up_search_queries')));?>
+						<label for="speed_up_search_queries"><span></span></label>
+					</div>
+				</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_enable_quick_edit').':', 'enable_quick_edit',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'enable_quick_edit',
+						'id'=>'enable_quick_edit',
+						'value'=>'1',
+						'checked'=>$this->config->item('enable_quick_edit')));?>
+						<label for="enable_quick_edit"><span></span></label>
+					</div>
+				</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_enhanced_search_method').':', 'enhanced_search_method',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php 
+						$enhanced_search_options = array(
+							'name'=>'enhanced_search_method',
+							'id'=>'enhanced_search_method',
+							'value'=>'1',
+							'checked'=>$this->config->item('enhanced_search_method') && $this->config->item('supports_full_text'));
+						
+							if (!$this->config->item('supports_full_text'))
+							{
+								$enhanced_search_options['disabled'] = 'disabled';
+							}
+						
+							echo form_checkbox($enhanced_search_options);
+						
+							?>
+							<label for="enhanced_search_method"><span></span></label>
+						</div>
+				</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_include_child_categories_when_searching_or_reporting').':', 'include_child_categories_when_searching_or_reporting',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'include_child_categories_when_searching_or_reporting',
+						'id'=>'include_child_categories_when_searching_or_reporting',
+						'value'=>'1',
+						'checked'=>$this->config->item('include_child_categories_when_searching_or_reporting')));?>
+						<label for="include_child_categories_when_searching_or_reporting"><span></span></label>
+					</div>
+				</div>
+
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_show_full_category_path').':', 'show_full_category_path',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'show_full_category_path',
+						'id'=>'show_full_category_path',
+						'value'=>'1',
+						'checked'=>$this->config->item('show_full_category_path')));?>
+						<label for="show_full_category_path"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_spreadsheet_format').':', 'spreadsheet_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('spreadsheet_format', array('CSV' => lang('config_csv'), 'XLSX' => lang('config_xlsx')), $this->config->item('spreadsheet_format'),'class="form-control" id="spreadsheet_format"'); ?>
+					</div>
+				</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_mailing_labels_type').':', 'mailing_labels_type',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('mailing_labels_type', array('pdf' => 'PDF', 'excel' => 'Excel'), $this->config->item('mailing_labels_type'),'class="form-control" id="mailing_labels_type"'); ?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_phppos_session_expiration').':', 'phppos_session_expiration',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('phppos_session_expiration',$phppos_session_expirations, $this->config->item('phppos_session_expiration')!==NULL ? $this->config->item('phppos_session_expiration') : 0,'class="form-control" id="phppos_session_expiration"'); ?>
+					</div>
+				</div>
+									
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_always_minimize_menu').':', 'always_minimize_menu',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'always_minimize_menu',
+						'id'=>'always_minimize_menu',
+						'value'=>'1',
+						'checked'=>$this->config->item('always_minimize_menu')));?>
+						<label for="always_minimize_menu"><span></span></label>
+					</div>
+				</div>
+						
+        		<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+					<?php echo form_label(lang('config_item_lookup_order').':', 'item_lookup_order',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+						  	<ul id="item_lookup_order_list" class="list-group">
+									<?php 
+									foreach($item_lookup_order as $item_lookup_number)
+									{
+									?>
+ 		           						<li class="list-group-item"><input name="item_lookup_order[]" type="hidden" value="<?php echo H($item_lookup_number); ?>"><?php echo lang('common_'.$item_lookup_number); ?><span class="ui-icon ui-icon-arrowthick-2-n-s pull-right"></span></li>
+									<?php 
+								}
+								?>
+					    </ul>
+					</div>
+				</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_allow_scan_of_customer_into_item_field').':', 'allow_scan_of_customer_into_item_field',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'allow_scan_of_customer_into_item_field',
+						'id'=>'allow_scan_of_customer_into_item_field',
+						'value'=>'1',
+						'checked'=>$this->config->item('allow_scan_of_customer_into_item_field')));?>
+						<label for="allow_scan_of_customer_into_item_field"><span></span></label>
+					</div>
+				</div>						
+												
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_do_not_delete_serial_number_when_selling').':', 'do_not_delete_serial_number_when_selling',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'do_not_delete_serial_number_when_selling',
+						'id'=>'do_not_delete_serial_number_when_selling',
+						'value'=>'1',
+						'checked'=>$this->config->item('do_not_delete_serial_number_when_selling')));?>
+						<label for="do_not_delete_serial_number_when_selling"><span></span></label>
+					</div>
+				</div>
+						
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
+				<?php echo form_label(lang('config_hide_latest_updates_in_header').':', 'hide_latest_updates_in_header',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_latest_updates_in_header',
+						'id'=>'hide_latest_updates_in_header',
+						'value'=>'1',
+						'checked'=>$this->config->item('hide_latest_updates_in_header')));?>
+						<label for="hide_latest_updates_in_header"><span></span></label>
+					</div>
+				</div>						
+												
+			</div>
+		</div>
 	</div>
 	<!--Controlar animaciones de pestañas-->
 	<script>
