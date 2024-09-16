@@ -2060,6 +2060,7 @@ $this->load->helper('update');
 	  tablinks = document.getElementsByClassName("tablink");
 	  for (i = 0; i < tablinks.length; i++) {
 	    tablinks[i].style.backgroundColor = "";
+		tablinks[i].style.color = "";
 	  }
 
 	  // Show the specific tab content

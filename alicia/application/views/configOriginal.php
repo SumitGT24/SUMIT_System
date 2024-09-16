@@ -3444,7 +3444,6 @@ $this->load->helper('update');
 						</div>
 					</div>
 
-
 					<div id="default_age_input_container" class="form-group  <?php if (!$this->config->item('verify_age_for_products')){echo 'hidden';} ?>" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
 						<?php echo form_label(lang('config_default_age_to_verify').':', 'default_age_to_verify',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">

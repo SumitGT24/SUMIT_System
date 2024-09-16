@@ -38,8 +38,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
-
+/*Contenedor de pestañas*/
 .tab-container {
   display: flex;
   justify-content: center;
