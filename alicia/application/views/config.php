@@ -11,6 +11,11 @@ $this->load->helper('update');
 <button class="tablink" onclick="openPage('Order&Delivery', this)">Ordenes y Entregas</button>
 <button class="tablink" onclick="openPage('Sales', this)">Ventas</button>
 <button class="tablink" onclick="openPage('Receipts', this)">Recibos</button>
+<button class="tablink" onclick="openPage('Profit', this)">Cálculo de ganancias</button>
+<button class="tablink" onclick="openPage('Barcodes', this)">Códigos de barra</button>
+<button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
+
+<!-- Formulario de configuraciones -->
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
@@ -1735,6 +1740,307 @@ $this->load->helper('update');
 			</div>
 		</div>
 	</div>
+	<!--Ganancias-->
+	<div id="Profit" class="tabcontent">
+		<div class="panel panel-piluku">
+			<div class="panel-body">
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_profit')) ?>">
+					<?php echo form_label(lang('config_calculate_profit_for_giftcard_when').':', 'calculate_profit_for_giftcard_when',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_dropdown('calculate_profit_for_giftcard_when', array(
+							''  => lang('common_do_nothing'),
+							'redeeming_giftcard'   => lang('config_redeeming_giftcard'), 
+							'selling_giftcard'  => lang('config_selling_giftcard'),
+						),
+						$this->config->item('calculate_profit_for_giftcard_when'), 'class="form-control" id="calculate_profit_for_giftcard_when"');
+						?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_profit')) ?>">	
+				<?php echo form_label(lang('config_remove_commission_from_profit_in_reports').':', 'remove_commission_from_profit_in_reports',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'remove_commission_from_profit_in_reports',
+						'id'=>'remove_commission_from_profit_in_reports',
+						'value'=>'1',
+						'checked'=>$this->config->item('remove_commission_from_profit_in_reports')));?>
+						<label for="remove_commission_from_profit_in_reports"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_profit')) ?>">	
+				<?php echo form_label(lang('config_remove_points_from_profit').':', 'remove_points_from_profit',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'remove_points_from_profit',
+						'id'=>'remove_points_from_profit',
+						'value'=>'1',
+						'checked'=>$this->config->item('remove_points_from_profit')));?>
+						<label for="remove_points_from_profit"><span></span></label>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- Codigo de barras -->
+	<div id="Barcodes" class="tabcontent">
+	 	<div class="panel panel-piluku">
+			<div class="panel-body">
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_id_to_show_on_barcode').':', 'id_to_show_on_barcode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('id_to_show_on_barcode', array(
+						'id'   => lang('common_item_id'),
+						'number'  => lang('common_item_number_expanded'),
+						'product_id'    => lang('common_product_id'),
+						),
+						$this->config->item('id_to_show_on_barcode'), 'class="form-control" id="id_to_show_on_barcode"')
+						?>
+					</div>
+				</div>
+				
+				
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_display_item_name_first_for_variation_name').':', 'display_item_name_first_for_variation_name',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'display_item_name_first_for_variation_name',
+						'id'=>'display_item_name_first_for_variation_name',
+						'value'=>'display_item_name_first_for_variation_name',
+						'checked'=>$this->config->item('display_item_name_first_for_variation_name')));?>
+						<label for="display_item_name_first_for_variation_name"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_hide_barcode_on_barcode_labels').':', 'hide_barcode_on_barcode_labels',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_barcode_on_barcode_labels',
+						'id'=>'hide_barcode_on_barcode_labels',
+						'value'=>'hide_barcode_on_barcode_labels',
+						'checked'=>$this->config->item('hide_barcode_on_barcode_labels')));?>
+						<label for="hide_barcode_on_barcode_labels"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_barcode_price_include_tax').':', 'barcode_price_include_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'barcode_price_include_tax',
+						'id'=>'barcode_price_include_tax',
+						'value'=>'barcode_price_include_tax',
+						'checked'=>$this->config->item('barcode_price_include_tax')));?>
+						<label for="barcode_price_include_tax"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_hide_expire_date_on_barcodes').':', 'hide_expire_date_on_barcodes',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_expire_date_on_barcodes',
+						'id'=>'hide_expire_date_on_barcodes',
+						'value'=>'hide_expire_date_on_barcodes',
+						'checked'=>$this->config->item('hide_expire_date_on_barcodes')));?>
+						<label for="hide_expire_date_on_barcodes"><span></span></label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_hide_price_on_barcodes').':', 'hide_price_on_barcodes',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_price_on_barcodes',
+						'id'=>'hide_price_on_barcodes',
+						'value'=>'hide_price_on_barcodes',
+						'checked'=>$this->config->item('hide_price_on_barcodes')));?>
+						<label for="hide_price_on_barcodes"><span></span></label>
+					</div>
+				</div>
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_hide_name_on_barcodes').':', 'hide_name_on_barcodes',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'hide_name_on_barcodes',
+						'id'=>'hide_name_on_barcodes',
+						'value'=>'hide_name_on_barcodes',
+						'checked'=>$this->config->item('hide_name_on_barcodes')));?>
+						<label for="hide_name_on_barcodes"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_disable_recv_number_on_barcode').':', 'disable_recv_number_on_barcode',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'disable_recv_number_on_barcode',
+						'id'=>'disable_recv_number_on_barcode',
+						'value'=>'disable_recv_number_on_barcode',
+						'checked'=>$this->config->item('disable_recv_number_on_barcode')));?>
+						<label for="disable_recv_number_on_barcode"><span></span></label>
+					</div>
+				</div>
+														
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_show_barcode_company_name').':', 'show_barcode_company_name',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'show_barcode_company_name',
+						'id'=>'show_barcode_company_name',
+						'value'=>'show_barcode_company_name',
+						'checked'=>$this->config->item('show_barcode_company_name')));?>
+						<label for="show_barcode_company_name"><span></span></label>
+					</div>
+				</div>
+								
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_use_rtl_barcode_library').':', 'use_rtl_barcode_library',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'use_rtl_barcode_library',
+						'id'=>'use_rtl_barcode_library',
+						'value'=>'use_rtl_barcode_library',
+						'checked'=>$this->config->item('use_rtl_barcode_library')));?>
+						<label for="use_rtl_barcode_library"><span></span></label>
+					</div>
+				</div>									
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_enable_scale').':', 'enable_scale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'enable_scale',
+						'id'=>'enable_scale',
+						'value'=>'enable_scale',
+						'checked'=>$this->config->item('enable_scale')));?>
+						<label for="enable_scale"><span></span></label>
+					</div>
+				</div>
+							
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_scale_format').':', 'scale_format',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('scale_format', array(
+						'scale_1'   => lang('config_scale_1'),
+						'scale_2'  => lang('config_scale_2'),
+						'scale_3'    => lang('config_scale_3'),
+						'scale_4'    => lang('config_scale_4'),
+						),
+						$this->config->item('scale_format'), 'class="form-control" id="scale_format"')
+						?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
+					<?php echo form_label(lang('config_scale_divide_by').':', 'scale_divide_by',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('scale_divide_by', array(
+						'1000'   => '1000',
+						'100'   => '100',
+						'10'  => '10',
+						'1'    => '1',
+						),
+						$this->config->item('scale_divide_by'), 'class="form-control" id="scale_divide_by"')
+						?>
+					</div>
+				</div>
+					
+			</div>
+		</div>
+	</div>
+
+	<!-- Empleados -->
+	<div id="Employees" class="tabcontent">
+		<div class="panel panel-piluku">
+			<div class="panel-body">
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_employees')) ?>">	
+				<?php echo form_label(lang('config_enable_timeclock').':', 'timeclock',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'timeclock',
+						'id'=>'timeclock',
+						'value'=>'timeclock',
+						'checked'=>$this->config->item('timeclock')));?>
+						<label for="timeclock"><span></span></label>
+					</div>
+				</div>
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_employees')) ?>">	
+				<?php echo form_label(lang('config_enable_timeclock_pto').':', 'timeclock_pto',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'timeclock_pto',
+						'id'=>'timeclock_pto',
+						'value'=>'timeclock_pto',
+						'checked'=>$this->config->item('timeclock_pto')));?>
+						<label for="timeclock_pto"><span></span></label>
+					</div>
+				</div>				
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_employees')) ?>">	
+				<?php echo form_label(lang('config_logout_on_clock_out').':', 'logout_on_clock_out',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'logout_on_clock_out',
+						'id'=>'logout_on_clock_out',
+						'value'=>'logout_on_clock_out',
+						'checked'=>$this->config->item('logout_on_clock_out')));?>
+						<label for="logout_on_clock_out"><span></span></label>
+					</div>
+				</div>
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_employees')) ?>">	
+				<?php echo form_label(lang('config_fast_user_switching').':', 'fast_user_switching',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'fast_user_switching',
+						'id'=>'fast_user_switching',
+						'value'=>'fast_user_switching',
+						'checked'=>$this->config->item('fast_user_switching')));?>
+						<label for="fast_user_switching"><span></span></label>
+					</div>
+				</div>
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_employees')) ?>">	
+				<?php echo form_label(lang('config_require_employee_login_before_each_sale').':', 'require_employee_login_before_each_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'require_employee_login_before_each_sale',
+						'id'=>'require_employee_login_before_each_sale',
+						'value'=>'require_employee_login_before_each_sale',
+						'checked'=>$this->config->item('require_employee_login_before_each_sale')));?>
+						<label for="require_employee_login_before_each_sale"><span></span></label>
+					</div>
+				</div>
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_employees')) ?>">	
+				<?php echo form_label(lang('config_reset_location_when_switching_employee').':', 'reset_location_when_switching_employee',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'reset_location_when_switching_employee',
+						'id'=>'reset_location_when_switching_employee',
+						'value'=>'reset_location_when_switching_employee',
+						'checked'=>$this->config->item('reset_location_when_switching_employee')));?>
+						<label for="reset_location_when_switching_employee"><span></span></label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<!--Controlar animaciones de pestañas-->
 	<script>
 	function openPage(pageName, elmnt) {
