@@ -39,6 +39,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+
+.tab-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px; /* Espacio entre los botones */
+}
+
 /*/Tabs Style*/
 .tablink {
   background-color: #ffcc2c;
@@ -48,16 +56,16 @@
   cursor: pointer;
   padding: 12px 10px;
   font-size: 14px;
-  width: 15%;
+  width: 10%;
+  margin-top: 5px;
+  /*Center tabs*/
+  margin-left: 45%;
 }
 
 .tablink:hover {
   background-color: #ffae00;
 }
-.tablink.active {
-  color: white;
-  border: #ffcc2c;
-}
+
  /*Estilos para el contenido de las pestañas*/
 .tabcontent {
   display: none;
@@ -5198,9 +5206,12 @@ input:focus {
 input {
   padding-left: 25px !important;
 }
+/*
+padding innecesario:
 input.submit_button {
   padding-right: 10px !important;
 }
+*/
 .textarea {
   height: 150px !important;
 }
