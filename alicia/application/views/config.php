@@ -1759,21 +1759,7 @@ $this->load->helper('update');
 						'checked'=>$this->config->item('hide_barcode_on_barcode_labels')));?>
 						<label for="hide_barcode_on_barcode_labels"><span></span></label>
 					</div>
-				</div>
-				
-				
-				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
-					<?php echo form_label(lang('config_barcode_price_include_tax').':', 'barcode_price_include_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'barcode_price_include_tax',
-						'id'=>'barcode_price_include_tax',
-						'value'=>'barcode_price_include_tax',
-						'checked'=>$this->config->item('barcode_price_include_tax')));?>
-						<label for="barcode_price_include_tax"><span></span></label>
-					</div>
-				</div>
-				
+				</div>				
 				
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 					<?php echo form_label(lang('config_hide_expire_date_on_barcodes').':', 'hide_expire_date_on_barcodes',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1786,8 +1772,7 @@ $this->load->helper('update');
 						<label for="hide_expire_date_on_barcodes"><span></span></label>
 					</div>
 				</div>
-				
-				
+								
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 					<?php echo form_label(lang('config_hide_price_on_barcodes').':', 'hide_price_on_barcodes',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2651,17 +2636,7 @@ $(document).ready(function()
 			}
 		});
 	});
-	
-	$("#price_tiers tbody").sortable();
-	
-	var add_index = -1;
-	
-	$("#add_tier").click(function()
-	{
-		$("#price_tiers tbody").append('<tr><td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td><td><input type="text" class="tiers_to_edit form-control" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][name]" value="" /></td><td><input type="text" class="tiers_to_edit form-control default_percent_off" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_percent_off]" value=""/></td><td><input type="text" class="tiers_to_edit form-control default_cost_plus_percent" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_cost_plus_percent]" value=""/></td><td><input type="text" class="tiers_to_edit form-control default_cost_plus_fixed_amount" data-index="'+add_index+'" name="tiers_to_edit['+add_index+'][default_cost_plus_fixed_amount]" value=""/></td><td>&nbsp;</td></tr>');
-		
-		add_index--;
-	});
+
 	
 	$('#additional_payment_types').selectize({
 	    delimiter: ',',
@@ -2711,38 +2686,7 @@ $(document).ready(function()
 	        }
 	    }
 	})
-	
-	/*Eliminar si no funciona*/
-	$(".delete_currency_denom").click(function()
-	{
-		var id = $(this).data('id');
-		$("#currency_denoms").append('<input class="deleted_denmos" type="hidden" name="deleted_denmos[]" value="'+id+'" />');
-		
-		$(this).parent().parent().remove();
-	});
-	
-	$(".delete_currency_exchange_rate").click(function()
-	{
-		$(this).parent().parent().remove();	
-	});
-	
-	$("#add_denom").click(function()
-	{
-		$("#currency_denoms tbody").append('<tr><td><input type="text" class="form-control" name="currency_denoms_name[]" value="" /></td><td><input type="text" class="form-control" name="currency_denoms_value[]" value="" /></td><td>&nbsp;</td><input type="hidden" name="currency_denoms_ids[]" /></tr>');
-	});
-	
-	$("#add_exchange_rate").click(function()
-	{		
-		$("#currency_exchange_rates tbody").append('<tr>'+
-		'<td><input type="text" class="form-control" name="currency_exchange_rates_to[]" value="" /></td>'+
-		'<td><input type="text" class="form-control" name="currency_exchange_rates_symbol[]" value="$" /></td>'+
-		'<td><select name="currency_exchange_rates_symbol_location[]" class="form-control"><option value="before"><?php echo lang('config_before_number'); ?></option><option value="after"><?php echo lang('config_after_number'); ?></option></select></td>'+
-		'<td><select name="currency_exchange_rates_number_of_decimals[]" class="form-control"><option value=""><?php echo lang('config_let_system_decide'); ?></option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td>'+
-		'<td><input type="text" class="form-control" name="currency_exchange_rates_thousands_separator[]" value="," /></td>'+
-		'<td><input type="text" class="form-control" name="currency_exchange_rates_decimal_point[]" value="." /></td>'+
-		'<td><input type="text" class="form-control" name="currency_exchange_rates_rate[]" value="" /></td>'+
-		'<td>&nbsp;</td></tr>');
-	});
+
 	/*Eliminar*/
 	$(".dbOptimize").click(function(event)
 	{
