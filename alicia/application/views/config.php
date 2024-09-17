@@ -2839,7 +2839,7 @@ $(document).ready(function()
 	    }
 	})
 	
-	
+	/*Eliminar si no funciona*/
 	$(".delete_currency_denom").click(function()
 	{
 		var id = $(this).data('id');
@@ -2870,7 +2870,7 @@ $(document).ready(function()
 		'<td><input type="text" class="form-control" name="currency_exchange_rates_rate[]" value="" /></td>'+
 		'<td>&nbsp;</td></tr>');
 	});
-	
+	/*Eliminar*/
 	$(".dbOptimize").click(function(event)
 	{
 		event.preventDefault();
