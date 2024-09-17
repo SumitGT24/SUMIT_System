@@ -621,7 +621,7 @@ class Config extends Secure_area
 		'do_not_allow_items_to_go_out_of_stock_when_transfering' => $this->input->post('do_not_allow_items_to_go_out_of_stock_when_transfering') ? 1: 0,
 		'show_tags_on_fulfillment_sheet' => $this->input->post('show_tags_on_fulfillment_sheet') ? 1 : 0,
 		'automatically_sms_receipt' => $this->input->post('automatically_sms_receipt') ? 1 : 0,
-		'items_per_search_suggestions'=>$this->input->post('items_per_search_suggestions'),
+		#'items_per_search_suggestions'=>$this->input->post('items_per_search_suggestions'),
 		#'shopify_shop' => $this->input->post('shopify_shop'),
 		'offline_mode' => $this->input->post('offline_mode') ? 1: 0,
 		'auto_sync_offline_sales' => $this->input->post('auto_sync_offline_sales') ? 1 : 0,
