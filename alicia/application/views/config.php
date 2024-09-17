@@ -17,7 +17,7 @@ $this->load->helper('update');
 	<button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
 	<button class="tablink" onclick="openPage('System', this)">Sistema</button>	 
 </div>
-<div>
+<div class="config-panel">
 <!-- Formulario de configuraciones -->
 <?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
