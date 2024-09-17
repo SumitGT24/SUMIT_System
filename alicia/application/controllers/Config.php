@@ -704,6 +704,7 @@ class Config extends Secure_area
 		if($this->Appconfig->batch_save($batch_save_data) 
 			&& $this->save_tiers($this->input->post('tiers_to_edit'), $this->input->post('tiers_to_delete'))
 			&& $this->save_sale_types($this->input->post('sale_types_to_edit'), $this->input->post('sale_types_to_delete'))
+			/*Monedas
 			&& $this->Register->save_register_currency_denominations($this->input->post('currency_denoms_name'), $this->input->post('currency_denoms_value'), $this->input->post('currency_denoms_ids'),$this->input->post('deleted_denmos'))
 			&& $this->Appconfig->save_exchange_rates(
 				$this->input->post('currency_exchange_rates_to'),
@@ -714,6 +715,7 @@ class Config extends Secure_area
 				$this->input->post('currency_exchange_rates_thousands_separator'),
 				$this->input->post('currency_exchange_rates_decimal_point')
 				)
+			*/	
 			)
 		{
 			
