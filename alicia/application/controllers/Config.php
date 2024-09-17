@@ -359,8 +359,8 @@ class Config extends Secure_area
 		'qb_export_start_date'=>$this->input->post('export_start_date'),
 		'sale_prefix'=>$this->input->post('sale_prefix') ? $this->input->post('sale_prefix') : 'POS',
 		'website'=>$this->input->post('website'),
-		'prices_include_tax' => $this->input->post('prices_include_tax') ? 1 : 0,
-		'currency_symbol'=>$this->input->post('currency_symbol'),
+		#'prices_include_tax' => $this->input->post('prices_include_tax') ? 1 : 0,
+		#'currency_symbol'=>$this->input->post('currency_symbol'),
 		'language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english',
 		#'date_format'=>$this->input->post('date_format'),
 		#'time_format'=>$this->input->post('time_format'),
@@ -421,7 +421,7 @@ class Config extends Secure_area
 		'speed_up_search_queries' => $this->input->post('speed_up_search_queries') ? 1 : 0,
 		'redirect_to_sale_or_recv_screen_after_printing_receipt' => $this->input->post('redirect_to_sale_or_recv_screen_after_printing_receipt') ? 1 : 0,
 		'enable_sounds' => $this->input->post('enable_sounds') ? 1 : 0,
-		'charge_tax_on_recv' => $this->input->post('charge_tax_on_recv') ? 1 : 0,
+		#'charge_tax_on_recv' => $this->input->post('charge_tax_on_recv') ? 1 : 0,
 		'report_sort_order' => $this->input->post('report_sort_order'),
 		'do_not_group_same_items' => $this->input->post('do_not_group_same_items') ? 1 : 0,
 		'show_item_id_on_receipt' => $this->input->post('show_item_id_on_receipt') ? 1: 0,
@@ -471,7 +471,7 @@ class Config extends Secure_area
 		'remove_points_from_profit' => $this->input->post('remove_points_from_profit') ? 1 : 0,
 		'capture_sig_for_all_payments' => $this->input->post('capture_sig_for_all_payments') ? 1 : 0,
 		'suppliers_store_accounts' => $this->input->post('suppliers_store_accounts') ? 1 : 0,
-		'currency_symbol_location' => $this->input->post('currency_symbol_location'),
+		#'currency_symbol_location' => $this->input->post('currency_symbol_location'),
 		'hide_desc_on_receipt' => $this->input->post('hide_desc_on_receipt') ? 1 : 0,
 		'hide_desc_emailed_receipts' => $this->input->post('hide_desc_emailed_receipts') ? 1 : 0,
 		'default_tier_percent_type_for_excel_import' => $this->input->post('default_tier_percent_type_for_excel_import'),
@@ -514,7 +514,7 @@ class Config extends Secure_area
 		'wide_printer_receipt_format' => $this->input->post('wide_printer_receipt_format') ? 1 : 0,
 		'default_reorder_level_when_creating_items' => $this->input->post('default_reorder_level_when_creating_items'),
 		'remove_customer_company_from_receipt' => $this->input->post('remove_customer_company_from_receipt') ? 1 : 0,
-		'currency_code' => $this->input->post('currency_code'),
+		#'currency_code' => $this->input->post('currency_code'),
 		'item_lookup_order' => $this->input->post('item_lookup_order') ? serialize($this->input->post('item_lookup_order')) : serialize(array()),
 		'number_of_decimals_for_quantity_on_receipt' => $this->input->post('number_of_decimals_for_quantity_on_receipt'),
 		'enable_wic' => $this->input->post('enable_wic') ? 1 : 0,
@@ -566,7 +566,7 @@ class Config extends Secure_area
 		'new_sale_web_hook' => $this->input->post('new_sale_web_hook'),
 		'new_receiving_web_hook' => $this->input->post('new_receiving_web_hook'),
 		'strict_age_format_check' => $this->input->post('strict_age_format_check') ? 1 : 0,
-		'flat_discounts_discount_tax' => $this->input->post('flat_discounts_discount_tax') ? 1 : 0,
+		#'flat_discounts_discount_tax' => $this->input->post('flat_discounts_discount_tax') ? 1 : 0,
 		'show_item_kit_items_on_receipt' => $this->input->post('show_item_kit_items_on_receipt') ? 1 : 0,
 		'amount_of_cash_to_be_left_in_drawer_at_closing' => $this->input->post('amount_of_cash_to_be_left_in_drawer_at_closing'),
 		'hide_tier_on_receipt' => $this->input->post('hide_tier_on_receipt') ? 1 : 0,
@@ -673,12 +673,12 @@ class Config extends Secure_area
 		{
 			$this->Appconfig->change_auto_increment('receivings',$this->input->post('receiving_id_auto_increment'));
 		}
-	
+		/*
 		if ($this->input->post('use_tax_value_at_all_locations'))
 		{
 			$this->Appconfig->set_all_locations_use_global_tax();
 		}
-		
+		*/
 		if (isset($company_logo))
 		{
 			$batch_save_data['company_logo'] = $company_logo;
@@ -701,7 +701,7 @@ class Config extends Secure_area
 			$batch_save_data['company'] = 'SUMIT';
 			$batch_save_data['test_mode'] = 0;
 		}
-		
+		/*
 		if($this->Appconfig->batch_save($batch_save_data) 
 			&& $this->save_tiers($this->input->post('tiers_to_edit'), $this->input->post('tiers_to_delete'))
 			&& $this->save_sale_types($this->input->post('sale_types_to_edit'), $this->input->post('sale_types_to_delete'))
@@ -715,7 +715,7 @@ class Config extends Secure_area
 				$this->input->post('currency_exchange_rates_thousands_separator'),
 				$this->input->post('currency_exchange_rates_decimal_point')
 				)
-			)
+			)*/
 		{
 			
 			$this->Appconfig->save_ecommerce_locations($this->input->post('ecommerce_locations'));
@@ -871,7 +871,7 @@ class Config extends Secure_area
 									$tax_name = $taxes_to_save[$tax_class_id]['name'][$k];
 									$tax_percent = $taxes_to_save[$tax_class_id]['percent'][$k];
 									$cumulative = isset($taxes_to_save[$tax_class_id]['cumulative'][$k]) && $taxes_to_save[$tax_class_id]['cumulative'][$k] ? 1 : 0;
-									#$tax_class_tax_id = isset($taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k]) && $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] ? $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] : -1;
+									$tax_class_tax_id = isset($taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k]) && $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] ? $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] : -1;
 								
 									if ($tax_name)
 									{
