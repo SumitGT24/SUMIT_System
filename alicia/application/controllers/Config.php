@@ -652,6 +652,8 @@ class Config extends Secure_area
 			$batch_save_data = array_merge($batch_save_data,$legacy_taxes);
 		}
 	*/
+
+	/*Comentar configuracion ID autoincrementable
 		if($this->input->post('item_id_auto_increment'))
 		{
 			$this->Appconfig->change_auto_increment('items',$this->input->post('item_id_auto_increment'));
@@ -672,6 +674,7 @@ class Config extends Secure_area
 		{
 			$this->Appconfig->change_auto_increment('receivings',$this->input->post('receiving_id_auto_increment'));
 		}
+		*/
 		/*Comentar impuestos
 		if ($this->input->post('use_tax_value_at_all_locations'))
 		{
