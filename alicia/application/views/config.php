@@ -50,6 +50,19 @@ $this->load->helper('update');
 						'value'=>$this->config->item('company')));?>
 					</div>
 				</div>
+				<!--Eliminar identificador de impuesto-->
+				<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_company')) ?>">	
+					<?php echo form_label(lang('common_tax_id').':', 'tax_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+						<?php echo form_input(array(
+							'class'=>'validate form-control form-inps',
+						'name'=>'tax_id',
+						'id'=>'tax_id',
+						'value'=>$this->config->item('tax_id')));?>
+					</div>
+				</div>
+				<!--fin elimar impuesto empresa-->
+
 				<!--website-->
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 					<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
