@@ -672,12 +672,12 @@ class Config extends Secure_area
 		{
 			$this->Appconfig->change_auto_increment('receivings',$this->input->post('receiving_id_auto_increment'));
 		}
-		
+		/*Comentar impuestos
 		if ($this->input->post('use_tax_value_at_all_locations'))
 		{
 			$this->Appconfig->set_all_locations_use_global_tax();
 		}
-		
+		*/
 		if (isset($company_logo))
 		{
 			$batch_save_data['company_logo'] = $company_logo;
@@ -700,7 +700,7 @@ class Config extends Secure_area
 			$batch_save_data['company'] = 'SUMIT';
 			$batch_save_data['test_mode'] = 0;
 		}
-		/*
+		/*Monedas*/
 		if($this->Appconfig->batch_save($batch_save_data) 
 			&& $this->save_tiers($this->input->post('tiers_to_edit'), $this->input->post('tiers_to_delete'))
 			&& $this->save_sale_types($this->input->post('sale_types_to_edit'), $this->input->post('sale_types_to_delete'))
@@ -714,7 +714,7 @@ class Config extends Secure_area
 				$this->input->post('currency_exchange_rates_thousands_separator'),
 				$this->input->post('currency_exchange_rates_decimal_point')
 				)
-			)*/
+			)
 		{
 			
 			$this->Appconfig->save_ecommerce_locations($this->input->post('ecommerce_locations'));
