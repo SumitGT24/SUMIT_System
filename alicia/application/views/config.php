@@ -638,17 +638,6 @@ $this->load->helper('update');
 				</div>
 				<?php } ?>
 				
-				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-					<?php echo form_label(lang('config_hide_suspended_recv_in_reports').':', 'hide_suspended_recv_in_reports',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'hide_suspended_recv_in_reports',
-						'id'=>'hide_suspended_recv_in_reports',
-						'value'=>'1',
-						'checked'=>$this->config->item('hide_suspended_recv_in_reports')));?>
-						<label for="hide_suspended_recv_in_reports"><span></span></label>
-					</div>
-				</div>
 				<?php
 				$track_payment_types = $this->config->item('track_payment_types') ? unserialize($this->config->item('track_payment_types')) : array();
 				?>
@@ -2129,19 +2118,7 @@ $this->load->helper('update');
 						'checked'=>$this->config->item('enable_sounds')));?>
 						<label for="enable_sounds"><span></span></label>
 					</div>
-				</div>
-													
-				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
-				<?php echo form_label(lang('config_show_language_switcher').':', 'show_language_switcher',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'show_language_switcher',
-						'id'=>'show_language_switcher',
-						'value'=>'1',
-						'checked'=>$this->config->item('show_language_switcher')));?>
-						<label for="show_language_switcher"><span></span></label>
-					</div>
-				</div>
+				</div>										
 
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 				<?php echo form_label(lang('config_show_clock_on_header').':', 'show_clock_on_header',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -2691,47 +2668,6 @@ $(".config-panel").sieve({
 });
 
 $("#search").focus().trigger('keyup');
-
-
-
-<?php
-$deleted_payment_types = $this->config->item('deleted_payment_types');
-$deleted_payment_types = explode(',',$deleted_payment_types);
-
-foreach($deleted_payment_types as $deleted_payment_type)
-{
-?>
-	$( ".payment_types" ).each(function() {
-		if ($(this).text() == <?php echo json_encode($deleted_payment_type); ?>)
-		{
-			$(this).removeClass('btn-primary');			
-			$(this).addClass('deleted btn-danger');			
-		}
-	});
-<?php
-}
-?>
-save_deleted_payments();
-
-$(".payment_types").click(function(e)
-{
-	e.preventDefault();
-	$(this).toggleClass('btn-primary');
-	$(this).toggleClass('deleted btn-danger');
-	save_deleted_payments();
-});
-
-function save_deleted_payments()
-{
-	$(".deleted_payment_types").remove();
-	
-	var deleted_payment_types = [];
-	$( ".payment_types.deleted" ).each(function() {
-		deleted_payment_types.push($(this).text());
-	});
-	$("#config_form").append('<input class="deleted_payment_types" type="hidden" name="deleted_payment_types" value="'+deleted_payment_types.join()+'" />');
-	
-}
 
 $("#cancel_woo").click(function()
 {
