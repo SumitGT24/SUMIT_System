@@ -633,7 +633,7 @@ class Config extends Secure_area
 		'disabled_fixed_discounts' => $this->input->post('disabled_fixed_discounts') ? 1 : 0,
 	);
 
-	/*Old way of doing taxes; we handle this case*/
+	/*Old way of doing taxes; we handle this case
 		if($this->input->post('default_tax_1_rate') !== NULL)
 		{
 			$legacy_taxes = array(
@@ -651,7 +651,7 @@ class Config extends Secure_area
 			
 			$batch_save_data = array_merge($batch_save_data,$legacy_taxes);
 		}
-	
+	*/
 		if($this->input->post('item_id_auto_increment'))
 		{
 			$this->Appconfig->change_auto_increment('items',$this->input->post('item_id_auto_increment'));
@@ -672,12 +672,12 @@ class Config extends Secure_area
 		{
 			$this->Appconfig->change_auto_increment('receivings',$this->input->post('receiving_id_auto_increment'));
 		}
-		/*
+		
 		if ($this->input->post('use_tax_value_at_all_locations'))
 		{
 			$this->Appconfig->set_all_locations_use_global_tax();
 		}
-		*/
+		
 		if (isset($company_logo))
 		{
 			$batch_save_data['company_logo'] = $company_logo;
