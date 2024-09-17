@@ -119,7 +119,7 @@ $this->load->helper('update');
 							'value'=>$this->config->item('company')));?>
 						</div>
 					</div>
-					<!--Prueba
+					<!--prueba
 					<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_company')) ?>">	
 						<#?php echo form_label(lang('common_tax_id').':', 'tax_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
@@ -130,7 +130,7 @@ $this->load->helper('update');
 							'value'=>$this->config->item('tax_id')));?>
 						</div>
 					</div>
-					-->
+							-->
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 						<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">

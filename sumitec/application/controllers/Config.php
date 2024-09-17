@@ -603,7 +603,7 @@ class Config extends Secure_area
 		'show_selling_price_on_recv' => $this->input->post('show_selling_price_on_recv') ? 1 : 0,
 		'hide_email_on_receipts' => $this->input->post('hide_email_on_receipts') ? 1 : 0,		
 		'enable_supplier_quick_add' => $this->input->post('enable_supplier_quick_add') ? 1 : 0,
-		'tax_id' => $this->input->post('tax_id'),
+		#'tax_id' => $this->input->post('tax_id'),
 		'disable_recv_number_on_barcode' => $this->input->post('disable_recv_number_on_barcode') ? 1 : 0,
 		'tax_jar_location' => $this->input->post('tax_jar_location') ? 1 : 0,
 		'disable_loyalty_by_default' => $this->input->post('disable_loyalty_by_default') ? 1 : 0,

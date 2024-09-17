@@ -577,7 +577,7 @@ class Config extends Secure_area
 		'enable_tips' => $this->input->post('enable_tips') ? 1 : 0,
 		'require_supplier_for_recv' => $this->input->post('require_supplier_for_recv') ? 1 : 0,
 		'default_payment_type_recv'=> $this->input->post('default_payment_type_recv'),
-		'taxjar_api_key'=> $this->input->post('taxjar_api_key'),
+		#'taxjar_api_key'=> $this->input->post('taxjar_api_key'),
 		'quick_variation_grid' => $this->input->post('quick_variation_grid') ? 1 : 0,
 		'show_full_category_path' => $this->input->post('show_full_category_path') ? 1 : 0,
 		'do_not_upload_images_to_ecommerce' => $this->input->post('do_not_upload_images_to_ecommerce') ? 1 : 0,
@@ -604,7 +604,7 @@ class Config extends Secure_area
 		'enable_supplier_quick_add' => $this->input->post('enable_supplier_quick_add') ? 1 : 0,
 		#'tax_id' => $this->input->post('tax_id'),
 		'disable_recv_number_on_barcode' => $this->input->post('disable_recv_number_on_barcode') ? 1 : 0,
-		'tax_jar_location' => $this->input->post('tax_jar_location') ? 1 : 0,
+		#'tax_jar_location' => $this->input->post('tax_jar_location') ? 1 : 0,
 		'disable_loyalty_by_default' => $this->input->post('disable_loyalty_by_default') ? 1 : 0,
 		'dark_mode' => $this->input->post('dark_mode') ? 1 : 0,
 		'ecommerce_only_sync_completed_orders' => $this->input->post('ecommerce_only_sync_completed_orders') ? 1 : 0,
@@ -871,7 +871,7 @@ class Config extends Secure_area
 									$tax_name = $taxes_to_save[$tax_class_id]['name'][$k];
 									$tax_percent = $taxes_to_save[$tax_class_id]['percent'][$k];
 									$cumulative = isset($taxes_to_save[$tax_class_id]['cumulative'][$k]) && $taxes_to_save[$tax_class_id]['cumulative'][$k] ? 1 : 0;
-									$tax_class_tax_id = isset($taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k]) && $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] ? $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] : -1;
+									#$tax_class_tax_id = isset($taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k]) && $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] ? $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] : -1;
 								
 									if ($tax_name)
 									{
