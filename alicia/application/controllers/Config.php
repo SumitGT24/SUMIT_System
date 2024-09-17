@@ -353,7 +353,7 @@ class Config extends Secure_area
 			
 		}
 		
-		#$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
+		$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
 		$batch_save_data=array(
 		'company'=>$this->input->post('company'),
 		#'qb_export_start_date'=>$this->input->post('export_start_date'),
@@ -361,7 +361,7 @@ class Config extends Secure_area
 		'website'=>$this->input->post('website'),
 		#'prices_include_tax' => $this->input->post('prices_include_tax') ? 1 : 0,
 		#'currency_symbol'=>$this->input->post('currency_symbol'),
-		#'language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english',
+		'language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english',
 		#'date_format'=>$this->input->post('date_format'),
 		#'time_format'=>$this->input->post('time_format'),
 		'print_after_sale'=>$this->input->post('print_after_sale') ? 1 : 0,
@@ -370,13 +370,13 @@ class Config extends Secure_area
 		'enable_pdf_receipts'=>$this->input->post('enable_pdf_receipts') ? 1 : 0,
 		#'automatically_email_receipt'=>$this->input->post('automatically_email_receipt') ? 1 : 0,
 		'automatically_show_comments_on_receipt' => $this->input->post('automatically_show_comments_on_receipt') ? 1 : 0,
-		#'id_to_show_on_sale_interface' => $this->input->post('id_to_show_on_sale_interface'),
+		'id_to_show_on_sale_interface' => $this->input->post('id_to_show_on_sale_interface'),
 		#'auto_focus_on_item_after_sale_and_receiving' => $this->input->post('auto_focus_on_item_after_sale_and_receiving') ? 1 : 0,
 		#'barcode_price_include_tax'=>$this->input->post('barcode_price_include_tax') ? 1 : 0,
 		'hide_signature'=>$this->input->post('hide_signature') ? 1 : 0,
 		'hide_customer_recent_sales'=>$this->input->post('hide_customer_recent_sales') ? 1 : 0,
 		'disable_confirmation_sale'=>$this->input->post('disable_confirmation_sale') ? 1 : 0,
-		#'confirm_error_adding_item'=>$this->input->post('confirm_error_adding_item') ? 1 : 0,
+		'confirm_error_adding_item'=>$this->input->post('confirm_error_adding_item') ? 1 : 0,
 		'track_payment_types' => serialize($this->input->post('track_payment_types') ? $this->input->post('track_payment_types') : array()),
 		#'number_of_items_per_page'=>$this->input->post('number_of_items_per_page'),
 		'additional_payment_types' => $this->input->post('additional_payment_types'),
@@ -389,7 +389,7 @@ class Config extends Secure_area
 		#'customers_store_accounts' => $this->input->post('customers_store_accounts') ? 1 : 0,
 		'calculate_average_cost_price_from_receivings' => $this->input->post('calculate_average_cost_price_from_receivings') ? 1 : 0,
 		'averaging_method' => $this->input->post('averaging_method'),
-#--------AQUI'show_language_switcher' => $this->input->post('show_language_switcher') ? 1 : 0,
+		'show_language_switcher' => $this->input->post('show_language_switcher') ? 1 : 0,
 		'show_clock_on_header' => $this->input->post('show_clock_on_header') ? 1 : 0,
 		'disable_giftcard_detection' => $this->input->post('disable_giftcard_detection') ? 1 : 0,
 		'hide_available_giftcards' => $this->input->post('hide_available_giftcards') ? 1 : 0,
