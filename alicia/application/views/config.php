@@ -17,9 +17,9 @@ $this->load->helper('update');
 	<button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
 	<button class="tablink" onclick="openPage('System', this)">Sistema</button>	 
 </div>
-
+<div>
 <!-- Formulario de configuraciones -->
-<?php echo form_open_multipart('config/save/1', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
+<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
 		<div class="panel panel-piluku">
@@ -50,18 +50,6 @@ $this->load->helper('update');
 						'value'=>$this->config->item('company')));?>
 					</div>
 				</div>
-				<!--Eliminar identificador de impuesto-->
-				<div class="form-group" data-keyword="<#?php echo H(lang('config_keyword_company')) ?>">	
-					<?php echo form_label(lang('common_tax_id').':', 'tax_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-						<?php echo form_input(array(
-							'class'=>'validate form-control form-inps',
-						'name'=>'tax_id',
-						'id'=>'tax_id',
-						'value'=>$this->config->item('tax_id')));?>
-					</div>
-				</div>
-				<!--fin elimar impuesto empresa-->
 
 				<!--website-->
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
@@ -2485,7 +2473,7 @@ $this->load->helper('update');
 	</div>
 	<!-- Cierre de formulario -->
 <?php echo form_close(); ?>
-
+</div>
 <!--Script funciones formulario-->
 
 <script type='text/javascript'>

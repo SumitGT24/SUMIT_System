@@ -338,7 +338,7 @@ $this->load->helper('update');
 						</div><!-- end col -->
 				</div><!-- end form-group -->
 					
-					<?php if (!$this->config->item('tax_class_id')) {?>
+					<? if (!$this->config->item('tax_class_id')) {?>
 					
 						<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_taxes')) ?>">	
 							<?php echo form_label(lang('common_default_tax_rate_1').':', 'default_tax_1_rate',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -569,7 +569,7 @@ $this->load->helper('update');
 						<a href="javascript:void(0);" id="add_exchange_rate"><?php echo lang('config_add_currency_exchange_rate'); ?></a>
 						</div>
 					</div>
-					
+				
 					
  					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_currency')) ?>">	
  					<?php echo form_label(lang('config_currency_symbol_location').':', 'currency_symbol_location',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>

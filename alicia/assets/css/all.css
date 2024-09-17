@@ -45,8 +45,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px; /* Espacio entre los botones */
-  margin-bottom: 15px;
-  padding: 5px;
+  padding: 10px;
+  padding-bottom: 15px;
 }
 
 /*/Tabs Style*/
