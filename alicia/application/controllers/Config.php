@@ -432,8 +432,8 @@ class Config extends Secure_area
 		'require_employee_login_before_each_sale' => $this->input->post('require_employee_login_before_each_sale') ? 1 : 0,
 		'reset_location_when_switching_employee' => $this->input->post('reset_location_when_switching_employee') ? 1 : 0,
 
-		'number_of_decimals' => $this->input->post('number_of_decimals'),
-		#'enhanced_search_method' => $this->input->post('enhanced_search_method') ? 1 : 0,
+		#'number_of_decimals' => $this->input->post('number_of_decimals'),
+		'enhanced_search_method' => $this->input->post('enhanced_search_method') ? 1 : 0,
 		'commission_percent_type' => $this->input->post('commission_percent_type'),
 
 		'hide_price_on_barcodes' => $this->input->post('hide_price_on_barcodes') ? 1 : 0,
