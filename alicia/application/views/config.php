@@ -2509,23 +2509,6 @@ $(document).ready(function()
 		
 	});
 	
-	
-	$("#reset_ecommerce").click(function(event)
-	{
-		bootbox.confirm(<?php echo json_encode(lang('config_confirm_reset_ecom')); ?>, function(response)
-		{
-			if (response)
-			{
-				$.getJSON(<?php echo json_encode(site_url('config/reset_ecom')); ?>,function(response)
-				{
-					if (response.success)
-					{
-						show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
-					}
-				});
-			}
-		});
-	});
 	var submitting = false;
 	$('#config_form').validate({
 		submitHandler:function(form)
@@ -2668,6 +2651,46 @@ $(".config-panel").sieve({
 });
 
 $("#search").focus().trigger('keyup');
+
+/*Guardar cambios en metodos de pago */
+<?php
+$deleted_payment_types = $this->config->item('deleted_payment_types');
+$deleted_payment_types = explode(',',$deleted_payment_types);
+
+foreach($deleted_payment_types as $deleted_payment_type)
+{
+?>
+	$( ".payment_types" ).each(function() {
+		if ($(this).text() == <?php echo json_encode($deleted_payment_type); ?>)
+		{
+			$(this).removeClass('btn-primary');			
+			$(this).addClass('deleted btn-danger');			
+		}
+	});
+<?php
+}
+?>
+save_deleted_payments();
+
+$(".payment_types").click(function(e)
+{
+	e.preventDefault();
+	$(this).toggleClass('btn-primary');
+	$(this).toggleClass('deleted btn-danger');
+	save_deleted_payments();
+});
+
+function save_deleted_payments()
+{
+	$(".deleted_payment_types").remove();
+	
+	var deleted_payment_types = [];
+	$( ".payment_types.deleted" ).each(function() {
+		deleted_payment_types.push($(this).text());
+	});
+	$("#config_form").append('<input class="deleted_payment_types" type="hidden" name="deleted_payment_types" value="'+deleted_payment_types.join()+'" />');
+	
+}
 
 $("#item_lookup_order_list").sortable();
 	
@@ -2845,9 +2868,6 @@ $("#item_lookup_order_list").sortable();
 
 </script>
 
-
 <!-- Cierre de formulario -->
-
-
 
 <?php $this->load->view("partial/footer"); ?>

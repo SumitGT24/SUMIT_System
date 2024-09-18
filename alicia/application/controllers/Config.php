@@ -401,7 +401,6 @@ class Config extends Secure_area
 		'calculate_average_cost_price_from_receivings' => $this->input->post('calculate_average_cost_price_from_receivings') ? 1 : 0,
 		'averaging_method' => $this->input->post('averaging_method'),
 		'show_clock_on_header' => $this->input->post('show_clock_on_header') ? 1 : 0,
-
 		'disable_giftcard_detection' => $this->input->post('disable_giftcard_detection') ? 1 : 0,
 		'hide_available_giftcards' => $this->input->post('hide_available_giftcards') ? 1 : 0,
 		'always_show_item_grid' => $this->input->post('always_show_item_grid') ? 1 : 0,
@@ -420,6 +419,14 @@ class Config extends Secure_area
 		'timeclock' => $this->input->post('timeclock') ? 1 : 0,
 		'timeclock_pto' => $this->input->post('timeclock_pto') ? 1 : 0,
 		'number_of_recent_sales' => $this->input->post('number_of_recent_sales'),
+
+		'calculate_profit_for_giftcard_when' => $this->input->post('calculate_profit_for_giftcard_when'),
+		'speed_up_search_queries' => $this->input->post('speed_up_search_queries') ? 1 : 0,
+		'enable_sounds' => $this->input->post('enable_sounds') ? 1 : 0,
+		'report_sort_order' => $this->input->post('report_sort_order'),
+		'do_not_group_same_items' => $this->input->post('do_not_group_same_items') ? 1 : 0,
+		'do_not_allow_out_of_stock_items_to_be_sold' => $this->input->post('do_not_allow_out_of_stock_items_to_be_sold') ? 1: 0,
+		'edit_item_price_if_zero_after_adding' => $this->input->post('edit_item_price_if_zero_after_adding') ? 1 : 0,
 
 		
 		'mailing_labels_type' => $this->input->post('mailing_labels_type'),
