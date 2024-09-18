@@ -1,10 +1,10 @@
 <?php $this->load->view("partial/header"); ?>
 
 
-<!--?php if (isset($needs_auth) && $needs_auth) { ?>
-	<#?php echo form_open('locations/check_auth', array('id' => 'location_form_auth', 'class' => 'form-horizontal')); ?>
+<?php if (isset($needs_auth) && $needs_auth) { ?>
+	<?php echo form_open('locations/check_auth', array('id' => 'location_form_auth', 'class' => 'form-horizontal')); ?>
 
-	<div class="row">
+	<!----div class="row">
 		<div class="col-md-12">
 			<div class="panel">
 				<div class="panel-body">
@@ -417,7 +417,7 @@
 
 
 					<div class="form-group">
-						<?php echo form_label("<a href='https://web.whatsapp.com/send?phone=+50237376619' target='_blank'>" . lang('locations_enable_credit_card_processing') . '</a>:', 'enable_credit_card_processing', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
+						<?php echo form_label("<a href='https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0' target='_blank'>" . lang('locations_enable_credit_card_processing') . '</a>:', 'enable_credit_card_processing', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
 							<?php echo form_checkbox(array(
 								'name' => 'enable_credit_card_processing',
