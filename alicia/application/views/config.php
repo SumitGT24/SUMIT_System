@@ -764,9 +764,11 @@ $this->load->helper('update');
 												return_policy: {
 													required: true
 												},
+												/*
 												item_id_auto_increment: {
 													max: 999999999
 												},
+												
 												item_kit_id_auto_increment: {
 													max: 999999999
 												},
@@ -776,6 +778,7 @@ $this->load->helper('update');
 												receiving_id_auto_increment: {
 													max: 999999999
 												}
+												*/
 											},
 											messages: {
 												company: "El nombre de la empresa es obligatorio.",
@@ -1721,10 +1724,7 @@ $this->load->helper('update');
 						?>
 					</div>
 				</div>
-				
-				
-				
-				
+
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 					<?php echo form_label(lang('config_display_item_name_first_for_variation_name').':', 'display_item_name_first_for_variation_name',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2556,6 +2556,7 @@ $(document).ready(function()
 			{
 				required: true
 			},
+			/*
 			item_id_auto_increment:
 			{
 				number: true,
@@ -2580,6 +2581,7 @@ $(document).ready(function()
 				min: 1,
 				max: 999999999
 			}
+			*/
    	},
 		messages: 
 		{
