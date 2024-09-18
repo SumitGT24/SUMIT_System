@@ -426,13 +426,18 @@ class Config extends Secure_area
 		'do_not_group_same_items' => $this->input->post('do_not_group_same_items') ? 1 : 0,
 		'do_not_allow_out_of_stock_items_to_be_sold' => $this->input->post('do_not_allow_out_of_stock_items_to_be_sold') ? 1: 0,
 		'edit_item_price_if_zero_after_adding' => $this->input->post('edit_item_price_if_zero_after_adding') ? 1 : 0,
-
 		'default_type_for_grid' => $this->input->post('default_type_for_grid'),
 		'disable_quick_complete_sale' => $this->input->post('disable_quick_complete_sale') ? 1 : 0,
 		'fast_user_switching' => $this->input->post('fast_user_switching') ? 1 : 0,
 		'require_employee_login_before_each_sale' => $this->input->post('require_employee_login_before_each_sale') ? 1 : 0,
 		'reset_location_when_switching_employee' => $this->input->post('reset_location_when_switching_employee') ? 1 : 0,
-		
+
+		'number_of_decimals' => $this->input->post('number_of_decimals'),
+		'enhanced_search_method' => $this->input->post('enhanced_search_method') ? 1 : 0,
+		'commission_percent_type' => $this->input->post('commission_percent_type'),
+		'hide_price_on_barcodes' => $this->input->post('hide_price_on_barcodes') ? 1 : 0,
+		'always_use_average_cost_method' => $this->input->post('always_use_average_cost_method') ? 1 : 0,
+		'test_mode' => $this->input->post('test_mode') ? 1 : 0,
 		
 		'mailing_labels_type' => $this->input->post('mailing_labels_type'),
 		'phppos_session_expiration' => ($this->input->post('phppos_session_expiration') == 0 || ($this->input->post('phppos_session_expiration') >= (10*60) && $this->input->post('phppos_session_expiration') <= (168*60*60))) ? $this->input->post('phppos_session_expiration') : 0,
