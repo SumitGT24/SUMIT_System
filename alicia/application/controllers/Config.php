@@ -509,6 +509,7 @@ class Config extends Secure_area
 		'do_not_show_closing' => $this->input->post('do_not_show_closing') ? 1 : 0,
 		'show_barcode_company_name' => $this->input->post('show_barcode_company_name') ? 1 : 0,
 		'deleted_payment_types' =>  $deleted_payment_types,
+		'automatically_email_receipt'=>$this->input->post('automatically_email_receipt') ? 1 : 0,
 		#------------Elementos comentados porque se eliminaron del formulario de configuraciones-------------
 		#'number_of_decimals' => $this->input->post('number_of_decimals'),
 		#'suppliers_store_accounts' => $this->input->post('suppliers_store_accounts') ? 1 : 0,
@@ -555,7 +556,6 @@ class Config extends Secure_area
 		#'language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english',
 		#'date_format'=>$this->input->post('date_format'),
 		#'time_format'=>$this->input->post('time_format'),
-		'automatically_email_receipt'=>$this->input->post('automatically_email_receipt') ? 1 : 0,
 		#Revisado 100%'auto_focus_on_item_after_sale_and_receiving' => $this->input->post('auto_focus_on_item_after_sale_and_receiving') ? 1 : 0,
 		#'barcode_price_include_tax'=>$this->input->post('barcode_price_include_tax') ? 1 : 0,
 		#'number_of_items_per_page'=>$this->input->post('number_of_items_per_page'),
@@ -654,7 +654,7 @@ class Config extends Secure_area
 		}
 	*/
 
-	/*Comentar configuracion ID autoincrementable*/
+	/*Comentar configuracion ID autoincrementables
 		if($this->input->post('item_id_auto_increment'))
 		{
 			$this->Appconfig->change_auto_increment('items',$this->input->post('item_id_auto_increment'));
@@ -675,7 +675,7 @@ class Config extends Secure_area
 		{
 			$this->Appconfig->change_auto_increment('receivings',$this->input->post('receiving_id_auto_increment'));
 		}
-		/*Comentar impuestos*/
+		Comentar impuestos
 		if ($this->input->post('use_tax_value_at_all_locations'))
 		{
 			$this->Appconfig->set_all_locations_use_global_tax();
@@ -689,7 +689,7 @@ class Config extends Secure_area
 		{
 			$batch_save_data['company_logo'] = 0;
 		}
-		
+		*/
 		if (is_on_demo_host())
 		{
 			$batch_save_data['language'] = 'spanish';
@@ -707,7 +707,7 @@ class Config extends Secure_area
 		if($this->Appconfig->batch_save($batch_save_data) 
 			&& $this->save_tiers($this->input->post('tiers_to_edit'), $this->input->post('tiers_to_delete'))
 			&& $this->save_sale_types($this->input->post('sale_types_to_edit'), $this->input->post('sale_types_to_delete'))
-			/*Monedas*/
+			/*Monedas
 			&& $this->Register->save_register_currency_denominations($this->input->post('currency_denoms_name'), $this->input->post('currency_denoms_value'), $this->input->post('currency_denoms_ids'),$this->input->post('deleted_denmos'))
 			&& $this->Appconfig->save_exchange_rates(
 				$this->input->post('currency_exchange_rates_to'),
@@ -717,11 +717,11 @@ class Config extends Secure_area
 				$this->input->post('currency_exchange_rates_number_of_decimals'),
 				$this->input->post('currency_exchange_rates_thousands_separator'),
 				$this->input->post('currency_exchange_rates_decimal_point')
-				)
+				)*/
 			)
 		{
 			
-			$this->Appconfig->save_ecommerce_locations($this->input->post('ecommerce_locations'));
+			#$this->Appconfig->save_ecommerce_locations($this->input->post('ecommerce_locations'));
 			
 			$providers_to_save = $this->input->post('providers');
 			$methods_to_save = $this->input->post('methods');		
