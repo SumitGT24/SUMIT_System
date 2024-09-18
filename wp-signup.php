@@ -180,7 +180,7 @@ function show_blog_form( $blogname = '', $blog_title = '', $errors = '' ) {
 
 			// Use US English if the default isn't available.
 			if ( ! in_array( $lang, $languages, true ) ) {
-				$lang = '';
+				$lang = 'spanish';
 			}
 
 			wp_dropdown_languages(

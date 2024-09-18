@@ -30,11 +30,7 @@ $this->load->helper('update');
 	    'screeny'     => 0,
 	    'window_name' => '_blank'
 		);
-
-		function create_section($title)
-		{
-			return $title ;
-		}
+		
 	?>
 <!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
