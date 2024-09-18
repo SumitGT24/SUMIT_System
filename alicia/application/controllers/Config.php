@@ -654,7 +654,7 @@ class Config extends Secure_area
 		}
 	*/
 
-	/*Comentar configuracion ID autoincrementable
+	/*Comentar configuracion ID autoincrementable*/
 		if($this->input->post('item_id_auto_increment'))
 		{
 			$this->Appconfig->change_auto_increment('items',$this->input->post('item_id_auto_increment'));
@@ -675,13 +675,12 @@ class Config extends Secure_area
 		{
 			$this->Appconfig->change_auto_increment('receivings',$this->input->post('receiving_id_auto_increment'));
 		}
-		*/
-		/*Comentar impuestos
+		/*Comentar impuestos*/
 		if ($this->input->post('use_tax_value_at_all_locations'))
 		{
 			$this->Appconfig->set_all_locations_use_global_tax();
 		}
-		*/
+		
 		if (isset($company_logo))
 		{
 			$batch_save_data['company_logo'] = $company_logo;
@@ -708,7 +707,7 @@ class Config extends Secure_area
 		if($this->Appconfig->batch_save($batch_save_data) 
 			&& $this->save_tiers($this->input->post('tiers_to_edit'), $this->input->post('tiers_to_delete'))
 			&& $this->save_sale_types($this->input->post('sale_types_to_edit'), $this->input->post('sale_types_to_delete'))
-			/*Monedas
+			/*Monedas*/
 			&& $this->Register->save_register_currency_denominations($this->input->post('currency_denoms_name'), $this->input->post('currency_denoms_value'), $this->input->post('currency_denoms_ids'),$this->input->post('deleted_denmos'))
 			&& $this->Appconfig->save_exchange_rates(
 				$this->input->post('currency_exchange_rates_to'),
@@ -719,7 +718,6 @@ class Config extends Secure_area
 				$this->input->post('currency_exchange_rates_thousands_separator'),
 				$this->input->post('currency_exchange_rates_decimal_point')
 				)
-			*/	
 			)
 		{
 			
