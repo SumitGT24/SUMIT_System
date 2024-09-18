@@ -55,17 +55,6 @@
 						</div>
 					</div>
 
-					<div class="form-group">	
-					<?php echo form_label(lang('common_language').':', 'language',array('class'=>'col-sm-3 col-md-4 col-lg-3 col-sm-3 col-md-4 col-lg-3 control-label  required')); ?>
-						<div class="col-sm-9 col-md-8 col-lg-9">
-						<?php echo form_dropdown('language', array(
-							'spanish'   => 'Español', 
-							$person_info->language ? $person_info->language : $this->Appconfig->get_raw_language_value(), 'class="form-control"');
-							?>
-						</div>
-					</div>
-
-
 					<div class="modal-footer">
 						<div class="form-acions">
 							<?php

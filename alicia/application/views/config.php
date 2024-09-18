@@ -39,9 +39,6 @@ $this->load->helper('update');
 <!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	
-	<div class="text-center location-settings">
-	<?php echo lang('config_looking_for_location_settings').' '.anchor($this->Location->count_all() > 1 ? 'locations' : 'locations/view/1', lang('module_locations').' '.lang('config_module'), 'class="btn btn-info"');?>
-	</div>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
 		<div class="panel panel-piluku">
