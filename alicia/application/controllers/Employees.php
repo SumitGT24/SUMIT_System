@@ -441,7 +441,7 @@ class Employees extends Person_controller
 		$this->load->helper('directory');
 		
 		$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
-		$employee_data=array_merge($employee_data,array('language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english'));
+		$employee_data=array_merge($employee_data,array('language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'spanish'));
 		
 		$this->load->helper('demo');
 		if ( (is_on_demo_host()) && $employee_id == 1)
@@ -559,7 +559,7 @@ class Employees extends Person_controller
 		$this->load->helper('directory');
 
 		$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
-		$language_id=in_array($this->input->post('employee_language_id'), $valid_languages) ? $this->input->post('employee_language_id') : 'english';
+		$language_id=in_array($this->input->post('employee_language_id'), $valid_languages) ? $this->input->post('employee_language_id') : 'spanish';
 		
 		$this->load->helper('demo');
 		if ( (is_on_demo_host()) && $employee_id == 1)
