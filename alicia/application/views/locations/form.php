@@ -8,7 +8,7 @@
 		<div class="col-md-12">
 			<div class="panel">
 				<div class="panel-body">
-					<h3 style="margin-left: 80px;"><a href="https://web.whatsapp.com/send?phone=+50237376619" target="_blank"><?php echo lang('locations_purchase_additional_licenses'); ?> &raquo;</a></h3>
+					<h3 style="margin-left: 80px;"><a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('locations_purchase_additional_licenses'); ?> &raquo;</a></h3>
 					<?php if (validation_errors()) { ?>
 						<div class="alert alert-danger">
 							<strong><?php echo lang('common_error'); ?></strong>
