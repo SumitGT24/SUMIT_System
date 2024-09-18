@@ -401,8 +401,27 @@ class Config extends Secure_area
 		'calculate_average_cost_price_from_receivings' => $this->input->post('calculate_average_cost_price_from_receivings') ? 1 : 0,
 		'averaging_method' => $this->input->post('averaging_method'),
 		'show_clock_on_header' => $this->input->post('show_clock_on_header') ? 1 : 0,
-		
 
+		'disable_giftcard_detection' => $this->input->post('disable_giftcard_detection') ? 1 : 0,
+		'hide_available_giftcards' => $this->input->post('hide_available_giftcards') ? 1 : 0,
+		'always_show_item_grid' => $this->input->post('always_show_item_grid') ? 1 : 0,
+		'hide_out_of_stock_grid' => $this->input->post('hide_out_of_stock_grid') ? 1 : 0,
+		'default_payment_type'=> $this->input->post('default_payment_type'),
+		'announcement_special'=>$this->input->post('announcement_special'),
+		'spreadsheet_format' => $this->input->post('spreadsheet_format'),
+		'legacy_detailed_report_export' => $this->input->post('legacy_detailed_report_export') ? 1 : 0,
+		'select_sales_person_during_sale' => $this->input->post('select_sales_person_during_sale') ? 1 : 0,
+		'default_sales_person' => $this->input->post('default_sales_person'),
+		'require_customer_for_sale' => $this->input->post('require_customer_for_sale') ? 1 : 0,
+		'commission_default_rate' => (float)$this->input->post('commission_default_rate'),
+		'disable_sale_notifications' => $this->input->post('disable_sale_notifications') ? 1 : 0,
+		'change_sale_date_for_new_sale' => $this->input->post('change_sale_date_for_new_sale') ? 1 : 0,
+		'id_to_show_on_barcode' => $this->input->post('id_to_show_on_barcode'),
+		'timeclock' => $this->input->post('timeclock') ? 1 : 0,
+		'timeclock_pto' => $this->input->post('timeclock_pto') ? 1 : 0,
+		'number_of_recent_sales' => $this->input->post('number_of_recent_sales'),
+
+		
 		'mailing_labels_type' => $this->input->post('mailing_labels_type'),
 		'phppos_session_expiration' => ($this->input->post('phppos_session_expiration') == 0 || ($this->input->post('phppos_session_expiration') >= (10*60) && $this->input->post('phppos_session_expiration') <= (168*60*60))) ? $this->input->post('phppos_session_expiration') : 0,
 		'do_not_allow_below_cost' => $this->input->post('do_not_allow_below_cost') ? 1 : 0,
