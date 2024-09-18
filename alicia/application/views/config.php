@@ -38,6 +38,10 @@ $this->load->helper('update');
 	?>
 <!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
+	
+	<div class="text-center location-settings">
+	<?php echo lang('config_looking_for_location_settings').' '.anchor($this->Location->count_all() > 1 ? 'locations' : 'locations/view/1', lang('module_locations').' '.lang('config_module'), 'class="btn btn-info"');?>
+	</div>
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
 		<div class="panel panel-piluku">
@@ -304,8 +308,7 @@ $this->load->helper('update');
 												 foreach($this->Zip->get_zips_for_zone($zone_id)->result_array() as $zip_row)
 												 {
 												 	$zips_for_zone[] = $zip_row['name'];
-												 }
-												 
+												 }												 
 												 
 												 $zips_for_zone_str = implode('|',$zips_for_zone);
 												?>
@@ -2418,7 +2421,6 @@ $(document).ready(function()
 			}
 		});
 	});
-
 	
 	$('#additional_payment_types').selectize({
 	    delimiter: ',',

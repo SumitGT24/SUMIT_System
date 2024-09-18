@@ -207,8 +207,6 @@
 				     $(this).parent().addClass('mini-bar');
 				   }
 				 );
-			
-			
 
 	    $('.menu-bar').click(function(e){                  
 	    	e.preventDefault();

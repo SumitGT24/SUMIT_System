@@ -1906,10 +1906,7 @@ $this->load->helper('update');
 							<label for="dont_recalculate_cost_price_when_unsuspending_estimates"><span></span></label>
 						</div>
 					</div>
-					
-					
-					
-					
+										
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_suspended_layaways')) ?>">
 						<?php echo form_label(lang('config_user_configured_layaway_name').':', 'user_configured_layaway_name',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
