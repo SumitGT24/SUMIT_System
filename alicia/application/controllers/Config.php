@@ -419,7 +419,6 @@ class Config extends Secure_area
 		'timeclock' => $this->input->post('timeclock') ? 1 : 0,
 		'timeclock_pto' => $this->input->post('timeclock_pto') ? 1 : 0,
 		'number_of_recent_sales' => $this->input->post('number_of_recent_sales'),
-
 		'calculate_profit_for_giftcard_when' => $this->input->post('calculate_profit_for_giftcard_when'),
 		'speed_up_search_queries' => $this->input->post('speed_up_search_queries') ? 1 : 0,
 		'enable_sounds' => $this->input->post('enable_sounds') ? 1 : 0,
@@ -428,6 +427,12 @@ class Config extends Secure_area
 		'do_not_allow_out_of_stock_items_to_be_sold' => $this->input->post('do_not_allow_out_of_stock_items_to_be_sold') ? 1: 0,
 		'edit_item_price_if_zero_after_adding' => $this->input->post('edit_item_price_if_zero_after_adding') ? 1 : 0,
 
+		'default_type_for_grid' => $this->input->post('default_type_for_grid'),
+		'disable_quick_complete_sale' => $this->input->post('disable_quick_complete_sale') ? 1 : 0,
+		'fast_user_switching' => $this->input->post('fast_user_switching') ? 1 : 0,
+		'require_employee_login_before_each_sale' => $this->input->post('require_employee_login_before_each_sale') ? 1 : 0,
+		'reset_location_when_switching_employee' => $this->input->post('reset_location_when_switching_employee') ? 1 : 0,
+		
 		
 		'mailing_labels_type' => $this->input->post('mailing_labels_type'),
 		'phppos_session_expiration' => ($this->input->post('phppos_session_expiration') == 0 || ($this->input->post('phppos_session_expiration') >= (10*60) && $this->input->post('phppos_session_expiration') <= (168*60*60))) ? $this->input->post('phppos_session_expiration') : 0,
