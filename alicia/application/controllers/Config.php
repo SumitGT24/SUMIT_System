@@ -432,9 +432,9 @@ class Config extends Secure_area
 		'require_employee_login_before_each_sale' => $this->input->post('require_employee_login_before_each_sale') ? 1 : 0,
 		'reset_location_when_switching_employee' => $this->input->post('reset_location_when_switching_employee') ? 1 : 0,
 
-		#'number_of_decimals' => $this->input->post('number_of_decimals'),
+		'number_of_decimals' => $this->input->post('number_of_decimals'),
 		'enhanced_search_method' => $this->input->post('enhanced_search_method') ? 1 : 0,
-		'commission_percent_type' => $this->input->post('commission_percent_type'),
+		#'commission_percent_type' => $this->input->post('commission_percent_type'),
 
 		'hide_price_on_barcodes' => $this->input->post('hide_price_on_barcodes') ? 1 : 0,
 		'always_use_average_cost_method' => $this->input->post('always_use_average_cost_method') ? 1 : 0,
@@ -577,7 +577,7 @@ class Config extends Secure_area
 		#'sku_sync_field' => $this->input->post('sku_sync_field'),
 		#'thousands_separator' => $this->input->post('thousands_separator'),
 		#'decimal_point' => $this->input->post('decimal_point'),
-		#'deleted_payment_types' =>  $deleted_payment_types,
+		'deleted_payment_types' =>  $deleted_payment_types,
 		#'highlight_low_inventory_items_in_items_module' => $this->input->post('highlight_low_inventory_items_in_items_module') ? 1 : 0,
 		#'enable_customer_loyalty_system' => $this->input->post('enable_customer_loyalty_system') ? 1 : 0,
 		#'loyalty_option' =>$this->input->post('loyalty_option'),
