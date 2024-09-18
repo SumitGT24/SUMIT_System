@@ -555,7 +555,7 @@ class Config extends Secure_area
 		#'language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'english',
 		#'date_format'=>$this->input->post('date_format'),
 		#'time_format'=>$this->input->post('time_format'),
-		#'automatically_email_receipt'=>$this->input->post('automatically_email_receipt') ? 1 : 0,
+		'automatically_email_receipt'=>$this->input->post('automatically_email_receipt') ? 1 : 0,
 		#Revisado 100%'auto_focus_on_item_after_sale_and_receiving' => $this->input->post('auto_focus_on_item_after_sale_and_receiving') ? 1 : 0,
 		#'barcode_price_include_tax'=>$this->input->post('barcode_price_include_tax') ? 1 : 0,
 		#'number_of_items_per_page'=>$this->input->post('number_of_items_per_page'),
