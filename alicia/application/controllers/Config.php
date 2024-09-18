@@ -165,7 +165,7 @@ class Config extends Secure_area
 		$data['ecommerce_locations'] = $this->Appconfig->get_ecommerce_locations();
 		$this->load->view("config", $data);
 	}
-	
+	/*
 	function save_shopify_config()
 	{
 		$batch_save_data = array(
@@ -179,7 +179,7 @@ class Config extends Secure_area
 		echo json_encode(array('success'=>true,'message'=>lang('common_saved_successfully')));
 		
 	}
-		
+	*/	
 	function save()
 	{
 		if ($this->config->item("ecommerce_platform"))
@@ -833,7 +833,7 @@ class Config extends Secure_area
 					$this->Shipping_zone->delete($zone_id);
 				}
 			}	
-			
+			/*Comentar impuestos
 			$has_default_tax_class = (boolean)$this->input->post('tax_class_id');
 			$tax_classes_to_save = $this->input->post('tax_classes');
 			$taxes_to_save = $this->input->post('taxes');		
@@ -933,7 +933,7 @@ class Config extends Secure_area
 				$markup_markdown[hex_decode($key)] = (float)$value;
 			}
 			$this->Appconfig->save('markup_markdown',serialize($markup_markdown));
-				
+			Comentar impuestos*/	
 			$this->Appconfig->save('wizard_configure_company',1);
 			echo json_encode(array('success'=>true,'message'=>lang('common_saved_successfully')));
 		}
