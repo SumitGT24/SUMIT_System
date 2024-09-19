@@ -1388,9 +1388,9 @@
 						}
 
 					},
-					<?php if (!$location_info->location_id) { ?>,
+					<?php if (!$location_info->location_id) { ?>
 						resetForm: true,
-					<?php } ?>,
+					<?php } ?>
 					dataType: 'json',
 				});
 			},
