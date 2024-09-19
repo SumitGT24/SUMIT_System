@@ -310,7 +310,6 @@
 						</div>
 					</div>
 
-
 					<div class="form-group">
 						<?php echo form_label(lang('locations_email_receivings_email') . ':', 'email_receivings_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -326,7 +325,6 @@
 						</div>
 					</div>
 
-
 					<div class="form-group">
 						<?php echo form_label(lang('common_return_policy') . ':', 'return_policy', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -340,7 +338,6 @@
 							)); ?>
 						</div>
 					</div>
-
 
 					<div class="form-group">
 						<?php echo form_label(lang('reports_employees') . ':', 'employees', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
@@ -391,8 +388,6 @@
 											<td><input type="text" class="form-control iptran register-cc-field" name="registers_to_edit[<?php echo $register->register_id; ?>][iptran_device_id]" value="<?php echo H($register->iptran_device_id); ?>" /></td>
 											<td><input id="pinpad_ip_<?php echo $counter; ?>" type="text" class="form-control emv_pinpad_ip register-cc-field" name="registers_to_edit[<?php echo $register->register_id; ?>][emv_pinpad_ip]" value="<?php echo H($register->emv_pinpad_ip); ?>" /></td>
 											<td><input id="pinpad_port_<?php echo $counter; ?>" type="text" class="form-control emv_pinpad_port register-cc-field" name="registers_to_edit[<?php echo $register->register_id; ?>][emv_pinpad_port]" value="<?php echo H($register->emv_pinpad_port); ?>" /></td>
-
-
 											<td>
 												<a class="update_parameters_ip_tran register-cc-field" href="javascript:void(0);"><?php echo lang('locations_update_params_ip_tran'); ?></a><span class="register-cc-field"> / </span>
 												<a class="init_ip_tran register-cc-field" href="javascript:void(0);"><?php echo lang('locations_init_mercury_emv'); ?></a>
@@ -520,7 +515,6 @@
 									)); ?> (<?php echo lang('locations_com_9_is_default'); ?>)
 								</div>
 							</div>
-
 
 							<div class="form-group">
 								<?php echo form_label(lang('locations_listener_port') . ':', 'listener_port', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
@@ -807,7 +801,6 @@
 						</div>
 					</div>
 
-
 					<div class="form-group" id="stock_alert_email_container">
 						<?php echo form_label(lang('locations_stock_alert_email') . ':', 'stock_alert_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -857,7 +850,6 @@
 						</div>
 					</div>
 
-
 					<?php
 					if ($this->Location->get_info_for_key('mailchimp_api_key')) {
 						$this->load->helper('mailchimp');
@@ -902,7 +894,6 @@
 					<?php
 					}
 					?>
-
 
 					<div class="form-group">
 						<?php echo form_label(anchor('http://platform.ly', lang('locations_platformly_api_key'), array('target' => '_blank')) . ':', 'platformly_api_key', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
@@ -963,8 +954,6 @@
 							)); ?>
 						</div>
 					</div>
-
-
 
 					<div class="form-group override-taxes-container">
 						<?php echo form_label(lang('common_override_default_tax') . ':', '', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label wide')); ?>
@@ -1176,8 +1165,6 @@
 	</div>
 	<?php echo form_close(); ?>
 <!--?php }? Fin if else-->
-
-
 
 <script type='text/javascript'>
 	var submitting = false;
@@ -1401,10 +1388,10 @@
 						}
 
 					},
-					<?php if (!$location_info->location_id) { ?>
-						//resetForm: true,
-					<?php } ?>
-					//dataType: 'json'
+					<?php if (!$location_info->location_id) { ?>,
+						resetForm: true,
+					<?php } ?>,
+					dataType: 'json'
 				});
 			},
 			ignore: '',
