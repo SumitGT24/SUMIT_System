@@ -1402,9 +1402,9 @@
 
 					},
 					<?php if (!$location_info->location_id) { ?>
-						resetForm: true,
+						//resetForm: true,
 					<?php } ?>
-					dataType: 'json'
+					//dataType: 'json'
 				});
 			},
 			ignore: '',
