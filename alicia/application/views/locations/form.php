@@ -1248,7 +1248,6 @@
 			}, 'json');
 		});
 
-
 		$(document).on('click', '.test_mode_ip_tran', function() {
 			var emv_merchant_id = $("#emv_merchant_id").val();
 			var ip_tran_id = $(this).parent().prev().find('.iptran').val();
@@ -1262,8 +1261,6 @@
 				$("#grid-loader").hide();
 			}, 'json');
 		});
-
-
 
 		$(document).on('keyup', "#emv_merchant_id", function() {
 			check_emv_merchant_id();
@@ -1409,7 +1406,6 @@
 					<?php } ?>
 					dataType: 'json'
 				});
-
 			},
 			ignore: '',
 			errorClass: "text-danger",
