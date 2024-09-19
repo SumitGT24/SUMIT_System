@@ -176,7 +176,8 @@ $(document).ready(function()
 			{
 				if (result)
 				{
-					window.location='https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0';
+					window.location = $("#new_location_btn").attr('href');
+					//window.location='https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0';
 				}
 				else
 				{
