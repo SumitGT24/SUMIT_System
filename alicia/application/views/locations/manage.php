@@ -129,7 +129,6 @@ $(document).ready(function()
 	</div>
 </div>
 
-
 	<div class="container-fluid">
 		<div class="row <?php echo !$deleted ?  'manage-table' : ''; ?>">
 			<div class="panel panel-piluku">
