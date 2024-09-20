@@ -1176,7 +1176,7 @@
 		</div>
 	</div>
 	<?php echo form_close(); ?>
-<?php } ?>
+<!--?php } ?>
 
 
 
