@@ -2564,7 +2564,7 @@ $(document).ready(function()
 			{
 				required: true
 			},
-			/*
+			
 			item_id_auto_increment:
 			{
 				number: true,
@@ -2589,7 +2589,7 @@ $(document).ready(function()
 				min: 1,
 				max: 999999999
 			}
-			*/
+		
    	},
 		messages: 
 		{
