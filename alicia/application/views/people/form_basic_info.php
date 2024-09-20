@@ -130,53 +130,6 @@
 	);?>
 	</div>
 </div>
-<?php
-if ($this->Location->get_info_for_key('mailchimp_api_key') && $controller_name != "login")
-{
-	$this->load->helper('mailchimp');
-	
-	$default_mailchimp_lists = array();
-		
-	if ($this->Location->get_info_for_key('default_mailchimp_lists'))
-	{
-		$default_mailchimp_lists =	unserialize($this->Location->get_info_for_key('default_mailchimp_lists'));
-	}
-	
-	if (!$default_mailchimp_lists)
-	{
-		$default_mailchimp_lists = array();								
-	}
-	
-?>
-			<div class="form-group">
-	<div class="column">	
-		<?php echo form_label(lang('common_mailing_lists').':', 'mailchimp_mailing_lists',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-	</div>
-	
-    <div class="column">
-		<ul style="list-style: none; float:left;">
-	<?php
-	foreach(get_all_mailchimps_lists() as $list)
-	{
-		echo '<li>';
-		echo form_checkbox(array('name'=> 'mailing_lists[]',
-		'id' => $list['id'],
-		'value' => $list['id'],
-		'checked' => $person_info->id ? email_subscribed_to_list($person_info->email, $list['id']) : in_array($list['id'],$default_mailchimp_lists),
-		'label'	=> $list['id']));
-		
-		echo '<label for="'.$list['id'].'"><span></span></label> '.$list['name'];
-		echo '</li>';
-	}
-	?>
-	</ul>
-	</div>
-	<div class="cleared"></div>
-</div>
-<?php
-}
-?> 
-
 
 <?php
 if ($this->Location->get_info_for_key('platformly_api_key') && $controller_name != "login")
