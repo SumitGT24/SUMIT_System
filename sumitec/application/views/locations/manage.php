@@ -176,7 +176,8 @@ $(document).ready(function()
 			{
 				if (result)
 				{
-					window.location='https://web.whatsapp.com/send?phone=+50237376619';
+					window.location = $("#new_location_btn").attr('href');
+					//window.location='https://web.whatsapp.com/send?phone=+50237376619';
 				}
 				else
 				{
