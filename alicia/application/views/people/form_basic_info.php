@@ -73,50 +73,6 @@
 	</div>
 </div>
 
-			<div class="form-group">	
-<?php echo form_label(lang('common_city').':', 'city',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-	<div class="col-sm-9 col-md-9 col-lg-10">
-	<?php echo form_input(array(
-		'class'=>'form-control ',
-		'name'=>'city',
-		'id'=>'city',
-		'value'=>$person_info->city));?>
-	</div>
-</div>
-
-			<div class="form-group">	
-<?php echo form_label(lang('common_state').':', 'state',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-	<div class="col-sm-9 col-md-9 col-lg-10">
-	<?php echo form_input(array(
-		'class'=>'form-control ',
-		'name'=>'state',
-		'id'=>'state',
-		'value'=>$person_info->state));?>
-	</div>
-</div>
-
-			<div class="form-group">	
-<?php echo form_label(lang('common_zip').':', 'zip',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-	<div class="col-sm-9 col-md-9 col-lg-10">
-	<?php echo form_input(array(
-		'class'=>'form-control ',
-		'name'=>'zip',
-		'id'=>'zip',
-		'value'=>$person_info->zip));?>
-	</div>
-</div>
-
-			<div class="form-group">	
-<?php echo form_label(lang('common_country').':', 'country',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-	<div class="col-sm-9 col-md-9 col-lg-10">
-	<?php echo form_input(array(
-		'class'=>'form-control ',
-		'name'=>'country',
-		'id'=>'country',
-		'value'=>$person_info->country));?>
-	</div>
-</div>
-
 	<div class="form-group">	
 <?php echo form_label(lang('common_comments').':', 'comments',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 	<div class="col-sm-9 col-md-9 col-lg-10">
