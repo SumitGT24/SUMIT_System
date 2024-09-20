@@ -46,7 +46,6 @@
   flex-wrap: wrap;
   gap: 10px; /* Espacio entre los botones */
   padding: 10px;
-  padding-bottom: 15px;
 }
 
 /*/Tabs Style*/

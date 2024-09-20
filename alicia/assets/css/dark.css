@@ -4,6 +4,41 @@
 /*sidebar-parametres*/
 /************theme fonts********************/
 /***********************theme colors*****************************/
+/*Contenedor de pestañas*/
+.tab-container {
+  background-color:  #373942;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px; /* Espacio entre los botones */
+  padding: 10px;
+}
+
+/*/Tabs Style*/
+.tablink {
+  background-color: #ffcc2c;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 10px;
+  font-size: 14px;
+  width: 10%;
+  margin-top: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tablink:hover {
+  background-color: #ffae00;
+}
+
+ /*Estilos para el contenido de las pestañas*/
+.tabcontent {
+  display: none;
+  padding: 50px;
+  border-top: none;
+}
+/* Tabs Style */
 .left-bar {
   background-color: #373942;
 }
@@ -18,6 +53,7 @@
   background-color: #202126;
   border-left: 4px solid #489ee7;
   -webkit-transition: all 0.1s ease-out;
+  color: #ADAFB9s;
 }
 .left-bar .menu-parent > li:hover.home,
 .left-bar .menu-parent > li.active.home {
