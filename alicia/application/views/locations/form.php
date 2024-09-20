@@ -1371,7 +1371,7 @@
 				$(form).ajaxSubmit({
 					success: function(response) {
 						//Don't let the registers be double submitted, so we change the name
-						//$(".registers_to_add").attr('name', 'registers_added[]');
+						$(".registers_to_add").attr('name', 'registers_added[]');
 
 						$('#grid-loader').hide();
 						submitting = false;
