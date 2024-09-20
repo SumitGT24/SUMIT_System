@@ -5,7 +5,8 @@ $this->load->helper('update');
 ?>
 
 <!-- Contenedor pestañas -->
-<div class="tab-container">
+<!--div class="tab-container"-->
+<div class="config-panel">
 	<button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Empresa</button>
 	<button class="tablink" onclick="openPage('PaymentMethods', this)">Pagos</button>
 	<button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
