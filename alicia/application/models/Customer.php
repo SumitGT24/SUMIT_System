@@ -815,7 +815,8 @@ class Customer extends Person
 			'credit_limit' => 									array('sort_column' => 'credit_limit','label' => lang('common_credit_limit'),'format_function' => 'to_currency'),
 			'account_number' => 								array('sort_column' => 'account_number','label' => lang('customers_account_number')),
 			'auto_email_receipt' =>							array('sort_column' => 'auto_email_receipt','label' => lang('customers_auto_email_receipt'),'format_function' => 'boolean_as_string'),			
-			#'company_name' => 									array('sort_column' => 'company_name','label' => lang('common_company')),
+			
+			'company_name' => 									array('sort_column' => 'company_name','label' => lang('common_company')),
 			#'disable_loyalty' => 								array('sort_column' => 'disable_loyalty','label' => lang('common_disable_loyalty'),'format_function' => 'boolean_as_string'),
 			#'points' => 												array('sort_column' => 'points','label' => lang('common_points'),'format_function' => 'to_quantity'),
 			#'current_spend_for_points' => 			array('sort_column' => 'current_spend_for_points','label' => lang('customers_amount_to_spend_for_next_point'),'format_function' => 'amount_to_spend_for_next_point_formatter', 'data_function' => 'amount_to_spend_for_next_point_data'),
