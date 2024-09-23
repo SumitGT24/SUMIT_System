@@ -687,18 +687,18 @@ class Customers extends Person_controller
 				$r->email,
 				$r->phone_number,
 				$r->address_1,
-				//$r->address_2,
-				$r->city,
-				$r->state,
-				$r->zip,
-				//$r->country,
 				$r->comments,
+				$r->internal_notes,
+				#$r->address_2,
+				#$r->city,
+				#$r->state,
+				#$r->zip,
+				#$r->country,
 				$r->account_number,
-				$r->taxable ? 'y' : 'n',
-				$r->tax_certificate,
-				$r->company_name,
+				#$r->taxable ? 'y' : 'n',
+				#$r->tax_certificate,
+				#$r->company_name,
 				isset($tiers[$r->tier_id]) ?  $tiers[$r->tier_id] : '',
-				$r->internal_notes
 			);
 			
 			for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
