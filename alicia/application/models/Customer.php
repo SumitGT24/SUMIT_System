@@ -807,7 +807,7 @@ class Customer extends Person
 			'first_name' => 										array('sort_column' => 'first_name','label' => lang('common_first_name'),'data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
 			'last_name' => 											array('sort_column' => 'last_name','label' => lang('common_last_name'),'data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
 			#'company_name' => 									array('sort_column' => 'company_name','label' => lang('common_company')),
-			'account_number' => 								array('sort_column' => 'account_number','label' => lang('customers_account_number')),
+			#'account_number' => 								array('sort_column' => 'account_number','label' => lang('customers_account_number')),
 			'email' => 													array('sort_column' => 'email','label' => lang('common_email'),'format_function' => 'email_formatter','html' => TRUE),
 			'phone_number' => 									array('sort_column' => 'phone_number','label' => lang('common_phone_number'),'format_function' => 'tel','html' => TRUE),
 			'comments' => 											array('sort_column' => 'comments','label' => lang('common_comments')),
