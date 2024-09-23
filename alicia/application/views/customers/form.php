@@ -466,37 +466,6 @@
 						<?php } //end if?>
 						<?php } //end for loop?>
 						
-						<div class="panel panel-piluku">
-							<div class="panel-heading">
-				                <h3 class="panel-title">
-				                    <i class="ion-folder"></i> 
-				                    <?php echo lang("common_files"); ?>
-				                </h3>
-					        </div>
-		
-						<?php if (count($files)) {?>
-									<ul class="list-group">
-								<?php foreach($files as $file){?>
-						  	<li class="list-group-item permission-action-item">
-									
-									<?php echo anchor($controller_name.'/delete_file/'.$file->file_id,'<i class="icon ion-android-cancel text-danger" style="font-size: 120%"></i>', array('class' => 'delete_file'));?>	
-									<?php echo anchor($controller_name.'/download/'.$file->file_id,$file->file_name,array('target' => '_blank'));?>
-								</li>
-								<?php } ?>
-							</ul>
-						<?php } ?>
-						<h4 style="padding: 20px;"><?php echo lang('common_add_files');?></h4>
-						<?php for($k=1;$k<=5;$k++) { ?>
-						<div class="form-group"  style="padding-left: 10px;">
-				    	<?php echo form_label(lang('common_file').' '.$k.':', 'files_'.$k,array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-							<div class="col-sm-9 col-md-9 col-lg-10">
-				      	<div class="file-upload">
-				        	<input type="file" name="files[]" id="files_<?php echo $k; ?>" >
-				         </div>
-				      </div>
-						</div>
-						<?php } ?>
-						</div>
 						
 						<?php echo form_hidden('redirect_code', $redirect_code); ?>
 
@@ -526,7 +495,7 @@
 						</div>
 					</div>
 				</div>
-										<?php echo form_close(); ?>
+				<?php echo form_close(); ?>
 
 			</div>
 		</div><!-- /row -->
