@@ -76,39 +76,5 @@
 				);?>
 			</div>
 		</div>
-
-		<?php
-			if ($this->Location->get_info_for_key('platformly_api_key') && $controller_name != "login")
-			{
-				$this->load->helper('platformly');
-		?>
-		<div class="form-group">
-			<div class="column">	
-				<?php echo form_label(lang('common_segments').':', 'platformly_segments',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-			</div>
-
-		    <div class="column">
-				<ul style="list-style: none; float:left;">
-					<?php
-						foreach(get_all_platformly_segments() as $segment)
-						{
-							echo '<li>';
-							echo form_checkbox(array('name'=> 'segments[]',
-							'id' => $segment['id'],
-							'value' => $segment['id'],
-							'checked' => email_subscribed_to_segment($person_info->email, $segment['id']),
-							'label'	=> $segment['id']));
-						
-							echo '<label for="'.$segment['id'].'"><span></span></label> '.$segment['name'];
-							echo '</li>';
-						}
-					?>
-				</ul>
-			</div>
-			<div class="cleared"></div>
-		</div>
-		<?php
-		}
-		?> 
 	</div><!-- /col-md-12 -->
 </div><!-- /row -->
