@@ -530,6 +530,7 @@ class Customers extends Person_controller
 			  		$this->Person->add_file($customer_id==-1 ? $customer_data['person_id'] : $customer_id, $file_id);
 					}
 				}				
+				*/
 		}
 		else//failure
 		{	
@@ -537,7 +538,6 @@ class Customers extends Person_controller
 			H($person_data['first_name'].' '.$person_data['last_name']),'person_id'=>-1));
 		}
 	}
-	*/
 	/*
 	This deletes customers from the customers table
 	*/
