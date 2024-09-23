@@ -370,7 +370,7 @@ class Customer extends Person
 				$data = array(
 					'name' => $name_label,
 					'email' => $row->email,
-					'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+					//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 					 );
 				$temp_suggestions[$row->person_id] = $data;
 			}
@@ -449,7 +449,7 @@ class Customer extends Person
 						$data = array(
 								'name' => $row->custom_field,
 								'email' => $row->email,
-								'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+								//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 								);
 
 						$temp_suggestions[$row->person_id] = $data;
@@ -481,7 +481,7 @@ class Customer extends Person
 				$data = array(
 						'name' => $row->first_name.'&nbsp;'.$row->last_name,
 						'email' => $row->email,
-						'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+						//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 						);
 
 				$temp_suggestions[$row->person_id] = $data;
@@ -511,7 +511,7 @@ class Customer extends Person
 				$data = array(
 						'name' => $row->phone_number,
 						'email' => $row->email,
-						'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+						//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 						);
 
 				$temp_suggestions[$row->person_id] = $data;
@@ -539,7 +539,7 @@ class Customer extends Person
 				$data = array(
 						'name' => $row->company_name,
 						'email' => $row->email,
-						'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+						//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 						);
 
 				$temp_suggestions[$row->person_id] = $data;
@@ -806,29 +806,29 @@ class Customer extends Person
 			'full_name' => 											array('sort_column' => 'full_name','label' => lang('common_name'),'data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
 			'first_name' => 										array('sort_column' => 'first_name','label' => lang('common_first_name'),'data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
 			'last_name' => 											array('sort_column' => 'last_name','label' => lang('common_last_name'),'data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
-			'company_name' => 									array('sort_column' => 'company_name','label' => lang('common_company')),
+			#'company_name' => 									array('sort_column' => 'company_name','label' => lang('common_company')),
 			'account_number' => 								array('sort_column' => 'account_number','label' => lang('customers_account_number')),
 			'email' => 													array('sort_column' => 'email','label' => lang('common_email'),'format_function' => 'email_formatter','html' => TRUE),
 			'phone_number' => 									array('sort_column' => 'phone_number','label' => lang('common_phone_number'),'format_function' => 'tel','html' => TRUE),
 			'comments' => 											array('sort_column' => 'comments','label' => lang('common_comments')),
-			'balance' => 												array('sort_column' => 'balance','label' => lang('common_balance'),'data_function' => 'customer_balance_data','format_function' => 'customer_balance_formatter','html' => TRUE),
+			#'balance' => 												array('sort_column' => 'balance','label' => lang('common_balance'),'data_function' => 'customer_balance_data','format_function' => 'customer_balance_formatter','html' => TRUE),
 			'credit_limit' => 									array('sort_column' => 'credit_limit','label' => lang('common_credit_limit'),'format_function' => 'to_currency'),
-			'disable_loyalty' => 								array('sort_column' => 'disable_loyalty','label' => lang('common_disable_loyalty'),'format_function' => 'boolean_as_string'),
-			'points' => 												array('sort_column' => 'points','label' => lang('common_points'),'format_function' => 'to_quantity'),
-			'current_spend_for_points' => 			array('sort_column' => 'current_spend_for_points','label' => lang('customers_amount_to_spend_for_next_point'),'format_function' => 'amount_to_spend_for_next_point_formatter', 'data_function' => 'amount_to_spend_for_next_point_data'),
-			'current_sales_for_discount' => 		array('sort_column' => 'current_sales_for_discount','label' => lang('common_sales_until_discount'),'format_function' => 'sales_until_discount_formatter', 'data_function' => 'sales_until_discount_data'),
+			#'disable_loyalty' => 								array('sort_column' => 'disable_loyalty','label' => lang('common_disable_loyalty'),'format_function' => 'boolean_as_string'),
+			#'points' => 												array('sort_column' => 'points','label' => lang('common_points'),'format_function' => 'to_quantity'),
+			#'current_spend_for_points' => 			array('sort_column' => 'current_spend_for_points','label' => lang('customers_amount_to_spend_for_next_point'),'format_function' => 'amount_to_spend_for_next_point_formatter', 'data_function' => 'amount_to_spend_for_next_point_data'),
+			#'current_sales_for_discount' => 		array('sort_column' => 'current_sales_for_discount','label' => lang('common_sales_until_discount'),'format_function' => 'sales_until_discount_formatter', 'data_function' => 'sales_until_discount_data'),
 			'address_1' => 											array('sort_column' => 'address_1','label' => lang('common_address_1')),
-			'address_2' => 											array('sort_column' => 'address_2','label' => lang('common_address_2')),
-			'city' => 													array('sort_column' => 'city','label' => lang('common_city')),
-			'state' => 													array('sort_column' => 'state','label' => lang('common_state')),
-			'zip' => 														array('sort_column' => 'zip','label' => lang('common_zip')),
-			'country' => 												array('sort_column' => 'country','label' => lang('common_country')),
-			'override_default_tax' => 					array('sort_column' => 'override_default_tax','label' => lang('customers_override_default_tax_for_sale'),'format_function' => 'boolean_as_string'),			
-			'taxable' => 												array('sort_column' => 'taxable','label' => lang('common_taxable'),'format_function' => 'boolean_as_string'),			
+			#'address_2' => 											array('sort_column' => 'address_2','label' => lang('common_address_2')),
+			#'city' => 													array('sort_column' => 'city','label' => lang('common_city')),
+			#'state' => 													array('sort_column' => 'state','label' => lang('common_state')),
+			#'zip' => 														array('sort_column' => 'zip','label' => lang('common_zip')),
+			#'country' => 												array('sort_column' => 'country','label' => lang('common_country')),
+			#'override_default_tax' => 					array('sort_column' => 'override_default_tax','label' => lang('customers_override_default_tax_for_sale'),'format_function' => 'boolean_as_string'),			
+			#'taxable' => 												array('sort_column' => 'taxable','label' => lang('common_taxable'),'format_function' => 'boolean_as_string'),			
 			'name' => 													array('sort_column' => 'city','label' => lang('common_tier_name')),
 			'internal_notes' => 								array('sort_column' => 'internal_notes','label' => lang('common_internal_notes'),'format_function' => 'nl2br','html' => TRUE),
 			'auto_email_receipt' =>							array('sort_column' => 'auto_email_receipt','label' => lang('customers_auto_email_receipt'),'format_function' => 'boolean_as_string'),			
-			'always_sms_receipt' =>							array('sort_column' => 'always_sms_receipt','label' => lang('customers_always_sms_receipt'),'format_function' => 'boolean_as_string'),			
+			#'always_sms_receipt' =>							array('sort_column' => 'always_sms_receipt','label' => lang('customers_always_sms_receipt'),'format_function' => 'boolean_as_string'),			
 		);
 		
 		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)

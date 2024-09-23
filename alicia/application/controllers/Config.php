@@ -634,7 +634,7 @@ class Config extends Secure_area
 		#'tip_preset_zero' => $this->input->post('tip_preset_zero') ? 1 : 0,
 	);
 
-	/*Old way of doing taxes; we handle this case / Comentar impuestos
+	/*Old way of doing taxes; we handle this case / Comentar impuestos*/
 		if($this->input->post('default_tax_1_rate') !== NULL)
 		{
 			$legacy_taxes = array(
@@ -652,9 +652,9 @@ class Config extends Secure_area
 			
 			$batch_save_data = array_merge($batch_save_data,$legacy_taxes);
 		}
-	*/
+	
 
-	/*Comentar configuracion ID autoincrementables
+	/*Comentar configuracion ID autoincrementables*/
 		if($this->input->post('item_id_auto_increment'))
 		{
 			$this->Appconfig->change_auto_increment('items',$this->input->post('item_id_auto_increment'));
@@ -675,7 +675,7 @@ class Config extends Secure_area
 		{
 			$this->Appconfig->change_auto_increment('receivings',$this->input->post('receiving_id_auto_increment'));
 		}
-		Comentar impuestos
+		//Comentar impuestos
 		if ($this->input->post('use_tax_value_at_all_locations'))
 		{
 			$this->Appconfig->set_all_locations_use_global_tax();
@@ -707,7 +707,7 @@ class Config extends Secure_area
 		if($this->Appconfig->batch_save($batch_save_data) 
 			&& $this->save_tiers($this->input->post('tiers_to_edit'), $this->input->post('tiers_to_delete'))
 			&& $this->save_sale_types($this->input->post('sale_types_to_edit'), $this->input->post('sale_types_to_delete'))
-			/*Monedas
+			/*Monedas*/
 			&& $this->Register->save_register_currency_denominations($this->input->post('currency_denoms_name'), $this->input->post('currency_denoms_value'), $this->input->post('currency_denoms_ids'),$this->input->post('deleted_denmos'))
 			&& $this->Appconfig->save_exchange_rates(
 				$this->input->post('currency_exchange_rates_to'),
@@ -717,7 +717,7 @@ class Config extends Secure_area
 				$this->input->post('currency_exchange_rates_number_of_decimals'),
 				$this->input->post('currency_exchange_rates_thousands_separator'),
 				$this->input->post('currency_exchange_rates_decimal_point')
-				)*/
+				)
 			)
 		{
 			
@@ -833,7 +833,7 @@ class Config extends Secure_area
 					$this->Shipping_zone->delete($zone_id);
 				}
 			}	
-			/*Comentar impuestos
+			/*Comentar impuestos*/
 			$has_default_tax_class = (boolean)$this->input->post('tax_class_id');
 			$tax_classes_to_save = $this->input->post('tax_classes');
 			$taxes_to_save = $this->input->post('taxes');		
@@ -933,7 +933,7 @@ class Config extends Secure_area
 				$markup_markdown[hex_decode($key)] = (float)$value;
 			}
 			$this->Appconfig->save('markup_markdown',serialize($markup_markdown));
-			Comentar impuestos*/	
+			/*Comentar impuestos*/	
 			$this->Appconfig->save('wizard_configure_company',1);
 			echo json_encode(array('success'=>true,'message'=>lang('common_saved_successfully')));
 		}
