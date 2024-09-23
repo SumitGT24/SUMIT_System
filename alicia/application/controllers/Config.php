@@ -168,11 +168,6 @@ class Config extends Secure_area
 
 	function save()
 	{
-		if ($this->config->item("ecommerce_platform"))
-		{
-			require_once (APPPATH."models/interfaces/Ecom.php");
-			$ecom_model = Ecom::get_ecom_model();
-		}
 		
 		$this->load->helper('demo');
 		$this->load->model('Appfile');
@@ -242,7 +237,7 @@ class Config extends Secure_area
 			}
 			
 			//Switch back
-			$this->lang->switch_to($this->config->item('language'));
+			//$this->lang->switch_to($this->config->item('language'));
 			
 		}
 		$deleted_payment_types = implode(',',$deleted_payment_types);
