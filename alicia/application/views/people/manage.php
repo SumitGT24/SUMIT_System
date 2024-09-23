@@ -230,7 +230,6 @@
 					return false;
 				});
 		}); 
-		
 				
 </script>
 
@@ -253,7 +252,6 @@
     	</div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 
 
 <div class="modal fade skip-labels" id="merge-customers" role="dialog" aria-labelledby="skipLabels" aria-hidden="true">
