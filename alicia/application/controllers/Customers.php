@@ -683,21 +683,21 @@ class Customers extends Person_controller
 		foreach ($data as $r) {
 			$row = array(
 				$r->first_name,
-				#$r->last_name,
-				#$r->email,
-				#$r->phone_number,
-				#$r->address_1,
-				#$r->comments,
-				#$r->internal_notes,
-				#$r->address_2,
-				#$r->city,
-				#$r->state,
-				#$r->zip,
-				#$r->country,
-				#$r->account_number,
-				#$r->taxable ? 'y' : 'n',
-				#$r->tax_certificate,
-				#$r->company_name,
+				$r->last_name,
+				$r->email,
+				$r->phone_number,
+				$r->address_1,
+				$r->comments,
+				$r->internal_notes,
+				$r->address_2,
+				$r->city,
+				$r->state,
+				$r->zip,
+				$r->country,
+				$r->account_number,
+				$r->taxable ? 'y' : 'n',
+				$r->tax_certificate,
+				$r->company_name,
 				isset($tiers[$r->tier_id]) ?  $tiers[$r->tier_id] : '',
 			);
 			
@@ -1078,8 +1078,8 @@ class Customers extends Person_controller
 			$customer_data = array();
 			$person_data = array();
 			
-			$person_data_keys = array("first_name");//, "last_name", "email", "phone_number", "address_1", "address_2", "city", "state", "zip", "country", "comments");
-			//$customer_data_keys = array("account_number", "taxable", "tax_certificate", "company_name", "balance", "credit_limit", "tier_id", "points", "current_spend_for_points","disable_loyalty","custom_field_1_value","custom_field_2_value","custom_field_3_value","custom_field_4_value","custom_field_5_value","custom_field_6_value","custom_field_7_value","custom_field_8_value","custom_field_9_value","custom_field_10_value","location_id","internal_notes","auto_email_receipt","always_sms_receipt");
+			$person_data_keys = array("first_name", "last_name", "email", "phone_number", "address_1", "address_2", "city", "state", "zip", "country", "comments");
+			$customer_data_keys = array("account_number", "taxable", "tax_certificate", "company_name", "balance", "credit_limit", "tier_id", "points", "current_spend_for_points","disable_loyalty","custom_field_1_value","custom_field_2_value","custom_field_3_value","custom_field_4_value","custom_field_5_value","custom_field_6_value","custom_field_7_value","custom_field_8_value","custom_field_9_value","custom_field_10_value","location_id","internal_notes","auto_email_receipt","always_sms_receipt");
 			
 			foreach($fields as $field)
 			{
