@@ -1078,7 +1078,7 @@ class Customers extends Person_controller
 			$customer_data = array();
 			$person_data = array();
 			
-			$person_data_keys = array("first_name", "last_name", "email", "phone_number", "address_1", "address_2", "city", "state", "zip", "country", "comments");
+			$person_data_keys = array("first_name");//, "last_name", "email", "phone_number", "address_1", "address_2", "city", "state", "zip", "country", "comments");
 			//$customer_data_keys = array("account_number", "taxable", "tax_certificate", "company_name", "balance", "credit_limit", "tier_id", "points", "current_spend_for_points","disable_loyalty","custom_field_1_value","custom_field_2_value","custom_field_3_value","custom_field_4_value","custom_field_5_value","custom_field_6_value","custom_field_7_value","custom_field_8_value","custom_field_9_value","custom_field_10_value","location_id","internal_notes","auto_email_receipt","always_sms_receipt");
 			
 			foreach($fields as $field)
