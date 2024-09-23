@@ -463,7 +463,7 @@ class Customers extends Person_controller
 				$this->session->set_flashdata('manage_success_message', H($success_message));
 				echo json_encode(array('success'=>true,'message'=>H($success_message),'person_id'=>$customer_id,'redirect_code'=>$redirect_code));
 			}
-			
+			/*
 			$customers_taxes_data = array();
 			$tax_names = $this->input->post('tax_names');
 			$tax_percents = $this->input->post('tax_percents');
@@ -475,8 +475,8 @@ class Customers extends Person_controller
 					$customers_taxes_data[] = array('name'=>$tax_names[$k], 'percent'=>$tax_percents[$k], 'cumulative' => isset($tax_cumulatives[$k]) ? $tax_cumulatives[$k] : '0' );
 				}
 			}
-			$this->load->model('Customer_taxes');
-			$this->Customer_taxes->save($customers_taxes_data, $customer_id);
+			//$this->load->model('Customer_taxes');
+			//$this->Customer_taxes->save($customers_taxes_data, $customer_id);
 			
 				$customer_info = $this->Customer->get_info($customer_id);
 				
@@ -537,7 +537,7 @@ class Customers extends Person_controller
 			H($person_data['first_name'].' '.$person_data['last_name']),'person_id'=>-1));
 		}
 	}
-	
+	*/
 	/*
 	This deletes customers from the customers table
 	*/
