@@ -600,7 +600,7 @@ class Customers extends Person_controller
 			$return[] = lang('common_credit_limit');
 		}
 		$return[] = lang('customers_auto_email_receipt');
-		
+
 		/*
 		if ($this->config->item('enable_customer_loyalty_system') && $this->config->item('loyalty_option') == 'advanced')
 		{
@@ -702,7 +702,7 @@ class Customers extends Person_controller
 				#$r->taxable ? 'y' : 'n',
 				#$r->tax_certificate,
 				#$r->company_name,
-				isset($tiers[$r->tier_id]) ?  $tiers[$r->tier_id] : '',
+				#isset($tiers[$r->tier_id]) ?  $tiers[$r->tier_id] : '',
 			);
 			
 			for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
@@ -732,7 +732,7 @@ class Customers extends Person_controller
 				$row[] = $r->balance ? to_currency_no_money($r->balance,2,TRUE) : '';
 				$row[] = $r->credit_limit ? to_currency_no_money($r->credit_limit,2,TRUE) : '';
 			}
-			
+			/*
 			if ($this->config->item('enable_customer_loyalty_system') && $this->config->item('loyalty_option') == 'advanced')
 			{
 		      	list($spend_amount_for_points, $points_to_earn) = explode(":",$this->config->item('spend_to_point_ratio'),2);
@@ -742,15 +742,15 @@ class Customers extends Person_controller
 				$row[] = $r->disable_loyalty ? 'y' : '';				
 									
 			}
-			
+
 			$this->load->model('Location');
 			if ($location_count > 1)
 			{
 				$row[] = $r->location_id;			
 			}
-
+			*/
 			$row[] = $r->auto_email_receipt ? 'y' : 'n';
-			$row[] = $r->always_sms_receipt ? 'y' : 'n';
+			#$row[] = $r->always_sms_receipt ? 'y' : 'n';
 			
 			$row[] = $r->person_id;
 
@@ -920,18 +920,18 @@ class Customers extends Person_controller
 			$fields[] = array('Name' => lang('common_balance'), 'key' => 'balance');
 			$fields[] = array('Name' => lang('common_credit_limit'), 'key' => 'credit_limit');
 		}
-		
+		/*
 		if ($this->config->item('enable_customer_loyalty_system') && $this->config->item('loyalty_option') == 'advanced')
 		{
 			$fields[] = array('Name' => lang('common_points'), 'key' => 'points');
 			$fields[] = array('Name' => lang('customers_amount_to_spend_for_next_point'), 'key' => 'current_spend_for_points');
 			$fields[] = array('Name' => lang('common_disable_loyalty'), 'key' => 'disable_loyalty');
 		}
-				
+		*/		
 		$fields[] = array('Name' => lang('customers_customer_id'), 'key' => 'person_id');
 
 		$fields[] = array('Name' => lang('customers_auto_email_receipt'), 'key' => 'auto_email_receipt');
-		$fields[] = array('Name' => lang('customers_always_sms_receipt'), 'key' => 'always_sms_receipt');
+		//$fields[] = array('Name' => lang('customers_always_sms_receipt'), 'key' => 'always_sms_receipt');
 		
 		$id = 0;
 		foreach($fields as &$field)
@@ -1083,7 +1083,7 @@ class Customers extends Person_controller
 			$person_data = array();
 			
 			$person_data_keys = array("first_name", "last_name", "email", "phone_number", "address_1", "comments");
-			$customer_data_keys = array("account_number","internal_notes", "balance", "credit_limit","auto_email_receipt","custom_field_1_value","custom_field_2_value","custom_field_3_value","custom_field_4_value","custom_field_5_value","custom_field_6_value","custom_field_7_value","custom_field_8_value","custom_field_9_value","custom_field_10_value");
+			$customer_data_keys = array("account_number","internal_notes", "balance", "credit_limit",'customer_info_popup',"auto_email_receipt","custom_field_1_value","custom_field_2_value","custom_field_3_value","custom_field_4_value","custom_field_5_value","custom_field_6_value","custom_field_7_value","custom_field_8_value","custom_field_9_value","custom_field_10_value");
 			
 			foreach($fields as $field)
 			{

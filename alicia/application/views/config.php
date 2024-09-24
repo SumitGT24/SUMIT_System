@@ -1,6 +1,6 @@
 <?php
 $this->load->view("partial/header"); 
-#$this->load->helper('demo');
+#s$this->load->helper('demo');
 #$this->load->helper('update');
 ?>
 
