@@ -362,8 +362,8 @@ class Customers extends REST_Controller {
 			$person_data = array();
 			$customer_data = array();
 			
-    	$person_keys = array('first_name','last_name','email','phone_number','address_1','address_2','city','state','zip','country','comments');
-    	$customer_keys = array('company_name','tier_id','account_number','taxable','tax_certificate','override_default_tax','tax_class_id','balance','credit_limit','points','disable_loyalty','location_id','internal_notes','customer_info_popup','auto_email_receipt','always_sms_receipt');
+    	$person_keys = array('first_name','last_name','email','phone_number','address_1','comments');/*,'address_2','city','state','zip','country');*/
+    	$customer_keys = array('internal_notes','balance','credit_limit','account_number','auto_email_receipt');/*,'company_name','tier_id','taxable','tax_certificate','override_default_tax','tax_class_id','points','disable_loyalty','location_id','customer_info_popup','always_sms_receipt');*/
     	
     	foreach($customer_request as $key=>$value)
     	{
