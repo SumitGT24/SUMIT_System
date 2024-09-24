@@ -70,7 +70,6 @@ class Customers extends REST_Controller {
 					'comments' => $customer->comments,
 					'account_number' => $customer->account_number,
 					'internal_notes' => $customer->internal_notes,
-					'custom_fields' => array(),
 					#'company_name' => $customer->company_name,
 					#'tier_id' => (int)$customer->tier_id,
 					#'taxable' => (boolean)$customer->taxable,
@@ -88,6 +87,7 @@ class Customers extends REST_Controller {
 					#'location_id' => $customer->location_id ? (int)$customer->location_id : NULL,
 					'customer_info_popup' => $customer->customer_info_popup ? $customer->customer_info_popup : NULL,
 					'auto_email_receipt' => $customer->auto_email_receipt ? $customer->auto_email_receipt : 0,
+					'custom_fields' => array(),
 				);
 
 				for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
