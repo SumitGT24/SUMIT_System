@@ -13129,7 +13129,7 @@ d=new R(c,f(this)),f(this).data("__nicescroll",d));h.push(d)});return 1==h.lengt
 	};
 
 	$.fn.filestyle.defaults = {
-		'buttonText' : 'Choose file',
+		'buttonText' : 'Abrir archivo',
 		'iconName' : 'glyphicon-folder-open',
 		'buttonName' : 'btn-file-upload',
 		'size' : 'nr',

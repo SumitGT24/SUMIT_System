@@ -300,7 +300,7 @@
 	};
 
 	$.fn.filestyle.defaults = {
-		'buttonText' : 'Choose file',
+		'buttonText' : 'Abrir archivo',
 		'iconName' : 'glyphicon-folder-open',
 		'buttonName' : 'btn-file-upload',
 		'size' : 'nr',
