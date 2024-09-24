@@ -331,10 +331,10 @@ class Customers extends REST_Controller {
 			);
 		
 			$customer_data=array(
+				'account_number'=>isset($customer_request['account_number']) ? $customer_request['account_number'] : NULL,
 				'internal_notes'=>isset($customer_request['internal_notes']) ? $customer_request['internal_notes'] : '',
 				'balance'=>isset($customer_request['balance']) ? $customer_request['balance'] : 0,
 				'credit_limit'=>isset($customer_request['credit_limit']) ? $customer_request['credit_limit'] : NULL,
-				'account_number'=>isset($customer_request['account_number']) ? $customer_request['account_number'] : NULL,
 				'customer_info_popup' => isset($customer_request['customer_info_popup']) && $customer_request['customer_info_popup'] ? $customer_request['customer_info_popup'] : NULL,
 				'auto_email_receipt' => isset($customer_request['auto_email_receipt']) && $customer_request['auto_email_receipt'] ? 1 : 0,
 				#'company_name'=>isset($customer_request['company_name']) ? $customer_request['company_name'] : '',
