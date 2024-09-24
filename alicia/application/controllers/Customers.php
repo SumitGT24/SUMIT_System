@@ -579,8 +579,11 @@ class Customers extends Person_controller
 	
 	function _excel_get_header_row()
 	{		
-		$return = array(lang('common_first_name'),lang('common_last_name'),lang('common_email'),lang('common_phone_number'),lang('common_address_1'),lang('common_address_2'),lang('common_city'),	lang('common_state'),lang('common_zip'),lang('common_country'),lang('common_comments'),lang('customers_account_number'),lang('common_taxable'),lang('customers_tax_certificate'), lang('customers_company_name'),lang('common_tier_name'));
-		
+		$return = array(lang('common_first_name'),lang('common_last_name'),lang('common_email'),lang('common_phone_number'),lang('common_address_1'),lang('common_comments'),lang('customers_account_number'));
+		//$return = array(lang('common_first_name'),lang('common_last_name'),lang('common_email'),lang('common_phone_number'),lang('common_address_1'),lang('common_address_2'),lang('common_city'),	lang('common_state'),lang('common_zip'),lang('common_country'),lang('common_comments'),lang('customers_account_number'),lang('common_taxable'),lang('customers_tax_certificate'), lang('customers_company_name'),lang('common_tier_name'));
+		//$person_keys = array('first_name','last_name','email','phone_number','address_1','comments');/*,'address_2','city','state','zip','country');*/
+    	//$customer_keys = array('internal_notes','balance','credit_limit','account_number','customer_info_popup','auto_email_receipt');/*,'company_name','tier_id','taxable','tax_certificate','override_default_tax','tax_class_id','points','disable_loyalty','location_id','always_sms_receipt');*/
+
 		$return[] = lang('common_internal_notes');
 
 		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
@@ -612,7 +615,7 @@ class Customers extends Person_controller
 		}
 		
 		$return[] = lang('customers_auto_email_receipt');
-		$return[] = lang('customers_always_sms_receipt');
+		//$return[] = lang('customers_always_sms_receipt');
 		
 		return $return;
 	}
