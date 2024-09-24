@@ -68,11 +68,11 @@ class Customers extends REST_Controller {
 					#'zip' => $customer->zip,
 					#'country' => $customer->country,
 					'comments' => $customer->comments,
+					'account_number' => $customer->account_number,
 					'internal_notes' => $customer->internal_notes,
 					'custom_fields' => array(),
 					#'company_name' => $customer->company_name,
 					#'tier_id' => (int)$customer->tier_id,
-					'account_number' => $customer->account_number,
 					#'taxable' => (boolean)$customer->taxable,
 					#'tax_certificate' => $customer->tax_certificate,
 					#'override_default_tax' => (boolean)$customer->override_default_tax,
@@ -363,7 +363,7 @@ class Customers extends REST_Controller {
 			$customer_data = array();
 			
     	$person_keys = array('first_name','last_name','email','phone_number','address_1','comments');/*,'address_2','city','state','zip','country');*/
-    	$customer_keys = array('internal_notes','balance','credit_limit','account_number','customer_info_popup','auto_email_receipt');/*,'company_name','tier_id','taxable','tax_certificate','override_default_tax','tax_class_id','points','disable_loyalty','location_id','always_sms_receipt');*/
+    	$customer_keys = array('account_number','internal_notes','balance','credit_limit','customer_info_popup','auto_email_receipt');/*,'company_name','tier_id','taxable','tax_certificate','override_default_tax','tax_class_id','points','disable_loyalty','location_id','always_sms_receipt');*/
     	
     	foreach($customer_request as $key=>$value)
     	{
