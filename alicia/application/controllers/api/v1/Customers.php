@@ -62,30 +62,30 @@ class Customers extends REST_Controller {
 					'email' => $customer->email,
 					'phone_number' => $customer->phone_number,
 					'address_1' => $customer->address_1,
-					'address_2' => $customer->address_2,
-					'city' => $customer->city,
-					'state' => $customer->state,
-					'zip' => $customer->zip,
-					'country' => $customer->country,
+					#'address_2' => $customer->address_2,
+					#'city' => $customer->city,
+					#'state' => $customer->state,
+					#'zip' => $customer->zip,
+					#'country' => $customer->country,
 					'comments' => $customer->comments,
 					'internal_notes' => $customer->internal_notes,
 					'custom_fields' => array(),
-					'company_name' => $customer->company_name,
-					'tier_id' => (int)$customer->tier_id,
+					#'company_name' => $customer->company_name,
+					#'tier_id' => (int)$customer->tier_id,
 					'account_number' => $customer->account_number,
-					'taxable' => (boolean)$customer->taxable,
-					'tax_certificate' => $customer->tax_certificate,
-					'override_default_tax' => (boolean)$customer->override_default_tax,
-					'tax_class_id' => (int)$customer->tax_class_id,
+					#'taxable' => (boolean)$customer->taxable,
+					#'tax_certificate' => $customer->tax_certificate,
+					#'override_default_tax' => (boolean)$customer->override_default_tax,
+					#'tax_class_id' => (int)$customer->tax_class_id,
 					'balance' => (float)$customer->balance,
 					'credit_limit' => (float)$customer->credit_limit,
-					'disable_loyalty' => (boolean)$customer->disable_loyalty,
-					'points' => (int)$customer->points,
-					'amount_to_spend_for_next_point' => (float)$this->_amount_to_spend_for_next_point($customer->current_spend_for_points),
+					#'disable_loyalty' => (boolean)$customer->disable_loyalty,
+					#'points' => (int)$customer->points,
+					#'amount_to_spend_for_next_point' => (float)$this->_amount_to_spend_for_next_point($customer->current_spend_for_points),
 					'remaining_sales_before_discount' => (float)$this->_remaining_sales_before_discount($customer->current_sales_for_discount),
-					'image_url' => $customer->image_id ? app_file_url($customer->image_id) : '',
+					#'image_url' => $customer->image_id ? app_file_url($customer->image_id) : '',
 					'created_at' => $customer->create_date ? date(get_date_format().' '.get_time_format(), strtotime($customer->create_date)) : NULL,
-					'location_id' => $customer->location_id ? (int)$customer->location_id : NULL,
+					#'location_id' => $customer->location_id ? (int)$customer->location_id : NULL,
 					'customer_info_popup' => $customer->customer_info_popup ? $customer->customer_info_popup : NULL,
 					'auto_email_receipt' => $customer->auto_email_receipt ? $customer->auto_email_receipt : 0,
 				);
@@ -335,6 +335,7 @@ class Customers extends REST_Controller {
 				'balance'=>isset($customer_request['balance']) ? $customer_request['balance'] : 0,
 				'credit_limit'=>isset($customer_request['credit_limit']) ? $customer_request['credit_limit'] : NULL,
 				'account_number'=>isset($customer_request['account_number']) ? $customer_request['account_number'] : NULL,
+				'customer_info_popup' => isset($customer_request['customer_info_popup']) && $customer_request['customer_info_popup'] ? $customer_request['customer_info_popup'] : NULL,
 				'auto_email_receipt' => isset($customer_request['auto_email_receipt']) && $customer_request['auto_email_receipt'] ? 1 : 0,
 				#'company_name'=>isset($customer_request['company_name']) ? $customer_request['company_name'] : '',
 				#'tier_id'=>isset($customer_request['tier_id']) &&  $customer_request['tier_id'] ? $customer_request['tier_id'] : NULL,
@@ -345,7 +346,6 @@ class Customers extends REST_Controller {
 				#'points'=>isset($customer_request['points']) ? $customer_request['points'] : 0,
 				#'disable_loyalty'=>isset($customer_request['disable_loyalty']) && $customer_request['disable_loyalty'] ? 1 : 0,
 				#'location_id'=>isset($customer_request['location_id']) && $customer_request['location_id'] ? $customer_request['location_id'] : NULL,
-				#'customer_info_popup' => isset($customer_request['customer_info_popup']) && $customer_request['customer_info_popup'] ? $customer_request['customer_info_popup'] : NULL,
 				#'auto_email_receipt' => isset($customer_request['always_sms_receipt']) && $customer_request['always_sms_receipt'] ? 1 : 0,
 			);
 			
@@ -363,7 +363,7 @@ class Customers extends REST_Controller {
 			$customer_data = array();
 			
     	$person_keys = array('first_name','last_name','email','phone_number','address_1','comments');/*,'address_2','city','state','zip','country');*/
-    	$customer_keys = array('internal_notes','balance','credit_limit','account_number','auto_email_receipt');/*,'company_name','tier_id','taxable','tax_certificate','override_default_tax','tax_class_id','points','disable_loyalty','location_id','customer_info_popup','always_sms_receipt');*/
+    	$customer_keys = array('internal_notes','balance','credit_limit','account_number','customer_info_popup','auto_email_receipt');/*,'company_name','tier_id','taxable','tax_certificate','override_default_tax','tax_class_id','points','disable_loyalty','location_id','always_sms_receipt');*/
     	
     	foreach($customer_request as $key=>$value)
     	{

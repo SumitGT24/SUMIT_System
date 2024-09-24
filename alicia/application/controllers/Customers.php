@@ -162,11 +162,11 @@ class Customers extends Person_controller
 			$label = array();
 			$label['name'] = $customer_info->first_name.' '.$customer_info->last_name;
 			$label['address_1'] = $customer_info->address_1;
-			$label['address_2'] = $customer_info->address_2;
-			$label['city'] = $customer_info->city;
-			$label['state'] = $customer_info->state;
-			$label['zip'] = $customer_info->zip;
-			$label['country'] = $customer_info->country;
+			#$label['address_2'] = $customer_info->address_2;
+			#$label['city'] = $customer_info->city;
+			#$label['state'] = $customer_info->state;
+			#$label['zip'] = $customer_info->zip;
+			#$label['country'] = $customer_info->country;
 			
 			$data['mailing_labels'][] = $label;
 			
@@ -189,11 +189,11 @@ class Customers extends Person_controller
 			$label = array();
 			$label['name'] = $customer_info->first_name.' '.$customer_info->last_name;
 			$label['address_1'] = $customer_info->address_1;
-			$label['address_2'] = $customer_info->address_2;
-			$label['city'] = $customer_info->city;
-			$label['state'] = $customer_info->state;
-			$label['zip'] = $customer_info->zip;
-			$label['country'] = $customer_info->country;
+			#$label['address_2'] = $customer_info->address_2;
+			#$label['city'] = $customer_info->city;
+			#$label['state'] = $customer_info->state;
+			#$label['zip'] = $customer_info->zip;
+			#$label['country'] = $customer_info->country;
 			
 			$data['mailing_labels'][] = $label;
 			
@@ -300,27 +300,27 @@ class Customers extends Person_controller
 		'email'=>$this->input->post('email'),
 		'phone_number'=>$this->input->post('phone_number'),
 		'address_1'=>$this->input->post('address_1'),
+		'comments'=>$this->input->post('comments')
 		#'address_2'=>$this->input->post('address_2'),
 		#'city'=>$this->input->post('city'),
 		#'state'=>$this->input->post('state'),
 		#'zip'=>$this->input->post('zip'),
 		#'country'=>$this->input->post('country'),
-		'comments'=>$this->input->post('comments')
 		);
 		
 		
 		$customer_data=array(
+			'internal_notes' => $this->input->post('internal_notes'),
+			'account_number'=>$this->input->post('account_number')=='' ? null:$this->input->post('account_number'),
+			'customer_info_popup' => $this->input->post('customer_info_popup'),
+			'auto_email_receipt' => $this->input->post('auto_email_receipt') ? 1 : 0,
 			#'company_name' => $this->input->post('company_name'),
 			#'tier_id' => $this->input->post('tier_id') ? $this->input->post('tier_id') : NULL,
-			'account_number'=>$this->input->post('account_number')=='' ? null:$this->input->post('account_number'),
 			#'taxable'=>$this->input->post('taxable')=='' ? 0:1,
 			#'tax_certificate' => $this->input->post('tax_certificate'),
 			#'override_default_tax'=> $this->input->post('override_default_tax') ? $this->input->post('override_default_tax') : 0,
 			#'tax_class_id'=> $this->input->post('tax_class') ? $this->input->post('tax_class') : NULL,
-			#'internal_notes' => $this->input->post('internal_notes'),
-			#'customer_info_popup' => $this->input->post('customer_info_popup'),
-			'auto_email_receipt' => $this->input->post('auto_email_receipt') ? 1 : 0,
-			'always_sms_receipt' => $this->input->post('always_sms_receipt') ? 1 : 0,
+			#'always_sms_receipt' => $this->input->post('always_sms_receipt') ? 1 : 0,
 		);
 		
 		if ($this->input->post('location_id'))
@@ -689,15 +689,15 @@ class Customers extends Person_controller
 				$r->address_1,
 				$r->comments,
 				$r->internal_notes,
-				$r->address_2,
-				$r->city,
-				$r->state,
-				$r->zip,
-				$r->country,
+				#$r->address_2,
+				#$r->city,
+				#$r->state,
+				#$r->zip,
+				#$r->country,
 				$r->account_number,
-				$r->taxable ? 'y' : 'n',
-				$r->tax_certificate,
-				$r->company_name,
+				#$r->taxable ? 'y' : 'n',
+				#$r->tax_certificate,
+				#$r->company_name,
 				isset($tiers[$r->tier_id]) ?  $tiers[$r->tier_id] : '',
 			);
 			
@@ -888,20 +888,20 @@ class Customers extends Person_controller
 		$fields[] = array('Name' => lang('common_email'), 'key' => 'email');
 		$fields[] = array('Name' => lang('common_phone_number'), 'key' => 'phone_number');
 		$fields[] = array('Name' => lang('common_address_1'), 'key' => 'address_1');
-		$fields[] = array('Name' => lang('common_address_2'), 'key' => 'address_2');
-		$fields[] = array('Name' => lang('common_city'), 'key' => 'city');
-		$fields[] = array('Name' => lang('common_state'), 'key' => 'state');
-		$fields[] = array('Name' => lang('common_zip'), 'key' => 'zip');
-		$fields[] = array('Name' => lang('common_country'), 'key' => 'country');
+		#$fields[] = array('Name' => lang('common_address_2'), 'key' => 'address_2');
+		#$fields[] = array('Name' => lang('common_city'), 'key' => 'city');
+		#$fields[] = array('Name' => lang('common_state'), 'key' => 'state');
+		#$fields[] = array('Name' => lang('common_zip'), 'key' => 'zip');
+		#$fields[] = array('Name' => lang('common_country'), 'key' => 'country');
 		$fields[] = array('Name' => lang('common_comments'), 'key' => 'comments');
 		$fields[] = array('Name' => lang('customers_account_number'), 'key' => 'account_number');
-		$fields[] = array('Name' => lang('common_taxable'), 'key' => 'taxable');
-		$fields[] = array('Name' => lang('customers_tax_certificate'), 'key' => 'tax_certificate');
-		$fields[] = array('Name' => lang('customers_company_name'), 'key' => 'company_name');
-		$fields[] = array('Name' => lang('common_tier_name'), 'key' => 'tier_id');		
+		#$fields[] = array('Name' => lang('common_taxable'), 'key' => 'taxable');
+		#$fields[] = array('Name' => lang('customers_tax_certificate'), 'key' => 'tax_certificate');
+		#$fields[] = array('Name' => lang('customers_company_name'), 'key' => 'company_name');
+		#$fields[] = array('Name' => lang('common_tier_name'), 'key' => 'tier_id');		
 		$fields[] = array('Name' => lang('common_internal_notes'), 'key' => 'internal_notes');		
-		$this->lang->load('locations');
-		$fields[] = array('Name' => lang('locations_location_id'), 'key' => 'location_id');
+		#$this->lang->load('locations');
+		#$fields[] = array('Name' => lang('locations_location_id'), 'key' => 'location_id');
 		
 		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 		{
