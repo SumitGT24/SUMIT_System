@@ -599,7 +599,9 @@ class Customers extends Person_controller
 			$return[] = lang('common_balance');
 			$return[] = lang('common_credit_limit');
 		}
+		$return[] = lang('customers_auto_email_receipt');
 		
+		/*
 		if ($this->config->item('enable_customer_loyalty_system') && $this->config->item('loyalty_option') == 'advanced')
 		{
 			$return[] = lang('common_points');
@@ -613,8 +615,7 @@ class Customers extends Person_controller
 			$this->lang->load('locations');
 			$return[] = lang('locations_location_id');			
 		}
-		
-		$return[] = lang('customers_auto_email_receipt');
+		*/
 		//$return[] = lang('customers_always_sms_receipt');
 		
 		return $return;
