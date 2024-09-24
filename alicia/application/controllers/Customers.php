@@ -300,25 +300,25 @@ class Customers extends Person_controller
 		'email'=>$this->input->post('email'),
 		'phone_number'=>$this->input->post('phone_number'),
 		'address_1'=>$this->input->post('address_1'),
-		'address_2'=>$this->input->post('address_2'),
-		'city'=>$this->input->post('city'),
-		'state'=>$this->input->post('state'),
-		'zip'=>$this->input->post('zip'),
-		'country'=>$this->input->post('country'),
+		#'address_2'=>$this->input->post('address_2'),
+		#'city'=>$this->input->post('city'),
+		#'state'=>$this->input->post('state'),
+		#'zip'=>$this->input->post('zip'),
+		#'country'=>$this->input->post('country'),
 		'comments'=>$this->input->post('comments')
 		);
 		
 		
 		$customer_data=array(
-			'company_name' => $this->input->post('company_name'),
-			'tier_id' => $this->input->post('tier_id') ? $this->input->post('tier_id') : NULL,
+			#'company_name' => $this->input->post('company_name'),
+			#'tier_id' => $this->input->post('tier_id') ? $this->input->post('tier_id') : NULL,
 			'account_number'=>$this->input->post('account_number')=='' ? null:$this->input->post('account_number'),
-			'taxable'=>$this->input->post('taxable')=='' ? 0:1,
-			'tax_certificate' => $this->input->post('tax_certificate'),
-			'override_default_tax'=> $this->input->post('override_default_tax') ? $this->input->post('override_default_tax') : 0,
-			'tax_class_id'=> $this->input->post('tax_class') ? $this->input->post('tax_class') : NULL,
-			'internal_notes' => $this->input->post('internal_notes'),
-			'customer_info_popup' => $this->input->post('customer_info_popup'),
+			#'taxable'=>$this->input->post('taxable')=='' ? 0:1,
+			#'tax_certificate' => $this->input->post('tax_certificate'),
+			#'override_default_tax'=> $this->input->post('override_default_tax') ? $this->input->post('override_default_tax') : 0,
+			#'tax_class_id'=> $this->input->post('tax_class') ? $this->input->post('tax_class') : NULL,
+			#'internal_notes' => $this->input->post('internal_notes'),
+			#'customer_info_popup' => $this->input->post('customer_info_popup'),
 			'auto_email_receipt' => $this->input->post('auto_email_receipt') ? 1 : 0,
 			'always_sms_receipt' => $this->input->post('always_sms_receipt') ? 1 : 0,
 		);
