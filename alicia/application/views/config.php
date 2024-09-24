@@ -1,7 +1,7 @@
 <?php
 $this->load->view("partial/header"); 
-$this->load->helper('demo');
-$this->load->helper('update');
+#$this->load->helper('demo');
+#$this->load->helper('update');
 ?>
 
 <!-- Contenedor pestañas -->
@@ -2564,31 +2564,6 @@ $(document).ready(function()
 			{
 				required: true
 			},
-			
-			item_id_auto_increment:
-			{
-				number: true,
-				min: 1,
-				max: 999999999
-			},
-			item_kit_id_auto_increment:
-			{
-				number: true,
-				min: 1,
-				max: 999999999
-			},
-			sale_id_auto_increment:
-			{
-				number: true,
-				min: 1,
-				max: 999999999
-			},
-			receiving_id_auto_increment:
-			{
-				number: true,
-				min: 1,
-				max: 999999999
-			}
 		
    	},
 		messages: 
