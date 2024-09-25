@@ -4725,14 +4725,15 @@ input[type="radio"]:checked + label span {
   line-height: 40px;
   text-align: center;
   padding: 0px 15px;
-  background: #FFC300;
+  background: var(--amarillo-principal);
   border-width: 0px;
   border-radius: 0px;
-  color: #ffffff;
+  color: black;
   font-weight: 400;
 }
 .btn-file-upload:hover {
   color: #ffffff;
+  background-color: var(--naraja-principal);
 }
 /**************************************************
                         Select2
@@ -16814,10 +16815,14 @@ body {
 .left-bar .menu-parent > li a i {
   color: #ADAFB9;
 }
-.left-bar .menu-parent > li:hover,
+.left-bar .menu-parent > li:hover{
+  background-color: var(--amarillo-principal);
+  color: black;
+}
 .left-bar .menu-parent > li.active {
   /*background-color: #202126;*/
   background-color: var(--amarillo-hover);
+  color: black;
   border-left: 4px solid #489ee7;
   -webkit-transition: all 0.1s ease-out;
 }

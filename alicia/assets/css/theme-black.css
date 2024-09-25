@@ -46,11 +46,37 @@ html {
   .left-bar .menu-parent > li a i {
     color: white;
   }
-  .left-bar .menu-parent > li:hover,
-  .left-bar .menu-parent > li.active {
-    /*background-color: #202126;*/
+  .left-bar .menu-parent > li:hover{
     background-color: var(--azul-hover);
   }
+  .left-bar .menu-parent > li.active {
+    /*background-color: #202126;*/
+    background-color: var(--azul-principal);
+    color: var(--gris-letras);
+  }
+
+  a{
+    color: white;
+  }
+
+  a:hover{
+    color: var(--azul-principal);
+  }
+
+  .btn-file-upload:hover {
+    color: #ffffff;
+    background-color: var(--azul-principal);
+  }
+
+  .btn-file-upload:hover {
+    color: #ffffff;
+    background-color: var(--azul-hover);
+  }
+
+
+
+
+
 #item_kit_items th,
 .close,
 .dashboard-stats .left h4,
