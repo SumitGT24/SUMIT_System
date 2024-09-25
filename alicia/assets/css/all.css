@@ -6399,6 +6399,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .btn-primary:active,
 .btn-primary:focus {
   background-color: #e88960;
+  color: white;
   border: 0px;
   color: #ffffff;
 }
