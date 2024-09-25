@@ -1,3 +1,12 @@
+/*Variables modo oscuro*/
+:root{
+    --negro-fondo: #18191a;
+    --negro-contraste: 242526;
+    --azul-principal: #2d88ff;
+    --azul-hover: #014bab;
+    --gris-letras: #555555;
+}
+
 .jumbotron,
 body,
 html {
@@ -16,22 +25,27 @@ html {
 
 /*Contenedor de pestañas*/
 .tab-container {
-    background-color: #abafb4!important;
+    background-color: var(--negro-contraste) !important;
   }
   
   /*/Tabs Style*/
   .tablink {
-    background-color: #2d88ff;
+    background-color: var(--azul-principal);
     color: rgb(255, 255, 255);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   }
   
   .tablink:hover {
-    background-color: #014bab;
+    background-color: var(--azul-hover);
   }
   
   /* Tabs Style */
+  
+  .choose-location-home li {
+    width: 100%;
+    color: var(--gris-letras);
 
+  }
 #item_kit_items th,
 .close,
 .dashboard-stats .left h4,

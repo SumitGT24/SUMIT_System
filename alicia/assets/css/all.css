@@ -13358,13 +13358,14 @@ input {
   padding: 10px 20px;
   margin-right: 5px;
   margin-bottom: 10px;
+  color: #555555;
   border-radius: 4px;
 }
 .choose-location-home a:nth-child(2n) {
-  background-color: var(--amarillo-hover);
+  background-color: #f9f9f9;
 }
 .choose-location-home a:hover {
-  background-color: var(--amarillo-hover);
+  background-color: #f9f9f9;
 }
 #giftcard_log {
   width: 100%;
