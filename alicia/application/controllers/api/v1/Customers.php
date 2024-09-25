@@ -133,7 +133,6 @@ class Customers extends REST_Controller {
 				{
 						$this->response(NULL, REST_Controller::HTTP_NOT_FOUND);
 				}
-			
 		}
 				
     public function index_get($person_id = NULL)

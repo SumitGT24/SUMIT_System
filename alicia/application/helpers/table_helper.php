@@ -109,7 +109,7 @@ function get_person_data_row($person,$controller)
 	$controller_name=strtolower(get_class($CI));
 	$params = $CI->session->userdata($controller_name.'_search_data') ? $CI->session->userdata($controller_name.'_search_data') : array('deleted' => 0);
 	
-	$avatar_url=$person->image_id ?  app_file_url($person->image_id) : base_url('assets/assets/images/avatar-default.jpg');
+	//$avatar_url=$person->image_id ?  app_file_url($person->image_id) : base_url('assets/assets/images/avatar-default.jpg');
 
 	$table_data_row='<tr>';
 	
@@ -324,7 +324,7 @@ function get_item_data_row($item,$controller)
 	$params = $CI->session->userdata($controller_name.'_search_data') ? $CI->session->userdata($controller_name.'_search_data') : array('deleted' => 0);
 	$has_edit_quantity_permission = $CI->Employee->has_module_action_permission('items','edit_quantity', $CI->Employee->get_logged_in_employee_info()->person_id);
 	
-	$avatar_url=$item->image_id ?  app_file_url($item->image_id) : base_url('assets/assets/images/default.png');
+	//$avatar_url=$item->image_id ?  app_file_url($item->image_id) : base_url('assets/assets/images/default.png');
 
 	$table_data_row='<tr>';
 	$table_data_row.="<td><input type='checkbox' id='item_$item->item_id' value='".$item->item_id."'/><label for='item_$item->item_id'><span></span></label></td>";
@@ -1149,7 +1149,7 @@ function get_item_kit_data_row($item_kit,$controller)
 	
 	$has_cost_price_permission = $CI->Employee->has_module_action_permission('item_kits','see_cost_price', $CI->Employee->get_logged_in_employee_info()->person_id);
 		
-	$avatar_url=$item_kit->main_image_id ?  app_file_url($item_kit->main_image_id) : base_url('assets/assets/images/default.png');
+	//$avatar_url=$item_kit->main_image_id ?  app_file_url($item_kit->main_image_id) : base_url('assets/assets/images/default.png');
 		
 	$table_data_row ='<tr>';
 	$table_data_row.="<td><input type='checkbox' id='item_kit_$item_kit->item_kit_id' value='".$item_kit->item_kit_id."'/><label for='item_kit_$item_kit->item_kit_id'><span></span></label></td>";

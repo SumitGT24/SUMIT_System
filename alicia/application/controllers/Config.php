@@ -218,8 +218,8 @@ class Config extends Secure_area
 				$deleted_payment_types[] = $payment_type;
 				
 				$this->load->helper('directory');
-				$language_folder = directory_map(APPPATH.'language',1);
 				/*
+				$language_folder = directory_map(APPPATH.'language',1);
 				$languages = array();
 				
 				foreach($language_folder as $language_folder)
@@ -598,7 +598,6 @@ class Config extends Secure_area
 			&& $this->save_sale_types($this->input->post('sale_types_to_edit'), $this->input->post('sale_types_to_delete'))
 			)
 		{
-
 			
 			$providers_to_save = $this->input->post('providers');
 			$methods_to_save = $this->input->post('methods');		
@@ -719,7 +718,7 @@ class Config extends Secure_area
 			echo json_encode(array('success'=>false,'message'=>lang('config_saved_unsuccessfully')));
 		}
 	}
-	
+	/*
 	function send_smtp_test_email()
 	{
 		$this->load->library('email');
@@ -734,7 +733,7 @@ class Config extends Secure_area
 			echo json_encode(array('success' => FALSE, 'message' => $ret));				
 		}
 	}
-	
+	*/
 	function save_sale_types($sales_types_to_edit, $sales_types_to_delete)
 	{
 		$this->load->model('Sale_types');
@@ -938,7 +937,7 @@ class Config extends Secure_area
 		$this->load->view('ecom_documentation');
 	
 	}
-	
+	/*
 	function reset_ecom()
 	{
 		$platform=$this->Appconfig->get("ecommerce_platform");
@@ -969,7 +968,7 @@ class Config extends Secure_area
 		echo json_encode(array('success'=>true,'message'=>lang('config_reset_qb_successfully')));
 		
 	}
-	
+	*/
 	
 	function add_api_key()
 	{
@@ -994,7 +993,7 @@ class Config extends Secure_area
 		$this->Appconfig->delete_api_key($this->input->post('api_key_id'));
 		redirect($_SERVER['HTTP_REFERER'] ? $_SERVER['HTTP_REFERER'] : site_url('config'));
   }
-  
+  /*
   public function shopify()
   {
 	$data = array();
@@ -1023,6 +1022,6 @@ class Config extends Secure_area
 
 	$this->load->view('shopify_config',$data);
   }
-	
+	*/
 }
 ?>

@@ -99,7 +99,6 @@ class Customers extends Person_controller
 		echo json_encode(array('manage_table' => $data['manage_table'], 'pagination' => $data['pagination'],'total_rows' => $config['total_rows']));	
 		
 	}
-	
 	/*
 	Returns customer table data rows. This will be called with AJAX.
 	*/
@@ -167,9 +166,7 @@ class Customers extends Person_controller
 			#$label['state'] = $customer_info->state;
 			#$label['zip'] = $customer_info->zip;
 			#$label['country'] = $customer_info->country;
-			
 			$data['mailing_labels'][] = $label;
-			
 		}
 		
 		$data['type'] = $this->config->item('mailing_labels_type') == 'excel' ? 'excel' : 'pdf';

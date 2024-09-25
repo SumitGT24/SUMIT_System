@@ -31,20 +31,7 @@ $this->load->view("partial/header");
 	<button class="tablink" onclick="openPage('System', this)">Sistema</button>	 
 </div>
 <div class="config-panel">
-	<?php
-		//for help window popups
-		$popupAtts = array(
-	    'width'       => 800,
-	    'height'      => 600,
-	    'scrollbars'  => 'yes',
-	    'status'      => 'yes',
-	    'resizable'   => 'yes',
-	    'screenx'     => 0,
-	    'screeny'     => 0,
-	    'window_name' => '_blank'
-		);
-		
-	?>
+
 <!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	
