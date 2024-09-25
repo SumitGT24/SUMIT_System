@@ -63,7 +63,7 @@ html {
     color: var(--azul-principal);
   }
 
-  .btn-file-upload:hover {
+  .btn-file-upload{
     color: #ffffff;
     background-color: var(--azul-principal);
   }

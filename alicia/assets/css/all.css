@@ -16829,6 +16829,7 @@ body {
 .left-bar .menu-parent > li:hover.home,
 .left-bar .menu-parent > li.active.home {
   border-left: 4px solid #489ee7;
+  color: black;
 }
 .left-bar .menu-parent > li:hover.customers,
 .left-bar .menu-parent > li.active.customers {
