@@ -34,6 +34,7 @@
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
+  
 
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
@@ -44,7 +45,7 @@
   background-color: white;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap-reverse;
+  
   gap: 10px; /* Espacio entre los botones */
   padding: 10px;
 }
@@ -72,6 +73,7 @@
   display: none;
   padding: 50px;
   border-top: none;
+  flex-wrap: wrap-reverse;
 }
 /* Tabs Style */
 
