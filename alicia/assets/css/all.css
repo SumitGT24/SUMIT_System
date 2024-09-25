@@ -4721,6 +4721,7 @@ input[type="radio"]:checked + label span {
                     File upload button
 **************************************************/
 .btn-file-upload {
+  color: #000000;
   height: 40px;
   line-height: 40px;
   text-align: center;
@@ -4728,7 +4729,6 @@ input[type="radio"]:checked + label span {
   background: var(--amarillo-principal);
   border-width: 0px;
   border-radius: 0px;
-  color: black;
   font-weight: 400;
 }
 .btn-file-upload:hover {
@@ -16816,13 +16816,12 @@ body {
   color: #ADAFB9;
 }
 .left-bar .menu-parent > li:hover{
-  background-color: var(--amarillo-principal);
-  color: black;
+  background-color: #bdbdbd;
 }
 .left-bar .menu-parent > li.active {
   /*background-color: #202126;*/
-  background-color: var(--amarillo-hover);
-  color: black;
+  background-color: var(--amarillo-principal);
+  color: #000000;
   border-left: 4px solid #489ee7;
   -webkit-transition: all 0.1s ease-out;
 }
