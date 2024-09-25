@@ -14,6 +14,24 @@ html {
     background-color: #18191a !important;	
 }
 
+/*Contenedor de pestañas*/
+.tab-container {
+    background-color: #18191a !important;
+  }
+  
+  /*/Tabs Style*/
+  .tablink {
+    background-color: #2d88ff;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tablink:hover {
+    background-color: #0064e6;
+  }
+  
+  /* Tabs Style */
+
 #item_kit_items th,
 .close,
 .dashboard-stats .left h4,

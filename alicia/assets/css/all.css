@@ -45,7 +45,7 @@
   background-color: white !important;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   gap: 10px; /* Espacio entre los botones */
   padding: 10px;
   margin-left: 50px;
@@ -10720,8 +10720,8 @@ body.open-modal {
   color: #ff5a5a;
 }
 .close-amount li {
-  border-color: #e9ecf2;
-  color: #555555;
+  background-color: #ffcc2c;
+  color: black;
 }
 .close-amount li .pull-right {
   font-weight: bold;
@@ -10729,13 +10729,16 @@ body.open-modal {
 .close-amount li .total-amount {
   font-size: 20px;
 }
-.close-amount li:hover,
+.close-amount li:hover{
+  background-color: #ffae00;
+}
 .close-amount li.active {
   color: #FFFFFF;
   text-decoration: none;
-  background-color: #051BD2;
-  border-color: #e9ecf2;
+  background-color: #e88960;
+  color: white;
 }
+
 .input-group-mobile.input-group {
   display: none;
 }
