@@ -1,7 +1,7 @@
 /*Variables modo oscuro*/
 :root{
     --negro-fondo: #18191a;
-    --negro-contraste: 242526;
+    --negro-contraste: #242526;
     --azul-principal: #2d88ff;
     --azul-hover: #014bab;
     --gris-letras: #555555;
@@ -40,11 +40,16 @@ html {
   }
   
   /* Tabs Style */
-  
-  .choose-location-home li {
-    width: 100%;
-    color: var(--gris-letras);
-
+  .left-bar .menu-parent > li a {
+    color: white;
+  }
+  .left-bar .menu-parent > li a i {
+    color: white;
+  }
+  .left-bar .menu-parent > li:hover,
+  .left-bar .menu-parent > li.active {
+    /*background-color: #202126;*/
+    background-color: var(--azul-hover);
   }
 #item_kit_items th,
 .close,

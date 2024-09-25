@@ -16809,14 +16809,15 @@ body {
   background-color: #FFFFFF;
 }
 .left-bar .menu-parent > li a {
-  color: #000000;
+  color: #555555;
 }
 .left-bar .menu-parent > li a i {
   color: #ADAFB9;
 }
 .left-bar .menu-parent > li:hover,
 .left-bar .menu-parent > li.active {
-  background-color: #202126;
+  /*background-color: #202126;*/
+  background-color: var(--amarillo-hover);
   border-left: 4px solid #489ee7;
   -webkit-transition: all 0.1s ease-out;
 }
