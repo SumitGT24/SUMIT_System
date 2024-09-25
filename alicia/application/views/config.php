@@ -5,7 +5,7 @@ $this->load->view("partial/header");
 ?>
 
 <!-- Contenedor pestañas -->
-<div class="tab-container">
+<div class="nav nav-justified nav-wizard">
 	<?php
 		//for help window popups
 		$popupAtts = array(

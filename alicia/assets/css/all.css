@@ -13839,7 +13839,8 @@ body.modal-open {
   padding: 10px !important;
 }
 .panel-heading .reports-range {
-  color: white !important;
+  color: #ffcc2c !important;
+  font-style: italic;
 }
 span.compare {
   color: black;
