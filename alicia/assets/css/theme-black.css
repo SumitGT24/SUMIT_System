@@ -72,6 +72,9 @@ html {
     background-color: var(--azul-hover);
   }
 
+  input.submit_button:hover {
+    background-color: var(--azul-hover);
+  }
 
 
 

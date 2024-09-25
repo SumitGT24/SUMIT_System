@@ -5216,12 +5216,12 @@ input:focus {
 input {
   padding-left: 25px !important;
 }
-/*
-padding innecesario:
+
 input.submit_button {
-  padding-right: 10px !important;
+  /*padding-right: 10px !important;*/
+  text-align: center;
 }
-*/
+
 .textarea {
   height: 150px !important;
 }
@@ -16825,10 +16825,17 @@ body {
   border-left: 4px solid #489ee7;
   -webkit-transition: all 0.1s ease-out;
 }
+
+/**/
+.left-bar .menu-parent > li a.active {
+  /*background-color: #202126;*/
+  color: #000000;
+}
+/**/
 .left-bar .menu-parent > li:hover.home,
 .left-bar .menu-parent > li.active.home {
   border-left: 4px solid #489ee7;
-  color: black;
+  color: #000000;
 }
 .left-bar .menu-parent > li:hover.customers,
 .left-bar .menu-parent > li.active.customers {
