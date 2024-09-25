@@ -42,12 +42,14 @@
 }
 /*Contenedor de pestañas*/
 .tab-container {
-  background-color: white;
+  background-color: white !important;
   display: flex;
   justify-content: center;
-  
+  flex-wrap: wrap-reverse;
   gap: 10px; /* Espacio entre los botones */
   padding: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 /*/Tabs Style*/
@@ -73,7 +75,6 @@
   display: none;
   padding: 50px;
   border-top: none;
-  flex-wrap: wrap-reverse;
 }
 /* Tabs Style */
 
