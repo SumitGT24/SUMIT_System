@@ -44,7 +44,7 @@
   background-color: white;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   gap: 10px; /* Espacio entre los botones */
   padding: 10px;
 }

@@ -5,20 +5,8 @@ $this->load->view("partial/header");
 ?>
 
 <!-- Contenedor pestañas -->
-<div class="config-panel">
-	<?php
-		//for help window popups
-		$popupAtts = array(
-	    'width'       => 800,
-	    'height'      => 600,
-	    'scrollbars'  => 'yes',
-	    'status'      => 'yes',
-	    'resizable'   => 'yes',
-	    'screenx'     => 0,
-	    'screeny'     => 0,
-	    'window_name' => '_blank'
-		);	
-	?>
+<div class="tab-container">
+	
 	<button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Empresa</button>
 	<button class="tablink" onclick="openPage('PaymentMethods', this)">Pagos</button>
 	<button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
@@ -29,7 +17,8 @@ $this->load->view("partial/header");
 	<button class="tablink" onclick="openPage('Barcodes', this)">Códigos de barra</button>
 	<button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
 	<button class="tablink" onclick="openPage('System', this)">Sistema</button>	 
-
+</div>
+<div class="config-panel">
 
 <!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
