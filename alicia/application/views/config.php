@@ -5,7 +5,7 @@ $this->load->view("partial/header");
 ?>
 
 <!-- Contenedor pestañas -->
-<div class="nav nav-justified nav-wizard">
+<div class="config-panel">
 	<?php
 		//for help window popups
 		$popupAtts = array(
@@ -29,8 +29,7 @@ $this->load->view("partial/header");
 	<button class="tablink" onclick="openPage('Barcodes', this)">Códigos de barra</button>
 	<button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
 	<button class="tablink" onclick="openPage('System', this)">Sistema</button>	 
-</div>
-<div class="config-panel">
+
 
 <!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
