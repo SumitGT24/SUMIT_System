@@ -4,9 +4,10 @@ $this->load->view("partial/header");
 #$this->load->helper('update');
 ?>
 
+<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 <!-- Contenedor pestañas -->
 <div class="tab-container">
-	
+
 	<button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Empresa</button>
 	<button class="tablink" onclick="openPage('PaymentMethods', this)">Pagos</button>
 	<button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
@@ -21,7 +22,6 @@ $this->load->view("partial/header");
 <div class="config-panel">
 
 <!-- Formulario de configuraciones -->
-	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
