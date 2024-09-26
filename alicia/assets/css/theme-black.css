@@ -49,12 +49,10 @@ html {
   .left-bar .menu-parent > li:hover{
       background-color: #4f4f4f;
     }
-  .left-bar .menu-parent > li.active{
-    color: var(--azul-principal);
-  }
-  .left-bar .menu-parent > li.active a{
-    color: red;
-  }
+    .left-bar .menu-parent > li.active {
+        /*background-color: #202126;*/
+        background-color: var(--azul-principal);
+      }
 
 
   a{

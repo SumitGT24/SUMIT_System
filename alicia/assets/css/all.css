@@ -16821,13 +16821,12 @@ body {
 .left-bar .menu-parent > li.active {
   /*background-color: #202126;*/
   background-color: var(--amarillo-principal);
-  color: #000000;
   border-left: 4px solid #489ee7;
   -webkit-transition: all 0.1s ease-out;
 }
 
 /**/
-.left-bar .menu-parent > li a.active {
+.left-bar .menu-parent > li.active a {
   /*background-color: #202126;*/
   color: #000000;
 }
