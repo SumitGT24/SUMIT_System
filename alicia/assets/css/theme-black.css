@@ -52,7 +52,9 @@ html {
     .left-bar .menu-parent > li.active {
         /*background-color: #202126;*/
     background-color: var(--azul-principal);
+    color: red;
   }
+
 
   a{
     color: white;
