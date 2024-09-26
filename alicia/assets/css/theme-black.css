@@ -47,14 +47,8 @@ html {
     color: white;
   }
   .left-bar .menu-parent > li:hover{
-      background-color: #6b6b6b;
+      background-color: #4f4f4f;
     }
-    .left-bar .menu-parent > li.active {
-        /*background-color: #202126;*/
-    background-color: var(--azul-principal);
-    color: red;
-  }
-
 
   a{
     color: white;
@@ -78,7 +72,9 @@ html {
     background-color: var(--azul-hover);
   }
 
-
+  .col-md-12 hidden-print text-center{
+    background-color: var(--negro-contraste);
+  }
 
 
 #item_kit_items th,
