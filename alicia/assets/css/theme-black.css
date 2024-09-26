@@ -49,6 +49,13 @@ html {
   .left-bar .menu-parent > li:hover{
       background-color: #4f4f4f;
     }
+  .left-bar .menu-parent > li.active{
+    color: var(--azul-principal);
+  }
+  .left-bar .menu-parent > li.active a{
+    color: red;
+  }
+
 
   a{
     color: white;
@@ -72,9 +79,7 @@ html {
     background-color: var(--azul-hover);
   }
 
-  .col-md-12 hidden-print text-center{
-    background-color: var(--negro-contraste);
-  }
+
 
 
 #item_kit_items th,
