@@ -5,7 +5,7 @@ $lang['home_todays_summary_items_report'] = 'REPORTE RESUMIDO DE ARTÍCULOS DEL 
 
 $lang['home_receivings_start_new_receiving'] = 'REGISTRAR NUEVAS COMPRAS CON FACTURAS';
 $lang['home_mercury_activate_promo_text'] = 'El nuevo modulo de reparaciones permite llevar un mejor control de los servicios de reparacion y/o mantenimiento que se realicen, llevando un control especifico del seguimiento de cada uno de los casos.';
-$lang['home_welcome_message'] = '¡GUATESOF TE DA LA BIENVENIDA, seleccione una opción para comenzar!';
+$lang['home_welcome_message'] = '¡SUMIT TE DA LA BIENVENIDA, seleccione una opción para comenzar!';
 $lang['home_ecommerce_platform_sync'] = 'Estado de la sincronización plataforma de Comercio electrónico';
 $lang['home_view_saved_reports'] = 'VER REPORTES GUARDADOS';
 
@@ -17,7 +17,6 @@ $lang['home_wizard_add_inventory'] = 'Añada su inventario / artículos';
 $lang['home_wizard_add_customer'] = 'Añade tus clientes';
 $lang['home_wizard_create_sale'] = 'Completa tu primera venta';
 $lang['home_setup_wizard'] = 'Complete los pasos para mejorar la experiencia del uso del software ';
-
 
 
 $lang['home_wizard_edit_employees'] = 'Agregar y actualizar empleados';

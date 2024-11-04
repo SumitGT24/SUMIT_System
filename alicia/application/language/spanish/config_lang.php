@@ -3,7 +3,7 @@ $lang['config_info']='Información tienda';
 
 $lang['config_address']='Dirección de la Tienda';
 $lang['config_phone']='Teléfono de la tienda';
-$lang['config_website']='pagina web no es necesario';
+$lang['config_website']='página web no es necesaria';
 $lang['config_fax']='Fax';
 $lang['config_default_tax_rate']='% de IVA';
 
@@ -20,7 +20,7 @@ $lang['config_return_policy_required']='Es necesario ingresar la política de de
 $lang['config_print_after_sale']='¿Desea imprimir el recibo después de una venta?';
 
 
-$lang['config_currency_symbol'] = 'Escriba su moneda ejemplo Q';
+$lang['config_currency_symbol'] = 'Escriba su moneda ejemplo: Q';
 $lang['config_backup_database'] = 'Copia de seguridad de base de datos';
 $lang['config_restore_database'] = 'Restaurar base de datos';
 
@@ -52,12 +52,9 @@ $lang['config_use_scale_barcode'] = 'Usar códigos de barra a escala';
 
 $lang['config_environment'] = 'Entorno';
 
-
 $lang['config_sandbox'] = 'Área de pruebas';
 $lang['config_production'] = 'Producción';
 $lang['disable_confirmation_sale']='¿Desea desactivar la confirmación de venta completada?';
-
-
 
 $lang['config_default_payment_type'] = 'Método de pago estándar';
 $lang['config_speed_up_note'] = 'Solo se recomienda si usted tiene más de 10.000 artículos o clientes';
@@ -142,8 +139,6 @@ $lang['config_remove_customer_contact_info_from_receipt'] = 'Eliminar informaci�
 $lang['config_speed_up_search_queries'] = '¿Agilizar las consultas de búsqueda?';
 
 
-
-
 $lang['config_redirect_to_sale_or_recv_screen_after_printing_receipt'] = 'Redirigir a la pantalla de ventas o entradas después de imprimir el recibo';
 $lang['config_enable_sounds'] = 'Activar sonidos para mensajes de estado';
 $lang['config_charge_tax_on_recv'] = 'Cargar impuesto en entradas';
@@ -158,10 +153,6 @@ $lang['config_number_of_items_in_grid'] = 'Número de artículos por página en 
 $lang['config_edit_item_price_if_zero_after_adding'] = 'Editar el precio del artículo si es igual a 0 después de añadir a la venta';
 $lang['config_override_receipt_title'] = 'Anular el título del recibo';
 $lang['config_automatically_print_duplicate_receipt_for_cc_transactions'] = 'Imprima automáticamente un recibo duplicado para las transacciones con tarjeta de crédito';
-
-
-
-
 
 
 $lang['config_default_type_for_grid'] = 'Tipo predeterminado para la cuadrícula';
@@ -342,10 +333,7 @@ $lang['config_price_rules_info'] = 'Reglas de precios';
 
 $lang['config_prompt_to_use_points'] = 'Solicitud de uso puntos cuando esté disponible';
 
-
-
 $lang['config_always_print_duplicate_receipt_all'] = 'Siempre imprima un recibo duplicado para todas las transacciones';
-
 
 $lang['config_orders_and_deliveries_info'] = 'Pedidos y entregas';
 $lang['config_delivery_methods'] = 'Métodos de entrega';
@@ -420,8 +408,6 @@ $lang['config_export_phppos_attributes_to_ecommerce'] = 'Exportar atributos al c
 
 $lang['config_sku_sync_field'] = 'Campo SKU para sincronizar con';
 
-
-
 $lang['config_overwrite_existing_items_on_excel_import'] = 'Sobreescribir los artículos existentes en la importación de Excel';
 
 $lang['config_do_not_force_http'] = 'No fuerce HTTP cuando sea necesario para el procesamiento de tarjeta de crédito EMV';
@@ -431,7 +417,6 @@ $lang['config_remove_employee_from_receipt'] = 'Eliminar el nombre del empleado 
 $lang['config_import_ecommerce_orders_into_phppos'] = 'Importar pedidos en phppos';
 $lang['import_ecommerce_orders_into_phppos'] = 'Importar pedidos a php pos';
 $lang['config_hide_name_on_barcodes'] = 'Ocultar nombre en códigos de barras';
-
 
 $lang['config_api_settings_info'] = 'Configuración de API';
 $lang['config_keyword_api'] = 'API';
@@ -456,13 +441,7 @@ $lang['config_new_items_are_ecommerce_by_default'] = 'Los nuevos artículos son 
 $lang['config_hide_description_on_sales_and_recv'] = 'Ocultar descripción en interfaces de ventas y recepciones';
 
 
-
-
-
 $lang['config_hide_item_descriptions_in_reports'] = 'ocultar la descripción del artículo en los informes';
-
-
-
 
 
 $lang['config_do_not_allow_item_with_variations_to_be_sold_without_selecting_variation'] = 'NO permita que los artículos de variación se vendan sin seleccionar la variación';
@@ -471,8 +450,6 @@ $lang['config_do_not_allow_item_with_variations_to_be_sold_without_selecting_var
 
 $lang['config_verify_age_for_products'] = 'Verificar la edad de los productos';
 $lang['config_default_age_to_verify'] = 'Edad predeterminada para verificar';
-
-
 
 
 $lang['config_remind_customer_facing_display'] = 'Recordar al empleado que abra la pantalla orientada al cliente';

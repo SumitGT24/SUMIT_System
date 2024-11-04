@@ -39,7 +39,7 @@ html {
     background-color: var(--azul-hover);
   }
   
-  /* Tabs Style */
+  /* Pestañas del menú lateral */
   .left-bar .menu-parent > li a {
     color: white;
   }
@@ -52,9 +52,16 @@ html {
     .left-bar .menu-parent > li.active {
         /*background-color: #202126;*/
         background-color: var(--azul-principal);
-      }
+    }
+    .left-bar .menu-parent > li:hover a,
+.left-bar .menu-parent > li.active a,
+.left-bar .menu-parent > li:hover i,
+.left-bar .menu-parent > li.active i {
+  color: white !important;
+}
+    /*Fin pestañas el menú lateral*/
 
-
+  /*Textos pequeños*/
   a{
     color: white;
   }
@@ -62,19 +69,26 @@ html {
   a:hover{
     color: var(--azul-principal);
   }
+  /*Fin textos pequeños*/
 
+  /*Botón subir archivos*/
   .btn-file-upload{
     color: #ffffff;
     background-color: var(--azul-principal);
   }
-
   .btn-file-upload:hover {
     color: #ffffff;
     background-color: var(--azul-hover);
   }
 
+  /*Botón de guardar */
+  input.submit_button{
+    color: #ffffff;
+    background-color: var(--azul-principal);
+  }
+
   input.submit_button:hover {
-    background-color: var(--azul-hover);
+    background-color: var(--azul-hover) !important;
   }
 
 
