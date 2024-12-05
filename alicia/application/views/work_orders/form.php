@@ -5,6 +5,7 @@
 	<div class="rect3"></div>
 </div>
 <!-- Notes Modal -->
+<!-- Vista editar orden de trabajo -->
 <div class="modal fade sale_item_notes_modal" id="sale_item_notes_modal" tabindex="-1" role="dialog" aria-labelledby="sale_item_note" aria-hidden="true">
 	<div class="modal-dialog customer-recent-sales" style = "width: 500px;">
 		<div class="modal-content">
@@ -63,9 +64,7 @@
 							'data-dismiss' => 'modal',
 							'style' => 'margin-right: 10px;',
 							'class'=>'pull-right btn btn-warning')
-						);
-
-						
+						)						
 					?>
 					<div class="clearfix">&nbsp;</div>
 				</div>
@@ -117,7 +116,6 @@
 					</div>
 				</div>
 				
-				
 				<ul class="list-inline pull-right">
 					<li><?php echo anchor(site_url('sales/edit/').$work_order_info['sale_id'],lang('work_orders_edit_sale'), array('class'=>'btn btn-primary btn-lg')); ?></li>
 					<li><?php echo anchor(site_url('work_orders/print_work_order/'.$work_order_info['id']), lang('work_orders_print'), array('class'=>'btn btn-primary btn-lg')); ?></li>
@@ -137,7 +135,7 @@
 
 				<div class="panel-body">
 					<ul class="customer_name_address_ul list-style-none">
-						<li class="customer_name"><?php echo $customer_info['first_name'].' '.$customer_info['last_name']; ?></li>
+						<li class="customer_name">XD<?php echo $customer_info['first_name'].' '.$customer_info['last_name']; ?></li>
 						<li><?php echo $customer_info['address_1'].' '.$customer_info['address_2']; ?></li>
 						<li><?php echo $customer_info['city'].','.$customer_info['state'].' '.$customer_info['zip']; ?></li>
 					</ul>

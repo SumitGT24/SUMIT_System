@@ -7,3 +7,4 @@ wp-content/w3tc-cache/*
 wp-config.php
 alicia/application/config/database.php
 .ssh/authorized_keys/*
+alicia/application/models/Work_order_copy.php

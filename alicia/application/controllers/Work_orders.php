@@ -1008,6 +1008,7 @@ class Work_orders extends Secure_area
 		echo json_encode(array('item_info' => $item_info,'category_full_path'=>$category_full_path,'item_tmcm'=>$item_tmcm));
 	}
 
+	/*Antigua funcion para guardar una nueva orden de trabajo
 	function save_new_work_order(){
 		$customer_id = $this->input->post("customer_id");
 		$item_id = $this->input->post("item_id");
@@ -1023,8 +1024,42 @@ class Work_orders extends Secure_area
 		$this->session->set_userdata('item_serial_number_for_new','');
 		$this->session->set_userdata('customer_id_for_new','');
 		echo json_encode(array('success' => true,'work_order_id'=>$work_order_id));
-
 	}
+	*/
+
+	//Nueva funcion para guardar una nueva orden de trabajo
+
+	function save_new_work_order() {
+		// Obtener datos del formulario
+		$customer_id = $this->input->post("customer_id");
+		$client_name = $this->input->post("client_name");
+		$client_phone = $this->input->post("client_phone");
+
+		//$item_id = $this->input->post("item_id");
+		$equipment = $this->input->post("equipment");
+		$model = $this->input->post("model");
+
+		// Asignar datos para guardar
+		$work_order_data = [
+			'client_name' => $client_name,
+			'client_phone' => $client_phone,
+			'equipment' => $equipment,
+			'model' => $model,
+			'status' => 1, // Estado inicial de la orden de trabajo
+			'order_date' => date('d-m-Y H:i')
+		];
+		//Modificar el envío de datos, ya no se registran los datos del cliente y del artículo XD
+		// Guardar la orden de trabajo
+		$work_order_id = $this->Work_order->save_new_work_order($work_order_data,$customer_id);
+	
+		// Limpiar variables de sesión
+		$this->session->set_userdata('customer_id_for_new', '');
+		//$this->session->set_userdata('item_id_for_new', '');
+	
+		// Respuesta exitosa
+		echo json_encode(array('success' => true, 'work_order_id' => $work_order_id));
+	}
+	//Fin nueva función para guardar una nueva orden de trabajo
 
 	function add_item_to_session(){
 		$item_id = $this->input->post('item_id');

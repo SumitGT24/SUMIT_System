@@ -16,7 +16,6 @@ class Work_order extends CI_Model
 		return $this->db->get();
 	}
 	
-	
 	function get_info_by_sale_id($sale_id)
 	{
 		$this->db->from('sales_work_orders');
@@ -237,8 +236,6 @@ class Work_order extends CI_Model
 				$suggestions[]=array('value'=> $key, 'label' => $value['name'],'avatar'=>$value['avatar'],'subtitle'=>$value['subtitle']);		
 			}
 			
-			
-			
 			$this->db->from('sales_work_orders');
 			$this->db->join('sales', 'sales.sale_id = sales_work_orders.sale_id');
 			
@@ -272,10 +269,7 @@ class Work_order extends CI_Model
 			{
 				$suggestions[]=array('value'=> $key, 'label' => $value['name'],'avatar'=>$value['avatar'],'subtitle'=>$value['subtitle']);		
 			}
-
-
-			
-			
+						
 			$this->db->from('sales_work_orders');
 			$this->db->join('sales', 'sales.sale_id = sales_work_orders.sale_id');
 			
@@ -730,6 +724,7 @@ class Work_order extends CI_Model
 		return $this->db->delete('sales_items_notes');
 	}
 
+	/*Inicio función original ordenes de trabajo
 	function save_new_work_order($customer_id,$item_id,$serial_number){
 		$employee_id = $this->Employee->get_logged_in_employee_info()->person_id;
 		$location_id = $this->Employee->get_logged_in_employee_current_location_id();
@@ -801,23 +796,91 @@ class Work_order extends CI_Model
 		
 		$inv_data = array
 		(
-			'trans_date'=>date('Y-m-d H:i:s'),
-			'trans_items'=>$item_id,
+			'trans_date'=>date('d-m-Y H:i:s'),
+			//'trans_items'=>$item_id,
 			'trans_user'=>$employee_id,
-			'trans_comment'=>$this->config->item('sale_prefix').' '.$sale_id,
+			//'trans_comment'=>$this->config->item('sale_prefix').' '.$sale_id,
 			'trans_inventory'=> 1,
 			'location_id'=>$location_id,
-			'trans_current_quantity' => ($item_location_info->quantity ? $item_location_info->quantity : 0) + 1,
+			//'trans_current_quantity' => ($item_location_info->quantity ? $item_location_info->quantity : 0) + 1,
 		);
 	
 		$this->Inventory->insert($inv_data);
 		
 		//Update stock quantity
-		$this->Item_location->save_quantity(($item_location_info->quantity ? $item_location_info->quantity : 0) + 1,$item_id);
-		
+		//$this->Item_location->save_quantity(($item_location_info->quantity ? $item_location_info->quantity : 0) + 1,$item_id);
 		
 		return $work_order_id;
 	}
+	/Fin función original ordenes de trabajo*/
+
+
+	//Inicio función nueva ordenes de trabajo
+	function save_new_work_order($work_order_data, $customer_ids) {
+		$employee_id = $this->Employee->get_logged_in_employee_info()->person_id;
+		$location_id = $this->Employee->get_logged_in_employee_current_location_id();
+		$register_id = $this->Register->get_first_register_id_by_location_id($location_id);
+	
+		$sale_id = null;
+	
+		// Datos para registrar una venta solo si ambos están registrados
+		$sales_data = array(
+			'customer_id' => $customer_ids,
+			'employee_id' => $employee_id,
+			'suspended' => 2,
+			'location_id' => $location_id,
+			'register_id' => $register_id,
+			'total_quantity_purchased' => 1,
+			'subtotal' => 0,
+			'total' => 0,
+			'tax' => 0,
+			'profit' => 0,
+			'exchange_rate' => 1,
+			'exchange_currency_symbol' => $this->config->item('currency_symbol') ? $this->config->item('currency_symbol') : '$',
+			'exchange_currency_symbol_location' => "before",
+			'exchange_thousands_separator' => ",",
+			'exchange_decimal_point' => ".",
+		);
+		$this->db->insert('sales', $sales_data);
+		$sale_id = $this->db->insert_id();
+
+			// Insertar en `phppos_sales_items` para artículos registrados
+			$sales_items_data = array(
+				'sale_id' => $sale_id,
+				'line' => 0,
+				'quantity_purchased' => 1,
+				'item_cost_price' => 0,
+				'item_unit_price' => 0,
+				'commission' => 0,
+				'subtotal' => 0,
+				'total' => 0,
+				'tax' => 0,
+				'profit' => 0,
+			);
+			$this->db->insert('sales_items', $sales_items_data);
+
+		// Obtener o crear el estado inicial de la orden de trabajo
+		$status_id = $this->Work_order->get_status_id_by_name('lang:work_orders_new');
+		if (!$status_id) {
+			$work_order_status_data = array(
+				'name' => 'lang:work_orders_new',
+				'color' => '#4594cc',
+			);
+			$this->Work_order->status_save($work_order_status_data);
+			$status_id = $this->db->insert_id();
+		}
+		$work_order_data['sale_id'] = $sale_id; // Asociar venta si aplica
+		$work_order_id = $this->db->insert_id();
+		// Insertar la orden de trabajo en `phppos_sales_work_orders2`
+		$work_order_data['status'] = $status_id;
+		$this->db->insert('phppos_sales_work_orders2', $work_order_data);
+	
+		// Retornar el ID de la nueva orden de trabajo
+		//return $this->db->insert_id();
+		return $work_order_id;
+	}
+	
+	//Fin función nueva ordenes de trabajo
 
 	function get_work_orders_by_status()
 	{	

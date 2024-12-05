@@ -3,11 +3,11 @@
 
 $lang['work_orders_status'] = 'Estado';
 
-$lang['work_orders_successful_deleted'] = 'Has eliminado correctamente';
-$lang['work_orders_unable_to_delete'] = 'No se puede borrar';
+$lang['work_orders_successful_deleted'] = 'Ordenes de trabajo eliminada correctamente';
+$lang['work_orders_unable_to_delete'] = 'No se pudo eliminar la orden de trabajo';
 
-$lang['work_orders_one_or_multiple'] = 'Órdenes de trabajo)';
-$lang['work_orders_cannot_be_deleted'] = 'Could not deleted selected work orders';
+$lang['work_orders_one_or_multiple'] = 'Ordenes de trabajo)';
+$lang['work_orders_cannot_be_deleted'] = 'No se pudo eliminar la orden de trabajo';
 $lang['work_orders_select_date'] = 'Seleccione fecha';
 $lang['work_orders_work_order_information'] = 'Información de la orden de trabajo';
 $lang['work_orders_work_orders'] = 'Órdenes de trabajo';
@@ -17,7 +17,7 @@ $lang['work_orders_manage_deleted'] = 'Administrar órdenes de trabajo eliminada
 $lang['work_orders_confirm_undelete'] = '¿Está seguro de que desea recuperar las órdenes de trabajo seleccionadas?';
 
 $lang['work_orders_confirm_delete'] = '¿Está seguro de que desea eliminar esta orden de trabajo?';
-$lang['work_orders_none_selected'] = 'Ninguna seleccionada';
+$lang['work_orders_none_selected'] = 'Ninguna orden de trabajo seleccionada';
 $lang['work_orders_success'] = 'Éxito';
 $lang['work_orders_error'] = 'Error';
 
@@ -73,7 +73,7 @@ $lang['work_orders_must_select_item'] = 'Debes seleccionar un artículo';
 $lang['work_orders_must_enter_serial_number'] = 'Debes ingresar un número de serie';
 $lang['work_orders_image_delete_confirmation'] = '¿Estás seguro de que deseas eliminar esta imagen?';
 $lang['work_orders_do_you_want_to_edit_an_item'] = '¿Quieres editar un artículo?';
-$lang['work_orders_hide_completed_work_orders'] = 'Ocultar órdenes de trabajo completadas';
+$lang['work_orders_hide_completed_work_orders'] = 'Ocultar ordenes completadas';
 $lang['work_orders_you_have_been_assigned_work_order'] = 'Se le ha asignado una orden de trabajo';
 $lang['work_orders_you_have_been_assigned_a_work_order'] = 'Se le ha asignado una orden de trabajo';
 $lang['work_orders_notify_customer_via_email'] = 'Notificar al cliente por correo electrónico';

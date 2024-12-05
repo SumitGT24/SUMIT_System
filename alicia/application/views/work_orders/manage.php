@@ -1,5 +1,9 @@
 <?php $this->load->view("partial/header"); ?>
-
+<?php 
+	$customer_id_for_new=null;
+	$item_id_for_new=null;
+?>
+<!-- Ventana emergente para crear una nueva orden de trabajo -->
 <div class="modal fade new_work_order_modal" id="new_work_order_modal" tabindex="-1" role="dialog" aria-labelledby="new_work_order" aria-hidden="true">
 	<div class="modal-dialog customer-recent-sales">
 		<div class="modal-content">
@@ -15,134 +19,141 @@
 	        <div class="modal-body">
 				<?php echo form_open_multipart('work_orders/save_new_work_order/',array('id'=>'new_work_order_form')); ?>
 				
+				<!--Panel informacion del cliente /Busqueda/Campos de informacion-->
 				<div class="panel panel-piluku customer_info">
-					<div class="panel-heading">
-						<div class="row">
-							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-								<h3 class="panel-title"><i class="fas fa-user"></i> <?php echo lang("common_customer"); ?></h3>
-							</div>	
+    				<div class="panel-heading">
+        				<div class="row">
+            				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                				<h3 class="panel-title"><i class="icon ti-user"></i> <?php echo lang("common_customer"); ?></h3>
+            				</div>    
 
-							<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-								<div class="customer_search">
-									<div class="input-group">
-										<span class="input-group-addon">
-											<?php echo anchor("customers/view/-1","<i class='ion-person-add'></i>", array('class'=>'none','title'=>lang('common_new_customer'), 'id' => 'new-customer', 'tabindex'=> '-1')); ?>
-										</span>
-										<input type="text" id="customer" name="customer" class="add-customer-input keyboardLeft form-control" data-title="<?php echo lang('common_customer_name'); ?>" placeholder="<?php echo lang('sales_start_typing_customer_name');?>">
-									</div>
-								</div>
-							</div>		
-						</div>
-					</div>
+            				<!-- Búsqueda de cliente -->
+            				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">                    
+            				    <div class="customer_search">
+            				        <div class="input-group">
+            				            <span class="input-group-addon">
+            				                <?php echo anchor("customers/view/-1","<i class='ion-person-add'></i>", array('class'=>'none','title'=>lang('common_new_customer'), 'id' => 'new-customer', 'tabindex'=> '-1')); ?>
+            				            </span>
+            				            <input type="text" id="customer" name="customer" class="add-customer-input keyboardLeft form-control" data-title="<?php echo lang('common_customer_name'); ?>" placeholder="<?php echo lang('sales_start_typing_customer_name');?>" disabled>
+            				        </div>
+            				    </div>
+            				</div>        
+            				<!-- Fin de búsqueda de cliente -->
+        				</div>
+    				</div>
 
-					<div class="panel-body">
-						<?php if($customer_id_for_new){ ?>
-							<ul class="customer_name_address_ul list-style-none">
-								<li class="customer_name font-weight-bold"><?php echo $customer_info->first_name.' '.$customer_info->last_name; ?></li>
-								<li class="customer_address"><?php echo $customer_info->address_1.' '.$customer_info->address_2; ?></li>
-								<li class="customer_city_state_zip"><?php echo $customer_info->city.','.$customer_info->state.' '.$customer_info->zip; ?></li>
-							</ul>
+    				<div class="panel-body">
+        				<!-- Checkbox para alternar entre cliente registrado y no registrado -->
+        				<label style="display: flex; align-items: center;">
+        				    <input type="checkbox" id="registeredCustomerCheckbox" name="registeredCustomerCheckbox" style="display: inline-block !important;">
+        				    <span style="margin-left: 8px;">Cliente registrado</span>
+        				</label>
 
-							<ul class="customer_email_phonenumber_ul list-style-none">
-								<li><a class="customer_email text-decoration-underline" href = "mailto:<?php echo $customer_info->email; ?>"><?php echo $customer_info->email; ?></a></li>
-								<li><a class="customer_phonenumber text-decoration-underline" href = "tel:<?php echo $customer_info->phone_number; ?>"><?php echo $customer_info->phone_number; ?></a></li>
-							</ul>
-						<?php }else{ ?>
-							<ul class="customer_name_address_ul" style="list-style: none">
-								<li class="customer_name font-weight-bold"></li>
-								<li class="customer_address"></li>
-								<li class="customer_city_state_zip"></li>
-							</ul>
+        				<!-- Campos para cliente no registrado -->
+        				<div id="unregisteredCustomerFields">
+        				    <input type="text" name="client_name" placeholder="Nombre" class="form-control" style="margin-bottom: 1rem;">
+        				    <input type="text" name="client_phone" placeholder="Teléfono" class="form-control">
+        				</div>
 
-							<ul class="customer_email_phonenumber_ul" style="list-style: none">
-								<li><a class="customer_email text-decoration-underline" href = ""></a></li>
-								<li><a class="customer_phonenumber text-decoration-underline" href = ""></a></li>
-							</ul>
-						<?php }?>
-						<div class='clearfix'></div>
-					</div><!--/panel-body -->
-				</div><!-- /panel-piluku -->
-				
+        				<!-- Panel para mostrar los resultados de la búsqueda -->
+        				<div id="customerSearchResults">
+        				    <?php if($customer_id_for_new) { ?>
+        				        <ul class="customer_name_address_ul list-style-none">
+        				            <li class="customer_name font-weight-bold" id="customer_name_label"><?php echo $customer_info->first_name.' '.$customer_info->last_name; ?></li>
+        				        </ul>
+        				        <ul class="customer_email_phonenumber_ul list-style-none">
+        				            <li><a id="customer_phone_label" class="customer_phonenumber text-decoration-underline" href = "tel:<?php echo $customer_info->phone_number; ?>"><?php echo $customer_info->phone_number; ?></a></li>
+        				        </ul>
+        				    <?php } else { ?>
+        				        <ul class="customer_name_address_ul" style="list-style: none">
+        				            <li class="customer_name font-weight-bold" id="customer_name_label"></li>
+        				        </ul>
+        				        <ul class="customer_email_phonenumber_ul" style="list-style: none">
+        				            <li><a id="customer_phone_label" class="customer_phonenumber text-decoration-underline" href = ""></a></li>
+        				        </ul>
+        				    <?php } ?>
+        				</div>
+
+        				<div class='clearfix'></div>
+    				</div>
+				</div>
+
+				<script>
+					// JavaScript para alternar campos del cliente
+					document.getElementById('registeredCustomerCheckbox').addEventListener('change', function() {
+					    const isRegistered = this.checked;
+					    document.getElementById('customer').disabled = !isRegistered;
+					    document.getElementById('unregisteredCustomerFields').style.display = isRegistered ? 'none' : 'block';
+					    document.getElementById('customerSearchResults').style.display = isRegistered ? 'block' : 'none';
+
+						// Restablecer valores según el estado del checkbox
+    					if (isRegistered) {
+    					    document.getElementById('customer_id').value = ''; // Restablecer el ID del cliente
+    					    document.querySelector("input[name='client_name']").value = ''; // Limpiar el nombre del cliente
+							document.querySelector("input[name='client_phone']").value = ''; // Limpiar el nombre del cliente
+    					    const phoneLink = document.getElementById('customer_phone_label');
+        					phoneLink.textContent = ''; // Limpiar el texto del enlace
+        					phoneLink.setAttribute('href', ''); // Limpiar el atributo href
+
+							document.getElementById('customer_name_label').textContent = '';
+							document.getElementById('customer_phone_label').textContent = '';
+
+    					} else {
+    					    document.getElementById('customer_id').value = ''; // Restablecer el ID del cliente
+							document.getElementById('customer_name_label').value = ''; // Limpiar el nombre del cliente
+    					}	
+					
+					});
+					// Inicialización de estado al cargar la página
+					document.getElementById('unregisteredCustomerFields').style.display = 'block';
+					document.getElementById('customerSearchResults').style.display = 'none';
+				</script>
+				<!-- /panel-piluku/Fin panel cliente -->
+
+				<!-- Panel informacion del articulo /Busqueda/Campos de informacion -->
 				<div class="panel panel-piluku item_being_repaired_info">
-					<div class="panel-heading">
-						<div class="row">
-							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 item_being_repaired_info_title">
-								<h3 class="panel-title"><i class="icon ti-harddrive"></i> <?php echo lang("work_orders_item_being_repaired"); ?></h3>
-							</div>	
+    				<div class="panel-heading">
+        				<div class="row">
+            				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 item_being_repaired_info_title">
+            				    <h3 style="text-align: center;" class="panel-title"><i class="icon ti-harddrive"></i> <?php echo lang("work_orders_item_being_repaired"); ?></h3>
+            				</div>
+        				</div>
+    				</div>
 
-							<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-								<div class="item_search">
-									<div class="input-group">
-										<span class="input-group-addon">
-											<?php echo anchor("items/view/-1?redirect=work_orders/index/0&progression=1","<i class='icon ti-pencil-alt'></i>", array('class'=>'none add-new-item','title'=>lang('common_new_item'), 'id' => 'new-item', 'tabindex'=> '-1')); ?>
-										</span>
-										<input type="text" id="item" name="item"  class="add-item-input pull-left keyboardTop form-control" placeholder="<?php echo lang('common_start_typing_item_name'); ?>" data-title="<?php echo lang('common_item_name'); ?>">
-									</div>
-								</div>
-							</div>		
-						</div>
-					</div>
+    				<div class="panel-body">
+    				    <!-- Campos para artículo no registrado -->
+    				    <div id="unregisteredItemFields">
+    				        <input type="text" name="equipment" placeholder="Equipo" class="form-control" style="margin-bottom: 1rem;">
+    				        <input type="text" name="model" placeholder="Modelo" class="form-control">
+    				    </div>
 
-					<div class="panel-body">
-						<?php if($item_id_for_new){ ?>
-							<dl class="dl-horizontal item_infomation">
-								<dt><?php echo lang('common_description') ?></dt>
-								<dd class="item_description"><?php echo clean_html($item_info->description); ?></dd>
+    				</div>
+				</div>
 
-								<dt><?php echo lang('common_category') ?></dt>
-								<dd class="item_category"><?php echo $category_full_path; ?></dd>
-								
-								<dt class="serial <?php echo !$item_info->is_serialized ? 'hidden' : ''; ?>"><?php echo lang('common_serial_number') ?></dt>
-								<dd class="serial <?php echo !$item_info->is_serialized ? 'hidden' : ''; ?>">
-									<a href="#" id="serial_number" class="xeditable" data-value="<?php echo $item_serial_number_for_new; ?>" data-type="text" data-pk="1" data-title="<?php echo H(lang('common_serial_number')); ?>"></a>
-								</dd>
-								
-								<dt><?php echo lang('common_item_number_expanded') ?></dt>
-								<dd class="item_number"><?php echo $item_info->item_number; ?></dd>
-							</dl>
-						<?php }else{ ?>
-							<dl class="dl-horizontal hidden item_infomation">
-								<dt><?php echo lang('common_description') ?></dt>
-								<dd class="item_description"></dd>
+				<!-- /panel-piluku/Fin panel articulos -->
 
-								<dt><?php echo lang('common_category') ?></dt>
-								<dd class="item_category"></dd>
-								
-								<dt class="serial hidden"><?php echo lang('common_serial_number') ?></dt>
-								<dd class="serial hidden">
-									<a href="#" id="serial_number" class="xeditable" data-type="text" data-pk="1" data-title="<?php echo H(lang('common_serial_number')); ?>"></a>
-								</dd>
-								
-								<dt><?php echo lang('common_item_number_expanded') ?></dt>
-								<dd class="item_number"></dd>
-							</dl>
-						<?php }?>
-					</div><!--/panel-body -->
-				</div><!-- /panel-piluku -->
-
+				<!--Id cliente-->
 				<input type="hidden" name="customer_id" id="customer_id" value="<?php echo $customer_id_for_new; ?>">
-				<input type="hidden" name="item_id" id="item_id" value="<?php echo $item_id_for_new; ?>">
-				<input type="hidden" name="item_serial_number" id="item_serial_number" value="<?php echo $item_serial_number_for_new; ?>">
-
+				<!--Caputar serial del producto input type="hidden" name="item_serial_number" id="item_serial_number" value="<#?php echo $item_serial_number_for_new; ?>"-->
 				
 				<div class="form-actions">
 					<?php
-						echo form_submit(array(
-							'name'=>'sale_item_notes_save_btn',
-							'id'=>'sale_item_notes_save_btn',
-							'value'=>lang('common_save'),
-							'class'=>'submit_button pull-right btn btn-primary sale_item_notes_save_btn')
-						);
-						
 						echo form_input(array(
 							'type' =>'button',
 							'value'=>lang('common_cancel'),
 							'data-dismiss' => 'modal',
-							'style' => 'margin-right: 10px;',
-							'class'=>'pull-right btn btn-warning')
+							'class'=>'pull-right btn',
+							'style' => 'background-color: #dc3545; border: none; text-align: center;'
+							)
 						);
-
 						
+						echo form_submit(array(
+							'name'=>'sale_item_notes_save_btn',
+							'id'=>'sale_item_notes_save_btn',
+							'value'=>lang('common_save'),
+							'style' => 'margin-right: 10px;',
+							'class'=>'submit_button pull-right btn btn-primary sale_item_notes_save_btn')
+						);																	
 					?>
 					<div class="clearfix">&nbsp;</div>
 				</div>
@@ -152,6 +163,7 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!-- Aninacion de carga -->
 <div class="spinner" id="grid-loader" style="display:none">
 	<div class="rect1"></div>
 	<div class="rect2"></div>
@@ -221,7 +233,6 @@
 			return false;
 		});
 		
-		
 		$("#config_columns input[type=checkbox]").change(
 			function(e) {
 				var columns = $("#config_columns input:checkbox:checked").map(function(){
@@ -232,9 +243,7 @@
 				{
 					reload_work_order_table();
 				});
-				
 		});
-		
 		
 		enable_sorting("<?php echo site_url("$controller_name/sorting"); ?>");
 		enable_select_all();
@@ -307,6 +316,7 @@
 	});
 </script>
 
+<!-- Se generan botones para mostrar los estados y la cantidad de ordenes en ese estado -->
 <?php if(count($status_boxes) > 0){ ?>
 <div class="work_order_status_box">
 	<?php
@@ -316,50 +326,50 @@
 	<?php } ?>
 </div>
 <?php } ?>
-
+<!-- Botones y acciones al seleccionar una orden de trabajo -->
 <div class="manage_buttons">
-<!-- Css Loader  -->
-<div class="spinner" id="ajax-loader" style="display:none">
-	<div class="rect1"></div>
-	<div class="rect2"></div>
-	<div class="rect3"></div>
-</div>
-<div class="manage-row-options hidden">
-	<div class="email_buttons work_orders text-center">		
-		
-	<?php if(!$deleted) { ?>
-		<?php if ($this->Employee->has_module_action_permission($controller_name, 'delete', $this->Employee->get_logged_in_employee_info()->person_id)) {?>
-		<?php echo anchor("$controller_name/delete",
-			'<span class="ion-trash-a"></span> <span class="hidden-xs">'.lang('common_delete').'</span>'
-			,array('id'=>'delete', 'class'=>'btn btn-red btn-lg disabled delete_inactive ','title'=>lang("common_delete"))); ?>
-		<?php } ?>
-
-		<a href="#" class="btn btn-lg btn-clear-selection btn-warning"><span class="ion-close-circled"></span> <span class="hidden-xs"><?php echo lang('common_clear_selection'); ?></span></a>
-		<a href="#" class="btn btn-lg btn-primary" id="print_work_order_btn"><?php echo lang('work_orders_print_work_order'); ?></a>
-		<a href="#" class="btn btn-lg btn-primary" id="print_service_tag_btn"><?php echo lang('work_orders_print_service_tag'); ?></a>
-		<?php 
-			echo form_dropdown('change_status', $change_status_array,'', 'class="" id="change_status"'); 
-		?>
-		<a href="#" class="btn btn-lg btn-success excel_export_btn"><?php echo lang('common_excel_export'); ?></a>
-	
-		<?php } else { ?>
-			<?php if ($this->Employee->has_module_action_permission($controller_name, 'delete', $this->Employee->get_logged_in_employee_info()->person_id)) {?>
-			<?php echo anchor("$controller_name/undelete",
-					'<span class="ion-trash-a"></span> '.'<span class="hidden-xs">'.lang("common_undelete").'</span>',
-					array('id'=>'delete','class'=>'btn btn-green btn-lg disabled delete_inactive','title'=>lang("common_undelete"))); ?>
-			<?php } ?>
-
-			<a href="#" class="btn btn-lg btn-clear-selection btn-warning"><span class="ion-close-circled"></span> <?php echo lang('common_clear_selection'); ?></a>		
-	<?php } ?>
-		
+	<!-- Animación de carga  -->
+	<div class="spinner" id="ajax-loader" style="display:none">
+		<div class="rect1"></div>
+		<div class="rect2"></div>
+		<div class="rect3"></div>
 	</div>
-</div>
+
+	<div class="manage-row-options hidden">
+		<div class="email_buttons work_orders text-center">		
+			<?php if(!$deleted) { ?>
+				<?php if ($this->Employee->has_module_action_permission($controller_name, 'delete', $this->Employee->get_logged_in_employee_info()->person_id)) {?>
+				<?php echo anchor("$controller_name/delete",
+					'<span class="ion-trash-a"></span> <span class="hidden-xs">'.lang('common_delete').'</span>'
+					,array('id'=>'delete', 'class'=>'btn btn-red btn-lg disabled delete_inactive ','title'=>lang("common_delete"))); ?>
+				<?php } ?>
+				
+				<a href="#" class="btn btn-lg btn-clear-selection btn-warning"><span class="ion-close-circled"></span> <span class="hidden-xs"><?php echo lang('common_clear_selection'); ?></span></a>
+				<a href="#" class="btn btn-lg btn-primary" id="print_work_order_btn"><?php echo lang('work_orders_print_work_order'); ?></a>
+				<a href="#" class="btn btn-lg btn-primary" id="print_service_tag_btn"><?php echo lang('work_orders_print_service_tag'); ?></a>
+				<?php 
+					echo form_dropdown('change_status', $change_status_array,'', 'class="" id="change_status"'); 
+				?>
+				<a href="#" class="btn btn-lg btn-success excel_export_btn"><?php echo lang('common_excel_export'); ?></a>
+				
+				<?php } else { ?>
+					<?php if ($this->Employee->has_module_action_permission($controller_name, 'delete', $this->Employee->get_logged_in_employee_info()->person_id)) {?>
+					<?php echo anchor("$controller_name/undelete",
+							'<span class="ion-trash-a"></span> '.'<span class="hidden-xs">'.lang("common_undelete").'</span>',
+							array('id'=>'delete','class'=>'btn btn-green btn-lg disabled delete_inactive','title'=>lang("common_undelete"))); ?>
+					<?php } ?>
+					
+					<a href="#" class="btn btn-lg btn-clear-selection btn-warning"><span class="ion-close-circled"></span> <?php echo lang('common_clear_selection'); ?></a>		
+			<?php } ?>
+		</div>
+	</div>
 
 	<div class="row">
 		<div class="col-md-9 col-sm-10 col-xs-10">
 			<?php echo form_open("$controller_name/search",array('id'=>'search_form', 'autocomplete'=> 'off')); ?>
 				<div class="search no-left-border">
 					<ul class="list-inline">
+						<!-- Filtros de busqueda por tecnico asignado -->
 						<li class="hidden-xs">
 							<?php echo lang('work_orders_technician'); ?>: 	
 							<?php 
@@ -371,7 +381,7 @@
 						</li>
 						<li class="hidden-xs">
 							<?php echo form_label(lang('work_orders_hide_completed_work_orders').':', 'hide_completed_work_orders',array('class'=>'control-label ')); ?>	
-							<br />
+							<br/>
 							<?php echo form_checkbox(array(
 							'name'=>'hide_completed_work_orders',
 							'id'=>'hide_completed_work_orders',
@@ -392,14 +402,15 @@
 					</ul>
 				</div>
 				<input type="hidden" name="status" id="status" value="<?php echo $status; ?>">
-
 			</form>	
 		</div>
+
 		<div class="col-md-3 col-sm-2 col-xs-2">	
 			<div class="buttons-list">
 				<div class="pull-right-btn">
 					<!-- right buttons-->
 					<?php if ($this->Employee->has_module_action_permission($controller_name, 'edit', $this->Employee->get_logged_in_employee_info()->person_id) && !$deleted) {?>
+					<!-- Boton para crear una nueva orden de trabajo -->
 					<?php echo anchor("",
 						'<span class="ion-plus"> '.lang('work_orders_new_work_order').'</span>',
 						array('id' => 'new_work_order_btn', 'class'=>'btn btn-primary btn-lg', 'title'=>lang('work_orders_new_work_order')));
@@ -416,21 +427,21 @@
 								
 					<div class="piluku-dropdown btn-group">
 						<button type="button" class="btn btn-more dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						<span class="hidden-xs ion-android-more-horizontal"> </span>
-						<i class="visible-xs ion-android-more-vertical"></i>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<?php if ($this->Employee->has_module_action_permission($controller_name, 'manage_statuses', $this->Employee->get_logged_in_employee_info()->person_id)) {?>				
-							<li>
-								<?php echo anchor("$controller_name/manage_statuses?redirect=work_orders",'<span class="ion-settings"> '.lang('module_manage_statuses').'</span>',
-									array('class'=>'manage_statuses','title'=>lang('module_manage_statuses'))); ?>
-							</li>
-						<?php } ?>
+							<span class="hidden-xs ion-android-more-horizontal"> </span>
+							<i class="visible-xs ion-android-more-vertical"></i>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<?php if ($this->Employee->has_module_action_permission($controller_name, 'manage_statuses', $this->Employee->get_logged_in_employee_info()->person_id)) {?>				
+								<li>
+									<?php echo anchor("$controller_name/manage_statuses?redirect=work_orders",'<span class="ion-settings"> '.lang('module_manage_statuses').'</span>',
+										array('class'=>'manage_statuses','title'=>lang('module_manage_statuses'))); ?>
+								</li>
+							<?php } ?>
 
-						<li>
-							<?php echo anchor("$controller_name/custom_fields", '<span class="ion-wrench"> '.lang('common_custom_field_config').'</span>',array('id'=>'custom_fields', 'class'=>'','title'=> lang('common_custom_field_config'))); ?>
-						</li>	
-					</ul>
+							<li>
+								<?php echo anchor("$controller_name/custom_fields", '<span class="ion-wrench"> '.lang('common_custom_field_config').'</span>',array('id'=>'custom_fields', 'class'=>'','title'=> lang('common_custom_field_config'))); ?>
+							</li>	
+						</ul>
 					</div>
 					<?php } ?>
 				</div>
@@ -443,21 +454,18 @@
 		<div class="row manage-table">
 			<div class="panel panel-piluku">
 				<div class="panel-heading">
-				<h3 class="panel-title">
-					<?php echo ($deleted ? lang('common_deleted').' ' : '').lang('module_'.$controller_name); ?>
-					
-					<form id="config_columns">
-						<div class="piluku-dropdown btn-group table_buttons pull-right">
-							<button type="button" class="btn btn-more dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-								<i class="ion-gear-a"></i>
-							</button>
-
-							<ul id="sortable" class="dropdown-menu dropdown-menu-left col-config-dropdown" role="menu">
+					<h3 class="panel-title">
+						<?php echo ($deleted ? lang('common_deleted').' ' : '').lang('module_'.$controller_name); ?>
+						<!-- Boton para configurar las columnas visibles -->
+						<form id="config_columns">
+							<div class="piluku-dropdown btn-group table_buttons pull-right">
+								<button type="button" class="btn btn-more dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<i class="ion-gear-a"></i>
+								</button>
+								<ul id="sortable" class="dropdown-menu dropdown-menu-left col-config-dropdown" role="menu">
 									<li class="dropdown-header"><a id="reset_to_default" class="pull-right"><span class="ion-refresh"></span> <?php echo lang('common_reset'); ?></a> <?php echo lang('common_column_configuration'); ?></li>
-											
 									<?php foreach($all_columns as $col_key => $col_value) { 
-										$checked = '';
-			
+										$checked = '';									
 										if (isset($selected_columns[$col_key]))
 										{
 											$checked = 'checked ="checked" ';
@@ -466,22 +474,21 @@
 										<li class="sort"><a><input <?php echo $checked; ?> name="selected_columns[]" type="checkbox" class="columns" id="<?php echo $col_key; ?>" value="<?php echo $col_key; ?>"><label class="sortable_column_name" for="<?php echo $col_key; ?>"><span></span><?php echo H($col_value['label']); ?></label><span class="handle ion-drag"></span></a></li>									
 									<?php } ?>
 								</ul>
-						</div>
+							</div>
 						</form>
-						
-						
-					<span title="<?php echo $total_rows; ?> total work orders" class="badge bg-primary tip-left" id="manage_total_items"><?php echo $total_rows; ?></span>
-					<span class="panel-options custom">
+						<!-- Se muestra el total de ordenes de trabajo -->				
+						<span title="<?php echo $total_rows; ?> total work orders" class="badge bg-primary tip-left" id="manage_total_items"><?php echo $total_rows; ?></span>
+						<span class="panel-options custom">
 							<div class="pagination pagination-top hidden-print  text-center" id="pagination_top">
 								<?php echo $pagination;?>		
 							</div>
-					</span>
-				</h3>
-			</div>
+						</span>
+					</h3>
+				</div>
 				<div class="panel-body nopadding table_holder table-responsive" id="table_holder">
 					<?php echo $manage_table; ?>			
 				</div>
-		</div>	
+			</div>	
 		<div class="text-center">
 		<div class="pagination hidden-print alternate text-center" id="pagination_bottom" >
 			<?php echo $pagination;?>
@@ -531,7 +538,6 @@
 				$('.customer_phonenumber').html(customer_info.phone_number);
 				$('.customer_phonenumber').attr('href','tel:'+customer_info.phone_number);
 				
-				
 			},'json');
 		},
 	}).data("ui-autocomplete")._renderItem = function (ul, item) {
@@ -550,7 +556,7 @@
 						'</div></a>')
 				.appendTo(ul);
 		};
-
+	//Funcion para mostrar resultados de busqueda de cliente
 	if ($("#item").length)
 	{
 		$( "#item" ).autocomplete({
@@ -596,7 +602,7 @@
 			});
 	}
 
-	
+	//Funcion para seleccionar un articulo
 	function item_select(item_id){
 		$('#item_id').val(item_id);
 
@@ -642,52 +648,67 @@
 		}
     });
 
+	/* Función para crear una nueva orden de trabajo */
 	$("#new_work_order_form").submit(function(e)
 	{
-		e.preventDefault();
-		var customer_id = $("#customer_id").val();
-		var item_id = $("#item_id").val();
-		var item_serial_number = $("#item_serial_number").val();
+    	e.preventDefault();
 
-		if(customer_id == ''){
-			show_feedback('error','<?php echo lang('work_orders_must_select_customer'); ?>','<?php echo lang('common_error'); ?>');
-			return false;
-		}
-		if(item_id == ''){
-			show_feedback('error','<?php echo lang('work_orders_must_select_item'); ?>','<?php echo lang('common_error'); ?>');
-			return false;
-		}
-		if(!$(".serial").hasClass("hidden")){
-			if(item_serial_number == ''){
-				show_feedback('error','<?php echo lang('work_orders_must_enter_serial_number'); ?>','<?php echo lang('common_error'); ?>');
-				return false;
-			}
-		}
-		$("#grid-loader1").show()
-		$(this).ajaxSubmit({ 
-			success: function(response, statusText, xhr, $form){
-				$("#grid-loader1").hide()
-				if(response.success)
-				{
-					location.href="<?php echo site_url('work_orders/view/'); ?>"+response.work_order_id;
-				}
-				else{
-					if(response.missing_required_information){
-						bootbox.confirm(response.message, function(result)
-						{
-							if(result)
-							{
-								location.href="<?php echo site_url('items/view/'); ?>"+item_id+"?redirect=work_orders/index/0&progression=1";
-							}
-						});
-					}
-					else{
-						show_feedback('error', response.message,<?php echo json_encode(lang('common_error')); ?>);
-					}
-				}		
-			},
-			dataType:'json',
-		});
+    	var customer_id = $("#customer_id").val();
+    	var client_name = $("input[name='client_name']").val();
+    	var client_phone = $("input[name='client_phone']").val();
+    	var equipment = $("input[name='equipment']").val();
+    	var model = $("input[name='model']").val();
+
+    	// Validar cliente
+    	if($('#registeredCustomerCheckbox').is(':checked')) {
+    	    if(customer_id == '') {
+    	        show_feedback('error','<?php echo lang('work_orders_must_select_customer'); ?>','<?php echo lang('common_error'); ?>');
+    	        return false;
+    	    }
+    	} else {
+			document.getElementById('customer_id').value = '';	
+    	    if(client_name == '' || client_phone == '') {
+    	        show_feedback('error','Ingresa la información del cliente','<?php echo lang('common_error'); ?>');
+    	        return false;
+    	    }
+    	}
+		//Se estan validando campos vacios
+		//Validar campos de equipo y modelo
+    	if(equipment == '' || model == '') {
+			//Mostrar mensaje de error
+    	    show_feedback('error','Ingresa la información del equipo','<?php echo lang('common_error'); ?>');
+    	    return false;
+    	}
+    	// Mostrar spinner y enviar datos
+    	$("#grid-loader1").show();
+		console.log('customer_id: ' + customer_id);
+		console.log('client_name: ' + client_name);
+		console.log('client_phone: ' + client_phone);
+		console.log('item_id: ' + item_id);
+		console.log('equipment: ' + equipment);
+		console.log('model: ' + model);
+		console.log('ID PHP:'+ "<?php echo $customer_id_for_new; ?>");
+    	$(this).ajaxSubmit({ 
+    	    success: function(response, statusText, xhr, $form){
+    	        $("#grid-loader1").hide();
+    	        if(response.success) {
+					console.log('Exito B)');
+    	            //location.href = "<#?php echo site_url('work_orders/view/'); ?>" + response.work_order_id;
+    	        } else {
+    	            if(response.missing_required_information) {
+    	                bootbox.confirm(response.message, function(result){
+    	                    if(result) {
+								console.log('Exito B) (pero faltan datos XD)');
+    	                        //location.href = "<#?php echo site_url('items/view/'); ?>" + item_id + "?redirect=work_orders/index/0&progression=1";
+    	                    }
+    	                });
+    	            } else {
+    	                show_feedback('error', response.message,<?php echo json_encode(lang('common_error')); ?>);
+    	            }
+    	        }
+    	    },
+    	    dataType: 'json',
+    	});
 	});
 
 	$(".status_box_btn").click(function(){
