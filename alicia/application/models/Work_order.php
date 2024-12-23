@@ -598,7 +598,8 @@ class Work_order extends CI_Model
  	 	return $return;
 	}
 	*/
-	/* Falta editar */
+	/*
+	//Original
 	function get_by_id($id)
 	{	
 		$this->db->select('sales_work_orders.*,sales.sale_time,sales.location_id as location_id,CONCAT(customer_person.address_1, " ", customer_person.address_2) as full_address,customer_person.*');
@@ -610,7 +611,26 @@ class Work_order extends CI_Model
 		
 		return $this->db->get()->row();
 	}
+	*/
+	function get_by_id($id)
+	{
+	    $this->db->select(
+	        'phppos_sales_work_orders2.*, 
+	        sales.sale_time, 
+	        sales.location_id AS location_id, 
+	        CONCAT(customer_person.address_1, " ", customer_person.address_2) AS full_address, 
+	        customer_person.*'
+	    );
+	    $this->db->from('phppos_sales_work_orders2');
+	    $this->db->join('sales', 'sales.sale_id = phppos_sales_work_orders2.sale_id', 'left');
+	    $this->db->join('people AS customer_person', 'sales.customer_id = customer_person.person_id', 'left');
+	    $this->db->where('phppos_sales_work_orders2.id', $id);
+	    $this->db->where('sales.deleted', 0);
+	    $this->db->where('phppos_sales_work_orders2.deleted', 0);
 	
+	    return $this->db->get()->row();
+	}
+
 	function count_all($deleted=0)
 	{
 		if (!$deleted)
@@ -851,8 +871,8 @@ class Work_order extends CI_Model
 		
 		return true;
 	}
-	 
-	 public function get_raw_print_data($work_order_id)
+	/* 
+	public function get_raw_print_data($work_order_id)
 	{
 		$this->db->from('sales_work_orders');
 		$this->db->join('sales', 'sales.sale_id = sales_work_orders.sale_id','left');
@@ -862,6 +882,20 @@ class Work_order extends CI_Model
 		$this->db->where('id',$work_order_id);
 		return $this->db->get()->result_array();
 	}
+	*/
+	//Necesidad de cambios/revisión
+	public function get_raw_print_data($work_order_id)
+	{
+	    $this->db->from('phppos_sales_work_orders2');
+	    $this->db->join('sales', 'sales.sale_id = phppos_sales_work_orders2.sale_id', 'left');
+	    $this->db->join('people', 'people.person_id = sales.customer_id', 'left');
+	    $this->db->where('phppos_sales_work_orders2.id', $work_order_id);
+	    $this->db->where('sales.deleted', 0);
+	    $this->db->where('phppos_sales_work_orders2.deleted', 0);
+
+	    return $this->db->get()->result_array();
+	}
+
 	/*
 	ORIGINAL
 	public function get_customer_info($work_order_id)
