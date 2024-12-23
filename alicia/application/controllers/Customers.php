@@ -267,8 +267,7 @@ class Customers extends Person_controller
 		if($this->Customer->account_number_exists($this->input->post('account_number')))
 		echo 'false';
 		else
-		echo 'true';
-		
+		echo 'true';	
 	}
 
 	function clear_state()
@@ -1787,8 +1786,7 @@ class Customers extends Person_controller
 		
 		$this->Customer->merge($customers,$customer_to_merge);
 	}
-
-
+	
 	function send_message(){
 		$account_sid = $this->Location->get_info_for_key('twilio_sid');
 		$auth_token = $this->Location->get_info_for_key('twilio_token');

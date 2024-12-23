@@ -36,9 +36,9 @@ class Work_orders extends Secure_area
 		$this->lang->load('module');
 		$this->lang->load('sales');	
 		$this->load->helper('text');
-
 	}
-
+	//Analizar esta funcion para establecer las columnas que se despliegan en la tabla de ordenes de trabajo
+	//Solicitar a ChatGPT que establezca que funciones pueden o se deben modificar
 	function index($offset=0)
 	{
 		$this->check_action_permission('search');
@@ -72,7 +72,7 @@ class Work_orders extends Secure_area
 			$config['total_rows'] = $this->Work_order->count_all($params['deleted']);
 			$table_data = $this->Work_order->get_all($params['deleted'],$data['per_page'], $params['offset'],$params['order_col'],$params['order_dir']);
 		}
-				
+		//Valores para la tabla ordenes de trabajo
 		$data['total_rows'] = $config['total_rows'];
 		$this->load->library('pagination');
 		$this->pagination->initialize($config);
@@ -109,16 +109,16 @@ class Work_orders extends Secure_area
 
 		$data['status_boxes'] = $this->Work_order->get_work_orders_by_status();
 		
-		$data['item_id_for_new'] = $this->session->userdata('item_id_for_new') ? $this->session->userdata('item_id_for_new') : '';
-		$data['item_serial_number_for_new'] = $this->session->userdata('item_serial_number_for_new') ? $this->session->userdata('item_serial_number_for_new') : '';
+		//$data['item_id_for_new'] = $this->session->userdata('item_id_for_new') ? $this->session->userdata('item_id_for_new') : '';
+		//$data['item_serial_number_for_new'] = $this->session->userdata('item_serial_number_for_new') ? $this->session->userdata('item_serial_number_for_new') : '';
 		$data['customer_id_for_new'] = $this->session->userdata('customer_id_for_new') ? $this->session->userdata('customer_id_for_new') : '';
-		
+		/*
 		if($data['item_id_for_new']){
 			$item_info = $this->Item->get_info($data['item_id_for_new']);
 			$data['item_info'] = $item_info;
 			$data['category_full_path'] = $this->Category->get_full_path($item_info->category_id);
 		}
-
+		*/
 		if($data['customer_id_for_new']){
 			$data['customer_info'] = $this->Customer->get_info($data['customer_id_for_new']);
 		}
@@ -379,7 +379,6 @@ class Work_orders extends Secure_area
 	
 	function reload_work_order_table()
 	{
-		
 		$config['base_url'] = site_url('work_orders/sorting');
 		$config['per_page'] = $this->config->item('number_of_items_per_page') ? (int)$this->config->item('number_of_items_per_page') : 20; 
 		$params = $this->session->userdata('work_orders_search_data') ? $this->session->userdata('work_orders_search_data') : array('offset' => 0, 'order_col' => 'id', 'order_dir' => 'desc', 'search' => FALSE,'deleted' => 0,'status' => '','technician' => '','hide_completed_work_orders' => $this->Employee_appconfig->get('hide_completed_work_orders'));
@@ -569,7 +568,7 @@ class Work_orders extends Secure_area
 		
 		return FALSE;
 	}
-
+	/*
 	function print_service_tag($work_order_ids)
 	{
 		$this->load->model('Item_taxes');
@@ -604,7 +603,7 @@ class Work_orders extends Secure_area
 		$data['excel_url'] = site_url('work_orders/print_service_tag_excel/'.implode('~',$item_ids));
 		$this->load->view("barcode_labels", $data);
 	}
-
+	*/
 	function get_items_raw_print_service_tag($work_order_ids)
 	{
 		
@@ -645,7 +644,6 @@ class Work_orders extends Secure_area
 		$this->load->model('Item_location');
 		$this->load->model('Item_location_taxes');
 		$this->load->model('Item_taxes_finder');
-		
 		
 		$this->load->helper('items');
 		$data = $variation_ids ? get_item_variations_barcode_data($variation_ids) : get_items_barcode_data($item_ids);		
@@ -1025,7 +1023,6 @@ class Work_orders extends Secure_area
 		$this->session->set_userdata('customer_id_for_new','');
 		echo json_encode(array('success' => true,'work_order_id'=>$work_order_id));
 	}
-	*/
 
 	//Nueva funcion para guardar una nueva orden de trabajo
 
@@ -1059,6 +1056,50 @@ class Work_orders extends Secure_area
 		// Respuesta exitosa
 		echo json_encode(array('success' => true, 'work_order_id' => $work_order_id));
 	}
+	*/
+	//Nueva función para guardar una nueva orden de trabajo
+	function save_new_work_order() {
+		// Obtener datos del formulario
+		$registered_customer = $this->input->post("registeredCustomerCheckbox"); // Verifica si el cliente es registrado
+		$customer_id = $this->input->post("customer_id"); // ID de cliente registrado
+		$client_name = $this->input->post("client_name"); // Nombre de cliente no registrado
+		$client_phone = $this->input->post("client_phone"); // Teléfono de cliente no registrado
+	
+		// Inicializar datos del cliente
+		$final_client_name = null;
+		$final_client_phone = null;
+	
+		if ($registered_customer && $customer_id) {
+			// Cliente registrado: Obtener información de la base de datos
+			$customer_info = $this->Customer->get_info($customer_id);
+			$final_client_name = $customer_info->first_name . ' ' . $customer_info->last_name;
+			$final_client_phone = $customer_info->phone_number;
+		} else {
+			// Cliente no registrado: Usar datos ingresados desde la vista
+			$final_client_name = $client_name;
+			$final_client_phone = $client_phone;
+		}
+	
+		// Asignar datos para guardar
+		$work_order_data = [
+			'client_name' => $final_client_name,
+			'client_phone' => $final_client_phone,
+			'equipment' => $this->input->post("equipment"),
+			'model' => $this->input->post("model"),
+			'status' => 1, // Estado inicial de la orden de trabajo
+			'order_date' => date('Y-m-d H:i:s') // Formato estándar para MySQL
+		];
+	
+		// Guardar la orden de trabajo
+		$work_order_id = $this->Work_order->save_new_work_order($work_order_data, $customer_id);
+	
+		// Limpiar variables de sesión
+		$this->session->set_userdata('customer_id_for_new', '');
+	
+		// Respuesta exitosa
+		echo json_encode(array('success' => true, 'work_order_id' => $work_order_id));
+	}
+	
 	//Fin nueva función para guardar una nueva orden de trabajo
 
 	function add_item_to_session(){

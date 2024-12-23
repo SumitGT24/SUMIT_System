@@ -379,19 +379,22 @@
 						<li>
 							<input type="text" class="form-control" name ='search' id='search' value="<?php echo H($search); ?>" placeholder="<?php echo $deleted ? lang('common_search_deleted') : lang('common_search'); ?> <?php echo lang('module_'.$controller_name); ?>"/>
 						</li>
-						<li class="hidden-xs">
-							<?php echo form_label(lang('work_orders_hide_completed_work_orders').':', 'hide_completed_work_orders',array('class'=>'control-label ')); ?>	
-							<br/>
-							<?php echo form_checkbox(array(
-							'name'=>'hide_completed_work_orders',
-							'id'=>'hide_completed_work_orders',
-							'value'=>'1',
-							'checked'=>$hide_completed_work_orders?true:false));?>
-							<label for="hide_completed_work_orders"><span></span></label>
-						</li>
+						
 						<li>
 							<button type="submit" class="btn btn-primary btn-lg"><span class="ion-ios-search-strong"></span><span class="hidden-xs hidden-sm"> <?php echo lang("common_search"); ?></span></button>
 						</li>
+
+						<li class="hidden-xs">
+							
+							<?php echo form_checkbox(array(
+								'name'=>'hide_completed_work_orders',
+								'id'=>'hide_completed_work_orders',
+								'value'=>'1',
+								'checked'=>$hide_completed_work_orders?true:false));?>
+							<label for="hide_completed_work_orders"><span></span></label>
+							<?php echo form_label(lang('work_orders_hide_completed_work_orders'), 'hide_completed_work_orders',array('class'=>'control-label ')); ?>	
+						</li>
+						
 						<li>
 							<div class="clear-block <?php echo ($search=='' && $status == '' && $technician == '') ? 'hidden' : ''  ?>">
 								<a class="clear" href="<?php echo site_url($controller_name.'/clear_state'); ?>">
@@ -451,48 +454,50 @@
 </div>
 
 <div class="container-fluid">
-		<div class="row manage-table">
-			<div class="panel panel-piluku">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						<?php echo ($deleted ? lang('common_deleted').' ' : '').lang('module_'.$controller_name); ?>
-						<!-- Boton para configurar las columnas visibles -->
-						<form id="config_columns">
-							<div class="piluku-dropdown btn-group table_buttons pull-right">
-								<button type="button" class="btn btn-more dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									<i class="ion-gear-a"></i>
-								</button>
-								<ul id="sortable" class="dropdown-menu dropdown-menu-left col-config-dropdown" role="menu">
-									<li class="dropdown-header"><a id="reset_to_default" class="pull-right"><span class="ion-refresh"></span> <?php echo lang('common_reset'); ?></a> <?php echo lang('common_column_configuration'); ?></li>
-									<?php foreach($all_columns as $col_key => $col_value) { 
-										$checked = '';									
-										if (isset($selected_columns[$col_key]))
-										{
-											$checked = 'checked ="checked" ';
-										}
-										?>
-										<li class="sort"><a><input <?php echo $checked; ?> name="selected_columns[]" type="checkbox" class="columns" id="<?php echo $col_key; ?>" value="<?php echo $col_key; ?>"><label class="sortable_column_name" for="<?php echo $col_key; ?>"><span></span><?php echo H($col_value['label']); ?></label><span class="handle ion-drag"></span></a></li>									
-									<?php } ?>
-								</ul>
-							</div>
-						</form>
-						<!-- Se muestra el total de ordenes de trabajo -->				
-						<span title="<?php echo $total_rows; ?> total work orders" class="badge bg-primary tip-left" id="manage_total_items"><?php echo $total_rows; ?></span>
-						<span class="panel-options custom">
-							<div class="pagination pagination-top hidden-print  text-center" id="pagination_top">
-								<?php echo $pagination;?>		
-							</div>
-						</span>
-					</h3>
-				</div>
-				<div class="panel-body nopadding table_holder table-responsive" id="table_holder">
-					<?php echo $manage_table; ?>			
-				</div>
-			</div>	
+	<div class="row manage-table">
+		<div class="panel panel-piluku">
+			<div class="panel-heading">
+				<!-- Contador con la cantidad de ordenes de trabajo -->
+				<h3 class="panel-title">
+					<?php echo ($deleted ? lang('common_deleted').' ' : '').lang('module_'.$controller_name); ?>
+					<!-- Boton para configurar las columnas visibles -->
+					<form id="config_columns">
+						<div class="piluku-dropdown btn-group table_buttons pull-right">
+							<button type="button" class="btn btn-more dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<i class="ion-gear-a"></i>
+							</button>
+							<ul id="sortable" class="dropdown-menu dropdown-menu-left col-config-dropdown" role="menu">
+								<li class="dropdown-header"><a id="reset_to_default" class="pull-right"><span class="ion-refresh"></span> <?php echo lang('common_reset'); ?></a> <?php echo lang('common_column_configuration'); ?></li>
+								<?php foreach($all_columns as $col_key => $col_value) { 
+									$checked = '';									
+									if (isset($selected_columns[$col_key]))
+									{
+										$checked = 'checked ="checked" ';
+									}
+									?>
+									<li class="sort"><a><input <?php echo $checked; ?> name="selected_columns[]" type="checkbox" class="columns" id="<?php echo $col_key; ?>" value="<?php echo $col_key; ?>"><label class="sortable_column_name" for="<?php echo $col_key; ?>"><span></span><?php echo H($col_value['label']); ?></label><span class="handle ion-drag"></span></a></li>									
+								<?php } ?>
+							</ul>
+						</div>
+					</form>
+					<!-- Se muestra el total de ordenes de trabajo -->				
+					<span title="<?php echo $total_rows; ?> total work orders" class="badge bg-primary tip-left" id="manage_total_items"><?php echo $total_rows; ?></span>
+					<span class="panel-options custom">
+						<div class="pagination pagination-top hidden-print  text-center" id="pagination_top">
+							<?php echo $pagination;?>		
+						</div>
+					</span>
+				</h3>
+				
+			</div>
+			<div class="panel-body nopadding table_holder table-responsive" id="table_holder">
+				<?php echo $manage_table; ?>			
+			</div>
+		</div>	
 		<div class="text-center">
-		<div class="pagination hidden-print alternate text-center" id="pagination_bottom" >
-			<?php echo $pagination;?>
-		</div>
+			<div class="pagination hidden-print alternate text-center" id="pagination_bottom" >
+				<?php echo $pagination;?>
+			</div>
 		</div>
 	</div>
 </div>
@@ -684,7 +689,6 @@
 		console.log('customer_id: ' + customer_id);
 		console.log('client_name: ' + client_name);
 		console.log('client_phone: ' + client_phone);
-		console.log('item_id: ' + item_id);
 		console.log('equipment: ' + equipment);
 		console.log('model: ' + model);
 		console.log('ID PHP:'+ "<?php echo $customer_id_for_new; ?>");

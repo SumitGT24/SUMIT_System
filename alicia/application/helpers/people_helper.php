@@ -20,7 +20,6 @@ function customer_name_formatter($person,$data)
 	return '<a href="'.$link.'" class="underline">'.H($person).'</a>';
 }
 
-
 function customer_balance_data($person)
 {
 	$data = array();
@@ -58,7 +57,6 @@ function supplier_name_formatter($person,$data)
 	return '<a href="'.$link.'" class="underline">'.H($person).'</a>';
 }
 
-
 function supplier_balance_data($person)
 {
 	$data = array();
@@ -75,7 +73,6 @@ function supplier_balance_formatter($balance,$data)
 	
 	return $output;	
 }
-
 
 function email_formatter($email)
 {

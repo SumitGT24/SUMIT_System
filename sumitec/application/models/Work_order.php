@@ -300,7 +300,7 @@ class Work_order extends CI_Model
 					 );
 				$temp_suggestions[$row->id] = $data;
 			}
-		
+
 		
 			$this->load->helper('array');
 			uasort($temp_suggestions, 'sort_assoc_array_by_name');
@@ -539,7 +539,7 @@ class Work_order extends CI_Model
 		$this->db->where('id',$work_order_id);
 		return $this->db->get()->row_array();
 	}
-
+	
 	public function get_item_being_repaired_info($work_order_id)
 	{
 		$this->db->select('items.*,sales_items.serialnumber');
