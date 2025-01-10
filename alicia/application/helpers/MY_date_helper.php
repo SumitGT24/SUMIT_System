@@ -35,7 +35,7 @@ function get_date_format_extended()
 	switch($CI->config->item('date_format'))
 	{
 		case "middle_endian":
-			return "01/30/2000";
+			return "30/01/2000";
 		case "little_endian":
 			return "30-01-2000";
 		case "big_endian":
@@ -51,7 +51,7 @@ function get_date_format()
 	switch($CI->config->item('date_format'))
 	{
 		case "middle_endian":
-			return "m/d/Y";
+			return "d/m/Y";
 		case "little_endian":
 			return "d-m-Y";
 		case "big_endian":
@@ -83,7 +83,7 @@ function get_js_date_format()
 	switch($CI->config->item('date_format'))
 	{
 		case "middle_endian":
-			return "MM/DD/YYYY";
+			return "DD/MM/YYYY";
 		case "little_endian":
 			return "DD-MM-YYYY";
 		case "big_endian":
