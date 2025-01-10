@@ -14572,6 +14572,7 @@ nav.navbar {
 .work_order_edit_page_holder .technician_info .change_technician {
   padding-left: 10px !important;
   font-size: 15px;
+  text-decoration: underline;
 }
 .work_order_edit_page_holder .estimated_repair_date_info {
   margin-top: 6px;

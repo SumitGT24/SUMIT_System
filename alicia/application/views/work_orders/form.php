@@ -5,7 +5,6 @@
 	<div class="rect3"></div>
 </div>
 <!-- Notes Modal -->
-<!-- Vista editar orden de trabajo -->
 <div class="modal fade sale_item_notes_modal" id="sale_item_notes_modal" tabindex="-1" role="dialog" aria-labelledby="sale_item_note" aria-hidden="true">
 	<div class="modal-dialog customer-recent-sales" style = "width: 500px;">
 		<div class="modal-content">
@@ -45,26 +44,27 @@
 						<label for="sale_item_note_internal" style="padding-left: 10px;"><span></span></label>
 				</div>
 				
-				<input type="hidden" name="item_id_being_repaired" id="item_id_being_repaired" value="<?php echo $item_being_repaired_info['item_id']; ?>">
+				<!--input type="hidden" name="item_id_being_repaired" id="item_id_being_repaired" value="<#?php echo $item_being_repaired_info['item_id']; ?>"-->
 				<input type="hidden" name="sale_id" id="sale_id" value="<?php echo $work_order_info['sale_id']; ?>">
 				<input type="hidden" name="note_id" id="note_id" value="">
 
 				<div class="form-actions">
 					<?php
-						echo form_submit(array(
-							'name'=>'sale_item_notes_save_btn',
-							'id'=>'sale_item_notes_save_btn',
-							'value'=>lang('common_save'),
-							'class'=>'submit_button pull-right btn btn-primary sale_item_notes_save_btn')
-						);
-						
 						echo form_input(array(
 							'type' =>'button',
 							'value'=>lang('common_cancel'),
 							'data-dismiss' => 'modal',
-							'style' => 'margin-right: 10px;',
+							'style' => 'background-color: #dc3545; border: none; text-align: center;',
 							'class'=>'pull-right btn btn-warning')
-						)						
+						);
+						echo form_submit(array(
+							'name'=>'sale_item_notes_save_btn',
+							'id'=>'sale_item_notes_save_btn',
+							'value'=>lang('common_save'),
+							'style' => 'margin-right: 10px;',
+							'class'=>'submit_button pull-right btn btn-primary sale_item_notes_save_btn')
+						);						
+						
 					?>
 					<div class="clearfix">&nbsp;</div>
 				</div>
@@ -101,7 +101,7 @@
 						</div>
 
 						<div class="work_order_date">
-							<?php echo date(get_date_format(), strtotime($work_order_info['sale_time'])); ?>
+							<?php echo date(get_date_format(), strtotime($work_order_info['order_date'])); ?>
 						</div>
 					</div>
 
@@ -119,7 +119,6 @@
 				<ul class="list-inline pull-right">
 					<li><?php echo anchor(site_url('sales/edit/').$work_order_info['sale_id'],lang('work_orders_edit_sale'), array('class'=>'btn btn-primary btn-lg')); ?></li>
 					<li><?php echo anchor(site_url('work_orders/print_work_order/'.$work_order_info['id']), lang('work_orders_print'), array('class'=>'btn btn-primary btn-lg')); ?></li>
-					<li><?php echo anchor('', lang('work_orders_service_tag'), array('class'=>'btn btn-primary btn-lg service_tag_btn')); ?></li>
 					<li><?php echo anchor(site_url('work_orders'), ' ' . lang('common_done'), array('class'=>'btn btn-primary btn-lg ion-android-exit','id'=>'done_btn')); ?></li>
 				</ul>
 			</div>
@@ -135,14 +134,13 @@
 
 				<div class="panel-body">
 					<ul class="customer_name_address_ul list-style-none">
-						<li class="customer_name">XD<?php echo $customer_info['first_name'].' '.$customer_info['last_name']; ?></li>
-						<li><?php echo $customer_info['address_1'].' '.$customer_info['address_2']; ?></li>
-						<li><?php echo $customer_info['city'].','.$customer_info['state'].' '.$customer_info['zip']; ?></li>
+						<li class="customer_name"><?php echo $work_order_info['client_name']; ?></li>
+						<li><?php echo $customer_info['address_1'].' '.$customer_info['address_2']; ?></li>						
 					</ul>
 
 					<ul class="customer_email_phonenumber_ul list-style-none">
+						<li><a class="text-decoration-underline" href = "tel:<?php echo $work_order_info['client_phone']; ?>"><?php echo $work_order_info['client_phone']; ?></a></li>
 						<li><a class="text-decoration-underline" href = "mailto:<?php echo $customer_info['email']; ?>"><?php echo $customer_info['email']; ?></a></li>
-						<li><a class="text-decoration-underline" href = "tel:<?php echo $customer_info['phone_number']; ?>"><?php echo $customer_info['phone_number']; ?></a></li>
 					</ul>
 					<div class='clearfix'></div>
 				</div><!--/panel-body -->
@@ -157,44 +155,36 @@
 
 				<div class="panel-body">
 					<div class='row item_name_and_warranty'>	
-						<div class='col-md-8'>
-							<a tabindex="-1" href="<?php echo site_url('home/view_item_modal/'.$item_being_repaired_info['item_id'])."?redirect=work_orders/view/".$work_order_id; ?>" data-toggle="modal" data-target="#myModal"><?php echo H($item_being_repaired_info['name']); ?></a>
-						</div>
+						<!--div class='col-md-8'-->
+							<!--a tabindex="-1" href="<#?php echo site_url('home/view_item_modal/'.$item_being_repaired_info['item_id'])."?redirect=work_orders/view/".$work_order_id; ?>" data-toggle="modal" data-target="#myModal"><#?php echo H($item_being_repaired_info['name']); ?></a-->														
+						<!--/div-->
+						<div class="panel-body">
+						<ul class="customer_name_address_ul list-style-none">							
+							<li><b><?php echo $work_order_info['equipment'].' '; ?></b><?php echo $work_order_info['model']; ?></li>
+							<li><b>Accesorios: </b><?php echo $work_order_info['accessories'] ?></li>
+							<li><b>Servicio: </b><?php echo $work_order_info['service_description'] ?></li>				
+						</ul>
+						<div class='clearfix'></div>
+						</div><!--/panel-body -->
 
 						<div class='col-md-4 warranty_repair'>
 							<?php echo form_checkbox(array(
-								'name'=>'warranty',
-								'id'=>'warranty',
-								'value'=>'warranty',
-								'checked'=>$work_order_info['warranty'],
+								'name'=>'order_type',
+								'id'=>'order_type',
+								'value'=>'order_type',
+								'checked'=>$work_order_info['order_type'],
 								));?>
-							<label for="warranty"><span></span></label>
-							<?php echo form_label(lang('work_orders_warranty_repair'), 'warranty',array('class'=>'control-label wide','style'=>'margin-right:38px;')); ?>
+							<label for="order_type"><span></span></label>
+							<?php echo form_label(lang('work_orders_warranty_repair'), 'order_type',array('class'=>'control-label wide','style'=>'margin-right:10px;')); ?>
 						</div>
 					</div>
-
-					<dl class="dl-horizontal">
-						<dt><?php echo lang('common_description') ?></dt>
-						<dd><?php echo H($item_being_repaired_info['description']); ?></dd>
-
-						<dt><?php echo lang('common_category') ?></dt>
-						<dd><?php echo $this->Category->get_full_path($item_being_repaired_info['category_id']); ?></dd>
-						
-						<?php if($item_being_repaired_info['is_serialized']){ ?>
-							<dt><?php echo lang('common_serial_number') ?></dt>
-							<dd><?php echo H($item_being_repaired_info['serialnumber']); ?></dd>
-						<?php } ?>
-						
-						<dt><?php echo lang('common_item_number_expanded') ?></dt>
-						<dd><?php echo H($item_being_repaired_info['item_number']); ?></dd>
-					</dl>
 				</div><!--/panel-body -->
 			</div><!-- /panel-piluku -->
 		</div>
 	</div>
-
+	<!-- Seleccionar tecnico -->
 	<div class="row">
-		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pr">
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr">
 			<div class="panel panel-piluku technician_info">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="ion-person"></i> <?php echo lang("work_orders_technician"); ?></h3>
@@ -212,7 +202,6 @@
 							<li><a class="text-decoration-underline" href = "mailto:<?php echo $work_order_info['email']; ?>"><?php echo $work_order_info['email']; ?></a></li>
 							<li><a class="text-decoration-underline" href = "tel:<?php echo $work_order_info['phone_number']; ?>"><?php echo $work_order_info['phone_number']; ?></a></li>
 						</ul>
-
 						<a class="text-decoration-underline change_technician" href = "<?php echo site_url('work_orders/remove_technician') ?>"><?php echo lang('work_orders_change_technician'); ?></a>
 					<?php 
 						}
@@ -220,26 +209,7 @@
 				</div><!--/panel-body -->
 			</div><!-- /panel-piluku -->
 		</div>
-
-		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 pl pr">
-			<div class="panel panel-piluku estimated_repair_date_info">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="icon ti-calendar"></i> <?php echo lang("work_orders_estimated_repair_date"); ?></h3>
-				</div>
-
-				<div class="panel-body">
-					<div class="input-group date">
-						<span class="input-group-addon"><i class="ion-calendar"></i></span>
-						<?php echo form_input(array(
-							'name'=>'estimated_repair_date',
-							'id'=>'estimated_repair_date',
-							'class'=>'form-control form-inps datepicker',
-							'value'=>$work_order_info['estimated_repair_date'] ? date(get_date_format().' '.get_time_format(), strtotime($work_order_info['estimated_repair_date'])) : '')
-						);?> 
-					</div>  
-				</div><!--/panel-body -->
-			</div><!-- /panel-piluku -->
-		</div>
+		
 
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pl">
 			<div class="panel panel-piluku estimates_info">
@@ -250,22 +220,24 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<h4>Costo estimado</h4>
 							<?php echo form_input(array(
 								'class'=>'form-control',
-								'name'=>'estimated_parts',
-								'id'=>'estimated_parts',
-								'value'=>$work_order_info['estimated_parts'] ? to_currency_no_money($work_order_info['estimated_parts']) : '',
-								'placeholder' => lang("work_orders_estimated_parts")
+								'name'=>'estimated_cost',
+								'id'=>'estimated_cost',
+								'value'=>$work_order_info['estimated_cost'] ? to_currency_no_money($work_order_info['estimated_cost']) : '',								
+								'placeholder' => 'Costo estimado'
 							)); ?>
 						</div>
 
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<h4>Anticipo</h4>
 							<?php echo form_input(array(
 								'class'=>'form-control',
-								'name'=>'estimated_labor',
-								'id'=>'estimated_labor',
-								'value'=>$work_order_info['estimated_labor'] ? to_currency_no_money($work_order_info['estimated_labor']) : '',
-								'placeholder' => lang("work_orders_estimated_labor")
+								'name'=>'advance_payment',
+								'id'=>'advance_payment',
+								'value'=>$work_order_info['advance_payment'] ? to_currency_no_money($work_order_info['advance_payment']) : '',
+								'placeholder' => 'Anticipo'
 							)); ?>
 						</div>
 					</div>
@@ -275,117 +247,14 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr">
-			<div class="panel panel-piluku parts_and_labor_info">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-							<div class="parts_and_labor_info_title">
-								<i class="ion-hammer"></i>
-								<span><?php echo lang('work_orders_parts_and_labor') ?></span>
-							</div>
-						</div>	
-
-						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-							<div class="item_search">
-								<div class="input-group">
-									<!-- Css Loader  -->
-									<div class="spinner" id="ajax-loader" style="display:none">
-										<div class="rect1"></div>
-										<div class="rect2"></div>
-										<div class="rect3"></div>
-									</div>
-									
-									<span class="input-group-addon">
-										<?php echo anchor("items/view/-1","<i class='icon ti-pencil-alt'></i>", array('class'=>'none add-new-item','title'=>lang('common_new_item'), 'id' => 'new-item', 'tabindex'=> '-1')); ?>
-									</span>
-									<input type="text" id="item" name="item"  class="add-item-input pull-left keyboardTop form-control" placeholder="<?php echo lang('common_start_typing_item_name'); ?>" data-title="<?php echo lang('common_item_name'); ?>">
-								</div>
-							</div>
-						</div>		
-					</div>
-					<!-- <h3 class="panel-title"><i class="icon ti-harddrive"></i> <?php echo lang("work_orders_item_being_repaired"); ?></h3> -->
-				</div>
-
-				<div class="panel-body">
-					<div class="work_order_items">
-						<div class="register-box register-items paper-cut">
-							<div class="register-items-holder">
-								<table id="register" class="table table-hover">
-
-									<thead>
-										<tr class="register-items-header">
-											<th></th>
-											<th><?php echo lang('work_orders_quantity'); ?></th>
-											<th><?php echo lang('work_orders_item_name'); ?></th>
-											<th><?php echo lang('work_orders_price'); ?></th>
-											<th><?php echo lang('work_orders_total'); ?></th>
-										</tr>
-									</thead>
-							
-									<tbody class="register-item-content">
-									<?php 
-										
-										$total = 0;
-										foreach($work_order_items as $item) {
-											
-											$total+=$item['item_unit_price']*$item['quantity_purchased']; 
-									?>
-											<tr class="register-item-details">
-												<td class="text-center"> <?php echo anchor("work_orders/delete_item/".$work_order_info['sale_id']."/".$item['line'],'<i class="icon ion-android-cancel"></i>', array('class' => 'delete-item'));?> </td>
-												<td class="text-center">
-													<a href="#" id="quantity_<?php echo $item['item_id'];?>" class="xeditable" data-type="text"  data-validate-number="true"  data-pk="1" data-name="quantity" data-url="<?php echo site_url('work_orders/edit_sale_item_quantity/'.$item['sale_id'].'/'.$item['item_id'].($item['item_variation_id']?'/'.$item['item_variation_id']:'')); ?>" data-title="<?php echo lang('common_quantity') ?>"><?php echo to_quantity($item['quantity_purchased']); ?></a>
-												</td>
-												<td class="text-center">
-														<?php
-															echo $item['item_name'];
-															if($item['item_variation_id']){
-																echo '-'.$this->Item_variations->get_info($item['item_variation_id'])->name;
-															}
-														
-														?>
-												</td>
-												<td class="text-center">
-													<a href="#" id="unit_price_<?php echo $item['item_id'];?>" class="xeditable" data-type="text"  data-validate-number="true"  data-pk="1" data-name="unit_price" data-url="<?php echo site_url('work_orders/edit_sale_item_unit_price/'.$item['sale_id'].'/'.$item['item_id'].($item['item_variation_id']?'/'.$item['item_variation_id']:'')); ?>" data-value="<?php echo H(to_currency_no_money($item['item_unit_price'])); ?>" data-title="<?php echo lang('common_price') ?>"><?php echo to_currency($item['item_unit_price']); ?></a>
-												</td>
-												<td class="text-center">
-														<?php echo to_currency($item['item_unit_price']*$item['quantity_purchased']); ?>
-												</td>
-												
-											</tr>
-									<?php 
-											
-										}  
-									
-									?>  
-									</tbody>
-									
-									<tfoot>
-										<tr class="register-items-header">
-											<td colspan="4" class="text-left"><strong><?php echo lang('common_total');?></strong></td>
-											<td class="text-center"><?php echo to_currency($total);?></td>
-										</tr>
-									</tfoot>
-									
-								</table>
-							</div>
-							
-						</div>
-					</div>
-				</div><!--/panel-body -->
-			</div><!-- /panel-piluku -->
-
-			
-		</div>
-
-		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pl">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-piluku notes_info">
 				<div class="panel-heading notes_info_title">
 					<h3 class="panel-title"><i class="ion-ios-paper-outline"></i> <?php echo lang("work_orders_notes"); ?></h3><i class="ion-android-add new_note_icon"></i>
 				</div>
 
 				<div class="panel-body">
-					<div class="notes">
+					<div class="notes" >
 						<?php foreach($notes as $note){ ?>
 							<div class="note <?php echo $note['internal']?'interal_note':''; ?>">
 								<div class="text-right">
@@ -393,9 +262,10 @@
 									<a href="" class="delete_note_btn" title="<?php echo lang('common_delete'); ?>" data-note_id="<?php echo $note['note_id']; ?>"><i class="ion-android-delete" aria-hidden="true"></i></a>
 								</div>
 								<?php 
-									// echo "<div class='text-right'>".$note['first_name'].' '.$note['last_name']."</div>"; 
-									echo "<span class='font-weight-bold'>".date(get_date_format().' '.get_time_format(), strtotime($note['note_timestamp']))."&nbsp&nbsp</span>";
-									echo $note['note'];
+									echo "<div class='text-right'>".$note['first_name'].' '.$note['last_name']."</div>"; 
+									//echo "<span class='font-weight-bold'>".date(get_date_format().' '.get_time_format(), strtotime($note['note_timestamp']))."&nbsp&nbsp</span>";
+									echo '<b>'.$note['note'].'</b>';
+									echo "<span class='font-weight-bold'>".' - '.date(get_date_format().' '.get_time_format(), strtotime($note['note_timestamp']))."&nbsp&nbsp</span>";
 									echo "<br />";
 									echo $note['detailed_notes'];
 									echo "<div class='note_employee_name'>".$note['first_name'].' '.$note['last_name']."</div>"; 

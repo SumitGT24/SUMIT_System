@@ -37,8 +37,7 @@ class Work_orders extends Secure_area
 		$this->lang->load('sales');	
 		$this->load->helper('text');
 	}
-	//Analizar esta funcion para establecer las columnas que se despliegan en la tabla de ordenes de trabajo
-	//Solicitar a ChatGPT que establezca que funciones pueden o se deben modificar
+
 	function index($offset=0)
 	{
 		$this->check_action_permission('search');
@@ -237,6 +236,8 @@ class Work_orders extends Secure_area
 	
 	/*
 	Loads the Work order edit form
+	Zona de interes xd
+	Revisar que se llama desde el controlador, notas, item_id, customer_id y comentarlas también en el modelo.
 	*/
 	function view($work_order_id=-1,$redirect_code=0)
 	{
@@ -272,14 +273,14 @@ class Work_orders extends Secure_area
 		$data['change_status_array'] = $change_status_array;
 
 		$data['customer_info'] = $this->Work_order->get_customer_info($work_order_id);
-		$data['item_being_repaired_info'] = $this->Work_order->get_item_being_repaired_info($work_order_id);
 		$data['notes'] = $this->Work_order->get_sales_items_notes($work_order_id);
 		$first_line_note = $this->Work_order->get_first_line_note($work_order_id);
-
+		
 		$data['work_order_images'] = $work_order_info['images'] && unserialize($work_order_info['images']) ? unserialize($work_order_info['images']) : array();
 		
 		$data['first_line_note'] = $first_line_note;
-
+		//Causa problemas (revisar)
+		$data['item_being_repaired_info'] = $this->Work_order->get_item_being_repaired_info($work_order_id);
 		$data['work_order_items'] = $this->Work_order->get_work_order_items($work_order_id);
 		
 		$employees = array('' => lang('common_none'));
@@ -299,10 +300,11 @@ class Work_orders extends Secure_area
 
 		$work_order_data = array();
 
-		$work_order_data['estimated_repair_date'] = $this->input->post('estimated_repair_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('estimated_repair_date'))) : NULL;
-		$work_order_data['estimated_parts'] = $this->input->post('estimated_parts') ? $this->input->post('estimated_parts') : NULL;
-		$work_order_data['estimated_labor'] = $this->input->post('estimated_labor') ? $this->input->post('estimated_labor') : NULL;
-		$work_order_data['warranty'] = $this->input->post('warranty') ? 1 : 0;
+		//$work_order_data['estimated_repair_date'] = $this->input->post('estimated_repair_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('estimated_repair_date'))) : NULL;
+		//$work_order_data[''] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : NULL;
+		$work_order_data['estimated_cost'] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : NULL;
+		$work_order_data['advance_payment'] = $this->input->post('advance_payment') ? $this->input->post('advance_payment') : NULL;
+		$work_order_data['order_type'] = $this->input->post('order_type') ? 1 : 0;
 		
 		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 		{
@@ -501,10 +503,12 @@ class Work_orders extends Secure_area
 			$emp_info=$this->Employee->get_info($sale_info['employee_id']);
 			$data['employee']=$emp_info->first_name.' '.$emp_info->last_name;
 			
+			$work_info=$this->Work_order->get_info($work_order_id)->row();
+
 			if($customer_id)
 			{
 				$cust_info=$this->Customer->get_info($customer_id);
-				$data['customer']=$cust_info->first_name.' '.$cust_info->last_name.($cust_info->account_number==''  ? '':' - '.$cust_info->account_number);
+				$data['customer']=$cust_info->first_name.' '.$cust_info->last_name.($cust_info->account_number==''  ? '':' - '.$cust_info->account_number); //Se muestra el nombre del cliente
 				$data['customer_company']= $cust_info->company_name;
 				$data['customer_address_1'] = $cust_info->address_1;
 				$data['customer_address_2'] = $cust_info->address_2;
@@ -516,7 +520,7 @@ class Work_orders extends Secure_area
 				$data['customer_email'] = $cust_info->email;
 			}
 			else{
-				$data['customer']='no_customer!';
+				$data['customer']= $work_info->client_name; // Se muestra el nombre del cliente no registrado
 				$data['customer_company']= '';
 				$data['customer_address_1'] = '';
 				$data['customer_address_2'] = '';
@@ -524,16 +528,21 @@ class Work_orders extends Secure_area
 				$data['customer_state'] = '';
 				$data['customer_zip'] = '';
 				$data['customer_country'] = '';
-				$data['customer_phone'] = '';
+				$data['customer_phone'] = $work_info->client_phone;
 				$data['customer_email'] = '';
 			}
-			
+			//Agregar datos para la impresion de la orden de trabajo
+			$data['equipment'] = $work_info->equipment;
+			$data['model'] = $work_info->model;
+			$data['accessories'] = $work_info->accessories;
+			$data['service_description'] = $work_info->service_description;
+
 			$data['sale_id']=$this->config->item('sale_prefix').' '.$sale_id;
 			$data['sale_id_raw']=$sale_id;
 			$data['comment']=$sale_info['comment'];
 			$data['show_comment_on_receipt']=$sale_info['show_comment_on_receipt'];
-			$data['sales_items'] = $this->Sale->get_sale_items_ordered_by_name($sale_id)->result_array();
-			$data['sales_item_kits'] = $this->Sale->get_sale_item_kits_ordered_by_category($sale_id)->result_array();
+			//$data['sales_items'] = $this->Sale->get_sale_items_ordered_by_name($sale_id)->result_array();
+			//$data['sales_item_kits'] = $this->Sale->get_sale_item_kits_ordered_by_category($sale_id)->result_array();
 			$data['discount_exists'] = $this->_does_discount_exists($data['sales_items']) || $this->_does_discount_exists($data['sales_item_kits']);
 					
 			$this->load->model('Delivery');
@@ -701,6 +710,7 @@ class Work_orders extends Secure_area
 			
 			$rows[] = $row;
 		}
+
 		$this->load->helper('spreadsheet');
 		array_to_spreadsheet($rows,'work_orders_export.'.($this->config->item('spreadsheet_format') == 'XLSX' ? 'xlsx' : 'csv'));
 	}
@@ -710,7 +720,7 @@ class Work_orders extends Secure_area
 		$data = array();
 		
 		$line = 0;
-		$item_id_being_repaired = $this->input->post('item_id_being_repaired');
+		//$item_id_being_repaired = $this->input->post('item_id_being_repaired');
 		$sale_id = $this->input->post('sale_id');
 		$sale_item_note = $this->input->post('sale_item_note');
 		$sale_item_detailed_notes = $this->input->post('sale_item_detailed_notes');
@@ -723,12 +733,13 @@ class Work_orders extends Secure_area
 		$sales_items_notes_data = array
 		(
 			'sale_id'=>$sale_id,
-			'item_id'=>$item_id_being_repaired,
+			//'item_id'=>$item_id_being_repaired,
 			'line'=>$line,
 			'note'=>$sale_item_note,
 			'detailed_notes'=>$sale_item_detailed_notes,
 			'internal'=>$sale_item_note_internal,
 			'employee_id'=>$employee_id,
+			'note_timestamp' => date('Y-d-m H:i:s'),
 			'images'=>serialize(array()),
 		);
 		
@@ -1086,8 +1097,10 @@ class Work_orders extends Secure_area
 			'client_phone' => $final_client_phone,
 			'equipment' => $this->input->post("equipment"),
 			'model' => $this->input->post("model"),
+			'accessories' => $this->input->post("accessories"),
+			'service_description' => $this->input->post("service_description"),
 			'status' => 1, // Estado inicial de la orden de trabajo
-			'order_date' => date('Y-m-d H:i:s') // Formato estándar para MySQL
+			'order_date' => date('Y-d-m H:i:s') // Formato estándar para MySQL
 		];
 	
 		// Guardar la orden de trabajo

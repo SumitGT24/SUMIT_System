@@ -39,7 +39,6 @@ function get_work_orders_manage_table($orders,$controller)
 		{
 			$table.="<th data-sort-column='$sort_col' class='leftmost'>$label</th>";
 			$table.='<th>'.lang('work_orders_collect_payment').'</th>';
-			
 		}
 		elseif ($count == count($headers))
 		{

@@ -39,41 +39,36 @@ class Work_order extends CI_Model
 	 */
 
 	/*
-	public function get_info($work_order_id)
+public function get_info($work_order_id)
 	{
-	    $this->db->select("
-	        sales_work_orders2.*, 
-	        sales.sale_time, 
-	        IF(
-	            sales.customer_id IS NOT NULL, 
-	            people.full_name, 
-	            sales_work_orders2.client_name
-	        ) AS customer_full_name,
-	        IF(
-	            sales.customer_id IS NOT NULL, 
-	            people.phone_number, 
-	            sales_work_orders2.client_phone
-	        ) AS customer_phone
-	    ");
-	    $this->db->from('sales_work_orders2');
-	    $this->db->join('sales', 'sales.sale_id = sales_work_orders2.sale_id');
-	    $this->db->join('people', 'sales.customer_id = people.person_id', 'left');
-	    $this->db->where('sales_work_orders2.id', $work_order_id);
-	
-	    return $this->db->get();
+		$this->db->select('sales_work_orders2.*,sales.sale_time,CONCAT(first_name, " ",last_name) as employee_name,people.email,people.phone_number,sales.customer_id');
+		$this->db->from('sales_work_orders2');
+		$this->db->join('sales', 'sales.sale_id = sales_work_orders2.sale_id');
+		$this->db->join('people', 'people.person_id = sales_work_orders2.employee_id','left');
+		$this->db->where('id',$work_order_id);
+		return $this->db->get();
 	}
 */
+
 	public function get_info($work_order_id)
 	{
-		$this->db->select('sales_work_orders2.*, CONCAT(employee_person.first_name, " ", employee_person.last_name) as employee_name');
+		$this->db->select('sales_work_orders2.*,sales.sale_time,CONCAT(first_name, " ",last_name) as employee_name,people.email,people.phone_number,sales.customer_id');
 		$this->db->from('sales_work_orders2');
-		$this->db->join('people as employee_person', 'employee_person.person_id = sales_work_orders2.employee_id', 'left');
-		$this->db->where('sales_work_orders2.id', $work_order_id);
-
+		$this->db->join('sales', 'sales.sale_id = sales_work_orders2.sale_id');
+		$this->db->join('people', 'people.person_id = sales_work_orders2.employee_id','left');
+		$this->db->where('id',$work_order_id);
 		return $this->db->get();
 	}
 
-	//Cambios 09/12/24
+	//Original
+	/*
+	function get_info_by_sale_id($sale_id)
+	{
+		$this->db->from('sales_work_orders');
+		$this->db->where('sale_id',$sale_id);
+		return $this->db->get();
+	}
+	*/
 	function get_info_by_sale_id($sale_id)
 	{
 		$this->db->from('sales_work_orders2');
@@ -109,6 +104,8 @@ class Work_order extends CI_Model
 				customer_person.phone_number LIKE '" . $this->db->escape_like_str($search) . "%' OR
 				CONCAT(customer_person.first_name, ' ', customer_person.last_name) LIKE '" . $this->db->escape_like_str($search) . "%' OR
 				CONCAT(customer_person.last_name, ', ', customer_person.first_name) LIKE '" . $this->db->escape_like_str($search) . "%' OR
+				sales_work_orders2.client_name LIKE '" . $this->db->escape_like_str($search) . "%' OR
+				sales_work_orders2.client_phone LIKE '" . $this->db->escape_like_str($search) . "%' OR
 				sales_work_orders2.model LIKE '" . $this->db->escape_like_str($search) . "%' OR
 				sales_work_orders2.equipment LIKE '" . $this->db->escape_like_str($search) . "%')");
 		}
@@ -167,6 +164,8 @@ class Work_order extends CI_Model
 				customer_person.phone_number LIKE '" . $this->db->escape_like_str($search) . "%' OR
 				CONCAT(customer_person.first_name, ' ', customer_person.last_name) LIKE '" . $this->db->escape_like_str($search) . "%' OR
 				CONCAT(customer_person.last_name, ', ', customer_person.first_name) LIKE '" . $this->db->escape_like_str($search) . "%' OR
+				sales_work_orders2.client_name LIKE '" . $this->db->escape_like_str($search) . "%' OR
+				sales_work_orders2.client_phone LIKE '" . $this->db->escape_like_str($search) . "%' OR
 				sales_work_orders2.model LIKE '" . $this->db->escape_like_str($search) . "%' OR
 				sales_work_orders2.equipment LIKE '" . $this->db->escape_like_str($search) . "%')");
 		}
@@ -569,6 +568,7 @@ class Work_order extends CI_Model
 	}
 
 	/*
+	Original
 	function get_all($deleted=0,$limit=10000, $offset=0,$col='id',$order='desc')
 	{	
 		if (!$deleted)
@@ -597,8 +597,7 @@ class Work_order extends CI_Model
  		$return = $this->db->get();
  	 	return $return;
 	}
-	*/
-	/*
+
 	//Original
 	function get_by_id($id)
 	{	
@@ -787,13 +786,13 @@ class Work_order extends CI_Model
 				'format_function' => 'date_time_to_date',
 			),
 			'estimated_cost' => array(
-				'sort_column' => 'phppos_sales_work_orders2.estimated_cost',
+				'sort_column' => 'estimated_cost',
 				'label' => 'Costo estimado',
 				'format_function' => 'to_currency',
 			),
 			'advance_payment' => array(
-				'sort_column' => 'phppos_sales_work_orders2.advance_payment',
-				'label' => 'Pago adelantado',
+				'sort_column' => 'advance_payment',
+				'label' => 'Anticipo',
 				'format_function' => 'to_currency',
 			),
 			'status' => array(
@@ -802,7 +801,7 @@ class Work_order extends CI_Model
 				'format_function' => 'work_order_status_badge',
 				'html' => TRUE,
 			),
-			'employee_name' => array(
+			'technician_name' => array(
 				'sort_column' => 'employee_person.first_name',
 				'label' => 'Técnico asignado',
 			),
@@ -895,7 +894,7 @@ class Work_order extends CI_Model
 
 	    return $this->db->get()->result_array();
 	}
-
+	
 	/*
 	ORIGINAL
 	public function get_customer_info($work_order_id)
@@ -907,20 +906,20 @@ class Work_order extends CI_Model
 		$this->db->where('id',$work_order_id);
 		return $this->db->get()->row_array();
 	}
-	*/
+	
 	//Original modificado
 	public function get_customer_info($work_order_id)
 	{
 		$this->db->select('people.*');
 		$this->db->from('sales_work_orders2');
-		$this->db->join('sales', 'sales.sale_id = sales_work_orders.sale_id','left');
+		$this->db->join('sales', 'sales.sale_id = sales_work_orders2.sale_id','left');
 		$this->db->join('people', 'people.person_id = sales.customer_id','left');
 		$this->db->where('id',$work_order_id);
 		return $this->db->get()->row_array();
 	}
+	*/
 	
-	/*
-	Original - Ya no cumple ninguna función
+	//Original - Ya no cumple ninguna función
 	public function get_item_being_repaired_info($work_order_id)
 	{
 		$this->db->select('items.*,sales_items.serialnumber');
@@ -932,7 +931,7 @@ class Work_order extends CI_Model
 		$this->db->limit(1);
 		return $this->db->get()->row_array();
 	}
-	*/
+	/**/
 
 	/*
 	/Original
@@ -947,7 +946,15 @@ class Work_order extends CI_Model
 		return $this->db->get()->result_array();
 	}
 	*/
-
+	public function get_customer_info($work_order_id)
+	{
+		$this->db->select('people.*');
+		$this->db->from('sales_work_orders2');
+		$this->db->join('sales', 'sales.sale_id = sales_work_orders2.sale_id','left');
+		$this->db->join('people', 'people.person_id = sales.customer_id','left');
+		$this->db->where('id',$work_order_id);
+		return $this->db->get()->row_array();
+	}
 	function get_sales_items_notes($work_order_id)
 	{
 	    $this->db->select('sales_items_notes.*, people.first_name, people.last_name');
@@ -982,8 +989,8 @@ class Work_order extends CI_Model
 	    $this->db->limit(1);
 	    return $this->db->get()->row_array();
 	}
-	/*
-	//Original - Ya no cumple ninguna función
+	
+	//Original - Ya no cumple ninguna función (Revisar)
 	public function get_work_order_items($work_order_id)
 	{
 		$this->db->select('sales_items.*,items.name as item_name');
@@ -995,7 +1002,7 @@ class Work_order extends CI_Model
 		$this->db->order_by('sales_items.line', 'desc');
 		return $this->db->get()->result_array();
 	}
-	*/
+	/**/
 
 	function get_custom_field($number,$key="name")
 	{
@@ -1284,10 +1291,10 @@ class Work_order extends CI_Model
 			$status_id = $this->db->insert_id();
 		}
 		$work_order_data['sale_id'] = $sale_id; // Asociar venta si aplica
-		$work_order_id = $this->db->insert_id();
 		// Insertar la orden de trabajo en `phppos_sales_work_orders2`
 		$work_order_data['status'] = $status_id;
 		$this->db->insert('phppos_sales_work_orders2', $work_order_data);
+		$work_order_id = $this->db->insert_id();
 	
 		// Retornar el ID de la nueva orden de trabajo
 		//return $this->db->insert_id();

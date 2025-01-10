@@ -3976,8 +3976,9 @@ class Sale extends MY_Model
 		$this->db->from('sales_items_notes');
 		$this->db->join('people', 'people.person_id = sales_items_notes.employee_id', 'left');
 		$this->db->where('sale_id', $sale_id);
-		$this->db->where('item_id', $item_id);
-		$this->db->where('line', $line);
+		//Comentados para mostrar notas sin la necesidad de un articulo registrado
+		//$this->db->where('item_id', $item_id);
+		//$this->db->where('line', $line);
 		$this->db->order_by('sales_items_notes.note_timestamp', 'desc');
 		return $this->db->get()->result_array();
 	}

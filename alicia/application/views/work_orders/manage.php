@@ -124,9 +124,10 @@
     				    <!-- Campos para artículo no registrado -->
     				    <div id="unregisteredItemFields">
     				        <input type="text" name="equipment" placeholder="Equipo" class="form-control" style="margin-bottom: 1rem;">
-    				        <input type="text" name="model" placeholder="Modelo" class="form-control">
+    				        <input type="text" name="model" placeholder="Modelo" class="form-control" style="margin-bottom: 1rem;">
+							<input type="text" name="accessories" id="accessories" placeholder="Accesorios" class="form-control" style="margin-bottom: 1rem;">
+							<input type="text" name="service_description" id="service_description" placeholder="Servicio requerido" class="form-control">
     				    </div>
-
     				</div>
 				</div>
 
@@ -363,6 +364,7 @@
 			<?php } ?>
 		</div>
 	</div>
+
 
 	<div class="row">
 		<div class="col-md-9 col-sm-10 col-xs-10">
@@ -686,24 +688,16 @@
     	}
     	// Mostrar spinner y enviar datos
     	$("#grid-loader1").show();
-		console.log('customer_id: ' + customer_id);
-		console.log('client_name: ' + client_name);
-		console.log('client_phone: ' + client_phone);
-		console.log('equipment: ' + equipment);
-		console.log('model: ' + model);
-		console.log('ID PHP:'+ "<?php echo $customer_id_for_new; ?>");
     	$(this).ajaxSubmit({ 
     	    success: function(response, statusText, xhr, $form){
     	        $("#grid-loader1").hide();
     	        if(response.success) {
-					console.log('Exito B)');
-    	            //location.href = "<#?php echo site_url('work_orders/view/'); ?>" + response.work_order_id;
+    	            location.href = "<?php echo site_url('work_orders/view/'); ?>" + response.work_order_id;
     	        } else {
     	            if(response.missing_required_information) {
     	                bootbox.confirm(response.message, function(result){
     	                    if(result) {
-								console.log('Exito B) (pero faltan datos XD)');
-    	                        //location.href = "<#?php echo site_url('items/view/'); ?>" + item_id + "?redirect=work_orders/index/0&progression=1";
+    	                        location.href = "<?php echo site_url('items/view/'); ?>" + item_id + "?redirect=work_orders/index/0&progression=1";
     	                    }
     	                });
     	            } else {

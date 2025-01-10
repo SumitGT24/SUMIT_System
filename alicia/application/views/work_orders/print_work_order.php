@@ -126,8 +126,7 @@
 						<div class="col-md-4 col-sm-4 col-xs-12">
 							
 						<?php if(isset($data['delivery_person_info'])) { ?>
-							<ul class="list-unstyled invoice-address" style="margin-bottom:10px;">
-									
+							<ul class="list-unstyled invoice-address" style="margin-bottom:10px;">						
 									
 										<li class="invoice-to"><?php echo lang('work_orders_shipping_address');?>:</li>
 										<li><?php echo lang('common_name').": ".H($data['delivery_person_info']['first_name'].' '.$data['delivery_person_info']['last_name']); ?></li>
@@ -163,68 +162,39 @@
 								<div class="invoice-head text-left item-notes"><strong><?php echo lang('common_notes'); ?></strong></div>
 							</div>
 						</div>
-					</div>				
+					</div>		
+					<!-- Revisar los equipos para que se muestren correctamente en la ordenes de trabajo para imprimir -->		
 					<!-- Items -->
-					<?php if (count($data['sales_items']) > 0) { ?>
 						
 					<!-- Items table -->
-					<?php
-					}
-					$current_category = FALSE;
-
+					<!--#?php
 					foreach($data['sales_items'] as $item)
 					{
-						$item_number_for_receipt = false;
 					
-						if ($this->config->item('show_item_id_on_receipt'))
-						{
-							switch($this->config->item('id_to_show_on_sale_interface'))
-							{
-								case 'number':
-								$item_number_for_receipt = H($item['item_number']);
-								break;
-							
-								case 'product_id':
-								$item_number_for_receipt = H($item['product_id']);
-								break;
-							
-								case 'id':
-								$item_number_for_receipt = H($item['item_id']); 
-								break;
-							
-								default:
-								$item_number_for_receipt = H($item['item_number']);
-								break;
-							}
-						}
-					?>
+					?-->
 					<!-- invoice items-->
 					<div class="invoice-table-content">
+						
 						<div class="row">
 							
 						<div class="col-md-6 col-sm-6 col-xs-6">
-							<div class="invoice-content invoice-con">
-								<div class="invoice-content-heading"><?php echo H($item['name']); ?><?php if ($item_number_for_receipt){ ?> - <?php echo $item_number_for_receipt; ?><?php } ?><?php if ($item['size']){ ?> (<?php echo H($item['size']); ?>)<?php } ?></div>
+							<div>
+								<!-- Nombre del articulo en reparacion -->								
+								<!--div class="invoice-content-heading"><#?php echo H($item['name']); ?><#?php if ($item_number_for_receipt){ ?> - <#?php echo $item_number_for_receipt; ?><#?php } ?><#?php if ($item['size']){ ?> (<#?php echo H($item['size']); ?>)<#?php } ?></div-->
+								<div>
+									<h5><b>Equipo:</b> <?php echo $data['equipment']; ?> </h5>									
+									<h5><b>Modelo:</b> <?php echo $data['model'];?> </h5>
+									<h5><b>Accesorios:</b><?php echo $data['accessories'];?> </h5>
+									<h5><b>Servicio:</b> <?php echo $data['service_description']; ?> </h5> 
+								</div>	
 								
-								<div class="invoice-desc">
-									<?php
-										if (isset($item['item_variation_id']))
-										{
-											$this->load->model('Item_variations');
-											echo H($this->Item_variations->get_variation_name($item['item_variation_id']));
-										}
-									?>
-								</div>
-								
-								<?php if (!$this->config->item('hide_desc_on_receipt') && isset($item['description']) && !$item['description']=="" ) {?>
-									<div class="invoice-desc"><?php echo clean_html($item['description']); ?></div>
-								<?php } ?>
+								<!--?php if (!$this->config->item('hide_desc_on_receipt') && isset($item['description']) && !$item['description']=="" ) {?>
+									<div class="invoice-desc"><#?php echo clean_html($item['description']); ?></div>
+								<#?php } ?>
 
-								<?php if(isset($item['serialnumber']) && $item['serialnumber'] !=""){ ?>
-									<div class="invoice-desc"><?php echo H($item['serialnumber']); ?></div>
-								<?php } ?>
-								
-			
+								<#?php if(isset($item['serialnumber']) && $item['serialnumber'] !=""){ ?>
+									<div class="invoice-desc"><#?php echo H($item['serialnumber']); ?></div>
+								<#?php } ?-->										
 							</div>
 						</div>					
 						
@@ -234,7 +204,8 @@
 										$sales_items_notes = $this->Sale->get_sales_items_notes_info($data['sale_id_raw'],$item['item_id'],$item['line']);
 										foreach($sales_items_notes as $sales_items_note){
 											if(!$sales_items_note['internal']){
-												echo date(get_date_format().' '.get_time_format(), strtotime($sales_items_note['note_timestamp'])).': '.H($sales_items_note['note']).'<br />'; 
+												//echo date(get_date_format().' '.get_time_format(), strtotime($sales_items_note['note_timestamp'])).': '.'<b>'.H($sales_items_note['note']).'</b>'.'<br />'; 
+												echo'<b>'.H($sales_items_note['note']).'</b>'.' - '.date(get_date_format().' '.get_time_format(), strtotime($sales_items_note['note_timestamp'])).'<br />'; 
 												echo H($sales_items_note['detailed_notes']).'<br />'; 
 											}
 										}
@@ -245,13 +216,8 @@
 						</div>
 					</div>
 									
-					<?php } ?>
+					<!--?php } ?>
 
-
-
-
-
-					
 					<?php
 					$work_order_info = $data['work_order_info'];
 					foreach($work_order_custom_fields_to_display as $custom_field_id)
@@ -334,22 +300,14 @@
 
 					<!-- invoice footer-->
 					<div class="row">
-						<div class="col-md-4 col-sm-12 col-xs-12">
-							<?php if($data['show_comment_on_receipt']==1)
+						<!--div class="col-md-4 col-sm-12 col-xs-12">
+							<#?php if($data['show_comment_on_receipt']==1)
 								{
 									echo H($data['comment']) ;
 								}
 							?>
 						</div>
-						<div class="<?php echo $data['show_comment_on_receipt']==1 ? 'col-md-4 col-sm-12 col-xs-12' : 'col-md-12 col-sm-12 col-xs-12'; ?>">
-							<?php if (!$this->config->item('hide_barcode_on_sales_and_recv_receipt')) {?>
-											<div id='barcode' class="invoice-policy">
-											<?php 
-												$rawurlencode_sale_id = rawurlencode($data['sale_id']);
-												echo "<img src='".site_url('barcode/index/svg')."?barcode=".$rawurlencode_sale_id."&text=".$rawurlencode_sale_id."' />"; 
-											?>
-										</div>
-										<?php } ?>
+						<!--div class="<#?php echo $data['show_comment_on_receipt']==1 ? 'col-md-4 col-sm-12 col-xs-12' : 'col-md-12 col-sm-12 col-xs-12'; ?>"-->
 						</div>
 					</div>
 				</div>
