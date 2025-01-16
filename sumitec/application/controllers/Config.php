@@ -220,7 +220,7 @@ class Config extends Secure_area
 			echo json_encode(array('success'=>false,'message'=>lang('config_saved_unsuccessfully')));
 			exit;
 		}
-
+		
 		try
 		{
 			$errorMessage = "";
@@ -255,7 +255,7 @@ class Config extends Secure_area
 		{
 			$errorMessage = lang('common_error');
 		}
-
+		
         
 		
 		$deleted_payment_types = array();

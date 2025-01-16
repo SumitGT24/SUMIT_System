@@ -7,7 +7,7 @@ $lang['module_customers_desc']='Agregar, actualizar, buscar y eliminar clientes'
 $lang['module_suppliers']='Proveedor';
 $lang['module_suppliers_desc']='Agregar, actualizar, buscar y eliminar proveedores';
 
-$lang['module_employees']='empleados';
+$lang['module_employees']='Empleados';
 $lang['module_employees_desc']='Agregar, actualizar, buscar y eliminar empleados';
 
 $lang['module_sales']='Ventas';
@@ -16,10 +16,10 @@ $lang['module_sales_desc']='Procesar ventas y reintegros';
 $lang['module_reports']='Reportes';
 $lang['module_reports_desc']='Ver y generar informes';
 
-$lang['module_items']='inventario';
+$lang['module_items']='Inventario';
 $lang['module_items_desc']='Agregar, actualizar, buscar y eliminar artículos';
 
-$lang['module_config']='configuracion';
+$lang['module_config']='Configuración';
 $lang['module_config_desc']='Configuración de la tienda';
 
 $lang['module_receivings']='Compras y traslados';
@@ -74,7 +74,7 @@ $lang['deliveries_add_update'] = 'Añadir entregas';
 $lang['deliveries_edit'] = 'Editar las entregas';
 $lang['deliveries_delete'] = 'Eliminar las entregas';
 $lang['deliveries_search'] = 'Buscar entregas';
-$lang['module_deliveries'] = 'Forza/guatex';
+$lang['module_deliveries'] = 'Forza/Guatex';
 $lang['module_deliveries_desc'] = 'Agregar, actualizar, eliminar y buscar entregas';
 $lang['module_deleted_customers'] = 'Clientes eliminados';
 $lang['module_deleted_employees'] = 'Empleados eliminados';

@@ -2722,10 +2722,7 @@ $this->load->helper('update');
 							?>
 						</div>
 					</div>
-					
-					
-					
-					
+																
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 						<?php echo form_label(lang('config_display_item_name_first_for_variation_name').':', 'display_item_name_first_for_variation_name',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2750,8 +2747,7 @@ $this->load->helper('update');
 							<label for="hide_barcode_on_barcode_labels"><span></span></label>
 						</div>
 					</div>
-					
-					
+									
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 						<?php echo form_label(lang('config_barcode_price_include_tax').':', 'barcode_price_include_tax',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2776,8 +2772,7 @@ $this->load->helper('update');
 							<label for="hide_expire_date_on_barcodes"><span></span></label>
 						</div>
 					</div>
-					
-					
+									
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 						<?php echo form_label(lang('config_hide_price_on_barcodes').':', 'hide_price_on_barcodes',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3159,7 +3154,6 @@ $this->load->helper('update');
 							</div>
 						</div>
 						
-						
 	 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_price_tiers')) ?>">	
 	 					<?php echo form_label(lang('config_default_tier_percent_type_for_excel_import').':', 'default_tier_percent_type_for_excel_import',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 	 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -3346,7 +3340,6 @@ $this->load->helper('update');
 						</div>
 					</div>
 					
-
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
 						<?php echo form_label(lang('config_default_days_to_expire_when_creating_items').':', 'default_days_to_expire_when_creating_items',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">

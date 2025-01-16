@@ -18,7 +18,7 @@ class Config extends Secure_area
 	{
 		$CI =& get_instance();	
 		$CI->load->model("Appfile");
-		//$this->Appfile->save('quickbooks_log.txt',$this->log_text,'+72 hours');
+		$this->Appfile->save('quickbooks_log.txt',$this->log_text,'+72 hours');
 	}
 
 	function __construct()
@@ -73,9 +73,9 @@ class Config extends Secure_area
 		$data['store_locations']=$locations_dropdown;
 		$data['online_price_tiers']=$tiers_dropdown;
 		
-		#$data['ecommerce_platforms']=array(''=>'None','woocommerce' => 'Woocommerce','shopify' => 'Shopify');
+		$data['ecommerce_platforms']=array(''=>'None','woocommerce' => 'Woocommerce','shopify' => 'Shopify');
 		
-		#$data['woo_versions'] = array('3.0.0'=>'3.0.0 or newer', '2.6.14'=>'2.6.0 to 2.6.14');
+		$data['woo_versions'] = array('3.0.0'=>'3.0.0 or newer', '2.6.14'=>'2.6.0 to 2.6.14');
 		
 		$data['controller_name']=strtolower(get_class());
 		$data['payment_options']=array(
@@ -105,8 +105,8 @@ class Config extends Secure_area
 		$data['zips'] = $this->Zip->get_all();
 		$data['shipping_providers'] = $this->Shipping_provider->get_all();
 		$data['shipping_zones'] = $this->Shipping_zone->get_all();
-		#$data['currency_denoms'] = $this->Register->get_register_currency_denominations();
-		#$data['currency_exchange_rates'] = $this->Appconfig->get_exchange_rates();
+		$data['currency_denoms'] = $this->Register->get_register_currency_denominations();
+		$data['currency_exchange_rates'] = $this->Appconfig->get_exchange_rates();
 		
 		$data['phppos_session_expirations'] = array('0' => lang('config_on_browser_close'));
 		
@@ -123,7 +123,7 @@ class Config extends Secure_area
 		}
 		
 		$data['search'] = $this->input->get('search');
-		/*
+		
 		$this->load->model('Tax_class');
 		$data['tax_classes'] = array();
 		
@@ -147,7 +147,7 @@ class Config extends Secure_area
 		{
 			$data['tax_groups'][] = array('text' => $tax_class['name'], 'val' => $index);
 		}
-		*/
+		
 		$data['zones'] = array();
 
 		foreach($data['shipping_zones']->result_array() as $shipping_zone)
@@ -160,14 +160,35 @@ class Config extends Secure_area
 		$this->load->model('Sale_types');
 		$data['sale_types'] = $this->Sale_types->get_all();
 		
-		//$data['api_keys'] = $this->Appconfig->get_api_keys();
+		$data['api_keys'] = $this->Appconfig->get_api_keys();
 		
-		//$data['ecommerce_locations'] = $this->Appconfig->get_ecommerce_locations();
+		$data['ecommerce_locations'] = $this->Appconfig->get_ecommerce_locations();
 		$this->load->view("config", $data);
 	}
-
+	
+	function save_shopify_config()
+	{
+		$batch_save_data = array(
+			'ecommerce_platform' => 'shopify',
+			'shopify_shop' => $this->input->post('shopify_shop'),	
+			'ecommerce_cron_sync_operations' => $this->input->post('ecommerce_cron_sync_operations') ? serialize($this->input->post('ecommerce_cron_sync_operations')) : serialize(array()),
+		);
+		
+		$this->Appconfig->batch_save($batch_save_data);
+		
+		echo json_encode(array('success'=>true,'message'=>lang('common_saved_successfully')));
+		
+	}
+		
 	function save()
 	{
+		/*
+		if ($this->config->item("ecommerce_platform"))
+		{
+			require_once (APPPATH."models/interfaces/Ecom.php");
+			$ecom_model = Ecom::get_ecom_model();
+		}
+		*/
 		
 		$this->load->helper('demo');
 		$this->load->model('Appfile');
@@ -200,7 +221,42 @@ class Config extends Secure_area
 			echo json_encode(array('success'=>false,'message'=>lang('config_saved_unsuccessfully')));
 			exit;
 		}
-
+		/*
+		try
+		{
+			$errorMessage = "";
+			if ($this->config->item('quickbooks_access_token')) {
+				// Store The country code into the variable
+				$countryID = US_CODE;
+				if ($this->config->item('quickbooks_access_token')) {
+				
+					$this->load->helper('qb');
+					// refresh the token before creating the dataservice
+					refresh_tokens(0);
+					$dataService = _get_data_service(true, true);
+					// Get the company info which with current QBO is connected
+					$companyInfo = $dataService->Query("SELECT * FROM CompanyInfo");
+					$error = $dataService->getLastError();
+					if (!$error) 
+					{
+						$countryID = $companyInfo['0']->Country;
+					} else {
+						$last_error = $dataService->getLastError();
+						$xml = simplexml_load_string($last_error->getResponseBody());
+						$error_message = (string)$xml->Fault->Error->Detail;
+						$this->_log("*******".lang('common_EXCEPTION').": ".$error_message);
+					}
+				}
+			
+				$default_country_id = $countryID;
+				$syncoperation = $this->input->post('qb_sync_operations');
+			}
+		}
+		catch(Exception $e)
+		{
+			$errorMessage = lang('common_error');
+		}
+		*/     
 		$deleted_payment_types = array();
 		
 		if ($this->input->post('deleted_payment_types'))
@@ -218,8 +274,8 @@ class Config extends Secure_area
 				$deleted_payment_types[] = $payment_type;
 				
 				$this->load->helper('directory');
-				/*
 				$language_folder = directory_map(APPPATH.'language',1);
+		
 				$languages = array();
 				
 				foreach($language_folder as $language_folder)
@@ -232,12 +288,11 @@ class Config extends Secure_area
 					$this->lang->load('common', $language);
 					$key = $cur_lang_value_to_keys[$payment_type];						
 					$deleted_payment_types[] = lang($key);
-				}
-				*/	
+				}	
 			}
 			
 			//Switch back
-			//$this->lang->switch_to($this->config->item('language'));
+			$this->lang->switch_to($this->config->item('language'));
 			
 		}
 		$deleted_payment_types = implode(',',$deleted_payment_types);
@@ -277,8 +332,8 @@ class Config extends Secure_area
 			}
 		}
 		
-		$force_https = $this->input->post('force_https') ? 1 : 0;
-		
+		//$force_https = $this->input->post('force_https') ? 1 : 0;
+		/*
 		if ($force_https)
 		{
 			$testing_url = site_url('testing','https');
@@ -297,8 +352,8 @@ class Config extends Secure_area
 			}
 			
 		}
-		
-		#$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
+		*/
+		$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
 		$batch_save_data=array(
 		'company'=>$this->input->post('company'),
 		'website'=>$this->input->post('website'),
@@ -578,6 +633,61 @@ class Config extends Secure_area
 		#'shopify_shop' => $this->input->post('shopify_shop'),
 		#'tip_preset_zero' => $this->input->post('tip_preset_zero') ? 1 : 0,
 	);
+	
+		/*Old way of doing taxes; we handle this case
+		if($this->input->post('default_tax_1_rate') !== NULL)
+		{
+			$legacy_taxes = array(
+			'default_tax_1_rate'=>$this->input->post('default_tax_1_rate'),		
+			'default_tax_1_name'=>$this->input->post('default_tax_1_name'),		
+			'default_tax_2_rate'=>$this->input->post('default_tax_2_rate'),	
+			'default_tax_2_name'=>$this->input->post('default_tax_2_name'),
+			'default_tax_2_cumulative' => $this->input->post('default_tax_2_cumulative') ? 1 : 0,
+			'default_tax_3_rate'=>$this->input->post('default_tax_3_rate'),	
+			'default_tax_3_name'=>$this->input->post('default_tax_3_name'),
+			'default_tax_4_rate'=>$this->input->post('default_tax_4_rate'),	
+			'default_tax_4_name'=>$this->input->post('default_tax_4_name'),
+			'default_tax_5_rate'=>$this->input->post('default_tax_5_rate'),	
+			'default_tax_5_name'=>$this->input->post('default_tax_5_name'));
+			
+			$batch_save_data = array_merge($batch_save_data,$legacy_taxes);
+			
+		}
+		*/
+		if($this->input->post('item_id_auto_increment'))
+		{
+			$this->Appconfig->change_auto_increment('items',$this->input->post('item_id_auto_increment'));
+		}
+		
+		if($this->input->post('item_kit_id_auto_increment'))
+		{
+			$this->Appconfig->change_auto_increment('item_kits',$this->input->post('item_kit_id_auto_increment'));
+		}
+		
+		if($this->input->post('sale_id_auto_increment'))
+		{
+			$this->Appconfig->change_auto_increment('sales',$this->input->post('sale_id_auto_increment'));
+			
+		}
+		
+		if($this->input->post('receiving_id_auto_increment'))
+		{
+			$this->Appconfig->change_auto_increment('receivings',$this->input->post('receiving_id_auto_increment'));
+		}
+		/*
+		if ($this->input->post('use_tax_value_at_all_locations'))
+		{
+			$this->Appconfig->set_all_locations_use_global_tax();
+		}
+		*/
+		if (isset($company_logo))
+		{
+			$batch_save_data['company_logo'] = $company_logo;
+		}
+		elseif($this->input->post('delete_logo'))
+		{
+			$batch_save_data['company_logo'] = 0;
+		}
 
 		if (is_on_demo_host())
 		{
@@ -592,12 +702,14 @@ class Config extends Secure_area
 			$batch_save_data['company'] = 'SUMIT';
 			$batch_save_data['test_mode'] = 0;
 		}
-		/*Monedas*/
+		
 		if($this->Appconfig->batch_save($batch_save_data) 
 			&& $this->save_tiers($this->input->post('tiers_to_edit'), $this->input->post('tiers_to_delete'))
 			&& $this->save_sale_types($this->input->post('sale_types_to_edit'), $this->input->post('sale_types_to_delete'))
 			)
 		{
+			
+			//$this->Appconfig->save_ecommerce_locations($this->input->post('ecommerce_locations'));
 			
 			$providers_to_save = $this->input->post('providers');
 			$methods_to_save = $this->input->post('methods');		
@@ -709,7 +821,109 @@ class Config extends Secure_area
 					$this->Shipping_zone->delete($zone_id);
 				}
 			}	
-	
+			/*
+			$has_default_tax_class = (boolean)$this->input->post('tax_class_id');
+			$tax_classes_to_save = $this->input->post('tax_classes');
+			$taxes_to_save = $this->input->post('taxes');		
+		  
+			$tax_classes_to_delete = $this->input->post('tax_classes_to_delete');
+			$taxes_to_delete = $this->input->post('taxes_to_delete');
+						
+			
+			$this->load->model('Tax_class');
+		
+		
+			if ($tax_classes_to_save)
+			{
+				$tax_class_order = 1;			
+				foreach($tax_classes_to_save as $tax_class_id => $data)
+				{
+					$tax_class_name = $data['name'];
+			
+					if ($tax_class_name)
+					{
+						$tax_class_data = array('name' => $tax_class_name,  'order' => $tax_class_order);
+						$this->Tax_class->save($tax_class_data, $tax_class_id < 0 ? false : $tax_class_id);
+						
+						if ($this->input->post('tax_class_id') < 0 && $tax_class_id == $this->input->post('tax_class_id'))
+						{
+							$has_default_tax_class = TRUE;
+							$this->Appconfig->save('tax_class_id',$tax_class_data['id']);
+						}
+						
+						if ($taxes_to_save)
+						{
+							$taxes_order = 1;
+							
+							if (isset($taxes_to_save[$tax_class_id]['name']))
+							{
+								for($k=0; $k<count($taxes_to_save[$tax_class_id]['name']); $k++)
+								{
+									$tax_name = $taxes_to_save[$tax_class_id]['name'][$k];
+									$tax_percent = $taxes_to_save[$tax_class_id]['percent'][$k];
+									$cumulative = isset($taxes_to_save[$tax_class_id]['cumulative'][$k]) && $taxes_to_save[$tax_class_id]['cumulative'][$k] ? 1 : 0;
+									$tax_class_tax_id = isset($taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k]) && $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] ? $taxes_to_save[$tax_class_id]['tax_class_tax_id'][$k] : -1;
+								
+									if ($tax_name)
+									{
+										$tax_class_tax_data = array('tax_class_id' => $tax_class_id < 0 ? $tax_class_data['id'] : $tax_class_id, 'name' => $tax_name, 'percent' => $tax_percent, 'cumulative' => $cumulative,'order' => $taxes_order);																			
+										$this->Tax_class->save_tax($tax_class_tax_data, $tax_class_tax_id < 0 ? false : $tax_class_tax_id);
+										$taxes_order++;
+									}
+								}
+						
+							}
+						}			
+						$tax_class_order++;
+					}
+				
+					if (isset($ecom_model))
+					{
+						$tax_class_ids_to_save[] = $tax_class_id < 0 ? $tax_class_data['id'] : $tax_class_id;
+					}
+				}
+			}
+			
+			if ($tax_classes_to_delete)
+			{
+				foreach($tax_classes_to_delete as $tax_class_id)
+				{
+					$this->Tax_class->delete($tax_class_id);
+				}
+			}
+			
+			if ($taxes_to_delete)
+			{
+				foreach($taxes_to_delete as $tax_class_tax_id)
+				{
+					$this->Tax_class->delete_tax($tax_class_tax_id);
+				}
+			}
+			
+			if ($has_default_tax_class === FALSE)
+			{
+				$default_tax_class_id = $this->Tax_class->get_first_tax_class_id();
+				$this->Appconfig->save('tax_class_id',$default_tax_class_id);
+			}
+			
+			if (isset($ecom_model))
+			{
+				foreach($tax_class_ids_to_save as $tax_class_save_id)
+				{
+					$ecom_model->save_tax_class($tax_class_save_id);
+				}
+			}
+			*/
+			//$markup_markdown_encoded = $this->input->post('markup_markdown');
+			//$markup_markdown = array();
+			/*
+			foreach($markup_markdown_encoded as $key =>$value)
+			{
+				$markup_markdown[hex_decode($key)] = (float)$value;
+			}
+			*/
+			//$this->Appconfig->save('markup_markdown',serialize($markup_markdown));
+				
 			$this->Appconfig->save('wizard_configure_company',1);
 			echo json_encode(array('success'=>true,'message'=>lang('common_saved_successfully')));
 		}
@@ -717,8 +931,9 @@ class Config extends Secure_area
 		{
 			echo json_encode(array('success'=>false,'message'=>lang('config_saved_unsuccessfully')));
 		}
-	}
-	/*
+
+	}//Fin funcion guardar configuraciones
+	
 	function send_smtp_test_email()
 	{
 		$this->load->library('email');
@@ -733,7 +948,7 @@ class Config extends Secure_area
 			echo json_encode(array('success' => FALSE, 'message' => $ret));				
 		}
 	}
-	*/
+	
 	function save_sale_types($sales_types_to_edit, $sales_types_to_delete)
 	{
 		$this->load->model('Sale_types');
@@ -937,7 +1152,7 @@ class Config extends Secure_area
 		$this->load->view('ecom_documentation');
 	
 	}
-	/*
+	
 	function reset_ecom()
 	{
 		$platform=$this->Appconfig->get("ecommerce_platform");
@@ -968,7 +1183,7 @@ class Config extends Secure_area
 		echo json_encode(array('success'=>true,'message'=>lang('config_reset_qb_successfully')));
 		
 	}
-	*/
+	
 	
 	function add_api_key()
 	{
@@ -993,7 +1208,7 @@ class Config extends Secure_area
 		$this->Appconfig->delete_api_key($this->input->post('api_key_id'));
 		redirect($_SERVER['HTTP_REFERER'] ? $_SERVER['HTTP_REFERER'] : site_url('config'));
   }
-  /*
+  
   public function shopify()
   {
 	$data = array();
@@ -1022,6 +1237,7 @@ class Config extends Secure_area
 
 	$this->load->view('shopify_config',$data);
   }
-	*/
+	
 }
 ?>
+

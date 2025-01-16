@@ -1,7 +1,7 @@
 <?php
 $this->load->view("partial/header"); 
-#s$this->load->helper('demo');
-#$this->load->helper('update');
+$this->load->helper('demo');
+$this->load->helper('update');
 ?>
 
 <!-- Contenedor pestañas -->
@@ -10,7 +10,7 @@ $this->load->view("partial/header");
 	<button class="tablink" onclick="openPage('CompanyInfo', this)" id="defaultOpen">Empresa</button>
 	<button class="tablink" onclick="openPage('PaymentMethods', this)">Pagos</button>
 	<button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
-	<button class="tablink" onclick="openPage('Order&Delivery', this)">Ordenes y Entregas</button>
+	<button class="tablink" onclick="openPage('Order&Delivery', this)">Órdenes y Entregas</button>
 	<button class="tablink" onclick="openPage('Sales', this)">Ventas</button>
 	<button class="tablink" onclick="openPage('Receipts', this)">Recibos</button>
 	<button class="tablink" onclick="openPage('Profit', this)">Cálculo de ganancias</button>
@@ -31,10 +31,15 @@ $this->load->view("partial/header");
 	    'screeny'     => 0,
 	    'window_name' => '_blank'
 		);	
+
+		function create_section($title)
+		{
+			return $title ;
+		}
 	?>
 <!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
-	
+
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
 		<div class="panel panel-piluku">
@@ -162,12 +167,12 @@ $this->load->view("partial/header");
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_orders_deliveries')) ?>">	
 					<?php echo form_label(lang('config_do_not_tax_service_items_for_deliveries').':', 'do_not_tax_service_items_for_deliveries',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'do_not_tax_service_items_for_deliveries',
-						'id'=>'do_not_tax_service_items_for_deliveries',
-						'value'=>'1',
-						'checked'=>$this->config->item('do_not_tax_service_items_for_deliveries')));?>
-						<label for="do_not_tax_service_items_for_deliveries"><span></span></label>
+						<?php echo form_checkbox(array(
+							'name'=>'do_not_tax_service_items_for_deliveries',
+							'id'=>'do_not_tax_service_items_for_deliveries',
+							'value'=>'1',
+							'checked'=>$this->config->item('do_not_tax_service_items_for_deliveries')));?>
+							<label for="do_not_tax_service_items_for_deliveries"><span></span></label>
 					</div>
 				</div>
 					
@@ -244,7 +249,6 @@ $this->load->view("partial/header");
 												<?php } ?>
 											</td>
 												
-												
 											<td class="delivery_default top">
 												<?php 
 												$i = 0;
@@ -272,8 +276,8 @@ $this->load->view("partial/header");
 							</table>
 							<a href="javascript:void(0);" class="add_shipping_provider"><?php echo lang('config_add_shipping_provider'); ?></a>
 							</div>
-							</div>
-						</div>
+					</div>
+				</div>
 						
 						<div class="form-group no-padding-right" data-keyword="<?php echo H(lang('config_keyword_orders_deliveries')) ?>">	
 							<?php echo form_label(lang('config_shipping_zones').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -290,7 +294,7 @@ $this->load->view("partial/header");
 													<th><?php echo lang('config_sort'); ?></th>
 												</tr>
 											</thead>
-									
+
 											<tbody>
 										
 											<?php
@@ -338,9 +342,9 @@ $this->load->view("partial/header");
 										</table>						
 										<a href="javascript:void(0);" class="add_shipping_zone"><?php echo lang('config_add_shipping_zone'); ?></a>
 										</div>
-									</div>
+								</div>
 						</div>
-					
+	
 			</div><!-- end panel-body -->
 		</div><!-- end panel-->
 	</div>
@@ -355,21 +359,22 @@ $this->load->view("partial/header");
 					<div class="col-sm-9 col-md-9 col-lg-10">
 						<?php echo form_input(array(
 							'class'=>'form-control form-inps',
-						'name'=>'sale_prefix',
-						'id'=>'sale_prefix',
-						'value'=>$this->config->item('sale_prefix')));?>
+							'name'=>'sale_prefix',
+							'id'=>'sale_prefix',
+							'value'=>$this->config->item('sale_prefix')));
+						?>
 					</div>
 				</div>
 				
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_id_to_show_on_sale_interface').':', 'id_to_show_on_sale_interface',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_dropdown('id_to_show_on_sale_interface', array(
-						'number'  => lang('common_item_number_expanded'),
-						'product_id'    => lang('common_product_id'),
-						'id'   => lang('common_item_id')
-						),
-						$this->config->item('id_to_show_on_sale_interface'), 'class="form-control" id="id_to_show_on_sale_interface"')
+						<?php echo form_dropdown('id_to_show_on_sale_interface', array(
+							'number'  => lang('common_item_number_expanded'),
+							'product_id'    => lang('common_product_id'),
+							'id'   => lang('common_item_id')
+							),
+							$this->config->item('id_to_show_on_sale_interface'), 'class="form-control" id="id_to_show_on_sale_interface"')
 						?>
 					</div>
 				</div>
@@ -381,7 +386,8 @@ $this->load->view("partial/header");
 						'name'=>'disabled_fixed_discounts',
 						'id'=>'disabled_fixed_discounts',
 						'value'=>'1',
-						'checked'=>$this->config->item('disabled_fixed_discounts')));?>
+						'checked'=>$this->config->item('disabled_fixed_discounts')));
+					?>
 						<label for="disabled_fixed_discounts"><span></span></label>
 					</div>
 				</div>
@@ -389,11 +395,12 @@ $this->load->view("partial/header");
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 				<?php echo form_label(lang('config_scan_and_set_sales').':', 'scan_and_set_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'scan_and_set_sales',
-						'id'=>'scan_and_set_sales',
-						'value'=>'1',
-						'checked'=>$this->config->item('scan_and_set_sales')));?>
+						<?php echo form_checkbox(array(
+							'name'=>'scan_and_set_sales',
+							'id'=>'scan_and_set_sales',
+							'value'=>'1',
+							'checked'=>$this->config->item('scan_and_set_sales')));
+						?>
 						<label for="scan_and_set_sales"><span></span></label>
 					</div>
 				</div>
@@ -401,11 +408,12 @@ $this->load->view("partial/header");
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 				<?php echo form_label(lang('config_scan_and_set_recv').':', 'scan_and_set_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'scan_and_set_recv',
-						'id'=>'scan_and_set_recv',
-						'value'=>'1',
-						'checked'=>$this->config->item('scan_and_set_recv')));?>
+						<?php echo form_checkbox(array(
+							'name'=>'scan_and_set_recv',
+							'id'=>'scan_and_set_recv',
+							'value'=>'1',
+							'checked'=>$this->config->item('scan_and_set_recv')));
+						?>
 						<label for="scan_and_set_recv"><span></span></label>
 					</div>
 				</div>									
@@ -413,23 +421,25 @@ $this->load->view("partial/header");
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_damaged_reasons').':', 'damaged_reasons',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_input(array(
-						'class'=>'form-control form-inps',
-						'name'=>'damaged_reasons',
-						'id'=>'damaged_reasons',
-						'size'=> 40,
-						'value'=>$this->config->item('damaged_reasons')));?>
+						<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'damaged_reasons',
+							'id'=>'damaged_reasons',
+							'size'=> 40,
+							'value'=>$this->config->item('damaged_reasons')));
+						?>
 					</div>
 					
 				</div>
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_capture_internal_notes_during_sale').':', 'capture_internal_notes_during_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'capture_internal_notes_during_sale',
-						'id'=>'capture_internal_notes_during_sale',
-						'value'=>'capture_internal_notes_during_sale',
-						'checked'=>$this->config->item('capture_internal_notes_during_sale')));?>
+						<?php echo form_checkbox(array(
+							'name'=>'capture_internal_notes_during_sale',
+							'id'=>'capture_internal_notes_during_sale',
+							'value'=>'capture_internal_notes_during_sale',
+							'checked'=>$this->config->item('capture_internal_notes_during_sale')));
+						?>
 						<label for="capture_internal_notes_during_sale"><span></span></label>
 					</div>
 				</div>
@@ -437,11 +447,12 @@ $this->load->view("partial/header");
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_capture_sig_for_all_payments').':', 'capture_sig_for_all_payments',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'capture_sig_for_all_payments',
-						'id'=>'capture_sig_for_all_payments',
-						'value'=>'capture_sig_for_all_payments',
-						'checked'=>$this->config->item('capture_sig_for_all_payments')));?>
+						<?php echo form_checkbox(array(
+							'name'=>'capture_sig_for_all_payments',
+							'id'=>'capture_sig_for_all_payments',
+							'value'=>'capture_sig_for_all_payments',
+							'checked'=>$this->config->item('capture_sig_for_all_payments')));
+						?>
 						<label for="capture_sig_for_all_payments"><span></span></label>
 					</div>
 				</div>
@@ -450,15 +461,15 @@ $this->load->view("partial/header");
 					<?php echo form_label(lang('config_number_of_recent_sales').':', 'number_of_recent_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
 					<?php echo form_dropdown('number_of_recent_sales', 
-					 array(
-						'10'=>'10',
-						'20'=>'20',
-						'50'=>'50',
-						'100'=>'100',
-						'200'=>'200',
-						'500'=>'500'
-						), $this->config->item('number_of_recent_sales') ? $this->config->item('number_of_recent_sales') : '10', 'class="form-control" id="number_of_recent_sales"');
-						?>
+						 array(
+							'10'=>'10',
+							'20'=>'20',
+							'50'=>'50',
+							'100'=>'100',
+							'200'=>'200',
+							'500'=>'500'
+							), $this->config->item('number_of_recent_sales') ? $this->config->item('number_of_recent_sales') : '10', 'class="form-control" id="number_of_recent_sales"');
+					?>
 					</div>
 				</div>
 				
@@ -731,7 +742,7 @@ $this->load->view("partial/header");
 						<label for="track_credit_cards"><span></span></label>
 					</div>
 				</div>
-														<script type='text/javascript'>
+					<script type='text/javascript'>
 									$(document).ready(function() {
 										var submitting = false;
 										$('#config_form').validate({
@@ -785,7 +796,7 @@ $this->load->view("partial/header");
 											}
 										});
 									});
-									</script>					
+					</script>					
 				<?php
 				foreach($this->Appconfig->get_additional_payment_types() as $additional_payment_type)
 				{
@@ -1221,7 +1232,6 @@ $this->load->view("partial/header");
 						</div>
 					</div>
 					
-					
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
 						<?php echo form_label(lang('config_hide_prices_on_fill_sheet').':', 'hide_prices_on_fill_sheet',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1234,7 +1244,6 @@ $this->load->view("partial/header");
 						</div>
 					</div>
 					
-
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
 						<?php echo form_label(lang('config_show_item_id_on_recv_receipt').':', 'show_item_id_on_recv_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1305,8 +1314,7 @@ $this->load->view("partial/header");
 							<label for="hide_merchant_id_from_receipt"><span></span></label>
 						</div>
 					</div>
-					
-					
+									
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
 						<?php echo form_label(lang('config_hide_desc_emailed_receipts').':', 'hide_desc_emailed_receipts',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -1390,7 +1398,6 @@ $this->load->view("partial/header");
 							<label for="auto_capture_signature"><span></span></label>
 						</div>
 					</div>
-					
 												
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
 						<?php echo form_label(lang('config_remove_customer_name_from_receipt').':', 'remove_customer_name_from_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -2356,9 +2363,9 @@ $this->load->view("partial/header");
 	    )); ?>
 	</div>
 	<!-- Cierre de formulario -->
-<?php echo form_close(); ?>
+	<?php echo form_close(); ?>
 </div>
-</div>
+
 <!--Script funciones formulario-->
 
 <script type='text/javascript'>
@@ -2464,7 +2471,7 @@ $(document).ready(function()
 	    }
 	})
 
-	/*Eliminar*/
+	
 	$(".dbOptimize").click(function(event)
 	{
 		event.preventDefault();
@@ -2513,26 +2520,25 @@ $(document).ready(function()
 			$(form).ajaxSubmit({
 			success:function(response)
 			{
-				
-				
 				//Don't let the tiers, taxes, providers, methods double submitted, so we change the name
 				$('.zones,.tiers_to_edit,.providers,.methods,.taxes,.tax_classes,.sale_types_to_edit').filter(function() {
 				    return parseInt($(this).data('index')) < 0;
 				}).attr('name','items_added[]');
 				
 				if(response.success)
-				{
+				{					
 					show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
 				}
 				else
-				{
-					show_feedback('error',response.message,<?php echo json_encode(lang('common_error')); ?>);
-					
-				}
+				{				
+					show_feedback('error',response.message,<?php echo json_encode(lang('common_error')); ?>);					
+				}	
+				//print response
 				submitting = false;
 			},
 			dataType:'json'
 		});
+		console.log('Respuesta: ',response.message);
 
 		},
 		errorClass: "text-danger",
