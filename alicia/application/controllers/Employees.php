@@ -379,6 +379,7 @@ class Employees extends Person_controller
 				'login_end_time'=>$this->input->post('login_end_time') ? date('H:i:s', strtotime($this->input->post('login_end_time'))) : NULL,
 				'dark_mode' => $this->input->post('dark_mode') ? 1 : 0,
 				'override_price_adjustments' => $this->input->post('override_price_adjustments') ? 1 : 0,
+				'language' => 'spanish',
 			);
 		}
 		
@@ -440,8 +441,8 @@ class Employees extends Person_controller
 		}
 		$this->load->helper('directory');
 		
-		$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
-		$employee_data=array_merge($employee_data,array('language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'spanish'));
+		//$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
+		//$employee_data=array_merge($employee_data,array('language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'spanish'));
 		
 		$this->load->helper('demo');
 		if ( (is_on_demo_host()) && $employee_id == 1)

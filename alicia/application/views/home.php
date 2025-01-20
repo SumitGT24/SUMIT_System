@@ -101,7 +101,7 @@ $this->load->helper('demo');
 							<p><?php echo lang('home_wizard_configure_company');?></p>
 							<span><?php echo anchor('config',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
 						</div>
-						<div class="col-md-2 <?php echo $this->config->item('wizard_configure_locations') ? 'wizard_step_done' : '';?>">
+						<div class="col-md-2 <#?php echo $this->config->item('wizard_configure_locations') ? 'wizard_step_done' : '';?>">
 							<img src="<?php echo base_url('assets/img/building.png') ?>"/>
 							<h4><?php echo lang('module_locations');?></h4>
 							<p><?php echo lang('home_wizard_configure_locations');?></p>
@@ -437,7 +437,7 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 		
 		
 		
-			<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 			<a href="<?php echo site_url('locations'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">

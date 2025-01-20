@@ -231,13 +231,11 @@
 					</div>
 				</div>
 
-
-
-
-				<div class="form-group">
-					<?php echo form_label(lang('common_language') . ':', 'language', array('class' => 'col-sm-3 col-md-3 col-lg-2 col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+				<!-- No longer used>
+				<!--div class="form-group">
+					<#?php echo form_label(lang('common_language') . ':', 'language', array('class' => 'col-sm-3 col-md-3 col-lg-2 col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_dropdown(
+						<#?php echo form_dropdown(
 							'language',
 							array(
 								'english'  => 'English',
@@ -248,8 +246,7 @@
 						);
 						?>
 					</div>
-				</div>
-
+				</div-->
 
 				<div class="form-group">
 					<?php echo form_label(lang('common_default_register') . ':', 'language', array('class' => 'col-sm-3 col-md-3 col-lg-2 col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -648,6 +645,8 @@
 
 				<?php
 				foreach ($all_modules->result() as $module) {
+					//Skip module if it is locations
+					if ($module->module_id == 'locations') continue; 
 					$checkbox_options = array(
 						'name' => 'permissions[]',
 						'id' => 'permissions' . $module->module_id,
