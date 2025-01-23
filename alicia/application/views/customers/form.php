@@ -4,7 +4,7 @@
 	<div class="spinner" id="grid-loader" style="display:none">
 	  <div class="rect1"></div>
 	  <div class="rect2"></div>
-	  <div class="rect3"></div>
+		<div class="rect3"></div>
 	</div>
 	
 	<div class="col-md-12">
@@ -15,32 +15,25 @@
 					<div class="user-badge">
 						<?php echo $person_info->image_id ? '<div class="user-badge-avatar">'.img(array('src' => app_file_url($person_info->image_id),'class'=>'img-polaroid img-polaroid-s')).'</div>' : '<div class="user-badge-avatar">'.img(array('src' => base_url('assets/assets/images/avatar-default.jpg'),'class'=>'img-polaroid','id'=>'image_empty')).'</div>'; ?>
 						<div class="user-badge-details">
-						<?php echo H($person_info->first_name.' '.$person_info->last_name); ?>
+							<?php echo H($person_info->first_name.' '.$person_info->last_name); ?>
+
 							<?php if($this->config->item('customers_store_accounts')) { ?>
 								<div class="amount">
 								<?php echo lang('common_store_account_balance').': '; ?>
 								<?php echo $person_info->balance ? to_currency($person_info->balance) : '0.00'; ?>
 								</div>
 							<?php } ?>
-								<?php
-								if ($this->config->item('enable_customer_loyalty_system') && $this->config->item('loyalty_option') == 'simple')
-								{
-								?>
+
+							<?php if ($this->config->item('enable_customer_loyalty_system') && $this->config->item('loyalty_option') == 'simple'){?>
 								<div class="amount">								
 									<?php echo lang('common_sales_until_discount').': '; ?>
 									<?php 
 								   $sales_until_discount = $this->config->item('number_of_sales_for_discount') - $person_info->current_sales_for_discount;
-									
 									echo to_quantity($sales_until_discount); ?>
 								</div>
-								
-								<?php
-								}
-								?>
-								
-								<?php
-								if ($this->config->item('enable_customer_loyalty_system') && $this->config->item('loyalty_option') == 'advanced')
-								{
+							<?php } ?>
+							
+								<?php if ($this->config->item('enable_customer_loyalty_system') && $this->config->item('loyalty_option') == 'advanced'){
 						         list($spend_amount_for_points, $points_to_earn) = explode(":",$this->config->item('spend_to_point_ratio'),2);
 									
 								?>
@@ -54,9 +47,7 @@
 									<?php echo to_currency($spend_amount_for_points - $person_info->current_spend_for_points); ?>
 								</div>								
 								
-								<?php
-								}
-								?>
+							<?php } ?>
 						</div>
 						<ul class="list-inline pull-right">
 							<?php
@@ -466,6 +457,36 @@
 						<?php } //end if?>
 						<?php } //end for loop?>
 						
+						<div class="panel panel-piluku">
+							<div class="panel-heading">
+				    	        <h3 class="panel-title">
+				    	        <i class="ion-folder"></i> 
+				    	            <?php echo lang("common_files"); ?>
+				    	        </h3>
+						    </div>
+											
+							<?php if (count($files)) {?>
+								<ul class="list-group">
+								<?php foreach($files as $file){?>
+							  		<li class="list-group-item permission-action-item">
+										<?php echo anchor($controller_name.'/delete_file/'.$file->file_id,'<i class="icon ion-android-cancel text-danger" style="font-size: 120%"></i>', array('class' => 'delete_file'));?>	
+										<?php echo anchor($controller_name.'/download/'.$file->file_id,$file->file_name,array('target' => '_blank'));?>
+									</li>
+								<?php } ?>
+								</ul>
+							<?php } ?>
+							<h4 style="padding: 20px;"><?php echo lang('common_add_files');?></h4>
+							<?php for($k=1;$k<=5;$k++) { ?>
+							<div class="form-group"  style="padding-left: 10px;">
+				    			<?php echo form_label(lang('common_file').' '.$k.':', 'files_'.$k,array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+								<div class="col-sm-9 col-md-9 col-lg-10">
+				    	  			<div class="file-upload">
+				    	  	  			<input type="file" name="files[]" id="files_<?php echo $k; ?>" >
+				    	  	   		</div>
+				    	  		</div>
+							</div>
+							<?php } ?>
+						</div>
 						
 						<?php echo form_hidden('redirect_code', $redirect_code); ?>
 
@@ -497,13 +518,13 @@
 				</div>
 				<?php echo form_close(); ?>
 
-			</div>
-		</div><!-- /row -->
 	</div>
+</div><!-- /row -->
+	
 
 	<script type='text/javascript'>
 		
-					//$('#image_id').imagePreview({ selector : '#avatar' }); // Custom preview container
+					$('#image_id').imagePreview({ selector : '#avatar' }); // Custom preview container
 						//validation and submit handling
 						$(document).ready(function()
 						{

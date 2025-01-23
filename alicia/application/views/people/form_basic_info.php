@@ -76,5 +76,39 @@
 				);?>
 			</div>
 		</div>
+
+		<div class="form-group">	
+		<?php echo form_label(lang('common_choose_avatar').':', 'image_id',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+			<div class="col-sm-9 col-md-9 col-lg-10">
+	      		<ul class="list-unstyled avatar-list">
+					<li>
+						<input type="file" name="image_id" id="image_id" class="filestyle" >&nbsp;
+					</li>
+					<li>
+						<?php echo $person_info->image_id ? '<div id="avatar">'.img(array('style' => 'width: 60%','src' => app_file_url($person_info->image_id),'class'=>'img-polaroid img-polaroid-s')).'</div>' : '<div id="avatar">'.img(array('style' => 'width: 20%','src' => base_url().'assets/img/avatar.png','class'=>'img-polaroid','id'=>'image_empty')).'</div>'; ?>		
+					</li>		
+				</ul>
+			</div>
+		</div>
+	
+		<?php if($person_info->image_id) {  ?>
+		
+		<div class="form-group">
+		<?php echo form_label(lang('common_del_image').':', 'del_image',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+			<div class="col-sm-9 col-md-9 col-lg-10">
+			<?php echo form_checkbox(array(
+				'name'=>'del_image',
+				'id'=>'del_image',
+				'class'=>'delete-checkbox', 
+				'value'=>1
+			));
+			echo '<label for="del_image"><span></span></label> ';
+			
+			?>
+			</div>
+		</div>
+		
+		<?php }  ?>
+
 	</div><!-- /col-md-12 -->
 </div><!-- /row -->

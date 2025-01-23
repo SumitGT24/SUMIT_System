@@ -346,6 +346,7 @@ class Employee extends Person
 		$this->db->trans_complete();		
 		return $success;
 	}
+	//Fin save_employee
 	
 	function set_language($language_id,$employee_id)
 	{
@@ -1892,7 +1893,7 @@ class Employee extends Person
 		$this->lang->load('items');
 		$columns = array(
 			'person_id' => 											array('sort_column' => 'pid', 'label' => lang('common_person_id')),
-			'full_name' => 											array('sort_column' => 'full_name','label' => lang('common_name'),'data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
+			'full_name' => 											array('sort_column' => 'full_name','label' => 'Nombre completo','data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
 			'first_name' => 										array('sort_column' => 'first_name','label' => lang('common_first_name'),'data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
 			'last_name' => 											array('sort_column' => 'last_name','label' => lang('common_last_name'),'data_function' => 'customer_name_data_function','format_function' => 'customer_name_formatter','html' => TRUE),
 			'email' => 													array('sort_column' => 'email','label' => lang('common_email'),'format_function' => 'email_formatter','html' => TRUE),
@@ -1903,16 +1904,16 @@ class Employee extends Person
 			'phone_number' => 									array('sort_column' => 'phone_number','label' => lang('common_phone_number'),'format_function' => 'tel','html' => TRUE),
 			'comments' => 											array('sort_column' => 'comments','label' => lang('common_comments')),
 			'address_1' => 											array('sort_column' => 'address_1','label' => lang('common_address_1')),
-			'address_2' => 											array('sort_column' => 'address_2','label' => lang('common_address_2')),
-			'city' => 													array('sort_column' => 'city','label' => lang('common_city')),
-			'state' => 													array('sort_column' => 'state','label' => lang('common_state')),
-			'zip' => 														array('sort_column' => 'zip','label' => lang('common_zip')),
-			'country' => 												array('sort_column' => 'country','label' => lang('common_country')),
-			'force_password_change' => 					array('sort_column' => 'force_password_change','label' => lang('employees_force_password_change_upon_login'),'format_function' => 'boolean_as_string'),
-			'always_require_password' => 				array('sort_column' => 'always_require_password','label' => lang('employees_always_require_password'),'format_function' => 'boolean_as_string'),
+			//'address_2' => 											array('sort_column' => 'address_2','label' => lang('common_address_2')),
+			//'city' => 													array('sort_column' => 'city','label' => lang('common_city')),
+			//'state' => 													array('sort_column' => 'state','label' => lang('common_state')),
+			//'zip' => 														array('sort_column' => 'zip','label' => lang('common_zip')),
+			//'country' => 												array('sort_column' => 'country','label' => lang('common_country')),
+			//'force_password_change' => 					array('sort_column' => 'force_password_change','label' => lang('employees_force_password_change_upon_login'),'format_function' => 'boolean_as_string'),
+			//'always_require_password' => 				array('sort_column' => 'always_require_password','label' => lang('employees_always_require_password'),'format_function' => 'boolean_as_string'),
 			'inactive' => 											array('sort_column' => 'inactive','label' => lang('employees_inactive'),'format_function' => 'boolean_as_string'),
 			'reason_inactive' => 											array('sort_column' => 'reason_inactive','label' => lang('employees_reason_inactive')),
-			'language' => 											array('sort_column' => 'language','label' => lang('common_language'),'format_function' => 'ucwords'),
+			//'language' => 											array('sort_column' => 'language','label' => lang('common_language'),'format_function' => 'ucwords'),
 			'commission_percent' => 						array('sort_column' => 'commission_percent','label' => lang('common_commission_default_rate'),'format_function' => 'to_quantity'),
 			'commission_percent_type' => 				array('sort_column' => 'commission_percent_type','label' => lang('items_commission_percent_type'),'format_function' => 'commission_percent_type_formater'),
 			'hourly_pay_rate' => 								array('sort_column' => 'hourly_pay_rate','label' => lang('common_hourly_pay_rate'),'format_function' => 'to_currency'),			

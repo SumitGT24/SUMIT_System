@@ -215,10 +215,12 @@ function get_person_data_row($person,$controller)
 			//Unset for next round of the loop
 			unset($data);
 		}	
-	if ($avatar_url)
-	{	
-		$table_data_row.="<td><a href='$avatar_url' class='rollover'><img src='".$avatar_url."' alt='".H($person->full_name)."' class='img-polaroid' width='45' /></a></td>";
-	}
+
+		if ($avatar_url)
+		{	
+			$table_data_row.="<td><a href='$avatar_url' class='rollover'><img src='".$avatar_url."' alt='".H($person->full_name)."' class='img-polaroid' width='45' /></a></td>";
+		}
+		
 	
 	$table_data_row.='</tr>';
 	return $table_data_row;	
@@ -1211,11 +1213,12 @@ function get_item_kit_data_row($item_kit,$controller)
 		//Unset for next round of the loop
 		unset($data);
 	}
-		
+	
 	if ($avatar_url)
 	{	
 		$table_data_row.="<td><a href='$avatar_url' class='rollover'><img src='".$avatar_url."' alt='".H($item_kit->name)."' class='img-polaroid' width='45' /></a></td>";
 	}
+	
 	
 	$table_data_row.='</tr>';
 	return $table_data_row;

@@ -91,7 +91,7 @@ $lang['appointments_add'] = 'Añadir citas';
 $lang['appointments_delete'] = 'Eliminar citas';
 $lang['appointments_search'] = 'Buscar citas';
 $lang['appointments_edit'] = 'Editar citas';
-$lang['module_work_orders'] = 'Taller';
+$lang['module_work_orders'] = 'Taller/Servicios';
 $lang['module_work_orders_desc'] = 'Órdenes de trabajo';
 $lang['module_manage_statuses'] = 'Administrar estados';
 ?>

@@ -1,23 +1,23 @@
 <?php $this->load->view("partial/header"); ?>
 
-<!--?php if (isset($needs_auth) && $needs_auth) { ?>
-	<#?php echo form_open('locations/check_auth', array('id' => 'location_form_auth', 'class' => 'form-horizontal')); ?>
+<?php if (isset($needs_auth) && $needs_auth) { ?>
+	<?php echo form_open('locations/check_auth', array('id' => 'location_form_auth', 'class' => 'form-horizontal')); ?>
 
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel">
 				<div class="panel-body">
-					<h3 style="margin-left: 80px;"><a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><#?php echo lang('locations_purchase_additional_licenses'); ?> &raquo;</a></h3>
-					<#?php if (validation_errors()) { ?>
+					<h3 style="margin-left: 80px;"><a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('locations_purchase_additional_licenses'); ?> &raquo;</a></h3>
+					<?php if (validation_errors()) { ?>
 						<div class="alert alert-danger">
-							<strong><#?php echo lang('common_error'); ?></strong>
-							<#?php echo validation_errors(); ?>
+							<strong><?php echo lang('common_error'); ?></strong>
+							<?php echo validation_errors(); ?>
 						</div>
-					<#?php } ?>
+					<?php } ?>
 					<div class="form-group">
-						<#?php echo form_label(lang('locations_purchase_email') . ':', 'name', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<?php echo form_label(lang('locations_purchase_email') . ':', 'name', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
-							<#?php echo form_input(
+							<?php echo form_input(
 								array(
 									'class' => 'form-control form-inps',
 									'name' => 'purchase_email',
@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="form-actions pull-right">
-						<#?php
+						<?php
 						echo form_submit(
 							array(
 								'name' => 'submitf',
@@ -43,8 +43,8 @@
 		</div>
 	</div>
 
-	<#?php form_close(); ?>
-<#?php } else { ?Fin form check auth-->
+	<?php form_close(); ?>
+<?php } else { ?>
 
 	<?php echo form_open_multipart('locations/save/' . $location_info->location_id, array('id' => 'location_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<div class="row" id="form">
@@ -462,7 +462,7 @@
 		</div>
 	</div>
 	<?php echo form_close(); ?>
-<!--?php }? Fin if else-->
+<?php }?>
 
 <script type='text/javascript'>
 	var submitting = false;

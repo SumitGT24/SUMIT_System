@@ -1400,7 +1400,7 @@ class Items extends REST_Controller {
 					}
     	  }
     	  
-			}
+		}
     }
 
 }

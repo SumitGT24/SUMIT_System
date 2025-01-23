@@ -262,7 +262,7 @@
 					?>
 					//Keep session alive by sending a request every 5 minutes
 					setInterval(function(){$.get('<?php echo site_url('home/keep_alive'); ?>');}, 300000);
-					<?php } ?>
+				<?php } ?>
 			<?php } ?>
 		});
 	</script>
@@ -305,8 +305,18 @@ if (is_on_demo_host()) { ?>
 					</a></li>
 				<?php foreach($allowed_modules->result() as $module) { 
 				 	if ($module->module_id == 'locations') continue; 	
+				?> 
+				<?php
+				if ($module->module_id == 'config' && !$this->Employee->has_module_permission('config', $user_info->person_id)) continue; 
+				
 				?>
-					<li <?php echo $module->module_id==$this->uri->segment(1)  ? 'class="active ' . $module->module_id . '"' : 'class="' . $module->module_id . '"'; ?>>
+					<li <?php
+					//Resaltar el modulo de ventas
+						if ($module->module_id == 'sales')
+							echo $module->module_id==$this->uri->segment(1)  ? 'class="active ' . $module->module_id . '"' : 'class="' . $module->module_id . '"'.'style="background-color: #e88960;"'; 
+						else
+						 	echo $module->module_id==$this->uri->segment(1)  ? 'class="active ' . $module->module_id . '"' : 'class="' . $module->module_id . '"'; 
+					?>>
 						<a tabindex = "-1" href="<?php echo site_url("$module->module_id");?>"  class="waves-effect waves-light">
 							<i class="<?php echo $module->icon; ?>"></i>
 							<span class="text"><?php echo lang("module_".$module->module_id) ?></span>

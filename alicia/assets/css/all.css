@@ -12201,7 +12201,7 @@ td .form-control.selectize-control {
   background-color: #e88960;
 }
 .flatBlue {
-  background-color: #ffcc2c;
+  background-color: #2d88ff;
 }
 .flatOrange {
   background-color: #e88960;
@@ -12213,7 +12213,7 @@ td .form-control.selectize-control {
   color: #001F49 !important;
 }
 .flatBluec {
-  color: #001F49 !important;
+  color: #2d88ff !important;
 }
 .flatOrangec {
   color: #f7941d !important;
@@ -12931,13 +12931,13 @@ td .form-control.selectize-control {
   color: #489ee7;
 }
 .text-info {
-  color: #000000;
+  color: #aaa;
 }
 .text-danger {
   color: #df6c6e !important;
 }
 .text-warning {
-  color: #000000;
+  color: var(--amarillo-principal);
 }
 .text-white {
   color: #000000 !important;

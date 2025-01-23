@@ -5,6 +5,8 @@
     --azul-principal: #2d88ff;
     --azul-hover: #014bab;
     --gris-letras: #555555;
+    --gris-texto-encabezado: #abafb4;
+    --gris-texto: #919cbb;
 }
 
 .jumbotron,
@@ -91,8 +93,18 @@ html {
     background-color: var(--azul-hover) !important;
   }
 
+  .text-info{
+    color: var(--gris-texto);
+  }
 
+  .text-success{
+    color: var(--gris-texto-encabezado);
+  }
 
+  .text-warning{
+    color: var(--gris-texto);
+  }
+ 
 
 #item_kit_items th,
 .close,

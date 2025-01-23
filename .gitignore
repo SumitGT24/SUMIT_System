@@ -9,5 +9,4 @@ alicia/application/config/database.php
 .ssh/authorized_keys/*
 alicia/application/views/work_orders/form copy.php
 alicia/application/models/Work_orderOriginal.php
-alicia/application/models/Work_orderOriginal.php
 alicia/application/views/configOriginal.php

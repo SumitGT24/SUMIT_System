@@ -189,10 +189,10 @@ class Customer extends Person
 				if (isset($customer_data['balance']) && $customer_data['balance'] != $current_balance)
 				{
 		 			$store_account_transaction = array(
-		   		'customer_id'=>$customer_id,
-		   		'sale_id'=>NULL,
+		   			'customer_id'=>$customer_id,
+		   			'sale_id'=>NULL,
 					'comment'=>lang('common_manual_edit_of_balance'),
-		      'transaction_amount'=>$customer_data['balance'] - $current_balance,
+		      		'transaction_amount'=>$customer_data['balance'] - $current_balance,
 					'balance'=>$customer_data['balance'],
 					'date' => date('Y-m-d H:i:s')
 					);
@@ -370,7 +370,7 @@ class Customer extends Person
 				$data = array(
 					'name' => $name_label,
 					'email' => $row->email,
-					//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+					'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 					 );
 				$temp_suggestions[$row->person_id] = $data;
 			}
@@ -399,7 +399,7 @@ class Customer extends Person
 				$data = array(
 						'name' => $row->account_number,
 						'email' => $row->email,
-						#'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+						'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 						);
 
 				$temp_suggestions[$row->person_id] = $data;
@@ -449,7 +449,7 @@ class Customer extends Person
 						$data = array(
 								'name' => $row->custom_field,
 								'email' => $row->email,
-								//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+								'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 								);
 
 						$temp_suggestions[$row->person_id] = $data;
@@ -481,7 +481,7 @@ class Customer extends Person
 				$data = array(
 						'name' => $row->first_name.'&nbsp;'.$row->last_name,
 						'email' => $row->email,
-						//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+						'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 						);
 
 				$temp_suggestions[$row->person_id] = $data;
@@ -511,7 +511,7 @@ class Customer extends Person
 				$data = array(
 						'name' => $row->phone_number,
 						'email' => $row->email,
-						//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+						'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 						);
 
 				$temp_suggestions[$row->person_id] = $data;
@@ -539,7 +539,7 @@ class Customer extends Person
 				$data = array(
 						'name' => $row->company_name,
 						'email' => $row->email,
-						//'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
+						'avatar' => $row->image_id ?  app_file_url($row->image_id) : base_url()."assets/img/user.png" 
 						);
 
 				$temp_suggestions[$row->person_id] = $data;
@@ -792,8 +792,8 @@ class Customer extends Person
 		$app_files_table = $this->db->dbprefix('app_files');
 		$customers_table = $this->db->dbprefix('customers');
 		$this->db->query('SET FOREIGN_KEY_CHECKS = 0');
-		#$this->db->query("DELETE FROM $app_files_table WHERE file_id IN (SELECT image_id FROM $people_table INNER JOIN $customers_table USING (person_id) WHERE $customers_table.deleted = 1)");
-		#$this->db->query("UPDATE $people_table SET image_id = NULL WHERE person_id IN (SELECT person_id FROM $customers_table WHERE deleted = 1)");
+		$this->db->query("DELETE FROM $app_files_table WHERE file_id IN (SELECT image_id FROM $people_table INNER JOIN $customers_table USING (person_id) WHERE $customers_table.deleted = 1)");
+		$this->db->query("UPDATE $people_table SET image_id = NULL WHERE person_id IN (SELECT person_id FROM $customers_table WHERE deleted = 1)");
 		$this->db->query('SET FOREIGN_KEY_CHECKS = 1');
 		return TRUE;
 		

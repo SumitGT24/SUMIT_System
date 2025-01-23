@@ -49,9 +49,9 @@ $lang['employees_cannot_delete_default_user'] = 'No se puede eliminar al usuario
 $lang['employees_subject'] = 'Sujeto';
 
 
-$lang['employees_force_password_change_upon_login'] = 'Fuerza de cambio de contraseña al iniciar sesión';
+$lang['employees_force_password_change_upon_login'] = 'Forzar cambio de contraseña al iniciar sesión';
 $lang['employees_inactive'] = 'Inactivo';
-$lang['employees_reason_inactive'] = 'Motivo inactiva';
+$lang['employees_reason_inactive'] = 'Motivo de inactividad';
 $lang['employees_termination_date'] = 'Fecha de terminación';
 $lang['employees_hire_date'] = 'Fecha de contratación';
 $lang['employees_birthday'] = 'Cumpleaños';

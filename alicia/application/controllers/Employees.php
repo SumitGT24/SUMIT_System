@@ -116,7 +116,7 @@ class Employees extends Person_controller
 		
 		$this->load->helper('report');
 		$rows = array();
-		$row = array(lang('common_username'),lang('common_first_name'),lang('common_last_name'),lang('common_email'),lang('common_phone_number'),lang('common_address_1'),lang('common_address_2'),lang('common_city'),	lang('common_state'),lang('common_zip'),lang('common_country'),lang('common_comments'));
+		$row = array(lang('common_username'),lang('common_first_name'),lang('common_last_name'),lang('common_email'),lang('common_phone_number'),lang('common_address_1'),lang('common_comments'));
 		$rows[] = $row;
 		foreach ($data as $r) {
 			$row = array(
@@ -126,11 +126,11 @@ class Employees extends Person_controller
 				$r->email,
 				$r->phone_number,
 				$r->address_1,
-				$r->address_2,
-				$r->city,
-				$r->state,
-				$r->zip,
-				$r->country,
+				//$r->address_2,
+				//$r->city,
+				//$r->state,
+				//$r->zip,
+				//$r->country,
 				$r->comments
 			);
 			$rows[] = $row;
@@ -184,11 +184,11 @@ class Employees extends Person_controller
 			$label = array();
 			$label['name'] = $employee_info->first_name.' '.$employee_info->last_name;
 			$label['address_1'] = $employee_info->address_1;
-			$label['address_2'] = $employee_info->address_2;
-			$label['city'] = $employee_info->city;
-			$label['state'] = $employee_info->state;
-			$label['zip'] = $employee_info->zip;
-			$label['country'] = $employee_info->country;
+			//$label['address_2'] = $employee_info->address_2;
+			//$label['city'] = $employee_info->city;
+			//$label['state'] = $employee_info->state;
+			//$label['zip'] = $employee_info->zip;
+			//$label['country'] = $employee_info->country;
 			
 			$data['mailing_labels'][] = $label;
 			
@@ -324,12 +324,13 @@ class Employees extends Person_controller
 		'email'=>$this->input->post('email'),
 		'phone_number'=>$this->input->post('phone_number'),
 		'address_1'=>$this->input->post('address_1'),
-		'address_2'=>$this->input->post('address_2'),
-		'city'=>$this->input->post('city'),
-		'state'=>$this->input->post('state'),
-		'zip'=>$this->input->post('zip'),
-		'country'=>$this->input->post('country'),
+		//'address_2'=>$this->input->post('address_2'),
+		//'city'=>$this->input->post('city'),
+		//'state'=>$this->input->post('state'),
+		//'zip'=>$this->input->post('zip'),
+		//'country'=>$this->input->post('country'),
 		'comments'=>$this->input->post('comments'),
+		
 		);
 		$permission_data = $this->input->post("permissions")!=false ? $this->input->post("permissions"): array();
 		$permission_action_data = $this->input->post("permissions_actions")!=false ? $this->input->post("permissions_actions"): array();
@@ -379,7 +380,6 @@ class Employees extends Person_controller
 				'login_end_time'=>$this->input->post('login_end_time') ? date('H:i:s', strtotime($this->input->post('login_end_time'))) : NULL,
 				'dark_mode' => $this->input->post('dark_mode') ? 1 : 0,
 				'override_price_adjustments' => $this->input->post('override_price_adjustments') ? 1 : 0,
-				'language' => 'spanish',
 			);
 		}
 		
@@ -443,7 +443,7 @@ class Employees extends Person_controller
 		
 		//$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
 		//$employee_data=array_merge($employee_data,array('language'=>in_array($this->input->post('language'), $valid_languages) ? $this->input->post('language') : 'spanish'));
-		
+		$employee_data['language'] = 'spanish';
 		$this->load->helper('demo');
 		if ( (is_on_demo_host()) && $employee_id == 1)
 		{
@@ -503,6 +503,7 @@ class Employees extends Person_controller
 			}
 
 			//Save Image File
+			
 			if(!empty($_FILES["image_id"]) && $_FILES["image_id"]["error"] == UPLOAD_ERR_OK)
 			{			    
 
@@ -531,7 +532,7 @@ class Employees extends Person_controller
 		    			
 						}
 			}
-			
+
 			if (isset($_FILES['files']))
 			{
 				for($k=0; $k<count($_FILES['files']['name']); $k++)
@@ -540,7 +541,8 @@ class Employees extends Person_controller
 				    $file_id = $this->Appfile->save($_FILES['files']['name'][$k], file_get_contents($_FILES['files']['tmp_name'][$k]));
 			  		$this->Person->add_file($employee_id==-1 ? $employee_data['person_id'] : $employee_id, $file_id);
 				}
-			}				
+			}
+							
 			
 		}
 		else//failure
@@ -549,6 +551,7 @@ class Employees extends Person_controller
 			H($person_data['first_name'].' '.$person_data['last_name']),'person_id'=>-1));
 		}
 	}
+	//Fin de la función save
 	
 	function set_language()
 	{
@@ -724,8 +727,9 @@ class Employees extends Person_controller
 			$locations[$row->location_id] = array('name' => $row->name);
 		}
 
-
 		foreach ($all_modules->result() as $module) {
+			//skip locations module
+			//if ($module->module_id == 'locations') continue; 
 			$module_id = 'permissions' . $module->module_id;
 			$permissions[$module_id] = $this->Permission_template->has_module_permission($module->module_id, $template_id, FALSE, TRUE);
 		

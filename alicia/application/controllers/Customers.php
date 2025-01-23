@@ -473,60 +473,60 @@ class Customers extends Person_controller
 			}
 			//$this->load->model('Customer_taxes');
 			//$this->Customer_taxes->save($customers_taxes_data, $customer_id);
+			*/
+			$customer_info = $this->Customer->get_info($customer_id);
 			
-				$customer_info = $this->Customer->get_info($customer_id);
-				
-				//Delete Image
-				if($this->input->post('del_image') && $customer_id != -1)
-				{	
-				    if($customer_info->image_id != null)
-				    {
-						$this->Person->update_image(NULL,$customer_id);
-						$this->load->model('Appfile');
-						$this->Appfile->delete($customer_info->image_id);
-				    }
-				}
+			//Delete Image
+			if($this->input->post('del_image') && $customer_id != -1)
+			{	
+			    if($customer_info->image_id != null)
+			    {
+					$this->Person->update_image(NULL,$customer_id);
+					$this->load->model('Appfile');
+					$this->Appfile->delete($customer_info->image_id);
+			    }
+			}
 
-				//Save Image File
-				if(!empty($_FILES["image_id"]) && $_FILES["image_id"]["error"] == UPLOAD_ERR_OK)
-				{			    
-				    $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
-					$extension = strtolower(pathinfo($_FILES["image_id"]["name"], PATHINFO_EXTENSION));
-				    if (in_array($extension, $allowed_extensions))
-				    {
-					    $config['image_library'] = 'gd2';
-					    $config['source_image']	= $_FILES["image_id"]["tmp_name"];
-					    $config['create_thumb'] = FALSE;
-					    $config['maintain_ratio'] = TRUE;
-					    $config['width']	 = 1200;
-					    $config['height']	= 900;
-					    $this->load->library('image_lib', $config); 
-					    $this->image_lib->resize();
-						$this->load->model('Appfile');
-					    $image_file_id = $this->Appfile->save($_FILES["image_id"]["name"], file_get_contents($_FILES["image_id"]["tmp_name"]), NULL , $customer_info->image_id);
-				    }
-					
-					if($customer_id==-1)
-					{
-		    			$this->Person->update_image($image_file_id,$customer_data['person_id']);
-					}
-					else
-					{
-						$this->Person->update_image($image_file_id,$customer_id);
-	    			
-					}
-				}
+			//Save Image File
+			if(!empty($_FILES["image_id"]) && $_FILES["image_id"]["error"] == UPLOAD_ERR_OK)
+			{			    
+			    $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
+				$extension = strtolower(pathinfo($_FILES["image_id"]["name"], PATHINFO_EXTENSION));
+			    if (in_array($extension, $allowed_extensions))
+			    {
+				    $config['image_library'] = 'gd2';
+				    $config['source_image']	= $_FILES["image_id"]["tmp_name"];
+				    $config['create_thumb'] = FALSE;
+				    $config['maintain_ratio'] = TRUE;
+				    $config['width']	 = 1200;
+				    $config['height']	= 900;
+				    $this->load->library('image_lib', $config); 
+				    $this->image_lib->resize();
+					$this->load->model('Appfile');
+				    $image_file_id = $this->Appfile->save($_FILES["image_id"]["name"], file_get_contents($_FILES["image_id"]["tmp_name"]), NULL , $customer_info->image_id);
+			    }
 				
-				if (isset($_FILES['files']))
+				if($customer_id==-1)
 				{
-					for($k=0; $k<count($_FILES['files']['name']); $k++)
-					{				
-			   	 	$this->load->model('Appfile');
-				    $file_id = $this->Appfile->save($_FILES['files']['name'][$k], file_get_contents($_FILES['files']['tmp_name'][$k]));
-			  		$this->Person->add_file($customer_id==-1 ? $customer_data['person_id'] : $customer_id, $file_id);
-					}
-				}				
-				*/
+		    		$this->Person->update_image($image_file_id,$customer_data['person_id']);
+				}
+				else
+				{
+					$this->Person->update_image($image_file_id,$customer_id);
+	    		
+				}
+			}
+				
+			if (isset($_FILES['files']))
+			{
+				for($k=0; $k<count($_FILES['files']['name']); $k++)
+				{				
+			 	$this->load->model('Appfile');
+			    $file_id = $this->Appfile->save($_FILES['files']['name'][$k], file_get_contents($_FILES['files']['tmp_name'][$k]));
+				$this->Person->add_file($customer_id==-1 ? $customer_data['person_id'] : $customer_id, $file_id);
+				}
+			}				
+				
 		}
 		else//failure
 		{	

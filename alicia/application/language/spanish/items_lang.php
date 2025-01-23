@@ -192,7 +192,7 @@ $lang['items_hide_from_item_grid'] = 'Ocultar la cuadrícula de artículos';
 $lang['items_days_to_expiration'] = 'Días de vencimiento';
 
 
-$lang['items_commission_percent_based_on_profit'] = '¿Porciento de comisión basado en ganancia?';
+$lang['items_commission_percent_based_on_profit'] = '¿Porcentaje de comisión basado en ganancia?';
 $lang['items_confirm_finish_count'] = '¿Está seguro que desea terminar el recuento del inventario?';
 $lang['items_delete_count_confirm'] = '¿Está seguro que desea eliminar este recuento? Esta acción no puede deshacerse.';
 $lang['download_file_count'] = 'Descargar archivo de recuento de inventario';
@@ -249,8 +249,8 @@ $lang['items_image_details'] = 'Detalles de la imagen';
 
 
 
-$lang['items_commission_percent'] = 'Porcentaje Comisión';
-$lang['items_commission_percent_type'] = 'Tipo Porcieno Comisión';
+$lang['items_commission_percent'] = 'Porcentaje de comisión';
+$lang['items_commission_percent_type'] = 'Tipo de porcentaje de comisión';
 $lang['items_commission_fixed'] = 'Comisión de valor fijo';
 
 $lang['items_manage_attributes'] = 'Administrar atributos';

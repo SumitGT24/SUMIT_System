@@ -231,7 +231,7 @@
 					</div>
 				</div>
 
-				<!-- No longer used>
+				<!-- No longer used-->
 				<!--div class="form-group">
 					<#?php echo form_label(lang('common_language') . ':', 'language', array('class' => 'col-sm-3 col-md-3 col-lg-2 col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -555,7 +555,6 @@
 					</div>
 				</div>
 				
-				
 				<div class="form-group">	
 				<?php echo form_label(lang('employees_inactive').':', 'inactive',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -715,6 +714,7 @@
 						<ul class="list-group">
 							<?php
 							foreach ($this->Module_action->get_module_actions($module->module_id)->result() as $mk => $module_action) {
+								
 								$checkbox_options = array(
 									'name' => 'permissions_actions[]',
 									'data-module-checkbox-id' => 'permissions' . $module->module_id,
