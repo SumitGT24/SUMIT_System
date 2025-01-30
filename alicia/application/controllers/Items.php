@@ -2683,8 +2683,7 @@ class Items extends Secure_area implements Idata_controller
 			$item_data['commission_percent_type'] = '';
 			$item_data['tax_included'] = $this->config->item('prices_include_tax') ? 1 : 0;
 			$item_data['reorder_level'] = $this->config->item('default_reorder_level_when_creating_items') ? $this->config->item('default_reorder_level_when_creating_items') : NULL;
-			$item_data['expire_days'] = $this->config->item('default_days_to_expire_when_creating_items') ? $this->config->item('default_days_to_expire_when_creating_items') : NULL;
-			
+			$item_data['expire_days'] = $this->config->item('default_days_to_expire_when_creating_items') ? $this->config->item('default_days_to_expire_when_creating_items') : NULL;			
 		}
 		if($this->Item->save($item_data,$item_id))
 		{
@@ -2764,6 +2763,71 @@ class Items extends Secure_area implements Idata_controller
 			$item_data['name'],'item_id'=>-1));
 		}
 	}
+
+	//Save custom item
+	function save_custom_item()
+	{
+		$item_id = -1;
+	    $this->check_action_permission('add_update');
+
+	    $item_data = array(
+	        'name' => $this->input->post('customItemName'),
+	        'barcode_name' => '',
+	        'description' => '',
+	        'long_description' => '',
+	        'category_id' => 15, // ID custom_items cambios_finales_ 1,
+	        'cost_price' => $this->input->post('customItemCostPrice'),
+	        'unit_price' => $this->input->post('customItemUnitPrice'),
+	        'default_quantity' => NULL,
+			'ecommerce_product_id'=> NULL,
+			'is_service'=> 0 ,
+			'allow_alt_description'=> 0,
+			'is_serialized'=> 0,
+			'is_ebt_item'=> 0,
+			'is_ecommerce'=> 0,
+			'verify_age'=> 0,
+			'required_age'=> NULL,	
+			'ecommerce_shipping_class_id'=> NULL,			
+			'is_series_package'=> 0,
+			'is_barcoded'=> 0,
+			'item_inactive'=> 0,
+	    );
+		//cantidad
+		$item_qty = $this->input->post('customItemQty');
+	    // Valores por defecto para un nuevo ítem
+	    $item_data['commission_percent'] = NULL;
+	    $item_data['commission_fixed'] = NULL;
+	    $item_data['tax_included'] = $this->config->item('prices_include_tax') ? 1 : 0;
+	    $item_data['reorder_level'] = $this->config->item('default_reorder_level_when_creating_items') ?: NULL;
+	    $item_data['expire_days'] = $this->config->item('default_days_to_expire_when_creating_items') ?: NULL;
+
+
+
+		if($this->Item->save($item_data,$item_id))
+		{
+			$this->Item->set_last_edited($item_id);	
+			
+			$this->Tag->save_tags_for_item(isset($item_data['item_id']) ? $item_data['item_id'] : $item_id, $this->input->post('tags'));
+			
+			$success_message = '';
+			//Agregar unidades al inventario
+			$this->Item_location->save_quantity($item_qty,$item_data['item_id']);
+			$success_message = lang('common_successful_adding').' '.H($item_data['name']);
+			$this->session->set_flashdata('manage_success_message', $success_message);
+			$this->Appconfig->save('wizard_add_inventory',1);
+			//Mensaje de exito
+			//echo json_encode(array('success' => true, 'item_id' => $item_data['item_id']));
+			echo json_encode(array('reload' => false, 'success'=>true, 'message'=>$success_message,'item_id'=>$item_data['item_id'],'qty'=>$item_qty));
+			$item_id = $item_data['item_id'];					
+		}
+		else //failure
+		{
+			echo json_encode(array('success'=>false,'message'=>lang('common_error_adding_updating').' '.
+			$item_data['name'],'item_id'=>-1));
+		}
+	}
+	
+	//End save custom item
 
 	function save_inventory($item_id=-1)
 	{

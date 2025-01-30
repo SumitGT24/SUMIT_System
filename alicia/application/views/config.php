@@ -2352,7 +2352,7 @@ $this->load->helper('update');
 	document.getElementById("defaultOpen").click(); 
 	</script>
 
-	<!-- Botón de guardado (si es necesario mantenerlo) -->
+	<!-- Botón de guardado -->
 	<div class="form-actions">
 		<!-- Botón de guardado -->
 	    <?php echo form_submit(array(
@@ -2538,7 +2538,6 @@ $(document).ready(function()
 			},
 			dataType:'json'
 		});
-		console.log('Respuesta: ',response.message);
 
 		},
 		errorClass: "text-danger",

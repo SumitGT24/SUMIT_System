@@ -46,7 +46,51 @@
 <?php } ?>
 
 <div class="row register">
-	<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 no-padding-right no-padding-left">
+
+	<! -- Modal save custom item -- >
+	<div class="modal fade" id="customItemModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+	    <div class="modal-dialog" role="document">
+	        <div class="modal-content" style="padding-left: 20px; padding-right: 20px;">
+				<!--form id="customItemForm" method="POST"-->
+				<?php echo form_open_multipart('items/save_custom_item/', array('id' => 'customItemForm', 'autocomplete' => 'off')); ?>
+	            	<div class="modal-header">
+	            	    <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            	    <h3 class="modal-title" style="font-size: 20px;">Agregar producto personalizado</h3>
+	            	    <p>Los productos personalizados no se muestran en el inventario.</p>
+	            	</div>
+	            	<div class="modal-body" style="padding-left: 40px; padding-right: 40px;">
+	            	    <div class="form-group">
+	            	        <label for="customItemName">Nombre</label>
+	            	        <input type="text" class="form-control" name="customItemName" id="customItemName" required>
+	            	    </div>
+
+	            	    <div class="form-group">
+	            	        <label for="customItemCost">Costo</label>
+	            	        <input type="text" class="form-control" name="customItemCostPrice" id="customItemCostPrice" required>
+	            	    </div>  
+
+	            	    <div class="form-group">
+	            	        <label for="customItemPrice">Precio</label>
+	            	        <input type="text" class="form-control" name="customItemUnitPrice" id="customItemUnitPrice" required>
+	            	    </div>
+
+						<div class="form-group">
+							<label for="customItemQty">Cantidad</label>
+							<input type="text" class="form-control" id="customItemQty" name="customItemQty">
+						</div>
+					</div>
+			
+	            	<div class="modal-footer">
+	            	    <button type="submit" class="btn btn-primary" name="submitf" id="submitf">Agregar</button>
+	            	    <button type="button" class="btn btn-warning" data-dismiss="modal" style="background-color: #dc3545; border: none;">Cancelar</button>
+	            	</div>
+				<!--/form-->	   
+				<?php echo form_close(); ?>             
+	        </div>
+	    </div>
+	</div>
+
+	`<div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 no-padding-right no-padding-left">
 		<?php
 		$cart_count = 0;
 
@@ -56,7 +100,6 @@
 				<a tabindex="-1" href="#" class="dismissfullscreen <?php echo !$fullscreen ? 'hidden' : ''; ?>"><i class="ion-close-circled"></i></a>
 				<div id="itemForm" class="item-form">
 					<!-- Item adding form -->
-
 					<?php echo form_open("sales/add", array('id' => 'add_item_form', 'class' => 'form-inline', 'autocomplete' => 'off')); ?>
 
 					<div class="input-group input-group-mobile contacts">
@@ -89,10 +132,16 @@
 							<div class="rect2"></div>
 							<div class="rect3"></div>
 						</div>
-
+						<!-- Create new item -->
 						<span class="input-group-addon">
 							<?php echo anchor("items/view/-1?redirect=sales/index/1&progression=1", "<i class='icon ti-pencil-alt'></i>", array('class' => 'none add-new-item', 'title' => lang('common_new_item'), 'id' => 'new-item', 'tabindex' => '-1')); ?>
 						</span>
+						<!-- Add custom item-->
+						<span class="input-group-addon" style="background-color: #FFC300;">
+							<button type="button" style="background-color: #FFC300; border: none; padding: 8px 10px 10px 15px; " data-toggle="modal" data-target="#customItemModal" title="Producto personalizado" tabindex="-1"><i class='icon ti-package'></i></button>
+						</span>
+						
+						<!-- Search and add new item -->
 						<input type="text" id="item" name="item" <?php echo ($mode == "store_account_payment" || $mode == 'purchase_points') ? 'disabled="disabled"' : '' ?> class="add-item-input pull-left keyboardTop" placeholder="<?php echo lang('common_start_typing_item_name'); ?>" data-title="<?php echo lang('common_item_name'); ?>">
 
 						<div class="input-group-addon register-mode <?php echo H($mode); ?>-mode dropdown">
@@ -121,7 +170,6 @@
 		<div class="register-box register-items paper-cut">
 			<div class="register-items-holder">
 				<?php if ($mode != 'store_account_payment') { ?>
-
 
 					<?php if ($pagination) { ?>
 						<div class="page_pagination pagination-top hidden-print  text-center" id="pagination_top">
@@ -1995,9 +2043,7 @@
 
 				</div>
 
-
 			</div>
-
 			<div class="modal-footer">
 				<button data-dismiss="modal" type="button" class="btn btn-default"><?php echo lang('common_close'); ?></button>
 				<button data-bb-handler="confirm" data-quick_amount="0" type="button" class="btn btn-primary quick_amount" id="collect_amount"><?php echo lang('common_collect'); ?></button>
@@ -2143,6 +2189,55 @@ if (isset($number_to_add) && isset($item_to_add)) {
 <?php } ?>
 <!--- Variation Popup --->
 <script type="text/javascript" language="javascript">
+	//Clean custom item
+	$('#customItemModal').on('show.bs.modal', function () {
+    $(this).find('form')[0].reset(); // Resetea el formulario
+	});
+	//Custom item form
+	$(document).ready(function() {
+	    var submitting = false;
+
+	    $('#customItemForm').submit(function(event) {
+	        event.preventDefault(); // Evita el envío tradicional del formulario
+
+	        if (submitting) return;
+	        submitting = true;
+
+	        $.ajax({
+	            type: "POST",
+	            url: $(this).attr('action'), // Toma la URL del form
+	            data: new FormData(this),
+	            processData: false,
+	            contentType: false,
+	            dataType: 'json',
+	            success: function(response) {
+	                if (response.success) {
+	                    $('#customItemModal').modal('hide'); // Cerrar el modal
+						// Agregar el item al carrito
+						$.post('<?php echo site_url("sales/add"); ?>', {
+							item: response.item_id,
+							quantity: response.qty
+						}, function(response) {
+							$("#register_container").html(response);
+						});
+
+	                } else {
+	                    alert('Error: ' + response.message);
+	                }
+	                submitting = false;
+	            },
+	            error: function() {
+	                alert('Ocurrió un error inesperado.');
+	                submitting = false;
+	            }
+	        });
+	    });
+	});
+
+	//End custom item form
+
+
+
 	$("#save-qty-form").submit(function(e) {
 		e.preventDefault();
 		var item_id = $('.variation-qty-table').data('item-id');

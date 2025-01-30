@@ -934,7 +934,7 @@ class Item extends MY_Model
 		$this->db->where('item_id', $item_id);
 		return $this->db->update('items',$item_data);
 	}
-
+	
 	function get_custom_field($number,$key="name")
 	{
 		static $config_data;
