@@ -706,7 +706,6 @@ class Items extends Secure_area implements Idata_controller
 		$this->load->model('Employee_appconfig');
 		$data['default_columns'] = $this->Item->get_default_columns();
 		$data['manage_table'] = get_items_manage_table_data_rows($search_data,$this);
-		
 		echo json_encode(array('manage_table' => $data['manage_table'], 'pagination' => $data['pagination'],'total_rows' => $config['total_rows']));
 	}
 	
@@ -2780,7 +2779,7 @@ class Items extends Secure_area implements Idata_controller
 	        'unit_price' => $this->input->post('customItemUnitPrice'),
 	        'default_quantity' => NULL,
 			'ecommerce_product_id'=> NULL,
-			'is_service'=> 0 ,
+			'is_service'=> 0,
 			'allow_alt_description'=> 0,
 			'is_serialized'=> 0,
 			'is_ebt_item'=> 0,
@@ -2816,7 +2815,6 @@ class Items extends Secure_area implements Idata_controller
 			$this->session->set_flashdata('manage_success_message', $success_message);
 			$this->Appconfig->save('wizard_add_inventory',1);
 			//Mensaje de exito
-			//echo json_encode(array('success' => true, 'item_id' => $item_data['item_id']));
 			echo json_encode(array('reload' => false, 'success'=>true, 'message'=>$success_message,'item_id'=>$item_data['item_id'],'qty'=>$item_qty));
 			$item_id = $item_data['item_id'];					
 		}

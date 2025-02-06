@@ -236,8 +236,6 @@ class Work_orders extends Secure_area
 	
 	/*
 	Loads the Work order edit form
-	Zona de interes xd
-	Revisar que se llama desde el controlador, notas, item_id, customer_id y comentarlas también en el modelo.
 	*/
 	function view($work_order_id=-1,$redirect_code=0)
 	{
@@ -279,7 +277,6 @@ class Work_orders extends Secure_area
 		$data['work_order_images'] = $work_order_info['images'] && unserialize($work_order_info['images']) ? unserialize($work_order_info['images']) : array();
 		
 		$data['first_line_note'] = $first_line_note;
-		//Causa problemas (revisar)
 		$data['item_being_repaired_info'] = $this->Work_order->get_item_being_repaired_info($work_order_id);
 		$data['work_order_items'] = $this->Work_order->get_work_order_items($work_order_id);
 		
@@ -299,6 +296,11 @@ class Work_orders extends Secure_area
 		$this->check_action_permission('edit');
 
 		$work_order_data = array();
+		//Actualizar costo de la orden de trabajo
+		//$item_sale_data = array();
+		$work_order_info = $this->Work_order->get_info($work_order_id)->row();
+		$item_id = $work_order_info->custom_field_1_value;
+		//$item_sale_data['item_unit_price'] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : 0;
 
 		//$work_order_data['estimated_repair_date'] = $this->input->post('estimated_repair_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('estimated_repair_date'))) : NULL;
 		//$work_order_data[''] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : NULL;
@@ -306,7 +308,7 @@ class Work_orders extends Secure_area
 		$work_order_data['advance_payment'] = $this->input->post('advance_payment') ? $this->input->post('advance_payment') : NULL;
 		$work_order_data['order_type'] = $this->input->post('order_type') ? 1 : 0;
 		
-		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
+		for($k=2;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 		{
 			if ($this->Work_order->get_custom_field($k) !== FALSE)
 			{
@@ -325,6 +327,13 @@ class Work_orders extends Secure_area
 					$work_order_data["custom_field_{$k}_value"] = $this->input->post("custom_field_{$k}_value");
 				}
 			}
+		}
+
+		try{
+			$this->db->where('id', $item_id);
+			$this->db->update('items_sales_id',array('item_unit_price' => $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : 0));
+		}catch(Exception $e){
+			//echo $e->getMessage();
 		}
 
 		$this->Work_order->save( $work_order_data, $work_order_id );

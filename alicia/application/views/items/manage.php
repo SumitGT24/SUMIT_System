@@ -260,7 +260,7 @@ $.post('<?php echo site_url("items/clear_select_inventory");?>', {select_invento
 		
 		</div>
 	</div>
-
+	
 	<div class="row">
 
 		<div class="col-md-9 col-sm-10 col-xs-10">

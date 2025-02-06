@@ -1244,7 +1244,7 @@ public function get_info($work_order_id)
 		$location_id = $this->Employee->get_logged_in_employee_current_location_id();
 		$register_id = $this->Register->get_first_register_id_by_location_id($location_id);
 		
-		// Datos para registrar una venta solo si ambos están registrados
+		// Informacion de la venta
 		$sales_data = array(
 			'customer_id' => $customer_ids,
 			'employee_id' => $employee_id,
@@ -1265,20 +1265,49 @@ public function get_info($work_order_id)
 		$this->db->insert('sales', $sales_data);
 		$sale_id = $this->db->insert_id();
 
-			// Insertar en `phppos_sales_items` para artículos registrados
-			$sales_items_data = array(
-				'sale_id' => $sale_id,
-				'line' => 0,
-				'quantity_purchased' => 1,
-				'item_cost_price' => 0,
-				'item_unit_price' => 0,
-				'commission' => 0,
-				'subtotal' => 0,
-				'total' => 0,
-				'tax' => 0,
-				'profit' => 0,
-			);
-			$this->db->insert('sales_items', $sales_items_data);
+		//Insertar servicio/articulo de la orden de trabajo
+		$item_data = array(
+	        'name' => $work_order_data['service_description'],
+	        'barcode_name' => '',
+	        'description' => '',
+	        'long_description' => '',
+	        'category_id' => 15, // ID custom_items cambios_finales_ 1,
+	        'cost_price' => 0,
+	        'unit_price' => 0,
+	        'default_quantity' => NULL,
+			'ecommerce_product_id'=> NULL,
+			'is_service'=> 1,
+			'allow_alt_description'=> 0,
+			'is_serialized'=> 0,
+			'is_ebt_item'=> 0,
+			'is_ecommerce'=> 0,
+			'verify_age'=> 0,
+			'required_age'=> NULL,	
+			'ecommerce_shipping_class_id'=> NULL,			
+			'is_series_package'=> 0,
+			'is_barcoded'=> 0,
+			'item_inactive'=> 0,
+	    );
+		$this->db->insert('items', $item_data);
+		$item_id = $this->db->insert_id();
+
+		//Guardar id del item asociado al servicio de la orden
+		$work_order_data['custom_field_1_value'] = $item_id;
+		// Insertar en `phppos_sales_items` para artículos registrados
+		$sales_items_data = array(
+			'sale_id' => $sale_id,
+			'item_id' => $item_id,
+			'line' => 0,
+			'quantity_purchased' => 1,
+			'item_cost_price' => 0,
+			'item_unit_price' => 0,
+			'commission' => 0,
+			'subtotal' => 0,
+			'total' => 0,
+			'tax' => 0,
+			'profit' => 0,
+		);
+		$this->db->insert('sales_items', $sales_items_data);
 
 		// Obtener o crear el estado inicial de la orden de trabajo
 		$status_id = $this->Work_order->get_status_id_by_name('lang:work_orders_new');

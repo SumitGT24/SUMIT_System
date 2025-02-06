@@ -157,9 +157,9 @@ class Item extends MY_Model
 		$item_kits_table = $this->db->dbprefix('item_kits');
 		$categories_table = $this->db->dbprefix('categories');
 		$query = "(SELECT phppos_items.item_id, phppos_items.unit_price, phppos_items.promo_price,phppos_items.start_date,phppos_items.end_date, quantity, phppos_items.name as name, phppos_categories.name as category, description, item_number,product_id,tax_included FROM $items_table LEFT JOIN $categories_table ON phppos_items.category_id = phppos_categories.id LEFT JOIN phppos_location_items ON phppos_items.item_id = phppos_location_items.item_id and phppos_location_items.location_id=1
-		WHERE phppos_items.deleted = 0 and system_item=0) UNION ALL (SELECT CONCAT('KIT ',item_kit_id), unit_price,NULL as promo_price,NULL as start_date, NULL as end_date,0 as quantity, phppos_item_kits.name as name,phppos_categories.name as category, description, item_kit_number,product_id,tax_included FROM $item_kits_table LEFT JOIN $categories_table ON phppos_item_kits.category_id = phppos_categories.id 
+		WHERE phppos_items.deleted = 0 and system_item=0 and phppos_items.category_id!=15) UNION ALL (SELECT CONCAT('KIT ',item_kit_id), unit_price,NULL as promo_price,NULL as start_date, NULL as end_date,0 as quantity, phppos_item_kits.name as name,phppos_categories.name as category, description, item_kit_number,product_id,tax_included FROM $item_kits_table LEFT JOIN $categories_table ON phppos_item_kits.category_id = phppos_categories.id 
 		WHERE phppos_item_kits.deleted = 0) LIMIT $limit OFFSET $offset";
-		
+													//cambios_finales_ 1 category_id!=15
 		return $this->db->query($query);
 		
 	}
@@ -227,9 +227,9 @@ class Item extends MY_Model
 					LEFT JOIN `$phppos_categories` 
 						ON `$phppos_categories`.`id` = $phppos_items.category_id
 	        GROUP BY `$phppos_items`.`item_id` ) as main_query
-	        WHERE deleted = '$deleted' and system_item = 0 $order_by
+	        WHERE deleted = '$deleted' and category_id!=15 and system_item = 0 $order_by
 	        LIMIT $limit OFFSET $offset";
-							
+							//cambios_finales_ 1 category_id!=15
 					return $this->db->query($query);
 		}
 		else
@@ -1355,6 +1355,8 @@ class Item extends MY_Model
 				$this->db->join('categories', 'categories.id = items.category_id','left');
 				
 				$this->db->from('items');
+				//Cambios para que no se muestren los items personalizados
+				$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 				$this->db->where('items.deleted',$deleted);
 				if ($hide_inactive)
 				{
@@ -1410,6 +1412,8 @@ class Item extends MY_Model
 			$this->db->from('items');
 			$this->db->join('categories', 'categories.id = items.category_id','left');
 			$this->db->where("MATCH (".$this->db->dbprefix('items').".name) AGAINST (".$this->db->escape(escape_full_text_boolean_search($search))." IN BOOLEAN MODE)", NULL, FALSE);			
+			//Cambios para que no se muestren los items personalizados
+			$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 			$this->db->where('items.deleted',$deleted);
 			if ($hide_inactive)
 			{
@@ -1455,6 +1459,8 @@ class Item extends MY_Model
 			$this->db->from('categories');
 			$this->db->like('categories.name', $search,!$this->config->item('speed_up_search_queries') ? 'both' : 'after');
 			$this->db->join('items', 'items.category_id=categories.id');
+			//Cambios para que no se muestren los items personalizados
+			$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 			$this->db->where('items.deleted',$deleted);
 
 			if ($hide_inactive)
@@ -1492,6 +1498,8 @@ class Item extends MY_Model
 			$this->db->from('items');
 			$this->db->join('categories', 'categories.id = items.category_id','left');
 			$this->db->where("MATCH (item_number) AGAINST (".$this->db->escape(escape_full_text_boolean_search($search))." IN BOOLEAN MODE)", NULL, FALSE);			
+			//Cambios para que no se muestren los items personalizados
+			$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 			$this->db->where('items.deleted',$deleted);
 			if ($hide_inactive)
 			{
@@ -2029,6 +2037,8 @@ class Item extends MY_Model
 				
 				$this->db->from('items');
 				$this->db->join('location_items', 'location_items.item_id = items.item_id and location_id='.$current_location, 'left');
+				//Cambios para que no se muestren los items personalizados
+				$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 				$this->db->where('items.deleted',$deleted);
 			
 				if ($hide_inactive)
@@ -2103,6 +2113,8 @@ class Item extends MY_Model
 			$this->db->join('item_variations', 'items.item_id = item_variations.item_id','left');
 			$this->db->join('location_item_variations', "`$phppos_location_item_variations`.`item_variation_id` = `$phppos_item_variations`.`id` and `$phppos_location_item_variations`.`location_id` = $current_location",'left');
 			$this->db->join('categories', 'categories.id = items.category_id','left');
+			//Cambios para que no se muestren los items personalizados
+			$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 			$this->db->where('items.deleted',$deleted);
 			$this->db->where('items.system_item',0);
 			
@@ -2191,6 +2203,8 @@ class Item extends MY_Model
 			}
 			
 			$this->db->join('categories', 'categories.id = items.category_id','left');
+			//Cambios para que no se muestren los items personalizados
+			$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 			$this->db->where('items.deleted',$deleted);
 			$this->db->where('items.system_item',0);
 			if ($hide_inactive)
@@ -2253,6 +2267,8 @@ class Item extends MY_Model
 			}
 			$this->db->join('categories', 'categories.id = items.category_id','left');
 			$this->db->where("MATCH (product_id) AGAINST (".$this->db->escape(escape_full_text_boolean_search($search))." IN BOOLEAN MODE)", NULL, FALSE);
+			//Cambios para que no se muestren los items personalizados
+			$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 			$this->db->where('items.deleted',$deleted);
 			if ($hide_inactive)
 			{
@@ -2377,6 +2393,8 @@ class Item extends MY_Model
         }
 
         $this->db->join('categories', 'categories.id = items.category_id','left');
+		//Cambios para que no se muestren los items personalizados
+		$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
         $this->db->where('items.deleted',$deleted);
         $this->db->where('items.system_item',0);
         if ($hide_inactive)
@@ -2414,6 +2432,7 @@ from
 	WHERE
       `phppos_items`.`deleted` = 0
 			AND `phppos_items`.`system_item` = 0
+			AND `phppos_items`.`category_id` != 15  --cambios_finales_ cambiar id 1
 			$hide_inactive_sql_snippet
 			AND (`phppos_items`.`name` LIKE ? ESCAPE '!' OR `phppos_item_variations`.`name` LIKE ? ESCAPE '!')
 	 order by phppos_items.item_id, phppos_item_variations.id
@@ -2506,6 +2525,8 @@ SQL;
 			}
 			
 			$this->db->join('categories', 'categories.id = items.category_id','left');
+			//Cambios para que no se muestren los items personalizados
+			$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 			$this->db->where('items.deleted',$deleted);
 			if ($hide_inactive)
 			{
@@ -2571,6 +2592,8 @@ SQL;
 				$this->db->join('location_item_variations', "`$phppos_location_item_variations`.`item_variation_id` = `$phppos_item_variations`.`id` and `$phppos_location_item_variations`.`location_id` = $current_location",'left');
 			}
 			$this->db->join('categories', 'categories.id = items.category_id','left');
+			//Cambios para que no se muestren los items personalizados
+			$this->db->where('category_id !=', 15); //cambios_finales_ cambiar id 1
 			$this->db->where('items.deleted',$deleted);
 			if ($hide_inactive)
 			{
@@ -2814,13 +2837,13 @@ SQL;
 					{							
 						if ($this->config->item('speed_up_search_queries'))
 						{	
-							$search_main_query = "WHERE ($custom_fields or MATCH (".$this->db->dbprefix('items').".name, ".$this->db->dbprefix('items').".item_number, product_id, description) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") or ".$this->db->dbprefix('items').".item_id = ".$this->db->escape($search).") and ".$this->db->dbprefix('items'). ".deleted=$deleted and system_item = 0";
+							$search_main_query = "WHERE ($custom_fields or MATCH (".$this->db->dbprefix('items').".name, ".$this->db->dbprefix('items').".item_number, product_id, description) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") or ".$this->db->dbprefix('items').".item_id = ".$this->db->escape($search).") and ".$this->db->dbprefix('items'). ".deleted=$deleted and system_item = 0 and phppos_items.category_id != 15"; //cambios_finales_ cambiar id 1
 						}
 						else
 						{						
 							$additional_item_numbers_join = "LEFT JOIN `$phppos_additional_item_numbers` 
-								ON `$phppos_additional_item_numbers`.`item_id` = $phppos_items.item_id";
-							$search_main_query = "WHERE ($custom_fields or MATCH (".$this->db->dbprefix('items').".name, ".$this->db->dbprefix('items').".item_number, product_id, description) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") or ".$this->db->dbprefix('categories').".name LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".$this->db->dbprefix('additional_item_numbers').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".$this->db->dbprefix('items').".item_id = ".$this->db->escape($search)." or ".$this->db->dbprefix('item_variations').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!') and ".$this->db->dbprefix('items'). ".deleted=$deleted and system_item = 0";		
+								ON `$phppos_additional_item_numbers`.`item_id` = $phppos_items.item_id";							
+							$search_main_query = "WHERE ($custom_fields or MATCH (".$this->db->dbprefix('items').".name, ".$this->db->dbprefix('items').".item_number, product_id, description) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") or ".$this->db->dbprefix('categories').".name LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".$this->db->dbprefix('additional_item_numbers').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".$this->db->dbprefix('items').".item_id = ".$this->db->escape($search)." or ".$this->db->dbprefix('item_variations').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!') and ".$this->db->dbprefix('items'). ".deleted=$deleted and system_item = 0 and phppos_items.category_id != 15"; //cambios_finales_ cambiar id 1		
 						}
 					}
 					else
@@ -2854,7 +2877,7 @@ SQL;
 							".$this->db->dbprefix('items').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".
 							"product_id LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".
 							$this->db->dbprefix('items').".item_id = ".$this->db->escape($search)." or ".
-							$this->db->dbprefix('categories').".name LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or $custom_fields) and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0";
+							$this->db->dbprefix('categories').".name LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or $custom_fields) and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and phppos_items.category_id !=15"; //cambios_finales_ cambiar id 1
 						}
 						else
 						{
@@ -2870,7 +2893,7 @@ SQL;
 							$this->db->dbprefix('item_variations').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".
 							$this->db->dbprefix('categories').".name LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or $custom_fields
 							
-							) and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0";
+							) and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and phppos_items.category_id !=15"; //cambios_finales_ cambiar id 1
 						}
 					}			
 				}
@@ -2888,16 +2911,16 @@ SQL;
 						if ($fields == $this->db->dbprefix('location_items').'.quantity')
 						{
 							$having_main_query = "HAVING quantity = ".$this->db->escape($search);
-							$search_main_query = "WHERE $phppos_items.deleted=$deleted and system_item = 0";
+							$search_main_query = "WHERE $phppos_items.deleted=$deleted and system_item = 0 and phppos_items.category_id != 15"; //cambios_finales_ cambiar id 1
 						}
 						elseif($fields == $this->db->dbprefix('tags').'.name' )
 						{
-							$search_main_query = "WHERE ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0";							
+							$search_main_query = "WHERE ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and items.category_id != 15"; //cambios_finales_ cambiar id 1							
 							$search_overall_query = "WHERE tags LIKE \"%".$this->db->escape_like_str($search).'%" or tags LIKE "%'.$tag_id.'%"';			
 						}
 						else
 						{
-							$search_main_query = "WHERE $fields = ".$this->db->escape($search)." and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0";								
+							$search_main_query = "WHERE $fields = ".$this->db->escape($search)." and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and phppos_items.category_id != 15"; //cambios_finales_ cambiar id 1								 
 						}
 					}
 					else
@@ -2905,12 +2928,12 @@ SQL;
 						if($this->config->item('supports_full_text') && $this->config->item('enhanced_search_method'))
 						{
 							//Fulltext
-							$search_main_query = "WHERE MATCH($fields) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0";												
+							$search_main_query = "WHERE MATCH($fields) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and phppos_items.category_id != 15"; //cambios_finales_ cambiar id 1												
 						}
 						else
 						{
 							$search_main_query = "WHERE $fields LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!'";
-							$search_main_query.=" and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0";
+							$search_main_query.=" and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and phppos_items.category_id != 15"; //cambios_finales_ cambiar id 1
 						}
 					}
 				}
@@ -2923,7 +2946,7 @@ SQL;
 				
 			if (!$search) //If we don't have a search make sure we filter out $deleted items
 			{
-				$search_main_query='WHERE '.$this->db->dbprefix('items').".deleted=$deleted and system_item = 0";
+				$search_main_query='WHERE '.$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and phppos_items.category_id != 15"; //cambios_finales_ cambiar id 1				
 				
 				if(isset($category_ids) && !empty($category_ids))
 				{
@@ -3015,12 +3038,13 @@ SQL;
 					{
 						if ($this->config->item('speed_up_search_queries'))
 						{	
-							$this->db->where("($custom_fields or MATCH (".$this->db->dbprefix('items').".name, ".$this->db->dbprefix('items').".item_number, product_id, description) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") or ".$this->db->dbprefix('items').".item_id = ".$this->db->escape($search).") and ".$this->db->dbprefix('items'). ".deleted=$deleted and system_item = 0", NULL, FALSE);							
+							$this->db->where("($custom_fields or MATCH (".$this->db->dbprefix('items').".name, ".$this->db->dbprefix('items').".item_number, product_id, description) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") or ".$this->db->dbprefix('items').".item_id = ".$this->db->escape($search).") and ".$this->db->dbprefix('items'). ".deleted=$deleted and system_item = 0 and items.category_id !=15", NULL, FALSE); //cambios_finales_ cambiar id 1						
 						}
 						else
 						{						
-							$this->db->join('additional_item_numbers', 'additional_item_numbers.item_id = items.item_id', 'left');
-							$this->db->where("($custom_fields or MATCH (".$this->db->dbprefix('items').".name, ".$this->db->dbprefix('items').".item_number, product_id, description) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") or ".$this->db->dbprefix('items').".tags LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!'"." or ".$this->db->dbprefix('categories').".name LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".$this->db->dbprefix('additional_item_numbers').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".$this->db->dbprefix('items').".item_id = ".$this->db->escape($search).") and ".$this->db->dbprefix('items'). ".deleted=$deleted and system_item = 0", NULL, FALSE);		
+							$this->db->join('additional_item_numbers', 'additional_item_numbers.item_id = items.item_id', 'left');		
+							$this->db->where("($custom_fields or MATCH (".$this->db->dbprefix('items').".name, ".$this->db->dbprefix('items').".item_number, product_id, description) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") or ".$this->db->dbprefix('items').".tags LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!'"." or ".$this->db->dbprefix('categories').".name LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".$this->db->dbprefix('additional_item_numbers').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".$this->db->dbprefix('items').".item_id = ".$this->db->escape($search).") and ".$this->db->dbprefix('items'). ".deleted=$deleted and system_item = 0 and phppos_items.category_id !=15", NULL, FALSE);		//cambios_finales_ cambiar id 1
+
 						}
 					}
 					else
@@ -3053,7 +3077,9 @@ SQL;
 							item_number LIKE '".$this->db->escape_like_str($search)."%' ESCAPE '!' or ".
 							"product_id LIKE '".$this->db->escape_like_str($search)."%' ESCAPE '!' or ".
 							$this->db->dbprefix('items').".item_id = ".$this->db->escape($search)." or ".
-							$this->db->dbprefix('categories').".name LIKE '".$this->db->escape_like_str($search)."%' ESCAPE '!' or $custom_fields) and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0");
+							$this->db->dbprefix('categories').".name LIKE '".$this->db->escape_like_str($search)."%' ESCAPE '!' or $custom_fields) and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and ".//);
+							$this->db->dbprefix('items').".category_id !=15"); // cambios_finales_ category_id = 15
+
 						}
 						else
 						{
@@ -3068,7 +3094,8 @@ SQL;
 							$this->db->dbprefix('additional_item_numbers').".item_number LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or ".
 							$this->db->dbprefix('categories').".name LIKE '".(!$this->config->item('speed_up_search_queries') ? '%' : '').$this->db->escape_like_str($search)."%' ESCAPE '!' or $custom_fields
 							
-							) and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0");
+							) and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and ".//);
+							 $this->db->dbprefix('items').".category_id !=15"); // cambios_finales_ category_id = 15
 						}
 					}			
 				}
@@ -3083,19 +3110,20 @@ SQL;
 						|| $fields == $this->db->dbprefix('items').'.cost_price' || $fields == $this->db->dbprefix('items').'.unit_price' || $fields == $this->db->dbprefix('items').'.promo_price' || $fields == $this->db->dbprefix('suppliers').'.company_name' || $fields == $this->db->dbprefix('manufacturers').'.name')
 					{
 					
-						$this->db->where("$fields = ".$this->db->escape($search)." and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0");								
+						$this->db->where("$fields = ".$this->db->escape($search)." and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and items.category_id != 15"); // cambios_finales_ category_id = 15								
 					}
 					else
 					{
 						if($this->config->item('supports_full_text') && $this->config->item('enhanced_search_method'))
 						{
 							//Fulltext
-							$this->db->where("MATCH($fields) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0");												
+							$this->db->where("MATCH($fields) AGAINST ('\"".$this->db->escape_str(escape_full_text_boolean_search($search))."\"' IN BOOLEAN MODE".") and ".$this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and items.category_id != 15"); // cambios_finales_ category_id = 15												
 						}
 						else
 						{
 							$this->db->like($fields, $search, $search, !$this->config->item('speed_up_search_queries') ? 'both' : 'after');
-							$this->db->where($this->db->dbprefix('items').".deleted=$deleted and system_item = 0");																		
+							$this->db->where($this->db->dbprefix('items').".deleted=$deleted and system_item = 0 and ".//);																		
+							$this->db->dbprefix('items').".category_id !=15"); // cambios_finales_ category_id = 15
 						}
 					}
 				}
@@ -3112,6 +3140,7 @@ SQL;
 			if(isset($category_ids) && !empty($category_ids))
 			{
 				$this->db->where_in('categories.id', $category_ids);
+				$this->db->where('categories_id !=',15); // cambios_finales_ category_id = 15
 			}
 				
 			if (!$this->config->item('speed_up_search_queries'))
@@ -3121,13 +3150,13 @@ SQL;
 		
 			if (!$search) //If we don't have a search make sure we filter out deleted items
 			{
+				$this->db->where('items.category_id !=',15); // cambios_finales_ category_id = 15
 				$this->db->where('items.deleted', $deleted);
 				$this->db->where('items.system_item',0);
 			}
-		
 			$this->db->limit($limit);
 			$this->db->offset($offset);
-			return $this->db->get();
+			return $this->db->get();		
 		}
 	}
 	
