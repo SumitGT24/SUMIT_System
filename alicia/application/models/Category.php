@@ -284,14 +284,13 @@ class Category extends MY_Model
 		if (!$can_use_cache || !$cache)
 		{
 			$this->db->from('categories');
-			$this->db->where('id !=',15); //cambios_finales_ id != 1
+			$this->db->where('id !=',1); 
 			$this->db->where('deleted',0);
 			
 			if (!$show_hidden)
 			{
 				$this->db->where('hide_from_grid',0);	
 				$this->db->where('id NOT IN (SELECT category_id FROM phppos_grid_hidden_categories WHERE location_id='.$location_id.')');
-				$this->db->where('id !=',15); //cambios_finales_ id != 1
 			}
 			
 		  $this->db->order_by($col, $order);
@@ -323,7 +322,7 @@ class Category extends MY_Model
 		
 			$this->db->from('categories');
 			$this->db->where('deleted',0);
-			$this->db->where('id !=',15); //cambios_finales_ id != 1
+			$this->db->where('id !=',1); 
 			
 			if (!$show_hidden)
 			{
@@ -353,7 +352,7 @@ class Category extends MY_Model
 		$suggestions = array();
 		$this->db->select('name, id');
 		$this->db->from('categories');
-		$this->db->where('id !=',15); //cambios_finales_ id != 1
+		$this->db->where('id !=',1); 
 		$this->db->where('deleted',0);
 		$this->db->like('name', $search,'both');			
 		

@@ -43,15 +43,14 @@
 		<strong><?php echo lang('common_in_test_mode'); ?>. <a href="sales/disable_test_mode"></strong>
 		<a href="<?php echo site_url('sales/disable_test_mode'); ?>" id="disable_test_mode"><?php echo lang('common_disable_test_mode'); ?></a>
 	</div>
-<?php } ?>
+	<?php } ?>
+	
+	<div class="row register">
+	<!-- Modal save custom item -->
 
-<div class="row register">
-
-	<! -- Modal save custom item -- >
 	<div class="modal fade" id="customItemModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
 	    <div class="modal-dialog" role="document">
 	        <div class="modal-content" style="padding-left: 20px; padding-right: 20px;">
-				<!--form id="customItemForm" method="POST"-->
 				<?php echo form_open_multipart('items/save_custom_item/', array('id' => 'customItemForm', 'autocomplete' => 'off')); ?>
 	            	<div class="modal-header">
 	            	    <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -84,7 +83,7 @@
 	            	    <button type="submit" class="btn btn-primary" name="submitf" id="submitf">Agregar</button>
 	            	    <button type="button" class="btn btn-warning" data-dismiss="modal" style="background-color: #dc3545; border: none;">Cancelar</button>
 	            	</div>
-				<!--/form-->	   
+					   
 				<?php echo form_close(); ?>             
 	        </div>
 	    </div>
@@ -2804,7 +2803,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 							});
 							return true;
 						}
-						console.log("llego");
 						$("#item").val(decodeHtml(ui.item.value) + '|FORCE_ITEM_ID|');
 						$('#add_item_form').ajaxSubmit({
 							target: "#register_container",

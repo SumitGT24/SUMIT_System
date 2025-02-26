@@ -296,14 +296,10 @@ class Work_orders extends Secure_area
 		$this->check_action_permission('edit');
 
 		$work_order_data = array();
-		//Actualizar costo de la orden de trabajo
-		//$item_sale_data = array();
+		//Obtener ID de la orden de trabajo
 		$work_order_info = $this->Work_order->get_info($work_order_id)->row();
 		$item_id = $work_order_info->custom_field_1_value;
-		//$item_sale_data['item_unit_price'] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : 0;
-
-		//$work_order_data['estimated_repair_date'] = $this->input->post('estimated_repair_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('estimated_repair_date'))) : NULL;
-		//$work_order_data[''] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : NULL;
+	
 		$work_order_data['estimated_cost'] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : NULL;
 		$work_order_data['advance_payment'] = $this->input->post('advance_payment') ? $this->input->post('advance_payment') : NULL;
 		$work_order_data['order_type'] = $this->input->post('order_type') ? 1 : 0;
@@ -330,8 +326,11 @@ class Work_orders extends Secure_area
 		}
 
 		try{
-			$this->db->where('id', $item_id);
-			$this->db->update('items_sales_id',array('item_unit_price' => $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : 0));
+			//Actualizar costo en el item de venta
+			$item_sale_data = array();
+			$item_sale_data['item_unit_price'] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : 0;
+			$this->db->where('item_id', $item_id);
+			$this->db->update('sales_items',$item_sale_data);
 		}catch(Exception $e){
 			//echo $e->getMessage();
 		}

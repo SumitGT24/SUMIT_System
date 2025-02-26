@@ -127,7 +127,7 @@
                     <div class="version">
                         <p>
                             <a href="<?php echo site_url('login/reset_password')?>"><h5>¿Olvidaste tu contraseña?</h5></a>
-                            <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><h5>Soporte técnico</h5></a> </span> 
+                            <a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><h5>Soporte técnico</h5></a> </span> 
                         </p>							                   											              						
                     </div>                
                 </div>

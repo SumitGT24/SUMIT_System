@@ -1,6 +1,6 @@
 		<div id="footers" class="col-md-12 hidden-print text-center">
 		
-		    <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">Gracias por adquirir nuestros servicios, escribanos ahora¡¡</a>
+		    <a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank">Gracias por adquirir nuestros servicios, escribanos ahora¡¡</a>
 		
 		
 		</div>

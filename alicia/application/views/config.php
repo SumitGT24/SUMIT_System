@@ -2533,7 +2533,6 @@ $(document).ready(function()
 				{				
 					show_feedback('error',response.message,<?php echo json_encode(lang('common_error')); ?>);					
 				}	
-				//print response
 				submitting = false;
 			},
 			dataType:'json'
@@ -2556,8 +2555,31 @@ $(document).ready(function()
 			{
 				required: true
 			},
-		
-   	},
+			item_id_auto_increment:
+			{
+				number: true,
+				min: 1,
+				max: 999999999
+			},
+			item_kit_id_auto_increment:
+			{
+				number: true,
+				min: 1,
+				max: 999999999
+			},
+			sale_id_auto_increment:
+			{
+				number: true,
+				min: 1,
+				max: 999999999
+			},
+			receiving_id_auto_increment:
+			{
+				number: true,
+				min: 1,
+				max: 999999999
+			}
+   		},
 		messages: 
 		{
      		company: <?php echo json_encode(lang('config_company_required')); ?>,

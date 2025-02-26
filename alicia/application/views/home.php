@@ -24,7 +24,7 @@ $this->load->helper('demo');
 						   <div class="alert alert-success">
 						    <?php echo lang('login_trail_info'). ' '.date(get_date_format(), strtotime($cloud_customer_info['trial_end_date'])).'. '.lang('login_trial_info_2'); ?>
 						    </div>
-						    <a class="btn btn-block btn-success" href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_update_billing_info');?></a>
+						    <a class="btn btn-block btn-success" href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_update_billing_info');?></a>
 							</div>
 						</div>
 					</div>
@@ -38,7 +38,7 @@ $this->load->helper('demo');
 						   <div class="alert alert-danger">
 						        <?php echo lang('login_payment_failed_text'); ?>
 						    </div>
-						    <a class="btn btn-block btn-success" href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_update_billing_info');?></a>
+						    <a class="btn btn-block btn-success" href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_update_billing_info');?></a>
 							</div>
 						</div>
 					</div>
@@ -51,7 +51,7 @@ $this->load->helper('demo');
 						    <div class="alert alert-danger">
 						        <?php echo lang('login_resign_text'); ?>
 						    </div>
-							<a class="btn btn-block btn-sm btn-success" href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('login_resignup');?></a>
+							<a class="btn btn-block btn-sm btn-success" href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('login_resignup');?></a>
 						</ul>
 					</div>
 				</div>
@@ -154,10 +154,10 @@ $this->load->helper('demo');
 						
 
 						
-						<h3>      <a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank">Adquirir Software de Ventas</a> </span> 
+						<h3>      <a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank">Adquirir Software de Ventas</a> </span> 
 </h3>
 						<p><?php echo lang('home_reseller_program_signup')?></p>
-						<a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" class="reseller_description btn btn-primary" target="_blank">
+						<a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" class="reseller_description btn btn-primary" target="_blank">
 							<?php echo lang('home_signup_now');?>
 						</a>
 					</div>
@@ -175,9 +175,9 @@ $this->load->helper('demo');
 				<div class="panel-body">
 					<a id="dismiss_feedback" href="<?php echo site_url('home/dismiss_feedback_message') ?>" class="pull-right text-danger"><?php echo lang('common_dismiss'); ?></a>
 					<div id="reseller_activate_container">
-						<h3><a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('home_feedback'); ?></a></h3>
+						<h3><a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('home_feedback'); ?></a></h3>
 						<p><?php echo lang('home_feedback_program')?></p>
-						<a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" class="reseller_description btn btn-primary" target="_blank">
+						<a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" class="reseller_description btn btn-primary" target="_blank">
 							<?php echo lang('home_visit_now');?>
 						</a>
 					</div>
@@ -197,7 +197,7 @@ $this->load->helper('demo');
 				<div class="panel-body">
 					<a id="dismiss_mercury" href="<?php echo site_url('home/dismiss_mercury_message') ?>" class="pull-right text-danger"><?php echo lang('common_dismiss'); ?></a>
 					<div id="mercury_activate_container">
-						<h3><a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_credit_card_processing'); ?></a></h3>
+						<h3><a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_credit_card_processing'); ?></a></h3>
 						
 							<?php echo lang('home_mercury_activate_promo_text');?>
 						</a>
@@ -215,9 +215,9 @@ $this->load->helper('demo');
 				<div class="panel-body">
 					<a id="dismiss_bluejay" href="<?php echo site_url('home/dismiss_bluejay_message') ?>" class="pull-right text-danger"><?php echo lang('common_dismiss'); ?></a>
 					<div id="reseller_activate_container">
-						<h3><a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('home_bluejay_reviews'); ?></a></h3>
+						<h3><a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('home_bluejay_reviews'); ?></a></h3>
 						<p><?php echo lang('home_bluejay')?></p>
-						<a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" class="reseller_description btn btn-primary" target="_blank">
+						<a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" class="reseller_description btn btn-primary" target="_blank">
 							<?php echo lang('home_signup_now');?>
 						</a>
 					</div>

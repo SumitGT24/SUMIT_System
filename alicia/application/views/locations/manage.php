@@ -124,7 +124,7 @@ $(document).ready(function()
 <div class="add-location-link">
 	<div class="col-md-12 text-center">
 		<?php if (!is_on_demo_host() && !$deleted) { ?>
-			<div class="alert alert-info" role="alert"><?php echo lang('locations_adding_location_requires_addtional_license'); ?>: <strong><a href="https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('locations_purchase_additional_locations'); ?></a></strong></div>
+			<div class="alert alert-info" role="alert"><?php echo lang('locations_adding_location_requires_addtional_license'); ?>: <strong><a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('locations_purchase_additional_locations'); ?></a></strong></div>
 		<?php } ?>
 	</div>
 </div>
@@ -176,7 +176,7 @@ $(document).ready(function()
 				if (result)
 				{
 					window.location = $("#new_location_btn").attr('href');
-					//window.location='https://api.whatsapp.com/send/?phone=50247192667&text&type=phone_number&app_absent=0';
+					//window.location='https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0';
 				}
 				else
 				{
