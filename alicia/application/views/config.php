@@ -29,12 +29,12 @@ $this->load->view("partial/header");
 	    'screeny'     => 0,
 	    'window_name' => '_blank'
 		);	
-		/*
+		
 		function create_section($title)
 		{
 			return $title ;
 		}
-		*/
+		
 	?>
 	<!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
@@ -2360,7 +2360,7 @@ $this->load->view("partial/header");
 	<!-- Cierre de formulario -->
 	<?php echo form_close(); ?>
 </div>
-	<!--/div-->
+	</div>
 
 <!--Script funciones formulario-->
 
