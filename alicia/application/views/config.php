@@ -1,7 +1,5 @@
 <?php
 $this->load->view("partial/header"); 
-$this->load->helper('demo');
-$this->load->helper('update');
 ?>
 
 <!-- Contenedor pestañas -->
@@ -31,13 +29,14 @@ $this->load->helper('update');
 	    'screeny'     => 0,
 	    'window_name' => '_blank'
 		);	
-
+		/*
 		function create_section($title)
 		{
 			return $title ;
 		}
+		*/
 	?>
-<!-- Formulario de configuraciones -->
+	<!-- Formulario de configuraciones -->
 	<?php echo form_open_multipart('config/save/', array('id' => 'config_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 
 	<!-- Informacion de la empresa-->
@@ -605,7 +604,6 @@ $this->load->helper('update');
 					
 				</div>
 				
-				
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_require_supplier_recv').':', 'require_supplier_for_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -617,8 +615,7 @@ $this->load->helper('update');
 						<label for="require_supplier_for_recv"><span></span></label>
 					</div>
 				</div>
-				
-				
+					
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('config_track_shipping_cost_for_receivings').':', 'track_shipping_cost_recv',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -705,7 +702,6 @@ $this->load->helper('update');
 					</div>
 				</div>
 				
-				
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('common_track_giftcards_in_register').':', 'track_giftcard',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -717,7 +713,6 @@ $this->load->helper('update');
 						<label for="track_giftcard"><span></span></label>
 					</div>
 				</div>
-				
 				
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 					<?php echo form_label(lang('common_track_debit_cards_in_register').':', 'track_debit_cards',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -1740,7 +1735,6 @@ $this->load->helper('update');
 					</div>
 				</div>
 				
-				
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_barcodes')) ?>">	
 					<?php echo form_label(lang('config_hide_barcode_on_barcode_labels').':', 'hide_barcode_on_barcode_labels',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2281,18 +2275,19 @@ $this->load->helper('update');
 									<?php 
 								}
 								?>
-					    </ul>
-					</div>
+					    	</ul>
+						</div>
 				</div>
 						
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 				<?php echo form_label(lang('config_allow_scan_of_customer_into_item_field').':', 'allow_scan_of_customer_into_item_field',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'allow_scan_of_customer_into_item_field',
-						'id'=>'allow_scan_of_customer_into_item_field',
-						'value'=>'1',
-						'checked'=>$this->config->item('allow_scan_of_customer_into_item_field')));?>
+						<?php echo form_checkbox(array(
+							'name'=>'allow_scan_of_customer_into_item_field',
+							'id'=>'allow_scan_of_customer_into_item_field',
+							'value'=>'1',
+							'checked'=>$this->config->item('allow_scan_of_customer_into_item_field')));
+						?>
 						<label for="allow_scan_of_customer_into_item_field"><span></span></label>
 					</div>
 				</div>						
@@ -2300,11 +2295,12 @@ $this->load->helper('update');
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_application_settings')) ?>">	
 				<?php echo form_label(lang('config_do_not_delete_serial_number_when_selling').':', 'do_not_delete_serial_number_when_selling',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'do_not_delete_serial_number_when_selling',
-						'id'=>'do_not_delete_serial_number_when_selling',
-						'value'=>'1',
-						'checked'=>$this->config->item('do_not_delete_serial_number_when_selling')));?>
+						<?php echo form_checkbox(array(
+							'name'=>'do_not_delete_serial_number_when_selling',
+							'id'=>'do_not_delete_serial_number_when_selling',
+							'value'=>'1',
+							'checked'=>$this->config->item('do_not_delete_serial_number_when_selling')));
+						?>
 						<label for="do_not_delete_serial_number_when_selling"><span></span></label>
 					</div>
 				</div>
@@ -2326,30 +2322,29 @@ $this->load->helper('update');
 	</div>
 	<!--Controlar animaciones de pestañas-->
 	<script>
-	function openPage(pageName, elmnt) {
-	  var i, tabcontent, tablinks;
-	  tabcontent = document.getElementsByClassName("tabcontent");
-	  for (i = 0; i < tabcontent.length; i++) {
-	    tabcontent[i].style.display = "none";
-	  }
+		function openPage(pageName, elmnt) {
+		  var i, tabcontent, tablinks;
+		  tabcontent = document.getElementsByClassName("tabcontent");
+		  for (i = 0; i < tabcontent.length; i++) {
+		    tabcontent[i].style.display = "none";
+		  }
 
-	  // Remove the background color of all tablinks/buttons
-	  tablinks = document.getElementsByClassName("tablink");
-	  for (i = 0; i < tablinks.length; i++) {
-	    tablinks[i].style.backgroundColor = "";
-		tablinks[i].style.color = "";
-	  }
+		  // Remove the background color of all tablinks/buttons
+		  tablinks = document.getElementsByClassName("tablink");
+		  for (i = 0; i < tablinks.length; i++) {
+		    tablinks[i].style.backgroundColor = "";
+			tablinks[i].style.color = "";
+		  }
 
-	  // Show the specific tab content
-	  document.getElementById(pageName).style.display = "block";
+		  // Show the specific tab content
+		  document.getElementById(pageName).style.display = "block";
 
-	  // Add the specific color to the button used to open the tab content
-	  elmnt.style.backgroundColor = '#e88960';
-	  elmnt.style.color = 'white';
-	}
-
-	// Get the element with id="defaultOpen" and click on it
-	document.getElementById("defaultOpen").click(); 
+		  // Add the specific color to the button used to open the tab content
+		  elmnt.style.backgroundColor = '#e88960';
+		  elmnt.style.color = 'white';
+		}
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("defaultOpen").click(); 
 	</script>
 
 	<!-- Botón de guardado -->
@@ -2365,6 +2360,7 @@ $this->load->helper('update');
 	<!-- Cierre de formulario -->
 	<?php echo form_close(); ?>
 </div>
+	<!--/div-->
 
 <!--Script funciones formulario-->
 

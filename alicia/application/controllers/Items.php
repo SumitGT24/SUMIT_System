@@ -2774,7 +2774,7 @@ class Items extends Secure_area implements Idata_controller
 	        'barcode_name' => '',
 	        'description' => '',
 	        'long_description' => '',
-	        'category_id' => 15, // ID custom_items cambios_finales_ 1,
+	        'category_id' => 1, 
 	        'cost_price' => $this->input->post('customItemCostPrice'),
 	        'unit_price' => $this->input->post('customItemUnitPrice'),
 	        'default_quantity' => NULL,

@@ -1271,7 +1271,7 @@ public function get_info($work_order_id)
 	        'barcode_name' => '',
 	        'description' => '',
 	        'long_description' => '',
-	        'category_id' => 15, // ID custom_items cambios_finales_ 1,
+	        'category_id' => 1,
 	        'cost_price' => 0,
 	        'unit_price' => 0,
 	        'default_quantity' => NULL,
