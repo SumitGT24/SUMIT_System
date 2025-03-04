@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -56,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |							- good for ensuring strict SQL while developing
 |	['ssl_options']	Used to set various SSL options that can be used when making SSL connections.
 |	['failover'] array - A array with 0 or more data for connections if the main should fail.
-|	['save_queries'] TRUE/FALSE - Whether to "save" all executed queries.
+|	['save_queries'] TRUE/FALSE - Whether to save all executed queries.
 | 				NOTE: Disabling this will also effectively disable both
 | 				$this->db->last_query() and profiling of DB queries.
 | 				When you run a query, with this setting set to TRUE (default),
@@ -73,11 +74,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default']['hostname'] = '34.174.13.80';
+$db['default']['hostname'] = '127.0.0.1';
 $db['default']['dsn'] = '';
-$db['default']['username'] = 'ug5hdt4vwm7cp';      
-$db['default']['password'] = 'p1$1$b2@o*}3';
-$db['default']['database'] = 'dbtaj76n8qlqwf';
+$db['default']['username'] = 'umdbgxctabmdd';      
+$db['default']['password'] = '8pce6ao8xxl9';
+$db['default']['database'] = 'dbzuhho4nogg0h';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = 'phppos_';
 $db['default']['pconnect'] = FALSE;
@@ -93,3 +94,5 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 $db['default']['failover'] = array();
 $db['default']['save_queries'] = FALSE;
+
+
