@@ -1583,14 +1583,14 @@
 						<div class="col-sm-10 col-md-10 col-lg-10">
 							<div class="input-group add-payment-form">
 								<input type="text" id="nombreCliente" class="add-input numKeyboard form-control" name="nombreCliente" value="CONSUMIDOR FINAL" style="  border-color: #06080a !important;
-    								border-right-width: 1px !important;">
+    								border-right-width: 1px !important;" placeholder="Ingrese el nombre del cliente">
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-10 col-md-10 col-lg-10" style="   padding-top: 1rem;">
 							<div class="input-group add-payment-form">
-								<input type="text" id="raddres" class="add-input numKeyboard form-control" name="raddres" value="CIUDAD" style=" border-color: #06080a !important; border-right-width: 1px !important;">
+								<input type="text" id="raddres" class="add-input numKeyboard form-control" name="raddres" value="CIUDAD" style=" border-color: #06080a !important; border-right-width: 1px !important;" placeholder="Ingrese la dirección">
 							</div>
 						</div>
 					</div>
@@ -2854,62 +2854,74 @@ if (isset($number_to_add) && isset($item_to_add)) {
 				document.getElementById("finish_sale_button").disabled = false;
 			}
 		});
-		$("#add_nit_button").click(function(e) {
+		$("#add_nit_button").click(async function(e) {
 			e.preventDefault();
-			console.log("buscando nit");
-			var addres = $("#raddres").val()
-
-			var tipo = $("#Selected_format").val()
-			var nit = $("#nitCliente").val()
-			if(nit==""){
-				nit="CF";
-				tipo="NiT";
-			}
-			if (nit.replace(/-/g, "").toUpperCase() !== 'CF') {
-				params = {
-					nit: nit.replace(/-/g, ""),
-					tipo: tipo
-				};
-				$.post('<?php echo site_url("sales/nit"); ?>', params, function(response) {
-					console.log(response);
-					console.log("lloga");
-				});
-				$.post('<?php echo site_url("sales/nit"); ?>', params, function(data) {
-					$.each(data, function(key, val) {
-						console.log("llogo");
-						switch (val.message) {
-							case 'success':
-								$("#nombreCliente").val(val.nombre);
-								$("#TextCliente").val(val.nombre);
-								$("#nrodocumento").val(nit);
-								$("#tipo_e").val(tipo);
-								$("#raddres").val(addres);
-								document.getElementById("nit-alert").className = 'hidden'; // to hide
-								document.getElementById("finish_sale_button").disabled = false;
-								break;
-								default:
-        						document.getElementById("nit-alert").className = ''; // to show
-								document.getElementById("finish_sale_button").disabled = true;
-								break;
-						}
-					});
-				}, 'json');
-			} else {
-				params = {
-					nit: nit.replace(/-/g, ""),
-					tipo: tipo
-				};
-				$.post('<?php echo site_url("sales/nit"); ?>', params, function(response) {
-
-				});
-				$("#nitCliente").val($("#nitCliente").val().toUpperCase());
-				$("#nombreCliente").val('CONSUMIDOR FINAL');
-				$("#TextCliente").val('CONSUMIDOR FINAL');
-				$("#tipo_e").val(tipo);
-				$("#raddres").val(addres);
-				$("#nrodocumento").val("CF");
-			}
+			try {
+            	await verifyNit(); 
+        	} catch (error) {
+        	    //alert(error);
+        	}
 		});
+
+		function verifyNit() {
+    		return new Promise((resolve, reject) => {
+    		    console.log("Buscando NIT...");
+    		    if ($('#raddres').val() == '') {
+    		        $("#raddres").val('CIUDAD');
+    		    }
+    		    var addres = $("#raddres").val();
+    		    var tipo = $("#Selected_format").val();
+    		    var nit = $("#nitCliente").val();
+			
+    		    if (nit == "") {
+    		        nit = "CF";
+    		        tipo = "NiT";
+    		    }
+			
+    		    if (nit.replace(/-/g, "").toUpperCase() !== 'CF') {
+    		        let params = { nit: nit.replace(/-/g, ""), tipo: tipo };
+				
+    		        $.post('<?php echo site_url("sales/nit"); ?>', params, function(data) {
+    		            let success = false;
+    		            $.each(data, function(key, val) {
+    		                console.log("Procesando respuesta del servidor...");
+    		                switch (val.message) {
+    		                    case 'success':
+    		                        $("#nombreCliente").val(val.nombre);
+    		                        $("#TextCliente").val(val.nombre);
+    		                        $("#nrodocumento").val(nit);
+    		                        $("#tipo_e").val(tipo);
+    		                        $("#raddres").val(addres);
+    		                        document.getElementById("nit-alert").className = 'hidden';
+    		                        document.getElementById("finish_sale_button").disabled = false;
+    		                        success = true;
+    		                        break;
+    		                    default:
+    		                        document.getElementById("nit-alert").className = '';
+    		                        document.getElementById("finish_sale_button").disabled = true;
+    		                        break;
+    		                }
+    		            });
+					
+    		            if (success) {
+    		                resolve(); // La verificación fue exitosa
+    		            } else {
+    		                reject("Datos de facturación electrónica incorrectos");
+    		            }
+    		        }, 'json');
+    		    } else {
+    		        // Si el NIT es "CF", se completa automáticamente
+    		        $("#nitCliente").val($("#nitCliente").val().toUpperCase());
+    		        $("#nombreCliente").val('CONSUMIDOR FINAL');
+    		        $("#TextCliente").val('CONSUMIDOR FINAL');
+    		        $("#tipo_e").val(tipo);
+    		        $("#raddres").val(addres);
+    		        $("#nrodocumento").val("CF");
+    		        resolve(); // No necesita validación
+    		    }
+    		});
+		}
+
 
 		$('#change_date_enable').click(function() {
 			if ($(this).is(':checked')) {
@@ -3185,7 +3197,8 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		});
 
 		// Finish Sale button
-		$("#finish_sale_button").click(function(e) {
+		//$("#finish_sale_button").click(function(e) {
+		$("#finish_sale_button").click(async function(e) {
 			e.preventDefault();
 
 			var confirm_messages = [];
@@ -3213,18 +3226,29 @@ if (isset($number_to_add) && isset($item_to_add)) {
 				confirm_messages.push(<?php echo json_encode(lang("sales_confirm_finish_sale")); ?>);
 			<?php } ?>
 
-			//Verifcar datos de facturacion
-			if ($("#show_factura_on_receipt").is(':checked')) {
-			$("#add_nit_button").trigger('click');			
-			var alerta = document.getElementById("nit-alert").className;
-			var nombre = document.getElementById("nombreCliente").value;
-			var direccion = document.getElementById("raddres").value;
-			if(alerta == 'hidden' && nombre != '' && direccion != ''){				
-				finishSale(confirm_messages);
-			}else
-				alert('Datos de facturación electrónica incorrectos');
-				$("#finish_sale_button").show();
+			/*Verifcar datos de facturacion*/
+			//Si la factura electrónica está activada
+			if ($("#show_factura_on_receipt").is(':checked')) {			
+				try {
+            		// Espera a que verificarNit() termine antes de continuar
+            		await verifyNit(); 
+            		// Se envían los datos de facturación
+            		$.post('<?php echo site_url("sales/set_nit"); ?>', {
+            		    nit: $('#nrodocumento').val(),
+            		    nombreCliente: $('#nombreCliente').val(),
+            		    tipo_e: $('#tipo_e').val(),
+            		    addres: $('#raddres').val(),
+            		}, function() {
+            		    // Se llama a la función finishSale 
+            		    finishSale(confirm_messages);
+            		});
+        		} catch (error) {					
+        		    $("#finish_sale_button").show();
+					document.getElementById("finish_sale_button").disabled = true;
+        		}
+
 			} else {
+				// Si la factura electrónica no está activada
 				finishSale(confirm_messages);
 			}
 		});

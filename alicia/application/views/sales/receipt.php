@@ -173,8 +173,20 @@ if (!(isset($standalone) && $standalone)) {
 								)) . '&nbsp;<label for="print_duplicate_receipt"><span></span>' . lang('sales_duplicate_receipt', '', array(), TRUE) . '</label>';
 								?>
 							</li>
+							<!-- Descargar factura electronica -->
+							<?php
+							#Obtener datos de la venta actual
+							$sale_info = $this->Sale->get_info($sale_id_raw)->row_array();
+							$fell = $sale_info['fell'];
+							#Verificar que exista una factura
+							if ($sale_info['fell']) { ?>
+								<li>
+									<?php echo '<a class=" btn btn-primary btn-lg hidden-print" href="https://print.totaldoc.io/pdf?uuid=' . $fell . '&formato=2" target="_blank">Descargar factura electrónica</a>'?>
+								</li>
+							<?php } ?>
+							
 							<li>
-								<button class="btn btn-primary btn-lg hidden-print" id="print_button" onclick="print_receipt()"> Imprimir Factura</button>
+								<button class="btn btn-primary btn-lg hidden-print" id="print_button" onclick="print_receipt()" > Imprimir factura</button>
 							</li>
 							<?php
 							if ($store_account_payment) {
@@ -183,7 +195,7 @@ if (!(isset($standalone) && $standalone)) {
 
 							?>
 									<li>
-										<?php echo anchor('sales/download_receipt/' . $sale_id_paid, '<span class="ion-arrow-down-a"> Factura ' . $sale_id_paid . '</span>', array('id' => 'download_pdf', 'class' => 'btn btn-primary btn-lg hidden-print')); ?>
+										<?php echo anchor('sales/download_receipt/' . $sale_id_paid, '<span class="ion-arrow-down-a"> Factura' . $sale_id_paid . '</span>', array('id' => 'download_pdf', 'class' => 'btn btn-primary btn-lg hidden-print')); ?>
 									</li>
 
 							<?php 	}

@@ -1322,7 +1322,7 @@
 
 					<?php if (!(isset($exchange_name) && $exchange_name) && $this->Employee->has_module_action_permission('sales', 'edit_sale_price', $this->Employee->get_logged_in_employee_info()->person_id)) { ?>
 
-						<a href="#" id="subtotal" class="xeditable xeditable-price" data-validate-number="true" data-type="text" data-value="<?php echo H(to_currency_no_money($subtotal)); ?>" data-pk="1" data-name="subtotal" data-url="<?php echo site_url('sales/edit_subtotal'); ?>" data-title="<?php echo H(lang('common_sub_total')); ?>"><?php echo to_currency($subtotal, 10); ?></a>
+						<a href="#" id="subtotal" style="color: #ffc300;" class="xeditable xeditable-price" data-validate-number="true" data-type="text" data-value="<?php echo H(to_currency_no_money($subtotal)); ?>" data-pk="1" data-name="subtotal" data-url="<?php echo site_url('sales/edit_subtotal'); ?>" data-title="<?php echo H(lang('common_sub_total')); ?>"><?php echo to_currency($subtotal, 10); ?></a>
 
 					<?php } else { ?>
 						<?php if (isset($exchange_name) && $exchange_name) {
@@ -1339,7 +1339,7 @@
 				</span>
 
 				<?php if ($this->Employee->has_module_action_permission('sales', 'edit_taxes', $this->Employee->get_logged_in_employee_info()->person_id)) { ?>
-					[<a href="<?php echo site_url('sales/edit_taxes/') ?>" class="" id="edit_taxes" data-toggle="modal" data-target="#myModal"><?php echo lang('common_edit_taxes'); ?></a>]
+					[<a href="<?php echo site_url('sales/edit_taxes/') ?>" style="color: #ffc300;" class="" id="edit_taxes" data-toggle="modal" data-target="#myModal"><?php echo lang('common_edit_taxes'); ?></a>]
 				<?php } ?>
 			</li>
 
@@ -1555,78 +1555,46 @@
 				));
 				echo '<label for="show_comment_on_receipt"><span></span>' . lang('sales_comments_receipt') . '</label>'; ?>
 			</div>
-			<div class="factura_electronica" style="
-    margin-left: 0.7rem;
-">
+			<!-- Formulario factura electronica / Posicion original -->
+			<div class="factura_electronica" style="margin-left: 0.7rem;">
 				<?php echo form_checkbox(array(
 					'name' => 'show_factura_on_receipt',
 					'id' => 'show_factura_on_receipt',
 					'value' => '1',
 					'checked' => false
 				));
-				echo '<label for="show_factura_on_receipt"><span></span>' .  'Factura Electronica' . '</label>'; ?>
+				echo '<label for="show_factura_on_receipt"><span></span>' .  'Factura electrónica' . '</label>'; ?>
 				<div id="factura_electronica">
-					<div class="row">
-						<div class="col-sm-8 col-md-8 col-lg-8">
-							<?php echo form_dropdown('date_format', array(
-								'NiT'    => 'NIT',
-								'CUI'  => 'CUI',
-							),  array(), 'class="form-control" id="Selected_format"');
-							?>
-
-
-
-
-						</div>
-						<div class=" col-sm-4 col-md-4 clas-lg-4">
-							<span class="input-group-cf">
-								<a href="#" class="btn btn-warning" style=" width: 8rem;" id="add_cf_button">CF</a>
-
+					<div class="row-elements" style="padding-right: 25px !important;">
+							<span style="width: 20%;">
+								<?php echo form_dropdown('date_format', array(
+									'NiT'  => 'NIT',
+									'CUI'  => 'CUI',
+								),  array(), 'class="form-control" id="Selected_format"');
+								?>
 							</span>
-						</div>
+							<input type="text" name="nitCliente" id="nitCliente" class="add-input numKeyboard form-control" placeholder="Ingrese el NIT/CUI o deje vacío para CF">				
+							<a href="#" class="btn btn-primary btn-lg" id="add_nit_button">Buscar</a>														
 					</div>
 
-					<div class="side-heading"></div>
-					<div class="input-group add-payment-form">
-						<input type="text" name="nitCliente" id="nitCliente" class="add-input numKeyboard form-control">
-
-						<span class="input-group-addon">
-							<a href="#" class="" id="add_nit_button">buscar</a>
-
-						</span>
-
-					</div>
-					<h5>NOMBRE CLIENTE</h5>
+					<label id="nit-alert" class="hidden" style="color: red;">NIT/CUI inválido</label>
+						<h5>NOMBRE CLIENTE:</h5>						
 					<div class="row">
 						<div class="col-sm-10 col-md-10 col-lg-10">
 							<div class="input-group add-payment-form">
 								<input type="text" id="nombreCliente" class="add-input numKeyboard form-control" name="nombreCliente" value="CONSUMIDOR FINAL" style="  border-color: #06080a !important;
-    border-right-width: 1px !important;
-">
-
-
+    								border-right-width: 1px !important;" placeholder="Ingrese el nombre del cliente">
 							</div>
-
 						</div>
-
 					</div>
 					<div class="row">
-
 						<div class="col-sm-10 col-md-10 col-lg-10" style="   padding-top: 1rem;">
 							<div class="input-group add-payment-form">
-
-
-								<input type="text" id="raddres" class="add-input numKeyboard form-control" name="raddres" value="CIUDAD" style="
-    border-color: #06080a !important;
-    border-right-width: 1px !important;
-">
-
+								<input type="text" id="raddres" class="add-input numKeyboard form-control" name="raddres" value="CIUDAD" style=" border-color: #06080a !important; border-right-width: 1px !important;" placeholder="Ingrese la dirección">
 							</div>
-
-
 						</div>
 					</div>
-					<input type="hidden" id="nrodocumento" name="nrodocumento">
+					<input type="hidden" id="nrodocumento" name="nrodocumento" value="CF">
 					<input type="hidden" id="tipo_e" name="tipo_e">
 				</div>
 
@@ -2232,10 +2200,7 @@ if (isset($number_to_add) && isset($item_to_add)) {
 	        });
 	    });
 	});
-
 	//End custom item form
-
-
 
 	$("#save-qty-form").submit(function(e) {
 		e.preventDefault();
@@ -2879,81 +2844,85 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		$('#show_factura_on_receipt').click(function() {
 			if ($(this).is(':checked')) {
 				$("#factura_electronica").show();
+				document.getElementById("nit-alert").className = 'hidden';
+				document.getElementById("nrodocumento").value = 'CF';
+				document.getElementById("nombreCliente").value = 'CONSUMIDOR FINAL';
+				document.getElementById("nitCliente").value = '';
+				document.getElementById("Selected_format").value = 'NiT';
 			} else {
 				$("#factura_electronica").hide();
+				document.getElementById("finish_sale_button").disabled = false;
 			}
 		});
-		$("#add_cf_button").click(function(e) {
+		$("#add_nit_button").click(async function(e) {
 			e.preventDefault();
-			var tipo = $("#Selected_format").val()
-			var nit = "CF"
-			var addres = $("#raddres").val()
-			params = {
-				nit: nit.replace(/-/g, ""),
-				tipo: tipo
-			};
-			$.post('<?php echo site_url("sales/nit"); ?>', params, function(response) {
-
-			});
-			$("#nitCliente").val("CF");
-			$("#nombreCliente").val('CONSUMIDOR FINAL');
-			$("#TextCliente").val('CONSUMIDOR FINAL');
-			$("#tipo_e").val(tipo);
-			$("#raddres").val(addres);
-			$("#nrodocumento").val("CF");
-
+			try {
+            	await verifyNit(); 
+        	} catch (error) {
+        	    //alert(error);
+        	}
 		});
-		$("#add_nit_button").click(function(e) {
-			e.preventDefault();
-			console.log("buscando nit");
-			var addres = $("#raddres").val()
 
-			var tipo = $("#Selected_format").val()
-			var nit = $("#nitCliente").val()
-			if (nit.replace(/-/g, "").toUpperCase() !== 'CF') {
-				params = {
-					nit: nit.replace(/-/g, ""),
-					tipo: tipo
-				};
-				$.post('<?php echo site_url("sales/nit"); ?>', params, function(response) {
-					console.log(response);
-					console.log("lloga");
-				});
-				$.post('<?php echo site_url("sales/nit"); ?>', params, function(data) {
-					$.each(data, function(key, val) {
-						console.log("llogo");
-						switch (val.message) {
-							case 'success':
+		function verifyNit() {
+    		return new Promise((resolve, reject) => {
+    		    console.log("Buscando NIT...");
+    		    if ($('#raddres').val() == '') {
+    		        $("#raddres").val('CIUDAD');
+    		    }
+    		    var addres = $("#raddres").val();
+    		    var tipo = $("#Selected_format").val();
+    		    var nit = $("#nitCliente").val();
+			
+    		    if (nit == "") {
+    		        nit = "CF";
+    		        tipo = "NiT";
+    		    }
+			
+    		    if (nit.replace(/-/g, "").toUpperCase() !== 'CF') {
+    		        let params = { nit: nit.replace(/-/g, ""), tipo: tipo };
+				
+    		        $.post('<?php echo site_url("sales/nit"); ?>', params, function(data) {
+    		            let success = false;
+    		            $.each(data, function(key, val) {
+    		                console.log("Procesando respuesta del servidor...");
+    		                switch (val.message) {
+    		                    case 'success':
+    		                        $("#nombreCliente").val(val.nombre);
+    		                        $("#TextCliente").val(val.nombre);
+    		                        $("#nrodocumento").val(nit);
+    		                        $("#tipo_e").val(tipo);
+    		                        $("#raddres").val(addres);
+    		                        document.getElementById("nit-alert").className = 'hidden';
+    		                        document.getElementById("finish_sale_button").disabled = false;
+    		                        success = true;
+    		                        break;
+    		                    default:
+    		                        document.getElementById("nit-alert").className = '';
+    		                        document.getElementById("finish_sale_button").disabled = true;
+    		                        break;
+    		                }
+    		            });
+					
+    		            if (success) {
+    		                resolve(); // La verificación fue exitosa
+    		            } else {
+    		                reject("Datos de facturación electrónica incorrectos");
+    		            }
+    		        }, 'json');
+    		    } else {
+    		        // Si el NIT es "CF", se completa automáticamente
+    		        $("#nitCliente").val($("#nitCliente").val().toUpperCase());
+    		        $("#nombreCliente").val('CONSUMIDOR FINAL');
+    		        $("#TextCliente").val('CONSUMIDOR FINAL');
+    		        $("#tipo_e").val(tipo);
+    		        $("#raddres").val(addres);
+    		        $("#nrodocumento").val("CF");
+    		        resolve(); // No necesita validación
+    		    }
+    		});
+		}
 
-								$("#nombreCliente").val(val.nombre);
-								$("#TextCliente").val(val.nombre);
-								$("#nrodocumento").val(nit);
-								$("#tipo_e").val(tipo);
-								$("#raddres").val(addres);
-								break;
-							default:
-								alert(`NIT: ${params.nit} no valido\n intente ingresar el nit/cui correctamente o verifique que sea un nit/cui correcto`);
-								break;
-						}
-					});
-				}, 'json');
-			} else {
-				params = {
-					nit: nit.replace(/-/g, ""),
-					tipo: tipo
-				};
-				$.post('<?php echo site_url("sales/nit"); ?>', params, function(response) {
 
-				});
-				$("#nitCliente").val($("#nitCliente").val().toUpperCase());
-				$("#nombreCliente").val('CONSUMIDOR FINAL');
-				$("#TextCliente").val('CONSUMIDOR FINAL');
-				$("#tipo_e").val(tipo);
-				$("#raddres").val(addres);
-				$("#nrodocumento").val("CF");
-			}
-
-		});
 		$('#change_date_enable').click(function() {
 			if ($(this).is(':checked')) {
 				$("#change_cart_date_picker").show();
@@ -3228,7 +3197,8 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		});
 
 		// Finish Sale button
-		$("#finish_sale_button").click(function(e) {
+		//$("#finish_sale_button").click(function(e) {
+		$("#finish_sale_button").click(async function(e) {
 			e.preventDefault();
 
 			var confirm_messages = [];
@@ -3256,18 +3226,30 @@ if (isset($number_to_add) && isset($item_to_add)) {
 				confirm_messages.push(<?php echo json_encode(lang("sales_confirm_finish_sale")); ?>);
 			<?php } ?>
 
-			if (confirm_messages.length) {
-				bootbox.confirm(confirm_messages.join("<br />"), function(result) {
-					if (result) {
-						finishSale();
-					} else {
-						//Bring back submit and unmask if fail to confirm
-						$("#finish_sale_button").show();
-						$('#grid-loader').hide();
-					}
-				});
+			/*Verifcar datos de facturacion*/
+			//Si la factura electrónica está activada
+			if ($("#show_factura_on_receipt").is(':checked')) {			
+				try {
+            		// Espera a que verificarNit() termine antes de continuar
+            		await verifyNit(); 
+            		// Se envían los datos de facturación
+            		$.post('<?php echo site_url("sales/set_nit"); ?>', {
+            		    nit: $('#nrodocumento').val(),
+            		    nombreCliente: $('#nombreCliente').val(),
+            		    tipo_e: $('#tipo_e').val(),
+            		    addres: $('#raddres').val(),
+            		}, function() {
+            		    // Se llama a la función finishSale 
+            		    finishSale(confirm_messages);
+            		});
+        		} catch (error) {					
+        		    $("#finish_sale_button").show();
+					document.getElementById("finish_sale_button").disabled = true;
+        		}
+
 			} else {
-				finishSale();
+				// Si la factura electrónica no está activada
+				finishSale(confirm_messages);
 			}
 		});
 
@@ -3561,21 +3543,20 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		}, 10);
 	}
 
-	function finishSale() {
-		if ($("#nrodocumento").val()) {
-			$.post('<?php echo site_url("sales/set_nit"); ?>', {
-				nit: $('#nrodocumento').val(),
-				nombreCliente: $('#nombreCliente').val(),
-				tipo_e: $('#tipo_e').val(),
-				addres: $('#raddres').val(),
-
-			}, function() {
-				postFinishSale();
+	function finishSale(confirm_messages) {
+		if (confirm_messages.length) {
+			bootbox.confirm(confirm_messages.join("<br />"), function(result) {
+				if (result) {
+					postFinishSale();
+				} else {
+					//Bring back submit and unmask if fail to confirm
+					$("#finish_sale_button").show();
+					$('#grid-loader').hide();
+				}
 			});
 		} else {
 			postFinishSale();
 		}
-
 	}
 
 	function postFinishSale() {

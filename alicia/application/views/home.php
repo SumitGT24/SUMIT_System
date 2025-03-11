@@ -101,7 +101,7 @@ $this->load->helper('demo');
 							<p><?php echo lang('home_wizard_configure_company');?></p>
 							<span><?php echo anchor('config',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
 						</div>
-						<div class="col-md-2 <#?php echo $this->config->item('wizard_configure_locations') ? 'wizard_step_done' : '';?>">
+						<div class="col-md-2 <?php echo $this->config->item('wizard_configure_locations') ? 'wizard_step_done' : '';?>">
 							<img src="<?php echo base_url('assets/img/building.png') ?>"/>
 							<h4><?php echo lang('module_locations');?></h4>
 							<p><?php echo lang('home_wizard_configure_locations');?></p>
@@ -382,7 +382,7 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			<a href="<?php echo site_url('sales'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
-						<h3 class="flatBluec"><?php echo $total_sales; ?></h3>
+						<h3 class="flatOrangec"><?php echo $total_sales; ?></h3>
 						<h4><?php echo lang('common_total')." ".lang('module_sales'); ?></h4>
 					</div>
 					<div class="right flatOrange">
@@ -410,39 +410,36 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			<a href="<?php echo site_url('items'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
-						<h3 class="flatRedc"><?php echo $total_items; ?></h3>
+						<h3 class="flatOrangec"><?php echo $total_items; ?></h3>
 						<h4><?php echo lang('common_total')." ".lang('module_items'); ?></h4>
 					</div>
-					<div class="right flatRed">
+					<div class="right flatOrange">
 						<i class="ti-package"></i>
 					</div>
 				</div>
 			</a>
 		</div>
 		
-	
-			<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 			<a href="<?php echo site_url('suppliers'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
-						<h3 class="flatRedc"><?php echo $total_suppliers; ?></h3>
+						<h3 class="flatGreenc"><?php echo $total_suppliers; ?></h3>
 						<h4><?php echo lang('common_total')." ".lang('module_suppliers'); ?></h4>
 					</div>
-					<div class="right flatBlue">
+					<div class="right flatGreen">
 						<i class="ti-user"></i>
 					</div>
 				</div>
 			</a>
 		</div>
-		
-		
-		
+			
 		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 			<a href="<?php echo site_url('locations'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
-						<h3 class="flatRedc"><?php echo $total_locations; ?></h3>
-						<h4><?php echo lang('common_total')." ".lang('module_locations'); ?></h4>
+						<h3 class="flatOrangec"><?php echo $total_locations; ?></h3>
+						<h4><?php echo lang('common_total').' ';?>ubicaciones</h4>
 					</div>
 					<div class="right flatOrange">
 						<i class="ti-map-alt"></i>
@@ -451,13 +448,11 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			</a>
 		</div>
 		
-		
-		
-			<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 			<a href="<?php echo site_url('deliveries'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
-						<h3 class="flatRedc"><?php echo $total_deliveries; ?></h3>
+						<h3 class="flatGreenc"><?php echo $total_deliveries + 0; ?></h3>
 						<h4><?php echo lang('common_total')." ".lang('module_deliveries'); ?></h4>
 					</div>
 					<div class="right flatGreen">
@@ -467,16 +462,14 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			</a>
 		</div>
 		
-	
-		
 		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 			<a href="<?php echo site_url('employees'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
-						<h3 class="flatRedc"><?php echo $total_employees; ?></h3>
+						<h3 class="flatOrangec"><?php echo $total_employees; ?></h3>
 						<h4><?php echo lang('common_total')." ".lang('module_employees'); ?></h4>
 					</div>
-					<div class="right flatRed">
+					<div class="right flatOrange">
 						<i class="ti-id-badge"></i>
 					</div>
 				</div>
@@ -487,15 +480,16 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			<a href="<?php echo site_url('item_kits'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
-						<h3 class="flatOrangec"><?php echo $total_item_kits; ?></h3>
+						<h3 class="flatGreenc"><?php echo $total_item_kits; ?></h3>
 						<h4><?php echo lang('common_total')." ".lang('module_item_kits'); ?></h4>
 					</div>
-					<div class="right flatBlue">
+					<div class="right flatGreen">
 						<i class="ion ion-filing"></i>
 					</div>
 				</div>
 			</a>
 		</div>
+
 	</div>
 </div>
 
@@ -692,8 +686,6 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			
 		});
 		
-		
-		
 		$("#dismiss_setup_wizard").click(function(e){
 			e.preventDefault();
 			$.get($(this).attr('href'));
@@ -701,7 +693,6 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			
 		});
 		
-
 		$("#dismiss_test_mode").click(function(e){
 			e.preventDefault();
 			$.get($(this).attr('href'));
@@ -751,9 +742,7 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			var myBarChart = new Chart(ctx).Bar(data, {
 				responsive : true
 			});
-		<?php } ?>
-
-	        
+		<?php } ?>  
 
 		$('.piluku-tabs a').on('click',function(e) {
 			e.preventDefault();

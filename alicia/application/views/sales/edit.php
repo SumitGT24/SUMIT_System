@@ -182,18 +182,9 @@
 							if ($sale_info['fell']) {
 							?>
 								<div class="form-group">
-									<?php echo form_label("morivo de anulacion" . ':', 'comment', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+									<?php echo form_label("Motivo de anulación" . ':', 'comment', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 									<div class="col-sm-9 col-md-3 col-lg-3">
 										<?php echo form_textarea(array('name' => 'anulation', 'value' => 'anulacion', 'rows' => '4', 'cols' => '23', 'id' => 'anulation', 'class' => 'form-control text-area')); ?>
-									</div>
-								</div>
-								<div class="form-group">
-									<?php echo form_label("morivo de anulacion" . ':', 'comment', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-									<div class="col-sm-9 col-md-3 col-lg-3">
-										<?php echo '<a class=" btn btn-primary" href="https://print.totaldoc.io/pdf?uuid=' . $fell . '" target="_blank">Imprimir Factura Electronica</a>'
-
-										?>
-
 									</div>
 								</div>
 							<?php
@@ -243,7 +234,7 @@
 												'name' => 'submit_delete',
 												'id' => 'submit_delete',
 												'value' => lang('sales_delete_entire_sale'),
-												'class' => ' btn btn-danger'
+												'class' => 'btn btn-danger'
 											)
 										);
 										?>

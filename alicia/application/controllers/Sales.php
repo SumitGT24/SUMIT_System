@@ -393,6 +393,7 @@ class Sales extends Secure_area
 
 		echo json_encode(H($suggestions));
 	}
+	
 	function nit()
 	{
 
@@ -481,7 +482,7 @@ class Sales extends Secure_area
 			// var_dump($info);
 			// exit();
 			$responseF = [];
-			if ($info) {
+			if ($info->name!=null) {
 				$data = array(
 					"NIT" => $info->cui,
 					"nombre" => $info->name,
@@ -1691,7 +1692,7 @@ class Sales extends Secure_area
 	{
 		$this->cart->nit = $this->input->post('nit');
 		$this->cart->tipo = $this->input->post('tipo_e');
-		$this->cart->addres = $this->input->post('addres') ? $this->input->post('addres') : '';;
+		$this->cart->addres = $this->input->post('addres') ? $this->input->post('addres') : 'CIUDAD';;
 		$this->cart->nombreCliente = $this->input->post('nombreCliente');
 		$this->cart->save();
 	}
@@ -2250,8 +2251,8 @@ class Sales extends Secure_area
 
 				"<dte:Adenda>" .
 				"<TOTALDOC_TEXTO_EMISOR>Tel/WhatsApp 7914 3028</TOTALDOC_TEXTO_EMISOR>" .		
-				"<TOTALDOC_PIE_PAGINA>EN REPUESTOS ELÉCTRICOS, ACCESORIOS Y PRODUCTOS CORTADOS A LA.
-				MEDIDA NO HAY CAMBIOS NI DEVOLUCIÓNES. OTROS PRODUCTOS, UN MÁXIMO DE 2 DÍAS PRESENTANDO ESTE DOCUMENTO.
+				"<TOTALDOC_PIE_PAGINA>EN REPUESTOS ELÉCTRICOS, ACCESORIOS Y PRODUCTOS CORTADOS A LA
+				MEDIDA NO HAY CAMBIOS NI DEVOLUCIONES. OTROS PRODUCTOS, UN MÁXIMO DE 2 DÍAS PRESENTANDO ESTE DOCUMENTO.
 				NO SE PUEDE ANULAR PASADO 30 DIAS ESTE DOCUMENTO TODOS LOS PRECIOS YA INCLUYEN IVA Y DESCUENTO.</TOTALDOC_PIE_PAGINA>".
 				"</dte:Adenda>".
 
@@ -2335,11 +2336,6 @@ class Sales extends Secure_area
 				exit();
 			}
 		}
-
-
-
-
-
 
 		$this->load->view("sales/receipt", $data);
 
