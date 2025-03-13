@@ -1,9 +1,0 @@
-# Mac OS X
-.DS_Store
-
-# Composer
-/vendor/
-composer.lock
-
-# PHPUnit
-clover.xml

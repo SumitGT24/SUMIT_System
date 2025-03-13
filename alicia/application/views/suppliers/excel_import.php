@@ -27,8 +27,7 @@
 							<a class="btn btn-green btn-sm " href="<?php echo site_url('suppliers/excel_export'); ?>"><?php echo lang('suppliers_update_suppliers_import'); ?></a>
 						</li>
 					</ul>
-			
-										
+													
 					<h3><?php echo lang('common_step_2'); ?>: </h3>
 					<p><?php echo lang('suppliers_step_2_desc'); ?></p>						
 					<div class="form-group">

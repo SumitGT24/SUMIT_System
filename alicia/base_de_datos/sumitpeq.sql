@@ -6,6 +6,7 @@
 -- Tiempo de generación: 14-05-2024 a las 23:31:47
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -458,28 +459,6 @@ CREATE TABLE `phppos_attributes` (
   `last_modified` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `phppos_attributes`
---
-
-INSERT INTO `phppos_attributes` (`id`, `item_id`, `ecommerce_attribute_id`, `name`, `deleted`, `last_modified`) VALUES
-(1, 22, '', 'VASO DESECHABLE 8ONZ ', 0, now()),
-(2, 22, '', 'VASO DESECHABLE 6ONZ', 0, now()),
-(3, 22, '', 'VASO DESECHABLE 10 ONZ', 0, now()),
-(4, 24, '', 'COCACOLA LATA 354ML ', 0, now()),
-(5, 24, '', 'COCA COLA LATA SIN AZUCAR 354ML', 0, now()),
-(6, 24, '', 'COCA COLA BOTELLA 600ML ', 0, now()),
-(7, 24, '', 'JUMBO 1.5 LT. ', 0, now()),
-(8, 24, '', 'JUMBO 2.5 LT ', 0, now()),
-(9, 24, '', 'COCACOLA JUMBO 3 LT.', 0, now()),
-(10, 25, '', 'COCACOLA LATA 330 ML', 0, now()),
-(11, 25, '', 'COCACOLA LATA SIN AZUCAR .330 ML', 0, now()),
-(12, 25, '', 'COCACOLA BOTELLA 600 ML', 0, now()),
-(13, 25, '', 'COCACOLA JUMBO 1.5 LT', 0, now()),
-(14, 25, '', 'COCACOLA JUMBO 2.5 LT', 0, now()),
-(15, 25, '', 'COCACOLA JUMBO 3 LT', 0, now()),
-(16, 26, '', 'azul', 0, now());
-
 -- --------------------------------------------------------
 
 --
@@ -494,28 +473,6 @@ CREATE TABLE `phppos_attribute_values` (
   `deleted` int(1) NOT NULL DEFAULT 0,
   `last_modified` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `phppos_attribute_values`
---
-
-INSERT INTO `phppos_attribute_values` (`id`, `ecommerce_attribute_term_id`, `attribute_id`, `name`, `deleted`, `last_modified`) VALUES
-(1, '', 1, 'VASO DESECHABLE 8ONZ', 0, now()),
-(2, '', 2, 'VASO DESECHABLE 6ONZ', 0, now()),
-(3, '', 3, 'VASO DESECHABLE 10 ONZ', 0, now()),
-(7, '', 4, 'COCACOLA LATA 354ML', 0, now()),
-(9, '', 5, 'COCA COLA LATA SIN AZUCAR 354ML', 0, now()),
-(12, '', 6, 'COCA COLA BOTELLA 600ML', 0, now()),
-(16, '', 7, 'JUMBO 1.5 LT.', 0, now()),
-(21, '', 8, 'JUMBO 2.5 LT', 0, now()),
-(27, '', 9, 'COCACOLA JUMBO 3 LT.', 0, now()),
-(34, '', 10, 'COCACOLA LATA 330 ML', 0, now()),
-(36, '', 11, 'COCACOLA LATA SIN AZUCAR .330 ML', 0, now()),
-(39, '', 12, 'COCACOLA BOTELLA 600 ML', 0, now()),
-(43, '', 13, 'COCACOLA JUMBO 1.5 LT', 0, now()),
-(48, '', 14, 'COCACOLA JUMBO 2.5 LT', 0, now()),
-(54, '', 15, 'COCACOLA JUMBO 3 LT', 0, now()),
-(61, '', 16, 'azul', 0, now());
 
 -- --------------------------------------------------------
 
@@ -609,22 +566,6 @@ CREATE TABLE `phppos_customers` (
   `auto_email_receipt` int(1) NOT NULL DEFAULT 0,
   `always_sms_receipt` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `phppos_customers`
---
-
-INSERT INTO `phppos_customers` (`id`, `person_id`, `account_number`, `override_default_tax`, `company_name`, `balance`, `credit_limit`, `points`, `disable_loyalty`, `current_spend_for_points`, `current_sales_for_discount`, `taxable`, `tax_certificate`, `cc_token`, `cc_expire`, `cc_ref_no`, `cc_preview`, `card_issuer`, `tier_id`, `deleted`, `tax_class_id`, `custom_field_1_value`, `custom_field_2_value`, `custom_field_3_value`, `custom_field_4_value`, `custom_field_5_value`, `custom_field_6_value`, `custom_field_7_value`, `custom_field_8_value`, `custom_field_9_value`, `custom_field_10_value`, `location_id`, `internal_notes`, `customer_info_popup`, `auto_email_receipt`, `always_sms_receipt`) VALUES
-(1, 2, NULL, 0, '', 0.0000000000, NULL, 0.0000000000, 0, 0.0000000000, 0, 1, '', NULL, NULL, NULL, NULL, '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 0, 0),
-(2, 3, NULL, 0, '', 0.0000000000, NULL, 0.0000000000, 0, 0.0000000000, 0, 1, '', NULL, NULL, NULL, NULL, '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 0, 0),
-(3, 5, NULL, 0, '', 0.0000000000, NULL, 0.0000000000, 0, 0.0000000000, 0, 1, '', NULL, NULL, NULL, NULL, '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 0, 0),
-(4, 10, NULL, 0, '', 350.0000000000, NULL, 0.0000000000, 0, 0.0000000000, 0, 1, '', NULL, NULL, NULL, NULL, '', NULL, 0, NULL, '1', '1', '1709013600', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0),
-(5, 11, NULL, 0, '', 0.0000000000, NULL, 0.0000000000, 0, 0.0000000000, 0, 1, '', NULL, NULL, NULL, NULL, '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 0, 0),
-(6, 12, NULL, 0, '', 0.0000000000, NULL, 0.0000000000, 0, 0.0000000000, 0, 1, '', NULL, NULL, NULL, NULL, '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 0, 0),
-(7, 13, NULL, 0, '', 80.0000000000, NULL, 0.0000000000, 0, 0.0000000000, 0, 1, '', NULL, NULL, NULL, NULL, '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 0, 0),
-(8, 14, NULL, 0, '', 0.0000000000, NULL, 0.0000000000, 0, 0.0000000000, 0, 1, '', NULL, NULL, NULL, NULL, '', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, 0, 0);
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `phppos_customers_series`
@@ -750,7 +691,7 @@ CREATE TABLE `phppos_employees` (
 
 INSERT INTO `phppos_employees` (`id`, `username`, `password`, `force_password_change`, `always_require_password`, `person_id`, `language`, `commission_percent`, `commission_percent_type`, `hourly_pay_rate`, `not_required_to_clock_in`, `inactive`, `reason_inactive`, `hire_date`, `employee_number`, `birthday`, `termination_date`, `deleted`, `custom_field_1_value`, `custom_field_2_value`, `custom_field_3_value`, `custom_field_4_value`, `custom_field_5_value`, `custom_field_6_value`, `custom_field_7_value`, `custom_field_8_value`, `custom_field_9_value`, `custom_field_10_value`, `max_discount_percent`, `login_start_time`, `login_end_time`, `dark_mode`, `template_id`, `override_price_adjustments`) VALUES
 (1, 'administrador', '91f5167c34c400758115c2a6826ec2e3', 0, 0, 1, 'spanish', 0.0000000000, 'selling_price', 0.0000000000, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0),
-(5, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 0, 0, 9, 'spanish', 0.0000000000, 'selling_price', 0.0000000000, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0);
+(2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 0, 0, 2, 'spanish', 0.0000000000, 'selling_price', 0.0000000000, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -781,7 +722,7 @@ INSERT INTO `phppos_employees_app_config` (`employee_id`, `key`, `value`) VALUES
 --
 
 CREATE TABLE `phppos_employees_locations` (
-  `employee_id` int(10) NOT NULL,
+  `employee_id` int(10) NOT NULL, -- person_id
   `location_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -791,7 +732,7 @@ CREATE TABLE `phppos_employees_locations` (
 
 INSERT INTO `phppos_employees_locations` (`employee_id`, `location_id`) VALUES
 (1, 1),
-(9, 1);
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -997,9 +938,9 @@ CREATE TABLE `phppos_inventory` (
 --
 
 INSERT INTO `phppos_inventory` (`trans_id`, `trans_items`, `item_variation_id`, `trans_user`, `trans_date`, `trans_comment`, `trans_inventory`, `location_id`, `trans_current_quantity`) VALUES
-(132, 27, NULL, 1, now(), '', 10.0000000000, 1, 10.0000000000),
-(133, 27, NULL, 1, now(), 'Ventas 81', -1.0000000000, 1, 9.0000000000),
-(134, 27, NULL, 1, now(), 'Ventas 81', 1.0000000000, 1, 10.0000000000);
+(1, 1, NULL, 1, now(), '', 10.0000000000, 1, 10.0000000000),
+(2, 1, NULL, 1, now(), 'Venta 1', -1.0000000000, 1, 9.0000000000),
+(3, 1, NULL, 1, now(), 'Venta 1', 1.0000000000, 1, 10.0000000000);
 
 -- --------------------------------------------------------
 
@@ -1121,7 +1062,7 @@ CREATE TABLE `phppos_items` (
 --
 
 INSERT INTO `phppos_items` (`name`, `category_id`, `supplier_id`, `manufacturer_id`, `item_number`, `product_id`, `ecommerce_product_id`, `ecommerce_product_quantity`, `description`, `size`, `tax_included`, `cost_price`, `unit_price`, `promo_price`, `start_date`, `end_date`, `reorder_level`, `expire_days`, `item_id`, `allow_alt_description`, `is_serialized`, `override_default_tax`, `is_ecommerce`, `is_service`, `is_ebt_item`, `commission_percent`, `commission_percent_type`, `commission_fixed`, `change_cost_price`, `disable_loyalty`, `deleted`, `last_modified`, `ecommerce_last_modified`, `tax_class_id`, `replenish_level`, `system_item`, `max_discount_percent`, `max_edit_price`, `min_edit_price`, `custom_field_1_value`, `custom_field_2_value`, `custom_field_3_value`, `custom_field_4_value`, `custom_field_5_value`, `custom_field_6_value`, `custom_field_7_value`, `custom_field_8_value`, `custom_field_9_value`, `custom_field_10_value`, `required_age`, `verify_age`, `weight`, `length`, `width`, `height`, `ecommerce_shipping_class_id`, `long_description`, `allow_price_override_regardless_of_permissions`, `main_image_id`, `only_integer`, `is_series_package`, `series_quantity`, `series_days_to_use_within`, `is_barcoded`, `default_quantity`, `disable_from_price_rules`, `last_edited`, `info_popup`, `item_inactive`, `barcode_name`, `tags`, `is_favorite`, `loyalty_multiplier`, `ecommerce_inventory_item_id`, `weight_unit`) VALUES
-('Mouse Logitech ', 4, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 1, 55.0000000000, 75.0000000000, NULL, NULL, NULL, NULL, NULL, 27, 0, 0, 0, 0, 0, 0, NULL, '', NULL, 0, 0, 0, now(), NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '', 0, 3, 0, 0, NULL, NULL, 1, NULL, 0, now(), NULL, 0, '', '', 0, NULL, NULL, NULL);
+('Mouse Logitech ', 4, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 1, 55.0000000000, 75.0000000000, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, 0, 0, 0, 0, NULL, '', NULL, 0, 0, 0, now(), NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '', 0, 3, 0, 0, NULL, NULL, 1, NULL, 0, now(), NULL, 0, '', '', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1210,16 +1151,6 @@ CREATE TABLE `phppos_items_quantity_units` (
   `quantity_unit_item_number` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `phppos_items_quantity_units`
---
-
-INSERT INTO `phppos_items_quantity_units` (`id`, `item_id`, `unit_name`, `unit_quantity`, `unit_price`, `cost_price`, `quantity_unit_item_number`) VALUES
-(1, 1, 'UNIDAD', 1.0000000000, 15.0000000000, 10.0000000000, NULL),
-(2, 2, 'DOCENA', 12.0000000000, 18.0000000000, 15.0000000000, NULL),
-(3, 9, 'COCA', 100.0000000000, 5.0000000000, 4.0000000000, '1'),
-(4, 17, 'GALLETA ARCOIRIS', 10.0000000000, 5.0000000000, 3.0000000000, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -1248,10 +1179,9 @@ CREATE TABLE `phppos_items_serial_numbers` (
 
 --
 -- Volcado de datos para la tabla `phppos_items_serial_numbers`
--- problemas
 
 INSERT INTO `phppos_items_serial_numbers` (`id`, `item_id`, `serial_number`, `unit_price`, `cost_price`) VALUES
-(2, 18, '', 0.0000000000, 0.0000000000);
+(1, 1, '', 0.0000000000, 0.0000000000);
 
 -- --------------------------------------------------------
 
@@ -1304,28 +1234,6 @@ CREATE TABLE `phppos_item_attributes` (
   `item_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `phppos_item_attributes`
---
-
-INSERT INTO `phppos_item_attributes` (`attribute_id`, `item_id`) VALUES
-(1, 22),
-(2, 22),
-(3, 22),
-(4, 24),
-(5, 24),
-(6, 24),
-(7, 24),
-(8, 24),
-(9, 24),
-(10, 25),
-(11, 25),
-(12, 25),
-(13, 25),
-(14, 25),
-(15, 25),
-(16, 26);
-
 -- --------------------------------------------------------
 
 --
@@ -1337,27 +1245,6 @@ CREATE TABLE `phppos_item_attribute_values` (
   `attribute_value_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `phppos_item_attribute_values`
---
-
-INSERT INTO `phppos_item_attribute_values` (`item_id`, `attribute_value_id`) VALUES
-(22, 1),
-(22, 2),
-(22, 3),
-(24, 7),
-(24, 9),
-(24, 12),
-(24, 16),
-(24, 21),
-(24, 27),
-(25, 34),
-(25, 36),
-(25, 39),
-(25, 43),
-(25, 48),
-(25, 54),
-(26, 61);
 
 -- --------------------------------------------------------
 
@@ -1380,13 +1267,7 @@ CREATE TABLE `phppos_item_images` (
 --
 
 INSERT INTO `phppos_item_images` (`id`, `title`, `alt_text`, `item_id`, `item_variation_id`, `ecommerce_image_id`, `image_id`) VALUES
-(2, '', '', 20, NULL, NULL, 4),
-(3, '', '', 22, 1, NULL, 8),
-(4, '', '', 22, 2, NULL, 9),
-(6, '', '', 25, NULL, NULL, 11),
-(7, '', '', 25, 10, NULL, 12),
-(8, '', '', 25, 11, NULL, 13),
-(9, '', '', 27, NULL, NULL, 14);
+(1, '', '', 1, NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -1724,7 +1605,6 @@ CREATE TABLE `phppos_locations` (
 
 INSERT INTO `phppos_locations` (`location_id`, `name`, `company`, `website`, `company_logo`, `address`, `phone`, `fax`, `email`, `cc_email`, `bcc_email`, `color`, `return_policy`, `receive_stock_alert`, `stock_alert_email`, `timezone`, `mailchimp_api_key`, `enable_credit_card_processing`, `credit_card_processor`, `hosted_checkout_merchant_id`, `hosted_checkout_merchant_password`, `emv_merchant_id`, `net_e_pay_server`, `listener_port`, `com_port`, `stripe_public`, `stripe_private`, `stripe_currency_code`, `braintree_merchant_id`, `braintree_public_key`, `braintree_private_key`, `default_tax_1_rate`, `default_tax_1_name`, `default_tax_2_rate`, `default_tax_2_name`, `default_tax_2_cumulative`, `default_tax_3_rate`, `default_tax_3_name`, `default_tax_4_rate`, `default_tax_4_name`, `default_tax_5_rate`, `default_tax_5_name`, `deleted`, `secure_device_override_emv`, `secure_device_override_non_emv`, `tax_class_id`, `ebt_integrated`, `integrated_gift_cards`, `square_currency_code`, `square_location_id`, `square_currency_multiplier`, `email_sales_email`, `email_receivings_email`, `stock_alerts_just_order_level`, `platformly_api_key`, `platformly_project_id`, `tax_id`, `disable_markup_markdown`, `card_connect_mid`, `card_connect_rest_username`, `card_connect_rest_password`, `default_mailchimp_lists`, `twilio_sid`, `twilio_token`, `twilio_sms_from`, `auto_reports_email`, `auto_reports_email_time`, `auto_reports_day`, `disable_confirmation_option_for_emv_credit_card`, `api_key`, `nit`, `razon_social`, `number_establecimiento`, `municipio`, `departamento`) VALUES
 (1, 'SUMIT', 'SUMIT', 'sumit.gt', 2, 'CC PLAZA ASTURIAS COBAN', '0000-0000', '', 'info@info.com', '', '', '#001f49', '', '0', '', 'America/Guatemala', '', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', 'N;', '', '', '', '', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz');
--- (2, 'SUMIT BODEGA', 'SUMIT BODEGA', NULL, 2, '2 Calle Zona 5, Cantón San Cristobal', '555-555-5555', '', 'info@info.com', '', '', '#001f49', '', '0', '', 'America/Guatemala', '', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', 'N;', '', '', '', '', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, NULL, 'Coban', 'Alta Verapaz');
 
 -- --------------------------------------------------------
 
@@ -1753,17 +1633,7 @@ CREATE TABLE `phppos_location_items` (
 --
 
 INSERT INTO `phppos_location_items` (`location_id`, `item_id`, `location`, `cost_price`, `unit_price`, `promo_price`, `start_date`, `end_date`, `quantity`, `reorder_level`, `override_default_tax`, `tax_class_id`, `replenish_level`) VALUES
-(1, 1, '', NULL, NULL, NULL, NULL, NULL, 118.0000000000, NULL, 0, NULL, NULL),
-(1, 2, '', NULL, NULL, NULL, NULL, NULL, 150.0000000000, NULL, 0, NULL, NULL),
-(1, 3, '', NULL, NULL, NULL, NULL, NULL, 9.0000000000, NULL, 0, NULL, NULL),
-(1, 4, '', NULL, NULL, NULL, NULL, NULL, 8.0000000000, NULL, 0, NULL, NULL),
-(1, 6, '', NULL, NULL, NULL, NULL, NULL, 19.0000000000, NULL, 0, NULL, NULL),
-(1, 10, '', NULL, NULL, NULL, NULL, NULL, 99.0000000000, NULL, 0, NULL, NULL),
-(1, 17, '', NULL, NULL, NULL, NULL, NULL, 4.0000000000, NULL, 0, NULL, NULL),
-(1, 18, '', NULL, NULL, NULL, NULL, NULL, 16.0000000000, NULL, 0, NULL, NULL),
-(1, 20, '', NULL, NULL, NULL, NULL, NULL, 256.0000000000, NULL, 0, NULL, NULL),
-(1, 26, '', NULL, NULL, NULL, NULL, NULL, 0.0000000000, NULL, 0, NULL, NULL),
-(1, 27, '', NULL, NULL, NULL, NULL, NULL, 10.0000000000, NULL, 0, NULL, NULL);
+(1, 1, '', NULL, NULL, NULL, NULL, NULL, 10.0000000000, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2210,7 +2080,7 @@ CREATE TABLE `phppos_people` (
 
 INSERT INTO `phppos_people` (`first_name`, `last_name`, `full_name`, `phone_number`, `email`, `address_1`, `address_2`, `city`, `state`, `zip`, `country`, `comments`, `image_id`, `person_id`, `create_date`, `last_modified`) VALUES
 ('administrador', '', 'administrador ', '12345678', 'admin@gmail.com', 'Guatemala', '', '', '', '', '', '', NULL, 1, now(), now()),
-('demo', '', 'demo ', '', 'demo@gmail.com', 'Guatemala', '', '', '', '', '', '', NULL, 9, now(), now());
+('demo', '', 'demo ', '', 'demo@gmail.com', 'Guatemala', '', '', '', '', '', '', NULL, 2, now(), now());
 
 
 -- --------------------------------------------------------
@@ -2242,62 +2112,38 @@ CREATE TABLE `phppos_permissions` (
 
 INSERT INTO `phppos_permissions` (`module_id`, `person_id`) VALUES
 ('appointments', 1),
-('appointments', 6),
-('appointments', 9),
+('appointments', 2),
 ('config', 1),
-('config', 6),
-('config', 9),
+('config', 2),
 ('customers', 1),
-('customers', 6),
-('customers', 7),
-('customers', 8),
-('customers', 9),
+('customers', 2),
 ('deliveries', 1),
-('deliveries', 6),
-('deliveries', 9),
+('deliveries', 2),
 ('employees', 1),
-('employees', 6),
 ('expenses', 1),
-('expenses', 6),
-('expenses', 9),
+('expenses', 2),
 ('giftcards', 1),
-('giftcards', 6),
-('giftcards', 9),
+('giftcards', 2),
 ('item_kits', 1),
-('item_kits', 6),
-('item_kits', 9),
+('item_kits', 2),
 ('items', 1),
-('items', 6),
-('items', 7),
-('items', 8),
-('items', 9),
+('items', 2),
 -- ('locations', 1),
--- ('locations', 6),
+-- ('locations', 2),
 ('messages', 1),
-('messages', 6),
-('messages', 9),
+('messages', 2),
 ('price_rules', 1),
-('price_rules', 6),
-('price_rules', 9),
+('price_rules', 2),
 ('receivings', 1),
-('receivings', 6),
-('receivings', 9),
+('receivings', 2),
 ('reports', 1),
-('reports', 6),
-('reports', 7),
-('reports', 8),
-('reports', 9),
+('reports', 2),
 ('sales', 1),
-('sales', 6),
-('sales', 7),
-('sales', 8),
-('sales', 9),
+('sales', 2),
 ('suppliers', 1),
-('suppliers', 6),
-('suppliers', 9),
+('suppliers', 2),
 ('work_orders', 1),
-('work_orders', 6),
-('work_orders', 9);
+('work_orders', 2);
 
 -- --------------------------------------------------------
 
@@ -2320,14 +2166,10 @@ INSERT INTO `phppos_permissions_actions` (`module_id`, `person_id`, `action_id`)
 ('appointments', 1, 'delete'),
 ('appointments', 1, 'edit'),
 ('appointments', 1, 'search'),
-('appointments', 6, 'add'),
-('appointments', 6, 'delete'),
-('appointments', 6, 'edit'),
-('appointments', 6, 'search'),
-('appointments', 9, 'add'),
-('appointments', 9, 'delete'),
-('appointments', 9, 'edit'),
-('appointments', 9, 'search'),
+('appointments', 2, 'add'),
+('appointments', 2, 'delete'),
+('appointments', 2, 'edit'),
+('appointments', 2, 'search'),
 ('customers', 1, 'add_update'),
 ('customers', 1, 'delete'),
 ('customers', 1, 'edit_customer_points'),
@@ -2335,95 +2177,57 @@ INSERT INTO `phppos_permissions_actions` (`module_id`, `person_id`, `action_id`)
 ('customers', 1, 'edit_tier'),
 ('customers', 1, 'excel_export'),
 ('customers', 1, 'search'),
-('customers', 6, 'add_update'),
-('customers', 6, 'delete'),
-('customers', 6, 'edit_customer_points'),
-('customers', 6, 'edit_store_account_balance'),
-('customers', 6, 'edit_tier'),
-('customers', 6, 'excel_export'),
-('customers', 6, 'search'),
-('customers', 7, 'add_update'),
-('customers', 7, 'delete'),
-('customers', 7, 'search'),
-('customers', 8, 'add_update'),
-('customers', 8, 'delete'),
-('customers', 8, 'search'),
-('customers', 9, 'add_update'),
-('customers', 9, 'delete'),
-('customers', 9, 'edit_customer_points'),
-('customers', 9, 'edit_store_account_balance'),
-('customers', 9, 'edit_tier'),
-('customers', 9, 'excel_export'),
-('customers', 9, 'search'),
+('customers', 2, 'add_update'),
+('customers', 2, 'delete'),
+('customers', 2, 'edit_customer_points'),
+('customers', 2, 'edit_store_account_balance'),
+('customers', 2, 'edit_tier'),
+('customers', 2, 'excel_export'),
+('customers', 2, 'search'),
 ('deliveries', 1, 'add_update'),
 ('deliveries', 1, 'delete'),
 ('deliveries', 1, 'edit'),
 ('deliveries', 1, 'search'),
-('deliveries', 6, 'add_update'),
-('deliveries', 6, 'delete'),
-('deliveries', 6, 'edit'),
-('deliveries', 6, 'search'),
-('deliveries', 9, 'add_update'),
-('deliveries', 9, 'delete'),
-('deliveries', 9, 'edit'),
-('deliveries', 9, 'search'),
+('deliveries', 2, 'add_update'),
+('deliveries', 2, 'delete'),
+('deliveries', 2, 'edit'),
+('deliveries', 2, 'search'),
 ('employees', 1, 'add_update'),
 ('employees', 1, 'assign_all_locations'),
 ('employees', 1, 'delete'),
 ('employees', 1, 'edit_profile'),
 ('employees', 1, 'excel_export'),
 ('employees', 1, 'search'),
-('employees', 6, 'add_update'),
-('employees', 6, 'assign_all_locations'),
-('employees', 6, 'delete'),
-('employees', 6, 'edit_profile'),
-('employees', 6, 'excel_export'),
-('employees', 6, 'search'),
 ('expenses', 1, 'add_update'),
 ('expenses', 1, 'delete'),
 ('expenses', 1, 'manage_categories'),
 ('expenses', 1, 'search'),
-('expenses', 6, 'add_update'),
-('expenses', 6, 'delete'),
-('expenses', 6, 'manage_categories'),
-('expenses', 6, 'search'),
-('expenses', 9, 'add_update'),
-('expenses', 9, 'delete'),
-('expenses', 9, 'manage_categories'),
-('expenses', 9, 'search'),
+('expenses', 2, 'add_update'),
+('expenses', 2, 'delete'),
+('expenses', 2, 'manage_categories'),
+('expenses', 2, 'search'),
 ('giftcards', 1, 'add_update'),
 ('giftcards', 1, 'delete'),
 ('giftcards', 1, 'edit_giftcard_value'),
 ('giftcards', 1, 'excel_export'),
 ('giftcards', 1, 'search'),
-('giftcards', 6, 'add_update'),
-('giftcards', 6, 'delete'),
-('giftcards', 6, 'edit_giftcard_value'),
-('giftcards', 6, 'excel_export'),
-('giftcards', 6, 'search'),
-('giftcards', 9, 'add_update'),
-('giftcards', 9, 'delete'),
-('giftcards', 9, 'edit_giftcard_value'),
-('giftcards', 9, 'excel_export'),
-('giftcards', 9, 'search'),
+('giftcards', 2, 'add_update'),
+('giftcards', 2, 'delete'),
+('giftcards', 2, 'edit_giftcard_value'),
+('giftcards', 2, 'excel_export'),
+('giftcards', 2, 'search'),
 ('item_kits', 1, 'add_update'),
 ('item_kits', 1, 'delete'),
 ('item_kits', 1, 'edit_prices'),
 ('item_kits', 1, 'excel_export'),
 ('item_kits', 1, 'search'),
 ('item_kits', 1, 'see_cost_price'),
-('item_kits', 6, 'add_update'),
-('item_kits', 6, 'delete'),
-('item_kits', 6, 'edit_prices'),
-('item_kits', 6, 'excel_export'),
-('item_kits', 6, 'search'),
-('item_kits', 6, 'see_cost_price'),
-('item_kits', 9, 'add_update'),
-('item_kits', 9, 'delete'),
-('item_kits', 9, 'edit_prices'),
-('item_kits', 9, 'excel_export'),
-('item_kits', 9, 'search'),
-('item_kits', 9, 'see_cost_price'),
+('item_kits', 2, 'add_update'),
+('item_kits', 2, 'delete'),
+('item_kits', 2, 'edit_prices'),
+('item_kits', 2, 'excel_export'),
+('item_kits', 2, 'search'),
+('item_kits', 2, 'see_cost_price'),
 ('items', 1, 'add_update'),
 ('items', 1, 'can_edit_inventory_comment'),
 ('items', 1, 'count_inventory'),
@@ -2439,62 +2243,32 @@ INSERT INTO `phppos_permissions_actions` (`module_id`, `person_id`, `action_id`)
 ('items', 1, 'see_count_when_count_inventory'),
 ('items', 1, 'view_inventory_at_all_locations'),
 ('items', 1, 'view_inventory_print_list'),
-('items', 6, 'add_update'),
-('items', 6, 'can_edit_inventory_comment'),
-('items', 6, 'count_inventory'),
-('items', 6, 'delete'),
-('items', 6, 'edit_prices'),
-('items', 6, 'edit_quantity'),
-('items', 6, 'excel_export'),
-('items', 6, 'manage_categories'),
-('items', 6, 'manage_manufacturers'),
-('items', 6, 'manage_tags'),
-('items', 6, 'search'),
-('items', 6, 'see_cost_price'),
-('items', 6, 'see_count_when_count_inventory'),
-('items', 6, 'view_inventory_at_all_locations'),
-('items', 6, 'view_inventory_print_list'),
-('items', 7, 'add_update'),
-('items', 7, 'delete'),
-('items', 7, 'search'),
-('items', 8, 'add_update'),
-('items', 8, 'delete'),
-('items', 8, 'edit_quantity'),
-('items', 8, 'search'),
-('items', 8, 'see_cost_price'),
-('items', 9, 'add_update'),
-('items', 9, 'can_edit_inventory_comment'),
-('items', 9, 'count_inventory'),
-('items', 9, 'delete'),
-('items', 9, 'edit_prices'),
-('items', 9, 'edit_quantity'),
-('items', 9, 'excel_export'),
-('items', 9, 'manage_categories'),
-('items', 9, 'manage_manufacturers'),
-('items', 9, 'manage_tags'),
-('items', 9, 'search'),
-('items', 9, 'see_cost_price'),
-('items', 9, 'see_count_when_count_inventory'),
-('items', 9, 'view_inventory_at_all_locations'),
-('items', 9, 'view_inventory_print_list'),
+('items', 2, 'add_update'),
+('items', 2, 'can_edit_inventory_comment'),
+('items', 2, 'count_inventory'),
+('items', 2, 'delete'),
+('items', 2, 'edit_prices'),
+('items', 2, 'edit_quantity'),
+('items', 2, 'excel_export'),
+('items', 2, 'manage_categories'),
+('items', 2, 'manage_manufacturers'),
+('items', 2, 'manage_tags'),
+('items', 2, 'search'),
+('items', 2, 'see_cost_price'),
+('items', 2, 'see_count_when_count_inventory'),
+('items', 2, 'view_inventory_at_all_locations'),
+('items', 2, 'view_inventory_print_list'),
 -- ('locations', 1, 'add_update'),
 -- ('locations', 1, 'delete'),
 -- ('locations', 1, 'search'),
--- ('locations', 6, 'add_update'),
--- ('locations', 6, 'delete'),
--- ('locations', 6, 'search'),
 ('messages', 1, 'send_message'),
-('messages', 6, 'send_message'),
-('messages', 9, 'send_message'),
+('messages', 2, 'send_message'),
 ('price_rules', 1, 'add_update'),
 ('price_rules', 1, 'delete'),
 ('price_rules', 1, 'search'),
-('price_rules', 6, 'add_update'),
-('price_rules', 6, 'delete'),
-('price_rules', 6, 'search'),
-('price_rules', 9, 'add_update'),
-('price_rules', 9, 'delete'),
-('price_rules', 9, 'search'),
+('price_rules', 2, 'add_update'),
+('price_rules', 2, 'delete'),
+('price_rules', 2, 'search'),
 ('receivings', 1, 'allow_item_search_suggestions_for_receivings'),
 ('receivings', 1, 'allow_supplier_search_suggestions_for_suppliers'),
 ('receivings', 1, 'complete_transfer'),
@@ -2504,24 +2278,15 @@ INSERT INTO `phppos_permissions_actions` (`module_id`, `person_id`, `action_id`)
 ('receivings', 1, 'edit_taxes'),
 ('receivings', 1, 'receive_store_account_payment'),
 ('receivings', 1, 'send_transfer'),
-('receivings', 6, 'allow_item_search_suggestions_for_receivings'),
-('receivings', 6, 'allow_supplier_search_suggestions_for_suppliers'),
-('receivings', 6, 'complete_transfer'),
-('receivings', 6, 'delete_receiving'),
-('receivings', 6, 'delete_taxes'),
-('receivings', 6, 'edit_receiving'),
-('receivings', 6, 'edit_taxes'),
-('receivings', 6, 'receive_store_account_payment'),
-('receivings', 6, 'send_transfer'),
-('receivings', 9, 'allow_item_search_suggestions_for_receivings'),
-('receivings', 9, 'allow_supplier_search_suggestions_for_suppliers'),
-('receivings', 9, 'complete_transfer'),
-('receivings', 9, 'delete_receiving'),
-('receivings', 9, 'delete_taxes'),
-('receivings', 9, 'edit_receiving'),
-('receivings', 9, 'edit_taxes'),
-('receivings', 9, 'receive_store_account_payment'),
-('receivings', 9, 'send_transfer'),
+('receivings', 2, 'allow_item_search_suggestions_for_receivings'),
+('receivings', 2, 'allow_supplier_search_suggestions_for_suppliers'),
+('receivings', 2, 'complete_transfer'),
+('receivings', 2, 'delete_receiving'),
+('receivings', 2, 'delete_taxes'),
+('receivings', 2, 'edit_receiving'),
+('receivings', 2, 'edit_taxes'),
+('receivings', 2, 'receive_store_account_payment'),
+('receivings', 2, 'send_transfer'),
 ('reports', 1, 'delete_register_log'),
 ('reports', 1, 'edit_register_log'),
 ('reports', 1, 'show_cost_price'),
@@ -2560,92 +2325,44 @@ INSERT INTO `phppos_permissions_actions` (`module_id`, `person_id`, `action_id`)
 ('reports', 1, 'view_taxes'),
 ('reports', 1, 'view_tiers'),
 ('reports', 1, 'view_timeclock'),
-('reports', 6, 'delete_register_log'),
-('reports', 6, 'edit_register_log'),
-('reports', 6, 'show_cost_price'),
-('reports', 6, 'show_profit'),
-('reports', 6, 'view_all_employee_commissions'),
-('reports', 6, 'view_appointments'),
-('reports', 6, 'view_categories'),
-('reports', 6, 'view_closeout'),
-('reports', 6, 'view_commissions'),
-('reports', 6, 'view_customers'),
-('reports', 6, 'view_dashboard_stats'),
-('reports', 6, 'view_deleted_sales'),
-('reports', 6, 'view_deliveries'),
-('reports', 6, 'view_discounts'),
-('reports', 6, 'view_employees'),
-('reports', 6, 'view_expenses'),
-('reports', 6, 'view_giftcards'),
-('reports', 6, 'view_inventory_at_all_locations'),
-('reports', 6, 'view_inventory_reports'),
-('reports', 6, 'view_item_kits'),
-('reports', 6, 'view_items'),
-('reports', 6, 'view_manufacturers'),
-('reports', 6, 'view_payments'),
-('reports', 6, 'view_price_rules'),
-('reports', 6, 'view_profit_and_loss'),
-('reports', 6, 'view_receivings'),
-('reports', 6, 'view_register_log'),
-('reports', 6, 'view_registers'),
-('reports', 6, 'view_sales'),
-('reports', 6, 'view_sales_generator'),
-('reports', 6, 'view_store_account'),
-('reports', 6, 'view_store_account_suppliers'),
-('reports', 6, 'view_suppliers'),
-('reports', 6, 'view_suspended_sales'),
-('reports', 6, 'view_tags'),
-('reports', 6, 'view_taxes'),
-('reports', 6, 'view_tiers'),
-('reports', 6, 'view_timeclock'),
-('reports', 7, 'view_customers'),
-('reports', 7, 'view_deleted_sales'),
-('reports', 7, 'view_expenses'),
-('reports', 7, 'view_sales'),
-('reports', 7, 'view_suspended_sales'),
-('reports', 8, 'view_deleted_sales'),
-('reports', 8, 'view_expenses'),
-('reports', 8, 'view_items'),
-('reports', 8, 'view_sales'),
-('reports', 8, 'view_suspended_sales'),
-('reports', 9, 'delete_register_log'),
-('reports', 9, 'edit_register_log'),
-('reports', 9, 'show_cost_price'),
-('reports', 9, 'show_profit'),
-('reports', 9, 'view_all_employee_commissions'),
-('reports', 9, 'view_appointments'),
-('reports', 9, 'view_categories'),
-('reports', 9, 'view_closeout'),
-('reports', 9, 'view_commissions'),
-('reports', 9, 'view_customers'),
-('reports', 9, 'view_dashboard_stats'),
-('reports', 9, 'view_deleted_sales'),
-('reports', 9, 'view_deliveries'),
-('reports', 9, 'view_discounts'),
-('reports', 9, 'view_employees'),
-('reports', 9, 'view_expenses'),
-('reports', 9, 'view_giftcards'),
-('reports', 9, 'view_inventory_at_all_locations'),
-('reports', 9, 'view_inventory_reports'),
-('reports', 9, 'view_item_kits'),
-('reports', 9, 'view_items'),
-('reports', 9, 'view_manufacturers'),
-('reports', 9, 'view_payments'),
-('reports', 9, 'view_price_rules'),
-('reports', 9, 'view_profit_and_loss'),
-('reports', 9, 'view_receivings'),
-('reports', 9, 'view_register_log'),
-('reports', 9, 'view_registers'),
-('reports', 9, 'view_sales'),
-('reports', 9, 'view_sales_generator'),
-('reports', 9, 'view_store_account'),
-('reports', 9, 'view_store_account_suppliers'),
-('reports', 9, 'view_suppliers'),
-('reports', 9, 'view_suspended_sales'),
-('reports', 9, 'view_tags'),
-('reports', 9, 'view_taxes'),
-('reports', 9, 'view_tiers'),
-('reports', 9, 'view_timeclock'),
+('reports', 2, 'delete_register_log'),
+('reports', 2, 'edit_register_log'),
+('reports', 2, 'show_cost_price'),
+('reports', 2, 'show_profit'),
+('reports', 2, 'view_all_employee_commissions'),
+('reports', 2, 'view_appointments'),
+('reports', 2, 'view_categories'),
+('reports', 2, 'view_closeout'),
+('reports', 2, 'view_commissions'),
+('reports', 2, 'view_customers'),
+('reports', 2, 'view_dashboard_stats'),
+('reports', 2, 'view_deleted_sales'),
+('reports', 2, 'view_deliveries'),
+('reports', 2, 'view_discounts'),
+('reports', 2, 'view_employees'),
+('reports', 2, 'view_expenses'),
+('reports', 2, 'view_giftcards'),
+('reports', 2, 'view_inventory_at_all_locations'),
+('reports', 2, 'view_inventory_reports'),
+('reports', 2, 'view_item_kits'),
+('reports', 2, 'view_items'),
+('reports', 2, 'view_manufacturers'),
+('reports', 2, 'view_payments'),
+('reports', 2, 'view_price_rules'),
+('reports', 2, 'view_profit_and_loss'),
+('reports', 2, 'view_receivings'),
+('reports', 2, 'view_register_log'),
+('reports', 2, 'view_registers'),
+('reports', 2, 'view_sales'),
+('reports', 2, 'view_sales_generator'),
+('reports', 2, 'view_store_account'),
+('reports', 2, 'view_store_account_suppliers'),
+('reports', 2, 'view_suppliers'),
+('reports', 2, 'view_suspended_sales'),
+('reports', 2, 'view_tags'),
+('reports', 2, 'view_taxes'),
+('reports', 2, 'view_tiers'),
+('reports', 2, 'view_timeclock'),
 ('sales', 1, 'allow_customer_search_suggestions_for_sales'),
 ('sales', 1, 'allow_item_search_suggestions_for_sales'),
 ('sales', 1, 'can_lookup_receipt'),
@@ -2664,88 +2381,42 @@ INSERT INTO `phppos_permissions_actions` (`module_id`, `person_id`, `action_id`)
 ('sales', 1, 'receive_store_account_payment'),
 ('sales', 1, 'search'),
 ('sales', 1, 'suspend_sale'),
-('sales', 6, 'allow_customer_search_suggestions_for_sales'),
-('sales', 6, 'allow_item_search_suggestions_for_sales'),
-('sales', 6, 'can_lookup_receipt'),
-('sales', 6, 'change_sale_date'),
-('sales', 6, 'complete_sale'),
-('sales', 6, 'delete_sale'),
-('sales', 6, 'delete_suspended_sale'),
-('sales', 6, 'delete_taxes'),
-('sales', 6, 'edit_sale'),
-('sales', 6, 'edit_sale_cost_price'),
-('sales', 6, 'edit_sale_price'),
-('sales', 6, 'edit_suspended_sale'),
-('sales', 6, 'edit_taxes'),
-('sales', 6, 'give_discount'),
-('sales', 6, 'process_returns'),
-('sales', 6, 'receive_store_account_payment'),
-('sales', 6, 'search'),
-('sales', 6, 'suspend_sale'),
-('sales', 7, 'can_lookup_receipt'),
-('sales', 7, 'change_sale_date'),
-('sales', 7, 'complete_sale'),
-('sales', 7, 'delete_sale'),
-('sales', 7, 'delete_suspended_sale'),
-('sales', 7, 'edit_sale'),
-('sales', 7, 'edit_suspended_sale'),
-('sales', 7, 'process_returns'),
-('sales', 7, 'search'),
-('sales', 7, 'suspend_sale'),
-('sales', 8, 'can_lookup_receipt'),
-('sales', 8, 'change_sale_date'),
-('sales', 8, 'complete_sale'),
-('sales', 8, 'delete_sale'),
-('sales', 8, 'edit_sale'),
-('sales', 8, 'edit_suspended_sale'),
-('sales', 8, 'process_returns'),
-('sales', 8, 'search'),
-('sales', 8, 'suspend_sale'),
-('sales', 9, 'allow_customer_search_suggestions_for_sales'),
-('sales', 9, 'allow_item_search_suggestions_for_sales'),
-('sales', 9, 'can_lookup_receipt'),
-('sales', 9, 'change_sale_date'),
-('sales', 9, 'complete_sale'),
-('sales', 9, 'delete_sale'),
-('sales', 9, 'delete_suspended_sale'),
-('sales', 9, 'delete_taxes'),
-('sales', 9, 'edit_sale'),
-('sales', 9, 'edit_sale_cost_price'),
-('sales', 9, 'edit_sale_price'),
-('sales', 9, 'edit_suspended_sale'),
-('sales', 9, 'edit_taxes'),
-('sales', 9, 'give_discount'),
-('sales', 9, 'process_returns'),
-('sales', 9, 'receive_store_account_payment'),
-('sales', 9, 'search'),
-('sales', 9, 'suspend_sale'),
+('sales', 2, 'allow_customer_search_suggestions_for_sales'),
+('sales', 2, 'allow_item_search_suggestions_for_sales'),
+('sales', 2, 'can_lookup_receipt'),
+('sales', 2, 'change_sale_date'),
+('sales', 2, 'complete_sale'),
+('sales', 2, 'delete_sale'),
+('sales', 2, 'delete_suspended_sale'),
+('sales', 2, 'delete_taxes'),
+('sales', 2, 'edit_sale'),
+('sales', 2, 'edit_sale_cost_price'),
+('sales', 2, 'edit_sale_price'),
+('sales', 2, 'edit_suspended_sale'),
+('sales', 2, 'edit_taxes'),
+('sales', 2, 'give_discount'),
+('sales', 2, 'process_returns'),
+('sales', 2, 'receive_store_account_payment'),
+('sales', 2, 'search'),
+('sales', 2, 'suspend_sale'),
 ('suppliers', 1, 'add_update'),
 ('suppliers', 1, 'delete'),
 ('suppliers', 1, 'edit_store_account_balance'),
 ('suppliers', 1, 'excel_export'),
 ('suppliers', 1, 'search'),
-('suppliers', 6, 'add_update'),
-('suppliers', 6, 'delete'),
-('suppliers', 6, 'edit_store_account_balance'),
-('suppliers', 6, 'excel_export'),
-('suppliers', 6, 'search'),
-('suppliers', 9, 'add_update'),
-('suppliers', 9, 'delete'),
-('suppliers', 9, 'edit_store_account_balance'),
-('suppliers', 9, 'excel_export'),
-('suppliers', 9, 'search'),
+('suppliers', 2, 'add_update'),
+('suppliers', 2, 'delete'),
+('suppliers', 2, 'edit_store_account_balance'),
+('suppliers', 2, 'excel_export'),
+('suppliers', 2, 'search'),
 ('work_orders', 1, 'delete'),
 ('work_orders', 1, 'edit'),
 ('work_orders', 1, 'manage_statuses'),
 ('work_orders', 1, 'search'),
-('work_orders', 6, 'delete'),
-('work_orders', 6, 'edit'),
-('work_orders', 6, 'manage_statuses'),
-('work_orders', 6, 'search'),
-('work_orders', 9, 'delete'),
-('work_orders', 9, 'edit'),
-('work_orders', 9, 'manage_statuses'),
-('work_orders', 9, 'search');
+('work_orders', 2, 'delete'),
+('work_orders', 2, 'edit'),
+('work_orders', 2, 'manage_statuses'),
+('work_orders', 2, 'search');
 
 -- --------------------------------------------------------
 
@@ -2861,14 +2532,6 @@ CREATE TABLE `phppos_price_rules` (
   `disable_loyalty_for_rule` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `phppos_price_rules`
---
-
-INSERT INTO `phppos_price_rules` (`id`, `name`, `start_date`, `end_date`, `added_on`, `active`, `deleted`, `type`, `items_to_buy`, `items_to_get`, `percent_off`, `fixed_off`, `spend_amount`, `num_times_to_apply`, `coupon_code`, `description`, `show_on_receipt`, `coupon_spend_amount`, `mix_and_match`, `disable_loyalty_for_rule`) VALUES
-(1, 'TIRA', NULL, NULL, now(), 1, 1, 'advanced_discount', NULL, 0.0000000000, NULL, NULL, NULL, 0, NULL, '', 0, NULL, 0, 0),
-(2, 'COCOLA JUMBO PAQUETE 4 UNIDADES', NULL, NULL, now(), 1, 1, 'advanced_discount', NULL, 0.0000000000, NULL, NULL, NULL, 0, NULL, '', 0, NULL, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -2892,14 +2555,6 @@ CREATE TABLE `phppos_price_rules_items` (
   `rule_id` int(10) NOT NULL,
   `item_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `phppos_price_rules_items`
---
-
-INSERT INTO `phppos_price_rules_items` (`id`, `rule_id`, `item_id`) VALUES
-(2, 1, 22),
-(3, 2, 25);
 
 -- --------------------------------------------------------
 
@@ -2925,13 +2580,6 @@ CREATE TABLE `phppos_price_rules_locations` (
   `location_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `phppos_price_rules_locations`
---
-
-INSERT INTO `phppos_price_rules_locations` (`id`, `rule_id`, `location_id`) VALUES
-(3, 1, 1),
-(6, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -2958,15 +2606,6 @@ CREATE TABLE `phppos_price_rules_price_breaks` (
   `discount_per_unit_fixed` decimal(23,10) DEFAULT NULL,
   `discount_per_unit_percent` decimal(23,10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `phppos_price_rules_price_breaks`
---
-
-INSERT INTO `phppos_price_rules_price_breaks` (`id`, `rule_id`, `item_qty_to_buy`, `discount_per_unit_fixed`, `discount_per_unit_percent`) VALUES
-(3, 1, 40.0000000000, 1.0000000000, NULL),
-(4, 2, 4.0000000000, 3.5000000000, NULL),
-(5, 2, 40.0000000000, 3.0000000000, NULL);
 
 -- --------------------------------------------------------
 
@@ -3049,14 +2688,6 @@ CREATE TABLE `phppos_receivings` (
   `signature_image_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `phppos_receivings`
---
-
-INSERT INTO `phppos_receivings` (`receiving_time`, `supplier_id`, `employee_id`, `comment`, `receiving_id`, `payment_type`, `deleted`, `deleted_by`, `suspended`, `location_id`, `transfer_to_location_id`, `deleted_taxes`, `is_po`, `store_account_payment`, `total_quantity_purchased`, `total_quantity_received`, `subtotal`, `tax`, `total`, `profit`, `custom_field_1_value`, `custom_field_2_value`, `custom_field_3_value`, `custom_field_4_value`, `custom_field_5_value`, `custom_field_6_value`, `custom_field_7_value`, `custom_field_8_value`, `custom_field_9_value`, `custom_field_10_value`, `last_modified`, `override_taxes`, `shipping_cost`, `signature_image_id`) VALUES
-(now(), 4, 1, '', 1, 'Efectivo: Q300.00<br />', 0, NULL, 0, 1, NULL, NULL, 0, 0, 3.0000000000, 3.0000000000, 300.0000000000, 0.0000000000, 300.0000000000, 0.0000000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(now(), 15, 1, '', 2, 'Efectivo: Q4.50<br />', 0, NULL, 0, 1, NULL, NULL, 0, 0, 1.0000000000, 1.0000000000, 4.5000000000, 0.0000000000, 4.5000000000, 0.0000000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -3114,14 +2745,6 @@ CREATE TABLE `phppos_receivings_payments` (
   `payment_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Volcado de datos para la tabla `phppos_receivings_payments`
---
-
-INSERT INTO `phppos_receivings_payments` (`payment_id`, `receiving_id`, `payment_type`, `payment_amount`, `payment_date`) VALUES
-(1, 1, 'Efectivo', 300.0000000000, now()),
-(2, 2, 'Efectivo', 4.5000000000, now());
-
 -- --------------------------------------------------------
 
 --
@@ -3145,7 +2768,7 @@ CREATE TABLE `phppos_registers` (
 --
 
 INSERT INTO `phppos_registers` (`register_id`, `location_id`, `name`, `iptran_device_id`, `emv_terminal_id`, `deleted`, `card_connect_hsn`, `emv_pinpad_ip`, `emv_pinpad_port`) VALUES
-(1, 1, 'Predeterminada', '', '', 0, '', '', '');
+(1, 1, 'Predeterminada L1', '', '', 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3454,8 +3077,8 @@ CREATE TABLE `phppos_sales` (
 -- Volcado de datos para la tabla `phppos_sales`
 --
 
-INSERT INTO `phppos_sales` (`sale_time`, `customer_id`, `employee_id`, `sold_by_employee_id`, `comment`, `discount_reason`, `show_comment_on_receipt`, `sale_id`, `rule_id`, `rule_discount`, `payment_type`, `cc_ref_no`, `auth_code`, `deleted_by`, `deleted`, `suspended`, `is_ecommerce`, `ecommerce_order_id`, `ecommerce_status`, `store_account_payment`, `was_layaway`, `was_estimate`, `location_id`, `register_id`, `tier_id`, `points_used`, `points_gained`, `did_redeem_discount`, `signature_image_id`, `deleted_taxes`, `total_quantity_purchased`, `subtotal`, `tax`, `total`, `profit`, `exchange_rate`, `exchange_name`, `exchange_currency_symbol`, `exchange_currency_symbol_location`, `exchange_number_of_decimals`, `exchange_thousands_separator`, `exchange_decimal_point`, `is_purchase_points`, `custom_field_1_value`, `custom_field_2_value`, `custom_field_3_value`, `custom_field_4_value`, `custom_field_5_value`, `custom_field_6_value`, `custom_field_7_value`, `custom_field_8_value`, `custom_field_9_value`, `custom_field_10_value`, `last_modified`, `override_taxes`, `return_sale_id`, `tip`, `total_quantity_received`, `non_taxable`, `nit`, `fell`, `nombreCliente`) VALUES
-(now(), NULL, 1, 1, '', '', 0, 81, NULL, NULL, 'Efectivo: Q75.00<br />', '', '', 1, 1, 0, 0, NULL, '', 0, 0, 0, 1, 1, NULL, 0.0000000000, 0.0000000000, 0, NULL, NULL, 1.0000000000, 75.0000000000, 0.0000000000, 75.0000000000, 20.0000000000, 1.0000000000, '', 'Q', 'before', '', ',', '.', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 21:30:44', NULL, NULL, NULL, 1.0000000000, 75.0000000000, '', '', '');
+-- INSERT INTO `phppos_sales` (`sale_time`, `customer_id`, `employee_id`, `sold_by_employee_id`, `comment`, `discount_reason`, `show_comment_on_receipt`, `sale_id`, `rule_id`, `rule_discount`, `payment_type`, `cc_ref_no`, `auth_code`, `deleted_by`, `deleted`, `suspended`, `is_ecommerce`, `ecommerce_order_id`, `ecommerce_status`, `store_account_payment`, `was_layaway`, `was_estimate`, `location_id`, `register_id`, `tier_id`, `points_used`, `points_gained`, `did_redeem_discount`, `signature_image_id`, `deleted_taxes`, `total_quantity_purchased`, `subtotal`, `tax`, `total`, `profit`, `exchange_rate`, `exchange_name`, `exchange_currency_symbol`, `exchange_currency_symbol_location`, `exchange_number_of_decimals`, `exchange_thousands_separator`, `exchange_decimal_point`, `is_purchase_points`, `custom_field_1_value`, `custom_field_2_value`, `custom_field_3_value`, `custom_field_4_value`, `custom_field_5_value`, `custom_field_6_value`, `custom_field_7_value`, `custom_field_8_value`, `custom_field_9_value`, `custom_field_10_value`, `last_modified`, `override_taxes`, `return_sale_id`, `tip`, `total_quantity_received`, `non_taxable`, `nit`, `fell`, `nombreCliente`) VALUES
+-- (now(), NULL, 1, 1, '', '', 0, 1, NULL, NULL, 'Efectivo: Q75.00<br />', '', '', 1, 1, 0, 0, NULL, '', 0, 0, 0, 1, 1, NULL, 0.0000000000, 0.0000000000, 0, NULL, NULL, 1.0000000000, 75.0000000000, 0.0000000000, 75.0000000000, 20.0000000000, 1.0000000000, '', 'Q', 'before', '', ',', '.', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, now(), NULL, NULL, NULL, 1.0000000000, 75.0000000000, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3534,7 +3157,7 @@ CREATE TABLE `phppos_sales_items` (
 --
 
 INSERT INTO `phppos_sales_items` (`sale_id`, `item_id`, `item_variation_id`, `rule_id`, `rule_discount`, `description`, `serialnumber`, `line`, `quantity_purchased`, `quantity_received`, `item_cost_price`, `item_unit_price`, `regular_item_unit_price_at_time_of_sale`, `discount_percent`, `commission`, `subtotal`, `tax`, `total`, `profit`, `tier_id`, `series_id`, `damaged_qty`, `override_taxes`, `unit_quantity`, `items_quantity_units_id`, `loyalty_multiplier`) VALUES
-(81, 27, NULL, NULL, NULL, '', NULL, 0, 1.0000000000, 1.0000000000, 55.0000000000, 75.0000000000, 75.0000000000, 0.000, 0.0000000000, 75.0000000000, 0.0000000000, 75.0000000000, 20.0000000000, NULL, NULL, 0.0000000000, NULL, NULL, NULL, 1.0000000000);
+(1, 1, NULL, NULL, NULL, '', NULL, 0, 1.0000000000, 1.0000000000, 55.0000000000, 75.0000000000, 75.0000000000, 0.000, 0.0000000000, 75.0000000000, 0.0000000000, 75.0000000000, 20.0000000000, NULL, NULL, 0.0000000000, NULL, NULL, NULL, 1.0000000000);
 
 -- --------------------------------------------------------
 
@@ -3682,49 +3305,43 @@ CREATE TABLE `phppos_sales_payments` (
 --
 
 INSERT INTO `phppos_sales_payments` (`payment_id`, `sale_id`, `payment_type`, `payment_amount`, `auth_code`, `ref_no`, `cc_token`, `acq_ref_data`, `process_data`, `entry_method`, `aid`, `tvr`, `iad`, `tsi`, `arc`, `cvm`, `tran_type`, `application_label`, `truncated_card`, `card_issuer`, `payment_date`, `ebt_auth_code`, `ebt_voucher_no`) VALUES
-(90, 81, 'Efectivo', 75.0000000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, now(), NULL, NULL);
+(1, 1, 'Efectivo', 75.0000000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, now(), NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `phppos_sales_work_orders`
+-- Estructura de tabla para la tabla `phppos_sales_work_orders2`
 --
 
-CREATE TABLE phppos_sales_work_orders2 ( 
-id int(11) NOT NULL, 
-sale_id int(10) NOT NULL,
+CREATE TABLE `phppos_sales_work_orders2` ( 
+`id` int(11) NOT NULL, 
+`sale_id` int(10) NOT NULL,
 status int(11) DEFAULT 1, 
-employee_id int(11) DEFAULT NULL, 
-estimated_cost decimal(23,10) DEFAULT NULL, 
-advance_payment decimal(23,10) DEFAULT NULL,
-order_type tinyint(1) DEFAULT NULL, 
-order_date varchar(50) DEFAULT NULL,
-client_name varchar(50) DEFAULT NULL,
-client_phone varchar(50) DEFAULT NULL,
-equipment varchar(50) DEFAULT NULL,
-model varchar(100) DEFAULT NULL,
-accessories varchar(50) DEFAULT NULL,
-service_description varchar(50) DEFAULT NULL,
-custom_field_1_value varchar(255) DEFAULT NULL,
-custom_field_2_value varchar(255) DEFAULT NULL,
-custom_field_3_value varchar(255) DEFAULT NULL,
-custom_field_4_value varchar(255) DEFAULT NULL,
-custom_field_5_value varchar(255) DEFAULT NULL,
-custom_field_6_value varchar(255) DEFAULT NULL,
-custom_field_7_value varchar(255) DEFAULT NULL,
-custom_field_8_value varchar(255) DEFAULT NULL,
-custom_field_9_value varchar(255) DEFAULT NULL,
-custom_field_10_value varchar(255) DEFAULT NULL,
-comment text DEFAULT NULL,
-images text DEFAULT NULL,
-deleted int(1) DEFAULT 0 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `phppos_sales_work_orders`
---
-
-INSERT INTO `phppos_sales_work_orders2` (`id`, `sale_id`, `status`, `employee_id`, `estimated_cost`, `advance_payment`, `order_type`, `order_date`, `client_name`, `client_phone`, `equipment`, `model`, `accessories`, `service_description`, `custom_field_1_value`, `custom_field_2_value`, `custom_field_3_value`, `custom_field_4_value`, `custom_field_5_value`, `custom_field_6_value`, `custom_field_7_value`, `custom_field_8_value`, `custom_field_9_value`, `custom_field_10_value`, `comment`, `images`, `deleted`) VALUES
-(1, 54, 1, NULL, NULL, NULL, NULL, now(), 'Pedro Perez', '12345678', 'Laptop', 'Dell', 'Cargador', 'Mantenimiento', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+`employee_id` int(11) DEFAULT NULL, 
+`estimated_cost` decimal(23,10) DEFAULT NULL, 
+`advance_payment` decimal(23,10) DEFAULT NULL,
+`order_type` tinyint(1) DEFAULT NULL, 
+`order_date` varchar(50) DEFAULT NULL,
+`client_name` varchar(50) DEFAULT NULL,
+`client_phone` varchar(50) DEFAULT NULL,
+`equipment` varchar(50) DEFAULT NULL,
+`model` varchar(100) DEFAULT NULL,
+`accessories` varchar(50) DEFAULT NULL,
+`service_description` varchar(50) DEFAULT NULL,
+`custom_field_1_value` varchar(255) DEFAULT NULL,
+`custom_field_2_value` varchar(255) DEFAULT NULL,
+`custom_field_3_value` varchar(255) DEFAULT NULL,
+`custom_field_4_value` varchar(255) DEFAULT NULL,
+`custom_field_5_value` varchar(255) DEFAULT NULL,
+`custom_field_6_value` varchar(255) DEFAULT NULL,
+`custom_field_7_value` varchar(255) DEFAULT NULL,
+`custom_field_8_value` varchar(255) DEFAULT NULL,
+`custom_field_9_value` varchar(255) DEFAULT NULL,
+`custom_field_10_value` varchar(255) DEFAULT NULL,
+`comment` text DEFAULT NULL,
+`images` text DEFAULT NULL,
+`deleted` int(1) DEFAULT 0 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4029,10 +3646,6 @@ CREATE TABLE `phppos_zips` (
   `order` int(10) NOT NULL DEFAULT 0,
   `deleted` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Índices para tablas volcadas
---
 
 --
 -- Indices de la tabla `phppos_access`
@@ -5149,23 +4762,10 @@ ALTER TABLE `phppos_sales_payments`
   ADD KEY `payment_date` (`payment_date`);
 
 --
--- Indices de la tabla `phppos_sales_work_orders`
+-- Indices de la tabla `phppos_sales_work_orders2`
 --
 ALTER TABLE `phppos_sales_work_orders2`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `custom_field_1_value` (`custom_field_1_value`),
-  ADD KEY `custom_field_2_value` (`custom_field_2_value`),
-  ADD KEY `custom_field_3_value` (`custom_field_3_value`),
-  ADD KEY `custom_field_4_value` (`custom_field_4_value`),
-  ADD KEY `custom_field_5_value` (`custom_field_5_value`),
-  ADD KEY `custom_field_6_value` (`custom_field_6_value`),
-  ADD KEY `custom_field_7_value` (`custom_field_7_value`),
-  ADD KEY `custom_field_8_value` (`custom_field_8_value`),
-  ADD KEY `custom_field_9_value` (`custom_field_9_value`),
-  ADD KEY `custom_field_10_value` (`custom_field_10_value`),
-  ADD KEY `phppos_sales_work_orders_ibfk_1` (`sale_id`),
-  ADD KEY `phppos_sales_work_orders_ibfk_2` (`employee_id`),
-  ADD KEY `phppos_sales_work_orders_ibfk_3` (`status`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `phppos_sale_types`
@@ -5304,577 +4904,577 @@ ALTER TABLE `phppos_zips`
 -- AUTO_INCREMENT de la tabla `phppos_access`
 --
 ALTER TABLE `phppos_access`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_appointments`
 --
 ALTER TABLE `phppos_appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_appointment_types`
 --
 ALTER TABLE `phppos_appointment_types`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_app_files`
 --
 ALTER TABLE `phppos_app_files`
-  MODIFY `file_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `file_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_attributes`
 --
 ALTER TABLE `phppos_attributes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_attribute_values`
 --
 ALTER TABLE `phppos_attribute_values`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_categories`
 --
 ALTER TABLE `phppos_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_currency_exchange_rates`
 --
 ALTER TABLE `phppos_currency_exchange_rates`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_customers`
 --
 ALTER TABLE `phppos_customers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_customers_series`
 --
 ALTER TABLE `phppos_customers_series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_customers_series_log`
 --
 ALTER TABLE `phppos_customers_series_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_customers_taxes`
 --
 ALTER TABLE `phppos_customers_taxes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_damaged_items_log`
 --
 ALTER TABLE `phppos_damaged_items_log`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_employees`
 --
 ALTER TABLE `phppos_employees`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_employees_reset_password`
 --
 ALTER TABLE `phppos_employees_reset_password`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_employees_time_clock`
 --
 ALTER TABLE `phppos_employees_time_clock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_employees_time_off`
 --
 ALTER TABLE `phppos_employees_time_off`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_employee_registers`
 --
 ALTER TABLE `phppos_employee_registers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_expenses`
 --
 ALTER TABLE `phppos_expenses`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_expenses_categories`
 --
 ALTER TABLE `phppos_expenses_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_giftcards`
 --
 ALTER TABLE `phppos_giftcards`
-  MODIFY `giftcard_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `giftcard_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_giftcards_log`
 --
 ALTER TABLE `phppos_giftcards_log`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_grid_hidden_categories`
 --
 ALTER TABLE `phppos_grid_hidden_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_grid_hidden_items`
 --
 ALTER TABLE `phppos_grid_hidden_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_grid_hidden_item_kits`
 --
 ALTER TABLE `phppos_grid_hidden_item_kits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_grid_hidden_tags`
 --
 ALTER TABLE `phppos_grid_hidden_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_inventory`
 --
 ALTER TABLE `phppos_inventory`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `trans_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_inventory_counts`
 --
 ALTER TABLE `phppos_inventory_counts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_inventory_counts_items`
 --
 ALTER TABLE `phppos_inventory_counts_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_items`
 --
 ALTER TABLE `phppos_items`
-  MODIFY `item_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_items_pricing_history`
 --
 ALTER TABLE `phppos_items_pricing_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_items_quantity_units`
 --
 ALTER TABLE `phppos_items_quantity_units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_items_secondary_categories`
 --
 ALTER TABLE `phppos_items_secondary_categories`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_items_serial_numbers`
 --
 ALTER TABLE `phppos_items_serial_numbers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_items_taxes`
 --
 ALTER TABLE `phppos_items_taxes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_images`
 --
 ALTER TABLE `phppos_item_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_kits`
 --
 ALTER TABLE `phppos_item_kits`
-  MODIFY `item_kit_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_kit_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_kits_pricing_history`
 --
 ALTER TABLE `phppos_item_kits_pricing_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_kits_secondary_categories`
 --
 ALTER TABLE `phppos_item_kits_secondary_categories`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_kits_taxes`
 --
 ALTER TABLE `phppos_item_kits_taxes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_kit_images`
 --
 ALTER TABLE `phppos_item_kit_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_kit_items`
 --
 ALTER TABLE `phppos_item_kit_items`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_kit_item_kits`
 --
 ALTER TABLE `phppos_item_kit_item_kits`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_item_variations`
 --
 ALTER TABLE `phppos_item_variations`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_keys`
 --
 ALTER TABLE `phppos_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_limits`
 --
 ALTER TABLE `phppos_limits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_locations`
 --
 ALTER TABLE `phppos_locations`
-  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `location_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_location_items_taxes`
 --
 ALTER TABLE `phppos_location_items_taxes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_location_item_kits_taxes`
 --
 ALTER TABLE `phppos_location_item_kits_taxes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_logs`
 --
 ALTER TABLE `phppos_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_manufacturers`
 --
 ALTER TABLE `phppos_manufacturers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_messages`
 --
 ALTER TABLE `phppos_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_message_receiver`
 --
 ALTER TABLE `phppos_message_receiver`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_modifiers`
 --
 ALTER TABLE `phppos_modifiers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_modifier_items`
 --
 ALTER TABLE `phppos_modifier_items`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_people`
 --
 ALTER TABLE `phppos_people`
-  MODIFY `person_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `person_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_people_files`
 --
 ALTER TABLE `phppos_people_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_permissions_templates`
 --
 ALTER TABLE `phppos_permissions_templates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_rules`
 --
 ALTER TABLE `phppos_price_rules`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_rules_categories`
 --
 ALTER TABLE `phppos_price_rules_categories`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_rules_items`
 --
 ALTER TABLE `phppos_price_rules_items`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_rules_item_kits`
 --
 ALTER TABLE `phppos_price_rules_item_kits`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_rules_locations`
 --
 ALTER TABLE `phppos_price_rules_locations`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_rules_manufacturers`
 --
 ALTER TABLE `phppos_price_rules_manufacturers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_rules_price_breaks`
 --
 ALTER TABLE `phppos_price_rules_price_breaks`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_rules_tags`
 --
 ALTER TABLE `phppos_price_rules_tags`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_price_tiers`
 --
 ALTER TABLE `phppos_price_tiers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_receivings`
 --
 ALTER TABLE `phppos_receivings`
-  MODIFY `receiving_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `receiving_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_receivings_payments`
 --
 ALTER TABLE `phppos_receivings_payments`
-  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `payment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_registers`
 --
 ALTER TABLE `phppos_registers`
-  MODIFY `register_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `register_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_registers_cart`
 --
 ALTER TABLE `phppos_registers_cart`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_register_currency_denominations`
 --
 ALTER TABLE `phppos_register_currency_denominations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_register_log`
 --
 ALTER TABLE `phppos_register_log`
-  MODIFY `register_log_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `register_log_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_register_log_audit`
 --
 ALTER TABLE `phppos_register_log_audit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_register_log_denoms`
 --
 ALTER TABLE `phppos_register_log_denoms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_register_log_payments`
 --
 ALTER TABLE `phppos_register_log_payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_sales`
 --
 ALTER TABLE `phppos_sales`
-  MODIFY `sale_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `sale_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_sales_coupons`
 --
 ALTER TABLE `phppos_sales_coupons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_sales_deliveries`
 --
 ALTER TABLE `phppos_sales_deliveries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_sales_items_notes`
 --
 ALTER TABLE `phppos_sales_items_notes`
-  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `note_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_sales_payments`
 --
 ALTER TABLE `phppos_sales_payments`
-  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `payment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `phppos_sales_work_orders`
+-- AUTO_INCREMENT de la tabla `phppos_sales_work_orders2`
 --
 ALTER TABLE `phppos_sales_work_orders2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_sale_types`
 --
 ALTER TABLE `phppos_sale_types`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_shipping_methods`
 --
 ALTER TABLE `phppos_shipping_methods`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_shipping_providers`
 --
 ALTER TABLE `phppos_shipping_providers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_shipping_zones`
 --
 ALTER TABLE `phppos_shipping_zones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_store_accounts`
 --
 ALTER TABLE `phppos_store_accounts`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sno` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_store_accounts_paid_sales`
 --
 ALTER TABLE `phppos_store_accounts_paid_sales`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_suppliers`
 --
 ALTER TABLE `phppos_suppliers`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_suppliers_taxes`
 --
 ALTER TABLE `phppos_suppliers_taxes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_supplier_store_accounts`
 --
 ALTER TABLE `phppos_supplier_store_accounts`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sno` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_supplier_store_accounts_paid_receivings`
 --
 ALTER TABLE `phppos_supplier_store_accounts_paid_receivings`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_tags`
 --
 ALTER TABLE `phppos_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_tax_classes`
 --
 ALTER TABLE `phppos_tax_classes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_tax_classes_taxes`
 --
 ALTER TABLE `phppos_tax_classes_taxes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `phppos_workorder_statuses`
 --
 ALTER TABLE `phppos_workorder_statuses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
@@ -5903,843 +5503,10 @@ ALTER TABLE `phppos_appointments`
   ADD CONSTRAINT `phppos_appointments_ibfk_4` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`);
 
 --
--- Filtros para la tabla `phppos_attributes`
---
-ALTER TABLE `phppos_attributes`
-  ADD CONSTRAINT `phppos_attributes_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
 -- Filtros para la tabla `phppos_attribute_values`
 --
 ALTER TABLE `phppos_attribute_values`
   ADD CONSTRAINT `phppos_attribute_values_ibfk_1` FOREIGN KEY (`attribute_id`) REFERENCES `phppos_attributes` (`id`);
-
---
--- Filtros para la tabla `phppos_categories`
---
-ALTER TABLE `phppos_categories`
-  ADD CONSTRAINT `phppos_categories_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `phppos_categories` (`id`),
-  ADD CONSTRAINT `phppos_categories_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `phppos_app_files` (`file_id`);
-
---
--- Filtros para la tabla `phppos_customers`
---
-ALTER TABLE `phppos_customers`
-  ADD CONSTRAINT `phppos_customers_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `phppos_people` (`person_id`),
-  ADD CONSTRAINT `phppos_customers_ibfk_2` FOREIGN KEY (`tier_id`) REFERENCES `phppos_price_tiers` (`id`),
-  ADD CONSTRAINT `phppos_customers_ibfk_3` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`),
-  ADD CONSTRAINT `phppos_customers_ibfk_4` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_customers_series`
---
-ALTER TABLE `phppos_customers_series`
-  ADD CONSTRAINT `phppos_customers_series_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_customers_series_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `phppos_people` (`person_id`),
-  ADD CONSTRAINT `phppos_customers_series_ibfk_3` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`);
-
---
--- Filtros para la tabla `phppos_customers_series_log`
---
-ALTER TABLE `phppos_customers_series_log`
-  ADD CONSTRAINT `phppos_customers_series_log_ibfk_1` FOREIGN KEY (`series_id`) REFERENCES `phppos_customers_series` (`id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_customers_taxes`
---
-ALTER TABLE `phppos_customers_taxes`
-  ADD CONSTRAINT `phppos_customers_taxes_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `phppos_customers` (`person_id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_damaged_items_log`
---
-ALTER TABLE `phppos_damaged_items_log`
-  ADD CONSTRAINT `phppos_damaged_items_log_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_damaged_items_log_ibfk_2` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`),
-  ADD CONSTRAINT `phppos_damaged_items_log_ibfk_3` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_damaged_items_log_ibfk_4` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_ecommerce_locations`
---
-ALTER TABLE `phppos_ecommerce_locations`
-  ADD CONSTRAINT `phppos_ecommerce_locations_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_employees`
---
-ALTER TABLE `phppos_employees`
-  ADD CONSTRAINT `phppos_employees_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `phppos_people` (`person_id`);
-
---
--- Filtros para la tabla `phppos_employees_app_config`
---
-ALTER TABLE `phppos_employees_app_config`
-  ADD CONSTRAINT `phppos_employees_app_config_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_employees_locations`
---
-ALTER TABLE `phppos_employees_locations`
-  ADD CONSTRAINT `phppos_employees_locations_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_employees_locations_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_employees_reset_password`
---
-ALTER TABLE `phppos_employees_reset_password`
-  ADD CONSTRAINT `phppos_employees_reset_password_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_employees_time_clock`
---
-ALTER TABLE `phppos_employees_time_clock`
-  ADD CONSTRAINT `phppos_employees_time_clock_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_employees_time_clock_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_employees_time_off`
---
-ALTER TABLE `phppos_employees_time_off`
-  ADD CONSTRAINT `phppos_employees_time_off_ibfk_1` FOREIGN KEY (`employee_requested_person_id`) REFERENCES `phppos_people` (`person_id`),
-  ADD CONSTRAINT `phppos_employees_time_off_ibfk_2` FOREIGN KEY (`employee_approved_person_id`) REFERENCES `phppos_people` (`person_id`),
-  ADD CONSTRAINT `phppos_employees_time_off_ibfk_3` FOREIGN KEY (`employee_requested_location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_employee_registers`
---
-ALTER TABLE `phppos_employee_registers`
-  ADD CONSTRAINT `phppos_employee_registers_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_employee_registers_ibfk_2` FOREIGN KEY (`register_id`) REFERENCES `phppos_registers` (`register_id`);
-
---
--- Filtros para la tabla `phppos_expenses`
---
-ALTER TABLE `phppos_expenses`
-  ADD CONSTRAINT `phppos_expenses_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_expenses_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_expenses_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `phppos_expenses_categories` (`id`),
-  ADD CONSTRAINT `phppos_expenses_ibfk_4` FOREIGN KEY (`approved_employee_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_expenses_categories`
---
-ALTER TABLE `phppos_expenses_categories`
-  ADD CONSTRAINT `phppos_expenses_categories_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `phppos_expenses_categories` (`id`);
-
---
--- Filtros para la tabla `phppos_giftcards`
---
-ALTER TABLE `phppos_giftcards`
-  ADD CONSTRAINT `phppos_giftcards_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `phppos_customers` (`person_id`);
-
---
--- Filtros para la tabla `phppos_giftcards_log`
---
-ALTER TABLE `phppos_giftcards_log`
-  ADD CONSTRAINT `phppos_giftcards_log_ibfk_1` FOREIGN KEY (`giftcard_id`) REFERENCES `phppos_giftcards` (`giftcard_id`);
-
---
--- Filtros para la tabla `phppos_grid_hidden_categories`
---
-ALTER TABLE `phppos_grid_hidden_categories`
-  ADD CONSTRAINT `phppos_grid_hidden_categories_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `phppos_categories` (`id`),
-  ADD CONSTRAINT `phppos_grid_hidden_categories_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_grid_hidden_items`
---
-ALTER TABLE `phppos_grid_hidden_items`
-  ADD CONSTRAINT `phppos_grid_hidden_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_grid_hidden_items_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_grid_hidden_item_kits`
---
-ALTER TABLE `phppos_grid_hidden_item_kits`
-  ADD CONSTRAINT `phppos_grid_hidden_item_kits_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`),
-  ADD CONSTRAINT `phppos_grid_hidden_item_kits_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_grid_hidden_tags`
---
-ALTER TABLE `phppos_grid_hidden_tags`
-  ADD CONSTRAINT `phppos_grid_hidden_tags_ibfk_1` FOREIGN KEY (`tag_id`) REFERENCES `phppos_tags` (`id`),
-  ADD CONSTRAINT `phppos_grid_hidden_tags_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_inventory`
---
-ALTER TABLE `phppos_inventory`
-  ADD CONSTRAINT `phppos_inventory_ibfk_1` FOREIGN KEY (`trans_items`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_inventory_ibfk_2` FOREIGN KEY (`trans_user`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_inventory_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_inventory_ibfk_4` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`);
-
---
--- Filtros para la tabla `phppos_inventory_counts`
---
-ALTER TABLE `phppos_inventory_counts`
-  ADD CONSTRAINT `phppos_inventory_counts_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_inventory_counts_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_inventory_counts_items`
---
-ALTER TABLE `phppos_inventory_counts_items`
-  ADD CONSTRAINT `inventory_counts_items_ibfk_3` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`),
-  ADD CONSTRAINT `phppos_inventory_counts_items_ibfk_1` FOREIGN KEY (`inventory_counts_id`) REFERENCES `phppos_inventory_counts` (`id`),
-  ADD CONSTRAINT `phppos_inventory_counts_items_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_items`
---
-ALTER TABLE `phppos_items`
-  ADD CONSTRAINT `phppos_items_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `phppos_suppliers` (`person_id`),
-  ADD CONSTRAINT `phppos_items_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `phppos_categories` (`id`),
-  ADD CONSTRAINT `phppos_items_ibfk_4` FOREIGN KEY (`manufacturer_id`) REFERENCES `phppos_manufacturers` (`id`),
-  ADD CONSTRAINT `phppos_items_ibfk_6` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`),
-  ADD CONSTRAINT `phppos_items_ibfk_7` FOREIGN KEY (`main_image_id`) REFERENCES `phppos_item_images` (`image_id`);
-
---
--- Filtros para la tabla `phppos_items_modifiers`
---
-ALTER TABLE `phppos_items_modifiers`
-  ADD CONSTRAINT `phppos_items_modifiers_ibfk_1` FOREIGN KEY (`modifier_id`) REFERENCES `phppos_modifiers` (`id`),
-  ADD CONSTRAINT `phppos_items_modifiers_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_items_pricing_history`
---
-ALTER TABLE `phppos_items_pricing_history`
-  ADD CONSTRAINT `phppos_items_pricing_history_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_items_pricing_history_ibfk_2` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`),
-  ADD CONSTRAINT `phppos_items_pricing_history_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_items_pricing_history_ibfk_4` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_items_quantity_units`
---
-ALTER TABLE `phppos_items_quantity_units`
-  ADD CONSTRAINT `phppos_items_quantity_units_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_items_secondary_categories`
---
-ALTER TABLE `phppos_items_secondary_categories`
-  ADD CONSTRAINT `phppos_items_secondary_categories_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_items_secondary_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `phppos_categories` (`id`);
-
---
--- Filtros para la tabla `phppos_items_serial_numbers`
---
-ALTER TABLE `phppos_items_serial_numbers`
-  ADD CONSTRAINT `phppos_items_serial_numbers_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_items_tags`
---
-ALTER TABLE `phppos_items_tags`
-  ADD CONSTRAINT `phppos_items_tags_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_items_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `phppos_tags` (`id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_items_taxes`
---
-ALTER TABLE `phppos_items_taxes`
-  ADD CONSTRAINT `phppos_items_taxes_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_items_tier_prices`
---
-ALTER TABLE `phppos_items_tier_prices`
-  ADD CONSTRAINT `phppos_items_tier_prices_ibfk_1` FOREIGN KEY (`tier_id`) REFERENCES `phppos_price_tiers` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_items_tier_prices_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_item_attributes`
---
-ALTER TABLE `phppos_item_attributes`
-  ADD CONSTRAINT `phppos_item_attributes_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_item_attributes_ibfk_2` FOREIGN KEY (`attribute_id`) REFERENCES `phppos_attributes` (`id`);
-
---
--- Filtros para la tabla `phppos_item_attribute_values`
---
-ALTER TABLE `phppos_item_attribute_values`
-  ADD CONSTRAINT `phppos_item_attribute_values_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_item_attribute_values_ibfk_2` FOREIGN KEY (`attribute_value_id`) REFERENCES `phppos_attribute_values` (`id`);
-
---
--- Filtros para la tabla `phppos_item_images`
---
-ALTER TABLE `phppos_item_images`
-  ADD CONSTRAINT `phppos_item_images_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_item_images_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `phppos_app_files` (`file_id`),
-  ADD CONSTRAINT `phppos_item_images_ibfk_3` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`);
-
---
--- Filtros para la tabla `phppos_item_kits`
---
-ALTER TABLE `phppos_item_kits`
-  ADD CONSTRAINT `phppos_item_kits_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `phppos_categories` (`id`),
-  ADD CONSTRAINT `phppos_item_kits_ibfk_2` FOREIGN KEY (`manufacturer_id`) REFERENCES `phppos_manufacturers` (`id`),
-  ADD CONSTRAINT `phppos_item_kits_ibfk_3` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`),
-  ADD CONSTRAINT `phppos_item_kits_ibfk_4` FOREIGN KEY (`main_image_id`) REFERENCES `phppos_item_kit_images` (`image_id`);
-
---
--- Filtros para la tabla `phppos_item_kits_modifiers`
---
-ALTER TABLE `phppos_item_kits_modifiers`
-  ADD CONSTRAINT `phppos_item_kits_modifiers_ibfk_1` FOREIGN KEY (`modifier_id`) REFERENCES `phppos_modifiers` (`id`),
-  ADD CONSTRAINT `phppos_item_kits_modifiers_ibfk_2` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`);
-
---
--- Filtros para la tabla `phppos_item_kits_pricing_history`
---
-ALTER TABLE `phppos_item_kits_pricing_history`
-  ADD CONSTRAINT `phppos_item_kits_pricing_history_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`),
-  ADD CONSTRAINT `phppos_item_kits_pricing_history_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_item_kits_pricing_history_ibfk_3` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_item_kits_secondary_categories`
---
-ALTER TABLE `phppos_item_kits_secondary_categories`
-  ADD CONSTRAINT `phppos_item_kits_secondary_categories_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`),
-  ADD CONSTRAINT `phppos_item_kits_secondary_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `phppos_categories` (`id`);
-
---
--- Filtros para la tabla `phppos_item_kits_tags`
---
-ALTER TABLE `phppos_item_kits_tags`
-  ADD CONSTRAINT `phppos_item_kits_tags_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`),
-  ADD CONSTRAINT `phppos_item_kits_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `phppos_tags` (`id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_item_kits_taxes`
---
-ALTER TABLE `phppos_item_kits_taxes`
-  ADD CONSTRAINT `phppos_item_kits_taxes_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_item_kits_tier_prices`
---
-ALTER TABLE `phppos_item_kits_tier_prices`
-  ADD CONSTRAINT `phppos_item_kits_tier_prices_ibfk_1` FOREIGN KEY (`tier_id`) REFERENCES `phppos_price_tiers` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_item_kits_tier_prices_ibfk_2` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`);
-
---
--- Filtros para la tabla `phppos_item_kit_images`
---
-ALTER TABLE `phppos_item_kit_images`
-  ADD CONSTRAINT `phppos_item_kit_images_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`),
-  ADD CONSTRAINT `phppos_item_kit_images_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `phppos_app_files` (`file_id`);
-
---
--- Filtros para la tabla `phppos_item_kit_items`
---
-ALTER TABLE `phppos_item_kit_items`
-  ADD CONSTRAINT `phppos_item_kit_items_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_item_kit_items_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_item_kit_items_ibfk_3` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`);
-
---
--- Filtros para la tabla `phppos_item_kit_item_kits`
---
-ALTER TABLE `phppos_item_kit_item_kits`
-  ADD CONSTRAINT `phppos_item_kit_item_kits_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_item_kit_item_kits_ibfk_2` FOREIGN KEY (`item_kit_item_kit`) REFERENCES `phppos_item_kits` (`item_kit_id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_item_variations`
---
-ALTER TABLE `phppos_item_variations`
-  ADD CONSTRAINT `phppos_item_variations_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_item_variation_attribute_values`
---
-ALTER TABLE `phppos_item_variation_attribute_values`
-  ADD CONSTRAINT `phppos_item_variation_attribute_values_ibfk_1` FOREIGN KEY (`attribute_value_id`) REFERENCES `phppos_attribute_values` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_item_variation_attribute_values_ibfk_2` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_keys`
---
-ALTER TABLE `phppos_keys`
-  ADD CONSTRAINT `phppos_keys_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `phppos_employees` (`person_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `phppos_limits`
---
-ALTER TABLE `phppos_limits`
-  ADD CONSTRAINT `phppos_limits_api_key_fk` FOREIGN KEY (`api_key`) REFERENCES `phppos_keys` (`key`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `phppos_locations`
---
-ALTER TABLE `phppos_locations`
-  ADD CONSTRAINT `phppos_locations_ibfk_1` FOREIGN KEY (`company_logo`) REFERENCES `phppos_app_files` (`file_id`),
-  ADD CONSTRAINT `phppos_locations_ibfk_2` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`);
-
---
--- Filtros para la tabla `phppos_location_items`
---
-ALTER TABLE `phppos_location_items`
-  ADD CONSTRAINT `phppos_location_items_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_location_items_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_location_items_ibfk_3` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`);
-
---
--- Filtros para la tabla `phppos_location_items_taxes`
---
-ALTER TABLE `phppos_location_items_taxes`
-  ADD CONSTRAINT `phppos_location_items_taxes_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_location_items_taxes_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_location_items_tier_prices`
---
-ALTER TABLE `phppos_location_items_tier_prices`
-  ADD CONSTRAINT `phppos_location_items_tier_prices_ibfk_1` FOREIGN KEY (`tier_id`) REFERENCES `phppos_price_tiers` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_location_items_tier_prices_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_location_items_tier_prices_ibfk_3` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_location_item_kits`
---
-ALTER TABLE `phppos_location_item_kits`
-  ADD CONSTRAINT `phppos_location_item_kits_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_location_item_kits_ibfk_2` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`),
-  ADD CONSTRAINT `phppos_location_item_kits_ibfk_3` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`);
-
---
--- Filtros para la tabla `phppos_location_item_kits_taxes`
---
-ALTER TABLE `phppos_location_item_kits_taxes`
-  ADD CONSTRAINT `phppos_location_item_kits_taxes_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_location_item_kits_taxes_ibfk_2` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_location_item_kits_tier_prices`
---
-ALTER TABLE `phppos_location_item_kits_tier_prices`
-  ADD CONSTRAINT `phppos_location_item_kits_tier_prices_ibfk_1` FOREIGN KEY (`tier_id`) REFERENCES `phppos_price_tiers` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `phppos_location_item_kits_tier_prices_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_location_item_kits_tier_prices_ibfk_3` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`);
-
---
--- Filtros para la tabla `phppos_location_item_variations`
---
-ALTER TABLE `phppos_location_item_variations`
-  ADD CONSTRAINT `phppos_item_attribute_location_values_ibfk_1` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`),
-  ADD CONSTRAINT `phppos_item_attribute_location_values_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_messages`
---
-ALTER TABLE `phppos_messages`
-  ADD CONSTRAINT `phppos_messages_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_message_receiver`
---
-ALTER TABLE `phppos_message_receiver`
-  ADD CONSTRAINT `phppos_message_receiver_ibfk_1` FOREIGN KEY (`message_id`) REFERENCES `phppos_messages` (`id`),
-  ADD CONSTRAINT `phppos_message_receiver_ibfk_2` FOREIGN KEY (`receiver_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_modifier_items`
---
-ALTER TABLE `phppos_modifier_items`
-  ADD CONSTRAINT `phppos_modifier_items_ibfk_1` FOREIGN KEY (`modifier_id`) REFERENCES `phppos_modifiers` (`id`);
-
---
--- Filtros para la tabla `phppos_modules_actions`
---
-ALTER TABLE `phppos_modules_actions`
-  ADD CONSTRAINT `phppos_modules_actions_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`);
-
---
--- Filtros para la tabla `phppos_people`
---
-ALTER TABLE `phppos_people`
-  ADD CONSTRAINT `phppos_people_ibfk_1` FOREIGN KEY (`image_id`) REFERENCES `phppos_app_files` (`file_id`);
-
---
--- Filtros para la tabla `phppos_people_files`
---
-ALTER TABLE `phppos_people_files`
-  ADD CONSTRAINT `phppos_people_files_ibfk_1` FOREIGN KEY (`file_id`) REFERENCES `phppos_app_files` (`file_id`);
-
---
--- Filtros para la tabla `phppos_permissions`
---
-ALTER TABLE `phppos_permissions`
-  ADD CONSTRAINT `phppos_permissions_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_permissions_ibfk_2` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`);
-
---
--- Filtros para la tabla `phppos_permissions_actions`
---
-ALTER TABLE `phppos_permissions_actions`
-  ADD CONSTRAINT `phppos_permissions_actions_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`),
-  ADD CONSTRAINT `phppos_permissions_actions_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_permissions_actions_ibfk_3` FOREIGN KEY (`action_id`) REFERENCES `phppos_modules_actions` (`action_id`);
-
---
--- Filtros para la tabla `phppos_permissions_actions_locations`
---
-ALTER TABLE `phppos_permissions_actions_locations`
-  ADD CONSTRAINT `phppos_permissions_actions_locations_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`),
-  ADD CONSTRAINT `phppos_permissions_actions_locations_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_permissions_actions_locations_ibfk_3` FOREIGN KEY (`action_id`) REFERENCES `phppos_modules_actions` (`action_id`),
-  ADD CONSTRAINT `phppos_permissions_actions_locations_ibfk_4` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_permissions_locations`
---
-ALTER TABLE `phppos_permissions_locations`
-  ADD CONSTRAINT `phppos_permissions_locations_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_permissions_locations_ibfk_2` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`),
-  ADD CONSTRAINT `phppos_permissions_locations_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_permissions_template`
---
-ALTER TABLE `phppos_permissions_template`
-  ADD CONSTRAINT `phppos_permissions_template_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`),
-  ADD CONSTRAINT `phppos_permissions_template_ibfk_2` FOREIGN KEY (`template_id`) REFERENCES `phppos_permissions_templates` (`id`);
-
---
--- Filtros para la tabla `phppos_permissions_template_actions`
---
-ALTER TABLE `phppos_permissions_template_actions`
-  ADD CONSTRAINT `phppos_permissions_template_actions_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`),
-  ADD CONSTRAINT `phppos_permissions_template_actions_ibfk_2` FOREIGN KEY (`action_id`) REFERENCES `phppos_modules_actions` (`action_id`),
-  ADD CONSTRAINT `phppos_permissions_template_actions_ibfk_3` FOREIGN KEY (`template_id`) REFERENCES `phppos_permissions_templates` (`id`);
-
---
--- Filtros para la tabla `phppos_permissions_template_actions_locations`
---
-ALTER TABLE `phppos_permissions_template_actions_locations`
-  ADD CONSTRAINT `phppos_permissions_template_actions_locations_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`),
-  ADD CONSTRAINT `phppos_permissions_template_actions_locations_ibfk_2` FOREIGN KEY (`action_id`) REFERENCES `phppos_modules_actions` (`action_id`),
-  ADD CONSTRAINT `phppos_permissions_template_actions_locations_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_permissions_template_actions_locations_ibfk_4` FOREIGN KEY (`template_id`) REFERENCES `phppos_permissions_templates` (`id`);
-
---
--- Filtros para la tabla `phppos_permissions_template_locations`
---
-ALTER TABLE `phppos_permissions_template_locations`
-  ADD CONSTRAINT `phppos_permissions_template_locations_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `phppos_modules` (`module_id`),
-  ADD CONSTRAINT `phppos_permissions_template_locations_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_permissions_template_locations_ibfk_3` FOREIGN KEY (`template_id`) REFERENCES `phppos_permissions_templates` (`id`);
-
---
--- Filtros para la tabla `phppos_price_rules_categories`
---
-ALTER TABLE `phppos_price_rules_categories`
-  ADD CONSTRAINT `phppos_price_rules_categories_ibfk_1` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`),
-  ADD CONSTRAINT `phppos_price_rules_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `phppos_categories` (`id`);
-
---
--- Filtros para la tabla `phppos_price_rules_items`
---
-ALTER TABLE `phppos_price_rules_items`
-  ADD CONSTRAINT `phppos_price_rules_items_ibfk_1` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`),
-  ADD CONSTRAINT `phppos_price_rules_items_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_price_rules_item_kits`
---
-ALTER TABLE `phppos_price_rules_item_kits`
-  ADD CONSTRAINT `phppos_price_rules_item_kits_ibfk_1` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`),
-  ADD CONSTRAINT `phppos_price_rules_item_kits_ibfk_2` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`);
-
---
--- Filtros para la tabla `phppos_price_rules_locations`
---
-ALTER TABLE `phppos_price_rules_locations`
-  ADD CONSTRAINT `phppos_price_rules_locations_ibfk_1` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`),
-  ADD CONSTRAINT `phppos_price_rules_locations_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_price_rules_manufacturers`
---
-ALTER TABLE `phppos_price_rules_manufacturers`
-  ADD CONSTRAINT `phppos_price_rules_manufacturers_ibfk_1` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`),
-  ADD CONSTRAINT `phppos_price_rules_manufacturers_ibfk_2` FOREIGN KEY (`manufacturer_id`) REFERENCES `phppos_manufacturers` (`id`);
-
---
--- Filtros para la tabla `phppos_price_rules_price_breaks`
---
-ALTER TABLE `phppos_price_rules_price_breaks`
-  ADD CONSTRAINT `phppos_price_rules_price_breaks_ibfk_1` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`);
-
---
--- Filtros para la tabla `phppos_price_rules_tags`
---
-ALTER TABLE `phppos_price_rules_tags`
-  ADD CONSTRAINT `phppos_price_rules_tags_ibfk_1` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`),
-  ADD CONSTRAINT `phppos_price_rules_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `phppos_tags` (`id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_price_rules_tiers_exclude`
---
-ALTER TABLE `phppos_price_rules_tiers_exclude`
-  ADD CONSTRAINT `phppos_price_rules_tiers_ibfk_1` FOREIGN KEY (`price_rule_id`) REFERENCES `phppos_price_rules` (`id`),
-  ADD CONSTRAINT `phppos_price_rules_tiers_ibfk_2` FOREIGN KEY (`tier_id`) REFERENCES `phppos_price_tiers` (`id`);
-
---
--- Filtros para la tabla `phppos_receivings`
---
-ALTER TABLE `phppos_receivings`
-  ADD CONSTRAINT `phppos_receivings_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_receivings_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `phppos_suppliers` (`person_id`),
-  ADD CONSTRAINT `phppos_receivings_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_receivings_ibfk_4` FOREIGN KEY (`transfer_to_location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_receivings_ibfk_5` FOREIGN KEY (`signature_image_id`) REFERENCES `phppos_app_files` (`file_id`);
-
---
--- Filtros para la tabla `phppos_receivings_items`
---
-ALTER TABLE `phppos_receivings_items`
-  ADD CONSTRAINT `phppos_receivings_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_receivings_items_ibfk_2` FOREIGN KEY (`receiving_id`) REFERENCES `phppos_receivings` (`receiving_id`),
-  ADD CONSTRAINT `phppos_receivings_items_ibfk_3` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`),
-  ADD CONSTRAINT `phppos_receivings_items_ibfk_4` FOREIGN KEY (`items_quantity_units_id`) REFERENCES `phppos_items_quantity_units` (`id`);
-
---
--- Filtros para la tabla `phppos_receivings_items_taxes`
---
-ALTER TABLE `phppos_receivings_items_taxes`
-  ADD CONSTRAINT `phppos_receivings_items_taxes_ibfk_1` FOREIGN KEY (`receiving_id`) REFERENCES `phppos_receivings` (`receiving_id`),
-  ADD CONSTRAINT `phppos_receivings_items_taxes_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_receivings_payments`
---
-ALTER TABLE `phppos_receivings_payments`
-  ADD CONSTRAINT `phppos_receivings_payments_ibfk_1` FOREIGN KEY (`receiving_id`) REFERENCES `phppos_receivings` (`receiving_id`);
-
---
--- Filtros para la tabla `phppos_registers`
---
-ALTER TABLE `phppos_registers`
-  ADD CONSTRAINT `phppos_registers_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_registers_cart`
---
-ALTER TABLE `phppos_registers_cart`
-  ADD CONSTRAINT `phppos_registers_cart_ibfk_1` FOREIGN KEY (`register_id`) REFERENCES `phppos_registers` (`register_id`);
-
---
--- Filtros para la tabla `phppos_register_log`
---
-ALTER TABLE `phppos_register_log`
-  ADD CONSTRAINT `phppos_register_log_ibfk_1` FOREIGN KEY (`employee_id_open`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_register_log_ibfk_2` FOREIGN KEY (`register_id`) REFERENCES `phppos_registers` (`register_id`),
-  ADD CONSTRAINT `phppos_register_log_ibfk_3` FOREIGN KEY (`employee_id_close`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_register_log_audit`
---
-ALTER TABLE `phppos_register_log_audit`
-  ADD CONSTRAINT `register_log_audit_ibfk_1` FOREIGN KEY (`register_log_id`) REFERENCES `phppos_register_log` (`register_log_id`),
-  ADD CONSTRAINT `register_log_audit_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_register_log_denoms`
---
-ALTER TABLE `phppos_register_log_denoms`
-  ADD CONSTRAINT `phppos_register_log_denoms_ibfk_1` FOREIGN KEY (`register_log_id`) REFERENCES `phppos_register_log` (`register_log_id`),
-  ADD CONSTRAINT `phppos_register_log_denoms_ibfk_2` FOREIGN KEY (`register_currency_denominations_id`) REFERENCES `phppos_register_currency_denominations` (`id`);
-
---
--- Filtros para la tabla `phppos_register_log_payments`
---
-ALTER TABLE `phppos_register_log_payments`
-  ADD CONSTRAINT `phppos_register_log_payments_ibfk_1` FOREIGN KEY (`register_log_id`) REFERENCES `phppos_register_log` (`register_log_id`);
-
---
--- Filtros para la tabla `phppos_sales`
---
-ALTER TABLE `phppos_sales`
-  ADD CONSTRAINT `phppos_sales_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_10` FOREIGN KEY (`suspended`) REFERENCES `phppos_sale_types` (`id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_11` FOREIGN KEY (`return_sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `phppos_customers` (`person_id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_4` FOREIGN KEY (`deleted_by`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_5` FOREIGN KEY (`tier_id`) REFERENCES `phppos_price_tiers` (`id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_6` FOREIGN KEY (`sold_by_employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_7` FOREIGN KEY (`register_id`) REFERENCES `phppos_registers` (`register_id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_8` FOREIGN KEY (`signature_image_id`) REFERENCES `phppos_app_files` (`file_id`),
-  ADD CONSTRAINT `phppos_sales_ibfk_9` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`);
-
---
--- Filtros para la tabla `phppos_sales_coupons`
---
-ALTER TABLE `phppos_sales_coupons`
-  ADD CONSTRAINT `phppos_sales_coupons_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_coupons_ibfk_2` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`);
-
---
--- Filtros para la tabla `phppos_sales_deliveries`
---
-ALTER TABLE `phppos_sales_deliveries`
-  ADD CONSTRAINT `phppos_sales_deliveries_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_deliveries_ibfk_2` FOREIGN KEY (`shipping_address_person_id`) REFERENCES `phppos_people` (`person_id`),
-  ADD CONSTRAINT `phppos_sales_deliveries_ibfk_3` FOREIGN KEY (`shipping_method_id`) REFERENCES `phppos_shipping_methods` (`id`),
-  ADD CONSTRAINT `phppos_sales_deliveries_ibfk_4` FOREIGN KEY (`shipping_zone_id`) REFERENCES `phppos_shipping_zones` (`id`),
-  ADD CONSTRAINT `phppos_sales_deliveries_ibfk_5` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`),
-  ADD CONSTRAINT `phppos_sales_deliveries_ibfk_6` FOREIGN KEY (`delivery_employee_person_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_sales_items`
---
-ALTER TABLE `phppos_sales_items`
-  ADD CONSTRAINT `phppos_sales_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_sales_items_ibfk_2` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_items_ibfk_3` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`),
-  ADD CONSTRAINT `phppos_sales_items_ibfk_4` FOREIGN KEY (`item_variation_id`) REFERENCES `phppos_item_variations` (`id`),
-  ADD CONSTRAINT `phppos_sales_items_ibfk_5` FOREIGN KEY (`series_id`) REFERENCES `phppos_customers_series` (`id`),
-  ADD CONSTRAINT `phppos_sales_items_ibfk_6` FOREIGN KEY (`items_quantity_units_id`) REFERENCES `phppos_items_quantity_units` (`id`);
-
---
--- Filtros para la tabla `phppos_sales_items_modifier_items`
---
-ALTER TABLE `phppos_sales_items_modifier_items`
-  ADD CONSTRAINT `phppos_sales_items_modifier_items_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_sales_items_modifier_items_ibfk_2` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_items_modifier_items_ibfk_3` FOREIGN KEY (`modifier_item_id`) REFERENCES `phppos_modifier_items` (`id`);
-
---
--- Filtros para la tabla `phppos_sales_items_notes`
---
-ALTER TABLE `phppos_sales_items_notes`
-  ADD CONSTRAINT `phppos_sales_items_notes_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_items_notes_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`),
-  ADD CONSTRAINT `phppos_sales_items_notes_ibfk_3` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`);
-
---
--- Filtros para la tabla `phppos_sales_items_taxes`
---
-ALTER TABLE `phppos_sales_items_taxes`
-  ADD CONSTRAINT `phppos_sales_items_taxes_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales_items` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_items_taxes_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `phppos_items` (`item_id`);
-
---
--- Filtros para la tabla `phppos_sales_item_kits`
---
-ALTER TABLE `phppos_sales_item_kits`
-  ADD CONSTRAINT `phppos_sales_item_kits_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`),
-  ADD CONSTRAINT `phppos_sales_item_kits_ibfk_2` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_item_kits_ibfk_3` FOREIGN KEY (`rule_id`) REFERENCES `phppos_price_rules` (`id`);
-
---
--- Filtros para la tabla `phppos_sales_item_kits_modifier_items`
---
-ALTER TABLE `phppos_sales_item_kits_modifier_items`
-  ADD CONSTRAINT `phppos_sales_item_kits_modifier_items_ibfk_1` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`),
-  ADD CONSTRAINT `phppos_sales_item_kits_modifier_items_ibfk_2` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_item_kits_modifier_items_ibfk_3` FOREIGN KEY (`modifier_item_id`) REFERENCES `phppos_modifier_items` (`id`);
-
---
--- Filtros para la tabla `phppos_sales_item_kits_taxes`
---
-ALTER TABLE `phppos_sales_item_kits_taxes`
-  ADD CONSTRAINT `phppos_sales_item_kits_taxes_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales_item_kits` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_item_kits_taxes_ibfk_2` FOREIGN KEY (`item_kit_id`) REFERENCES `phppos_item_kits` (`item_kit_id`);
-
---
--- Filtros para la tabla `phppos_sales_payments`
---
-ALTER TABLE `phppos_sales_payments`
-  ADD CONSTRAINT `phppos_sales_payments_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`);
-
---
--- Filtros para la tabla `phppos_sales_work_orders`
---
-ALTER TABLE `phppos_sales_work_orders2`
-  ADD CONSTRAINT `phppos_sales_work_orders_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_sales_work_orders_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `phppos_employees` (`person_id`),
-  ADD CONSTRAINT `phppos_sales_work_orders_ibfk_3` FOREIGN KEY (`status`) REFERENCES `phppos_workorder_statuses` (`id`);
-
---
--- Filtros para la tabla `phppos_shipping_methods`
---
-ALTER TABLE `phppos_shipping_methods`
-  ADD CONSTRAINT `phppos_shipping_methods_ibfk_1` FOREIGN KEY (`shipping_provider_id`) REFERENCES `phppos_shipping_providers` (`id`),
-  ADD CONSTRAINT `phppos_shipping_methods_ibfk_2` FOREIGN KEY (`fee_tax_class_id`) REFERENCES `phppos_tax_classes` (`id`);
-
---
--- Filtros para la tabla `phppos_shipping_zones`
---
-ALTER TABLE `phppos_shipping_zones`
-  ADD CONSTRAINT `phppos_shipping_zones_ibfk_1` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`);
-
---
--- Filtros para la tabla `phppos_store_accounts`
---
-ALTER TABLE `phppos_store_accounts`
-  ADD CONSTRAINT `phppos_store_accounts_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_store_accounts_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `phppos_customers` (`person_id`);
-
---
--- Filtros para la tabla `phppos_store_accounts_paid_sales`
---
-ALTER TABLE `phppos_store_accounts_paid_sales`
-  ADD CONSTRAINT `phppos_store_accounts_sales_ibfk_1` FOREIGN KEY (`sale_id`) REFERENCES `phppos_sales` (`sale_id`),
-  ADD CONSTRAINT `phppos_store_accounts_sales_ibfk_2` FOREIGN KEY (`store_account_payment_sale_id`) REFERENCES `phppos_sales` (`sale_id`);
-
---
--- Filtros para la tabla `phppos_suppliers`
---
-ALTER TABLE `phppos_suppliers`
-  ADD CONSTRAINT `phppos_suppliers_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `phppos_people` (`person_id`),
-  ADD CONSTRAINT `phppos_suppliers_ibfk_2` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`);
-
---
--- Filtros para la tabla `phppos_suppliers_taxes`
---
-ALTER TABLE `phppos_suppliers_taxes`
-  ADD CONSTRAINT `phppos_suppliers_taxes_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `phppos_suppliers` (`person_id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `phppos_supplier_store_accounts`
---
-ALTER TABLE `phppos_supplier_store_accounts`
-  ADD CONSTRAINT `phppos_supplier_store_accounts_ibfk_1` FOREIGN KEY (`receiving_id`) REFERENCES `phppos_receivings` (`receiving_id`),
-  ADD CONSTRAINT `phppos_supplier_store_accounts_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `phppos_suppliers` (`person_id`);
-
---
--- Filtros para la tabla `phppos_supplier_store_accounts_paid_receivings`
---
-ALTER TABLE `phppos_supplier_store_accounts_paid_receivings`
-  ADD CONSTRAINT `phppos_supplier_store_accounts_paid_receivings_ibfk_1` FOREIGN KEY (`receiving_id`) REFERENCES `phppos_receivings` (`receiving_id`),
-  ADD CONSTRAINT `phppos_supplier_store_accounts_paid_receivings_ibfk_2` FOREIGN KEY (`store_account_payment_receiving_id`) REFERENCES `phppos_receivings` (`receiving_id`);
-
---
--- Filtros para la tabla `phppos_tax_classes`
---
-ALTER TABLE `phppos_tax_classes`
-  ADD CONSTRAINT `phppos_tax_classes_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `phppos_locations` (`location_id`);
-
---
--- Filtros para la tabla `phppos_tax_classes_taxes`
---
-ALTER TABLE `phppos_tax_classes_taxes`
-  ADD CONSTRAINT `phppos_tax_classes_taxes_ibfk_1` FOREIGN KEY (`tax_class_id`) REFERENCES `phppos_tax_classes` (`id`);
-
---
--- Filtros para la tabla `phppos_zips`
---
-ALTER TABLE `phppos_zips`
-  ADD CONSTRAINT `phppos_zips_ibfk_1` FOREIGN KEY (`shipping_zone_id`) REFERENCES `phppos_shipping_zones` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

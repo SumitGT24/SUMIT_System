@@ -3994,7 +3994,7 @@ class Sale extends MY_Model
 	{
 		$this->db->select('sales_items_notes.*,people.first_name,people.last_name');
 		$this->db->from('sales_items_notes');
-		$this->db->join('sales_work_orders', 'sales_items_notes.sale_id = sales_work_orders.sale_id', 'left');
+		$this->db->join('sales_work_orders2', 'sales_items_notes.sale_id = sales_work_orders2.sale_id', 'left');
 		$this->db->join('people', 'people.person_id = sales_items_notes.employee_id', 'left');
 		$this->db->where('sales_items_notes.sale_id', $sale_id);
 		$this->db->where('sales_items_notes.item_id', $item_id);

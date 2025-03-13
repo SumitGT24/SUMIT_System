@@ -184,7 +184,7 @@
 								<div class="form-group">
 									<?php echo form_label("Motivo de anulación" . ':', 'comment', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 									<div class="col-sm-9 col-md-3 col-lg-3">
-										<?php echo form_textarea(array('name' => 'anulation', 'value' => 'anulacion', 'rows' => '4', 'cols' => '23', 'id' => 'anulation', 'class' => 'form-control text-area')); ?>
+										<?php echo form_textarea(array('name' => 'anulation', 'value' => 'Anulación', 'placeholder'=>'Ingrese el motivo de la anulación', 'rows' => '4', 'cols' => '23', 'id' => 'anulation', 'class' => 'form-control text-area')); ?>
 									</div>
 								</div>
 							<?php
@@ -225,7 +225,7 @@
 							?>
 
 							<?php if (!$store_account_payment) { ?>
-
+							<!-- Boton anular venta -->
 								<div class="form-group">
 									<div class="col-md-9 col-md-offset-2">
 										<?php
@@ -234,7 +234,8 @@
 												'name' => 'submit_delete',
 												'id' => 'submit_delete',
 												'value' => lang('sales_delete_entire_sale'),
-												'class' => 'btn btn-danger'
+												'class' => 'btn btn-danger',
+												'style' => 'background-color: #d9534f; border-color: #d43f3a;'
 											)
 										);
 										?>

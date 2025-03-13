@@ -35,7 +35,7 @@ function get_date_format_extended()
 	switch($CI->config->item('date_format'))
 	{
 		case "middle_endian":
-			return "30/01/2000";
+			return "01/30/2000";
 		case "little_endian":
 			return "30-01-2000";
 		case "big_endian":
@@ -47,19 +47,10 @@ function get_date_format_extended()
 	 
 function get_date_format()
 {
-	$CI =& get_instance();
-	switch($CI->config->item('date_format'))
-	{
-		case "middle_endian":
-			return "d/m/Y";
-		case "little_endian":
-			return "d-m-Y";
-		case "big_endian":
-			return "Y-m-d";
-		default:
-			return "m/d/Y";
-	}
+	return "d/m/Y";
 }
+
+
 
 function get_mysql_date_format()
 {
@@ -83,7 +74,7 @@ function get_js_date_format()
 	switch($CI->config->item('date_format'))
 	{
 		case "middle_endian":
-			return "DD/MM/YYYY";
+			return "MM/DD/YYYY";
 		case "little_endian":
 			return "DD-MM-YYYY";
 		case "big_endian":
@@ -138,7 +129,19 @@ function get_js_locale()
 	$CI =& get_instance();
 	$languages = array(
 				'english'  => 'en',
+				'indonesia'    => 'id',
 				'spanish'   => 'es', 
+				'french'    => 'fr',
+				'italian'    => 'it',
+				'german'    => 'de',
+				'dutch'    => 'nl',
+				'portugues'    => 'pt',
+				'arabic' => 'ar-ly',
+				'khmer' => 'km',
+				'vietnamese'   => 'vi', 
+				'chinese' => 'zh-cn',
+				'chinese_traditional' => 'zh-tw',
+				'tamil' => 'ta',
 				);
 
 	return isset($languages[$CI->config->item("language")]) ? $languages[$CI->config->item("language")] : 'en';

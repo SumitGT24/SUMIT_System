@@ -388,20 +388,7 @@ $this->load->view("partial/header");
 						?>
 					</div>
 				</div>
-				
-				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
-				<?php echo form_label(lang('config_disabled_fixed_discounts').':', 'disabled_fixed_discounts',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-					<?php echo form_checkbox(array(
-						'name'=>'disabled_fixed_discounts',
-						'id'=>'disabled_fixed_discounts',
-						'value'=>'1',
-						'checked'=>$this->config->item('disabled_fixed_discounts')));
-					?>
-						<label for="disabled_fixed_discounts"><span></span></label>
-					</div>
-				</div>
-				
+
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_sales')) ?>">	
 				<?php echo form_label(lang('config_scan_and_set_sales').':', 'scan_and_set_sales',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2523,6 +2510,7 @@ $(document).ready(function()
 			$(form).ajaxSubmit({
 			success:function(response)
 			{
+				var cheese = 'cheese';
 				//Don't let the tiers, taxes, providers, methods double submitted, so we change the name
 				$('.zones,.tiers_to_edit,.providers,.methods,.taxes,.tax_classes,.sale_types_to_edit').filter(function() {
 				    return parseInt($(this).data('index')) < 0;
@@ -2530,11 +2518,12 @@ $(document).ready(function()
 				
 				if(response.success)
 				{					
-					show_feedback('success',response.message,<?php echo json_encode(lang('common_success')); ?>);
+					show_feedback('success',response.message,<?php echo json_encode(lang('common_success'));?>);
 				}
 				else
 				{				
-					show_feedback('error',response.message,<?php echo json_encode(lang('common_error')); ?>);					
+					show_feedback('error',response.message,<?php echo json_encode(lang('common_error'));?>);		
+
 				}	
 				submitting = false;
 			},
