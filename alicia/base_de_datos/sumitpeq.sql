@@ -181,7 +181,7 @@ INSERT INTO `phppos_app_config` (`key`, `value`) VALUES
 ('disable_sale_notifications', '0'),
 ('disable_store_account_when_over_credit_limit', '0'),
 ('disable_test_mode', '0'),
-('disabled_fixed_discounts', '0'),
+('disabled_fixed_discounts', '1'),
 ('discount_percent_earned', '0'),
 ('display_item_name_first_for_variation_name', '0'),
 ('do_not_allow_below_cost', '1'),
@@ -1815,6 +1815,12 @@ CREATE TABLE `phppos_message_receiver` (
   `message_read` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `phppos_messages`
+--
+
+INSERT INTO `phppos_message_receiver` (`id`, `message_id`, `receiver_id`, `message_read`) VALUES
+(1,1,2,0); 
 -- --------------------------------------------------------
 
 --

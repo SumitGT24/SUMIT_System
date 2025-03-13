@@ -41,7 +41,7 @@
   background-color: #202126;
   border-left: 4px solid #489ee7;
   -webkit-transition: all 0.1s ease-out;
-  color: #ADAFB9s;
+  color: #ADAFB9;
 }
 .left-bar .menu-parent > li:hover.home,
 .left-bar .menu-parent > li.active.home {
