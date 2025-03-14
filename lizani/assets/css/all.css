@@ -13346,7 +13346,7 @@ input {
   background-color: #cfe6f9;
 }
 .required {
-  color: #ffcc2c;
+  color: var(--amarillo-principal) !important;
 }
 .choose-location-home li {
   width: 100%;

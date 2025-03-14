@@ -1692,7 +1692,7 @@ class Sales extends Secure_area
 	{
 		$this->cart->nit = $this->input->post('nit');
 		$this->cart->tipo = $this->input->post('tipo_e');
-		$this->cart->addres = $this->input->post('addres') ? $this->input->post('addres') : '';;
+		$this->cart->addres = $this->input->post('addres') ? $this->input->post('addres') : 'CIUDAD';;
 		$this->cart->nombreCliente = $this->input->post('nombreCliente');
 		$this->cart->save();
 	}

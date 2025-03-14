@@ -2745,8 +2745,7 @@ if (isset($number_to_add) && isset($item_to_add)) {
 					delay: 500,
 					autoFocus: false,
 					minLength: 0,
-					select: function(event, ui) {
-						console.log(ui.item);
+					select: function(event, ui) {						
 						if (typeof ui.item.attributes != 'undefined' && ui.item.attributes != null) {
 							$('#var-customize').text(ui.item.label);
 							$('#var_popup').modal('show');
@@ -2777,8 +2776,7 @@ if (isset($number_to_add) && isset($item_to_add)) {
 
 					},
 				}).data("ui-autocomplete")._renderItem = function(ul, item) {
-
-					console.log(item);
+					
 					return $("<li class='item-suggestions'></li>")
 						.data("item.autocomplete", item)
 						.append('<a  class="suggest-item"><div class="item-image ">' +
@@ -2864,8 +2862,7 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		});
 
 		function verifyNit() {
-    		return new Promise((resolve, reject) => {
-    		    console.log("Buscando NIT...");
+    		return new Promise((resolve, reject) => {    		    
     		    if ($('#raddres').val() == '') {
     		        $("#raddres").val('CIUDAD');
     		    }
@@ -2883,8 +2880,7 @@ if (isset($number_to_add) && isset($item_to_add)) {
 				
     		        $.post('<?php echo site_url("sales/nit"); ?>', params, function(data) {
     		            let success = false;
-    		            $.each(data, function(key, val) {
-    		                console.log("Procesando respuesta del servidor...");
+    		            $.each(data, function(key, val) {    		                
     		                switch (val.message) {
     		                    case 'success':
     		                        $("#nombreCliente").val(val.nombre);
@@ -3197,7 +3193,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		});
 
 		// Finish Sale button
-		//$("#finish_sale_button").click(function(e) {
 		$("#finish_sale_button").click(async function(e) {
 			e.preventDefault();
 
@@ -3206,7 +3201,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 			//Prevent double submission of form
 			$("#finish_sale_button").hide();
 			$('#grid-loader').show();
-
 
 			<?php if ($this->cart->get_payment_amount(lang('common_store_account')) > 0) { ?>
 				<?php if ($is_over_credit_limit && $mode != 'store_account_payment' && !$this->config->item('disable_store_account_when_over_credit_limit')) { ?>

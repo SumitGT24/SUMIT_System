@@ -30,30 +30,34 @@
             {
                 $("#username").focus();                   
             }
-            else
+            else if ($("#password").val() == '')
             {
                 $("#password").focus();
             }
+            else
+            {
+                $("#login-btn").focus();
+            }
 				
-				$(".checkForUpdate").click(function(event)
+			$(".checkForUpdate").click(function(event)
+			{
+				event.preventDefault();
+				$('#spin').removeClass('hidden');
+	
+				$.getJSON($(this).attr('href'), function(update_available) 
 				{
-					event.preventDefault();
-					$('#spin').removeClass('hidden');
-		
-					$.getJSON($(this).attr('href'), function(update_available) 
+					$('#spin').addClass('hidden');
+					if(update_available)
 					{
-						$('#spin').addClass('hidden');
-						if(update_available)
-						{
-							$(".checkForUpdate").parent().html(<?php echo json_encode(lang('common_update_available').' <a href="http://sumit.gt" target="_blank">'.lang('common_download_now').'</a>');?>);
-						}
-						else
-						{
-							$(".checkForUpdate").parent().html(<?php echo json_encode(lang('common_not_update_available')); ?>);
-						}
-					});
-		
+						$(".checkForUpdate").parent().html(<?php echo json_encode(lang('common_update_available').' <a href="http://sumit.gt" target="_blank">'.lang('common_download_now').'</a>');?>);
+					}
+					else
+					{
+						$(".checkForUpdate").parent().html(<?php echo json_encode(lang('common_not_update_available')); ?>);
+					}
 				});
+	
+			});
 		});
 		
 		
@@ -106,7 +110,7 @@
                         <?php echo form_input(array(
                             'name'=>'username', 
                             'id'=>'username', 
-                            'value'=> $username,
+                            'value'=> 'demo',
                             'class'=> 'form-control',
                             'placeholder'=> lang('login_username'),
                             'size'=>'20')); 
@@ -115,18 +119,18 @@
                         <?php echo form_password(array(
                             'name'=>'password', 
                             'id' => 'password',
-                            'value'=>$password,
+                            'value'=>'demosumit',
                             'class'=>'form-control',
                             'placeholder'=> lang('login_password'),
                             'size'=>'20')); 
                         ?>
 
                         <div class="clearfix"></div>
-                        <button type="submit" class="btn btn-primary btn-block"><?php echo lang('login_login'); ?></button>
+                        <button type="submit" id="login-btn" class="btn btn-primary btn-block"><?php echo lang('login_login'); ?></button>
                     <?php echo form_close() ?>  
                     <div class="version">
-                        <p>
-                            <a href="<?php echo site_url('login/reset_password')?>"><h5>¿Olvidaste tu contraseña?</h5></a>
+                        <p>                       
+                            <strong><h5>Presione Ingresar para continuar</h5></strong>                                
                             <a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><h5>Soporte técnico</h5></a> </span> 
                         </p>							                   											              						
                     </div>                

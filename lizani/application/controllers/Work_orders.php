@@ -747,7 +747,7 @@ class Work_orders extends Secure_area
 			'detailed_notes'=>$sale_item_detailed_notes,
 			'internal'=>$sale_item_note_internal,
 			'employee_id'=>$employee_id,
-			'note_timestamp' => date('Y-d-m H:i:s'),
+			'note_timestamp' => date('Y-m-d H:i:s'),
 			'images'=>serialize(array()),
 		);
 		
@@ -1108,7 +1108,7 @@ class Work_orders extends Secure_area
 			'accessories' => $this->input->post("accessories"),
 			'service_description' => $this->input->post("service_description"),
 			'status' => 1, // Estado inicial de la orden de trabajo
-			'order_date' => date('Y-d-m H:i:s') // Formato estándar para MySQL
+			'order_date' => date('Y-m-d H:i:s')
 		];
 	
 		// Guardar la orden de trabajo

@@ -713,11 +713,11 @@ class Supplier extends Person
 			'comments' => 											array('sort_column' => 'comments','label' => lang('common_comments')),
 			'balance' => 												array('sort_column' => 'balance','label' => lang('common_balance'),'data_function' => 'supplier_balance_data','format_function' => 'supplier_balance_formatter','html' => TRUE),
 			'address_1' => 											array('sort_column' => 'address_1','label' => lang('common_address_1')),
-			'address_2' => 											array('sort_column' => 'address_2','label' => lang('common_address_2')),
-			'city' => 													array('sort_column' => 'city','label' => lang('common_city')),
-			'state' => 													array('sort_column' => 'state','label' => lang('common_state')),
-			'zip' => 														array('sort_column' => 'zip','label' => lang('common_zip')),
-			'country' => 												array('sort_column' => 'country','label' => lang('common_country')),
+			#'address_2' => 											array('sort_column' => 'address_2','label' => lang('common_address_2')),
+			#'city' => 													array('sort_column' => 'city','label' => lang('common_city')),
+			#'state' => 													array('sort_column' => 'state','label' => lang('common_state')),
+			#'zip' => 														array('sort_column' => 'zip','label' => lang('common_zip')),
+			#'country' => 												array('sort_column' => 'country','label' => lang('common_country')),
 		);
 		
 		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)

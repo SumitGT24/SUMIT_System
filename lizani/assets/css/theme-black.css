@@ -6,7 +6,7 @@
     --azul-hover: #014bab;
     --gris-letras: #555555;
     --gris-texto-encabezado: #abafb4;
-    --gris-texto: #919cbb;
+    --gris-texto: #adb5cc;
 }
 
 .jumbotron,
@@ -104,6 +104,13 @@ html {
   .text-warning{
     color: var(--gris-texto);
   }
+
+  .text_info{
+    color: white !important;
+  }
+  .time_info{
+    color: var(--gris-texto) !important;
+  }
  
 
 #item_kit_items th,
@@ -143,7 +150,7 @@ h3,
 .popup_button:hover,
 p,
 #mercury_activate_container .mercury_description {
-    color: #7a88af!important
+    color: #7a88af!important;
 }
 
 .control-label,
@@ -161,7 +168,7 @@ p,
 .item-kits-heading,
 .register .register-summary .payments .value,
 .selectize-dropdown .active {
-    color: #919cbb!important
+    color: #919cbb!important;
 }
 
 .form-control,

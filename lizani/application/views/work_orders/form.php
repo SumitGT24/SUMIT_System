@@ -101,7 +101,7 @@
 						</div>
 
 						<div class="work_order_date">
-							<?php echo date(get_date_format(), strtotime($work_order_info['order_date'])); ?>
+							<?php echo date('d/m/Y H:i a', strtotime($work_order_info['order_date'])); ?>
 						</div>
 					</div>
 

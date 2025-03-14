@@ -87,7 +87,7 @@ class Suppliers extends Person_controller
 	
 	function _excel_get_header_row()
 	{
-		$return = array(lang('suppliers_company_name'),lang('common_first_name'),lang('common_last_name'),lang('common_email'),lang('common_phone_number'),lang('common_address_1'),lang('common_address_2'),lang('common_city'),	lang('common_state'),lang('common_zip'),lang('common_country'),lang('common_comments'),lang('suppliers_account_number'));
+		$return = array(lang('suppliers_company_name'),lang('common_first_name'),lang('common_last_name'),lang('common_email'),lang('common_phone_number'),lang('common_address_1'),lang('common_comments'),lang('suppliers_account_number'));
 		
 		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 		{
@@ -198,7 +198,7 @@ class Suppliers extends Person_controller
 					{
 						$address_1 = '';
 					}
-
+					/*
 					$address_2 = $sheet->getCellByColumnAndRow(6, $k);
 					if (!$address_2)
 					{
@@ -228,7 +228,7 @@ class Suppliers extends Person_controller
 					{
 						$country = '';
 					}
-
+					*/
 					$comments = $sheet->getCellByColumnAndRow(11, $k);
 					if (!$comments)
 					{
@@ -254,11 +254,11 @@ class Suppliers extends Person_controller
 					'email'=>$email,
 					'phone_number'=>$phone_number,
 					'address_1'=>$address_1,
-					'address_2'=>$address_2,
-					'city'=>$city,
-					'state'=>$state,
-					'zip'=>$zip,
-					'country'=>$country,
+					//'address_2'=>$address_2,
+					//'city'=>$city,
+					//'state'=>$state,
+					//'zip'=>$zip,
+					//'country'=>$country,
 					'comments'=>$comments
 					);
 					
@@ -372,11 +372,11 @@ class Suppliers extends Person_controller
 				$r->email,
 				$r->phone_number,
 				$r->address_1,
-				$r->address_2,
-				$r->city,
-				$r->state,
-				$r->zip,
-				$r->country,
+				//$r->address_2,
+				//$r->city,
+				//$r->state,
+				//$r->zip,
+				//$r->country,
 				$r->comments,
 				$r->account_number,
 			);
@@ -456,11 +456,11 @@ class Suppliers extends Person_controller
 			$label = array();
 			$label['name'] = $supplier_info->company_name. ': '.$supplier_info->first_name.' '.$supplier_info->last_name;
 			$label['address_1'] = $supplier_info->address_1;
-			$label['address_2'] = $supplier_info->address_2;
-			$label['city'] = $supplier_info->city;
-			$label['state'] = $supplier_info->state;
-			$label['zip'] = $supplier_info->zip;
-			$label['country'] = $supplier_info->country;
+			//$label['address_2'] = $supplier_info->address_2;
+			//$label['city'] = $supplier_info->city;
+			//$label['state'] = $supplier_info->state;
+			//$label['zip'] = $supplier_info->zip;
+			//$label['country'] = $supplier_info->country;
 			
 			$data['mailing_labels'][] = $label;
 			
@@ -530,11 +530,6 @@ class Suppliers extends Person_controller
 		'email'=>$this->input->post('email'),
 		'phone_number'=>$this->input->post('phone_number'),
 		'address_1'=>$this->input->post('address_1'),
-		'address_2'=>$this->input->post('address_2'),
-		'city'=>$this->input->post('city'),
-		'state'=>$this->input->post('state'),
-		'zip'=>$this->input->post('zip'),
-		'country'=>$this->input->post('country'),
 		'comments'=>$this->input->post('comments')
 		);
 		$supplier_data=array(
