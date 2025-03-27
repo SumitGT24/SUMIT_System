@@ -77,6 +77,11 @@
 							<label for="customItemQty">Cantidad</label>
 							<input type="text" class="form-control" id="customItemQty" name="customItemQty">
 						</div>
+
+						<div class="form-group">
+							<label for="isService">Es un servicio</label>
+							<input type="checkbox" id="isService" name="isService" style="display: inline-block !important;" value="1">
+						</div>
 					</div>
 			
 	            	<div class="modal-footer">
@@ -396,7 +401,7 @@
 												<?php
 
 												if (property_exists($item, 'prices') && count($item->prices) > 0) { ?>
-													<dt class="">Precios </dt>
+													<dt class="">Precios</dt>
 													<dd class="">
 
 														<a href="#" id="prices_<?php echo $line; ?>" data-name="unit_price" data-type="select" data-pk="1" data-url="<?php echo site_url('sales/edit_item/' . $line); ?>" data-title="Precios"><?php echo character_limiter(H(lang('common_none')), 50); ?></a>
@@ -1556,50 +1561,6 @@
 				echo '<label for="show_comment_on_receipt"><span></span>' . lang('sales_comments_receipt') . '</label>'; ?>
 			</div>
 			<!-- Formulario factura electronica / Posicion original -->
-			<div class="factura_electronica" style="margin-left: 0.7rem;">
-				<?php echo form_checkbox(array(
-					'name' => 'show_factura_on_receipt',
-					'id' => 'show_factura_on_receipt',
-					'value' => '1',
-					'checked' => false
-				));
-				echo '<label for="show_factura_on_receipt"><span></span>' .  'Factura electrónica' . '</label>'; ?>
-				<div id="factura_electronica">
-					<div class="row-elements" style="padding-right: 25px !important;">
-							<span style="width: 20%;">
-								<?php echo form_dropdown('date_format', array(
-									'NiT'  => 'NIT',
-									'CUI'  => 'CUI',
-								),  array(), 'class="form-control" id="Selected_format"');
-								?>
-							</span>
-							<input type="text" name="nitCliente" id="nitCliente" class="add-input numKeyboard form-control" placeholder="Ingrese el NIT/CUI o deje vacío para CF">				
-							<a href="#" class="btn btn-primary btn-lg" id="add_nit_button">Buscar</a>														
-					</div>
-
-					<label id="nit-alert" class="hidden" style="color: red;">NIT/CUI inválido</label>
-						<h5>NOMBRE CLIENTE:</h5>						
-					<div class="row">
-						<div class="col-sm-10 col-md-10 col-lg-10">
-							<div class="input-group add-payment-form">
-								<input type="text" id="nombreCliente" class="add-input numKeyboard form-control" name="nombreCliente" value="CONSUMIDOR FINAL" style="  border-color: #06080a !important;
-    								border-right-width: 1px !important;" placeholder="Ingrese el nombre del cliente">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-10 col-md-10 col-lg-10" style="   padding-top: 1rem;">
-							<div class="input-group add-payment-form">
-								<input type="text" id="raddres" class="add-input numKeyboard form-control" name="raddres" value="CIUDAD" style=" border-color: #06080a !important; border-right-width: 1px !important;" placeholder="Ingrese la dirección">
-							</div>
-						</div>
-					</div>
-					<input type="hidden" id="nrodocumento" name="nrodocumento" value="CF">
-					<input type="hidden" id="tipo_e" name="tipo_e">
-				</div>
-
-			</div>
-
 			<?php for ($k = 1; $k <= NUMBER_OF_PEOPLE_CUSTOM_FIELDS; $k++) { ?>
 				<?php
 				$custom_field = $this->Sale->get_custom_field($k);
@@ -1741,11 +1702,7 @@
 				<div id="finish_sale" class="finish-sale">
 					<?php echo form_open("sales/complete", array('id' => 'finish_sale_form', 'autocomplete' => 'off')); ?>
 					<?php
-					if ($payments_cover_total && $customer_required_check) {
-						echo "<input type='button' class='btn btn-success btn-large btn-block' id='finish_sale_button' value='" . lang('sales_complete_sale') . "' />";
-					}
-
-
+					//Agregar datos de tarjeta
 					echo form_checkbox(array(
 						'name' => 'prompt_for_card',
 						'id' => 'prompt_for_card',
@@ -1753,7 +1710,79 @@
 						'checked' => (bool) $prompt_for_card
 					));
 					echo '<label for="prompt_for_card"><span></span>' . lang('common_prompt_for_card') . '</label>';
+					//Realizar factura electronica
+					$current_location = $this->Employee->get_logged_in_employee_current_location_id();
+					$location = $this->Location->get_info($current_location);
 
+					// Configurar el estado del checkbox según la variable $location->api_key
+					$checkbox_options = array(
+						'name' => 'show_factura_on_receipt',
+						'id' => 'show_factura_on_receipt',
+						'value' => '1',
+						'checked' => false
+					);
+					//Desactivar factura electrónica si no hay API Key
+					if ($location->api_key == '') {
+						$checkbox_options['disabled'] = 'disabled';
+					}
+					
+					// Generar el checkbox
+					echo form_checkbox($checkbox_options);
+					echo '<label for="show_factura_on_receipt"><span></span>Factura electrónica</label>';					
+					//
+					?>
+					<!-- DTE -->
+					<div class="factura_electronica" style="margin-left: 0.7rem; padding-bottom: 25px;" >
+						<!-- checkbox DTE -->
+						<div id="factura_electronica">
+							<div class="row-elements" style="padding-right: 25px !important;">
+								<span style="width: 20%;">
+									<?php echo form_dropdown('date_format', array(
+										'NiT'  => 'NIT',
+										'CUI'  => 'CUI',
+									),  array(), 'class="form-control" id="Selected_format"');
+									?>
+								</span>
+								<input type="text" name="nitCliente" id="nitCliente" class="add-input numKeyboard form-control" placeholder="Ingrese el NIT/CUI o deje vacío para CF">				
+								<span>
+									<a href="#" class="btn btn-primary" id="add_nit_button">Buscar</a>
+								</span>									
+							</div>	
+							<label id="nit-alert" class="hidden" style="color: red;">NIT/CUI inválido</label>
+							<h5>Datos cliente:</h5>						
+							<div class="row">
+								<div class="col-sm-10 col-md-10 col-lg-10">
+									<div class="input-group add-payment-form">
+										<input type="text" id="nombreCliente" class="add-input numKeyboard form-control" name="nombreCliente" value="CONSUMIDOR FINAL" style="  border-color: #06080a !important;
+    										border-right-width: 1px !important;" placeholder="Ingrese el nombre del cliente">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-10 col-md-10 col-lg-10" style="padding-top: 1rem;">
+									<div class="input-group add-payment-form">
+										<input type="text" id="raddres" class="add-input numKeyboard form-control" name="raddres" value="CIUDAD" style=" border-color: #06080a !important; border-right-width: 1px !important;" placeholder="Ingrese la dirección">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-10 col-md-10 col-lg-10" style="padding-top: 1rem;">
+									<div class="input-group add-payment-form">
+										<input type="email" id="emailDTE" pattern=".+@example\.com" size="30" class="add-input numKeyboard form-control" name="emailDTE" style=" border-color: #06080a !important; border-right-width: 1px !important;" placeholder="Ingrese el correo electrónico (opcional)">
+									</div>
+								</div>
+							</div>
+							<input type="hidden" id="nrodocumento" name="nrodocumento">
+							<input type="hidden" id="tipo_e" name="tipo_e">
+						</div>
+					</div>
+					
+					<?php
+					//Boton finalizar venta
+					if ($payments_cover_total && $customer_required_check) {
+						echo "<input type='button' class='btn btn-success btn-large btn-block' id='finish_sale_button' value='" . lang('sales_complete_sale') . "' />";						
+					}
+					
 					echo form_close();
 					?>
 				</div>
@@ -2745,7 +2774,8 @@ if (isset($number_to_add) && isset($item_to_add)) {
 					delay: 500,
 					autoFocus: false,
 					minLength: 0,
-					select: function(event, ui) {						
+					select: function(event, ui) {		
+						//console.log(ui.item); //test				
 						if (typeof ui.item.attributes != 'undefined' && ui.item.attributes != null) {
 							$('#var-customize').text(ui.item.label);
 							$('#var_popup').modal('show');
@@ -2776,7 +2806,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 
 					},
 				}).data("ui-autocomplete")._renderItem = function(ul, item) {
-					
 					return $("<li class='item-suggestions'></li>")
 						.data("item.autocomplete", item)
 						.append('<a  class="suggest-item"><div class="item-image ">' +
@@ -2842,14 +2871,13 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		$('#show_factura_on_receipt').click(function() {
 			if ($(this).is(':checked')) {
 				$("#factura_electronica").show();
-				document.getElementById("nit-alert").className = 'hidden';
-				document.getElementById("nrodocumento").value = 'CF';
+				document.getElementById("nit-alert").className = 'hidden';				
 				document.getElementById("nombreCliente").value = 'CONSUMIDOR FINAL';
+				document.getElementById("raddres").value = 'CIUDAD';
 				document.getElementById("nitCliente").value = '';
 				document.getElementById("Selected_format").value = 'NiT';
 			} else {
 				$("#factura_electronica").hide();
-				document.getElementById("finish_sale_button").disabled = false;
 			}
 		});
 		$("#add_nit_button").click(async function(e) {
@@ -2862,62 +2890,80 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		});
 
 		function verifyNit() {
-    		return new Promise((resolve, reject) => {    		    
-    		    if ($('#raddres').val() == '') {
-    		        $("#raddres").val('CIUDAD');
-    		    }
-    		    var addres = $("#raddres").val();
-    		    var tipo = $("#Selected_format").val();
-    		    var nit = $("#nitCliente").val();
-			
-    		    if (nit == "") {
-    		        nit = "CF";
-    		        tipo = "NiT";
-    		    }
-			
-    		    if (nit.replace(/-/g, "").toUpperCase() !== 'CF') {
-    		        let params = { nit: nit.replace(/-/g, ""), tipo: tipo };
-				
-    		        $.post('<?php echo site_url("sales/nit"); ?>', params, function(data) {
-    		            let success = false;
-    		            $.each(data, function(key, val) {    		                
-    		                switch (val.message) {
-    		                    case 'success':
-    		                        $("#nombreCliente").val(val.nombre);
-    		                        $("#TextCliente").val(val.nombre);
-    		                        $("#nrodocumento").val(nit);
-    		                        $("#tipo_e").val(tipo);
-    		                        $("#raddres").val(addres);
-    		                        document.getElementById("nit-alert").className = 'hidden';
-    		                        document.getElementById("finish_sale_button").disabled = false;
-    		                        success = true;
-    		                        break;
-    		                    default:
-    		                        document.getElementById("nit-alert").className = '';
-    		                        document.getElementById("finish_sale_button").disabled = true;
-    		                        break;
-    		                }
-    		            });
-					
-    		            if (success) {
-    		                resolve(); // La verificación fue exitosa
-    		            } else {
-    		                reject("Datos de facturación electrónica incorrectos");
-    		            }
-    		        }, 'json');
-    		    } else {
-    		        // Si el NIT es "CF", se completa automáticamente
-    		        $("#nitCliente").val($("#nitCliente").val().toUpperCase());
-    		        $("#nombreCliente").val('CONSUMIDOR FINAL');
-    		        $("#TextCliente").val('CONSUMIDOR FINAL');
-    		        $("#tipo_e").val(tipo);
-    		        $("#raddres").val(addres);
-    		        $("#nrodocumento").val("CF");
-    		        resolve(); // No necesita validación
-    		    }
+    		return new Promise((resolve, reject) => {
+        		if ($('#raddres').val() == ''){
+        		    $("#raddres").val('CIUDAD');        	
+				}
+        		var addres = $("#raddres").val();
+        		var tipo = $("#Selected_format").val();
+        		var nit = $("#nitCliente").val();
+
+				if (nit == "" || nit.toUpperCase() === "C/F" || nit.toUpperCase() === "CONSUMIDOR FINAL") {
+					nit = "CF";
+					tipo = "NiT";
+				} else if(tipo == "NiT") {
+					// Depurar el NIT
+					nit = nit.replace(/\s+/g, ''); // Eliminar espacios en blanco
+					if (nit.match(/[^.]/)) {
+						nit = nit.replace(/\./g, ''); // Eliminar puntos si hay caracteres diferentes de un punto
+					}
+					nit = nit.replace(/-/g, ''); // Eliminar guiones
+					nit = nit.replace(/_$/, ''); // Eliminar guiones bajos en la anteúltima posición
+					nit = nit.replace(/k$/, 'K'); // Reemplazar 'k' minúscula por 'K' mayúscula
+				} else if (tipo == "CUI") {
+    				// Depurar el CUI
+    				nit = nit.replace(/[^0-9]/g, ''); // Eliminar cualquier carácter diferente de números
+				}
+
+
+        		let error = 'Error en la validación de datos';
+				//Si el NIT es diferente de "CF" se realiza la consulta
+        		if (nit.replace(/-/g, "").toUpperCase() !== 'CF') {
+            		let params = { nit: nit.replace(/-/g, ""), tipo: tipo };
+            		$.post('<?php echo site_url("sales/nit"); ?>', params, function(data) {
+                		let success = false;
+                		$.each(data, function(key, val) {
+                		    switch (val.message) {
+                		        case 'success':
+                		            $("#nombreCliente").val(val.nombre);
+                		            $("#TextCliente").val(val.nombre);
+                		            $("#nrodocumento").val(nit);
+                		            $("#tipo_e").val(tipo);
+                		            $("#raddres").val(addres);
+                		            document.getElementById("nit-alert").className = 'hidden';
+                		            success = true;
+                		            break;
+                		        default:
+                		            document.getElementById("nit-alert").className = '';
+                		            document.getElementById("nit-alert").innerHTML = tipo.toUpperCase()+' inválido';                            
+                		            error = tipo.toUpperCase()+' inválido';
+                		            break;
+                		    }
+                		});
+                		if (success) {                    
+                		    resolve(); // La verificación fue exitosa
+                		} else {
+                		    reject(error);
+                		}
+            		}, 'json');
+        		} else {
+					//Si el NIT es "CF", se completa automáticamente si el total NO es mayor a Q2,500	
+        		    if ((<?php echo $total;?>) > 2500) {
+        		        document.getElementById("nit-alert").className = '';
+        		        document.getElementById("nit-alert").innerHTML = 'El total es mayor a Q2,500. Es necesario agregar un NIT/CUI';                
+        		        reject('Es necesario agregar un NIT/CUI');
+        		    } else {
+        		        $("#nombreCliente").val('CONSUMIDOR FINAL');
+        		        $("#TextCliente").val('CONSUMIDOR FINAL');
+        		        $("#tipo_e").val(tipo);
+        		        $("#raddres").val(addres);
+        		        $("#nrodocumento").val("CF");
+        		        document.getElementById("nit-alert").className = 'hidden';            
+        		        resolve(); // La verificación fue exitosa
+        		    }
+        		}
     		});
 		}
-
 
 		$('#change_date_enable').click(function() {
 			if ($(this).is(':checked')) {
@@ -3219,9 +3265,9 @@ if (isset($number_to_add) && isset($item_to_add)) {
 			<?php if (!$this->config->item('disable_confirmation_sale')) { ?>
 				confirm_messages.push(<?php echo json_encode(lang("sales_confirm_finish_sale")); ?>);
 			<?php } ?>
-
 			/*Verifcar datos de facturacion*/
 			//Si la factura electrónica está activada
+			
 			if ($("#show_factura_on_receipt").is(':checked')) {			
 				try {
             		// Espera a que verificarNit() termine antes de continuar
@@ -3232,15 +3278,16 @@ if (isset($number_to_add) && isset($item_to_add)) {
             		    nombreCliente: $('#nombreCliente').val(),
             		    tipo_e: $('#tipo_e').val(),
             		    addres: $('#raddres').val(),
-            		}, function() {
-            		    // Se llama a la función finishSale 
+						emailDTE: $('#emailDTE').val(),
+            		}, function() {						
+            		    // Se llama a la función finishSale 												
             		    finishSale(confirm_messages);
             		});
         		} catch (error) {					
-        		    $("#finish_sale_button").show();
-					document.getElementById("finish_sale_button").disabled = true;
+        			$("#finish_sale_button").show();
+					alert("Error facturación electrónica: "+error);					
+					//document.getElementById("finish_sale_button").disabled = true;
         		}
-
 			} else {
 				// Si la factura electrónica no está activada
 				finishSale(confirm_messages);
@@ -3538,21 +3585,37 @@ if (isset($number_to_add) && isset($item_to_add)) {
 	}
 
 	function finishSale(confirm_messages) {
+		//Restablecer valore DTE si no esta activada
+		if(!$("#show_factura_on_receipt").is(':checked') && $('#nrodocumento').val()!= '') {
+			$.post('<?php echo site_url("sales/set_nit"); ?>', {
+            	nit: '',
+            	nombreCliente: $('#nombreCliente').val(),
+            	tipo_e: $('#tipo_e').val(),
+            	addres: $('#raddres').val(),
+				emailDTE: $('#emailDTE').val(),
+            });
+			console.log('Datos de facturación eliminados');
+		}
+		//
+		//Si hay mensajes de confirmación
 		if (confirm_messages.length) {
 			bootbox.confirm(confirm_messages.join("<br />"), function(result) {
 				if (result) {
-					postFinishSale();
+            		// Se llama a la función finishSale 												
+            		postFinishSale();
 				} else {
 					//Bring back submit and unmask if fail to confirm
 					$("#finish_sale_button").show();
-					$('#grid-loader').hide();
+					$('#grid-loader').hide();					
 				}
 			});
 		} else {
-			postFinishSale();
+			postFinishSale();		
 		}
+
 	}
 
+	/*Original*/
 	function postFinishSale() {
 		if ($("#comment").val()) {
 			$.post('<?php echo site_url("sales/set_comment"); ?>', {
@@ -3562,8 +3625,7 @@ if (isset($number_to_add) && isset($item_to_add)) {
 			});
 		} else {
 			$('#finish_sale_form').submit();
-		}
-
+		}	
 	}
 
 	<?php

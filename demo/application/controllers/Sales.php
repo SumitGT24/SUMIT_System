@@ -1,4 +1,7 @@
 <?php
+
+use Braintree\Xml;
+
 require_once("Secure_area.php");
 require_once(APPPATH . "models/cart/PHPPOSCartSale.php");
 require_once(APPPATH . "traits/taxOverrideTrait.php");
@@ -1694,6 +1697,7 @@ class Sales extends Secure_area
 		$this->cart->tipo = $this->input->post('tipo_e');
 		$this->cart->addres = $this->input->post('addres') ? $this->input->post('addres') : 'CIUDAD';;
 		$this->cart->nombreCliente = $this->input->post('nombreCliente');
+		$this->cart->correoDTE = $this->input->post('emailDTE');
 		$this->cart->save();
 	}
 
@@ -1759,9 +1763,22 @@ class Sales extends Secure_area
 
 		if ($this->cart->get_mode() != 'return' && $this->cart->get_mode() != 'estimate' && $this->config->item('do_not_allow_out_of_stock_items_to_be_sold')) {
 			foreach ($this->cart->get_items() as $item) {
-				if ($item->out_of_stock()) {
-					$this->_reload(array('error' => lang('sales_one_or_more_out_of_stock_items')), false);
+				$alert = false;
+				if ($item->out_of_stock()) {					
+					if($this->cart->nit == ''){
+						$alert = true;
+					}else{		
+						if($item->is_service!=1){
+							$alert = true;
+						}						
+					}
+				}
+				if ($alert) {
+					$this->_reload(array('error' => lang('sales_unable_to_add_item_out_of_stock')), false);
 					return;
+				}
+				if($item->is_service==1 && $this->cart->nit != ''){					
+					$this->Item_location->save_quantity(1,$item->item_id);
 				}
 			}
 		}
@@ -1781,7 +1798,6 @@ class Sales extends Secure_area
 			$this->_reload(array('error' => lang('sales_cannot_complete_sale_as_payments_do_not_cover_total')), false);
 			return;
 		}
-
 
 		$tier_id = $this->cart->selected_tier_id;
 		$tier_info = $this->Tier->get_info($tier_id);
@@ -2080,38 +2096,24 @@ class Sales extends Secure_area
 			}
 			$this->email->send();
 		}
-
-
-
-		if ($this->cart->nit == "") {
-		} else {
-			if ($this->cart->nit == "CF") {
-				$name = $this->cart->nombreCliente;
-				$nit = "CF";
-			} else {
-				$name = $this->cart->nombreCliente;
-				$nit = $this->cart->nit;
-			}
+		//Generacion de factura electronica
+		if ($this->cart->nit != "") {
+			$name = $this->cart->nombreCliente;
+			$nit = $this->cart->nit;
 			$tipo = $this->cart->tipo;
 			$rAddres = $this->cart->addres;
-			// var_dump($rAddres);
-			// exit();
-			//FACTURA ELECTRONICA
+			$correo = $this->cart->correoDTE;
+			
 			date_default_timezone_set("America/Guatemala");
 			//GENERACION DE XML
 
 			$nitTramitador = "100826741";
 
-
 			$nrofactura = "0001000" . $sale_id_raw;
 			$codfactura = "333" . '-' . $nrofactura;
-			//
-			//FACTURA ELECTRONICA
-
+			
 			date_default_timezone_set("America/Guatemala");
-			//GENERACION DE XML
-			// ["api_key"]=> string(40) "23f06f925afa9437d056accee185d8c2d74cc0c4" ["api_key"]=> string(7) "1514318" ["razon_social"]=> string(22)
-			//  "Credenciales de prueba" ["number_establecimiento"]=> string(9) "principal" ["municipio"]=> string(8) "ayacucho" ["departamento"]=> string(7) "caseres" }
+
 			$nitTramitador = "100826741";
 
 			$detalleFEL = $data['cart_items'];
@@ -2119,35 +2121,40 @@ class Sales extends Secure_area
 			$iva = 0;
 			$productos = '';
 			$receptor = '';
+			//Variables que dependen del tipo de contribuyente
+			$tipoDTE = "";
+			$afiliacionIVA = "";
+			$tipoFrase = "";
+			//Impuestos DTE (Solo contribuyente general)
+			$ImpuestoDTE = "";
+			$TotalImpuestoDTE = "";
+			//Comentario
+			$comentario = "";
+			//Agregar comentario si existe
+			if($this->cart->comment!=''){
+				$comentario = $this->cart->comment;				
+			}			
+
+			//Recorrer los productos
 			for ($i = 0; $i < count($detalleFEL); $i++) {
-				$infoItem = 	$this->Item->get_info($detalleFEL[$i]->item_id);
 				$cur_item_location_info = $this->Item_location->get_info($detalleFEL[0]->item_id);
 				$location = $this->Location->get_info($cur_item_location_info->location_id);
-
-				// // factura electronica 
+				$TipoRegimen= $location->tipo_contribuyente;		
+				//Determinar si es bien o servicio
+				$BienOServicio = "B";
+				//Si es servicio
+				if($detalleFEL[$i]->is_service == 1){
+					$BienOServicio = "S";		
+					//$this->Item_location->save_quantity(1,$detalleFEL[$i]->item_id);		
+				}
 				
-				//dd();
-				// dd();
-				// $location->api_key
-				// $location->nit
-				// $location->razon_social
-				// $location->number_establecimiento
-				// $location->municipio
-				// $location->departamento
-				//$totalItem= $detalleFEL[$i]->unit_price * $detalleFEL[$i]->quantity ;
-
 				if (is_null($detalleFEL[$i]->quantity_unit_quantity)) {
 
 					$cantidad = number_format($detalleFEL[$i]->quantity, 2, '.', '');
 				} else {
 					$cantidad = number_format($detalleFEL[$i]->quantity_unit_quantity * $detalleFEL[$i]->quantity, 2, '.', '');
 				}
-				// $totalItem = number_format($detalleFEL[$i]->unit_price * $detalleFEL[$i]->quantity, 2, '.', '');
-				// $unitario = number_format($totalItem / $cantidad, 3, '.', '');
-				// if ($totalItem == ($unitario * $cantidad)) {
-				// } else {
-				// 	$totalItem = ($unitario * $cantidad); quantity es 3 , cantidad es 36  --> 355 / 36 =
-				// }
+
 				$descuento = 0;
 				$descriptionItem = $detalleFEL[$i]->name;
 				if ($detalleFEL[$i]->allow_alt_description) {
@@ -2164,49 +2171,79 @@ class Sales extends Secure_area
 						}
 					}
 				}
-				$unitario = number_format(($detalleFEL[$i]->unit_price * $detalleFEL[$i]->quantity) / $cantidad, 3, '.', '');
+				//Calcular el precio unitario
+				$unitario = number_format(($detalleFEL[$i]->unit_price * $detalleFEL[$i]->quantity) / $cantidad, 4, '.', '');
+				//Calcular el total del item
 				$totalItem = number_format($unitario * $cantidad, 2, '.', '');
-				if ($totalItem == ($unitario * $cantidad)) {
-				} else {
+				if ($totalItem != ($unitario * $cantidad)) {
 					$totalItem = ($unitario * $cantidad);
 				}
-				$descuento = number_format(($totalItem * $detalleFEL[$i]->discount) / 100, 3, '.', '');
-				$subTotal = round((($totalItem - $descuento) / 1.12), 3);
-				$ivaItem = round(((($totalItem - $descuento) / 1.05) * 0.05), 3);
-
-
+				$descuento = number_format(($totalItem * $detalleFEL[$i]->discount) / 100, 4, '.', '');
+				
+				//Calculo de IVA por producto (Solo contribuyente general)
+				if($TipoRegimen==1){
+					//Calcular el precio sin IVA
+					$subTotal = round((($totalItem - $descuento) / 1.12), 4);
+					//Calcular el IVA del item
+					$ivaItem = round(((($totalItem - $descuento) / 1.12) * 0.12), 4);
+					//Impuesto por producto
+					$ImpuestoDTE = "<dte:Impuestos>" .
+					"<dte:Impuesto>" .
+					"<dte:NombreCorto>IVA</dte:NombreCorto>" .
+					"<dte:CodigoUnidadGravable>1</dte:CodigoUnidadGravable>" .
+					"<dte:MontoGravable>" . str_replace(',', '.', $subTotal) . "</dte:MontoGravable>" .
+					"<dte:MontoImpuesto>" . str_replace(',', '.', $ivaItem) . "</dte:MontoImpuesto>" .
+					"</dte:Impuesto>" .
+					"</dte:Impuestos>";	
+					//Sumar al total de IVA
+					$iva += $ivaItem;
+				}
+				//Precio total del item
 				$precio = $totalItem;
-				$totalItem = number_format($totalItem - $descuento, 2, '.', '');
-
-				$iva += $ivaItem;
+				//Aplicar descuento al total del item
+				$totalItem = number_format($precio - $descuento, 2, '.', '');
+				//Sumar al total
 				$total += $totalItem;
 				$linea = $i + 1;
-				$productos .=  "<dte:Item NumeroLinea=\"$linea\" BienOServicio=\"B\">" .
+
+				$productos .=  "<dte:Item NumeroLinea=\"$linea\" BienOServicio=\"$BienOServicio\">" .
 					"<dte:Cantidad>" . $cantidad . "</dte:Cantidad>" .
 					"<dte:UnidadMedida>UNI</dte:UnidadMedida>" .
 					"<dte:Descripcion>" . $descriptionItem . "</dte:Descripcion>" .
 					"<dte:PrecioUnitario>" . $unitario . "</dte:PrecioUnitario>" .
 					"<dte:Precio>" .  $precio  . "</dte:Precio>" .
 					"<dte:Descuento>" . $descuento . "</dte:Descuento>" .
-					
+					//Solo aplica a contribuyente general
+					$ImpuestoDTE .
+					//Se deben sumar impuestos al total (excepto por el IVA)
 					"<dte:Total>" . $totalItem . "</dte:Total>" .
 					"</dte:Item>" . "\n";
 			}
-
-			// exit();
-			//   var_dump("previas");
-			//   $xml = $this->cart->xmlcontructor($this->cart->nombreCliente, $this->cart->nit, 'Guatemala', date('Y-m-d'), date("H:i:s"), $productos, $total, '0',$nitTramitador,$iva);
-			//   var_dump("tavamos ");
-			//   $firma = $this->cart->senDataSignature($xml,$nitTramitador);
-			//    var_dump($firma) ;
-
-			//   $info = $this->cart->senDataCertificar($firma,$nitTramitador,$codfactura,$nrofactura);
+			if($TipoRegimen==0){
+				//Pequeño contribuyente
+				$tipoDTE = "FPEQ";
+				$afiliacionIVA = "PEQ";
+				$tipoFrase = "3";
+				//Impuestos
+				$ImpuestoDTE = "";
+				$TotalImpuestoDTE = "";
+			}
+			else{
+				//General
+				$tipoDTE = "FACT";
+				$afiliacionIVA = "GEN";
+				$tipoFrase = "1";
+				//IVA total - Solo contribuyente general
+				$TotalImpuestoDTE = "<dte:TotalImpuestos>" .
+				"<dte:TotalImpuesto NombreCorto=\"IVA\" TotalMontoImpuesto=\"" . str_replace(',', '.', $iva) . "\"/>" .
+				"</dte:TotalImpuestos>";
+			}
 
 			if ($tipo  == "CUI") {
-				$receptor = "<dte:Receptor NombreReceptor=\"" . $name . "\" CorreoReceptor=\"\" IDReceptor=\"" . $nit . "\" TipoEspecial=\"" . $tipo . "\">";
+				$receptor = "<dte:Receptor NombreReceptor=\"" . $name . "\" CorreoReceptor=\"". $correo ."\" IDReceptor=\"" . $nit . "\" TipoEspecial=\"" . $tipo . "\">";
 			} else {
 
-				$receptor = "<dte:Receptor NombreReceptor=\"" . $name . "\" CorreoReceptor=\"\" IDReceptor=\"" . $nit . "\">";
+				$receptor = "<dte:Receptor NombreReceptor=\"" . $name . "\" CorreoReceptor=\"". $correo ."\" IDReceptor=\"" . $nit . "\">";
 			}
 			$xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" .
 				"<dte:GTDocumento Version=\"0.1\" xmlns:dte=\"http://www.sat.gob.gt/dte/fel/0.2.0\" " .
@@ -2214,10 +2251,10 @@ class Sales extends Secure_area
 				"<dte:SAT ClaseDocumento=\"dte\">" .
 				"<dte:DTE ID=\"DatosCertificados\">" .
 				"<dte:DatosEmision ID=\"DatosEmision\">" .
-				"<dte:DatosGenerales Tipo=\"FPEQ\" FechaHoraEmision=\"" . date('Y-m-d') . "T" . date("H:i:s") . "\" CodigoMoneda=\"GTQ\" />" .
+				"<dte:DatosGenerales Tipo=\"".$tipoDTE."\" FechaHoraEmision=\"" . date('Y-m-d') . "T" . date("H:i:s") . "\" CodigoMoneda=\"GTQ\" />" .
 				"<dte:Emisor NITEmisor=\"$location->nit\" NombreEmisor=\"$location->razon_social\" " .
 				"CodigoEstablecimiento=\"$location->number_establecimiento\" " .
-				"NombreComercial=\"$location->name\" AfiliacionIVA=\"PEQ\">" .
+				"NombreComercial=\"$location->company\" AfiliacionIVA=\"".$afiliacionIVA."\">" .
 				"<dte:DireccionEmisor>" .
 				"<dte:Direccion>" . $location->address . "</dte:Direccion>" .
 				"<dte:CodigoPostal>09002</dte:CodigoPostal>" .
@@ -2236,29 +2273,27 @@ class Sales extends Secure_area
 				"</dte:DireccionReceptor>" .
 				"</dte:Receptor>" .
 				"<dte:Frases>" .
-				"<dte:Frase TipoFrase=\"3\" CodigoEscenario=\"1\"/>" .
+				"<dte:Frase TipoFrase=\"".$tipoFrase."\" CodigoEscenario=\"1\"/>" .
 				"</dte:Frases>" .
 				"<dte:Items>" .
 				"$productos" .
 				"</dte:Items>" .
 				"<dte:Totales>" .
-				
-				//"<dte:GranTotal>".$total."</dte:GranTotal>".
+				$TotalImpuestoDTE .
 				"<dte:GranTotal>" . str_replace(',', '.', $total) . "</dte:GranTotal>" .
 				"</dte:Totales>" .
 				"</dte:DatosEmision>" .
 				"</dte:DTE>" .
 
 				"<dte:Adenda>" .
-				"<TOTALDOC_TEXTO_EMISOR>Tel/WhatsApp 7914 3028</TOTALDOC_TEXTO_EMISOR>" .		
-				"<TOTALDOC_PIE_PAGINA>EN REPUESTOS ELÉCTRICOS, ACCESORIOS Y PRODUCTOS CORTADOS A LA
-				MEDIDA NO HAY CAMBIOS NI DEVOLUCIONES. OTROS PRODUCTOS, UN MÁXIMO DE 2 DÍAS PRESENTANDO ESTE DOCUMENTO.
-				NO SE PUEDE ANULAR PASADO 30 DIAS ESTE DOCUMENTO TODOS LOS PRECIOS YA INCLUYEN IVA Y DESCUENTO.</TOTALDOC_PIE_PAGINA>".
+				"<TOTALDOC_TEXTO_EMISOR>Tel/WhatsApp " .$location->phone. "</TOTALDOC_TEXTO_EMISOR>" .		
+				"<TOTALDOC_PIE_PAGINA>" . $this->config->item('return_policy') . "</TOTALDOC_PIE_PAGINA>".
+				//"TOTALDOC_COMENTARIO>".$comentario."</TOTALDOC_COMENTARIO>" .
 				"</dte:Adenda>".
-
 				"</dte:SAT>" .
 				"</dte:GTDocumento>";
 
+			//Firma
 			$xmlEncode = base64_encode($xml);
 			$xmlsend = "{\r\n\t\"dte\": {\r\n\t\t\"nit_transmitter\": \"$location->nit\",\r\n\t\t\"xml_dte\": \"$xmlEncode\"\r\n\t}\r\n}\r\n";
 			$curl = curl_init();
@@ -2279,9 +2314,15 @@ class Sales extends Secure_area
 				),
 			));
 			$response = curl_exec($curl);
-			curl_close($curl);
 			$info = json_decode($response);
 			$firma = $info->xmlSigned;
+			if($firma==""){
+				$this->cart->nit = "";
+				$this->cart->save();
+				echo $response;
+				exit();
+			}
+			curl_close($curl);
 			$venta = $saved_sale_info['sale_id'];
 
 			$serie = "texAs-$venta";
@@ -2330,13 +2371,15 @@ class Sales extends Secure_area
 				// echo $info['descripcion_errores'][0]['mensaje_error'];
 				var_dump($info);
 				echo "error";
+				//TODO: Configurar mensaje de error				
 				$fileXML = 'facturas/error.xml';
 				file_put_contents($fileXML, $xml);
 				echo $xml;
 				exit();
 			}
 		}
-
+		//Reset this value $this->cart->nit 
+		
 		$this->load->view("sales/receipt", $data);
 
 		if ($data['sale_id'] != $this->config->item('sale_prefix') . ' -1') {
@@ -2361,6 +2404,9 @@ class Sales extends Secure_area
 		//Update cutomer facing display
 		$this->Register_cart->set_data($final_cart_data, $this->Employee->get_logged_in_employee_current_register_id());
 		$this->Register_cart->add_data(array('can_email' => $data['can_email_receipt'], 'can_sms' => $data['can_sms_receipt'], 'sale_id' => $sale_id_raw), $this->Employee->get_logged_in_employee_current_register_id());
+
+		$this->cart->nit = "";
+		$this->cart->save();
 	}
 
 	function download_receipt($sale_id)
@@ -2769,6 +2815,9 @@ class Sales extends Secure_area
 		$FechaEmisionDocumentoAnular = $pieces[0] . "T" . $pieces[1];
 
 		$MotivoAnulacion = $this->input->post('anulation');
+		if ($MotivoAnulacion == "") {
+			$MotivoAnulacion = "sin comentarios";
+		}
 		if ($fell) {
 			//anulacion(string $NumeroDocumentoAAnular, string $IDReceptor,string $FechaEmisionDocumentoAnular, string $FechaHoraAnulacion, string $MotivoAnulacion="Pruebas de anulacion"){
 

@@ -2779,7 +2779,8 @@ class Items extends Secure_area implements Idata_controller
 	        'unit_price' => $this->input->post('customItemUnitPrice'),
 	        'default_quantity' => NULL,
 			'ecommerce_product_id'=> NULL,
-			'is_service'=> 0,
+			//save is_service value from a checkbox
+			'is_service'=>$this->input->post('isService') ? $this->input->post('isService') : 0 ,
 			'allow_alt_description'=> 0,
 			'is_serialized'=> 0,
 			'is_ebt_item'=> 0,
@@ -2793,6 +2794,8 @@ class Items extends Secure_area implements Idata_controller
 	    );
 		//cantidad
 		$item_qty = $this->input->post('customItemQty');
+		//Es servicio
+		$isService =$this->input->post('isService') ? $this->input->post('isService') : 0;
 	    // Valores por defecto para un nuevo ítem
 	    $item_data['commission_percent'] = NULL;
 	    $item_data['commission_fixed'] = NULL;
@@ -2809,8 +2812,10 @@ class Items extends Secure_area implements Idata_controller
 			$this->Tag->save_tags_for_item(isset($item_data['item_id']) ? $item_data['item_id'] : $item_id, $this->input->post('tags'));
 			
 			$success_message = '';
-			//Agregar unidades al inventario
-			$this->Item_location->save_quantity($item_qty,$item_data['item_id']);
+			//Agregar unidades al inventario solo si no es un servicio
+			if($isService==0){
+				$this->Item_location->save_quantity($item_qty,$item_data['item_id']);
+			}
 			$success_message = lang('common_successful_adding').' '.H($item_data['name']);
 			$this->session->set_flashdata('manage_success_message', $success_message);
 			$this->Appconfig->save('wizard_add_inventory',1);

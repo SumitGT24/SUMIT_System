@@ -1529,7 +1529,6 @@ CREATE TABLE `phppos_locations` (
   `company_logo` int(10) DEFAULT NULL,
   `address` text DEFAULT NULL,
   `phone` text DEFAULT NULL,
-  `fax` text DEFAULT NULL,
   `email` text DEFAULT NULL,
   `cc_email` text DEFAULT NULL,
   `bcc_email` text DEFAULT NULL,
@@ -1538,7 +1537,6 @@ CREATE TABLE `phppos_locations` (
   `receive_stock_alert` text DEFAULT NULL,
   `stock_alert_email` text DEFAULT NULL,
   `timezone` text DEFAULT NULL,
-  `mailchimp_api_key` text DEFAULT NULL,
   `enable_credit_card_processing` text DEFAULT NULL,
   `credit_card_processor` text DEFAULT NULL,
   `hosted_checkout_merchant_id` text DEFAULT NULL,
@@ -1583,10 +1581,6 @@ CREATE TABLE `phppos_locations` (
   `card_connect_mid` varchar(255) DEFAULT NULL,
   `card_connect_rest_username` varchar(255) DEFAULT NULL,
   `card_connect_rest_password` varchar(255) DEFAULT NULL,
-  `default_mailchimp_lists` varchar(255) NOT NULL DEFAULT '',
-  `twilio_sid` varchar(255) DEFAULT NULL,
-  `twilio_token` varchar(255) DEFAULT NULL,
-  `twilio_sms_from` varchar(255) DEFAULT NULL,
   `auto_reports_email` varchar(255) NOT NULL DEFAULT '',
   `auto_reports_email_time` time DEFAULT NULL,
   `auto_reports_day` varchar(255) NOT NULL DEFAULT 'previous_day',
@@ -1596,15 +1590,16 @@ CREATE TABLE `phppos_locations` (
   `razon_social` varchar(200) DEFAULT NULL,
   `number_establecimiento` varchar(200) DEFAULT NULL,
   `municipio` varchar(200) DEFAULT NULL,
-  `departamento` varchar(200) DEFAULT NULL
+  `departamento` varchar(200) DEFAULT NULL,
+  `tipo_contribuyente` int(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `phppos_locations`
 --
 
-INSERT INTO `phppos_locations` (`location_id`, `name`, `company`, `website`, `company_logo`, `address`, `phone`, `fax`, `email`, `cc_email`, `bcc_email`, `color`, `return_policy`, `receive_stock_alert`, `stock_alert_email`, `timezone`, `mailchimp_api_key`, `enable_credit_card_processing`, `credit_card_processor`, `hosted_checkout_merchant_id`, `hosted_checkout_merchant_password`, `emv_merchant_id`, `net_e_pay_server`, `listener_port`, `com_port`, `stripe_public`, `stripe_private`, `stripe_currency_code`, `braintree_merchant_id`, `braintree_public_key`, `braintree_private_key`, `default_tax_1_rate`, `default_tax_1_name`, `default_tax_2_rate`, `default_tax_2_name`, `default_tax_2_cumulative`, `default_tax_3_rate`, `default_tax_3_name`, `default_tax_4_rate`, `default_tax_4_name`, `default_tax_5_rate`, `default_tax_5_name`, `deleted`, `secure_device_override_emv`, `secure_device_override_non_emv`, `tax_class_id`, `ebt_integrated`, `integrated_gift_cards`, `square_currency_code`, `square_location_id`, `square_currency_multiplier`, `email_sales_email`, `email_receivings_email`, `stock_alerts_just_order_level`, `platformly_api_key`, `platformly_project_id`, `tax_id`, `disable_markup_markdown`, `card_connect_mid`, `card_connect_rest_username`, `card_connect_rest_password`, `default_mailchimp_lists`, `twilio_sid`, `twilio_token`, `twilio_sms_from`, `auto_reports_email`, `auto_reports_email_time`, `auto_reports_day`, `disable_confirmation_option_for_emv_credit_card`, `api_key`, `nit`, `razon_social`, `number_establecimiento`, `municipio`, `departamento`) VALUES
-(1, 'SUMIT', 'SUMIT', 'sumit.gt', 2, 'CC PLAZA ASTURIAS COBAN', '0000-0000', '', 'info@info.com', '', '', '#001f49', '', '0', '', 'America/Guatemala', '', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', 'N;', '', '', '', '', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz');
+INSERT INTO `phppos_locations` (`location_id`, `name`, `company`, `website`, `company_logo`, `address`, `phone`, `email`, `cc_email`, `bcc_email`, `color`, `return_policy`, `receive_stock_alert`, `stock_alert_email`, `timezone`, `enable_credit_card_processing`, `credit_card_processor`, `hosted_checkout_merchant_id`, `hosted_checkout_merchant_password`, `emv_merchant_id`, `net_e_pay_server`, `listener_port`, `com_port`, `stripe_public`, `stripe_private`, `stripe_currency_code`, `braintree_merchant_id`, `braintree_public_key`, `braintree_private_key`, `default_tax_1_rate`, `default_tax_1_name`, `default_tax_2_rate`, `default_tax_2_name`, `default_tax_2_cumulative`, `default_tax_3_rate`, `default_tax_3_name`, `default_tax_4_rate`, `default_tax_4_name`, `default_tax_5_rate`, `default_tax_5_name`, `deleted`, `secure_device_override_emv`, `secure_device_override_non_emv`, `tax_class_id`, `ebt_integrated`, `integrated_gift_cards`, `square_currency_code`, `square_location_id`, `square_currency_multiplier`, `email_sales_email`, `email_receivings_email`, `stock_alerts_just_order_level`, `platformly_api_key`, `platformly_project_id`, `tax_id`, `disable_markup_markdown`, `card_connect_mid`, `card_connect_rest_username`, `card_connect_rest_password`, `auto_reports_email`, `auto_reports_email_time`, `auto_reports_day`, `disable_confirmation_option_for_emv_credit_card`, `api_key`, `nit`, `razon_social`, `number_establecimiento`, `municipio`, `departamento`,`tipo_contribuyente`,`mensaje_fact`) VALUES
+(1, 'SUMIT', 'SUMIT', 'sumit.gt', 2, 'CC PLAZA ASTURIAS COBAN', '0000-0000', 'info@info.com', '', '', '#001f49', '', '0', '', 'America/Guatemala', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', 'N;', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz',0);
 
 -- --------------------------------------------------------
 

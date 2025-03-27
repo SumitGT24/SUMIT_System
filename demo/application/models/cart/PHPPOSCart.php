@@ -22,6 +22,7 @@ abstract class PHPPOSCart
 	public $nit;
 	public $nombreCliente;
 	public $addres;
+	public $correoDTE;
 	public $tipo;
 	public $fell;
 	public $selected_payment;
