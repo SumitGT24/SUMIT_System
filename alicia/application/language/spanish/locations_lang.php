@@ -1,6 +1,6 @@
 <?php
 $lang['locations_location_id'] = 'Id. de Ubicación';
-$lang['locations_name'] = 'Nombre';
+$lang['locations_name'] = 'Nombre de la sucursal';
 $lang['locations_address'] = 'Dirección';
 $lang['locations_phone'] = 'Teléfono';
 $lang['locations_fax'] = 'Fax';

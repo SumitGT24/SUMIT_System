@@ -316,76 +316,79 @@ class Locations extends Secure_area implements Idata_controller
 		$location_data = array(
 			'name' => $this->input->post('name'),
 			'color' => $this->input->post('color') ? $this->input->post('color') : NULL,
-			'company' => $this->input->post('company') ? $this->input->post('company') : NULL,
+			//'company' => $this->input->post('company') ? $this->input->post('company') : NULL,
 			'api_key' => $this->input->post('api_key') ? $this->input->post('api_key') : NULL,
 			'nit' => $this->input->post('nit') ? $this->input->post('nit') : NULL,
 			'razon_social' => $this->input->post('razon_social') ? $this->input->post('razon_social') : NULL,
 			'number_establecimiento' => $this->input->post('number_establecimiento') ? $this->input->post('number_establecimiento') : NULL,
+			'tipo_contribuyente' => $this->input->post('tipo_contribuyente') ? $this->input->post('tipo_contribuyente') : 0,
 			'municipio' => $this->input->post('municipio') ? $this->input->post('municipio') : NULL,
 			'departamento' => $this->input->post('departamento') ? $this->input->post('departamento') : NULL,
-			'website' => $this->input->post('website') ? $this->input->post('website') : NULL,
+			//'website' => $this->input->post('website') ? $this->input->post('website') : NULL,
 			'address' => $this->input->post('address'),
 			'phone' => $this->input->post('phone'),
-			'fax' => $this->input->post('fax'),
+			//'fax' => $this->input->post('fax'),
 			'email' => $this->input->post('email'),
-			'cc_email' => $this->input->post('cc_email'),
-			'bcc_email' => $this->input->post('bcc_email'),
-			'return_policy' => $this->input->post('return_policy'),
-			'receive_stock_alert' => $this->input->post('receive_stock_alert') ? 1 : 0,
-			'stock_alert_email' => $this->input->post('stock_alert_email'),
-			'timezone' => $this->input->post('timezone'),
-			'mailchimp_api_key' => $this->input->post('mailchimp_api_key'),
-			'platformly_api_key' => $this->input->post('platformly_api_key'),
-			'platformly_project_id' => $this->input->post('platformly_project_id'),
-			'enable_credit_card_processing' => $this->input->post('enable_credit_card_processing') ? 1 : 0,
-			'credit_card_processor' => $this->input->post('credit_card_processor'),
-			'stripe_public' => $this->input->post('stripe_public'),
-			'stripe_private' => $this->input->post('stripe_private'),
-			'braintree_merchant_id' => $this->input->post('braintree_merchant_id'),
-			'braintree_public_key' => $this->input->post('braintree_public_key'),
-			'braintree_private_key' => $this->input->post('braintree_private_key'),
-			'stripe_currency_code' => $this->input->post('stripe_currency_code'),
-			'hosted_checkout_merchant_id' => $this->input->post('hosted_checkout_merchant_id'),
-			'hosted_checkout_merchant_password' => $this->input->request('hosted_checkout_merchant_password'), //Use REQUEST to avoid url encoding that causes issues
-			'emv_merchant_id' => $this->input->post('emv_merchant_id'),
-			'net_e_pay_server' => $this->input->post('net_e_pay_server'),
-			'com_port' => $this->input->post('com_port'),
-			'listener_port' => $this->input->post('listener_port'),
-			'secure_device_override_emv' => $this->input->post('secure_device_override_emv'),
-			'secure_device_override_non_emv' => $this->input->post('secure_device_override_non_emv'),
-			'square_currency_code' => $this->input->post('square_currency_code'),
-			'square_location_id' => $this->input->post('square_location_id'),
-			'square_currency_multiplier' => $this->input->post('square_currency_multiplier'),
-			'ebt_integrated' => $this->input->post('ebt_integrated') ? 1 : 0,
-			'integrated_gift_cards' => $this->input->post('integrated_gift_cards') ? 1 : 0,
-			'tax_class_id' => $this->input->post('override_default_tax') && $this->input->post('tax_class') ? $this->input->post('tax_class') : NULL,
-			'default_tax_1_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_1_rate') && is_numeric($this->input->post('default_tax_1_rate')) ?  $this->input->post('default_tax_1_rate') : NULL,
-			'default_tax_1_name' => $this->input->post('default_tax_1_name'),
-			'default_tax_2_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_2_rate') && is_numeric($this->input->post('default_tax_2_rate')) ?  $this->input->post('default_tax_2_rate') : NULL,
-			'default_tax_2_name' => $this->input->post('default_tax_2_name'),
-			'default_tax_2_cumulative' => $this->input->post('default_tax_2_cumulative') ? 1 : 0,
-			'default_tax_3_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_3_rate') && is_numeric($this->input->post('default_tax_3_rate')) ?  $this->input->post('default_tax_3_rate') : NULL,
-			'default_tax_3_name' => $this->input->post('default_tax_3_name'),
-			'default_tax_4_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_4_rate') && is_numeric($this->input->post('default_tax_4_rate')) ?  $this->input->post('default_tax_4_rate') : NULL,
-			'default_tax_4_name' => $this->input->post('default_tax_4_name'),
-			'default_tax_5_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_5_rate') && is_numeric($this->input->post('default_tax_5_rate')) ?  $this->input->post('default_tax_5_rate') : NULL,
-			'default_tax_5_name' => $this->input->post('default_tax_5_name'),
 			'email_sales_email' => $this->input->post('email_sales_email'),
 			'email_receivings_email' => $this->input->post('email_receivings_email'),
-			'stock_alerts_just_order_level' => $this->input->post('stock_alerts_just_order_level') ? 1 : 0,
-			'tax_id' => $this->input->post('tax_id'),
-			'disable_markup_markdown' => $this->input->post('disable_markup_markdown') ? 1 : 0,
-			'card_connect_mid' => $this->input->post('card_connect_mid'),
-			'card_connect_rest_username' => $this->input->post('card_connect_rest_username'),
-			'card_connect_rest_password' => $this->input->post('card_connect_rest_password'),
-			'default_mailchimp_lists' => serialize($this->input->post('default_mailchimp_lists')),
-			'twilio_sid' => $this->input->post('twilio_sid'),
-			'twilio_token' => $this->input->post('twilio_token'),
-			'twilio_sms_from' => $this->input->post('twilio_sms_from'),
+			//'cc_email' => $this->input->post('cc_email'),
+			//'bcc_email' => $this->input->post('bcc_email'),
+			'return_policy' => $this->input->post('return_policy'),
+			//'timezone' => $this->input->post('timezone'),
+			'timezone' => 'America/Guatemala',
+			//'mailchimp_api_key' => $this->input->post('mailchimp_api_key'),
+			//'platformly_api_key' => $this->input->post('platformly_api_key'),
+			//'platformly_project_id' => $this->input->post('platformly_project_id'),
+			//'enable_credit_card_processing' => $this->input->post('enable_credit_card_processing') ? 1 : 0,
+			//'credit_card_processor' => $this->input->post('credit_card_processor'),
 			'auto_reports_email' => $this->input->post('auto_reports_email'),
 			'auto_reports_email_time' => $this->input->post('auto_reports_email_time'),
 			'auto_reports_day' => $this->input->post('auto_reports_day'),
-			'disable_confirmation_option_for_emv_credit_card' => $this->input->post('disable_confirmation_option_for_emv_credit_card') ? 1 : 0,
+			'receive_stock_alert' => $this->input->post('receive_stock_alert') ? 1 : 0,
+			'stock_alert_email' => $this->input->post('stock_alert_email'),
+			'stock_alerts_just_order_level' => $this->input->post('stock_alerts_just_order_level') ? 1 : 0,
+
+			//'stripe_public' => $this->input->post('stripe_public'),
+			//'stripe_private' => $this->input->post('stripe_private'),
+			//'braintree_merchant_id' => $this->input->post('braintree_merchant_id'),
+			//'braintree_public_key' => $this->input->post('braintree_public_key'),
+			//'braintree_private_key' => $this->input->post('braintree_private_key'),
+			//'stripe_currency_code' => $this->input->post('stripe_currency_code'),
+			//'hosted_checkout_merchant_id' => $this->input->post('hosted_checkout_merchant_id'),
+			//'hosted_checkout_merchant_password' => $this->input->request('hosted_checkout_merchant_password'), //Use REQUEST to avoid url encoding that causes issues
+			//'emv_merchant_id' => $this->input->post('emv_merchant_id'),
+			//'net_e_pay_server' => $this->input->post('net_e_pay_server'),
+			//'com_port' => $this->input->post('com_port'),
+			//'listener_port' => $this->input->post('listener_port'),
+			//'secure_device_override_emv' => $this->input->post('secure_device_override_emv'),
+			//'secure_device_override_non_emv' => $this->input->post('secure_device_override_non_emv'),
+			//'square_currency_code' => $this->input->post('square_currency_code'),
+			//'square_location_id' => $this->input->post('square_location_id'),
+			//'square_currency_multiplier' => $this->input->post('square_currency_multiplier'),
+			//'ebt_integrated' => $this->input->post('ebt_integrated') ? 1 : 0,
+			//'integrated_gift_cards' => $this->input->post('integrated_gift_cards') ? 1 : 0,
+			//'tax_class_id' => $this->input->post('override_default_tax') && $this->input->post('tax_class') ? $this->input->post('tax_class') : NULL,
+			//'default_tax_1_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_1_rate') && is_numeric($this->input->post('default_tax_1_rate')) ?  $this->input->post('default_tax_1_rate') : NULL,
+			//'default_tax_1_name' => $this->input->post('default_tax_1_name'),
+			//'default_tax_2_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_2_rate') && is_numeric($this->input->post('default_tax_2_rate')) ?  $this->input->post('default_tax_2_rate') : NULL,
+			//'default_tax_2_name' => $this->input->post('default_tax_2_name'),
+			//'default_tax_2_cumulative' => $this->input->post('default_tax_2_cumulative') ? 1 : 0,
+			//'default_tax_3_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_3_rate') && is_numeric($this->input->post('default_tax_3_rate')) ?  $this->input->post('default_tax_3_rate') : NULL,
+			//'default_tax_3_name' => $this->input->post('default_tax_3_name'),
+			//'default_tax_4_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_4_rate') && is_numeric($this->input->post('default_tax_4_rate')) ?  $this->input->post('default_tax_4_rate') : NULL,
+			//'default_tax_4_name' => $this->input->post('default_tax_4_name'),
+			//'default_tax_5_rate' => $this->input->post('override_default_tax') && $this->input->post('default_tax_5_rate') && is_numeric($this->input->post('default_tax_5_rate')) ?  $this->input->post('default_tax_5_rate') : NULL,
+			//'default_tax_5_name' => $this->input->post('default_tax_5_name'),
+			//'tax_id' => $this->input->post('tax_id'),
+			//'disable_markup_markdown' => $this->input->post('disable_markup_markdown') ? 1 : 0,
+			//'card_connect_mid' => $this->input->post('card_connect_mid'),
+			//'card_connect_rest_username' => $this->input->post('card_connect_rest_username'),
+			//'card_connect_rest_password' => $this->input->post('card_connect_rest_password'),
+			//'default_mailchimp_lists' => serialize($this->input->post('default_mailchimp_lists')),
+			//'twilio_sid' => $this->input->post('twilio_sid'),
+			//'twilio_token' => $this->input->post('twilio_token'),
+			//'twilio_sms_from' => $this->input->post('twilio_sms_from'),			
+			//'disable_confirmation_option_for_emv_credit_card' => $this->input->post('disable_confirmation_option_for_emv_credit_card') ? 1 : 0,
 		);
 
 
@@ -436,18 +439,9 @@ class Locations extends Secure_area implements Idata_controller
 			$employees[] = 1;
 		}
 
-		if ($location_id == -1) {
-			//If we have a purcahse email, do a an auth check
-			$purchase_email = $this->input->post('purchase_email');
 
-			$this->load->helper('demo');
-			if (!is_on_demo_host() && (!$purchase_email || !$this->does_have_valid_number_of_locations_for_an_additional_location($purchase_email))) {
-				echo json_encode(array('success' => false, 'message' => lang('locations_error_adding_updating')));
-				die();
-			}
-		}
+		if ($this->Location->save($location_data, $location_id) && $this->Location->assign_employees_to_location($location_id != -1 ? $location_id : $location_data['location_id'], $employees)) {			
 
-		if ($this->Location->save($location_data, $location_id) && $this->Location->assign_employees_to_location($location_id != -1 ? $location_id : $location_data['location_id'], $employees)) {
 			if (!empty($_FILES["company_logo"]) && $_FILES["company_logo"]["error"] == UPLOAD_ERR_OK && !is_on_demo_host()) {
 				$this->load->model('Appfile');
 
@@ -473,8 +467,7 @@ class Locations extends Secure_area implements Idata_controller
 				$this->Location->save($update_logo_data, $location_id != -1 ? $location_id : $location_data['location_id']);
 				$this->Appfile->delete($this->Location->get_info_for_key('company_logo'));
 			}
-
-
+			
 			$success_message = '';
 
 			//New item

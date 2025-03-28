@@ -159,31 +159,7 @@ $(document).ready(function()
 	<script type="text/javascript">
 	$('#new_location_btn').click(function()
 	{
-		bootbox.confirm({
-			message: <?php echo json_encode(lang('locations_confirm_purchase')); ?>, 
-			buttons: {
-	      confirm: {
-	          label: <?php echo json_encode(lang('common_yes')); ?>,
-	          className: 'btn-primary'
-	      },
-	      cancel: {
-	          label: <?php echo json_encode(lang('common_no')); ?>,
-	          className: 'btn-default'
-	      }
-			},
-			callback: function(result)
-			{
-				if (result)
-				{
-					window.location = $("#new_location_btn").attr('href');
-					//window.location='https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0';
-				}
-				else
-				{
-					window.location = $("#new_location_btn").attr('href');
-				}
-			} 
-		});
+		window.location = $("#new_location_btn").attr('href');
 		
 		return false;
 	})

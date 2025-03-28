@@ -51,6 +51,10 @@ $this->load->view("partial/header");
 	<!-- Informacion de la empresa-->
 	<div id="CompanyInfo" class="tabcontent">
 		<div class="panel panel-piluku">
+
+		<!-- Ubicacion -->
+		<!-- Ubicacion -->
+
 			<!--Logo de la empresa-->
 			<div class="panel-body">
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
@@ -66,17 +70,6 @@ $this->load->view("partial/header");
 						<?php echo form_checkbox('delete_logo', '1', null,'id="delete_logo"');?>
 						<label for="delete_logo"><span></span></label>
 					</div>	
-				</div>
-				<!-- Nombre de la empresa -->
-				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
-					<?php echo form_label(lang('common_company').':', 'company',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-						<?php echo form_input(array(
-							'class'=>'validate form-control form-inps',
-						'name'=>'company',
-						'id'=>'company',
-						'value'=>$this->config->item('company')));?>
-					</div>
 				</div>
 
 				<!--website-->

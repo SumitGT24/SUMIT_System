@@ -215,12 +215,7 @@ class Config extends Secure_area
 		{
 			$this->Appfile->delete($this->config->item('company_logo'));
 		}
-		//Catch an error if our company name is NOT set. This can happen if logo uploaded is larger than post size
-		if (!$this->input->post('company'))
-		{
-			echo json_encode(array('success'=>false,'message'=>lang('config_saved_unsuccessfully')));
-			exit;
-		}
+
 		/*
 		try
 		{
@@ -355,7 +350,6 @@ class Config extends Secure_area
 		*/
 		//$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
 		$batch_save_data=array(
-		'company'=>$this->input->post('company'),
 		'website'=>$this->input->post('website'),
 		'enable_pdf_receipts'=>$this->input->post('enable_pdf_receipts') ? 1 : 0,
 		'automatically_show_comments_on_receipt' => $this->input->post('automatically_show_comments_on_receipt') ? 1 : 0,
