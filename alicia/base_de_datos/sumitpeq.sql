@@ -1096,45 +1096,6 @@ CREATE TABLE `phppos_items_pricing_history` (
 -- Volcado de datos para la tabla `phppos_items_pricing_history`
 --
 
-INSERT INTO `phppos_items_pricing_history` (`id`, `on_date`, `employee_id`, `item_id`, `item_variation_id`, `location_id`, `unit_price`, `cost_price`) VALUES
-(1, now(), 1, 1, NULL, NULL, 15.0000000000, 10.0000000000),
-(2, now(), 1, 2, NULL, NULL, 15.0000000000, 12.0000000000),
-(3, now(), 1, 3, NULL, NULL, 150.0000000000, 100.0000000000),
-(4, now(), 1, 4, NULL, NULL, 200.0000000000, 150.0000000000),
-(5, now(), 1, 5, NULL, NULL, 0.0000000000, 0.0000000000),
-(6, now(), 1, 6, NULL, NULL, 1.0000000000, 0.5000000000),
-(7, now(), 1, 7, NULL, NULL, 5.0000000000, 0.0000000000),
-(8, now(), 1, 10, NULL, NULL, 5.0000000000, 4.0000000000),
-(9, now(), 1, 12, NULL, NULL, 5.0000000000, 4.0000000000),
-(10, now(), 1, 14, NULL, NULL, 5.0000000000, 4.0000000000),
-(11, now(), 1, 17, NULL, NULL, 6.0000000000, 4.0000000000),
-(12, now(), 1, 18, NULL, NULL, 60.5000000000, 6.0000000000),
-(13, now(), 1, 19, NULL, NULL, 25.0000000000, 10.0000000000),
-(14, now(), 1, 20, NULL, NULL, 85.0000000000, 65.0000000000),
-(15, now(), 1, 21, NULL, NULL, 0.0000000000, 0.0000000000),
-(16, now(), 9, 22, NULL, NULL, 6.0000000000, 5.0000000000),
-(17, now(), 9, 22, 1, NULL, 6.0000000000, 5.0000000000),
-(18, now(), 9, 22, 2, NULL, 6.0000000000, 5.0000000000),
-(19, now(), 9, 22, 3, NULL, 7.5000000000, 6.0000000000),
-(20, now(), 9, 23, NULL, NULL, 50.0000000000, 25.0000000000),
-(21, now(), 1, 24, 4, NULL, 5.0000000000, 4.5000000000),
-(22, now(), 1, 24, 5, NULL, 5.0000000000, 4.5000000000),
-(23, now(), 1, 24, 6, NULL, 4.0000000000, 3.5000000000),
-(24, now(), 1, 24, 7, NULL, 18.0000000000, 14.0000000000),
-(25, now(), 1, 24, 8, NULL, 20.0000000000, 16.0000000000),
-(26, now(), 1, 24, 9, NULL, 25.0000000000, 17.0000000000),
-(27, now(), 1, 25, NULL, NULL, 5.0000000000, 4.5000000000),
-(28, now(), 1, 25, 10, NULL, 5.0000000000, 4.5000000000),
-(29, now(), 1, 25, 11, NULL, 5.0000000000, 4.5000000000),
-(30, now(), 1, 25, 12, NULL, 4.0000000000, 3.0000000000),
-(31, now(), 1, 25, 13, NULL, 18.0000000000, 15.0000000000),
-(32, now(), 1, 25, 14, NULL, 22.0000000000, 16.0000000000),
-(33, now(), 1, 25, 15, NULL, 26.0000000000, 18.0000000000),
-(34, now(), 9, 26, NULL, NULL, 10.0000000000, 5.0000000000),
-(35, now(), 9, 26, 16, 1, NULL, 10.0000000000),
-(36, now(), 9, 26, 16, 1, 10.0000000000, 10.0000000000),
-(37, now(), 1, 27, NULL, NULL, 75.0000000000, 55.0000000000);
-
 -- --------------------------------------------------------
 
 --
@@ -1811,7 +1772,7 @@ CREATE TABLE `phppos_message_receiver` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `phppos_messages`
+-- Volcado de datos para la tabla `phppos_message_receiver`
 --
 
 INSERT INTO `phppos_message_receiver` (`id`, `message_id`, `receiver_id`, `message_read`) VALUES
@@ -1890,7 +1851,8 @@ INSERT INTO `phppos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `icon`, 
 ('module_giftcards', 'module_giftcards_desc', 90, 'icon ti-credit-card', 'giftcards'),
 ('module_item_kits', 'module_item_kits_desc', 30, 'icon ti-harddrives', 'item_kits'),
 ('module_items', 'module_items_desc', 20, 'icon ti-harddrive', 'items'),
-('module_locations', 'module_locations_desc', 110, 'icon ti-home', 'locations'),
+('module_locationsroot', 'module_locationsroot_desc', 110, 'icon ti-home', 'locations'), -- Se deja sin nombre o desc
+('module_locations', 'module_locations_desc', 115, 'icon ti-home', 'locationsadmin'), -- Se usa el nombre y desc de 'locations'
 ('module_messages', 'module_messages_desc', 120, 'icon ti-email', 'messages'),
 ('module_price_rules', 'module_item_price_rules_desc', 35, 'ion-ios-pricetags-outline', 'price_rules'),
 ('module_receivings', 'module_receivings_desc', 60, 'icon ti-cloud-down', 'receivings'),
@@ -2048,7 +2010,9 @@ INSERT INTO `phppos_modules_actions` (`action_id`, `module_id`, `action_name_key
 ('view_tags', 'reports', 'common_tags', 264),
 ('view_taxes', 'reports', 'reports_taxes', 270),
 ('view_tiers', 'reports', 'reports_tiers', 275),
-('view_timeclock', 'reports', 'employees_timeclock', 280);
+('view_timeclock', 'reports', 'employees_timeclock', 280),
+('add_update', 'locationsadmin', 'module_action_add_update', 240), -- locationsadmin
+('search', 'locationsadmin', 'module_action_search_locations', 260);
 
 -- --------------------------------------------------------
 
@@ -2129,8 +2093,6 @@ INSERT INTO `phppos_permissions` (`module_id`, `person_id`) VALUES
 ('item_kits', 2),
 ('items', 1),
 ('items', 2),
--- ('locations', 1),
--- ('locations', 2),
 ('messages', 1),
 ('messages', 2),
 ('price_rules', 1),
@@ -2144,7 +2106,10 @@ INSERT INTO `phppos_permissions` (`module_id`, `person_id`) VALUES
 ('suppliers', 1),
 ('suppliers', 2),
 ('work_orders', 1),
-('work_orders', 2);
+('work_orders', 2),
+('locationsadmin', 1),
+('locations', 1);
+
 
 -- --------------------------------------------------------
 
@@ -2259,9 +2224,6 @@ INSERT INTO `phppos_permissions_actions` (`module_id`, `person_id`, `action_id`)
 ('items', 2, 'see_count_when_count_inventory'),
 ('items', 2, 'view_inventory_at_all_locations'),
 ('items', 2, 'view_inventory_print_list'),
--- ('locations', 1, 'add_update'),
--- ('locations', 1, 'delete'),
--- ('locations', 1, 'search'),
 ('messages', 1, 'send_message'),
 ('messages', 2, 'send_message'),
 ('price_rules', 1, 'add_update'),
@@ -2417,7 +2379,12 @@ INSERT INTO `phppos_permissions_actions` (`module_id`, `person_id`, `action_id`)
 ('work_orders', 2, 'delete'),
 ('work_orders', 2, 'edit'),
 ('work_orders', 2, 'manage_statuses'),
-('work_orders', 2, 'search');
+('work_orders', 2, 'search'),
+('locations', 1, 'add_update'),
+('locations', 1, 'delete'),
+('locations', 1, 'search'),
+('locationsadmin', 1, 'add_update'),
+('locationsadmin', 1, 'search');
 
 -- --------------------------------------------------------
 
@@ -2822,7 +2789,6 @@ INSERT INTO `phppos_register_currency_denominations` (`id`, `name`, `value`, `de
 (12, 'Pennies', 0.0100000000, 1),
 (13, 'Q0.50', 0.5000000000, 0),
 (14, 'Q0.25', 0.2500000000, 0),
-(15, 'Q.0.10', 0.1000000000, 0);
 
 -- --------------------------------------------------------
 

@@ -1,12 +1,13 @@
 <?php
 $lang['locations_location_id'] = 'Id. de Ubicación';
-$lang['locations_name'] = 'Nombre';
+$lang['locations_name'] = 'Nombre de la sucursal';
 $lang['locations_address'] = 'Dirección';
 $lang['locations_phone'] = 'Teléfono';
 $lang['locations_fax'] = 'Fax';
 $lang['locations_email'] = 'Correo electrónico';
 $lang['locations_new'] = 'Ubicación nueva';
 $lang['locations_update'] = 'Actualización de Ubicación';
+$lang['locationsadmin_update'] = 'Actualización de Ubicación';
 $lang['locations_delete'] = 'Eliminar';
 $lang['locations_cleanup_old_locations'] = 'Limpiar registros de localizaciones viejos';
 $lang['locations_basic_information'] = 'Información de la Ubicación';
@@ -24,7 +25,7 @@ $lang['locations_cannot_be_deleted'] = 'No se pudieron eliminar las localizacion
 $lang['locations_adding_location_requires_addtional_license'] = 'Para agregar una tienda adicional puede contactarnos';
 $lang['locations_confirm_purchase'] = '¿Confirmar la compra?';
 $lang['locations_purchase_email'] = 'Correo electrónico con el que generó su compra';
-$lang['locations_invalid_email_or_dont_have_auth'] = 'Ha introducido un correo electrónico que no es válido o no tiene los permisos necesarios para agregar esta localización. Por favor, póngase en contacto con support@phppointofsale.com si cree que esto sucedió por error.';
+$lang['locations_invalid_email_or_dont_have_auth'] = 'Ha introducido un correo electrónico que no es válido o no tiene los permisos necesarios para agregar esta localización. Por favor, póngase en contacto con soporte@sumit.gt si cree que esto sucedió por error.';
 $lang['locations_purchase_additional_licenses'] = 'Adquirir licencias adicionales';
 $lang['locations_add_register'] = 'Añadir caja registradora';
 $lang['locations_registers'] = 'Cajas registradoras';
@@ -39,6 +40,7 @@ $lang['locations_ip_tran_device_id'] = 'IP Tran ID de dispositivo';
 $lang['locations_init_device_success'] = 'La inicialización del lector de tarjetas de crédito se ha iniciado de manera exitosa';
 
 $lang['locations_none_selected'] = 'Ninguna seleccionada';
+$lang['locationsadmin_none_selected'] = 'Ninguna seleccionada';
 $lang['locations_enable_credit_card_processing'] = '¿Activar procesamiento de tarjetas de crédito? (Sólo para los Estados Unidos)';
 $lang['locations_credit_card_processor'] = 'Procesador de Tarjeta de Crédito';
 
@@ -79,7 +81,7 @@ $lang['locations_emv_terminal_id'] = 'EMV de identificación del comerciante / I
 $lang['locations_terminal_id'] = 'Identificadores de Terminales';
 $lang['locations_secure_device_override_emv'] = 'Ignorar dispositivo EMV';
 $lang['locations_secure_device_override_non_emv'] = 'Ignorar dispositivo no EMV';
-$lang['locations_purchase_additional_locations'] = 'Enviarnos Mensaje!';
+$lang['locations_purchase_additional_locations'] = 'Enviarnos un mensaje';
 $lang['locations_other_emv_processor'] = 'Otros procesadores EMV';
 $lang['locations_use_integrated_ebt'] = 'Utilizar EBT integrado';
 $lang['locations_successful_undeleted'] = 'Ubicación eliminadas se recuperaron exitosamente';

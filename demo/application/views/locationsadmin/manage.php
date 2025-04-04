@@ -38,7 +38,9 @@ $(document).ready(function()
 				anchor("$controller_name/delete",
 				'<span class="ion-trash-a"></span> '.lang('common_delete'),
 				array('id'=>'delete', 
-					'class'=>'btn btn-red btn-lg tip-bottom disabled','title'=>lang("common_delete"))); 
+					'class'=>'btn btn-red btn-lg tip-bottom disabled','title'=>lang("common_delete"),
+					'disabled' => true
+				));
 			?>
 		<?php } ?>
 		
@@ -67,57 +69,7 @@ $(document).ready(function()
 				</div>
 			<?php echo form_close() ?>
 			
-		</div>
-		<div class="col-md-6 col-sm-6col-xs-6">	
-			<div class="buttons-list">
-				<div class="pull-right-btn">
-					
-					<?php if ($deleted) 
-					{
-						echo 
-						anchor("$controller_name/toggle_show_deleted/0",
-							'<span class="ion-android-exit"></span> <span class="hidden-xs">'.lang('common_done').'</span>',
-							array('class'=>'btn btn-primary btn-lg toggle_deleted','title'=> lang('common_done')));
-					}
-					?>
-					<?php if ($this->Employee->has_module_action_permission($controller_name, 'add_update', $this->Employee->get_logged_in_employee_info()->person_id) && !$deleted) {?>				
-						<?php echo 
-							anchor("$controller_name/view/-1/",
-							'<span class="ion-plus"></span> '.lang($controller_name.'_new'),
-							array('class'=>'btn btn-primary btn-lg hidden-sm hidden-xs', 
-								'title'=>lang($controller_name.'_new'),
-								'id' => 'new_location_btn'));
-						?>
-					<?php } ?>
-					
-					<?php if(!$deleted) { ?>
-					
-					<div class="piluku-dropdown btn-group">
-						<button type="button" class="btn btn-more dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						<span class="hidden-xs ion-android-more-horizontal"> </span>
-						<i class="visible-xs ion-android-more-vertical"></i>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							
-							<li class="visible-sm visible-xs">
-									<?php echo anchor("$controller_name/view/-1", '<span class="ion-plus"> '.lang($controller_name."_new").'</span>',
-										array('class'=>'new_location','title'=> lang($controller_name."_new"))); ?>
-							</li>
-							
-								
-						<?php if ($this->Employee->has_module_action_permission($controller_name, 'delete', $this->Employee->get_logged_in_employee_info()->person_id)) {?>
-							<li>
-									<?php echo anchor("$controller_name/toggle_show_deleted/1", '<span class="ion-trash-a"> '.lang($controller_name."_manage_deleted").'</span>',
-										array('class'=>'toggle_deleted','title'=> lang($controller_name."_manage_deleted"))); ?>
-							</li>
-						<?php }?>
-						</ul>
-					</div>
-					<?php } ?>
-					
-				</div>
-			</div>
-		</div>
+		</div>		
 	</div>
 </div>
 
@@ -159,7 +111,7 @@ $(document).ready(function()
 	<script type="text/javascript">
 	$('#new_location_btn').click(function()
 	{
-		window.location = $("#new_location_btn").attr('href');
+		//window.location = $("#new_location_btn").attr('href');
 		
 		return false;
 	})

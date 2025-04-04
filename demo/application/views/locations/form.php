@@ -1,51 +1,5 @@
 <?php $this->load->view("partial/header"); ?>
 
-<?php if (isset($needs_auth) && $needs_auth) { ?>
-	<?php echo form_open('locations/check_auth', array('id' => 'location_form_auth', 'class' => 'form-horizontal')); ?>
-
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel">
-				<div class="panel-body">
-					<h3 style="margin-left: 80px;"><a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('locations_purchase_additional_licenses'); ?> &raquo;</a></h3>
-					<?php if (validation_errors()) { ?>
-						<div class="alert alert-danger">
-							<strong><?php echo lang('common_error'); ?></strong>
-							<?php echo validation_errors(); ?>
-						</div>
-					<?php } ?>
-					<div class="form-group">
-						<?php echo form_label(lang('locations_purchase_email') . ':', 'name', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(
-								array(
-									'class' => 'form-control form-inps',
-									'name' => 'purchase_email',
-									'id' => 'purchase_email'
-								)
-							); ?>
-						</div>
-					</div>
-					<div class="form-actions pull-right">
-						<?php
-						echo form_submit(
-							array(
-								'name' => 'submitf',
-								'id' => 'submitf',
-								'value' => lang('common_save'),
-								'class' => 'submit_button floating-button btn btn-lg btn-primary'
-							)
-						);
-						?>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<?php form_close(); ?>
-<?php } else { ?>
-
 	<?php echo form_open_multipart('locations/save/' . $location_info->location_id, array('id' => 'location_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<div class="row" id="form">
 
@@ -90,18 +44,6 @@
 					</div>
 
 					<div class="form-group">
-						<?php echo form_label(lang('common_company') . ':', 'company', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-							<?php echo form_input(array(
-								'class' => 'validate form-control form-inps',
-								'name' => 'company',
-								'id' => 'company',
-								'value' => $location_info->company
-							)); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
 						<?php echo form_label('api_key' . ':', 'api_key', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
 							<?php echo form_input(array(
@@ -124,7 +66,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<?php echo form_label('razon social' . ':', 'razon_social', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<?php echo form_label('Razón social' . ':', 'razon_social', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
 							<?php echo form_input(array(
 								'class' => 'validate form-control form-inps',
@@ -135,7 +77,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<?php echo form_label(' numero de establecimiento' . ':', 'number_establecimiento', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<?php echo form_label('Número de establecimiento' . ':', 'number_establecimiento', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
 							<?php echo form_input(array(
 								'class' => 'validate form-control form-inps',
@@ -169,32 +111,6 @@
 					</div>
 
 					<div class="form-group">
-						<?php echo form_label(lang('common_company_logo') . ':', 'company_logo', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-
-							<input type="file" name="company_logo" id="company_logo" class="filestyle" data-icon="false">
-						</div>
-					</div>
-					<div class="form-group">
-						<?php echo form_label(lang('common_delete_logo') . ':', 'delete_logo', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox('delete_logo', '1', null, 'id="delete_logo"'); ?>
-							<label for="delete_logo"><span></span></label>
-						</div>
-					</div>
-					<div class="form-group">
-						<?php echo form_label(lang('common_website') . ':', 'website', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
-							<?php echo form_input(array(
-								'class' => 'form-control form-inps',
-								'name' => 'website',
-								'id' => 'website',
-								'value' => $location_info->website
-							)); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
 						<?php echo form_label(lang('locations_address') . ':', 'address', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label required')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
 
@@ -208,94 +124,7 @@
 							)); ?>
 						</div>
 					</div>
-
-					<div class="form-group">
-						<?php echo form_label(lang('locations_phone') . ':', 'phone', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label required')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(
-								array(
-									'class' => 'form-control form-inps',
-									'name' => 'phone',
-									'id' => 'phone',
-									'value' => $location_info->phone
-								)
-							); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo form_label(lang('locations_fax') . ':', 'fax', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(
-								array(
-									'class' => 'form-control form-inps',
-									'name' => 'fax',
-									'id' => 'fax',
-									'value' => $location_info->fax
-								)
-							); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo form_label(lang('locations_email') . ':', 'email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(
-								array(
-									'type' => 'text',
-									'class' => 'form-control form-inps',
-									'name' => 'email',
-									'id' => 'email',
-									'value' => $location_info->email
-								)
-							); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo form_label(lang('locations_email_sales_email') . ':', 'email_sales_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(
-								array(
-									'type' => 'text',
-									'class' => 'form-control form-inps',
-									'name' => 'email_sales_email',
-									'id' => 'email_sales_email',
-									'value' => $location_info->email_sales_email
-								)
-							); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo form_label(lang('locations_email_receivings_email') . ':', 'email_receivings_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(
-								array(
-									'type' => 'text',
-									'class' => 'form-control form-inps',
-									'name' => 'email_receivings_email',
-									'id' => 'email_receivings_email',
-									'value' => $location_info->email_receivings_email
-								)
-							); ?>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo form_label(lang('common_return_policy') . ':', 'return_policy', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_textarea(array(
-								'name' => 'return_policy',
-								'id' => 'return_policy',
-								'class' => 'form-control text-area',
-								'rows' => '4',
-								'cols' => '30',
-								'value' => $location_info->return_policy
-							)); ?>
-						</div>
-					</div>
-
+						<!-- Agregar empleados -->
 					<div class="form-group">
 						<?php echo form_label(lang('reports_employees') . ':', 'employees', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -309,7 +138,7 @@
 							</select>
 						</div>
 					</div>
-							<!--Cajas registradoras-->
+					<!--Cajas registradoras-->
 					<div class="form-group add-register-table">
 						<div class="spinner" id="grid-loader" style="display:none">
 							<div class="rect1"></div>
@@ -365,87 +194,12 @@
 							<a href="javascript:void(0);" id="add_register"><?php echo lang('locations_add_register'); ?></a>
 						</div>
 					</div>
-					
-					<!--Reportes por correo electronico-->
-					<div class="form-group">
-						<?php echo form_label(lang('locations_auto_reports_email') . ':', 'auto_reports_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
-								'class' => 'form-control form-inps',
-								'name' => 'auto_reports_email',
-								'id' => 'auto_reports_email',
-								'value' => $location_info->auto_reports_email
-							)); ?>
-						</div>
-					</div>
 
-					<div class="form-group">
-						<?php echo form_label(lang('locations_auto_reports_email_time') . ':', 'auto_reports_email_time', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php
-							$this->load->helper('date');
-							?>
-							<?php echo form_dropdown('auto_reports_email_time', get_hours_range(), $location_info->auto_reports_email_time ? date('H:i', strtotime($location_info->auto_reports_email_time)) : '', 'class="form-control" id="auto_reports_email_time"'); ?>
-
-						</div>
-					</div>
-
-					<div class="form-group">
-						<?php echo form_label(lang('locations_auto_reports_day') . ':', 'auto_reports_day', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_dropdown('auto_reports_day', array('previous_day' => lang('locations_previous_day'), 'current_day' => lang('locations_current_day')), $location_info->auto_reports_day, 'class="form-control" id="auto_reports_day"'); ?>
-						</div>
-					</div>
-
-
-					<div class="form-group">
-						<?php echo form_label(lang('locations_receive_stock_alert') . ':', 'receive_stock_alert', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
-								'name' => 'receive_stock_alert',
-								'id' => 'receive_stock_alert',
-								'value' => '1',
-								'checked' => $location_info->receive_stock_alert
-							)); ?>
-							<label for="receive_stock_alert"><span></span></label>
-						</div>
-					</div>
-
-					<div class="form-group" id="stock_alert_email_container">
-						<?php echo form_label(lang('locations_stock_alert_email') . ':', 'stock_alert_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
-								'type' => 'text',
-								'class' => 'form-control form-inps',
-								'name' => 'stock_alert_email',
-								'id' => 'stock_alert_email',
-								'value' => $location_info->stock_alert_email
-							)); ?>
-						</div>
-					</div>
-
-					<div class="form-group" id="stock_alerts_just_order_level_container">
-						<?php echo form_label(lang('locations_stock_alerts_just_order_level') . ':', 'stock_alerts_just_order_level', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox(array(
-								'name' => 'stock_alerts_just_order_level',
-								'id' => 'stock_alerts_just_order_level',
-								'class' => 'stock_alerts_just_order_level_checkbox delete-checkbox',
-								'value' => 1,
-								'checked' => $location_info->stock_alerts_just_order_level
-							));
-							?>
-							<label for="stock_alerts_just_order_level"><span></span></label>
-						</div>
-					</div>
 
 					<?php echo form_hidden('redirect', $redirect); ?>
 
 					<div class="form-actions pull-right">
 						<?php
-						if ($purchase_email) {
-							echo form_hidden('purchase_email', $purchase_email);
-						}
 
 						echo form_submit(
 							array(
@@ -462,7 +216,7 @@
 		</div>
 	</div>
 	<?php echo form_close(); ?>
-<?php }?>
+
 
 <script type='text/javascript'>
 	var submitting = false;

@@ -503,6 +503,14 @@ class Config extends Secure_area
 		'show_barcode_company_name' => $this->input->post('show_barcode_company_name') ? 1 : 0,
 		'deleted_payment_types' =>  $deleted_payment_types,
 		'automatically_email_receipt'=>$this->input->post('automatically_email_receipt') ? 1 : 0,
+		'enable_customer_loyalty_system' => $this->input->post('enable_customer_loyalty_system') ? 1 : 0,
+		'disable_loyalty_by_default' => $this->input->post('disable_loyalty_by_default') ? 1 : 0,
+		'loyalty_option' =>$this->input->post('loyalty_option'),
+		'number_of_sales_for_discount' => $this->input->post('number_of_sales_for_discount'),
+		'discount_percent_earned' => $this->input->post('discount_percent_earned'),
+		'loyalty_points_without_tax' => $this->input->post('loyalty_points_without_tax') ? 1 : 0,
+		'disable_gift_cards_sold_from_loyalty' => $this->input->post('disable_gift_cards_sold_from_loyalty') ? 1 : 0,
+
 	);
 
 		if($this->input->post('item_id_auto_increment'))

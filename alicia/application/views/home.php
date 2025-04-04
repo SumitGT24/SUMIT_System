@@ -435,7 +435,7 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 		</div>
 			
 		<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-			<a href="<?php echo site_url('locations'); ?>">
+			<a href="<?php echo site_url('locationsadmin'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
 						<h3 class="flatOrangec"><?php echo $total_locations; ?></h3>
@@ -537,7 +537,7 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 	<?php if ($this->Employee->has_module_permission('sales', $this->Employee->get_logged_in_employee_info()->person_id)) {	?>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<div class="list-group">
-					<a class="list-group-item" href="<?php echo site_url('sales'); ?>"> <i class="icon ti-shopping-cart"></i> <?php echo lang('common_start_new_sale'); ?></a>
+					<a style="background-color: var(--amarillo-principal) !important; color: black !important;" class="list-group-item" href="<?php echo site_url('sales'); ?>"> <i style="color: black !important;" class="icon ti-shopping-cart"></i> <?php echo lang('common_start_new_sale'); ?></a>
 			</div>
 		</div>
 	<?php } ?>

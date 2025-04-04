@@ -43,6 +43,9 @@ $route['default_controller'] = "login";
 $route['404_override'] = '';
 $route['no_access/(:any)'] = "no_access/index/$1";
 $route['r/(:any)'] = "public_view/receipt/$1";
+//$route['locationsadmin'] = 'locationsadmin/manage';
+//$route['locationsadmin/manage'] = 'locationsadmin/manage';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

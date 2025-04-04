@@ -644,7 +644,7 @@
 
 				<?php
 				foreach ($all_modules->result() as $module) {
-					//Skip module if it is locations
+					//Evitar el acceso al módulo de localizaciones
 					if ($module->module_id == 'locations') continue; 
 					$checkbox_options = array(
 						'name' => 'permissions[]',

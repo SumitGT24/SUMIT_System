@@ -2287,7 +2287,7 @@ class Sales extends Secure_area
 
 				"<dte:Adenda>" .
 				"<TOTALDOC_TEXTO_EMISOR>Tel/WhatsApp " .$location->phone. "</TOTALDOC_TEXTO_EMISOR>" .		
-				"<TOTALDOC_PIE_PAGINA>" . $this->config->item('return_policy') . "</TOTALDOC_PIE_PAGINA>".
+				"<TOTALDOC_PIE_PAGINA>" . $location->return_policy . "</TOTALDOC_PIE_PAGINA>".
 				//"TOTALDOC_COMENTARIO>".$comentario."</TOTALDOC_COMENTARIO>" .
 				"</dte:Adenda>".
 				"</dte:SAT>" .
