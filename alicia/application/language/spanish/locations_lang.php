@@ -7,6 +7,7 @@ $lang['locations_fax'] = 'Fax';
 $lang['locations_email'] = 'Correo electrónico';
 $lang['locations_new'] = 'Ubicación nueva';
 $lang['locations_update'] = 'Actualización de Ubicación';
+$lang['locationsadmin_update'] = 'Actualización de Ubicación';
 $lang['locations_delete'] = 'Eliminar';
 $lang['locations_cleanup_old_locations'] = 'Limpiar registros de localizaciones viejos';
 $lang['locations_basic_information'] = 'Información de la Ubicación';
@@ -39,6 +40,7 @@ $lang['locations_ip_tran_device_id'] = 'IP Tran ID de dispositivo';
 $lang['locations_init_device_success'] = 'La inicialización del lector de tarjetas de crédito se ha iniciado de manera exitosa';
 
 $lang['locations_none_selected'] = 'Ninguna seleccionada';
+$lang['locationsadmin_none_selected'] = 'Ninguna seleccionada';
 $lang['locations_enable_credit_card_processing'] = '¿Activar procesamiento de tarjetas de crédito? (Sólo para los Estados Unidos)';
 $lang['locations_credit_card_processor'] = 'Procesador de Tarjeta de Crédito';
 

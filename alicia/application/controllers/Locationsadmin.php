@@ -5,7 +5,7 @@ class Locationsadmin extends Secure_area implements Idata_controller
 {
 	function __construct()
 	{
-		parent::__construct('locations');
+		parent::__construct('locationsadmin');
 		$this->lang->load('locations');
 		$this->lang->load('module');
 	}

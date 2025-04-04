@@ -1560,7 +1560,7 @@ CREATE TABLE `phppos_locations` (
 --
 
 INSERT INTO `phppos_locations` (`location_id`, `name`, `company`, `website`, `company_logo`, `address`, `phone`, `email`, `cc_email`, `bcc_email`, `color`, `return_policy`, `receive_stock_alert`, `stock_alert_email`, `timezone`, `enable_credit_card_processing`, `credit_card_processor`, `hosted_checkout_merchant_id`, `hosted_checkout_merchant_password`, `emv_merchant_id`, `net_e_pay_server`, `listener_port`, `com_port`, `stripe_public`, `stripe_private`, `stripe_currency_code`, `braintree_merchant_id`, `braintree_public_key`, `braintree_private_key`, `default_tax_1_rate`, `default_tax_1_name`, `default_tax_2_rate`, `default_tax_2_name`, `default_tax_2_cumulative`, `default_tax_3_rate`, `default_tax_3_name`, `default_tax_4_rate`, `default_tax_4_name`, `default_tax_5_rate`, `default_tax_5_name`, `deleted`, `secure_device_override_emv`, `secure_device_override_non_emv`, `tax_class_id`, `ebt_integrated`, `integrated_gift_cards`, `square_currency_code`, `square_location_id`, `square_currency_multiplier`, `email_sales_email`, `email_receivings_email`, `stock_alerts_just_order_level`, `platformly_api_key`, `platformly_project_id`, `tax_id`, `disable_markup_markdown`, `card_connect_mid`, `card_connect_rest_username`, `card_connect_rest_password`, `auto_reports_email`, `auto_reports_email_time`, `auto_reports_day`, `disable_confirmation_option_for_emv_credit_card`, `api_key`, `nit`, `razon_social`, `number_establecimiento`, `municipio`, `departamento`,`tipo_contribuyente`) VALUES
-(1, 'SUMIT', 'SUMIT', 'sumit.gt', 2, 'CC PLAZA ASTURIAS COBAN', '0000-0000', 'info@info.com', '', '', '#001f49', '', '0', '', 'America/Guatemala', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', 'N;', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz',0);
+(1, 'SUMIT', 'SUMIT', 'sumit.gt', null, 'CC PLAZA ASTURIAS COBAN', '0000-0000', 'info@info.com', '', '', '#001f49', '', '0', '', 'America/Guatemala', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', '', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz',0);
 
 -- --------------------------------------------------------
 
@@ -1851,8 +1851,8 @@ INSERT INTO `phppos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `icon`, 
 ('module_giftcards', 'module_giftcards_desc', 90, 'icon ti-credit-card', 'giftcards'),
 ('module_item_kits', 'module_item_kits_desc', 30, 'icon ti-harddrives', 'item_kits'),
 ('module_items', 'module_items_desc', 20, 'icon ti-harddrive', 'items'),
-('module_locationsroot', 'module_locationsroot_desc', 110, 'icon ti-home', 'locations'), -- Se deja sin nombre o desc
-('module_locations', 'module_locations_desc', 115, 'icon ti-home', 'locationsadmin'), -- Se usa el nombre y desc de 'locations'
+('module_locations', 'module_locations_desc', 110, 'icon ti-home', 'locations'), -- Se deja sin nombre o desc
+('module_locationsadmin', 'module_locationsadmin_desc', 115, 'icon ti-home', 'locationsadmin'), -- Se usa el nombre y desc de 'locations'
 ('module_messages', 'module_messages_desc', 120, 'icon ti-email', 'messages'),
 ('module_price_rules', 'module_item_price_rules_desc', 35, 'ion-ios-pricetags-outline', 'price_rules'),
 ('module_receivings', 'module_receivings_desc', 60, 'icon ti-cloud-down', 'receivings'),
@@ -2782,13 +2782,8 @@ INSERT INTO `phppos_register_currency_denominations` (`id`, `name`, `value`, `de
 (5, 'Q10', 10.0000000000, 0),
 (6, 'Q5', 5.0000000000, 0),
 (7, 'Q1', 1.0000000000, 0),
-(8, 'Half Dollars', 0.5000000000, 1),
-(9, 'Quarters', 0.2500000000, 1),
-(10, 'Dimes', 0.1000000000, 1),
-(11, 'Nickels', 0.0500000000, 1),
-(12, 'Pennies', 0.0100000000, 1),
-(13, 'Q0.50', 0.5000000000, 0),
-(14, 'Q0.25', 0.2500000000, 0),
+(8, 'Q0.50', 0.5000000000, 0),
+(9, 'Q0.25', 0.2500000000, 0);
 
 -- --------------------------------------------------------
 

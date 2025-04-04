@@ -11485,7 +11485,8 @@ html {
   z-index: 999;
   */
   background-color: #489ee7;
-  min-height: 40px;
+  min-height: 60px;
+  max-height: 60px;
   position: absolute !important;
   width: inherit;
   z-index: 999;
@@ -11502,8 +11503,8 @@ html {
 .left-bar .admin-logo .logo-holder .logo,
 .side-bar .admin-logo .logo-holder .logo {
   /*width: 100px;*/
-  max-width: 80%; /* Asegura que no exceda el ancho del contenedor */
-  max-height: 80%; /* Asegura que no exceda la altura del contenedor */
+  /*max-width: 60%;  Asegura que no exceda el ancho del contenedor */
+  max-height: 60px; /* Asegura que no exceda la altura del contenedor */
   width: auto; /* Mantiene la proporción de la imagen */
   height: auto; /* Mantiene la proporción de la imagen */
   object-fit: contain; /* Ajusta la imagen para que siempre esté contenida dentro del contenedor */
