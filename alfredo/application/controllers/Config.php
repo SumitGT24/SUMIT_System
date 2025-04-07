@@ -215,12 +215,7 @@ class Config extends Secure_area
 		{
 			$this->Appfile->delete($this->config->item('company_logo'));
 		}
-		//Catch an error if our company name is NOT set. This can happen if logo uploaded is larger than post size
-		if (!$this->input->post('company'))
-		{
-			echo json_encode(array('success'=>false,'message'=>lang('config_saved_unsuccessfully')));
-			exit;
-		}
+
 		/*
 		try
 		{
@@ -355,7 +350,6 @@ class Config extends Secure_area
 		*/
 		//$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
 		$batch_save_data=array(
-		'company'=>$this->input->post('company'),
 		'website'=>$this->input->post('website'),
 		'enable_pdf_receipts'=>$this->input->post('enable_pdf_receipts') ? 1 : 0,
 		'automatically_show_comments_on_receipt' => $this->input->post('automatically_show_comments_on_receipt') ? 1 : 0,
@@ -509,6 +503,20 @@ class Config extends Secure_area
 		'show_barcode_company_name' => $this->input->post('show_barcode_company_name') ? 1 : 0,
 		'deleted_payment_types' =>  $deleted_payment_types,
 		'automatically_email_receipt'=>$this->input->post('automatically_email_receipt') ? 1 : 0,
+		'enable_customer_loyalty_system' => $this->input->post('enable_customer_loyalty_system') ? 1 : 0,
+		'disable_loyalty_by_default' => $this->input->post('disable_loyalty_by_default') ? 1 : 0,
+		'loyalty_option' =>$this->input->post('loyalty_option'),
+		'number_of_sales_for_discount' => $this->input->post('number_of_sales_for_discount'),
+		'discount_percent_earned' => $this->input->post('discount_percent_earned'),
+		'hide_sales_to_discount_on_receipt' => $this->input->post('hide_sales_to_discount_on_receipt') ? 1 : 0,
+		'spend_to_point_ratio' => $this->input->post('spend_amount_for_points') && $this->input->post('points_to_earn') && is_numeric($this->input->post('spend_amount_for_points')) && is_numeric($this->input->post('points_to_earn')) ? $this->input->post('spend_amount_for_points').':'.$this->input->post('points_to_earn') : '',
+		'point_value' => $this->input->post('point_value'),
+		'minimum_points_to_redeem' => $this->input->post('minimum_points_to_redeem'),
+		'loyalty_points_without_tax' => $this->input->post('loyalty_points_without_tax') ? 1 : 0,
+		'prompt_to_use_points' => $this->input->post('prompt_to_use_points') ? 1 : 0,
+		'hide_points_on_receipt' => $this->input->post('hide_points_on_receipt') ? 1 : 0,
+		'disable_gift_cards_sold_from_loyalty' => $this->input->post('disable_gift_cards_sold_from_loyalty') ? 1 : 0,
+		'enable_points_for_giftcard_payments' => $this->input->post('enable_points_for_giftcard_payments') ? 1 : 0,
 	);
 
 		if($this->input->post('item_id_auto_increment'))

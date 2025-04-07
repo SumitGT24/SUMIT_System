@@ -1,6 +1,53 @@
 <?php $this->load->view("partial/header"); ?>
 
-	<?php echo form_open_multipart('locations/save/' . $location_info->location_id, array('id' => 'location_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
+
+<?php if (isset($needs_auth) && $needs_auth) { ?>
+	<?php echo form_open('locationsadmin/check_auth', array('id' => 'location_form_auth', 'class' => 'form-horizontal')); ?>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel">
+				<div class="panel-body">
+					<h3 style="margin-left: 80px;"><a href="https://web.whatsapp.com/send?phone=+50237376619" target="_blank"><?php echo lang('locations_purchase_additional_licenses'); ?> &raquo;</a></h3>
+					<?php if (validation_errors()) { ?>
+						<div class="alert alert-danger">
+							<strong><?php echo lang('common_error'); ?></strong>
+							<?php echo validation_errors(); ?>
+						</div>
+					<?php } ?>
+					<div class="form-group">
+						<?php echo form_label(lang('locations_purchase_email') . ':', 'name', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(
+								array(
+									'class' => 'form-control form-inps',
+									'name' => 'purchase_email',
+									'id' => 'purchase_email'
+								)
+							); ?>
+						</div>
+					</div>
+					<div class="form-actions pull-right">
+						<?php
+						echo form_submit(
+							array(
+								'name' => 'submitf',
+								'id' => 'submitf',
+								'value' => lang('common_save'),
+								'class' => 'submit_button floating-button btn btn-lg btn-primary'
+							)
+						);
+						?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<?php form_close(); ?>
+<?php } else { ?>
+
+	<?php echo form_open_multipart('locationsadmin/save/' . $location_info->location_id, array('id' => 'location_form', 'class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
 	<div class="row" id="form">
 
 		<div class="col-md-12">
@@ -23,6 +70,7 @@
 									'class' => 'form-control form-inps',
 									'name' => 'name',
 									'id' => 'name',
+									'placeholder' => 'Nombre de la sucursal. Aparecerá en el ticket/factura de venta',
 									'value' => $location_info->name
 								)
 							); ?>
@@ -37,19 +85,21 @@
 									'class' => 'form-control form-inps',
 									'name' => 'color',
 									'id' => 'color',
+									'placeholder' => 'Haga click para selecionar un color o ingrese el color en formato HEX',
 									'value' => $location_info->color
 								)
 							); ?>
 						</div>
 					</div>
-
+					
 					<div class="form-group">
 						<?php echo form_label('api_key' . ':', 'api_key', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
 							<?php echo form_input(array(
 								'class' => 'validate form-control form-inps',
 								'name' => 'api_key',
-								'id' => 'api_key',
+								'id' => 'api_key',								
+								'disabled' => 'disabled',
 								'value' => $location_info->api_key
 							)); ?>
 						</div>
@@ -61,28 +111,31 @@
 								'class' => 'validate form-control form-inps',
 								'name' => 'nit',
 								'id' => 'nit',
+								'disabled' => 'disabled',
 								'value' => $location_info->nit
 							)); ?>
 						</div>
 					</div>
 					<div class="form-group">
-						<?php echo form_label('Razón social' . ':', 'razon_social', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<?php echo form_label('razon social' . ':', 'razon_social', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
 							<?php echo form_input(array(
 								'class' => 'validate form-control form-inps',
 								'name' => 'razon_social',
 								'id' => 'razon_social',
+								'disabled' => 'disabled',
 								'value' => $location_info->razon_social
 							)); ?>
 						</div>
 					</div>
 					<div class="form-group">
-						<?php echo form_label('Número de establecimiento' . ':', 'number_establecimiento', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<?php echo form_label(' numero de establecimiento' . ':', 'number_establecimiento', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
 							<?php echo form_input(array(
 								'class' => 'validate form-control form-inps',
 								'name' => 'number_establecimiento',
 								'id' => 'number_establecimiento',
+								'disabled' => 'disabled',
 								'value' => $location_info->number_establecimiento
 							)); ?>
 						</div>
@@ -94,6 +147,7 @@
 								'class' => 'validate form-control form-inps',
 								'name' => 'municipio',
 								'id' => 'municipio',
+								'disabled' => 'disabled',
 								'value' => $location_info->municipio
 							)); ?>
 						</div>
@@ -105,7 +159,43 @@
 								'class' => 'validate form-control form-inps',
 								'name' => 'departamento',
 								'id' => 'departamento',
+								'disabled' => 'disabled',
 								'value' => $location_info->departamento
+							)); ?>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<?php echo form_label(lang('common_company_logo') . ':', 'company_logo', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<ul class="list-unstyled avatar-list">
+								<li>
+									<input type="file" name="company_logo" id="company_logo" class="filestyle" placeholder="Seleccione un archivo">&nbsp;
+								</li>
+								<li>
+									<?php echo $location_info->company_logo ? '<div id="avatar">'.img(array('style' => 'width: 10%','src' => app_file_url($location_info->company_logo),'class'=>'img-polaroid img-polaroid-s')).'</div>' : '<div id="avatar">'.img(array('style' => 'width: 10%','src' => base_url().'assets/img/item.png','class'=>'img-polaroid','id'=>'image_empty')).'</div>'; ?>		
+								</li>
+							</ul>
+						</div>
+					</div>
+					<?php if($location_info->company_logo) {  ?>					
+						<div class="form-group">
+							<?php echo form_label(lang('common_delete_logo') . ':', 'delete_logo', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+							<div class="col-sm-9 col-md-9 col-lg-10">
+								<?php echo form_checkbox('delete_logo', '1', null, 'id="delete_logo"'); ?>
+								<label for="delete_logo"><span></span></label>
+							</div>
+						</div>
+					<?php }  ?>
+					<div class="form-group">
+						<?php echo form_label(lang('common_website') . ':', 'website', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+							<?php echo form_input(array(
+								'class' => 'form-control form-inps',
+								'name' => 'website',
+								'id' => 'website',
+								'placeholder' => 'Sitio web de la sucursal. Aparecerá en el ticket de venta',
+								'value' => $location_info->website
 							)); ?>
 						</div>
 					</div>
@@ -120,11 +210,89 @@
 								'class' => 'form-control text-area',
 								'rows' => '4',
 								'cols' => '30',
+								'placeholder' => 'Dirección de la sucursal. Aparecerá en el ticket/factura de venta',
 								'value' => $location_info->address
 							)); ?>
 						</div>
 					</div>
-						<!-- Agregar empleados -->
+
+					<div class="form-group">
+						<?php echo form_label(lang('locations_phone') . ':', 'phone', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label required')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(
+								array(
+									'class' => 'form-control form-inps',
+									'name' => 'phone',
+									'id' => 'phone',
+									'placeholder' => 'Teléfono de la sucursal. Aparecerá en el ticket/factura de venta',
+									'value' => $location_info->phone
+								)
+							); ?>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<?php echo form_label(lang('locations_email') . ':', 'email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(
+								array(
+									'type' => 'text',
+									'class' => 'form-control form-inps',
+									'name' => 'email',
+									'id' => 'email',
+									'placeholder' => 'Correo electrónico de la sucursal.',
+									'value' => $location_info->email
+								)
+							); ?>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<?php echo form_label(lang('locations_email_sales_email') . ':', 'email_sales_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(
+								array(
+									'type' => 'text',
+									'class' => 'form-control form-inps',
+									'name' => 'email_sales_email',
+									'id' => 'email_sales_email',
+									'value' => $location_info->email_sales_email
+								)
+							); ?>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<?php echo form_label(lang('locations_email_receivings_email') . ':', 'email_receivings_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(
+								array(
+									'type' => 'text',
+									'class' => 'form-control form-inps',
+									'name' => 'email_receivings_email',
+									'id' => 'email_receivings_email',
+									'value' => $location_info->email_receivings_email
+								)
+							); ?>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<?php echo form_label(lang('common_return_policy') .'/Mensaje factura'. ':', 'return_policy', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_textarea(array(
+								'name' => 'return_policy',
+								'id' => 'return_policy',
+								'class' => 'form-control text-area',
+								'rows' => '4',
+								'cols' => '30',
+								'placeholder' => "Texto pie de página que aparecerá en las facturas/tickets emitidos en esta sucursal. Ejemplo: 'Gracias por su compra'",
+								'value' => $location_info->return_policy
+							)); ?>
+						</div>
+					</div>
+
+
 					<div class="form-group">
 						<?php echo form_label(lang('reports_employees') . ':', 'employees', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -138,7 +306,7 @@
 							</select>
 						</div>
 					</div>
-					<!--Cajas registradoras-->
+
 					<div class="form-group add-register-table">
 						<div class="spinner" id="grid-loader" style="display:none">
 							<div class="rect1"></div>
@@ -174,6 +342,8 @@
 											<td><input type="text" class="form-control iptran register-cc-field" name="registers_to_edit[<?php echo $register->register_id; ?>][iptran_device_id]" value="<?php echo H($register->iptran_device_id); ?>" /></td>
 											<td><input id="pinpad_ip_<?php echo $counter; ?>" type="text" class="form-control emv_pinpad_ip register-cc-field" name="registers_to_edit[<?php echo $register->register_id; ?>][emv_pinpad_ip]" value="<?php echo H($register->emv_pinpad_ip); ?>" /></td>
 											<td><input id="pinpad_port_<?php echo $counter; ?>" type="text" class="form-control emv_pinpad_port register-cc-field" name="registers_to_edit[<?php echo $register->register_id; ?>][emv_pinpad_port]" value="<?php echo H($register->emv_pinpad_port); ?>" /></td>
+
+
 											<td>
 												<a class="update_parameters_ip_tran register-cc-field" href="javascript:void(0);"><?php echo lang('locations_update_params_ip_tran'); ?></a><span class="register-cc-field"> / </span>
 												<a class="init_ip_tran register-cc-field" href="javascript:void(0);"><?php echo lang('locations_init_mercury_emv'); ?></a>
@@ -193,13 +363,72 @@
 							</table>
 							<a href="javascript:void(0);" id="add_register"><?php echo lang('locations_add_register'); ?></a>
 						</div>
+					</div>				
+
+					<div class="form-group">
+						<?php echo form_label(lang('locations_auto_reports_email') . ':', 'auto_reports_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+								'class' => 'form-control form-inps',
+								'name' => 'auto_reports_email',
+								'id' => 'auto_reports_email',
+								'value' => $location_info->auto_reports_email
+							)); ?>
+						</div>
 					</div>
 
+					<div class="form-group">
+						<?php echo form_label(lang('locations_auto_reports_email_time') . ':', 'auto_reports_email_time', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php
+							$this->load->helper('date');
+							?>
+							<?php echo form_dropdown('auto_reports_email_time', get_hours_range(), $location_info->auto_reports_email_time ? date('H:i', strtotime($location_info->auto_reports_email_time)) : '', 'class="form-control" id="auto_reports_email_time"'); ?>
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<?php echo form_label(lang('locations_auto_reports_day') . ':', 'auto_reports_day', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label'), FALSE); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_dropdown('auto_reports_day', array('previous_day' => lang('locations_previous_day'), 'current_day' => lang('locations_current_day')), $location_info->auto_reports_day, 'class="form-control" id="auto_reports_day"'); ?>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<?php echo form_label(lang('locations_receive_stock_alert') . ':', 'receive_stock_alert', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_checkbox(array(
+								'name' => 'receive_stock_alert',
+								'id' => 'receive_stock_alert',
+								'value' => '1',
+								'checked' => $location_info->receive_stock_alert
+							)); ?>
+							<label for="receive_stock_alert"><span></span></label>
+						</div>
+					</div>
+
+					<div class="form-group" id="stock_alert_email_container">
+						<?php echo form_label(lang('locations_stock_alert_email') . ':', 'stock_alert_email', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+								'type' => 'text',
+								'class' => 'form-control form-inps',
+								'name' => 'stock_alert_email',
+								'id' => 'stock_alert_email',
+								'value' => $location_info->stock_alert_email
+							)); ?>
+						</div>
+					</div>				
 
 					<?php echo form_hidden('redirect', $redirect); ?>
 
 					<div class="form-actions pull-right">
 						<?php
+						if ($purchase_email) {
+							echo form_hidden('purchase_email', $purchase_email);
+						}
 
 						echo form_submit(
 							array(
@@ -216,6 +445,8 @@
 		</div>
 	</div>
 	<?php echo form_close(); ?>
+<?php } ?>
+
 
 
 <script type='text/javascript'>
@@ -263,7 +494,7 @@
 			var ip_tran_id = $(this).parent().prev().find('.iptran').val();
 			$("#grid-loader").show();
 
-			$.post('<?php echo site_url("locations/mercury_ip_tran_update_parameters"); ?>', {
+			$.post('<?php echo site_url("locationsadmin/mercury_ip_tran_update_parameters"); ?>', {
 				device_id: ip_tran_id,
 				merchant_id: emv_merchant_id
 			}, function(response) {
@@ -278,7 +509,7 @@
 			var ip_tran_id = $(this).parent().prev().find('.iptran').val();
 			$("#grid-loader").show();
 
-			$.post('<?php echo site_url("locations/mercury_ip_tran_emv_param_download"); ?>', {
+			$.post('<?php echo site_url("locationsadmin/mercury_ip_tran_emv_param_download"); ?>', {
 				device_id: ip_tran_id,
 				merchant_id: emv_merchant_id
 			}, function(response) {
@@ -286,13 +517,14 @@
 				$("#grid-loader").hide();
 			}, 'json');
 		});
+
 
 		$(document).on('click', '.test_mode_ip_tran', function() {
 			var emv_merchant_id = $("#emv_merchant_id").val();
 			var ip_tran_id = $(this).parent().prev().find('.iptran').val();
 			$("#grid-loader").show();
 
-			$.post('<?php echo site_url("locations/mercury_ip_tran_emv_test_mode"); ?>', {
+			$.post('<?php echo site_url("locationsadmin/mercury_ip_tran_emv_test_mode"); ?>', {
 				device_id: ip_tran_id,
 				merchant_id: emv_merchant_id
 			}, function(response) {
@@ -300,6 +532,8 @@
 				$("#grid-loader").hide();
 			}, 'json');
 		});
+
+
 
 		$(document).on('keyup', "#emv_merchant_id", function() {
 			check_emv_merchant_id();
@@ -331,7 +565,7 @@
 			var ebt_integrated = $("#ebt_integrated").prop('checked') ? 1 : 0;
 			var integrated_gift_cards = $("#integrated_gift_cards").prop('checked') ? 1 : 0;
 
-			$.post('<?php echo site_url("locations/save_emv_data/" . $location_info->location_id); ?>', {
+			$.post('<?php echo site_url("locationsadmin/save_emv_data/" . $location_info->location_id); ?>', {
 				ebt_integrated: ebt_integrated,
 				terminal_id: terminal_id_0,
 				secure_device_override_emv: secure_device_override_emv,
@@ -392,6 +626,9 @@
 		});
 
 		$('#color').colorpicker();
+		$('#company_logo').imagePreview({
+		selector: '#avatar'
+		});
 
 		$(".delete_register").click(function() {
 			$("#location_form").append('<input type="hidden" name="registers_to_delete[]" value="' + $(this).data('register-id') + '" />');
@@ -431,7 +668,7 @@
 
 
 						if (response.redirect == 2 && response.success) {
-							window.location.href = '<?php echo site_url('locations'); ?>';
+							window.location.href = '<?php echo site_url('locationsadmin'); ?>';
 						} else {
 							$("html, body").animate({
 								scrollTop: 0
@@ -443,8 +680,9 @@
 					<?php if (!$location_info->location_id) { ?>
 						resetForm: true,
 					<?php } ?>
-					dataType: 'json',
+					dataType: 'json'
 				});
+
 			},
 			ignore: '',
 			errorClass: "text-danger",
@@ -580,9 +818,9 @@
 
 	});
 
+
 	$(".override_default_tax_checkbox").change(function() {
 		$(this).parent().parent().next().toggleClass('hidden')
 	});
 </script>
-
 <?php $this->load->view('partial/footer'); ?>

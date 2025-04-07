@@ -728,8 +728,7 @@ class Employees extends Person_controller
 		}
 
 		foreach ($all_modules->result() as $module) {
-			//skip locations module
-			//if ($module->module_id == 'locations') continue; 
+
 			$module_id = 'permissions' . $module->module_id;
 			$permissions[$module_id] = $this->Permission_template->has_module_permission($module->module_id, $template_id, FALSE, TRUE);
 		
