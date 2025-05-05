@@ -194,7 +194,7 @@
 								'class' => 'form-control form-inps',
 								'name' => 'website',
 								'id' => 'website',
-								'placeholder' => 'Sitio web de la sucursal. Aparecerá en el ticket/factura de venta',
+								'placeholder' => 'Sitio web de la sucursal. Aparecerá en el ticket de venta',
 								'value' => $location_info->website
 							)); ?>
 						</div>
