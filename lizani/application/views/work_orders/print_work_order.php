@@ -54,17 +54,24 @@
 										<?php echo img(array('src' => $this->Appfile->get_url_for_file($company_logo))); ?>
 									</li>
 								<?php } ?>
-								<li class="company-title"><?php echo H($company); ?></li>
+								<!-- li class="company-title"><#?php echo H($company); ?></! -->
+								<li class="company-title"><?php echo H($this->Location->get_info_for_key('name', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
 								
-								<?php if ($this->Location->count_all() > 1) { ?>
-									<li><?php echo H($this->Location->get_info_for_key('name', isset($data['override_location_id']) ? $data['override_location_id'] : FALSE)); ?></li>
-								<?php } ?>
+								<!-- 
+								<#?php if ($this->Location->count_all() > 1) { ?>
+									<li><#?php echo H($this->Location->get_info_for_key('name', isset($data['override_location_id']) ? $data['override_location_id'] : FALSE)); ?></li>
+								<#?php } ?>
+								-->
 								
 								<li><?php echo nl2br(H($this->Location->get_info_for_key('address', isset($data['override_location_id']) ? $data['override_location_id'] : FALSE))); ?></li>
-								<li><?php echo H($this->Location->get_info_for_key('phone', isset($data['override_location_id']) ? $data['override_location_id'] : FALSE)); ?></li>
-								<?php if($website) { ?>
-												<li><?php echo H($website);?></li>
-												<?php } ?>
+								<li>Teléfono: <?php echo H($this->Location->get_info_for_key('phone', isset($data['override_location_id']) ? $data['override_location_id'] : FALSE)); ?></li>
+								<!-- Intentar cargar primero el sitio registrado en la ubicacion -->
+								<?php if ($this->Location->get_info_for_key('website')) { ?>
+									<li><?php echo H($this->Location->get_info_for_key('website')); ?></li>
+								<!-- Si no cargar el sitio en configuraciones -->
+								<?php } else if ($website) { ?>
+									<li><?php echo H($website); ?></li>
+								<?php } ?>
 							</ul>
 						</div>
 						<!--  sales-->
@@ -73,8 +80,18 @@
 								<li>
 									<strong><?php echo H($data['transaction_time']) ?></strong>
 								</li>
-								<li><span><?php echo lang('common_workorder').":"; ?></span><?php echo H(rawurldecode($data['sale_id'])); ?></li>
-								<li><?php echo $sale_type; ?></li>
+								<li><span><?php echo lang('common_workorder').":"; ?></span><?php echo H(rawurldecode($data['sale_id'])); ?></li>								
+								<li>
+									Tipo: 
+									<?php 
+									$order_type = (int)$data['work_order_info']->order_type;
+									if ($order_type === 0) {
+										echo 'Orden de trabajo'; 
+									} else {
+										echo 'Garantía';
+									} 
+									?>
+								</li>
 
 								<?php
 								if ($this->Register->count_all(isset($data['override_location_id']) ? $data['override_location_id'] : FALSE) > 1 && $data['register_name'])
@@ -93,8 +110,9 @@
 								<?php
 								}
 								?>
-
-								<li><span><?php echo lang('common_employee').":"; ?></span><?php echo H($data['employee']); ?></li>
+								<?php if (!$this->config->item('remove_employee_from_receipt')) { ?>
+									<li><span><?php echo lang('common_employee').":"; ?></span><?php echo H($data['employee']); ?></li>
+								<?php } ?>
 								
 							</ul>
 						</div>
@@ -205,6 +223,7 @@
 										foreach($sales_items_notes as $sales_items_note){
 											if(!$sales_items_note['internal']){
 												//echo date(get_date_format().' '.get_time_format(), strtotime($sales_items_note['note_timestamp'])).': '.'<b>'.H($sales_items_note['note']).'</b>'.'<br />'; 
+												//<?php echo date('d/m/Y h:i a', strtotime($work_order_info['order_date']));?#> <-- probar
 												echo'<b>'.H($sales_items_note['note']).'</b>'.' - '.date(get_date_format().' '.get_time_format(), strtotime($sales_items_note['note_timestamp'])).'<br />'; 
 												echo H($sales_items_note['detailed_notes']).'<br />'; 
 											}

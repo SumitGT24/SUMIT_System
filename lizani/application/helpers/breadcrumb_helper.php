@@ -758,7 +758,41 @@ function create_breadcrumb()
   				$return.=create_current_page_url(lang('locations_update'));
 			}
 		}
-  }
+  	}
+	  elseif ($ci->uri->segment(1) == 'locationsadmin')
+	  {
+		  $params = $ci->session->userdata('locations_search_data') ? $ci->session->userdata('locations_search_data') : array('deleted' => 0);
+		  
+		  if ($ci->uri->segment(2) == NULL) //Main page
+		  {
+			  if($params['deleted'])
+			  {
+				  $locations_home_link = create_current_page_url(lang('module_deleted_locations'));
+			  }
+			  else
+			  {
+				  $locations_home_link = create_current_page_url(lang('module_locationsadmin'));
+			  }
+		  }
+		  else
+		  {
+			  $locations_home_link = '<a tabindex = "-1" href="'.site_url('locationsadmin').'">'.lang('module_locationsadmin').'</a>';
+		  }
+		  
+		  $return.=$locations_home_link;
+		  
+		  if($ci->uri->segment(2) == 'view')
+		  {
+			  if ($ci->uri->segment(3) == -1)
+			  {
+					$return.=create_current_page_url(lang('locations_new'));
+			  }
+			  else
+			  {
+					$return.=create_current_page_url(lang('locations_update'));
+			  }
+		  }
+	}
 	elseif ($ci->uri->segment(1) == 'sales')
 	{
 		if ($ci->uri->segment(2) == NULL || $ci->uri->segment(2) == 'index' || $ci->uri->segment(2) == 'unsuspend') //Main page

@@ -250,8 +250,8 @@ $lang['sales_sale_edit_confirm'] = '¿Está seguro que desea editar esta venta? 
 $lang['sales_swipe_type_giftcard'] = 'Deslice/Ingrese la tarjeta de regalo';
 $lang['sales_points_to_much'] = 'No se pueden canjear más puntos de los que tiene. Por favor, introduzca una cantidad inferior.';
 
-$lang['sales_redeem'] = 'Redimir';
-$lang['sales_unredeem'] = 'Sin redimir';
+$lang['sales_redeem'] = 'Canjear descuento';
+$lang['sales_unredeem'] = 'Deshacer canje de descuento';
 $lang['sales_redeem_discount_for_next_sale'] = 'Canjear descuento para la próxima venta';
 $lang['sales_sale_id_not_found'] = 'Id. de venta no encontrada';
 $lang['sales_last_sale_receipt'] = 'Mostrar último recibo de venta';

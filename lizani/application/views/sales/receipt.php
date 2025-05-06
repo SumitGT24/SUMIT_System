@@ -181,7 +181,7 @@ if (!(isset($standalone) && $standalone)) {
 							#Verificar que exista una factura
 							if ($sale_info['fell']) { ?>
 								<li>
-									<?php echo '<a class=" btn btn-primary btn-lg hidden-print" href="https://print.totaldoc.io/pdf?uuid=' . $fell . '&formato=2" target="_blank">Descargar factura electrónica</a>'?>
+									<?php echo '<a class=" btn btn-primary btn-lg hidden-print" href="https://print.totaldoc.io/pdf?uuid=' . $fell . '&formato=1" target="_blank">Descargar factura electrónica</a>'?>
 								</li>
 							<?php } ?>
 							
@@ -261,10 +261,15 @@ if (!(isset($standalone) && $standalone)) {
 							?>
 
 							<li class="nl2br"><?php echo H($this->Location->get_info_for_key('address', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
-							<li><?php echo H($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
-							<?php if ($website) { ?>
-								<!--li><?php echo H($website); ?></li-->
+							<li>Teléfono: <?php echo H($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
+							<!-- Intentar cargar primero el sitio registrado en la ubicacion -->
+							<?php if ($this->Location->get_info_for_key('website')) { ?>
+								<li><?php echo H($this->Location->get_info_for_key('website')); ?></li>
+							<!-- Si no cargar el sitio en configuraciones -->
+							<?php } else if ($website) { ?>
+								<li><?php echo H($website); ?></li>
 							<?php } ?>
+
 						</ul>
 					</div>
 					<!--  sales-->

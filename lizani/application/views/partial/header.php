@@ -275,14 +275,15 @@ if (is_on_demo_host()) { ?>
 <body>
 	<div class="modal fade hidden-print" id="myModal" tabindex="-1" role="dialog" aria-hidden="true"></div>
 	<div class="modal fade hidden-print" id="myModalDisableClose" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static"></div>
-	
 	<div class="wrapper <?php echo $this->uri->segment(1)=='sales' || $this->uri->segment(1)=='receivings' || $this->config->item('always_minimize_menu')  ? 'mini-bar sales-bar' : ''; ?>">
 		<div class="left-bar hidden-print" >
 			<div class="admin-logo" style="<?php echo isset($location_color) && $location_color ? 'background-color: '.$location_color.' !important': ''; ?>">
 				<div class="logo-holder pull-left">
-					<?php echo img(
-					array(
-						'src' => base_url().'assets/img/header_logo.png',
+					<?php 
+					//Se carga el logo de la empresa si existe, sino se carga el logo por defecto
+					$logo_src = $this->config->item('company_logo') ? app_file_url($this->config->item('company_logo')) : base_url('assets/img/header_logo.png');
+					echo img(array(
+						'src' => $logo_src,						
 						'class'=>'hidden-print logo',
 						'id'=>'header-logo',
 
@@ -303,9 +304,8 @@ if (is_on_demo_host()) { ?>
 						<i class="icon ti-dashboard"></i>
 						<span class="text"><?php echo lang('common_dashboard'); ?></span>
 					</a></li>
-				<?php foreach($allowed_modules->result() as $module) { 
-				 	if ($module->module_id == 'locations') continue; 	
-				?> 
+
+				<?php foreach($allowed_modules->result() as $module) { ?> 
 				<?php
 				if ($module->module_id == 'config' && !$this->Employee->has_module_permission('config', $user_info->person_id)) continue; 
 				

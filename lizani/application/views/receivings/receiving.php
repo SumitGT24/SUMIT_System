@@ -624,7 +624,7 @@ $has_cost_price_permission = $this->Employee->has_module_action_permission('item
 				<div class="customer-badge location">
 					<div class="details">
 
-						<a tabindex="-1" href="<?php echo site_url("locations/view/$location_from_id/1"); ?>" class="name">
+						<a tabindex="-1" href="<?php echo site_url("locationsadmin"); ?>" class="name">
 							<?php echo lang('receivings_transfer_from'); ?>: <?php echo character_limiter(H($location_from), 30); ?>
 						</a>
 
@@ -632,7 +632,7 @@ $has_cost_price_permission = $this->Employee->has_module_action_permission('item
 
 				</div>
 				<div class="customer-action-buttons btn-group btn-group-justified">
-					<a tabindex="-1" href="<?php echo site_url("locations/view/$location_from_id/1"); ?>" class="btn success">
+					<a tabindex="-1" href="<?php echo site_url("locationsadmin"); ?>" class="btn success">
 						<i class="ion-ios-compose-outline"></i>
 						Edit
 					</a>
@@ -647,7 +647,7 @@ $has_cost_price_permission = $this->Employee->has_module_action_permission('item
 					<?php echo form_open("receivings/select_location_from", array('id' => 'select_location_from_form', 'autocomplete' => 'off')); ?>
 					<div class="input-group contacts">
 						<span class="input-group-addon">
-							<?php echo anchor("locations/view/-1", "<i class='ion-plus'></i>", array('class' => 'none', 'title' => lang('common_new_customer'), 'id' => 'new-customer')); ?>
+							<?php echo anchor("locationsadmin", "<i class='ion-plus'></i>", array('class' => 'none', 'title' => lang('common_new_customer'), 'id' => 'new-customer')); ?>
 						</span>
 						<input type="text" id="location_from" name="location_from" class="add-customer-input" placeholder="<?php echo lang('receivings_start_typing_location_name_from'); ?>" data-title="<?php echo lang('common_location'); ?>" />
 
@@ -664,7 +664,7 @@ $has_cost_price_permission = $this->Employee->has_module_action_permission('item
 				<div class="customer-badge location">
 					<div class="details">
 
-						<a tabindex="-1" href="<?php echo site_url("locations/view/$location_id/1"); ?>" class="name">
+						<a tabindex="-1" href="<?php echo site_url("locationsadmin"); ?>" class="name">
 							<?php echo lang('receivings_transfer_to'); ?>: <?php echo character_limiter(H($location), 30); ?>
 						</a>
 
@@ -672,7 +672,7 @@ $has_cost_price_permission = $this->Employee->has_module_action_permission('item
 
 				</div>
 				<div class="customer-action-buttons btn-group btn-group-justified">
-					<a tabindex="-1" href="<?php echo site_url("locations/view/$location_id/1"); ?>" class="btn success">
+					<a tabindex="-1" href="<?php echo site_url("locationsadmin"); ?>" class="btn success">
 						<i class="ion-ios-compose-outline"></i>
 						Edit
 					</a>
@@ -687,7 +687,7 @@ $has_cost_price_permission = $this->Employee->has_module_action_permission('item
 					<?php echo form_open("receivings/select_location", array('id' => 'select_location_form', 'autocomplete' => 'off')); ?>
 					<div class="input-group contacts">
 						<span class="input-group-addon">
-							<?php echo anchor("locations/view/-1", "<i class='ion-plus'></i>", array('class' => 'none', 'title' => lang('common_new_customer'), 'id' => 'new-customer')); ?>
+							<?php echo anchor("locationsadmin", "<i class='ion-plus'></i>", array('class' => 'none', 'title' => lang('common_new_customer'), 'id' => 'new-customer')); ?>
 						</span>
 						<input type="text" id="location" name="location" class="add-customer-input" placeholder="<?php echo lang('receivings_start_typing_location_name'); ?>" data-title="<?php echo lang('common_location'); ?>" />
 
