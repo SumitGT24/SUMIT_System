@@ -897,9 +897,7 @@
 				repeat_password: {
 					equalTo: "#password"
 				},
-				email: {
-					"required": true
-				},
+
 				"locations[]": "required"
 			},
 			messages: {

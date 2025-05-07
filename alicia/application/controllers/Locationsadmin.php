@@ -323,7 +323,7 @@ class Locationsadmin extends Secure_area implements Idata_controller
 			//'tipo_contribuyente' => $this->input->post('tipo_contribuyente') ? $this->input->post('tipo_contribuyente') : 0,
 			//'municipio' => $this->input->post('municipio') ? $this->input->post('municipio') : NULL,
 			//'departamento' => $this->input->post('departamento') ? $this->input->post('departamento') : NULL,
-			//'company' => $this->input->post('company') ? $this->input->post('company') : NULL,
+			'company' => $this->input->post('company') ? $this->input->post('company') : NULL,
 			'website' => $this->input->post('website') ? $this->input->post('website') : NULL,
 			'address' => $this->input->post('address'),
 			'phone' => $this->input->post('phone'),			

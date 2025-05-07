@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="form-group">
-			<?php echo form_label(lang('common_email').':', 'email',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label '.($controller_name == 'employees' || $controller_name == 'login' ? 'required' : 'not_required'))); ?>
+			<?php echo form_label(lang('common_email').':', 'email',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label '.($controller_name == 'login' ? 'required' : 'not_required'))); ?>
 			<div class="col-sm-9 col-md-9 col-lg-10">
 			<?php echo form_input(array(
 				'class'=>'form-control',

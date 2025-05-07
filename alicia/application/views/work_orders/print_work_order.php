@@ -54,17 +54,19 @@
 										<?php echo img(array('src' => $this->Appfile->get_url_for_file($company_logo))); ?>
 									</li>
 								<?php } ?>
-								<!-- li class="company-title"><#?php echo H($company); ?></! -->
-								<li class="company-title"><?php echo H($this->Location->get_info_for_key('name', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
-								
-								<!-- 
-								<#?php if ($this->Location->count_all() > 1) { ?>
-									<li><#?php echo H($this->Location->get_info_for_key('name', isset($data['override_location_id']) ? $data['override_location_id'] : FALSE)); ?></li>
-								<#?php } ?>
-								-->
+								<!-- Mostrar el valor 'company' en 'locations', si no mostrar el valor en 'config' -->
+								<?php if ($this->Location->get_info_for_key('company', isset($override_location_id) ? $override_location_id : FALSE)!='') { ?>
+									<li class="company-title"><?php echo H($this->Location->get_info_for_key('company', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
+								<?php } else {
+								?>
+									<li class="company-title"><?php echo H($company); ?></li>
+								<?php } ?>
 								
 								<li><?php echo nl2br(H($this->Location->get_info_for_key('address', isset($data['override_location_id']) ? $data['override_location_id'] : FALSE))); ?></li>
-								<li>Teléfono: <?php echo H($this->Location->get_info_for_key('phone', isset($data['override_location_id']) ? $data['override_location_id'] : FALSE)); ?></li>
+								<!-- Mostrar el valor 'phone' si esta configurado en 'locations' -->
+								<?php if($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)!=''){ ?>
+									<li>Teléfono: <?php echo H($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
+								<?php } ?>
 								<!-- Intentar cargar primero el sitio registrado en la ubicacion -->
 								<?php if ($this->Location->get_info_for_key('website')) { ?>
 									<li><?php echo H($this->Location->get_info_for_key('website')); ?></li>
@@ -77,8 +79,10 @@
 						<!--  sales-->
 						<div class="col-md-4 col-sm-4 col-xs-12">
 							<ul class="list-unstyled invoice-detail" style="margin-bottom:2px;">
-								<li>
-									<strong><?php echo H($data['transaction_time']) ?></strong>
+								<li>								
+									<strong>
+										<?php echo date('d/m/Y h:i a', strtotime($data['work_order_info']->order_date));?>
+									</strong>
 								</li>
 								<li><span><?php echo lang('common_workorder').":"; ?></span><?php echo H(rawurldecode($data['sale_id'])); ?></li>								
 								<li>
@@ -222,7 +226,7 @@
 										$sales_items_notes = $this->Sale->get_sales_items_notes_info($data['sale_id_raw'],$item['item_id'],$item['line']);
 										foreach($sales_items_notes as $sales_items_note){
 											if(!$sales_items_note['internal']){
-												//echo date(get_date_format().' '.get_time_format(), strtotime($sales_items_note['note_timestamp'])).': '.'<b>'.H($sales_items_note['note']).'</b>'.'<br />'; 
+												//echo date(get_date_format().' '.get_time_format(), strtotime($sales_items_note['note_timestamp'])).': '.'<b>'.H($sales_items_note['note']).'</b>'.'<br />'; 												
 												echo'<b>'.H($sales_items_note['note']).'</b>'.' - '.date(get_date_format().' '.get_time_format(), strtotime($sales_items_note['note_timestamp'])).'<br />'; 
 												echo H($sales_items_note['detailed_notes']).'<br />'; 
 											}

@@ -350,6 +350,7 @@ class Config extends Secure_area
 		*/
 		//$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
 		$batch_save_data=array(
+		'company'=>$this->input->post('company'),
 		'website'=>$this->input->post('website'),
 		'enable_pdf_receipts'=>$this->input->post('enable_pdf_receipts') ? 1 : 0,
 		'automatically_show_comments_on_receipt' => $this->input->post('automatically_show_comments_on_receipt') ? 1 : 0,

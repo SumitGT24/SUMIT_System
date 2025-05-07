@@ -241,16 +241,13 @@ if (!(isset($standalone) && $standalone)) {
 									</li>
 								<?php } ?>
 							<?php } ?>
-
-							<?php if ($this->Location->count_all() > 1) { ?>
-								<!--li class="company-title"><?php echo H($company); ?></li-->
-								<li><?php echo H($this->Location->get_info_for_key('name', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
+							<!-- Mostrar el valor 'company' en 'locations', si no mostrar el valor en 'config' -->
+							<?php if ($this->Location->get_info_for_key('company', isset($override_location_id) ? $override_location_id : FALSE)!='') { ?>
+								<li class="company-title"><?php echo H($this->Location->get_info_for_key('company', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
 							<?php } else {
 							?>
 								<li class="company-title"><?php echo H($company); ?></li>
-							<?php
-							}
-							?>
+							<?php } ?>
 
 							<?php
 							if ($tax_id) {
@@ -261,7 +258,10 @@ if (!(isset($standalone) && $standalone)) {
 							?>
 
 							<li class="nl2br"><?php echo H($this->Location->get_info_for_key('address', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
-							<li>Teléfono: <?php echo H($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
+							<!-- Mostrar el valor 'phone' si esta configurado en 'locations' -->
+							<?php if($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)!=''){ ?>
+								<li>Teléfono: <?php echo H($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
+							<?php } ?>
 							<!-- Intentar cargar primero el sitio registrado en la ubicacion -->
 							<?php if ($this->Location->get_info_for_key('website')) { ?>
 								<li><?php echo H($this->Location->get_info_for_key('website')); ?></li>

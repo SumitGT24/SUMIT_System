@@ -74,6 +74,19 @@ $this->load->view("partial/header");
 					</div>	
 				</div>
 				<?php } ?>
+				<!-- Nombre de la empresa -->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
+					<?php echo form_label(lang('common_company').':', 'company',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+						<?php echo form_input(array(
+							'class'=>'validate form-control form-inps',
+						'name'=>'company',
+						'id'=>'company',
+						'placeholder'=>'Nombre de la empresa (aparecerá en la factura/ticket si no se ha configurado un nombre por sucursal)',
+						'value'=>$this->config->item('company')));?>
+					</div>
+				</div>
+
 				<!--website-->
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 					<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
