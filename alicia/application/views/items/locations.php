@@ -74,56 +74,20 @@
 					));?>
 				</div>
 			</div>
-
-				<div class="form-group is-service-toggle <?php if ($item_info->is_service){echo 'hidden';} ?>">
-						<?php echo form_label(lang('items_reorder_level').':', '', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label wide')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_input(array(
-								'name'=>'locations['.$location->location_id.'][reorder_level]',
-								'value'=> $location_items[$location->location_id]->item_id !== '' &&  $location_items[$location->location_id]->reorder_level !== NULL ? to_quantity($location_items[$location->location_id]->reorder_level): '',
-									'class'=>'form-control form-inps',
-							));?>
-					</div>
+									
+			<div class="form-group">
+				<?php echo form_label(lang('common_hide_from_grid').':', '', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label wide')); ?>
+				<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'locations['.$location->location_id.'][hide_from_grid]',
+						'id'=>'locations['.$location->location_id.'][hide_from_grid]',
+						'class' => 'hide_from_grid_checkbox delete-checkbox',
+						'value'=>1,
+						'checked'=> $this->Item->is_item_hidden($item_info->item_id,$location->location_id)));
+					?>
+					<label for="<?php echo 'locations['.$location->location_id.'][hide_from_grid]' ?>"><span></span></label>
 				</div>
-				
-				<div class="form-group is-service-toggle <?php if ($item_info->is_service){echo 'hidden';} ?>">
-					<?php echo form_label(lang('common_replenish_level').':', '', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label wide')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_input(array(
-							'name'=>'locations['.$location->location_id.'][replenish_level]',
-							'value'=> $location_items[$location->location_id]->item_id !== '' &&  $location_items[$location->location_id]->replenish_level !== NULL ? to_quantity($location_items[$location->location_id]->replenish_level): '',
-								'class'=>'form-control form-inps',
-						));?>
-					</div>
-				</div>
-				
-					
-				<div class="form-group">
-					<?php echo form_label(lang('common_hide_from_grid').':', '', array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label wide')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
-							'name'=>'locations['.$location->location_id.'][hide_from_grid]',
-							'id'=>'locations['.$location->location_id.'][hide_from_grid]',
-							'class' => 'hide_from_grid_checkbox delete-checkbox',
-							'value'=>1,
-							'checked'=> $this->Item->is_item_hidden($item_info->item_id,$location->location_id)));
-						?>
-						<label for="<?php echo 'locations['.$location->location_id.'][hide_from_grid]' ?>"><span></span></label>
-					</div>
-				</div>
-				<div class="form-group override-prices-container">
-					<?php echo form_label(lang('common_items_override_prices').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label wide')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
-							'name'=>'locations['.$location->location_id.'][override_prices]',
-							'id'=>'locations['.$location->location_id.'][override_prices]',
-							'class' => 'override_prices_checkbox delete-checkbox',
-							'value'=>1,
-							'checked'=>(boolean)isset($location_items[$location->location_id]) && is_object($location_items[$location->location_id]) && $location_items[$location->location_id]->is_overwritten));
-						?>
-						<label for="<?php echo 'locations['.$location->location_id.'][override_prices]' ?>"><span></span></label>
-					</div>
-				</div>
+			</div>
 				
 				<div class="item-location-price-container <?php if ($location_items[$location->location_id] === FALSE || !$location_items[$location->location_id]->is_overwritten){echo 'hidden';} ?>">	
 					<?php if ($this->Employee->has_module_action_permission('items','see_cost_price', $this->Employee->get_logged_in_employee_info()->person_id) or $item_info->name=="") { ?>
@@ -563,10 +527,12 @@ date_time_picker_field($('.datepicker'), JS_DATE_FORMAT);
 				{
 					number: true
 				},
-				"<?php echo 'locations['.$location->location_id.'][reorder_level]'; ?>":
+				/* 
+				"<#?php echo 'locations['.$location->location_id.'][reorder_level]'; ?>":
 				{
 					number: true
 				},
+				*/
 				"<?php echo 'locations['.$location->location_id.'][replenish_level]'; ?>":
 				{
 					number: true

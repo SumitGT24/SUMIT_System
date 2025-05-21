@@ -315,8 +315,7 @@ class Customers extends Person_controller
 			#'taxable'=>$this->input->post('taxable')=='' ? 0:1,
 			#'tax_certificate' => $this->input->post('tax_certificate'),
 			#'override_default_tax'=> $this->input->post('override_default_tax') ? $this->input->post('override_default_tax') : 0,
-			#'tax_class_id'=> $this->input->post('tax_class') ? $this->input->post('tax_class') : NULL,
-			#'always_sms_receipt' => $this->input->post('always_sms_receipt') ? 1 : 0,
+			#'tax_class_id'=> $this->input->post('tax_class') ? $this->input->post('tax_class') : NULL,			
 		);
 		
 		if ($this->input->post('location_id'))
@@ -1782,47 +1781,6 @@ class Customers extends Person_controller
 		$customers = array_values($customers);
 		
 		$this->Customer->merge($customers,$customer_to_merge);
-	}
-	
-	function send_message(){
-		$account_sid = $this->Location->get_info_for_key('twilio_sid');
-		$auth_token = $this->Location->get_info_for_key('twilio_token');
-		$twilio_sms_from = $this->Location->get_info_for_key('twilio_sms_from');
-
-		if($account_sid && $auth_token && $twilio_sms_from){
-			$params = array(
-				'account_sid' => $account_sid, 
-				'auth_token' => $auth_token
-			);
-
-			$this->load->library("Citwilio", $params);
-
-			$selected_persons = $this->input->post('selected_persons');
-			$text_message = $this->input->post('text_message');
-			$from_number = $this->Location->get_info_for_key('twilio_sms_from');
-
-			$data['response'] = array();
-			foreach($selected_persons as $customer_id)
-			{		
-				$customer_info = $this->Customer->get_info($customer_id);
-
-				if(!$customer_info->phone_number){
-					$data['response'][] = $customer_info->first_name.' '.$customer_info->last_name.': '.lang('common_mobile_number_not_found');
-				}else{
-					$response = $this->citwilio->send_sms($from_number, $customer_info->phone_number, $text_message);
-					if($response->errorCode){
-						$data['response'][] = $customer_info->first_name.' '.$customer_info->last_name.': '.lang('common_unable_to_send_message');
-					}
-				}
-			}
-		}else{
-			$location_id = $this->Employee->get_logged_in_employee_current_location_id();
-			$data['response'][] = lang('common_unable_to_connect_message_api').' '.anchor(site_url("locations/view/$location_id/2"), lang('common_see_message_configuration'), array('title' => lang('common_see_message_configuration') ));
-		}
-
-		echo json_encode($data);
-		exit;
-		
 	}
 }
 ?>

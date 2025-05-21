@@ -207,7 +207,7 @@ INSERT INTO `phppos_app_config` (`key`, `value`) VALUES
 ('edit_recv_web_hook', ''),
 ('edit_sale_web_hook', ''),
 ('email_charset', ''),
-('email_provider', 'Use System Default'),
+('email_provider', 'Other'),
 ('emailed_receipt_subject', ''),
 ('enable_customer_loyalty_system', '0'),
 ('enable_customer_quick_add', '1'),
@@ -309,7 +309,7 @@ INSERT INTO `phppos_app_config` (`key`, `value`) VALUES
 ('prompt_amount_for_cash_sale', '0'),
 ('prompt_for_ccv_swipe', '0'),
 ('prompt_to_use_points', '0'),
-('protocol', ''),
+('protocol', 'smtp'),
 ('qb_export_start_date', ''),
 ('qb_sync_operations', 'a:1:{i:0;s:33:\"export_journalentry_to_quickbooks\";}'),
 ('quick_variation_grid', '0'),
@@ -323,19 +323,19 @@ INSERT INTO `phppos_app_config` (`key`, `value`) VALUES
 ('remove_customer_name_from_receipt', '0'),
 ('remove_employee_from_receipt', '0'),
 ('remove_points_from_profit', '0'),
-('report_sort_order', 'asc'),
+('report_sort_order', 'desc'),
 ('require_customer_for_sale', '0'),
 ('require_customer_for_suspended_sale', '0'),
 ('require_employee_login_before_each_sale', '0'),
 ('require_supplier_for_recv', '0'),
 ('reseller_activate_seen', '1'),
 ('reset_location_when_switching_employee', '0'),
-('return_policy', 'Gracias por su compra'),
+('return_policy', 'Gracias por su compra.'),
 ('round_cash_on_sales', '0'),
 ('round_tier_prices_to_2_decimals', '0'),
 ('sale_custom_field_prefs', 'a:33:{s:19:\"custom_field_1_name\";s:0:\"\";s:19:\"custom_field_1_type\";s:8:\"checkbox\";s:22:\"custom_field_1_choices\";s:0:\"\";s:19:\"custom_field_2_name\";s:0:\"\";s:19:\"custom_field_2_type\";s:4:\"date\";s:22:\"custom_field_2_choices\";s:0:\"\";s:30:\"custom_field_2_show_on_receipt\";s:1:\"1\";s:19:\"custom_field_3_name\";s:0:\"\";s:19:\"custom_field_3_type\";s:5:\"image\";s:22:\"custom_field_3_choices\";s:0:\"\";s:30:\"custom_field_3_show_on_receipt\";s:1:\"1\";s:19:\"custom_field_4_name\";s:0:\"\";s:19:\"custom_field_4_type\";s:4:\"text\";s:22:\"custom_field_4_choices\";s:0:\"\";s:19:\"custom_field_5_name\";s:0:\"\";s:19:\"custom_field_5_type\";s:4:\"text\";s:22:\"custom_field_5_choices\";s:0:\"\";s:19:\"custom_field_6_name\";s:0:\"\";s:19:\"custom_field_6_type\";s:4:\"text\";s:22:\"custom_field_6_choices\";s:0:\"\";s:19:\"custom_field_7_name\";s:0:\"\";s:19:\"custom_field_7_type\";s:4:\"text\";s:22:\"custom_field_7_choices\";s:0:\"\";s:19:\"custom_field_8_name\";s:0:\"\";s:19:\"custom_field_8_type\";s:4:\"text\";s:22:\"custom_field_8_choices\";s:0:\"\";s:19:\"custom_field_9_name\";s:0:\"\";s:19:\"custom_field_9_type\";s:4:\"text\";s:22:\"custom_field_9_choices\";s:0:\"\";s:20:\"custom_field_10_name\";s:0:\"\";s:20:\"custom_field_10_type\";s:4:\"text\";s:23:\"custom_field_10_choices\";s:0:\"\";s:7:\"submitf\";s:7:\"Guardar\";}'),
 ('sale_id_auto_increment', '1'),
-('sale_prefix', 'Ventas'),
+('sale_prefix', 'Venta'),
 ('saved_name', ''),
 ('scale', '1'),
 ('scale_divide_by', '100'),
@@ -364,12 +364,12 @@ INSERT INTO `phppos_app_config` (`key`, `value`) VALUES
 ('shown_feedback_message', '1'),
 ('shown_setup_wizard', '1'),
 ('sku_sync_field', 'item_number'),
-('smtp_crypto', ''),
-('smtp_host', ''),
-('smtp_pass', 'password'),
+('smtp_crypto', 'ssl'),
+('smtp_host', 'mail.sumit.gt'),
+('smtp_pass', ''),
 ('smtp_port', ''),
 ('smtp_timeout', ''),
-('smtp_user', 'admin@example.com'),
+('smtp_user', 'usuario@sumit.gt'),
 ('sort_receipt_column', ''),
 ('speed_up_search_queries', '0'),
 ('spend_to_point_ratio', ''),
@@ -1560,7 +1560,7 @@ CREATE TABLE `phppos_locations` (
 --
 
 INSERT INTO `phppos_locations` (`location_id`, `name`, `company`, `website`, `company_logo`, `address`, `phone`, `email`, `cc_email`, `bcc_email`, `color`, `return_policy`, `receive_stock_alert`, `stock_alert_email`, `timezone`, `enable_credit_card_processing`, `credit_card_processor`, `hosted_checkout_merchant_id`, `hosted_checkout_merchant_password`, `emv_merchant_id`, `net_e_pay_server`, `listener_port`, `com_port`, `stripe_public`, `stripe_private`, `stripe_currency_code`, `braintree_merchant_id`, `braintree_public_key`, `braintree_private_key`, `default_tax_1_rate`, `default_tax_1_name`, `default_tax_2_rate`, `default_tax_2_name`, `default_tax_2_cumulative`, `default_tax_3_rate`, `default_tax_3_name`, `default_tax_4_rate`, `default_tax_4_name`, `default_tax_5_rate`, `default_tax_5_name`, `deleted`, `secure_device_override_emv`, `secure_device_override_non_emv`, `tax_class_id`, `ebt_integrated`, `integrated_gift_cards`, `square_currency_code`, `square_location_id`, `square_currency_multiplier`, `email_sales_email`, `email_receivings_email`, `stock_alerts_just_order_level`, `platformly_api_key`, `platformly_project_id`, `tax_id`, `disable_markup_markdown`, `card_connect_mid`, `card_connect_rest_username`, `card_connect_rest_password`, `auto_reports_email`, `auto_reports_email_time`, `auto_reports_day`, `disable_confirmation_option_for_emv_credit_card`, `api_key`, `nit`, `razon_social`, `number_establecimiento`, `municipio`, `departamento`,`tipo_contribuyente`) VALUES
-(1, 'SUMIT', 'SUMIT', 'sumit.gt', null, 'CC PLAZA ASTURIAS COBAN', '0000-0000', 'info@info.com', '', '', '#001f49', '', '0', '', 'America/Guatemala', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', '', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz',0);
+(1, 'Tienda SUMIT', '', 'sumit.gt', null, 'CC PLAZA ASTURIAS COBAN', '', '', '', '', '#001f49', '', '0', '', 'America/Guatemala', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', '', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz',0);
 
 -- --------------------------------------------------------
 

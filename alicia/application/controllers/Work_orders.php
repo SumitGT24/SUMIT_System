@@ -472,13 +472,6 @@ class Work_orders extends Secure_area
 							$this->Common->send_email($customer_email,$subject,$message);
 						}
 					}
-		
-					if($work_order_status_info->notify_by_sms){
-						$customer_phone_number = $this->Customer->get_info($work_order_info->customer_id)->phone_number;
-						if($customer_phone_number){
-							$this->Common->send_sms($customer_phone_number,$message);
-						}
-					}
 				}
 			}
 		}

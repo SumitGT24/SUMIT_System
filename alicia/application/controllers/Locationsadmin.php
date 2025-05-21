@@ -375,10 +375,7 @@ class Locationsadmin extends Secure_area implements Idata_controller
 			//'card_connect_mid' => $this->input->post('card_connect_mid'),
 			//'card_connect_rest_username' => $this->input->post('card_connect_rest_username'),
 			//'card_connect_rest_password' => $this->input->post('card_connect_rest_password'),
-			//'default_mailchimp_lists' => serialize($this->input->post('default_mailchimp_lists')),
-			//'twilio_sid' => $this->input->post('twilio_sid'),
-			//'twilio_token' => $this->input->post('twilio_token'),
-			//'twilio_sms_from' => $this->input->post('twilio_sms_from'),			
+			//'default_mailchimp_lists' => serialize($this->input->post('default_mailchimp_lists')),	
 			//'disable_confirmation_option_for_emv_credit_card' => $this->input->post('disable_confirmation_option_for_emv_credit_card') ? 1 : 0,
 		);
 

@@ -399,10 +399,18 @@ for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 													<?php echo '<b>'.lang('common_tax_id').'</b>: '.H($tax_id); ?>
 													<?php } ?>
 													<br />
-													<?php echo nl2br(H($this->Location->get_info_for_key('address',isset($override_location_id) ? $override_location_id : FALSE))); ?>
-													<br />
-													<?php echo H($this->Location->get_info_for_key('phone',isset($override_location_id) ? $override_location_id : FALSE)); ?>
-				  			          <?php if($this->config->item('website')) { ?>													
+													<?php echo nl2br(H($this->Location->get_info_for_key('address',isset($override_location_id) ? $override_location_id : FALSE))); ?>													
+													<!-- Mostrar el valor 'phone' si esta configurado en 'locations' -->
+													<?php if($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)!=''){ ?>
+														<br />
+														<?php echo nl2br(H('Teléfono: '.$this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE))); ?>
+													<?php } ?>
+													<!-- Intentar cargar primero el sitio registrado en la ubicacion -->
+													<?php if ($this->Location->get_info_for_key('website')) { ?>
+														<br />														
+														<a href="<?php echo H(prep_url($this->Location->get_info_for_key('website'))); ?>" class="primary-color" style="text-decoration:underline;color:#2196F3;"><?php echo H($this->Location->get_info_for_key('website')); ?></a>
+													<!-- Si no cargar el sitio en configuraciones -->
+				  			          				<?php } else if($this->config->item('website')) { ?>													
 														<br />
 														<a href="<?php echo H(prep_url($this->config->item('website'))); ?>" class="primary-color" style="text-decoration:underline;color:#2196F3;"><?php echo H($this->config->item('website')); ?></a>
 													<?php } ?>
@@ -429,8 +437,9 @@ for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 													<?php if (!empty($customer_city)) { echo "<b>".H($customer_address_1). ' '.H($customer_address_2)." : </b>".H($customer_city.' '.$customer_state.', '.$customer_zip);} ?>
 
 													<?php if (!empty($customer_country)) { echo H($customer_country); } ?>
-
-													<b><?php echo lang('common_phone_number') ?> : </b><?php echo H($customer_phone); ?> <br />
+													<?php if (!empty($customer_phone)) { ?>
+														<b><?php echo lang('common_phone_number') ?> : </b><?php echo H($customer_phone); ?> <br />
+													<?php } ?>
 													
 													<?php if (!$this->config->item('hide_email_on_receipts')) { ?>													
 														<b><?php echo lang('common_email') ?> : </b><?php echo H($customer_email); ?> <br />
@@ -559,54 +568,45 @@ for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 										<table class="contents" style="border-spacing:0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#555555;width:100%;font-size:13px;text-align:left;" >
 											<tr>
 												<td class="text text-right" style="padding-bottom:0;padding-right:0;padding-left:0;text-align:right !important;padding-top:0px;" >
-														<?php echo "<b>".lang('common_employee').":</b> ".H($employee); ?>		
-
-							<?php
-							foreach($employee_custom_fields_to_display as $custom_field_id)
-							{
-							?>
-									<?php 
-									
-										$employee_info = $this->Employee->get_info($sold_by_employee_id);
+												<?php if (!$this->config->item('remove_employee_from_receipt')) { ?>	
+													<?php echo "<b>".lang('common_employee').":</b> ".H($employee); ?>		
+														<?php foreach($employee_custom_fields_to_display as $custom_field_id) { ?>
+															<?php 									
+															$employee_info = $this->Employee->get_info($sold_by_employee_id);										
+															if ($employee_info->{"custom_field_${custom_field_id}_value"}){ ?>
+                  												<div class="invoice-desc">
+																<?php
+																if ($this->Employee->get_custom_field($custom_field_id,'type') == 'checkbox')
+																{
+																	$format_function = 'boolean_as_string';
+																}
+																elseif($this->Employee->get_custom_field($custom_field_id,'type') == 'date')
+																{
+																	$format_function = 'date_as_display_date';				
+																}
+																elseif($this->Employee->get_custom_field($custom_field_id,'type') == 'email')
+																{
+																	$format_function = 'strsame';					
+																}
+																elseif($this->Employee->get_custom_field($custom_field_id,'type') == 'url')
+																{
+																	$format_function = 'strsame';					
+																}
+																elseif($this->Employee->get_custom_field($custom_field_id,'type') == 'phone')
+																{
+																	$format_function = 'strsame';					
+																}
+																else
+																{
+																	$format_function = 'strsame';
+																}
 										
-										if ($employee_info->{"custom_field_${custom_field_id}_value"})
-										{
-										?>
-                  	<div class="invoice-desc">
-										<?php
-
-										if ($this->Employee->get_custom_field($custom_field_id,'type') == 'checkbox')
-										{
-											$format_function = 'boolean_as_string';
-										}
-										elseif($this->Employee->get_custom_field($custom_field_id,'type') == 'date')
-										{
-											$format_function = 'date_as_display_date';				
-										}
-										elseif($this->Employee->get_custom_field($custom_field_id,'type') == 'email')
-										{
-											$format_function = 'strsame';					
-										}
-										elseif($this->Employee->get_custom_field($custom_field_id,'type') == 'url')
-										{
-											$format_function = 'strsame';					
-										}
-										elseif($this->Employee->get_custom_field($custom_field_id,'type') == 'phone')
-										{
-											$format_function = 'strsame';					
-										}
-										else
-										{
-											$format_function = 'strsame';
-										}
-										
-										echo '<b><span>'.lang('common_employee').' '.($this->Employee->get_custom_field($custom_field_id,'hide_field_label') ? '' : $this->Employee->get_custom_field($custom_field_id,'name').':').'</b> '.$format_function($employee_info->{"custom_field_${custom_field_id}_value"}).'<br />';
-										?>
-									</div>
-									<?php
-								}
-							}
-							?>
+																echo '<b><span>'.lang('common_employee').' '.($this->Employee->get_custom_field($custom_field_id,'hide_field_label') ? '' : $this->Employee->get_custom_field($custom_field_id,'name').':').'</b> '.$format_function($employee_info->{"custom_field_${custom_field_id}_value"}).'<br />'; ?>
+																</div>
+																<?php
+															}
+														} ?>
+												<?php } ?>
 														<?php 
 														if($this->Location->get_info_for_key('enable_credit_card_processing',isset($override_location_id) ? $override_location_id : FALSE))
 														{
@@ -748,8 +748,7 @@ for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 												<?php echo to_currency(+$item->get_modifiers_subtotal()+($unit_price*$item->quantity-$item->unit_price*$item->quantity*$item->discount/100),10); ?>
 											</td>
 										</tr>
-										
-										
+																				
 										<?php
 										foreach($item_custom_fields_to_display as $custom_field_id)
 										{

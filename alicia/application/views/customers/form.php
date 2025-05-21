@@ -337,17 +337,7 @@
 							<?php echo form_checkbox('auto_email_receipt', '1', (boolean)$person_info->auto_email_receipt,'id="auto_email_receipt"'); ?>
 							<label for="auto_email_receipt"><span></span></label>
 						</div>
-					</div>
-
-					<?php if ($this->Location->get_info_for_key('twilio_sms_from')) { ?>
-					<div class="form-group">	
-						<?php echo form_label(lang('customers_always_sms_receipt').':', 'always_sms_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-							<?php echo form_checkbox('always_sms_receipt', '1', (boolean)$person_info->always_sms_receipt,'id="always_sms_receipt"'); ?>
-							<label for="always_sms_receipt"><span></span></label>
-						</div>
-					</div>
-					<?php } ?>	
+					</div>	
 					 <?php for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++) { ?>
 						<?php
 						 $custom_field = $this->Customer->get_custom_field($k);

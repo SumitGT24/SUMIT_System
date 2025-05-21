@@ -132,13 +132,6 @@ if (!(isset($standalone) && $standalone)) {
 							</li>
 
 						<?php } ?>
-
-						<?php if ($sale_id_raw != lang('sales_test_mode_transaction', '', array(), TRUE) && !empty($customer_phone) && $this->Location->get_info_for_key('twilio_sms_from')) { ?>
-							<li>
-								<?php echo anchor('sales/sms_receipt/' . $sale_id_raw, lang('common_sms_receipt', '', array(), TRUE), array('id' => 'sms_receipt', 'class' => 'btn btn-primary btn-lg hidden-print')); ?>
-							</li>
-
-						<?php } ?>
 						<?php if ($sale_id_raw != lang('sales_test_mode_transaction', '', array(), TRUE)) { ?>
 							<li>
 								<button class="btn btn-primary btn-lg hidden-print" id="fufillment_sheet_button" onclick="window.open('<?php echo site_url("sales/create_po/$sale_id_raw"); ?>', 'blank');"> <?php echo lang('common_create_po', '', array(), TRUE); ?></button>
@@ -1664,7 +1657,6 @@ if (!(isset($standalone) && $standalone)) {
 	}
 	?>
 
-
 	$(document).ready(function() {
 
 		<?php if (isset($email_sent) && $email_sent) { ?>
@@ -1681,7 +1673,6 @@ if (!(isset($standalone) && $standalone)) {
 		$("#email_receipt,#sms_receipt").click(function() {
 			$.get($(this).attr('href'), function() {
 				show_feedback('success', <?php echo json_encode(lang('common_receipt_sent', '', array(), TRUE)); ?>, <?php echo json_encode(lang('common_success', '', array(), TRUE)); ?>);
-
 			});
 
 			return false;

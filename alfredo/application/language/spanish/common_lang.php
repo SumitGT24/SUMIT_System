@@ -275,7 +275,7 @@ $lang['common_change_due'] = 'Cambio';
 
 $lang['common_excel_import_failed'] = 'La importación desde un archivo de Excel falló';
 $lang['common_discount'] = 'Descuento';
-$lang['common_register_name'] = 'Registrar nombre';
+$lang['common_register_name'] = 'Caja registradora';
 $lang['common_customer'] = 'Cliente';
 
 

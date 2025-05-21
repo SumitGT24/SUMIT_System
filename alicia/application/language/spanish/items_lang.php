@@ -22,7 +22,7 @@ $lang['items_edit_multiple_items']='Edición de múltiples artículos';
 
 
 $lang['items_tax_percents']='Impuestos';
-$lang['items_reorder_level']='Mínimo de productos para recordar pedir';
+$lang['items_reorder_level']='Mínimo de productos para recordar ordernar';
 $lang['items_quantity']='Cantidad';
 $lang['items_no_items_to_display']='No hay artículos disponibles para su visualización';
 $lang['items_bulk_edit']='Edición múltiple';
@@ -99,7 +99,7 @@ $lang['items_mass_update_excel'] = 'Actualización masiva de artículos desde Ex
 $lang['items_mass_update_items_data'] = 'Importación masiva de datos desde una hoja de Excel';
 $lang['items_mass_update_template'] = 'Descargar plantilla de actualización para Excel (CSV)';
 $lang['items_soundex_exists'] = 'Un artículo con un nombre similar ya existe. ¿Desea continuar?';
-$lang['items_item_number_exists']='El CODIGO DE BARRAS ya existe';
+$lang['items_item_number_exists']='El código de barras ya existe';
 
 $lang['items_mass_update']='Actualización masiva de artículos';
 
@@ -141,7 +141,7 @@ $lang['items_select_category_or_all'] = 'Filtrar por categoría';
 
 $lang['items_are_you_sure_cancel'] = '¿Está seguro que desea cancelar la adición de este artículo?';
 
-$lang['items_product_id_exists'] = 'Ya existe Id. de producto';
+$lang['items_product_id_exists'] = 'Ya existe ID de producto';
 
 $lang['items_add_item_number'] = 'Añadir número de artículo';
 $lang['items_confirm_cleanup'] = '¿Seguro que desea depurar TODOS los artículos eliminados? (Esto eliminará los números de artículos eliminados para que puedan ser reutilizados)';
