@@ -2082,21 +2082,14 @@ class Sales extends Secure_area
 			$this->email->send();
 		}
 		//Generacion de factura electronica
-		if ($this->cart->nit != "") {
+		if ($this->cart->nit!= "") {
 			$name = $this->cart->nombreCliente;
 			$nit = $this->cart->nit;
 			$tipo = $this->cart->tipo;
 			$rAddres = $this->cart->addres;
 			$correo = $this->cart->correoDTE;
 			
-			date_default_timezone_set("America/Guatemala");
-			//GENERACION DE XML
-
-			$nitTramitador = "100826741";
-
-			$nrofactura = "0001000" . $sale_id_raw;
-			$codfactura = "333" . '-' . $nrofactura;
-			
+			//GENERACION DE XML		
 			date_default_timezone_set("America/Guatemala");
 
 			$detalleFEL = $data['cart_items'];
@@ -2303,8 +2296,7 @@ class Sales extends Secure_area
 				$this->cart->nit = "";
 				$this->cart->save();
 				echo $response;
-				$fileXML = 'facturas/error.xml';
-				file_put_contents($fileXML, $xml);
+				$fileXML = 'facturas/error.xml';				
 				var_dump($info);
 				var_dump($xml);
 				exit();
@@ -2353,7 +2345,8 @@ class Sales extends Secure_area
 				echo "<script>window.open('https://print.totaldoc.io/pdf?uuid=" . $uuid . "', '_blank');</script>";
 				// $fechaEmisionFEL=$info->fecha;
 			} else {
-
+				$this->cart->nit = "";
+				$this->cart->save();
 				$sat = 2;
 				// echo $info['descripcion_errores'][0]['mensaje_error'];
 				var_dump($info);
