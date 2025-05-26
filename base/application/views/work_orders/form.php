@@ -88,6 +88,53 @@
   </div>
 </div>
 
+<!-- Custom Item Modal -->
+ <div class="modal fade" id="customItemModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+	    <div class="modal-dialog" role="document">
+	        <div class="modal-content" style="padding-left: 20px; padding-right: 20px;">
+				<?php echo form_open_multipart('items/save_custom_item/', array('id' => 'customItemForm', 'autocomplete' => 'off')); ?>
+	            	<div class="modal-header">
+	            	    <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            	    <h3 class="modal-title" style="font-size: 20px;">Agregar producto personalizado</h3>
+	            	    <p>Los productos personalizados no se muestran en el inventario.</p>
+	            	</div>
+	            	<div class="modal-body" style="padding-left: 40px; padding-right: 40px;">
+	            	    <div class="form-group">
+	            	        <label for="customItemName">Nombre</label>
+	            	        <input type="text" class="form-control" name="customItemName" id="customItemName" required>
+	            	    </div>
+
+	            	    <div class="form-group">
+	            	        <label for="customItemCost">Costo</label>
+	            	        <input type="text" class="form-control" name="customItemCostPrice" id="customItemCostPrice" required>
+	            	    </div>  
+
+	            	    <div class="form-group">
+	            	        <label for="customItemPrice">Precio</label>
+	            	        <input type="text" class="form-control" name="customItemUnitPrice" id="customItemUnitPrice" required>
+	            	    </div>
+
+						<div class="form-group">
+							<label for="customItemQty">Cantidad</label>
+							<input type="text" class="form-control" id="customItemQty" name="customItemQty">
+						</div>
+
+						<div class="form-group">
+							<label for="isService">Es un servicio</label>
+							<input type="checkbox" id="isService" name="isService" style="display: inline-block !important;" value="1">
+						</div>
+					</div>
+			
+	            	<div class="modal-footer">
+	            	    <button type="submit" class="btn btn-primary" name="submitf" id="submitf">Agregar</button>
+	            	    <button type="button" class="btn btn-warning" data-dismiss="modal" style="background-color: #dc3545; border: none;">Cancelar</button>
+	            	</div>
+					   
+				<?php echo form_close(); ?>             
+	        </div>
+	    </div>
+	</div>
+
 <div class="work_order_edit_page_holder">
 <?php echo form_open('work_orders/save/'.$work_order_info['id'],array('id'=>'work_order_form','class'=>'')); ?>
 
@@ -208,8 +255,7 @@
 					?>
 				</div><!--/panel-body -->
 			</div><!-- /panel-piluku -->
-		</div>
-		
+		</div>		
 
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pl">
 			<div class="panel panel-piluku estimates_info">
@@ -247,7 +293,123 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr">
+			<div class="panel panel-piluku parts_and_labor_info">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+							<div class="parts_and_labor_info_title">
+								<i class="ion-hammer"></i>
+								<span><?php echo lang('work_orders_parts_and_labor') ?></span>
+							</div>
+						</div>	
+
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+							<div class="item_search">
+								<div class="input-group">
+									<!-- Css Loader  -->
+									<div class="spinner" id="ajax-loader" style="display:none">
+										<div class="rect1"></div>
+										<div class="rect2"></div>
+										<div class="rect3"></div>
+									</div>
+									
+									<span class="input-group-addon">
+										<?php echo anchor("items/view/-1","<i class='icon ti-pencil-alt'></i>", array('class'=>'none add-new-item','title'=>lang('common_new_item'), 'id' => 'new-custom-item', 'tabindex'=> '-1')); ?>										
+										<!--button type="button" style="background-color: #FFC300; border: none; " data-toggle="modal" data-target="#customItemModal" title="Producto personalizado" tabindex="-1"><i class='icon ti-package'></i></!--button-->
+										<!--?php
+										echo anchor(
+											"#",
+											"<i class='icon ti-package'></i>",
+											array(
+												'class' => 'none add-new-item',
+												'style' => 'padding: 5px 5px 5px 5px;',
+												'title' => 'Producto personalizado',
+												'tabindex' => '-1',
+												'data-toggle' => 'modal',
+												'data-target' => '#customItemModal'
+											)
+										);
+										?-->
+									</span>
+									<input type="text" id="item" name="item"  class="add-item-input pull-left keyboardTop form-control" placeholder="<?php echo lang('common_start_typing_item_name'); ?>" data-title="<?php echo lang('common_item_name'); ?>">
+								</div>
+							</div>
+						</div>		
+					</div>
+					<!-- <h3 class="panel-title"><i class="icon ti-harddrive"></i> <?php echo lang("work_orders_item_being_repaired"); ?></h3> -->
+				</div>
+
+				<div class="panel-body">
+					<div class="work_order_items">
+						<div class="register-box register-items paper-cut">
+							<div class="register-items-holder">
+								<table id="register" class="table table-hover">
+
+									<thead>
+										<tr class="register-items-header">
+											<th></th>
+											<th><?php echo lang('work_orders_quantity'); ?></th>
+											<th><?php echo lang('work_orders_item_name'); ?></th>
+											<th><?php echo lang('work_orders_price'); ?></th>
+											<th><?php echo lang('work_orders_total'); ?></th>
+										</tr>
+									</thead>
+							
+									<tbody class="register-item-content">
+									<?php 
+										
+										$total = 0;
+										foreach($work_order_items as $item) {
+											
+											$total+=$item['item_unit_price']*$item['quantity_purchased']; 
+									?>
+											<tr class="register-item-details">
+												<td class="text-center"> <?php echo anchor("work_orders/delete_item/".$work_order_info['sale_id']."/".$item['line'],'<i class="icon ion-android-cancel"></i>', array('class' => 'delete-item'));?> </td>
+												<td class="text-center">
+													<a href="#" id="quantity_<?php echo $item['item_id'];?>" class="xeditable" data-type="text"  data-validate-number="true"  data-pk="1" data-name="quantity" data-url="<?php echo site_url('work_orders/edit_sale_item_quantity/'.$item['sale_id'].'/'.$item['item_id'].($item['item_variation_id']?'/'.$item['item_variation_id']:'')); ?>" data-title="<?php echo lang('common_quantity') ?>"><?php echo to_quantity($item['quantity_purchased']); ?></a>
+												</td>
+												<td class="text-center">
+														<?php
+															echo $item['item_name'];
+															if($item['item_variation_id']){
+																echo '-'.$this->Item_variations->get_info($item['item_variation_id'])->name;
+															}
+														
+														?>
+												</td>
+												<td class="text-center">
+													<a href="#" id="unit_price_<?php echo $item['item_id'];?>" class="xeditable" data-type="text"  data-validate-number="true"  data-pk="1" data-name="unit_price" data-url="<?php echo site_url('work_orders/edit_sale_item_unit_price/'.$item['sale_id'].'/'.$item['item_id'].($item['item_variation_id']?'/'.$item['item_variation_id']:'')); ?>" data-value="<?php echo H(to_currency_no_money($item['item_unit_price'])); ?>" data-title="<?php echo lang('common_price') ?>"><?php echo to_currency($item['item_unit_price']); ?></a>
+												</td>
+												<td class="text-center">
+														<?php echo to_currency($item['item_unit_price']*$item['quantity_purchased']); ?>
+												</td>
+												
+											</tr>
+									<?php 
+											
+										}  
+									
+									?>  
+									</tbody>
+									
+									<tfoot>
+										<tr class="register-items-header">
+											<td colspan="4" class="text-left"><strong><?php echo lang('common_total');?></strong></td>
+											<td class="text-center"><?php echo to_currency($total);?></td>
+										</tr>
+									</tfoot>
+									
+								</table>
+							</div>
+							
+						</div>
+					</div>
+				</div><!--/panel-body -->
+			</div><!-- /panel-piluku -->			
+		</div>
+		<!--div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"-->
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pl">
 			<div class="panel panel-piluku notes_info">
 				<div class="panel-heading notes_info_title">
 					<h3 class="panel-title"><i class="ion-ios-paper-outline"></i> <?php echo lang("work_orders_notes"); ?></h3><i class="ion-android-add new_note_icon"></i>
@@ -276,7 +438,7 @@
 				</div><!--/panel-body -->
 			</div><!-- /panel-piluku -->
 		</div>
-	</div>
+	<!--/div -->
 
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -428,7 +590,59 @@
 		}
 
 	});
+	//Custom Item
+	$('#customItemModal').on('show.bs.modal', function () {
+    $(this).find('form')[0].reset(); // Resetea el formulario
+	});
+	//Custom item form
+	$(document).ready(function() {
+	    var submitting = false;
 
+	    $('#customItemForm').submit(function(event) {
+	        event.preventDefault(); // Evita el envío tradicional del formulario
+
+	        if (submitting) return;
+	        submitting = true;
+
+	        $.ajax({
+	            type: "POST",
+	            url: $(this).attr('action'), // Toma la URL del form
+	            data: new FormData(this),
+	            processData: false,
+	            contentType: false,
+	            dataType: 'json',
+	            success: function(response) {
+	                if (response.success) {
+	                    $('#customItemModal').modal('hide'); // Cerrar el modal
+						// Agregar el item al carrito
+						$("#ajax-loader").show();
+						$.post("<?php echo site_url('work_orders/add_sale_item') ?>", {item_id:response.item_id,sale_id:"<?php echo $work_order_info['sale_id']; ?>"},function(response) {
+							$('#ajax-loader').hide();
+						
+							//Refresh if success
+							if (response.success)
+							{
+								window.location.reload();
+							}
+							else{
+								$("#item").val('');
+								show_feedback('error', response.message,<?php echo json_encode(lang('common_error')); ?>);
+							}
+						},'json');
+
+	                } else {
+	                    alert('Error: ' + response.message);
+	                }
+	                submitting = false;
+	            },
+	            error: function() {
+	                alert('Ocurrió un error inesperado.');
+	                submitting = false;
+	            }
+	        });
+	    });
+	});
+	//
 	$(".new_note_icon").click(function(){
 		
 		$("#sale_item_note").val('');

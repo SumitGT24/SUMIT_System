@@ -2703,7 +2703,7 @@ $this->load->view("partial/header");
 			<div class="panel-body">
 
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
-					<?php echo form_label('Select A Provider'.':', 'email_provider',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<?php echo form_label('Proveedor'.':', 'email_provider',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
 						<?php
 							$provider_options = array('Use System Default'=>'Predeterminado del sistema', 'Gmail'=>'Gmail', 'Office 365'=>'Office 365', 'Windows Live Hotmail'=>'Windows Live Hotmail', 'Other'=>'Otro');
@@ -2712,30 +2712,33 @@ $this->load->view("partial/header");
 					</div>
 				</div>
 
-				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-					<?php echo form_label(lang('config_smtp_user').':', 'smtp_user',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_input(array(
-						'class'=>'form-control form-inps',
-						'name'=>'smtp_user',
-						'id'=>'smtp_user',
-						'placeholder' => 'Dirección de la cuenta de correo electrónico. Ejemplo: usuario@dominio.com',
-						'value'=>$this->config->item('smtp_user')));?>
+				<div class="email_basic">
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_user').':', 'smtp_user',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'smtp_user',
+								'id'=>'smtp_user',
+								'placeholder' => 'Dirección de la cuenta de correo electrónico. Ejemplo: usuario@dominio.com',
+								'value'=>$this->config->item('smtp_user')));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_pass').':', 'smtp_pass',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_password(array(
+								'class'=>'form-control form-inps',
+								'name'=>'smtp_pass',
+								'id'=>'smtp_pass',
+								'placeholder'=> 'Contraseña de la cuenta de correo electrónico',
+								'value'=>$this->config->item('smtp_pass')));?>
+						</div>
 					</div>
 				</div>
-									
-				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
-					<?php echo form_label(lang('config_smtp_pass').':', 'smtp_pass',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-					<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_password(array(
-						'class'=>'form-control form-inps',
-						'name'=>'smtp_pass',
-						'id'=>'smtp_pass',
-						'placeholder'=> 'Contraseña de la cuenta de correo electrónico',
-						'value'=>$this->config->item('smtp_pass')));?>
-					</div>
-				</div>
-				<!--div class="email_advanced"-->	
+
+				<div class="email_advanced">	
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
 						<?php echo form_label(lang('config_smtp_crypto').':', 'smtp_crypto',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
@@ -2853,7 +2856,7 @@ $this->load->view("partial/header");
 							'value'=>$this->config->item('smtp_timeout')));?>
 						</div>
 					</div>
-				<!--/div--> <!-- end advanced email -->
+				</div> <!-- end advanced email -->
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
 					<div class="col-sm-12 col-md-12 col-lg-12">
 						<span class="pull-right">
@@ -2957,7 +2960,8 @@ $(document).ready(function(){
 
 	$("#test_email").click(function () {
 	// Obtener el correo de la ubicación (inyectado desde PHP)
-	let locationEmail = <?php echo json_encode($this->Location->get_info_for_key('email')); ?>;
+	/*
+	let locationEmail = <#?php echo json_encode($this->Location->get_info_for_key('email')); ?>;
 	let smtpUser = $("#smtp_user").val();
 
 	// Validar si ambos tienen @
@@ -2967,7 +2971,7 @@ $(document).ready(function(){
 
 		if (locationDomain !== smtpDomain) {
 			bootbox.alert({
-				title: <?php echo json_encode(lang('common_error')); ?>,
+				title: <#?php echo json_encode(lang('common_error')); ?>,
 				message: `El dominio del correo en la ubiación actual (${locationDomain}) no coincide con el dominio en Servidor de Correo (${smtpDomain}).\n
 						  Los dominios deben coincidir.`
 						  
@@ -2976,12 +2980,12 @@ $(document).ready(function(){
 		}
 	} else {
 		bootbox.alert({
-			title: <?php echo json_encode(lang('common_error')); ?>,
+			title: <#?php echo json_encode(lang('common_error')); ?>,
 			message: "Uno de los correos no es válido o está incompleto."
 		});
 		return;
 	}
-
+	*/
 	// Si los dominios coinciden, mostrar el prompt
 		bootbox.prompt({
 			title: <?php echo json_encode(lang('config_please_enter_email_to_send_test_to')); ?>,

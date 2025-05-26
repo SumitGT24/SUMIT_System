@@ -2736,7 +2736,7 @@ CREATE TABLE `phppos_registers` (
 --
 
 INSERT INTO `phppos_registers` (`register_id`, `location_id`, `name`, `iptran_device_id`, `emv_terminal_id`, `deleted`, `card_connect_hsn`, `emv_pinpad_ip`, `emv_pinpad_port`) VALUES
-(1, 1, 'Predeterminada L1', '', '', 0, '', '', '');
+(1, 1, 'Caja L1', '', '', 0, '', '', '');
 
 -- --------------------------------------------------------
 

@@ -766,13 +766,24 @@ class Work_order extends CI_Model
 			'ecommerce_shipping_class_id'=> NULL,			
 			'is_series_package'=> 0,
 			'is_barcoded'=> 0,
-			'item_inactive'=> 0,
-	    );
+			'item_inactive'=> 0,	    
+		);
+		//Test
+		$item_data['tax_included'] = $this->config->item('prices_include_tax') ? 1 : 0;
+	    $item_data['reorder_level'] = $this->config->item('default_reorder_level_when_creating_items') ?: NULL;
+	    $item_data['expire_days'] = $this->config->item('default_days_to_expire_when_creating_items') ?: NULL;
+		//
 		$this->db->insert('items', $item_data);
 		$item_id = $this->db->insert_id();
+		$this->Item_location->save_quantity(1,$item_id);
+		//test
+		$this->Item->set_last_edited($item_id);		
+		$this->Tag->save_tags_for_item(isset($item_data['item_id']) ? $item_data['item_id'] : $item_id, $this->input->post('tags'));
+		$this->Appconfig->save('wizard_add_inventory',1);
+		//
 
 		//Guardar id del item asociado al servicio de la orden
-		$work_order_data['custom_field_1_value'] = $item_id;
+		//$work_order_data['custom_field_1_value'] = $item_id;
 		// Insertar en `phppos_sales_items` para artículos registrados
 		$sales_items_data = array(
 			'sale_id' => $sale_id,

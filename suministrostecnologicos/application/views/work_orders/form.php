@@ -275,7 +275,7 @@
 			</div><!-- /panel-piluku -->
 		</div>
 	</div>
-
+	
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr">
 			<div class="panel panel-piluku parts_and_labor_info">
@@ -370,13 +370,11 @@
 									</tfoot>
 									
 								</table>
-							</div>
-							
+							</div>							
 						</div>
 					</div>
 				</div><!--/panel-body -->
 			</div><!-- /panel-piluku -->
-
 			
 		</div>
 

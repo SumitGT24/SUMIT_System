@@ -2099,8 +2099,6 @@ class Sales extends Secure_area
 			
 			date_default_timezone_set("America/Guatemala");
 
-			$nitTramitador = "100826741";
-
 			$detalleFEL = $data['cart_items'];
 			$total = 0;
 			$iva = 0;
@@ -2271,7 +2269,7 @@ class Sales extends Secure_area
 				"</dte:DTE>" .
 
 				"<dte:Adenda>" .
-				"<TOTALDOC_TEXTO_EMISOR>Tel/WhatsApp " .$location->phone. "</TOTALDOC_TEXTO_EMISOR>" .		
+				"<TOTALDOC_TEXTO_EMISOR>Tel/WhatsApp: " .$location->phone. "</TOTALDOC_TEXTO_EMISOR>" .		
 				"<TOTALDOC_PIE_PAGINA>" . $location->return_policy . "</TOTALDOC_PIE_PAGINA>".
 				//"TOTALDOC_COMENTARIO>".$comentario."</TOTALDOC_COMENTARIO>" .
 				"</dte:Adenda>".
@@ -2305,6 +2303,10 @@ class Sales extends Secure_area
 				$this->cart->nit = "";
 				$this->cart->save();
 				echo $response;
+				$fileXML = 'facturas/error.xml';
+				file_put_contents($fileXML, $xml);
+				var_dump($info);
+				var_dump($xml);
 				exit();
 			}
 			curl_close($curl);
