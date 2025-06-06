@@ -67,14 +67,29 @@ class Detailed_sales extends Report
 		
 			$exchange_data['specific_input_data'] = $exchange_rates_dropdown;
 			
-			
+			//Informacion empleado
+			$input_data = Report::get_common_report_input_data(TRUE);
+			$employees_data = array();
+			$employees_data['view']  = 'specific_entity';
+			$employees_data['specific_input_name'] = 'employee_id';
+			$employees_data['specific_input_label'] = lang('reports_employee');
+			$employees = array();
+			$employees[''] =lang('common_all');
+			foreach($this->Employee->get_all()->result() as $employee)
+			{
+				$employees[$employee->person_id] = $employee->first_name .' '.$employee->last_name;
+			}
+			$employees_data['specific_input_data'] = $employees;
+			//
+
 			$input_params = array(
 				array('view' => 'date_range', 'with_time' => TRUE),
 				array('view' => 'dropdown','dropdown_label' =>lang('reports_sale_type'),'dropdown_name' => 'sale_type','dropdown_options' =>array('all' => lang('reports_all'), 'sales' => lang('reports_sales'), 'returns' => lang('reports_returns')),'dropdown_selected_value' => 'all'),
 				$exchange_data,
 				$register_input_data_entry,
+				$employees_data,
 				array('view' => 'checkbox','checkbox_label' => lang('reports_show_summary_only'), 'checkbox_name' => 'show_summary_only'),
-				array('view' => 'text', 'name' => 'email', 'label' => lang('common_email'), 'default' => ''),
+				//array('view' => 'text', 'name' => 'email', 'label' => lang('common_email'), 'default' => ''),				
 				array('view' => 'excel_export'),
 				array('view' => 'locations'),
 				array('view' => 'submit'),
@@ -563,8 +578,14 @@ class Detailed_sales extends Report
 				$this->db->where('sales.tier_id',$this->params['tier_id']);
 			}
 		}
-		
-		
+
+		//Empleados
+		if ($this->params['employee_id'])
+		{
+			$this->db->where('sold_by_employee_id', $this->params['employee_id']);			
+		}
+		//
+				
 		
 		if (isset($this->params['currency']) && $this->params['currency'] !== '')
 		{
@@ -630,8 +651,7 @@ class Detailed_sales extends Report
 			return $data;
 			exit;
 		}
-		
-		
+	
 	}
 
 	public function getTotalRows()

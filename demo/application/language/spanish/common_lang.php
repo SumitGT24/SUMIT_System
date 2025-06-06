@@ -25,7 +25,7 @@ $lang['common_view_recent_sales']='Ver ventas recientes';
 $lang['common_you_are_using_phppos']='Está utilizando SUMIT Versión';
 $lang['common_please_visit_my']='Todos los derechos reservados para SUMIT.';
 $lang['common_website']=' ';
-$lang['common_fields_required_message']='Es necesario rellenar los campos marcados en amarillo';
+$lang['common_fields_required_message']='Es necesario rellenar los campos resaltados';
 $lang['common_learn_about_project']=' Para obtener más información visite nuestro sitio web: <a target="_blank" href="http://sumit.gt">sumit.gt</a>';
 $lang['common_searched_for']='Su búsqueda para';
 $lang['common_first_name_required']='Es necesario ingresar nombre y apellido';
@@ -88,7 +88,7 @@ $lang['common_credit_card_processing'] = 'Módulo de Reparaciones!';
 
 $lang['common_name'] = 'Nombre';
 $lang['common_new_category'] = 'Nueva Categoria';
-$lang['common_enter_name_of_category'] = 'Escriba el nombre de la categoría nueva';
+$lang['common_enter_name_of_category'] = 'Escriba el nombre de la nueva categoría';
 $lang['common_month'] = 'Mes';
 $lang['common_week'] = 'Semana';
 $lang['common_sales_info'] = 'Información de ventas';
@@ -275,7 +275,7 @@ $lang['common_change_due'] = 'Cambio';
 
 $lang['common_excel_import_failed'] = 'La importación desde un archivo de Excel falló';
 $lang['common_discount'] = 'Descuento';
-$lang['common_register_name'] = 'Registrar nombre';
+$lang['common_register_name'] = 'Caja registradora';
 $lang['common_customer'] = 'Cliente';
 
 
@@ -404,7 +404,7 @@ $lang['common_current_ip_address'] = 'Dirección IP actual';
 $lang['common_manage_manufacturers'] = 'Manejo de los fabricantes';
 $lang['reports_manufacturers'] = 'fabricantes';
 $lang['items_manage_price_rules'] = 'Administrar reglas de precio';
-$lang['common_create_po'] = 'crear PO';
+$lang['common_create_po'] = 'crear OC';
 $lang['common_is_ebt_item'] = 'Es artículo EBT';
 $lang['common_ebt'] = 'EBT';
 $lang['common_ebt_cash'] = 'EBT Cash';
@@ -481,7 +481,7 @@ $lang['common_visible_columns'] = 'Columnas visibles';
 $lang['common_location_cost_price'] = 'Localización del precio de costo';
 $lang['common_category_full_path'] = 'Categoría de ruta completa';
 $lang['common_column_configuration'] = 'Configuración de la columna';
-$lang['common_default'] = 'Defecto';
+$lang['common_default'] = 'Por defecto';
 $lang['common_custom_field_config'] = 'Configuración de campo personalizada';
 $lang['common_field_1_name'] = 'Nombre del campo personalizado 1';
 $lang['common_field_2_name'] = 'Nombre del campo personalizado 2';
@@ -514,7 +514,7 @@ $lang['common_sale_date'] = 'Fecha de venta';
 $lang['common_next_day'] = 'Día siguiente';
 $lang['common_previous_day'] = 'Día anterior';
 $lang['common_fee'] = 'Cuota';
-$lang['common_zips'] = 'Cremalleras';
+$lang['common_zips'] = 'Códigos postales';
 $lang['common_item_kit_id'] = 'Id. del kit';
 $lang['common_reset'] = 'Reiniciar';
 $lang['common_calendar_of'] = 'Calendario de';
@@ -548,7 +548,7 @@ $lang['unlink_all'] = 'Desvincular todo';
 $lang['common_save'] = 'Guardar';
 $lang['common_wic'] = 'WIC';
 $lang['common_void_delete'] = 'Invalidar / Eliminar';
-$lang['common_max_discount_percent'] = 'Descuento Max';
+$lang['common_max_discount_percent'] = 'Descuento máximo';
 $lang['common_begins'] = 'Comienza';
 $lang['common_day'] = 'Día';
 $lang['common_min_edit_price'] = 'Precio de edición manual mínimo';
@@ -798,7 +798,7 @@ $lang['common_already_used'] = 'Ya usado';
 
 
 
-$lang['common_is_barcoded'] = '¿Está el código de barras';
+$lang['common_is_barcoded'] = 'Tiene código de barras';
 
 
 
@@ -843,7 +843,7 @@ $lang['common_confirm_clone'] = '¿Seguro que quieres clonar esto?';
 $lang['config_process_returns'] = 'Procesos de devoluciones';
 $lang['sales_suspend_sale'] = 'Suspender';
 
-$lang['common_below_reorder_level'] = 'Elementos en o por debajo del nivel de reorden';
+$lang['common_below_reorder_level'] = 'Elementos en o por debajo del nivel para ordenar';
 $lang['common_below_reorder_level_and_out_of_stock'] = 'Los artículos en o por debajo del nivel de pedido y fuera de stock';
 
 $lang['common_edit_taxes'] = 'Editar impuestos';
@@ -918,7 +918,7 @@ $lang['common_view_inventory_at_all_locations'] = 'Ver inventario en TODAS las u
 
 
 
-$lang['common_info_popup'] = 'Ventana emergente de información al agregar a la venta';
+$lang['common_info_popup'] = 'Mensaje emergente cuando el producto se agrega a la venta';
 $lang['common_tax_id'] = 'Identificación del impuesto';
 $lang['common_modifiers'] = 'Modificadores';
 $lang['common_modifier'] = 'Modificador';

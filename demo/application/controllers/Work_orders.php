@@ -296,15 +296,15 @@ class Work_orders extends Secure_area
 		$this->check_action_permission('edit');
 
 		$work_order_data = array();
-		//Obtener ID de la orden de trabajo
-		$work_order_info = $this->Work_order->get_info($work_order_id)->row();
-		$item_id = $work_order_info->custom_field_1_value;
+		//Obtener ID de la orden de trabajo		
+		$work_order_info = $this->Work_order->get_item_being_repaired_info($work_order_id);
+		$item_id = $work_order_info['item_id'];
 	
 		$work_order_data['estimated_cost'] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : NULL;
 		$work_order_data['advance_payment'] = $this->input->post('advance_payment') ? $this->input->post('advance_payment') : NULL;
 		$work_order_data['order_type'] = $this->input->post('order_type') ? 1 : 0;
 		
-		for($k=2;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
+		for($k=1;$k<=NUMBER_OF_PEOPLE_CUSTOM_FIELDS;$k++)
 		{
 			if ($this->Work_order->get_custom_field($k) !== FALSE)
 			{
@@ -328,9 +328,13 @@ class Work_orders extends Secure_area
 		try{
 			//Actualizar costo en el item de venta
 			$item_sale_data = array();
+			$custom_item_data = array();
 			$item_sale_data['item_unit_price'] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : 0;
 			$this->db->where('item_id', $item_id);
 			$this->db->update('sales_items',$item_sale_data);
+			$custom_item_data['unit_price'] = $this->input->post('estimated_cost') ? $this->input->post('estimated_cost') : 0;
+			$this->db->where('item_id', $item_id);
+			$this->db->update('items',$custom_item_data);
 		}catch(Exception $e){
 			//echo $e->getMessage();
 		}
@@ -472,13 +476,6 @@ class Work_orders extends Secure_area
 							$this->Common->send_email($customer_email,$subject,$message);
 						}
 					}
-		
-					if($work_order_status_info->notify_by_sms){
-						$customer_phone_number = $this->Customer->get_info($work_order_info->customer_id)->phone_number;
-						if($customer_phone_number){
-							$this->Common->send_sms($customer_phone_number,$message);
-						}
-					}
 				}
 			}
 		}
@@ -549,8 +546,8 @@ class Work_orders extends Secure_area
 			$data['sale_id_raw']=$sale_id;
 			$data['comment']=$sale_info['comment'];
 			$data['show_comment_on_receipt']=$sale_info['show_comment_on_receipt'];
-			//$data['sales_items'] = $this->Sale->get_sale_items_ordered_by_name($sale_id)->result_array();
-			//$data['sales_item_kits'] = $this->Sale->get_sale_item_kits_ordered_by_category($sale_id)->result_array();
+			$data['sales_items'] = $this->Sale->get_sale_items_ordered_by_name($sale_id)->result_array();
+			$data['sales_item_kits'] = $this->Sale->get_sale_item_kits_ordered_by_category($sale_id)->result_array();
 			$data['discount_exists'] = $this->_does_discount_exists($data['sales_items']) || $this->_does_discount_exists($data['sales_item_kits']);
 					
 			$this->load->model('Delivery');
@@ -585,7 +582,7 @@ class Work_orders extends Secure_area
 		
 		return FALSE;
 	}
-	/*
+	
 	function print_service_tag($work_order_ids)
 	{
 		$this->load->model('Item_taxes');
@@ -620,7 +617,7 @@ class Work_orders extends Secure_area
 		$data['excel_url'] = site_url('work_orders/print_service_tag_excel/'.implode('~',$item_ids));
 		$this->load->view("barcode_labels", $data);
 	}
-	*/
+	
 	function get_items_raw_print_service_tag($work_order_ids)
 	{
 		
@@ -1041,39 +1038,6 @@ class Work_orders extends Secure_area
 		$this->session->set_userdata('item_serial_number_for_new','');
 		$this->session->set_userdata('customer_id_for_new','');
 		echo json_encode(array('success' => true,'work_order_id'=>$work_order_id));
-	}
-
-	//Nueva funcion para guardar una nueva orden de trabajo
-
-	function save_new_work_order() {
-		// Obtener datos del formulario
-		$customer_id = $this->input->post("customer_id");
-		$client_name = $this->input->post("client_name");
-		$client_phone = $this->input->post("client_phone");
-
-		//$item_id = $this->input->post("item_id");
-		$equipment = $this->input->post("equipment");
-		$model = $this->input->post("model");
-
-		// Asignar datos para guardar
-		$work_order_data = [
-			'client_name' => $client_name,
-			'client_phone' => $client_phone,
-			'equipment' => $equipment,
-			'model' => $model,
-			'status' => 1, // Estado inicial de la orden de trabajo
-			'order_date' => date('d-m-Y H:i')
-		];
-		//Modificar el envío de datos, ya no se registran los datos del cliente y del artículo XD
-		// Guardar la orden de trabajo
-		$work_order_id = $this->Work_order->save_new_work_order($work_order_data,$customer_id);
-	
-		// Limpiar variables de sesión
-		$this->session->set_userdata('customer_id_for_new', '');
-		//$this->session->set_userdata('item_id_for_new', '');
-	
-		// Respuesta exitosa
-		echo json_encode(array('success' => true, 'work_order_id' => $work_order_id));
 	}
 	*/
 	//Nueva función para guardar una nueva orden de trabajo

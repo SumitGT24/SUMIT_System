@@ -118,6 +118,10 @@ class Location extends MY_Model
 	
 	function get_info_for_key($key, $override_location_id = false, $use_cache = TRUE)
 	{
+		if($key=='twilio_sms_from')
+		{
+			return;
+		}
 		if ($use_cache)
 		{
 			static $location_info = array();

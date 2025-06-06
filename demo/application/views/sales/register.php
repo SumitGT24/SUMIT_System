@@ -15,7 +15,6 @@
 				$('#add_payment_button').removeClass('hidden');
 			}
 		}
-
 	}
 </script>
 <?php $this->load->helper('demo'); ?>
@@ -372,7 +371,6 @@
 													?>
 														<dt class=""><?php echo lang('common_quantity_units'); ?> </dt>
 														<dd class="">
-
 															<a href="#" id="quantity_unit_<?php echo $line; ?>" data-name="quantity_unit_id" data-type="select" data-pk="1" data-url="<?php echo site_url('sales/edit_item/' . $line); ?>" data-title="<?php echo H(lang('common_quantity_units')); ?>"><?php echo character_limiter(H($item->quantity_unit_id ? $item->quantity_units[$item->quantity_unit_id] : lang('common_none')), 50); ?></a>
 														</dd>
 														<?php
@@ -967,7 +965,6 @@
 						</li>
 					<?php } ?>
 
-
 					<?php
 					if ($this->Employee->has_module_action_permission('sales', 'can_lookup_receipt', $this->Employee->get_logged_in_employee_info()->person_id)) {
 					?>
@@ -1020,7 +1017,6 @@
 						<li><?php echo anchor(site_url('sales/enter_tips'), '<i class="ion-cash"></i> ' . lang('sales_enter_tips'), array('class' => '')); ?></li>
 					<?php } ?>
 					<?php if (!is_on_demo_host()) { ?>
-
 						<li>
 							<?php if (!$this->config->item('test_mode') && !$this->config->item('disable_test_mode')) { ?>
 								<?php echo anchor(site_url('sales/enable_test_mode'), '<i class="ion-ios-settings-strong"></i> ' . lang('common_enable_test_mode'), array('class' => '')); ?>
@@ -1030,7 +1026,6 @@
 						</li>
 					<?php } ?>
 
-
 					<li>
 						<?php echo anchor(
 							"sales/custom_fields",
@@ -1038,7 +1033,6 @@
 							array('id' => 'custom_fields', 'class' => '', 'title' => lang('common_custom_field_config'))
 						); ?>
 					</li>
-
 
 					<?php
 					if ($this->Employee->has_module_action_permission('sales', 'can_lookup_receipt', $this->Employee->get_logged_in_employee_info()->person_id)) {
@@ -1072,7 +1066,6 @@
 								<?php foreach ($additional_sale_types_suspended as $sale_suspend_type) { ?>
 									<li><a href="#" class="additional_suspend_button" data-suspend-index="<?php echo H($sale_suspend_type['id']); ?>"><i class="ion-arrow-graph-up-right"></i> <?php echo H($sale_suspend_type['name']); ?></a></li>
 								<?php } ?>
-
 							</ul>
 						</div>
 					<?php } ?>
@@ -1099,7 +1092,7 @@
 
 		<!-- If customer is added to the sale -->
 		<?php if (isset($customer)) { ?>
-
+		
 			<!-- Customer Badge when customer is added -->
 			<div class="customer-badge">
 				<div class="avatar">
@@ -1139,7 +1132,6 @@
 
 					<?php if ($this->config->item('capture_internal_notes_during_sale')) { ?>
 						<span class="internal_notes">
-
 							<?php echo form_textarea(array(
 								'name' => 'internal_notes',
 								'id' => 'internal_notes',
@@ -1153,9 +1145,7 @@
 					<?php } ?>
 					<!-- Customer edit -->
 					<?php echo anchor("customers/view/$customer_id/1", '<i class="ion-ios-compose-outline"></i>',  array('id' => 'edit_customer', 'class' => 'btn btn-edit btn-primary pull-right', 'title' => lang('common_update'))) . ''; ?>
-
 				</div>
-
 			</div>
 			<div class="customer-action-buttons  btn-group btn-group-justified ">
 
@@ -1176,20 +1166,6 @@
 						<i class="ion-ios-compose-outline"></i>
 						<?php echo lang('common_update'); ?>
 					</a>
-				<?php } ?>
-
-				<?php if ($this->Location->get_info_for_key('twilio_sms_from') && $this->Location->get_info_for_key('twilio_token') && $this->Location->get_info_for_key('twilio_sid')) { ?>
-					<?php if (!empty($customer_phone)) { ?>
-						<a href="#" class="btn <?php echo ((bool) $sms_receipt || (bool) $always_sms_receipt) ? 'checked' : ''; ?>" id="toggle_sms_receipt">
-							<i class="ion-android-phone-portrait"></i>
-							<?php echo lang('common_sms_receipt'); ?>
-						</a>
-					<?php } else { ?>
-						<a href="<?php echo site_url('customers/view/' . $customer_id . '/1');  ?>" class="btn">
-							<i class="ion-ios-compose-outline"></i>
-							<?php echo lang('common_update'); ?>
-						</a>
-					<?php } ?>
 				<?php } ?>
 
 				<?php
@@ -1223,10 +1199,8 @@
 				<?php echo '' . anchor("sales/delete_customer", '<i class="ion-close-circled"></i> ' . lang('common_detach'), array('id' => 'delete_customer', 'class' => 'btn')); ?>
 			</div>
 
-		<?php } else {  ?>
-
+		<?php } else { ?>
 			<div class="customer-form">
-
 				<!-- if the customer is not set , show customer adding form -->
 				<?php echo form_open("sales/select_customer", array('id' => 'select_customer_form', 'autocomplete' => 'off', 'class' => 'form-inline')); ?>
 				<div class="input-group contacts">
@@ -1238,7 +1212,30 @@
 				</form>
 
 			</div>
-		<?php } ?>
+			<!--Test deliveries-->
+			<?php
+			if ($this->Employee->has_module_action_permission('deliveries', 'add_update', $this->Employee->get_logged_in_employee_info()->person_id)) { 
+			?>
+			<div class="customer-action-buttons  btn-group btn-group-justified ">
+				<a href="<?php echo site_url('sales/view_delivery_modal/') ?>" class="btn <?php echo (bool) $has_delivery ? 'checked' : ''; ?>" id="open_delivery_modal" data-toggle="modal" data-target="#myModal">
+					<i class="ion-android-car"></i>
+					<?php echo lang('sales_delivery'); ?>					
+				</a>
+			<?php  
+				echo form_checkbox(array(
+					'name' => 'delivery',
+					'id' => 'delivery',
+					'value' => '1',
+					'class' => 'delivery_checkbox hidden',
+					'checked' => (bool) $has_delivery
+				));
+			?>
+			</div>
+		<?php		
+			}
+			//<!--End test deliveries-->
+		 } ?>
+		<!-- Test deliveries -->		 
 	</div>
 
 	<div class="register-box register-summary paper-cut">
@@ -1894,9 +1891,8 @@
 
 			<?php } ?>
 			<!-- End of complete sale button -->
-					</div>
+			</div>
 	</div>
-
 
 	<div id="sync_offline_sales" class="pull-right" style="display: none;">
 		<br />
@@ -1912,10 +1908,8 @@
 
 </div>
 
-
 <a href="#" class="pull-right visible-lg" id="keyboard_toggle"><?php echo lang('sales_keyboard_help_title'); ?></a>
 </div>
-
 
 <div id="keyboardhelp" style="display: none;background-color:white;padding:12px;" title="<?php echo lang('sales_keyboard_help_title'); ?>">
 
@@ -1948,7 +1942,6 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 
 <div class="modal fade look-up-receipt" id="choose_var" role="dialog" aria-labelledby="lookUpReceipt" aria-hidden="true">
 	<div class="modal-dialog customer-recent-sales">
@@ -1999,7 +1992,6 @@
 		</div>
 	</div>
 </div>
-
 
 <div class="modal fade look-up-receipt" id="choose_modifiers" role="dialog" aria-labelledby="lookUpReceipt" aria-hidden="true">
 	<div class="modal-dialog customer-recent-sales">
@@ -2486,7 +2478,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 
 		});
 
-
 		$('.dismissfullscreen').on('click', function(e) {
 			e.preventDefault();
 			salesRecvDismissFullscren();
@@ -2529,13 +2520,10 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		});
 
 		<?php
-		if (isset($price_zero) && $price_zero) {
-		?>
+		if (isset($price_zero) && $price_zero) { ?>
 			var price_to_change = $('#register a[data-name="unit_price"]').first();
 			price_to_change.editable('show');
-		<?php
-		}
-		?>
+		<?php } ?>
 
 		<?php
 		if (isset($quantity_set) && $quantity_set) {
@@ -2680,7 +2668,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 			$(this).attr('value', '');
 		});
 
-
 		// if #mode is changed
 		$('.change-mode').click(function(e) {
 			e.preventDefault();
@@ -2697,7 +2684,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 			});
 		});
 
-
 		<?php if (!$this->agent->is_mobile()) { ?>
 			<?php if (!$this->config->item('auto_focus_on_item_after_sale_and_receiving')) { ?>
 				if (last_focused_id && last_focused_id != 'item') {
@@ -2706,29 +2692,21 @@ if (isset($number_to_add) && isset($item_to_add)) {
 						$('#' + last_focused_id).select();
 					}, 10);
 				}
-			<?php
-			} else {
-			?>
-				setTimeout(function() {
-					$("#item").focus();
-				}, 10);
-			<?php
-			}
-			?>
-			$(document).off('focusin');
-			$(document).focusin(function(event) {
-				last_focused_id = $(event.target).attr('id');
-			});
-			<?php
-		} else {
-			if ($this->config->item('wireless_scanner_support_focus_on_item_field')) {
-			?>
+			<?php } else { ?>
 				setTimeout(function() {
 					$("#item").focus();
 				}, 10);
 			<?php } ?>
-
-
+			$(document).off('focusin');
+			$(document).focusin(function(event) {
+				last_focused_id = $(event.target).attr('id');
+			});
+			<?php } else {
+			if ($this->config->item('wireless_scanner_support_focus_on_item_field')) { ?>
+				setTimeout(function() {
+					$("#item").focus();
+				}, 10);
+			<?php } ?>
 		<?php } ?>
 
 		$(".pay_store_account_sale_form").submit(function(e) {
@@ -2844,6 +2822,8 @@ if (isset($number_to_add) && isset($item_to_add)) {
 							customer: decodeHtml(ui.item.value) + '|FORCE_PERSON_ID|'
 						}, function(response) {
 							$("#register_container").html(response);
+							//cleanModal
+							cleanDeliveryModal();
 						});
 					},
 				}).data("ui-autocomplete")._renderItem = function(ul, item) {
@@ -3014,9 +2994,16 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		});
 
 
-		$('.delete-item, .delete-payment, #delete_customer').click(function(event) {
+		$('.delete-item, .delete-payment').click(function(event) {
 			event.preventDefault();
 			$("#register_container").load($(this).attr('href'));
+		});
+
+		$('#delete_customer').click(function(event) {
+			event.preventDefault();
+			$("#register_container").load($(this).attr('href'));
+			//cleanModal
+			cleanDeliveryModal();
 		});
 
 		$('.delete-tax').click(function(event) {
@@ -3190,6 +3177,8 @@ if (isset($number_to_add) && isset($item_to_add)) {
 					target: "#register_container",
 					beforeSubmit: salesBeforeSubmit
 				});
+			//CleanModal
+			cleanDeliveryModal();
 			}
 		});
 
@@ -3951,4 +3940,26 @@ if (isset($number_to_add) && isset($item_to_add)) {
 			event.preventDefault();
 		}
 	});
+	//Clean delivery modal
+		//Test clean modal
+	function cleanDeliveryModal(){
+		var delivery_info = {};
+		var get_delivery_info = {};
+		var get_delivery_tax_group_id = '';
+		var get_delivery_fee = 0;
+		
+		$.post('<?php echo site_url("sales/set_delivery_info");?>', { delivery_info: delivery_info, delivery_person_info: get_delivery_info, delivery_tax_group_id: get_delivery_tax_group_id, delivery_fee: get_delivery_fee}, function(response)
+		{
+			$("#register_container").html(response);
+		});			
+		$.post(<?php echo json_encode(site_url('sales/set_delivery'));?>,{delivery:0}, function(response)
+		{
+			$("#register_container").html(response);
+		});
+		
+
+		console.log('Modal de entrega limpiado');
+	}
+	//end test
+	//
 </script>

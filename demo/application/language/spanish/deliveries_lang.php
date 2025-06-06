@@ -1,6 +1,6 @@
 <?php
 
-$lang['deliveries_estimated_shipping_date'] = 'Fecha Estimada de entrega';
+$lang['deliveries_estimated_shipping_date'] = 'Fecha Estimada de envío';
 $lang['deliveries_estimated_delivery_or_pickup_date'] = 'Fecha estimada de entrega / recogido';
 $lang['deliveries_actual_shipping_date'] = 'Fecha de envío real';
 $lang['deliveries_actual_delivery_or_pickup_date'] = 'Fecha de entrega / recogido real';
@@ -13,9 +13,9 @@ $lang['deliveries_delivery_fees'] = 'Cargos de Entrega';
 $lang['deliveries_delivery_method'] = 'Método de entrega';
 $lang['Deliveries_expected_delivery'] = 'Entrega esperada';
 $lang['deliveries_expected_delivery'] = 'Entrega esperada';
-$lang['deliveries_delivery_comment'] = 'Comentario de entrega';
+$lang['deliveries_delivery_comment'] = 'Comentario/Nota';
 $lang['deliveries_expected_processing'] = 'Procesamiento esperado';
-$lang['deliveries_tracking_number'] = 'número de GUIA';
+$lang['deliveries_tracking_number'] = 'número de guía';
 $lang['deliveries_in_store_pickup'] = 'recoger en tienda';
 $lang['deliveries_shipping_method'] = 'Método de envío';
 $lang['deliveries_shipping_provider'] = 'Proveedor de envío';
@@ -27,8 +27,8 @@ $lang['deliveries_update'] = 'Guardar entrega';
 $lang['deliveries_orders'] = 'Órdenes de Entrega';
 $lang['deliveries_basic_info'] = 'información de entrega';
 $lang['deliveries_estimated_delivery_date'] = 'Fecha estimada de entrega';
-$lang['deliveries_estimated_pickup_date'] = 'Fecha estimada de recogido';
-$lang['deliveries_actual_pickup_date'] = 'Fecha de recogido real';
+$lang['deliveries_estimated_pickup_date'] = 'Fecha estimada de recolección';
+$lang['deliveries_actual_pickup_date'] = 'Fecha de recolección real';
 $lang['deliveries_actual_delivery_date'] = 'Fecha de entrega real';
 $lang['deliveries_status'] = 'Estado';
 $lang['deliveries_pending'] = 'Pendiente';
@@ -38,7 +38,7 @@ $lang['deliveries_edit_sale'] = 'Editar venta';
 $lang['deliveries_success'] = 'Éxito';
 $lang['deliveries_error'] = 'Error';
 $lang['delivery_shipping_zone'] = 'Zona de envío';
-$lang['deliveries_shipping_rate'] = 'Tarifa de envio';
+$lang['deliveries_shipping_rate'] = 'Tarifa de envío';
 $lang['deliveries_instore_pickup'] = 'recoger en tienda';
 $lang['deliveries_shipping_date_start'] = 'Fecha de envío Comienzo';
 $lang['deliveries_shipping_date_end'] = 'Fecha de envío Fin';
@@ -67,5 +67,5 @@ $lang['deliveries_manage_deleted'] = 'Gestionar las entregas eliminadas';
 $lang['deliveries_confirm_undelete'] = '¿Estás seguro de que quieres recuperar los pedidos seleccionados?';
 
 $lang['deliveries_status_scheduled'] = 'Programado';
-$lang['deliveries_status_not_scheduled'] = 'No programada';
+$lang['deliveries_status_not_scheduled'] = 'No programado';
 ?>

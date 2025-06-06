@@ -350,6 +350,8 @@ class Config extends Secure_area
 		*/
 		//$valid_languages = str_replace(DIRECTORY_SEPARATOR,'',directory_map(APPPATH.'language/', 1));
 		$batch_save_data=array(
+		//Empresa
+		'company'=>$this->input->post('company'),
 		'website'=>$this->input->post('website'),
 		'enable_pdf_receipts'=>$this->input->post('enable_pdf_receipts') ? 1 : 0,
 		'automatically_show_comments_on_receipt' => $this->input->post('automatically_show_comments_on_receipt') ? 1 : 0,
@@ -370,8 +372,7 @@ class Config extends Secure_area
 		'show_item_kit_items_on_receipt' => $this->input->post('show_item_kit_items_on_receipt') ? 1 : 0,
 		'uppercase_receipts' => $this->input->post('uppercase_receipts') ? 1 : 0,
 		'hide_email_on_receipts' => $this->input->post('hide_email_on_receipts') ? 1 : 0,		
-		'show_signature_on_receiving_receipt' => $this->input->post('show_signature_on_receiving_receipt') ? 1 : 0,
-		'automatically_sms_receipt' => $this->input->post('automatically_sms_receipt') ? 1 : 0,
+		'show_signature_on_receiving_receipt' => $this->input->post('show_signature_on_receiving_receipt') ? 1 : 0,		
 		'show_person_id_on_receipt' => $this->input->post('show_person_id_on_receipt') ? 1 : 0,
 		'hide_desc_on_receipt' => $this->input->post('hide_desc_on_receipt') ? 1 : 0,
 		'hide_desc_emailed_receipts' => $this->input->post('hide_desc_emailed_receipts') ? 1 : 0,
@@ -384,6 +385,7 @@ class Config extends Secure_area
 		'print_after_sale'=>$this->input->post('print_after_sale') ? 1 : 0,
 		'print_after_receiving'=>$this->input->post('print_after_receiving') ? 1 : 0,
 		'round_cash_on_sales'=>$this->input->post('round_cash_on_sales') ? 1 : 0,
+		'sale_prefix'=>$this->input->post('sale_prefix') ? $this->input->post('sale_prefix') : 'Venta',
 		'id_to_show_on_sale_interface' => $this->input->post('id_to_show_on_sale_interface'),
 		'hide_signature'=>$this->input->post('hide_signature') ? 1 : 0,
 		'hide_customer_recent_sales'=>$this->input->post('hide_customer_recent_sales') ? 1 : 0,
@@ -393,6 +395,20 @@ class Config extends Secure_area
 		'additional_payment_types' => $this->input->post('additional_payment_types'),
 		'calculate_average_cost_price_from_receivings' => $this->input->post('calculate_average_cost_price_from_receivings') ? 1 : 0,
 		'averaging_method' => $this->input->post('averaging_method'),
+		//Inventario
+		'number_of_items_per_page'=>$this->input->post('number_of_items_per_page'),
+		'items_per_search_suggestions'=>$this->input->post('items_per_search_suggestions'),
+		'number_of_items_in_grid' => $this->input->post('number_of_items_in_grid'),
+		'default_reorder_level_when_creating_items' => $this->input->post('default_reorder_level_when_creating_items'),
+		'default_days_to_expire_when_creating_items' => $this->input->post('default_days_to_expire_when_creating_items'),
+		'highlight_low_inventory_items_in_items_module' => $this->input->post('highlight_low_inventory_items_in_items_module') ? 1 : 0,
+		'max_discount_percent' => $this->input->post('max_discount_percent'),
+		'enable_markup_calculator' => $this->input->post('enable_markup_calculator') ? 1 : 0,
+		'enable_margin_calculator' => $this->input->post('enable_margin_calculator') ? 1 : 0,
+		'verify_age_for_products' => $this->input->post('verify_age_for_products') ? 1 : 0,
+		'default_age_to_verify' => $this->input->post('default_age_to_verify'),
+		'strict_age_format_check' => $this->input->post('strict_age_format_check') ? 1 : 0,
+		//
 		'show_clock_on_header' => $this->input->post('show_clock_on_header') ? 1 : 0,
 		'disable_giftcard_detection' => $this->input->post('disable_giftcard_detection') ? 1 : 0,
 		'hide_available_giftcards' => $this->input->post('hide_available_giftcards') ? 1 : 0,
@@ -517,6 +533,20 @@ class Config extends Secure_area
 		'hide_points_on_receipt' => $this->input->post('hide_points_on_receipt') ? 1 : 0,
 		'disable_gift_cards_sold_from_loyalty' => $this->input->post('disable_gift_cards_sold_from_loyalty') ? 1 : 0,
 		'enable_points_for_giftcard_payments' => $this->input->post('enable_points_for_giftcard_payments') ? 1 : 0,
+		//Correo
+		'email_provider'=>$this->input->post('email_provider') && !is_on_demo_host() ? $this->input->post('email_provider') : '',
+		'smtp_user'=>$this->input->post('smtp_user') && !is_on_demo_host() ? $this->input->post('smtp_user') : '',
+		'smtp_pass'=>$this->input->post('smtp_pass') && !is_on_demo_host() ? $this->input->post('smtp_pass') : '',
+		'smtp_crypto'=>$this->input->post('smtp_crypto') && !is_on_demo_host() ? $this->input->post('smtp_crypto') : '',
+		'protocol'=>$this->input->post('protocol') && !is_on_demo_host() ? $this->input->post('protocol') : '',
+		'smtp_host'=>$this->input->post('smtp_host') && !is_on_demo_host() ? $this->input->post('smtp_host') : '',
+		'smtp_port'=>$this->input->post('smtp_port') && !is_on_demo_host() ? $this->input->post('smtp_port') : '',
+		'email_charset'=>$this->input->post('email_charset') && !is_on_demo_host() ? $this->input->post('email_charset') : '','newline'=>$this->input->post('newline') && !is_on_demo_host() ? $newline_option : '',
+		'newline'=>$this->input->post('newline') && !is_on_demo_host() ? $newline_option : '',
+		'crlf'=>$this->input->post('crlf') && !is_on_demo_host() ? $crlf_option : '',
+		'smtp_timeout'=>$this->input->post('smtp_timeout') && !is_on_demo_host() ? $this->input->post('smtp_timeout') :'',
+
+		//
 	);
 
 		if($this->input->post('item_id_auto_increment'))

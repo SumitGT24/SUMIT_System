@@ -140,6 +140,21 @@
 							)); ?>
 						</div>
 					</div>
+
+					<div class="form-group">
+						<?php echo form_label('Tipo de contribuyente' . ':', 'Tipo de contribuyente', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+							<?php echo form_input(array(
+								'class' => 'validate form-control form-inps',
+								'name' => 'Tipo de contribuyente',
+								'id' => 'tipo_contribuyente',
+								'disabled' => 'disabled',
+								'value' => $location_info->tipo_contribuyente
+							)); ?>
+						</div>
+					</div>
+
+
 					<div class="form-group">
 						<?php echo form_label('municipio' . ':', 'municipio', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
@@ -187,6 +202,20 @@
 							</div>
 						</div>
 					<?php }  ?>
+
+					<div class="form-group">
+						<?php echo form_label(lang('common_company') . ':', 'company', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+							<?php echo form_input(array(
+								'class' => 'validate form-control form-inps',
+								'name' => 'company',
+								'id' => 'company',
+								'placeholder' => 'Nombre de la empresa. Aparecerá en el ticket/factura de venta',
+								'value' => $location_info->company
+							)); ?>
+						</div>
+					</div>
+
 					<div class="form-group">
 						<?php echo form_label(lang('common_website') . ':', 'website', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
@@ -217,7 +246,7 @@
 					</div>
 
 					<div class="form-group">
-						<?php echo form_label(lang('locations_phone') . ':', 'phone', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label required')); ?>
+						<?php echo form_label(lang('locations_phone') . ':', 'phone', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
 							<?php echo form_input(
 								array(
@@ -700,9 +729,6 @@
 				name: {
 					required: true,
 				},
-				phone: {
-					required: true
-				},
 				address: {
 					required: true
 				},
@@ -716,10 +742,6 @@
 				name: {
 					required: <?php echo json_encode(lang('locatoins_name_required')); ?>,
 
-				},
-				phone: {
-					required: <?php echo json_encode(lang('locations_phone_required')); ?>,
-					number: <?php echo json_encode(lang('locations_phone_valid')); ?>
 				},
 				address: {
 					required: <?php echo json_encode(lang('locations_address_required')); ?>

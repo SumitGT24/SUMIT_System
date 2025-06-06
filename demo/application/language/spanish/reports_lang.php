@@ -301,7 +301,7 @@ $lang['reports_points_used'] = 'Puntos utilizados';
 $lang['reports_points_earned'] = 'Puntos ganados';
 
 $lang['reports_items_recved'] = 'Artículos recibidos';
-$lang['reports_show_only_reorder'] = 'Mostrar solo artículos con nivel de reordenamiento';
+$lang['reports_show_only_reorder'] = 'Mostrar solo artículos con valor mínimo para ordernar';
 $lang['reports_weighted_cost'] = 'Costo promedio ponderado';
 $lang['reports_tax_exempt'] = 'Exentos de impuesto';
 $lang['reports_detailed_suspended_receivings_report'] = 'Informe detallado de recibos suspendidos';

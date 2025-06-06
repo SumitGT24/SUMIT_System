@@ -655,12 +655,6 @@ class Sales extends Secure_area
 		$this->cart->save();
 	}
 
-	function set_sms_receipt()
-	{
-		$this->cart->sms_receipt = $this->input->post('sms_receipt');
-		$this->cart->save();
-	}
-
 	function set_save_credit_card_info()
 	{
 		$this->cart->save_credit_card_info = $this->input->post('save_credit_card_info');
@@ -1710,7 +1704,6 @@ class Sales extends Secure_area
 		}
 
 		$email_send = false;
-		$sms_receipt = false;
 		$prices_include_tax = false;
 		if ($this->config->item("prices_include_tax")) {
 			$prices_include_tax = true;
@@ -1831,7 +1824,6 @@ class Sales extends Secure_area
 		$data['auth_code'] = '';
 		$data['discount_exists'] = $this->_does_discount_exists($data['cart_items']);
 		$data['can_email_receipt'] = !$this->cart->email_receipt;
-		$data['can_sms_receipt'] = !$this->cart->sms_receipt;
 		$masked_account = $this->session->userdata('masked_account') ? $this->session->userdata('masked_account') : '';
 		$card_issuer = $this->session->userdata('card_issuer') ? $this->session->userdata('card_issuer') : '';
 		$auth_code = $this->session->userdata('auth_code') ? $this->session->userdata('auth_code') : '';
@@ -2007,10 +1999,6 @@ class Sales extends Secure_area
 			if ($this->cart->email_receipt && !empty($cust_info->email)) {
 				$email_send = true;
 			}
-
-			if ($this->cart->sms_receipt && !empty($cust_info->phone_number)) {
-				$sms_receipt = true;
-			}
 		}
 
 		if ($this->cart->get_has_delivery()) {
@@ -2020,7 +2008,6 @@ class Sales extends Secure_area
 		}
 
 		if ($email_send === true || (isset($cust_info) && $cust_info->auto_email_receipt === 1)) {
-
 			if ($this->config->item('enable_pdf_receipts')) {
 				$receipt_data = $this->load->view("sales/receipt_html", $data, true);
 
@@ -2032,7 +2019,8 @@ class Sales extends Secure_area
 			$this->load->library('email');
 			$config['mailtype'] = 'html';
 			$this->email->initialize($config);
-			$this->email->from($this->Location->get_info_for_key('email') ? $this->Location->get_info_for_key('email') : 'no-reply@mg.phppointofsale.com', $this->config->item('company'));
+			$companyEmail = ($companyEmail = $this->Location->get_info_for_key('company')) ? $companyEmail : $this->config->item('company');
+			$this->email->from($this->Location->get_info_for_key('email') ? $this->Location->get_info_for_key('email') : 'no-reply@mg.phppointofsale.com', $companyEmail);
 			$this->email->to($cust_info->email);
 
 			if ($this->Location->get_info_for_key('cc_email')) {
@@ -2056,11 +2044,7 @@ class Sales extends Secure_area
 			$this->email->send();
 			$data['email_sent'] = TRUE;
 		}
-
-		if ($sms_receipt || (isset($cust_info) && $cust_info->always_sms_receipt)) {
-			$this->Sale->sms_receipt($sale_id_raw);
-		}
-
+		//Email receipt to sales email
 		if ($this->Location->get_info_for_key('email_sales_email')) {
 			if ($this->config->item('enable_pdf_receipts')) {
 				$receipt_data = $this->load->view("sales/receipt_html", $data, true);
@@ -2073,8 +2057,9 @@ class Sales extends Secure_area
 			$this->load->library('email');
 			$config['mailtype'] = 'html';
 			$this->email->initialize($config);
-			$this->email->from($this->Location->get_info_for_key('email') ? $this->Location->get_info_for_key('email') : 'no-reply@mg.phppointofsale.com', $this->config->item('company'));
-			$this->email->to($this->Location->get_info_for_key('email_sales_email'));
+			$companyEmail = ($companyEmail = $this->Location->get_info_for_key('company')) ? $companyEmail : $this->config->item('company');
+			$this->email->from($this->Location->get_info_for_key('email') ? $this->Location->get_info_for_key('email') : 'no-reply@mg.phppointofsale.com', $companyEmail);			
+			$this->email->to($this->Location->get_info_for_key('email_sales_email'));			
 
 			if ($this->Location->get_info_for_key('cc_email')) {
 				$this->email->cc($this->Location->get_info_for_key('cc_email'));
@@ -2097,24 +2082,15 @@ class Sales extends Secure_area
 			$this->email->send();
 		}
 		//Generacion de factura electronica
-		if ($this->cart->nit != "") {
+		if ($this->cart->nit!= "") {
 			$name = $this->cart->nombreCliente;
 			$nit = $this->cart->nit;
 			$tipo = $this->cart->tipo;
 			$rAddres = $this->cart->addres;
 			$correo = $this->cart->correoDTE;
 			
+			//GENERACION DE XML		
 			date_default_timezone_set("America/Guatemala");
-			//GENERACION DE XML
-
-			$nitTramitador = "100826741";
-
-			$nrofactura = "0001000" . $sale_id_raw;
-			$codfactura = "333" . '-' . $nrofactura;
-			
-			date_default_timezone_set("America/Guatemala");
-
-			$nitTramitador = "100826741";
 
 			$detalleFEL = $data['cart_items'];
 			$total = 0;
@@ -2286,7 +2262,7 @@ class Sales extends Secure_area
 				"</dte:DTE>" .
 
 				"<dte:Adenda>" .
-				"<TOTALDOC_TEXTO_EMISOR>Tel/WhatsApp " .$location->phone. "</TOTALDOC_TEXTO_EMISOR>" .		
+				"<TOTALDOC_TEXTO_EMISOR>Tel/WhatsApp: " .$location->phone. "</TOTALDOC_TEXTO_EMISOR>" .		
 				"<TOTALDOC_PIE_PAGINA>" . $location->return_policy . "</TOTALDOC_PIE_PAGINA>".
 				//"TOTALDOC_COMENTARIO>".$comentario."</TOTALDOC_COMENTARIO>" .
 				"</dte:Adenda>".
@@ -2318,9 +2294,10 @@ class Sales extends Secure_area
 			$firma = $info->xmlSigned;
 			if($firma==""){
 				$this->cart->nit = "";
-				$this->cart->save();
-				echo $response;
-				exit();
+				$this->cart->save();				
+				$fileXML = 'facturas/error.xml';				
+				$this->_reload(array('Error XML' => lang('Valores incorrectos para facturación electrónica')), false);
+				return;
 			}
 			curl_close($curl);
 			$venta = $saved_sale_info['sale_id'];
@@ -2366,16 +2343,15 @@ class Sales extends Secure_area
 				echo "<script>window.open('https://print.totaldoc.io/pdf?uuid=" . $uuid . "', '_blank');</script>";
 				// $fechaEmisionFEL=$info->fecha;
 			} else {
-
+				$this->cart->nit = "";
+				$this->cart->save();
 				$sat = 2;
-				// echo $info['descripcion_errores'][0]['mensaje_error'];
-				var_dump($info);
-				echo "error";
+				// echo $info['descripcion_errores'][0]['mensaje_error'];				
 				//TODO: Configurar mensaje de error				
 				$fileXML = 'facturas/error.xml';
 				file_put_contents($fileXML, $xml);
-				echo $xml;
-				exit();
+				$this->_reload(array('Error firma' => lang('Valores incorrectos para facturación electrónica')), false);
+				return;
 			}
 		}
 		//Reset this value $this->cart->nit 
@@ -2383,9 +2359,10 @@ class Sales extends Secure_area
 		$this->load->view("sales/receipt", $data);
 
 		if ($data['sale_id'] != $this->config->item('sale_prefix') . ' -1') {
+			$this->cart->nit = "";
 			$this->cart->destroy();
 			$this->cart->save();
-			$this->Appconfig->save('wizard_create_sale', 1);
+			$this->Appconfig->save('wizard_create_sale', 1);		
 		}
 
 		//We need to reset this data because is already gone when saving sale
@@ -2403,10 +2380,8 @@ class Sales extends Secure_area
 		$final_cart_data['exchange_decimal_point'] = $data['exchange_decimal_point'];
 		//Update cutomer facing display
 		$this->Register_cart->set_data($final_cart_data, $this->Employee->get_logged_in_employee_current_register_id());
-		$this->Register_cart->add_data(array('can_email' => $data['can_email_receipt'], 'can_sms' => $data['can_sms_receipt'], 'sale_id' => $sale_id_raw), $this->Employee->get_logged_in_employee_current_register_id());
+		$this->Register_cart->add_data(array('can_email' => $data['can_email_receipt'], 'sale_id' => $sale_id_raw), $this->Employee->get_logged_in_employee_current_register_id());
 
-		$this->cart->nit = "";
-		$this->cart->save();
 	}
 
 	function download_receipt($sale_id)
@@ -2485,11 +2460,6 @@ class Sales extends Secure_area
 		$pdf_content = $this->m_pdf->generate_pdf($receipt_data, TRUE, $filename);
 	}
 
-	function sms_receipt($sale_id)
-	{
-		$this->Sale->sms_receipt($sale_id);
-	}
-
 	function email_receipt($sale_id)
 	{
 
@@ -2563,7 +2533,10 @@ class Sales extends Secure_area
 			$this->load->library('email');
 			$config['mailtype'] = 'html';
 			$this->email->initialize($config);
-			$this->email->from($this->Location->get_info_for_key('email') ? $this->Location->get_info_for_key('email') : 'no-reply@mg.phppointofsale.com', $this->config->item('company'));
+			$sale_info = $this->Sale->get_info($sale_id)->row_array();
+			$LocationSale = $this->Location->get_info($sale_info['location_id']);			
+			$companyEmail = ($companyEmail = $LocationSale->company) ? $companyEmail : $this->config->item('company');
+			$this->email->from($this->Location->get_info_for_key('email') ? $this->Location->get_info_for_key('email') : 'no-reply@mg.phppointofsale.com', $companyEmail);			
 			$this->email->to($data['customer_email']);
 
 			if ($this->Location->get_info_for_key('cc_email')) {
@@ -2986,12 +2959,16 @@ class Sales extends Secure_area
 	function save($sale_id)
 	{
 		$sale_data = array(
-			'sale_time' => date('Y-m-d H:i:s', strtotime($this->input->post('date'))),
+			//'sale_time' => date('Y-m-d H:i:s', strtotime($this->input->post('date'))),
+			'last_modified' => date('Y-m-d H:i:s'),
 			'customer_id' => $this->input->post('customer_id') ? $this->input->post('customer_id') : null,
 			'employee_id' => $this->input->post('employee_id'),
 			'comment' => $this->input->post('comment'),
 			'show_comment_on_receipt' => $this->input->post('show_comment_on_receipt') ? 1 : 0
 		);
+		if($this->input->post('date')){
+			$sale_data['sale_time'] = date('Y-m-d H:i:s', strtotime($this->input->post('date')));
+		}
 
 		$sale_info = $this->Sale->get_info($sale_id)->row_array();
 
@@ -3276,7 +3253,6 @@ class Sales extends Secure_area
 			}
 			$data['disable_loyalty'] = $cust_info->disable_loyalty;
 			$data['auto_email_receipt'] = $cust_info->auto_email_receipt;
-			$data['always_sms_receipt'] = $cust_info->always_sms_receipt;
 
 			$data['points'] = to_currency_no_money($cust_info->points);
 			$data['sales_until_discount'] = ($this->config->item('number_of_sales_for_discount')) ? (float)$this->config->item('number_of_sales_for_discount') - (float)$cust_info->current_sales_for_discount : 0;
@@ -3755,10 +3731,6 @@ class Sales extends Secure_area
 
 		if ($this->config->item('automatically_email_receipt')) {
 			$this->cart->email_receipt = 1;
-		}
-
-		if ($this->config->item('automatically_sms_receipt_that_works_like_automatically_email_receipt')) {
-			$this->cart->sms_receipt = 1;
 		}
 
 		$this->cart->save();

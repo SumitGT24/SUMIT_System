@@ -87,6 +87,20 @@
 							)); ?>
 						</div>
 					</div>
+
+					<div class="form-group">
+						<?php echo form_label('Tipo contribuyente' . ':', 'Tipo contribuyente', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+							<?php echo form_input(array(
+								'class' => 'validate form-control form-inps',
+								'name' => 'tipo_contribuyente',
+								'id' => 'tipo_contribuyente',
+								'placeholder' => '0: Pequeño contribuyente, 1: Contribuyente general',
+								'value' => $location_info->tipo_contribuyente
+							)); ?>
+						</div>
+					</div>
+
 					<div class="form-group">
 						<?php echo form_label('municipio' . ':', 'municipio', array('class' => 'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10 input-field">

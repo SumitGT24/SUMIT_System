@@ -12,27 +12,6 @@ class Sale extends MY_Model
 		$this->load->model('Inventory');
 	}
 
-	function sms_receipt($sale_id)
-	{
-		$receipt_cart = PHPPOSCartSale::get_instance_from_sale_id($sale_id);
-		$text_message = (string)$receipt_cart;
-		$cart_info = $receipt_cart->to_array();
-		$to_phone_number = $cart_info['customer_phone'];
-		$account_sid = $this->Location->get_info_for_key('twilio_sid');
-		$auth_token = $this->Location->get_info_for_key('twilio_token');
-		$twilio_sms_from = $this->Location->get_info_for_key('twilio_sms_from');
-
-		if ($account_sid && $auth_token && $twilio_sms_from) {
-			$params = array(
-				'account_sid' => $account_sid,
-				'auth_token' => $auth_token
-			);
-
-			$this->load->library("Citwilio", $params);
-			$this->citwilio->send_sms($twilio_sms_from, $to_phone_number, $text_message);
-		}
-	}
-
 	function is_sale_deleted($sale_id)
 	{
 		$query = $this->get_info($sale_id);

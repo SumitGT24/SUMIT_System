@@ -17,12 +17,15 @@ $this->load->view("partial/header");
 	<button class="tablink" onclick="openPage('PriceRules', this)">Reglas de precios</button>
 	<button class="tablink" onclick="openPage('Order&Delivery', this)">Órdenes y Entregas</button>
 	<button class="tablink" onclick="openPage('Sales', this)">Ventas</button>
+	<button class="tablink" onclick="openPage('Items')">Inventario</button>
 	<button class="tablink" onclick="openPage('Receipts', this)">Recibos</button>
 	<button class="tablink" onclick="openPage('Profit', this)">Cálculo de ganancias</button>
 	<button class="tablink" onclick="openPage('Loyalty', this)">Sistema de lealtad</button>
 	<button class="tablink" onclick="openPage('Barcodes', this)">Códigos de barra</button>
 	<button class="tablink" onclick="openPage('Employee', this)">Empleados</button>
 	<button class="tablink" onclick="openPage('System', this)">Sistema</button>	
+	<button class="tablink" onclick="openPage('Email')" >Servidor de correo</button>
+	<button class="tablink" onclick="openPage('API', this)">Configuración de API </button>
 </div>
 
 <div class="config-panel">
@@ -74,6 +77,19 @@ $this->load->view("partial/header");
 					</div>	
 				</div>
 				<?php } ?>
+				<!-- Nombre de la empresa -->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
+					<?php echo form_label(lang('common_company').':', 'company',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10 input-field">
+						<?php echo form_input(array(
+							'class'=>'validate form-control form-inps',
+						'name'=>'company',
+						'id'=>'company',
+						'placeholder'=>'Nombre de la empresa (aparecerá en la factura/ticket si no se ha configurado un nombre por sucursal)',
+						'value'=>$this->config->item('company')));?>
+					</div>
+				</div>
+
 				<!--website-->
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_company')) ?>">	
 					<?php echo form_label(lang('common_website').':', 'website',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -351,7 +367,6 @@ $this->load->view("partial/header");
 										</div>
 								</div>
 						</div>
-	
 			</div><!-- end panel-body -->
 		</div><!-- end panel-->
 	</div>
@@ -368,6 +383,7 @@ $this->load->view("partial/header");
 							'class'=>'form-control form-inps',
 							'name'=>'sale_prefix',
 							'id'=>'sale_prefix',
+							'placeholder'=>'Nombre con el que se identifican las ventas en ticket, orden de trabajo y registros de inventario.',
 							'value'=>$this->config->item('sale_prefix')));
 						?>
 					</div>
@@ -1121,6 +1137,179 @@ $this->load->view("partial/header");
 			</div>
 		</div>
 	</div>
+	<!-- Inventario -->
+	<div id="Items" class="tabcontent">
+		<div class="panel panel-piluku">
+			<div class="panel-body">
+				<?php if ($this->Employee->has_module_action_permission('items', 'manage_categories', $this->Employee->get_logged_in_employee_info()->person_id)) {?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo anchor("items/manage_categories",lang('items_manage_categories'),array('target' => '_blank', 'title'=>lang('items_manage_categories')));?>
+						</div>
+					</div>
+				<?php } ?>		
+			
+				<?php if ($this->Employee->has_module_action_permission('items', 'manage_tags', $this->Employee->get_logged_in_employee_info()->person_id)) {?>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo anchor("items/manage_tags",lang('items_manage_tags'),array('target' => '_blank', 'title'=>lang('items_manage_tags')));?>
+						</div>
+					</div>
+				<?php } ?>
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+					<?php echo form_label(lang('config_number_of_items_per_page').':', 'number_of_items_per_page',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('number_of_items_per_page', 
+					 array(
+						'20'=>'20',
+						'50'=>'50',
+						'100'=>'100',
+						'200'=>'200',
+						'500'=>'500'
+						), $this->config->item('number_of_items_per_page') ? $this->config->item('number_of_items_per_page') : '20', 'class="form-control" id="number_of_items_per_page"');
+						?>
+					</div>
+				</div>		
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+					<?php echo form_label(lang('config_items_per_search_suggestions').':', 'items_per_search_suggestions',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_dropdown('items_per_search_suggestions', 
+					 array(
+						'20'=>'20',
+						'50'=>'50',
+						'100'=>'100',
+						'200'=>'200',
+						'500'=>'500'
+						), $this->config->item('items_per_search_suggestions') ? $this->config->item('items_per_search_suggestions') : '20', 'class="form-control" id="items_per_search_suggestions"');
+						?>
+					</div>
+				</div>		
+										
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+					<?php echo form_label(lang('config_number_of_items_in_grid').':', 'number_of_items_in_grid',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label  required')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php 
+						$numbers = array();
+						foreach(range(1, 50) as $number) 
+						{ 
+							$numbers[$number] = $number;
+							
+						}
+						?> 
+					<?php echo form_dropdown('number_of_items_in_grid', 
+						 $numbers, $this->config->item('number_of_items_in_grid') ? $this->config->item('number_of_items_in_grid') : '14', 'class="form-control" id="number_of_items_in_grid"');
+						?>
+					</div>
+				</div>				
+													
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+					<?php echo form_label(lang('config_default_reorder_level_when_creating_items').':', 'default_reorder_level_when_creating_items',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_input(array(
+						'class'=>'form-control form-inps',
+						'name'=>'default_reorder_level_when_creating_items',
+						'id'=>'default_reorder_level_when_creating_items',
+						'value'=>$this->config->item('default_reorder_level_when_creating_items')));?>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+					<?php echo form_label(lang('config_default_days_to_expire_when_creating_items').':', 'default_days_to_expire_when_creating_items',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_input(array(
+						'class'=>'form-control form-inps',
+						'name'=>'default_days_to_expire_when_creating_items',
+						'id'=>'default_days_to_expire_when_creating_items',
+						'value'=>$this->config->item('default_days_to_expire_when_creating_items')));?>
+					</div>
+				</div>						
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+				<?php echo form_label(lang('config_highlight_low_inventory_items_in_items_module').':', 'highlight_low_inventory_items_in_items_module',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'highlight_low_inventory_items_in_items_module',
+						'id'=>'highlight_low_inventory_items_in_items_module',
+						'value'=>'highlight_low_inventory_items_in_items_module',
+						'checked'=>$this->config->item('highlight_low_inventory_items_in_items_module')));?>
+						<label for="highlight_low_inventory_items_in_items_module"><span></span></label>
+					</div>
+				</div>				
+					
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+				<?php echo form_label(lang('common_max_discount_percent').' % :', 'max_discount_percent',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?> 
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_input(array(
+						'class'=>'form-control form-inps',
+						'name'=>'max_discount_percent',
+						'id'=>'max_discount_percent',
+						'value'=>$this->config->item('max_discount_percent')));?>
+					</div>
+				</div>
+										
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+				<?php echo form_label(lang('config_enable_markup_calculator').':', 'enable_markup_calculator',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'enable_markup_calculator',
+						'id'=>'enable_markup_calculator',
+						'value'=>'1',
+						'checked'=>$this->config->item('enable_markup_calculator')));?>
+						<label for="enable_markup_calculator"><span></span></label>
+					</div>
+				</div>
+
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+				<?php echo form_label(lang('config_enable_margin_calculator').':', 'enable_margin_calculator',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'enable_margin_calculator',
+						'id'=>'enable_margin_calculator',
+						'value'=>'1',
+						'checked'=>$this->config->item('enable_margin_calculator')));?>
+						<label for="enable_margin_calculator"><span></span></label>
+					</div>
+				</div>
+				
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+				<?php echo form_label(lang('config_verify_age_for_products').':', 'verify_age_for_products',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'verify_age_for_products',
+						'id'=>'verify_age_for_products',
+						'value'=>'1',
+						'checked'=>$this->config->item('verify_age_for_products')));?>
+						<label for="verify_age_for_products"><span></span></label>
+					</div>
+				</div>
+
+				<div id="default_age_input_container" class="form-group  <?php if (!$this->config->item('verify_age_for_products')){echo 'hidden';} ?>" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+					<?php echo form_label(lang('config_default_age_to_verify').':', 'default_age_to_verify',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php echo form_input(array(
+						'class'=>'form-control form-inps',
+						'name'=>'default_age_to_verify',
+						'id'=>'default_age_to_verify',
+						'value'=>$this->config->item('default_age_to_verify')));?>
+					</div>
+				</div>										
+					
+				<div id="strict_age_format_check_container" class="form-group" data-keyword="<?php echo H(lang('config_keyword_items')) ?>">	
+				<?php echo form_label(lang('config_strict_age_format_check').':', 'strict_age_format_check',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+					<?php echo form_checkbox(array(
+						'name'=>'strict_age_format_check',
+						'id'=>'strict_age_format_check',
+						'value'=>'1',
+						'checked'=>$this->config->item('strict_age_format_check')));?>
+						<label for="strict_age_format_check"><span></span></label>
+					</div>
+				</div>					
+			</div>
+		</div>
+	</div>
 
 	<!--Recibos-->
 	<div id="Receipts" class="tabcontent">
@@ -1484,30 +1673,18 @@ $this->load->view("partial/header");
 						<label for="automatically_email_receipt"><span></span></label>
 					</div>
 				</div>
-
+					
 				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
-					<?php echo form_label(lang('config_automatically_sms_receipt').':', 'automatically_sms_receipt',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+					<?php echo form_label(lang('config_automatically_print_duplicate_receipt_for_cc_transactions').':', 'automatically_print_duplicate_receipt_for_cc_transactions',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
 					<?php echo form_checkbox(array(
-						'name'=>'automatically_sms_receipt',
-						'id'=>'automatically_sms_receipt',
-						'value'=>'automatically_sms_receipt',
-						'checked'=>$this->config->item('automatically_sms_receipt')));?>
-						<label for="automatically_sms_receipt"><span></span></label>
+						'name'=>'automatically_print_duplicate_receipt_for_cc_transactions',
+						'id'=>'automatically_print_duplicate_receipt_for_cc_transactions',
+						'value'=>'automatically_print_duplicate_receipt_for_cc_transactions',
+						'checked'=>$this->config->item('automatically_print_duplicate_receipt_for_cc_transactions')));?>
+						<label for="automatically_print_duplicate_receipt_for_cc_transactions"><span></span></label>
 					</div>
 				</div>
-					
-					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
-						<?php echo form_label(lang('config_automatically_print_duplicate_receipt_for_cc_transactions').':', 'automatically_print_duplicate_receipt_for_cc_transactions',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
-						<div class="col-sm-9 col-md-9 col-lg-10">
-						<?php echo form_checkbox(array(
-							'name'=>'automatically_print_duplicate_receipt_for_cc_transactions',
-							'id'=>'automatically_print_duplicate_receipt_for_cc_transactions',
-							'value'=>'automatically_print_duplicate_receipt_for_cc_transactions',
-							'checked'=>$this->config->item('automatically_print_duplicate_receipt_for_cc_transactions')));?>
-							<label for="automatically_print_duplicate_receipt_for_cc_transactions"><span></span></label>
-						</div>
-					</div>
 
 					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_receipt')) ?>">	
 						<?php echo form_label(lang('config_always_print_duplicate_receipt_all').':', 'always_print_duplicate_receipt_all',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
@@ -2520,6 +2697,217 @@ $this->load->view("partial/header");
 			</div>
 		</div>
 	</div>
+	<!-- Servidor de correo -->
+	<div id="Email" class="tabcontent">
+		<div class="panel panel-piluku">
+			<div class="panel-body">
+
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
+					<?php echo form_label('Proveedor'.':', 'email_provider',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<?php
+							$provider_options = array('Use System Default'=>'Predeterminado del sistema', 'Gmail'=>'Gmail', 'Office 365'=>'Office 365', 'Windows Live Hotmail'=>'Windows Live Hotmail', 'Other'=>'Otro');
+							echo form_dropdown('email_provider', $provider_options, $this->config->item('email_provider'), 'id="email_provider" class="form-control"');
+						?>
+					</div>
+				</div>
+
+				<div class="email_basic">
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_user').':', 'smtp_user',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+								'class'=>'form-control form-inps',
+								'name'=>'smtp_user',
+								'id'=>'smtp_user',
+								'placeholder' => 'Dirección de la cuenta de correo electrónico. Ejemplo: usuario@dominio.com',
+								'value'=>$this->config->item('smtp_user')));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_pass').':', 'smtp_pass',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_password(array(
+								'class'=>'form-control form-inps',
+								'name'=>'smtp_pass',
+								'id'=>'smtp_pass',
+								'placeholder'=> 'Contraseña de la cuenta de correo electrónico',
+								'value'=>$this->config->item('smtp_pass')));?>
+						</div>
+					</div>
+				</div>
+
+				<div class="email_advanced">	
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_crypto').':', 'smtp_crypto',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php
+								$smtp_crypto_options = array(''=>'','ssl'=>'ssl','tls'=>'tls');
+								echo form_dropdown('smtp_crypto', $smtp_crypto_options, $this->config->item('smtp_crypto'), 'id="smtp_crypto" class="form-control"');
+							?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
+						<?php echo form_label(lang('config_email_protocol').':', 'protocol',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php
+								$protocol_options = array(''=>'','smtp'=>'smtp','mail'=>'mail','sendmail'=>'sendmail');
+								echo form_dropdown('protocol', $protocol_options, $this->config->item('protocol'), 'id="protocol" class="form-control"');
+							?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_host').':', 'smtp_host',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'smtp_host',
+							'id'=>'smtp_host',
+							'placeholder' => 'smtp.dominio.com',
+							'value'=>$this->config->item('smtp_host')));?>
+						</div>
+					</div>
+					
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_smtp_port').':', 'smtp_port',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-8">
+							<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'smtp_port',
+							'id'=>'smtp_port',
+							'placeholder'=>'25',
+							'value'=>$this->config->item('smtp_port')));?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_email_charset').':', 'email_charset',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'email_charset',
+							'id'=>'email_charset',
+							'placeholder'=>'utf-8',
+							'value'=>$this->config->item('email_charset')));?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_email_newline').':', 'newline',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php
+								$newline_options = array('rn'=>'\r\n','n'=>'\n','r'=>'\r');
+								$selected_option = 'rn';
+								
+								if ($option = $this->config->item('newline'))
+								{
+									if ($option == "\r\n")
+									{
+										$selected_option = 'rn';
+									}
+									elseif($option == "\n")
+									{
+										$selected_option = 'n';										
+									}
+									elseif($option == "\r")
+									{
+										$selected_option='r';
+									}
+								}
+								
+								echo form_dropdown('newline', $newline_options,$selected_option, 'id="newline" class="form-control"');
+							?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">	
+						<?php echo form_label(lang('config_email_crlf').':', 'crlf',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php
+								$crlf_options = array('rn'=>'\r\n','n'=>'\n','r'=>'\r');
+								$selected_option = 'rn';
+								
+								if ($option = $this->config->item('crlf'))
+								{
+									if ($option == "\r\n")
+									{
+										$selected_option = 'rn';
+									}
+									elseif($option == "\n")
+									{
+										$selected_option = 'n';										
+									}
+									elseif($option == "\r")
+									{
+										$selected_option='r';
+									}
+								}
+								
+								echo form_dropdown('crlf', $crlf_options,$selected_option, 'id="crlf" class="form-control"');
+							?>
+						</div>
+					</div>
+					<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
+						<?php echo form_label(lang('config_smtp_timeout').':', 'smtp_timeout',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<div class="col-sm-9 col-md-9 col-lg-10">
+							<?php echo form_input(array(
+							'class'=>'form-control form-inps',
+							'name'=>'smtp_timeout',
+							'id'=>'smtp_timeout',
+							'placeholder'=>'5',
+							'value'=>$this->config->item('smtp_timeout')));?>
+						</div>
+					</div>
+				</div> <!-- end advanced email -->
+				<div class="form-group" data-keyword="<?php echo H(lang('config_keyword_email')) ?>">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<span class="pull-right">
+							<button id="test_email" type="button" class="btn btn-lg btn-primary"><span id="test_email_icon" class="glyphicon glyphicon-envelope"></span> <?php echo lang('config_send_test_email');?></button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Configuracion de API -->
+	<div id="API" class="tabcontent">
+		<div class="panel panel-piluku">
+			<div class="panel-body">													
+						<a href="https://phppointofsale.com/api.php" onclick="window.open('https://phppointofsale.com/api.php', '_blank', 'scrollbars=yes,status=yes,resizable=yes,screenx=0,screeny=0'); return false;"> <span class="glyphicon glyphicon-info-sign"></span></a>						
+							<div class="form-group no-padding-right" data-keyword="<?php echo H(lang('config_keyword_api')) ?>">	
+							<?php echo form_label(lang('config_api_keys').':', '',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+								<div class="col-md-9 col-sm-9 col-lg-10">
+									<div class="table-responsive">
+										<table id="api_keys" class="table">
+											<thead>
+												<tr>
+												<th><?php echo lang('common_description'); ?></th>
+												<th><?php echo lang('config_api_key_ending_in'); ?></th>
+												<th><?php echo lang('config_permissions'); ?></th>
+												<th><?php echo lang('common_delete'); ?></th>
+												</tr>
+											</thead>
+									
+											<tbody id="api_keys_body">
+											<?php foreach($api_keys as $key) { ?>
+												<tr>
+													<td><?php echo $key->description;?></td>
+													<td>...<?php echo $key->key_ending; ?></td>
+													<td>
+														<?php	echo  $key->level == 1 ? lang('config_read') : lang('config_read_write'); ?>
+													</td>
+												  <td><a class="delete_api_key" href="javascript:void(0);" data-key-id='<?php echo $key->id; ?>'><?php echo lang('common_delete'); ?></a></td>
+											</tr>
+											<?php } ?>
+											</tbody>
+										</table>
+								
+											<a tabindex="-1" href="<?php echo site_url('config/add_api_key');?>" data-toggle="modal" data-target="#myModal" data-toggle="model"><?php echo lang('config_add_key'); ?></a>
+										</div>
+									</div>
+								</div>
+					</div>
+		</div>
+	</div>
 	<!--Controlar animaciones de pestañas-->
 	<script>
 		function openPage(pageName, elmnt) {
@@ -2565,13 +2953,205 @@ $this->load->view("partial/header");
 
 <script type='text/javascript'>
 //validation and submit handling
-$(document).ready(function()
-{	
+$(document).ready(function(){	
 	
 	date_time_picker_field($('.timepicker'), JS_TIME_FORMAT);
 	date_time_picker_field($('.datepicker'), 'YYYY-MM-DD');
+
+	$("#test_email").click(function () {
+	// Obtener el correo de la ubicación (inyectado desde PHP)
+	/*
+	let locationEmail = <#?php echo json_encode($this->Location->get_info_for_key('email')); ?>;
+	let smtpUser = $("#smtp_user").val();
+
+	// Validar si ambos tienen @
+	if (locationEmail.includes('@') && smtpUser.includes('@')) {
+		let locationDomain = locationEmail.split('@')[1];
+		let smtpDomain = smtpUser.split('@')[1];
+
+		if (locationDomain !== smtpDomain) {
+			bootbox.alert({
+				title: <#?php echo json_encode(lang('common_error')); ?>,
+				message: `El dominio del correo en la ubiación actual (${locationDomain}) no coincide con el dominio en Servidor de Correo (${smtpDomain}).\n
+						  Los dominios deben coincidir.`
+						  
+			});
+			return; // No abrir el prompt si no coinciden
+		}
+	} else {
+		bootbox.alert({
+			title: <#?php echo json_encode(lang('common_error')); ?>,
+			message: "Uno de los correos no es válido o está incompleto."
+		});
+		return;
+	}
+	*/
+	// Si los dominios coinciden, mostrar el prompt
+		bootbox.prompt({
+			title: <?php echo json_encode(lang('config_please_enter_email_to_send_test_to')); ?>,
+			inputType: 'email',
+			placeholder: 'Ingrese un correo para enviar la prueba',
+			callback: function (email) {
+				if (email === null) return;
+
+				if (!email || !email.includes('@')) {
+					bootbox.alert({
+						title: <?php echo json_encode(lang('common_error')); ?>,
+						message: 'Debes ingresar un correo válido.'
+					});
+					return;
+				}
+
+				$("#config_form").ajaxSubmit(function () {
+					$.post(<?php echo json_encode(site_url('config/send_smtp_test_email')); ?>, { email: email }, function (response) {
+						if (response.success) {
+							show_feedback('success', response.message, <?php echo json_encode(lang('common_success')); ?>);
+						} else {
+							show_feedback('error', <?php echo json_encode(lang('common_error')); ?>, <?php echo json_encode(lang('common_error')); ?>);
+							bootbox.alert({
+								title: <?php echo json_encode(lang('common_error')); ?>,
+								message: response.message
+							});
+						}
+					}, 'json');
+				});
+			}
+		});
+	});
+
+
+	
+	var gmail = {
+		smtp_crypto : 'ssl',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.gmail.com',
+		smtp_user : 'usuario@gmail.com',
+		smtp_pass : '',
+		smtp_port : '465',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '5'
+	};
+	
+	var office_365 = {
+		smtp_crypto : 'tls',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.office365.com',
+		smtp_user : 'usuario@dominio.com',
+		smtp_pass : '',
+		smtp_port : '587',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '5'
+	};
+	
+	var windows_live_hotmail = {
+		smtp_crypto : 'tls',
+		protocol : 'smtp', 
+		smtp_host : 'smtp.live.com',
+		smtp_user : 'user@outlook.com',
+		smtp_pass : '',
+		smtp_port : '587',
+		email_charset : 'utf-8',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '5'
+	};
+	
+	var other = {
+		smtp_crypto : 'ssl',
+		protocol : 'smtp', 
+		smtp_host : 'mail.sumit.gt',
+		smtp_user : 'usuario@sumit.gt',
+		smtp_pass : '',
+		smtp_port : '465',
+		email_charset : '',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : '5'
+	};
+	
+	var system_default = {
+		smtp_crypto : '',
+		protocol : '', 
+		smtp_host : '',
+		smtp_user : '',
+		smtp_pass : '',
+		smtp_port : '',
+		email_charset : '',
+		newline : 0,
+		crlf : 0,
+		smtp_timeout : ''
+	};
+	
+	if($("#email_provider").val() !== "Other")
+	{
+		$(".email_advanced").hide();
+	}
+	
+	if($("#email_provider").val() == "Use System Default")
+	{
+		$(".email_basic").hide();
+	}
 	
 	
+	$("#email_provider").change(function(e){
+		switch ($("#email_provider").val()) {
+				case 'Use System Default':
+						$(".email_basic").hide();
+						$(".email_advanced").hide();
+						var settings = false;
+						break;
+		    case 'Gmail':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+						var settings = gmail;
+		        break;
+		    case 'Office 365':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+		        var settings = office_365;
+		        break;
+		    case 'Windows Live Hotmail':
+						$(".email_basic").show();
+						$(".email_advanced").hide();
+		        var settings = windows_live_hotmail;
+		        break;
+		    case 'Other':
+						var settings = other;
+						$(".email_basic").show();
+		        $(".email_advanced").show();
+		        break;
+		}
+		
+		if(settings)
+		{
+			for (var key in settings)
+			{
+				if(key == 'smtp_user')
+				{
+					$("#"+key).val('');
+					$("#"+key).attr('placeholder', settings[key]);
+				} else if (key == 'newline' || key == 'crlf'){
+					$("#"+key).prop('selectedIndex', settings[key]);
+				}	else {
+					$("#"+key).val(settings[key]);
+				}
+			}
+		} else {
+			for (var key in system_default)
+			{
+				if (key == 'newline' || key == 'crlf'){
+					$("#"+key).prop('selectedIndex', settings[key]);
+				}	else {
+					$("#"+key).val(settings[key]);
+				}
+			}
+		} 
+	});
+
 	$(document).on('keyup', ".default_percent_off",function(e){
 		
 		if ($(this).val())

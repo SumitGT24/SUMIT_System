@@ -132,13 +132,6 @@ if (!(isset($standalone) && $standalone)) {
 							</li>
 
 						<?php } ?>
-
-						<?php if ($sale_id_raw != lang('sales_test_mode_transaction', '', array(), TRUE) && !empty($customer_phone) && $this->Location->get_info_for_key('twilio_sms_from')) { ?>
-							<li>
-								<?php echo anchor('sales/sms_receipt/' . $sale_id_raw, lang('common_sms_receipt', '', array(), TRUE), array('id' => 'sms_receipt', 'class' => 'btn btn-primary btn-lg hidden-print')); ?>
-							</li>
-
-						<?php } ?>
 						<?php if ($sale_id_raw != lang('sales_test_mode_transaction', '', array(), TRUE)) { ?>
 							<li>
 								<button class="btn btn-primary btn-lg hidden-print" id="fufillment_sheet_button" onclick="window.open('<?php echo site_url("sales/create_po/$sale_id_raw"); ?>', 'blank');"> <?php echo lang('common_create_po', '', array(), TRUE); ?></button>
@@ -181,7 +174,7 @@ if (!(isset($standalone) && $standalone)) {
 							#Verificar que exista una factura
 							if ($sale_info['fell']) { ?>
 								<li>
-									<?php echo '<a class=" btn btn-primary btn-lg hidden-print" href="https://print.totaldoc.io/pdf?uuid=' . $fell . '&formato=2" target="_blank">Descargar factura electrónica</a>'?>
+									<?php echo '<a class=" btn btn-primary btn-lg hidden-print" href="https://print.totaldoc.io/pdf?uuid=' . $fell . '&formato=1" target="_blank">Descargar factura electrónica</a>'?>
 								</li>
 							<?php } ?>
 							
@@ -241,16 +234,13 @@ if (!(isset($standalone) && $standalone)) {
 									</li>
 								<?php } ?>
 							<?php } ?>
-
-							<?php if ($this->Location->count_all() > 1) { ?>
-								<!--li class="company-title"><?php echo H($company); ?></li-->
-								<li><?php echo H($this->Location->get_info_for_key('name', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
+							<!-- Mostrar el valor 'company' en 'locations', si no mostrar el valor en 'config' -->
+							<?php if ($this->Location->get_info_for_key('company', isset($override_location_id) ? $override_location_id : FALSE)!='') { ?>
+								<li class="company-title"><?php echo H($this->Location->get_info_for_key('company', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
 							<?php } else {
 							?>
 								<li class="company-title"><?php echo H($company); ?></li>
-							<?php
-							}
-							?>
+							<?php } ?>
 
 							<?php
 							if ($tax_id) {
@@ -261,10 +251,18 @@ if (!(isset($standalone) && $standalone)) {
 							?>
 
 							<li class="nl2br"><?php echo H($this->Location->get_info_for_key('address', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
-							<li><?php echo H($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
-							<?php if ($website) { ?>
-								<!--li><?php echo H($website); ?></li-->
+							<!-- Mostrar el valor 'phone' si esta configurado en 'locations' -->
+							<?php if($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)!=''){ ?>
+								<li>Teléfono: <?php echo H($this->Location->get_info_for_key('phone', isset($override_location_id) ? $override_location_id : FALSE)); ?></li>
 							<?php } ?>
+							<!-- Intentar cargar primero el sitio registrado en la ubicacion -->
+							<?php if ($this->Location->get_info_for_key('website')) { ?>
+								<li><?php echo H($this->Location->get_info_for_key('website')); ?></li>
+							<!-- Si no cargar el sitio en configuraciones -->
+							<?php } else if ($website) { ?>
+								<li><?php echo H($website); ?></li>
+							<?php } ?>
+
 						</ul>
 					</div>
 					<!--  sales-->
@@ -1659,7 +1657,6 @@ if (!(isset($standalone) && $standalone)) {
 	}
 	?>
 
-
 	$(document).ready(function() {
 
 		<?php if (isset($email_sent) && $email_sent) { ?>
@@ -1676,7 +1673,6 @@ if (!(isset($standalone) && $standalone)) {
 		$("#email_receipt,#sms_receipt").click(function() {
 			$.get($(this).attr('href'), function() {
 				show_feedback('success', <?php echo json_encode(lang('common_receipt_sent', '', array(), TRUE)); ?>, <?php echo json_encode(lang('common_success', '', array(), TRUE)); ?>);
-
 			});
 
 			return false;

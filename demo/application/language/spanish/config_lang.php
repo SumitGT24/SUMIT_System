@@ -257,17 +257,17 @@ $lang['config_last_sync_date'] = 'Fecha última sincronización';
 $lang['config_sync'] = 'Sincronizar';
 $lang['config_online_price_tier'] = 'Nivel de precio en línea';
 $lang['config_smtp_crypto'] = 'El cifrado SMTP';
-$lang['config_email_protocol'] = 'Protocolo del envío de correo';
+$lang['config_email_protocol'] = 'Protocolo';
 $lang['config_smtp_host'] = 'Dirección del servidor SMTP';
-$lang['config_smtp_user'] = 'Dirección de correo electrónico';
-$lang['config_smtp_pass'] = 'Contraseña de Email';
+$lang['config_smtp_user'] = 'Dirección de correo';
+$lang['config_smtp_pass'] = 'Contraseña';
 $lang['config_smtp_port'] = 'Puerto SMTP';
 $lang['config_email_charset'] = 'Conjunto de caracteres';
 $lang['config_email_newline'] = 'caracter de nueva línea';
 $lang['config_email_crlf'] = 'CRLF';
 $lang['config_smtp_timeout'] = 'Tiempo de espera SMTP';
 $lang['config_send_test_email'] = 'Enviar correo electrónico de prueba';
-$lang['config_please_enter_email_to_send_test_to'] = 'Por favor, introduzca la dirección de correo electrónico para enviar correo electrónico de prueba para';
+$lang['config_please_enter_email_to_send_test_to'] = 'Enviar correo de prueba a:';
 $lang['config_email_succesfully_sent'] = 'El correo electrónico ha sido enviado con éxito';
 $lang['config_taxes_info'] = 'Impuestos';
 $lang['config_currency_info'] = 'Moneda';
@@ -349,7 +349,7 @@ $lang['config_add_rate'] = 'Añadir tarifa';
 $lang['config_delivery_time'] = 'Tiempo de entrega en días';
 $lang['config_delivery_rate'] = 'Cargo de entrega';
 $lang['config_rate_name'] = 'Nombre de la tarifa';
-$lang['config_rate_fee'] = 'Tarifa de tarifa';
+$lang['config_rate_fee'] = 'Tarifa';
 $lang['config_rate_tax'] = 'Tasa de Impuestos';
 $lang['config_tax_classes'] = 'Grupos de impuestos';
 $lang['config_add_tax_class'] = 'Agregar grupo de impuestos';
@@ -358,7 +358,7 @@ $lang['config_wide_printer_receipt_format'] = 'Formato de recibo de impresora';
 
 $lang['config_default_cost_plus_fixed_amount'] = 'Costo predeterminado más cantidad fija';
 $lang['config_default_tier_fixed_type_for_excel_import'] = 'Nivel predeterminado de monto fijo para importación de Excel';
-$lang['config_default_reorder_level_when_creating_items'] = 'Nivel de reorden predeterminado al crear artículos';
+$lang['config_default_reorder_level_when_creating_items'] = 'Valor predeterminado del campo "Mínimo de productos para recordar ordernar"';
 $lang['config_remove_customer_company_from_receipt'] = 'Eliminar el nombre de la empresa del cliente del recibo';
 
 $lang['config_import_ecommerce_categories_into_phppos'] = 'Importar categorías en phppos';
@@ -449,7 +449,7 @@ $lang['config_do_not_allow_item_with_variations_to_be_sold_without_selecting_var
 
 
 $lang['config_verify_age_for_products'] = 'Verificar la edad de los productos';
-$lang['config_default_age_to_verify'] = 'Edad predeterminada para verificar';
+$lang['config_default_age_to_verify'] = 'Valor predeterminado del campo "Edad requerida"';
 
 
 $lang['config_remind_customer_facing_display'] = 'Recordar al empleado que abra la pantalla orientada al cliente';
@@ -459,7 +459,7 @@ $lang['config_export_tax_classes_into_phppos'] = 'Exportar clases de impuestos a
 $lang['config_import_shipping_classes_into_phppos'] = 'Importar clases de envío a phppos';
 $lang['config_disable_confirm_recv'] = 'Inhabilitar confirmación para recibir por completo';
 $lang['config_minimum_points_to_redeem'] = 'Número mínimo de puntos para canjear';
-$lang['config_default_days_to_expire_when_creating_items'] = 'Días predeterminados para caducar al crear elementos';
+$lang['config_default_days_to_expire_when_creating_items'] = 'Valor predeterminado del campo "Días de vencimiento"';
 
 
 $lang['config_quickbooks_settings'] = 'Configuración de Quickbooks';

@@ -8,6 +8,7 @@ class Module_action extends MY_Model
 	
 	function get_module_action_name($module_id, $action_id)
 	{
+	
 		$query = $this->db->get_where('modules_actions', array('module_id' => $module_id, 'action_id' => $action_id), 1);
 		
 		if ($query->num_rows() ==1)
