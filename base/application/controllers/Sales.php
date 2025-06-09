@@ -2294,12 +2294,10 @@ class Sales extends Secure_area
 			$firma = $info->xmlSigned;
 			if($firma==""){
 				$this->cart->nit = "";
-				$this->cart->save();
-				echo $response;
+				$this->cart->save();				
 				$fileXML = 'facturas/error.xml';				
-				var_dump($info);
-				var_dump($xml);
-				exit();
+				$this->_reload(array('Error XML' => lang('Valores incorrectos para facturación electrónica')), false);
+				return;
 			}
 			curl_close($curl);
 			$venta = $saved_sale_info['sale_id'];
@@ -2348,14 +2346,12 @@ class Sales extends Secure_area
 				$this->cart->nit = "";
 				$this->cart->save();
 				$sat = 2;
-				// echo $info['descripcion_errores'][0]['mensaje_error'];
-				var_dump($info);
-				echo "error";
+				// echo $info['descripcion_errores'][0]['mensaje_error'];				
 				//TODO: Configurar mensaje de error				
 				$fileXML = 'facturas/error.xml';
 				file_put_contents($fileXML, $xml);
-				echo $xml;
-				exit();
+				$this->_reload(array('Error firma' => lang('Valores incorrectos para facturación electrónica')), false);
+				return;
 			}
 		}
 		//Reset this value $this->cart->nit 
@@ -2363,9 +2359,10 @@ class Sales extends Secure_area
 		$this->load->view("sales/receipt", $data);
 
 		if ($data['sale_id'] != $this->config->item('sale_prefix') . ' -1') {
+			$this->cart->nit = "";
 			$this->cart->destroy();
 			$this->cart->save();
-			$this->Appconfig->save('wizard_create_sale', 1);
+			$this->Appconfig->save('wizard_create_sale', 1);		
 		}
 
 		//We need to reset this data because is already gone when saving sale
@@ -2385,8 +2382,6 @@ class Sales extends Secure_area
 		$this->Register_cart->set_data($final_cart_data, $this->Employee->get_logged_in_employee_current_register_id());
 		$this->Register_cart->add_data(array('can_email' => $data['can_email_receipt'], 'sale_id' => $sale_id_raw), $this->Employee->get_logged_in_employee_current_register_id());
 
-		$this->cart->nit = "";
-		$this->cart->save();
 	}
 
 	function download_receipt($sale_id)

@@ -30,18 +30,17 @@ $this->load->helper('demo');
 					</div>
 			<?php } ?>
 
-
 			<?php if (isset($subscription_payment_failed) && $subscription_payment_failed === true) { ?>
 				<div class="col-md-12">
 					<div class="panel">
 						<div class="panel-body">
 						   <div class="alert alert-danger">
-						        <?php echo lang('login_payment_failed_text'); ?>
+						    	<?php echo lang('login_payment_failed_text'); ?>
 						    </div>
 						    <a class="btn btn-block btn-success" href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_update_billing_info');?></a>
-							</div>
 						</div>
 					</div>
+				</div>
 			<?php } ?>
 
 			<?php if (isset($subscription_cancelled_within_5_days) && $subscription_cancelled_within_5_days === true) { ?>
@@ -53,16 +52,15 @@ $this->load->helper('demo');
 						    </div>
 							<a class="btn btn-block btn-sm btn-success" href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('login_resignup');?></a>
 						</ul>
+						</div>
 					</div>
 				</div>
-			</div>
 			<?php } ?>
 		<?php } ?>
 
 	<?php if (isset($can_show_setup_wizard) && $can_show_setup_wizard) { ?>
 		
 		<style>
-
 			#setup_wizard .col-md-2 {
 			    text-align: center;
 			}
@@ -85,61 +83,57 @@ $this->load->helper('demo');
 			  text-decoration: line-through;
 			}
 			
-			</style>
+		</style>
 		<div class="row" id="setup_wizard_container">
-		<div class="col-md-12">
-			<div class="panel">
-				<div class="panel-body">
-					<a id="dismiss_setup_wizard" href="<?php echo site_url('home/dismiss_setup_wizard') ?>" class="pull-right text-danger"><?php echo lang('common_dismiss'); ?></a>
-					<h4><?php echo lang('home_setup_wizard');?></h4>
-					<hr />
-
-				    <div id="setup_wizard">
-					    <div class="col-md-2 <?php echo $this->config->item('wizard_configure_company') ? 'wizard_step_done' : '';?>">
-							<img src="<?php echo base_url('assets/img/gear.png') ?>"/>
-							<h4><?php echo lang('module_config');?></h4>
-							<p><?php echo lang('home_wizard_configure_company');?></p>
-							<span><?php echo anchor('config',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
-						</div>
-						<div class="col-md-2 <?php echo $this->config->item('wizard_configure_locations') ? 'wizard_step_done' : '';?>">
-							<img src="<?php echo base_url('assets/img/building.png') ?>"/>
-							<h4><?php echo lang('module_locations');?></h4>
-							<p><?php echo lang('home_wizard_configure_locations');?></p>
-							<span><?php echo anchor('locations',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
-						</div>
-						<div class="col-md-2 <?php echo $this->config->item('wizard_add_inventory') ? 'wizard_step_done' : '';?>">
-							<img src="<?php echo base_url('assets/img/product.png') ?> "/>
-							<h4><?php echo lang('module_items');?></h4>
-							<p><?php echo lang('home_wizard_add_inventory');?></p>
-							<span><?php echo anchor('items/view/-1',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
-						</div>
-						<div class="col-md-2 <?php echo $this->config->item('wizard_edit_employees') ? 'wizard_step_done' : '';?>">
-							<img src="<?php echo base_url('assets/img/user-group-man-man.png') ?>"/>
-							<h4><?php echo lang('module_employees');?></h4>
-							<p><?php echo lang('home_wizard_edit_employees');?></p>
-							<span><?php echo anchor('employees',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
-						</div>
-						<div class="col-md-2 <?php echo $this->config->item('wizard_add_customer') ? 'wizard_step_done' : '';?>">
-							<img src="<?php echo base_url('assets/img/add-user-group-man-man.png') ?>"/>
-							<h4><?php echo lang('module_customers');?></h4>
-							<p><?php echo lang('home_wizard_add_customer');?></p>
-							<span><?php echo anchor('customers/view/-1',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
-						</div>
-						<div class="col-md-2 <?php echo $this->config->item('wizard_create_sale') ? 'wizard_step_done' : '';?>">
-							<img src="<?php echo base_url('assets/img/cash-register.png') ?>"/>
-							<h4><?php echo lang('module_sales');?></h4>
-							<p><?php echo lang('home_wizard_create_sale');?></p>
-							<span><?php echo anchor('sales',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
-						</div>
-
-						
-							
-				    </div>
-				</ul>
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="panel-body">
+						<a id="dismiss_setup_wizard" href="<?php echo site_url('home/dismiss_setup_wizard') ?>" class="pull-right text-danger"><?php echo lang('common_dismiss'); ?></a>
+						<h4><?php echo lang('home_setup_wizard');?></h4>
+						<hr />
+				    	<div id="setup_wizard">
+					    	<div class="col-md-2 <?php echo $this->config->item('wizard_configure_company') ? 'wizard_step_done' : '';?>">
+								<img src="<?php echo base_url('assets/img/gear.png') ?>"/>
+								<h4><?php echo lang('module_config');?></h4>
+								<p><?php echo lang('home_wizard_configure_company');?></p>
+								<span><?php echo anchor('config',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
+							</div>
+							<div class="col-md-2 <?php echo $this->config->item('wizard_configure_locations') ? 'wizard_step_done' : '';?>">
+								<img src="<?php echo base_url('assets/img/building.png') ?>"/>
+								<h4><?php echo lang('module_locations');?></h4>
+								<p><?php echo lang('home_wizard_configure_locations');?></p>
+								<span><?php echo anchor('locations',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
+							</div>
+							<div class="col-md-2 <?php echo $this->config->item('wizard_add_inventory') ? 'wizard_step_done' : '';?>">
+								<img src="<?php echo base_url('assets/img/product.png') ?> "/>
+								<h4><?php echo lang('module_items');?></h4>
+								<p><?php echo lang('home_wizard_add_inventory');?></p>
+								<span><?php echo anchor('items/view/-1',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
+							</div>
+							<div class="col-md-2 <?php echo $this->config->item('wizard_edit_employees') ? 'wizard_step_done' : '';?>">
+								<img src="<?php echo base_url('assets/img/user-group-man-man.png') ?>"/>
+								<h4><?php echo lang('module_employees');?></h4>
+								<p><?php echo lang('home_wizard_edit_employees');?></p>
+								<span><?php echo anchor('employees',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
+							</div>
+							<div class="col-md-2 <?php echo $this->config->item('wizard_add_customer') ? 'wizard_step_done' : '';?>">
+								<img src="<?php echo base_url('assets/img/add-user-group-man-man.png') ?>"/>
+								<h4><?php echo lang('module_customers');?></h4>
+								<p><?php echo lang('home_wizard_add_customer');?></p>
+								<span><?php echo anchor('customers/view/-1',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
+							</div>
+							<div class="col-md-2 <?php echo $this->config->item('wizard_create_sale') ? 'wizard_step_done' : '';?>">
+								<img src="<?php echo base_url('assets/img/cash-register.png') ?>"/>
+								<h4><?php echo lang('module_sales');?></h4>
+								<p><?php echo lang('home_wizard_create_sale');?></p>
+								<span><?php echo anchor('sales',lang('common_go').' &raquo;', array('class' => 'btn btn-info',' style' => 'margin-left: 10px;'));?></span>
+							</div>	
+				    	</div>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
 	<?php } ?>
 	
 	
@@ -197,8 +191,7 @@ $this->load->helper('demo');
 				<div class="panel-body">
 					<a id="dismiss_mercury" href="<?php echo site_url('home/dismiss_mercury_message') ?>" class="pull-right text-danger"><?php echo lang('common_dismiss'); ?></a>
 					<div id="mercury_activate_container">
-						<h3><a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_credit_card_processing'); ?></a></h3>
-						
+						<h3><a href="https://api.whatsapp.com/send/?phone=50244060701&text&type=phone_number&app_absent=0" target="_blank"><?php echo lang('common_credit_card_processing'); ?></a></h3>						
 							<?php echo lang('home_mercury_activate_promo_text');?>
 						</a>
 					</div>
@@ -452,7 +445,7 @@ if (!is_on_demo_host() && !$this->config->item('hide_test_mode_home') && !$this-
 			<a href="<?php echo site_url('deliveries'); ?>">
 				<div class="dashboard-stats">
 					<div class="left">
-						<h3 class="flatGreenc"><?php echo $total_deliveries + 0; ?></h3>
+						<h3 class="flatGreenc"><?php echo $total_deliveries+0; ?></h3>
 						<h4><?php echo lang('common_total')." ".lang('module_deliveries'); ?></h4>
 					</div>
 					<div class="right flatGreen">

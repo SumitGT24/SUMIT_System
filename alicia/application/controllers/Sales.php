@@ -2294,12 +2294,10 @@ class Sales extends Secure_area
 			$firma = $info->xmlSigned;
 			if($firma==""){
 				$this->cart->nit = "";
-				$this->cart->save();
-				echo $response;
+				$this->cart->save();				
 				$fileXML = 'facturas/error.xml';				
-				var_dump($info);
-				var_dump($xml);
-				exit();
+				$this->_reload(array('Error XML' => lang('Valores incorrectos para facturación electrónica')), false);
+				return;
 			}
 			curl_close($curl);
 			$venta = $saved_sale_info['sale_id'];
@@ -2348,14 +2346,12 @@ class Sales extends Secure_area
 				$this->cart->nit = "";
 				$this->cart->save();
 				$sat = 2;
-				// echo $info['descripcion_errores'][0]['mensaje_error'];
-				var_dump($info);
-				echo "error";
+				// echo $info['descripcion_errores'][0]['mensaje_error'];				
 				//TODO: Configurar mensaje de error				
 				$fileXML = 'facturas/error.xml';
 				file_put_contents($fileXML, $xml);
-				echo $xml;
-				exit();
+				$this->_reload(array('Error firma' => lang('Valores incorrectos para facturación electrónica')), false);
+				return;
 			}
 		}
 		//Reset this value $this->cart->nit 
@@ -2363,9 +2359,10 @@ class Sales extends Secure_area
 		$this->load->view("sales/receipt", $data);
 
 		if ($data['sale_id'] != $this->config->item('sale_prefix') . ' -1') {
+			$this->cart->nit = "";
 			$this->cart->destroy();
 			$this->cart->save();
-			$this->Appconfig->save('wizard_create_sale', 1);
+			$this->Appconfig->save('wizard_create_sale', 1);		
 		}
 
 		//We need to reset this data because is already gone when saving sale
@@ -2385,8 +2382,6 @@ class Sales extends Secure_area
 		$this->Register_cart->set_data($final_cart_data, $this->Employee->get_logged_in_employee_current_register_id());
 		$this->Register_cart->add_data(array('can_email' => $data['can_email_receipt'], 'sale_id' => $sale_id_raw), $this->Employee->get_logged_in_employee_current_register_id());
 
-		$this->cart->nit = "";
-		$this->cart->save();
 	}
 
 	function download_receipt($sale_id)
@@ -2964,7 +2959,7 @@ class Sales extends Secure_area
 	function save($sale_id)
 	{
 		$sale_data = array(
-			//'sale_time' => date('Y-m-d H:i:s', strtotime($this->input->post('date'))),
+			//'sale_time' => date('Y-m-d H:i:s', strtotime($this->input->post('date'))),			
 			'last_modified' => date('Y-m-d H:i:s'),
 			'customer_id' => $this->input->post('customer_id') ? $this->input->post('customer_id') : null,
 			'employee_id' => $this->input->post('employee_id'),
@@ -4187,11 +4182,11 @@ class Sales extends Secure_area
 			$delivery_person_info['last_name'] = $customer_info->last_name;
 			$delivery_person_info['phone_number'] = $customer_info->phone_number;
 			$delivery_person_info['address_1'] = $customer_info->address_1;
-			$delivery_person_info['address_2'] = $customer_info->address_2;
-			$delivery_person_info['city'] = $customer_info->city;
-			$delivery_person_info['state'] = $customer_info->state;
-			$delivery_person_info['zip'] = $customer_info->zip;
-			$delivery_person_info['country'] = $customer_info->country;
+			//$delivery_person_info['address_2'] = $customer_info->address_2;
+			//$delivery_person_info['city'] = $customer_info->city;
+			//$delivery_person_info['state'] = $customer_info->state;
+			//$delivery_person_info['zip'] = $customer_info->zip;
+			//$delivery_person_info['country'] = $customer_info->country;
 
 			$this->cart->set_delivery_person_info($delivery_person_info);
 		}

@@ -131,7 +131,7 @@ INSERT INTO `phppos_app_config` (`key`, `value`) VALUES
 ('commission_default_rate', '0'),
 ('commission_percent_type', 'selling_price'),
 ('company', 'SUMIT'),
-('company_logo', '1'),
+('company_logo', '0'),
 ('confirm_error_adding_item', '0'),
 ('crlf', '\r\n'),
 ('currency_code', ''),
@@ -298,7 +298,7 @@ INSERT INTO `phppos_app_config` (`key`, `value`) VALUES
 ('override_signature_text', ''),
 ('override_tier_name', ''),
 ('overwrite_existing_items_on_excel_import', '0'),
-('past_inventory_date', '2022-02-07'),
+('past_inventory_date', now()),
 ('paypal_me', ''),
 ('pdf_receipt_message', ''),
 ('phppos_session_expiration', '0'),
@@ -1560,7 +1560,7 @@ CREATE TABLE `phppos_locations` (
 --
 
 INSERT INTO `phppos_locations` (`location_id`, `name`, `company`, `website`, `company_logo`, `address`, `phone`, `email`, `cc_email`, `bcc_email`, `color`, `return_policy`, `receive_stock_alert`, `stock_alert_email`, `timezone`, `enable_credit_card_processing`, `credit_card_processor`, `hosted_checkout_merchant_id`, `hosted_checkout_merchant_password`, `emv_merchant_id`, `net_e_pay_server`, `listener_port`, `com_port`, `stripe_public`, `stripe_private`, `stripe_currency_code`, `braintree_merchant_id`, `braintree_public_key`, `braintree_private_key`, `default_tax_1_rate`, `default_tax_1_name`, `default_tax_2_rate`, `default_tax_2_name`, `default_tax_2_cumulative`, `default_tax_3_rate`, `default_tax_3_name`, `default_tax_4_rate`, `default_tax_4_name`, `default_tax_5_rate`, `default_tax_5_name`, `deleted`, `secure_device_override_emv`, `secure_device_override_non_emv`, `tax_class_id`, `ebt_integrated`, `integrated_gift_cards`, `square_currency_code`, `square_location_id`, `square_currency_multiplier`, `email_sales_email`, `email_receivings_email`, `stock_alerts_just_order_level`, `platformly_api_key`, `platformly_project_id`, `tax_id`, `disable_markup_markdown`, `card_connect_mid`, `card_connect_rest_username`, `card_connect_rest_password`, `auto_reports_email`, `auto_reports_email_time`, `auto_reports_day`, `disable_confirmation_option_for_emv_credit_card`, `api_key`, `nit`, `razon_social`, `number_establecimiento`, `municipio`, `departamento`,`tipo_contribuyente`) VALUES
-(1, 'Tienda SUMIT', '', 'sumit.gt', null, 'CC PLAZA ASTURIAS COBAN', '', '', '', '', '#001f49', '', '0', '', 'America/Guatemala', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', '', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz',0);
+(1, 'Tienda SUMIT', '', 'sumit.gt', 2, 'CC PLAZA ASTURIAS COBAN', '', '', '', '', '#001f49', '', '0', '', 'America/Guatemala', '0', 'mercury', '', '', '', '', '', '', '', '', 'usd', '', '', '', '', '', '', '', '0', '', '', '', '', '', '', 0, '', '', NULL, 1, 0, 'USD', '', '100', '', '', 0, '', '', '', '0', '', '', '', '', '00:00:00', 'previous_day', 0, NULL, NULL, NULL, '1', 'Coban ', 'Alta Verapaz',0);
 
 -- --------------------------------------------------------
 

@@ -47,7 +47,18 @@ function get_date_format_extended()
 	 
 function get_date_format()
 {
-	return "d/m/Y";
+	$CI =& get_instance();
+	switch($CI->config->item('date_format'))
+	{
+		case "middle_endian":
+			return "d/m/Y";
+		case "little_endian":
+			return "d-m-Y";
+		case "big_endian":
+			return "Y-m-d";
+		default:
+			return "m/d/Y";
+	}
 }
 
 
@@ -73,7 +84,7 @@ function get_js_date_format()
 	$CI =& get_instance();
 	switch($CI->config->item('date_format'))
 	{
-		case "middle_endian":
+		case "middle_endian": //configuracion predeterminada del sistema
 			return "MM/DD/YYYY";
 		case "little_endian":
 			return "DD-MM-YYYY";
@@ -83,8 +94,6 @@ function get_js_date_format()
 		return "MM/DD/YYYY";
 	}
 }
-
-
 
 function get_time_format()
 {
@@ -144,7 +153,7 @@ function get_js_locale()
 				'tamil' => 'ta',
 				);
 
-	return isset($languages[$CI->config->item("language")]) ? $languages[$CI->config->item("language")] : 'en';
+	return isset($languages[$CI->config->item("language")]) ? $languages[$CI->config->item("language")] : 'es';
 }
 
 function datetime_as_display_date($val)

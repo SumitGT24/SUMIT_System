@@ -481,7 +481,7 @@ $lang['common_visible_columns'] = 'Columnas visibles';
 $lang['common_location_cost_price'] = 'Localización del precio de costo';
 $lang['common_category_full_path'] = 'Categoría de ruta completa';
 $lang['common_column_configuration'] = 'Configuración de la columna';
-$lang['common_default'] = 'Defecto';
+$lang['common_default'] = 'Por defecto';
 $lang['common_custom_field_config'] = 'Configuración de campo personalizada';
 $lang['common_field_1_name'] = 'Nombre del campo personalizado 1';
 $lang['common_field_2_name'] = 'Nombre del campo personalizado 2';
@@ -514,7 +514,7 @@ $lang['common_sale_date'] = 'Fecha de venta';
 $lang['common_next_day'] = 'Día siguiente';
 $lang['common_previous_day'] = 'Día anterior';
 $lang['common_fee'] = 'Cuota';
-$lang['common_zips'] = 'Cremalleras';
+$lang['common_zips'] = 'Códigos postales';
 $lang['common_item_kit_id'] = 'Id. del kit';
 $lang['common_reset'] = 'Reiniciar';
 $lang['common_calendar_of'] = 'Calendario de';
@@ -684,10 +684,7 @@ $lang['common_online'] = 'En línea';
 $lang['common_pay_all'] = 'Pagar todos';
 $lang['common_unpay_all'] = 'Eliminar todo';
 
-
 $lang['common_copy_to_clipboard'] = 'Copiar al portapapeles';
-
-
 
 $lang['common_delivery_address'] = 'Dirección de entrega';
 $lang['deliveries_completed'] = 'Terminado';
@@ -696,15 +693,10 @@ $lang['deliveries_scheduled'] = 'Programado';
 $lang['delivieries_shipped'] = 'Enviado';
 $lang['deliveries_delivered'] = 'Entregado';
 $lang['deliveries_shipped'] = 'Enviado';
-$lang['deliveries_delivery_employee'] = 'Empleado de entrega';
+$lang['deliveries_delivery_employee'] = 'Encargado';
 $lang['reports_deliveries'] = 'Entregas';
 
-
-
 $lang['common_you_did_not_select_variations_for_applicable_variation_items'] = 'NO seleccionó variaciones para los artículos de variación aplicables';
-
-
-
 
 $lang['common_requires_age_verification'] = 'Requiere verificación de edad';
 $lang['common_required_age'] = 'Edad requerida';
@@ -762,17 +754,11 @@ $lang['common_only_integer'] = 'Solo permite que los artículos se vendan en nú
 $lang['common_must_be_whole_number'] = 'Debes usar un número entero';
 $lang['items_see_count_when_count_inventory'] = 'Ver el recuento de inventario al contar el inventario';
 
-
-
 $lang['sales_edit_suspended_sale'] = 'Editar venta suspendida';
-
-
 
 $lang['common_approve'] = 'Aprobar';
 $lang['common_approved'] = 'Aprobado';
 $lang['common_deny'] = 'Negar';
-
-
 
 $lang['common_integrated_gift_cards'] = 'Tarjetas de regalo integradas';
 $lang['common_integrated_gift_card'] = 'Tarjeta de regalo integrada';
@@ -781,8 +767,6 @@ $lang['common_process_giftcard_on_machine'] = 'Procesar tarjeta de regalo en la 
 $lang['common_waiting'] = 'Esperando...';
 $lang['common_partial_integrated_gift_card'] = 'Tarjeta de regalo integrada parcial';
 
-
-
 $lang['common_series_quantity'] = 'Cantidad de la serie';
 $lang['common_series_days_to_use_within'] = 'Número de días que la serie debe usarse dentro de';
 $lang['common_quantity_remaining'] = 'Cantidad restante';
@@ -790,26 +774,16 @@ $lang['common_quantity_used'] = 'Cantidad utilizada';
 $lang['common_series'] = 'Serie';
 $lang['common_expired'] = 'Muerto';
 
-
-
 $lang['common_redeem_series'] = 'Canjear serie';
 $lang['common_confirm_redeem_series'] = '¿Seguro que quieres canjear series?';
 $lang['common_already_used'] = 'Ya usado';
 
-
-
 $lang['common_is_barcoded'] = 'Tiene código de barras';
-
-
 
 $lang['common_enter_margin_percent'] = 'Ingrese el porcentaje de margen';
 $lang['common_markup'] = 'Margen';
 
-
-
 $lang['common_go'] = 'Ir';
-
-
 
 $lang['common_internal_notes'] = 'Ultimos 4 Digitos de tarjeta si esta suscrito a COBRO RECURRENTE';
 
@@ -907,16 +881,10 @@ $lang['common_offline'] = 'Está desconectado y puede procesar transacciones de 
 $lang['common_track'] = 'Pista';
 $lang['common_in_register'] = 'En registro';
 
-
-
 $lang['common_view_inventory_print_list'] = 'Ver inventario Imprimir lista';
 $lang['common_dynamic_pricing'] = 'Precio dinamico';
 
-
-
 $lang['common_view_inventory_at_all_locations'] = 'Ver inventario en TODAS las ubicaciones';
-
-
 
 $lang['common_info_popup'] = 'Mensaje emergente cuando el producto se agrega a la venta';
 $lang['common_tax_id'] = 'Identificación del impuesto';
