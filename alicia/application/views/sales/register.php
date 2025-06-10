@@ -3322,8 +3322,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 
 		<?php } ?>
 
-
-
 		function show_grid() {
 			$("#category_item_selection_wrapper").promise().done(function() {
 				$("#category_item_selection_wrapper").slideDown();

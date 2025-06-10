@@ -1,19 +1,15 @@
 <?php $this->load->view("partial/header"); ?>
-		<?php echo form_open('deliveries/save/'.$this->uri->segment('3'),array('id'=>'edit_delivery_form','class'=>'form-horizontal')); 	?>
+	<?php echo form_open('deliveries/save/'.$this->uri->segment('3'),array('id'=>'edit_delivery_form','class'=>'form-horizontal')); 	?>
 		<div class="panel panel-piluku">
 			<div class="panel-heading">
 				<?php echo lang("deliveries_basic_info"); ?> (<small><?php echo lang('common_fields_required_message'); ?></small>)
-			</div>
+			</div>			
 			
-			
-			<div class="panel-body">
-				
+			<div class="panel-body">				
 				<?php
 				$this_sale_info = $this->Sale->get_info($delivery_info['sale_id'])->row();
 				
-				if (!$this_sale_info->is_ecommerce)
-				{
-				?>
+				if (!$this_sale_info->is_ecommerce){ ?>
 				<div class="form-group">
 					<?php echo form_label(lang('common_actions').':', 'edit_sale',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label wide')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
@@ -30,31 +26,24 @@
 						<?php 
 						
 						$employees = array('' => lang('common_none'));
-
 						foreach($this->Employee->get_all()->result() as $employee)
 						{
 							$employees[$employee->person_id] = $employee->first_name .' '.$employee->last_name;
 						}
 						
 						echo form_dropdown('delivery_employee_person_id', $employees, $delivery_info['delivery_employee_person_id'], 'class="form-inps" id="delivery_employee_person_id"');
-						?>
-								
-					</div>
-					
+						?>								
+					</div>					
 				</div>				
 				
 				<div class="form-group">
 					<?php echo form_label(lang('deliveries_status').':', 'status',array('class'=>'col-sm-3 col-md-3 col-lg-2 control-label wide')); ?>
 					<div class="col-sm-9 col-md-9 col-lg-10">
 						<?php 
-						$status =$delivery_info['status']; 
-						
-						$status_types = $status_types;
-						
-						echo form_dropdown('status', $status_types, $status, 'class="form-control form-inps" id="status"'); ?>
-								
-					</div>
-					
+						$status =$delivery_info['status']; 						
+						$status_types = $status_types;						
+						echo form_dropdown('status', $status_types, $status, 'class="form-control form-inps" id="status"'); ?>								
+					</div>					
 				</div>
 				
 				<div class="form-group">
@@ -286,14 +275,15 @@
 					</ul>
 				</div>
 			</div> <!-- close pannel body -->
-			<?php echo form_close(); ?>
+	<?php echo form_close(); ?>
 			<script>
 				$(document).ready(function(){
 				    $('[data-toggle="tooltip"]').tooltip(); 
 						$("#delivery_employee_person_id").select2();
 				});
 				
-				date_time_picker_field($('.datepicker'), JS_DATE_FORMAT+ " "+JS_TIME_FORMAT);
+				//date_time_picker_field($('.datepicker'), JS_DATE_FORMAT+ " "+JS_TIME_FORMAT);
+				date_time_picker_field($('.datepicker'), "DD/MM/YYYY"+" "+JS_TIME_FORMAT);
 				
 				$status = $("#status");
 				

@@ -243,7 +243,9 @@
 	
 	$(document).ready(function()
 	{
-			date_time_picker_field($('.datepicker'), JS_DATE_FORMAT+" "+JS_TIME_FORMAT);
+			// define date pickers with format DD/MM/YYYY HH:mm:ss
+			//date_time_picker_field($('.datepicker'), JS_DATE_FORMAT+" "+JS_TIME_FORMAT);
+			date_time_picker_field($('.datepicker'), "DD/MM/YYYY"+" "+JS_TIME_FORMAT);			
 			
 			function reset_form()
 			{
@@ -494,12 +496,12 @@
 		
 		if($('#estimated_shipping_date').val())
 		{
-			delivery_info.estimated_shipping_date = is_pickup ?  null : $('#estimated_shipping_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss'); //original			
+			delivery_info.estimated_shipping_date = is_pickup ?  null : $('#estimated_shipping_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss'); //original						
 		}
 		
 		if($('#pick_up_date').val() || $('#estimated_delivery_date').val())
 		{
-			delivery_info.estimated_delivery_or_pickup_date = is_pickup ? $('#pick_up_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss') : $('#estimated_delivery_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss'); //original
+			delivery_info.estimated_delivery_or_pickup_date = is_pickup ? $('#pick_up_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss') : $('#estimated_delivery_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss'); //original									
 		}
 		
 		if ($('.delivery-rate-btn.active input').eq(0).val())

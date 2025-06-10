@@ -57,7 +57,7 @@ function get_date_format()
 		case "big_endian":
 			return "Y-m-d";
 		default:
-			return "m/d/Y";
+			return "d/m/Y";
 	}
 }
 
