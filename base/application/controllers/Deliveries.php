@@ -271,10 +271,14 @@ class Deliveries extends Secure_area implements Idata_controller
 			'comment' => $this->input->post('comment'),
 			'tracking_number' => $this->input->post('tracking_number'),
 			'status' => $this->input->post('status'),
-			'estimated_shipping_date' => $this->input->post('estimated_shipping_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('estimated_shipping_date'))) : NULL,
-			'actual_shipping_date' => $this->input->post('actual_shipping_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('actual_shipping_date'))) : NULL,
-			'estimated_delivery_or_pickup_date' => $this->input->post('estimated_delivery_or_pickup_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('estimated_delivery_or_pickup_date'))) : NULL,
-			'actual_delivery_or_pickup_date' => $this->input->post('actual_delivery_or_pickup_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('actual_delivery_or_pickup_date'))) : NULL,
+			//'estimated_shipping_date' => $this->input->post('estimated_shipping_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('estimated_shipping_date'))) : NULL,
+			//'actual_shipping_date' => $this->input->post('actual_shipping_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('actual_shipping_date'))) : NULL,
+			//'estimated_delivery_or_pickup_date' => $this->input->post('estimated_delivery_or_pickup_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('estimated_delivery_or_pickup_date'))) : NULL,
+			//'actual_delivery_or_pickup_date' => $this->input->post('actual_delivery_or_pickup_date') ? date('Y-m-d H:i:s', strtotime($this->input->post('actual_delivery_or_pickup_date'))) : NULL,
+			'estimated_shipping_date' => $this->_parse_date($this->input->post('estimated_shipping_date')),
+			'actual_shipping_date' => $this->_parse_date($this->input->post('actual_shipping_date')),
+			'estimated_delivery_or_pickup_date' => $this->_parse_date($this->input->post('estimated_delivery_or_pickup_date')),
+			'actual_delivery_or_pickup_date' => $this->_parse_date($this->input->post('actual_delivery_or_pickup_date')),
 			'delivery_employee_person_id' => $this->input->post('delivery_employee_person_id') ? $this->input->post('delivery_employee_person_id') : NULL,
 		);
 		
@@ -544,5 +548,25 @@ class Deliveries extends Secure_area implements Idata_controller
 			$ids = $this->input->post('ids');
 			$this->Delivery->update_status_bulk($ids,$status);
 		}
+		//Apply date format to the date string
+		private function _parse_date($date_str)
+		{
+			if (!$date_str)
+			{
+				return NULL;
+			}
+
+			// Adaptar a tu formato exacto: "d/m/Y h:i a"
+			$date = DateTime::createFromFormat('d/m/Y h:i a', $date_str);
+
+			if ($date === false)
+			{
+				// O podés lanzar un error si querés
+				log_message('error', 'Error parsing date: ' . $date_str);
+				return NULL;
+			}
+			return $date->format('Y-m-d H:i:s');
+		}
+
 }
 ?>

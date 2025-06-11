@@ -2652,7 +2652,7 @@ if (isset($number_to_add) && isset($item_to_add)) {
 				sms_receipt: $('#sms_receipt').is(':checked') ? '1' : '0'
 			});
 		});
-
+		//Revisar marcado de envío de recibo de entrega
 		$('#delivery').change(function(e) {
 			e.preventDefault();
 			$.post('<?php echo site_url("sales/set_delivery"); ?>', {
@@ -2822,9 +2822,9 @@ if (isset($number_to_add) && isset($item_to_add)) {
 						$.post('<?php echo site_url("sales/select_customer"); ?>', {
 							customer: decodeHtml(ui.item.value) + '|FORCE_PERSON_ID|'
 						}, function(response) {
-							$("#register_container").html(response);
 							//cleanModal
 							cleanDeliveryModal();
+							$("#register_container").html(response);
 						});
 					},
 				}).data("ui-autocomplete")._renderItem = function(ul, item) {
@@ -3002,9 +3002,9 @@ if (isset($number_to_add) && isset($item_to_add)) {
 
 		$('#delete_customer').click(function(event) {
 			event.preventDefault();
+			cleanDeliveryModal();
 			$("#register_container").load($(this).attr('href'));
 			//cleanModal
-			cleanDeliveryModal();
 		});
 
 		$('.delete-tax').click(function(event) {

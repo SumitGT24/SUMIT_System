@@ -38,12 +38,12 @@
 					<?php if ($this->Location->count_all() > 1) { ?>
 				
 					<div class="form-group">	
-						<?php echo form_label('Locations :', 'locations',array('class'=>'required col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<?php echo form_label('Ubicaciones :', 'locations',array('class'=>'required col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
 							<div class="input-group">
 								<span class="input-group-addon bg message-input">
 									<input type="checkbox" aria-label="All" value="all" name="all_locations" id="all_locations" > 
-									<label for="all_locations"><span></span>All</label>
+									<label for="all_locations"><span></span>Todos</label>
 								</span>
 								<?php echo form_dropdown('locations[]',$locations, '', 'id="locations" class="input-medium" multiple="multiple"'); ?>
 							</div><!-- /input-group -->
@@ -54,12 +54,12 @@
 					<?php } ?>
 
 					<div class="form-group">	
-						<?php echo form_label('Employees :', 'employees',array('class'=>'required col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
+						<?php echo form_label('Empleados :', 'employees',array('class'=>'required col-sm-3 col-md-3 col-lg-2 control-label ')); ?>
 						<div class="col-sm-9 col-md-9 col-lg-10">
 							<div class="input-group">
 								<span class="input-group-addon bg message-input">
 									<input type="checkbox" aria-label="All" value="all" name="all_employees" id="all_employees" > 
-									<label for="all_employees"><span></span>All</label>
+									<label for="all_employees"><span></span>Todos</label>
 								</span>
 								<?php echo form_dropdown('employees[]',$employees, '', 'id="employees" class="input-medium" multiple="multiple"'); ?>
 							</div><!-- /input-group -->

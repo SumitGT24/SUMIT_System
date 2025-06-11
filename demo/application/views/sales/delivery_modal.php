@@ -91,8 +91,9 @@
 												$employees = array('' => lang('common_none'));
 												foreach($this->Employee->get_all()->result() as $employee){
 													$employees[$employee->person_id] = $employee->first_name .' '.$employee->last_name;
-												}						
-												echo form_dropdown('delivery_employee_person_id', $employees, $delivery_info['delivery_employee_person_id'], 'class="form-control" id="delivery_employee_person_id"'); ?>								
+												}				
+												$delivery_employee = $delivery_info['delivery_employee_person_id'] ? $delivery_info['delivery_employee_person_id'] : $this->Employee->get_logged_in_employee_info()->person_id;		
+												echo form_dropdown('delivery_employee_person_id', $employees, $delivery_employee, 'class="form-control" id="delivery_employee_person_id"'); ?>								
 										</div>					
 								</div>
 
@@ -146,7 +147,7 @@
 					 						        'name'=>'pick_up_date',
 					 						        'id'=>'pick_up_date',
 					 										'class'=>'form-control datepicker',
-					 						        'value'=> isset($delivery_info['estimated_delivery_or_pickup_date']) ? date(get_date_format().' '.get_time_format(), strtotime($delivery_info['estimated_delivery_or_pickup_date'])) : ''
+					 						        'value'=> isset($delivery_info['estimated_delivery_or_pickup_date']) ? date(get_date_format().' '.get_time_format(), strtotime($delivery_info['estimated_delivery_or_pickup_date'])) : ''										
 					 						    ));?> 
 					 					    </div>
 					 				    </div>
@@ -164,7 +165,8 @@
 								<?php echo form_label(lang('deliveries_status').':', 'deliveries_status', array('class'=>'col-sm-3 col-md-3 col-lg-3 control-label')); ?>
 								<div class="col-sm-9 col-md-9 col-lg-9">
 									<?php 
-										echo form_dropdown('deliveries_status', $deliveries_status, $delivery_info['status'], 'class="form-control" id="deliveries_status"');
+										$status = $delivery_info['status'] ? $delivery_info['status'] : 'not_scheduled';
+										echo form_dropdown('deliveries_status', $deliveries_status, $status, 'class="form-control" id="deliveries_status"');
 									?>
 								</div>			
 							</div>								
@@ -175,7 +177,7 @@
 						<div class="form-group row">
 							<label for="first_name" class="col-sm-3 col-md-3 col-lg-3 control-label "><?php echo lang("common_first_name"); ?> :</label>
 							<div class="col-sm-9 col-md-9 col-lg-9">
-								<input type="text" name="first_name" value="<?php echo $delivery_person_info['first_name']; ?>" class="form-control" id="first_name">
+								<input type="text" name="first_name" value="<?php echo $delivery_person_info['first_name']; ?>" class="form-control" id="first_name" required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -241,7 +243,9 @@
 	
 	$(document).ready(function()
 	{
-			date_time_picker_field($('.datepicker'), JS_DATE_FORMAT+" "+JS_TIME_FORMAT);
+			// define date pickers with format DD/MM/YYYY HH:mm:ss
+			//date_time_picker_field($('.datepicker'), JS_DATE_FORMAT+" "+JS_TIME_FORMAT);
+			date_time_picker_field($('.datepicker'), "DD/MM/YYYY"+" "+JS_TIME_FORMAT);			
 			
 			function reset_form()
 			{
@@ -492,12 +496,12 @@
 		
 		if($('#estimated_shipping_date').val())
 		{
-			delivery_info.estimated_shipping_date = is_pickup ?  null : $('#estimated_shipping_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss');
+			delivery_info.estimated_shipping_date = is_pickup ?  null : $('#estimated_shipping_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss'); //original						
 		}
 		
 		if($('#pick_up_date').val() || $('#estimated_delivery_date').val())
 		{
-			delivery_info.estimated_delivery_or_pickup_date = is_pickup ? $('#pick_up_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss') : $('#estimated_delivery_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss');
+			delivery_info.estimated_delivery_or_pickup_date = is_pickup ? $('#pick_up_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss') : $('#estimated_delivery_date').data("DateTimePicker").date().format('YYYY-MM-DD HH:mm:ss'); //original									
 		}
 		
 		if ($('.delivery-rate-btn.active input').eq(0).val())

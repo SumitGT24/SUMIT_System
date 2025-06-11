@@ -2296,7 +2296,7 @@ class Sales extends Secure_area
 				$this->cart->nit = "";
 				$this->cart->save();				
 				$fileXML = 'facturas/error.xml';				
-				$this->_reload(array('Error XML' => lang('Valores incorrectos para facturación electrónica')), false);
+				$this->_reload(array('Error XML' => 'Valores incorrectos para facturación electrónica'), false);
 				return;
 			}
 			curl_close($curl);
@@ -2350,7 +2350,7 @@ class Sales extends Secure_area
 				//TODO: Configurar mensaje de error				
 				$fileXML = 'facturas/error.xml';
 				file_put_contents($fileXML, $xml);
-				$this->_reload(array('Error firma' => lang('Valores incorrectos para facturación electrónica')), false);
+				$this->_reload(array('Error firma' => 'Valores incorrectos para facturación electrónica'), false);
 				return;
 			}
 		}
@@ -2959,7 +2959,7 @@ class Sales extends Secure_area
 	function save($sale_id)
 	{
 		$sale_data = array(
-			//'sale_time' => date('Y-m-d H:i:s', strtotime($this->input->post('date'))),
+			//'sale_time' => date('Y-m-d H:i:s', strtotime($this->input->post('date'))),			
 			'last_modified' => date('Y-m-d H:i:s'),
 			'customer_id' => $this->input->post('customer_id') ? $this->input->post('customer_id') : null,
 			'employee_id' => $this->input->post('employee_id'),
@@ -4182,11 +4182,11 @@ class Sales extends Secure_area
 			$delivery_person_info['last_name'] = $customer_info->last_name;
 			$delivery_person_info['phone_number'] = $customer_info->phone_number;
 			$delivery_person_info['address_1'] = $customer_info->address_1;
-			$delivery_person_info['address_2'] = $customer_info->address_2;
-			$delivery_person_info['city'] = $customer_info->city;
-			$delivery_person_info['state'] = $customer_info->state;
-			$delivery_person_info['zip'] = $customer_info->zip;
-			$delivery_person_info['country'] = $customer_info->country;
+			//$delivery_person_info['address_2'] = $customer_info->address_2;
+			//$delivery_person_info['city'] = $customer_info->city;
+			//$delivery_person_info['state'] = $customer_info->state;
+			//$delivery_person_info['zip'] = $customer_info->zip;
+			//$delivery_person_info['country'] = $customer_info->country;
 
 			$this->cart->set_delivery_person_info($delivery_person_info);
 		}

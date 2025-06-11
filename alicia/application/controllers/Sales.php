@@ -2296,7 +2296,7 @@ class Sales extends Secure_area
 				$this->cart->nit = "";
 				$this->cart->save();				
 				$fileXML = 'facturas/error.xml';				
-				$this->_reload(array('Error XML' => lang('Valores incorrectos para facturación electrónica')), false);
+				$this->_reload(array('Error XML' => 'Valores incorrectos para facturación electrónica'), false);
 				return;
 			}
 			curl_close($curl);
@@ -2350,7 +2350,7 @@ class Sales extends Secure_area
 				//TODO: Configurar mensaje de error				
 				$fileXML = 'facturas/error.xml';
 				file_put_contents($fileXML, $xml);
-				$this->_reload(array('Error firma' => lang('Valores incorrectos para facturación electrónica')), false);
+				$this->_reload(array('Error firma' => 'Valores incorrectos para facturación electrónica'), false);
 				return;
 			}
 		}

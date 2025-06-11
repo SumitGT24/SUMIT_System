@@ -1213,6 +1213,7 @@
 
 			</div>
 			<!--Test deliveries-->
+		
 			<?php
 			if ($this->Employee->has_module_action_permission('deliveries', 'add_update', $this->Employee->get_logged_in_employee_info()->person_id)) { 
 			?>
@@ -2651,7 +2652,7 @@ if (isset($number_to_add) && isset($item_to_add)) {
 				sms_receipt: $('#sms_receipt').is(':checked') ? '1' : '0'
 			});
 		});
-
+		//Revisar marcado de envío de recibo de entrega
 		$('#delivery').change(function(e) {
 			e.preventDefault();
 			$.post('<?php echo site_url("sales/set_delivery"); ?>', {
@@ -2821,9 +2822,9 @@ if (isset($number_to_add) && isset($item_to_add)) {
 						$.post('<?php echo site_url("sales/select_customer"); ?>', {
 							customer: decodeHtml(ui.item.value) + '|FORCE_PERSON_ID|'
 						}, function(response) {
-							$("#register_container").html(response);
 							//cleanModal
 							cleanDeliveryModal();
+							$("#register_container").html(response);
 						});
 					},
 				}).data("ui-autocomplete")._renderItem = function(ul, item) {
@@ -3001,9 +3002,9 @@ if (isset($number_to_add) && isset($item_to_add)) {
 
 		$('#delete_customer').click(function(event) {
 			event.preventDefault();
+			cleanDeliveryModal();
 			$("#register_container").load($(this).attr('href'));
 			//cleanModal
-			cleanDeliveryModal();
 		});
 
 		$('.delete-tax').click(function(event) {
@@ -3320,8 +3321,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 			});
 
 		<?php } ?>
-
-
 
 		function show_grid() {
 			$("#category_item_selection_wrapper").promise().done(function() {
@@ -3767,7 +3766,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		return no_payment
 	}
 
-
 	$("#sale_details_expand_collapse").click(function() {
 		$('.register-item-bottom').toggleClass('collapse');
 
@@ -3903,7 +3901,6 @@ if (isset($number_to_add) && isset($item_to_add)) {
 
 	}
 
-
 	function inArray(needle, haystack) {
 		var length = haystack.length;
 		for (var i = 0; i < length; i++) {
@@ -3941,25 +3938,22 @@ if (isset($number_to_add) && isset($item_to_add)) {
 		}
 	});
 	//Clean delivery modal
-		//Test clean modal
-	function cleanDeliveryModal(){
-		var delivery_info = {};
-		var get_delivery_info = {};
-		var get_delivery_tax_group_id = '';
-		var get_delivery_fee = 0;
-		
-		$.post('<?php echo site_url("sales/set_delivery_info");?>', { delivery_info: delivery_info, delivery_person_info: get_delivery_info, delivery_tax_group_id: get_delivery_tax_group_id, delivery_fee: get_delivery_fee}, function(response)
-		{
-			$("#register_container").html(response);
-		});			
-		$.post(<?php echo json_encode(site_url('sales/set_delivery'));?>,{delivery:0}, function(response)
-		{
-			$("#register_container").html(response);
-		});
-		
-
-		console.log('Modal de entrega limpiado');
+	
+	function cleanDeliveryModal() {
+	    // Limpiar información de entrega en el backend
+	    $.post('<?php echo site_url("sales/set_delivery_info");?>', {
+	        delivery_info: {},
+	        delivery_person_info: {},
+	        delivery_tax_group_id: '',
+	        delivery_fee: 0
+	    });
+	    // Desactivar la entrega y recargar el contenedor
+	    $.post(<?php echo json_encode(site_url('sales/set_delivery'));?>, {delivery: 0}, function(response) {
+	        $("#register_container").html(response);
+	        //console.log('Modal de entrega limpiado');
+	    });
 	}
 	//end test
 	//
+	
 </script>
